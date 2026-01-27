@@ -1,0 +1,37 @@
+# 全局配置
+global:
+  browser:
+    headless: true  # 默认为 true (无头模式)。如果检测到未登录，脚本会自动切换为有头模式。
+    timeout: 180000   # 超时时间 (ms)
+  template: "templates/summary.md"
+  output_dir: "outputs"
+
+# 模块配置
+modules:
+  # 微博模块
+  weibo:
+    enabled: false
+    targets:
+      - name: "唐史主任司马迁"
+        url: "https://weibo.com/u/2014433131"
+        limit: 5
+      - name: "猎人视角"
+        url: "https://weibo.com/u/2704048113"
+        limit: 5
+
+  # 小红书模块
+  xiaohongshu:
+    enabled: false
+    limit: 20
+    # 筛选配置：可根据需要修改为 "综合", "最新", "视频", "图文", "一天内", "一周内", "半年内" 等
+    filters:
+      sort: "最多点赞"  # 排序：综合, 最多点赞, 最新
+      type: "图文"      # 类型：全部, 视频, 图文
+      time: "半年内"    # 时间：不限, 一天内, 一周内, 半年内
+
+  # Twitter 模块
+  twitter:
+    enabled: true
+    limit: 20
+    list_url: "https://x.com/i/lists/1854093909938634765"
+

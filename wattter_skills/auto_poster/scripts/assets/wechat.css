@@ -1,0 +1,161 @@
+:root {
+  --md-primary-color: #0F4C81;
+  --md-font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+  --md-font-size: 16px;
+  --foreground: 0, 0%, 3.9%;
+  --blockquote-background: #f7f7f7;
+}
+
+#output {
+  font-family: var(--md-font-family);
+  font-size: var(--md-font-size);
+  line-height: 1.75;
+  color: hsl(var(--foreground));
+  text-align: left;
+}
+
+#output h1 {
+  display: table;
+  padding: 0 1em;
+  border-bottom: 2px solid var(--md-primary-color);
+  margin: 2em auto 1em;
+  color: hsl(var(--foreground));
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+#output h2 {
+  display: table;
+  padding: 0 0.2em;
+  margin: 4em auto 2em;
+  color: #fff;
+  background: var(--md-primary-color);
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 4px;
+}
+
+#output h3 {
+  padding-left: 8px;
+  border-left: 3px solid var(--md-primary-color);
+  margin: 2em 8px 0.75em 0;
+  color: hsl(var(--foreground));
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+#output h4 {
+  margin: 2em 8px 0.5em;
+  color: var(--md-primary-color);
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#output p {
+  margin: 1.5em 8px;
+  letter-spacing: 0.1em;
+  color: hsl(var(--foreground));
+  text-align: justify;
+}
+
+#output blockquote {
+  font-style: normal;
+  padding: 1em;
+  border-left: 4px solid var(--md-primary-color);
+  border-radius: 6px;
+  color: hsl(var(--foreground));
+  background: var(--blockquote-background);
+  margin-bottom: 1em;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+#output blockquote p {
+  margin: 0;
+}
+
+#output ul, #output ol {
+  margin: 1.5em 8px;
+  padding-left: 2em;
+}
+
+#output li {
+  margin-bottom: 0.5em;
+  letter-spacing: 0.05em;
+}
+
+#output code {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+  padding: 2px 4px;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+#output pre {
+  display: block;
+  padding: 1em;
+  margin: 1.5em 8px;
+  font-size: 0.9em;
+  line-height: 1.4;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #abb2bf;
+  background-color: #282c34;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+#output pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+#output img {
+  display: block;
+  margin: 1.5em auto;
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#output table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 1.5em;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+#output table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+#output table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+#output table th,
+#output table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+#output table th {
+  font-weight: 600;
+}
+
+/* Fix for WeChat spacing */
+section {
+  margin-bottom: 1.5em;
+}

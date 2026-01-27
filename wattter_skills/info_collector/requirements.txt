@@ -1,0 +1,4 @@
+playwright
+PyYAML
+Jinja2
+jieba
