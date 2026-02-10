@@ -27,6 +27,15 @@
       "skills": [
         "info-collector"
       ]
+    },
+    {
+      "name": "trend-radar-skills",
+      "description": "Tools for aggregating and analyzing real-time trends across multiple platforms.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "trend-radar"
+      ]
     }
   ]
 }

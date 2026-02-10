@@ -9,6 +9,7 @@ This repository contains a collection of AI skills designed to enhance the capab
 
 ### Information Collection & Research
 - **info-collector**: 基于配置驱动的通用信息收集助手。支持多数据源模块化扩展，自动采集、分析并生成结构化报告。
+- **trend-radar**: 多平台实时热点聚合与分析工具。支持从知乎、微博、抖音、B站等主流平台获取热搜数据，并根据关键词进行精准筛选。
 
 ## Installation & Usage
 
