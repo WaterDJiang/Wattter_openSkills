@@ -1,0 +1,68 @@
+# TrendRadar Skill Configuration
+
+# 平台配置
+platforms:
+  zhihu:
+    name: "知乎热榜"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=zhihu"
+  weibo:
+    name: "微博热搜"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=weibo"
+  douyin:
+    name: "抖音热点"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=douyin"
+  bilibili:
+    name: "B站热搜"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=bilibili"
+  baidu:
+    name: "百度热搜"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=baidu"
+  toutiao:
+    name: "今日头条"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=toutiao"
+  wallstreetcn:
+    name: "华尔街见闻"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=wallstreetcn-hot"
+  cls:
+    name: "财联社"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=cls-hot"
+  ithome:
+    name: "IT之家"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=ithome"
+  juejin:
+    name: "掘金"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=juejin"
+  github:
+    name: "GitHub"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=github"
+  hackernews:
+    name: "Hacker News"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=hackernews"
+  sspai:
+    name: "少数派"
+    enabled: true
+    url: "https://newsnow.busiyi.world/api/s?id=sspai"
+
+# 采集配置
+crawler:
+  timeout: 30
+  headless: true
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  use_playwright: true
+
+# 推送/报告配置
+report:
+  max_items_per_platform: 30
+  show_rank: true
