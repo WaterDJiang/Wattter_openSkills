@@ -104,7 +104,7 @@ def parse_markdown(file_path, theme='wechat'):
     
     # Setup temp dir for images
     import tempfile
-    temp_dir = os.path.join(tempfile.gettempdir(), 'auto-poster-images')
+    temp_dir = os.path.join(tempfile.gettempdir(), 'wtt-auto-poster-images')
     os.makedirs(temp_dir, exist_ok=True)
     base_dir = os.path.dirname(os.path.abspath(file_path))
     
@@ -162,7 +162,7 @@ def get_browser_user_data_dir(platform_name):
     Get persistent user data directory
     """
     home_dir = Path.home()
-    base_dir = home_dir / '.auto-poster'
+    base_dir = home_dir / '.wtt-auto-poster'
     browser_data_dir = base_dir / 'browser_data' / platform_name
     
     try:
@@ -171,6 +171,6 @@ def get_browser_user_data_dir(platform_name):
         print(f"Failed to create browser data dir at {browser_data_dir}: {e}")
         # Fallback to temp dir
         import tempfile
-        return Path(tempfile.gettempdir()) / 'auto-poster' / platform_name
+        return Path(tempfile.gettempdir()) / 'wtt-auto-poster' / platform_name
         
     return str(browser_data_dir)

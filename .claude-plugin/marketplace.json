@@ -5,36 +5,63 @@
     "email": "wattterjiang@gmail.com"
   },
   "metadata": {
-    "description": "Water's personal collection of AI skills, featuring automation tools for content publishing and information collection.",
-    "version": "1.3.0",
+    "description": "Water's personal collection of AI skills, featuring automation tools for content publishing, information collection, trend analysis, app review insights, wiki building, and project harness generation.",
+    "version": "2.0.0",
     "license": "CC BY-NC-SA 4.0"
   },
   "plugins": [
     {
-      "name": "content-publishing-skills",
-      "description": "Tools for automating content publishing to various platforms.",
+      "name": "wtt-auto-poster-skills",
+      "description": "Automated content publishing to Zhihu and WeChat Official Account with Mac-style code blocks and smart image handling.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [
-        "auto-poster"
+        "wtt-auto-poster"
       ]
     },
     {
-      "name": "info-collection-skills",
-      "description": "Tools for collecting and analyzing information from various sources.",
+      "name": "wtt-info-collector-skills",
+      "description": "Config-driven information collection framework with modular data sources and automated report generation.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [
-        "info-collector"
+        "wtt-info-collector"
       ]
     },
     {
-      "name": "trend-radar-skills",
-      "description": "Tools for aggregating and analyzing real-time trends across multiple platforms.",
+      "name": "wtt-trend-radar-skills",
+      "description": "Multi-platform real-time trend aggregation and analysis across 11+ platforms with keyword filtering.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [
-        "trend-radar"
+        "wtt-trend-radar"
+      ]
+    },
+    {
+      "name": "wtt-app-review-insights-skills",
+      "description": "App Store review insights analyzer that extracts pain points, opportunities, user segments, and actionable recommendations.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-app-review-insights"
+      ]
+    },
+    {
+      "name": "wtt-llm-wiki-builder-skills",
+      "description": "Build, compile, and maintain LLM-friendly wiki knowledge bases from scattered markdown files.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-llm-wiki-builder"
+      ]
+    },
+    {
+      "name": "wtt-project-harness-generator-skills",
+      "description": "Scan project DNA and generate CLAUDE.md, AGENTS.md, and rules with coding discipline, UI/UX, and architecture conventions.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-project-harness-generator"
       ]
     }
   ]

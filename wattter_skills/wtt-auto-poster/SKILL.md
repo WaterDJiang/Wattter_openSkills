@@ -1,5 +1,5 @@
 ---
-name: auto-poster
+name: wtt-auto-poster
 description: 自动化内容发布助手。支持将 Markdown 文章自动发布到知乎和微信公众号，具备 Mac 风格代码块渲染、图片自动上传和自定义样式功能。
 ---
 
@@ -11,7 +11,7 @@ description: 自动化内容发布助手。支持将 Markdown 文章自动发布
 
 ## 核心特性
 
-1.  **持久化登录**：一次登录，长期有效（数据存储在 `~/.auto-poster/browser_data`）。
+1.  **持久化登录**：一次登录，长期有效（数据存储在 `~/.wtt-auto-poster/browser_data`）。
 2.  **高级渲染**：支持 **Mac 风格代码块** 和自定义 CSS 样式（内置 `wechat.css`）。
 3.  **智能图片处理**：自动下载远程图片，并通过剪贴板自动上传本地图片到编辑器。
 4.  **轻量启动**：复用本地 Chrome 浏览器。
@@ -21,7 +21,7 @@ description: 自动化内容发布助手。支持将 Markdown 文章自动发布
 ### 1. 环境配置
 
 ```bash
-cd skills/auto-poster
+cd skills/wtt-auto-poster
 pip install -r requirements.txt
 playwright install chromium
 ```

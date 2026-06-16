@@ -380,16 +380,16 @@ if __name__ == "__main__":
         if cwd.resolve() == skill_dir.resolve():
             config_path = skill_dir / "config.yaml"
         else:
-            # 2. Check if "info-collector" folder exists in CWD
-            workspace_dir = cwd / "info-collector"
+            # 2. Check if "wtt-info-collector" folder exists in CWD
+            workspace_dir = cwd / "wtt-info-collector"
             config_path = workspace_dir / "config.yaml"
-            
+
             # If config doesn't exist, initialize workspace
             if not config_path.exists():
                 print("No configuration found. Initializing new workspace...")
                 init_workspace(workspace_dir, skill_dir)
                 print("\nWorkspace initialized.")
-                print("Please configure 'info-collector/config.yaml' before running.")
+                print("Please configure 'wtt-info-collector/config.yaml' before running.")
                 print("Continuing with default configuration...")
                 # Continue execution with the newly created config
                 

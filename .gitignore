@@ -191,3 +191,5 @@ cython_debug/
 node_modules/
 browser_data/
 outputs/
+AGENTS.md
+CLAUDE.md

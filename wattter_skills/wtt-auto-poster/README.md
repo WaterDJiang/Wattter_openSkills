@@ -20,7 +20,7 @@ It solves the common headache of repeated logins, complex API limitations, and s
 *   **🖼️ Smart Image Handling**:
     *   **Auto Upload**: Automatically uploads local images to the editor by simulating clipboard operations (Copy & Paste).
     *   **Remote Download**: Automatically downloads remote images (HTTP/HTTPS) to a temporary directory for seamless uploading.
-*   **🔐 Persistent Login**: Browser cookies and session data are stored in `~/.auto-poster/browser_data`. Log in once, and it stays valid for a long time.
+*   **🔐 Persistent Login**: Browser cookies and session data are stored in `~/.wtt-auto-poster/browser_data`. Log in once, and it stays valid for a long time.
 *   **🚀 Lightweight & Privacy**: Built on Python Playwright Core using your local Chrome. All data stays on your machine.
 
 ### Prerequisites
@@ -36,7 +36,7 @@ It solves the common headache of repeated logins, complex API limitations, and s
 
 1.  Navigate to the skill directory:
     ```bash
-    cd skills/auto-poster
+    cd skills/wtt-auto-poster
     ```
 
 2.  Install Python dependencies:
@@ -75,7 +75,7 @@ python scripts/zhihu_poster.py -m /path/to/your/article.md
 ### Configuration
 
 *   **Styles**: Edit `scripts/assets/wechat.css` to customize the appearance of your articles.
-*   **User Data**: Login sessions are stored in `~/.auto-poster/browser_data/`. Delete this folder to reset login state.
+*   **User Data**: Login sessions are stored in `~/.wtt-auto-poster/browser_data/`. Delete this folder to reset login state.
 
 ---
 
@@ -94,7 +94,7 @@ python scripts/zhihu_poster.py -m /path/to/your/article.md
 *   **🖼️ 智能图片处理**：
     *   **自动上传**：通过模拟剪贴板操作（复制/粘贴），自动将本地图片上传到编辑器中替换占位符。
     *   **远程下载**：自动检测 Markdown 中的网络图片链接，下载到临时目录后上传，确保图片稳定显示。
-*   **🔐 持久化登录**：Cookie 和 Session 存储在 `~/.auto-poster/browser_data`。一次登录，长期有效。
+*   **🔐 持久化登录**：Cookie 和 Session 存储在 `~/.wtt-auto-poster/browser_data`。一次登录，长期有效。
 *   **🚀 轻量安全**：基于 Playwright 复用本地 Chrome，数据完全掌握在自己手中。
 
 ### 前置要求
@@ -110,7 +110,7 @@ python scripts/zhihu_poster.py -m /path/to/your/article.md
 
 1.  进入技能目录：
     ```bash
-    cd skills/auto-poster
+    cd skills/wtt-auto-poster
     ```
 
 2.  安装依赖：
@@ -149,4 +149,4 @@ python scripts/zhihu_poster.py -m /path/to/your/article.md
 ### 配置说明
 
 *   **样式定制**: 修改 `scripts/assets/wechat.css` 可调整文章样式。
-*   **重置登录**: 删除 `~/.auto-poster/browser_data/` 目录即可退出登录。
+*   **重置登录**: 删除 `~/.wtt-auto-poster/browser_data/` 目录即可退出登录。
