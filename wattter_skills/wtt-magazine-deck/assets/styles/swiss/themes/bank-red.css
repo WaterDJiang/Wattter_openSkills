@@ -1,0 +1,29 @@
+/* bank-red · 银行红
+   适合：金融、政策、增长、风险控制、严肃商业汇报。深红色块使用白字。 */
+:root{
+  --ink:#0a0a0a;
+  --ink-rgb:10,10,10;
+  --paper:#fafaf8;
+  --paper-rgb:250,250,248;
+  --paper-tint:#f2e5e7;
+  --ink-tint:#1a0005;
+  --grey-1:#f0f0ee;
+  --grey-2:#d4d4d2;
+  --grey-3:#737373;
+  --accent:#BA0C2F;
+  --accent-rgb:186,12,47;
+  --accent-2:#E64A63;
+  --accent-on:#ffffff;
+  --accent-bright:#FF8A9A;
+  --text-1:#fafaf8;
+  --text-primary:#0a0a0a;
+  --text-secondary:#525252;
+  --text-helper:#737373;
+  --text-placeholder:#a3a3a3;
+  --text-on-color:#ffffff;
+  --border-subtle:#e0e0e0;
+  --border-strong:#a3a3a3;
+  --ok:#22c55e;
+  --warn:#F59E0B;
+  --danger:#BA0C2F;
+}

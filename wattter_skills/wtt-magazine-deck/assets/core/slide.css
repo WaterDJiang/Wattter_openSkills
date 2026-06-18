@@ -1,0 +1,77 @@
+/* ============ 流式根字号 ============
+   设计基准：1920×1080 → 16px
+   0.83vw = 16px@1920, 1.48vh = 16px@1080
+   min() 取更约束的维度；clamp 保底 13px 保顶 22px
+   换算：vw × 1.2 = rem，vh × 0.675 = rem
+   swiss 风格会在 style.css 里覆盖为固定值 */
+html{font-size:var(--root-font-size)}
+
+/* ============ 基础重置 + 全局 ============ */
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:100%;height:100%;overflow:hidden;background:var(--ink);color:var(--paper);font-family:var(--sans-zh);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+/* ============ WebGL 背景占位（editorial 用双 canvas，swiss 用单 canvas） ============ */
+canvas.bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;transition:opacity 1.2s ease;pointer-events:none}
+
+/* ============ Deck 容器 + 翻页（所有风格共用） ============ */
+#deck{position:fixed;inset:0;width:10000vw;height:100vh;display:flex;flex-wrap:nowrap;transition:transform .9s cubic-bezier(.77,0,.175,1);z-index:10;will-change:transform}
+.slide{
+  width:100vw;height:100vh;flex:0 0 100vw;
+  position:relative;
+  padding:var(--slide-pad);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  background:var(--paper);color:var(--ink);
+}
+.slide.light{color:var(--ink)}
+.slide.dark{color:var(--paper)}
+.slide.grey{background:var(--grey-1)}
+.slide.accent{background:var(--accent);color:var(--accent-on)}
+
+/* ============ 遮罩机制（仅 editorial pseudo 模式启用） ============ */
+/* 默认页：遮罩较厚，保证文字可读 */
+.slide::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;transition:background .7s ease}
+.slide.light::before{background:rgba(var(--paper-rgb),.78);backdrop-filter:blur(3px)}
+.slide.dark::before{background:rgba(var(--ink-rgb),.78);backdrop-filter:blur(3px)}
+/* Hero 页：遮罩大幅降低，让背景透出 */
+.slide.hero.light::before{background:rgba(var(--paper-rgb),.16);backdrop-filter:none}
+.slide.hero.dark::before{background:rgba(var(--ink-rgb),.12);backdrop-filter:none}
+/* Hero 页顶底微弱渐隐 */
+.slide.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+.slide.hero.light::after{background:linear-gradient(180deg,rgba(var(--paper-rgb),.28) 0%,rgba(var(--paper-rgb),0) 14%,rgba(var(--paper-rgb),0) 86%,rgba(var(--paper-rgb),.28) 100%)}
+.slide.hero.dark::after{background:linear-gradient(180deg,rgba(var(--ink-rgb),.32) 0%,rgba(var(--ink-rgb),0) 14%,rgba(var(--ink-rgb),0) 86%,rgba(var(--ink-rgb),.32) 100%)}
+
+/* swiss 的 canvas-card + 主题变体（由 swiss style.css 展开） */
+.slide.hero{background:transparent}
+.slide.hero.grey{background:rgba(var(--paper-rgb),.86);backdrop-filter:blur(1px)}
+.slide.hero.dark{background:rgba(var(--ink-rgb),.92);color:var(--paper)}
+
+/* ============ Canvas-card（swiss 专属内容容器，swiss style.css 展开） ============ */
+.canvas-card{width:100%;height:100%;padding:0;display:flex;flex-direction:column;position:relative;overflow:hidden}
+
+/* ============ 内容适配层 ============
+   fit.js 会给 .frame / .fit-shell 注入 --fit-scale。
+   Swiss 的 .canvas-card 是页面安全框，不直接缩放，避免页眉/背景/绝对定位元素漂移。 */
+.frame,.fit-shell{
+  transform:scale(var(--fit-scale,1));
+  transform-origin:top left;
+  width:calc(100% / var(--fit-scale,1));
+  height:calc(100% / var(--fit-scale,1));
+  max-width:none;
+}
+.fit-shell{flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.fit-safe-text{overflow-wrap:anywhere;word-break:break-word;text-wrap:balance}
+.fit-nowrap{white-space:nowrap;font-size:clamp(.72em,calc(1em * var(--fit-scale,1)),1em)}
+.fit-overflow-risk::after{
+  content:"内容过密";
+  position:absolute;right:1.5vw;bottom:1.2vh;z-index:40;
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);opacity:.55;pointer-events:none;
+}
+
+/* ============ 进度条 ============ */
+#progress{position:fixed;bottom:0;left:0;height:2px;background:currentColor;opacity:.45;z-index:35;transition:width .5s cubic-bezier(.4,0,.2,1)}
+
+/* ============ 静态模式背景 ============ */
+body.no-webgl{background:var(--ink)}
+body.no-webgl.light-bg{background:var(--paper)}

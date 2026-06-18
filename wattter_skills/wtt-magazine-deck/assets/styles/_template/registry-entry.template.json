@@ -1,0 +1,35 @@
+{
+  "id": "STYLE_ID",
+  "name": "STYLE_NAME",
+  "name_en": "STYLE_NAME",
+  "version": "1.0",
+  "default": false,
+  "bestFor": "替换为该风格最适合的内容类型，例如产品发布、数据汇报、艺术展陈、课程分享",
+  "anchor": "替换为视觉锚点或参考系，避免只写颜色名",
+  "designTokens": "替换为该风格的字体、字号、网格、圆角、线条、图片处理和主题色规则",
+  "files": {
+    "template": "assets/styles/STYLE_ID/template.html",
+    "style": "assets/styles/STYLE_ID/style.css",
+    "themesDir": "assets/styles/STYLE_ID/themes",
+    "themesDoc": "assets/styles/STYLE_ID/themes.md",
+    "layoutsDoc": "assets/styles/STYLE_ID/layouts.md",
+    "componentsDir": "assets/styles/STYLE_ID/components",
+    "recipes": "assets/styles/STYLE_ID/recipes.js",
+    "validateRules": "assets/styles/STYLE_ID/validate-rules.json"
+  },
+  "defaultTheme": "default",
+  "availableThemes": [
+    "default"
+  ],
+  "motions": [
+    "static",
+    "subtle"
+  ],
+  "webgl": "grid",
+  "usesSharedCore": true,
+  "registeredLayouts": 2,
+  "styleIsolation": {
+    "forbidLayoutPattern": "",
+    "forbidClasses": []
+  }
+}

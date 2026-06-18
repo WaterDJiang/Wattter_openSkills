@@ -1,0 +1,23 @@
+/* ============ 响应式降级 ============ */
+@media (max-width:900px){
+  .display{font-size:16vw}
+  .display-zh{font-size:12vw}
+  .h1-zh{font-size:7vw}
+  .h-hero{font-size:14vw}
+  .h-xl{font-size:9vw}
+  .pipeline{grid-template-columns:repeat(2,1fr)}
+  .grid-2-7-5,.grid-2-6-6,.grid-2-8-4{grid-template-columns:1fr}
+  #overview .ov-grid{grid-template-columns:repeat(2,1fr)}
+  .slide{padding:2rem 3rem 4rem 3rem}
+}
+
+/* ============ prefers-reduced-motion ============ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  #deck{transition:none!important}
+  canvas.bg{transition:none!important}
+}

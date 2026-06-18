@@ -1,0 +1,59 @@
+/* ============ 图片系统（共享骨架） ============
+   圆角走 var(--img-radius)：editorial 注入 4px / swiss 注入 0
+   合并了 swiss 的比例变体（r-16x9 等）和定位变体（pos-top 等）——两风格共用 */
+
+/* ---- 图片占位（虚线框，提示设计师位置） ---- */
+.img-slot{border:1.5px dashed rgba(127,127,127,.4);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.675rem;padding:1.35rem 2.4rem;font-family:var(--mono);font-size:.625rem;letter-spacing:.28em;text-transform:uppercase;opacity:.55;position:relative;aspect-ratio:16/9;width:100%;max-height:37.8rem;margin-inline:auto;box-sizing:border-box}
+.img-slot::before{content:"";position:absolute;inset:8px;border:1px solid currentColor;opacity:.2}
+.img-slot .plus{font-size:2.4rem;font-weight:300;opacity:.5;letter-spacing:0}
+.img-slot .label{position:relative;z-index:2;text-align:center}
+.img-slot.r-4x3{aspect-ratio:4/3}
+.img-slot.r-3x2{aspect-ratio:3/2}
+.img-slot.r-1x1{aspect-ratio:1/1}
+
+/* ---- 图片实填框 ----
+   重要约束：高度用内联 height:Nvh 精确控制，不要用 aspect-ratio（会撑破布局）
+   object-position:top center 保证严禁裁剪顶部和左右，只裁剪底部
+   圆角由 --img-radius 控制（editorial 4px / swiss 0） */
+.frame-img{overflow:hidden;position:relative;background:rgba(0,0,0,.04);box-sizing:border-box;width:100%;border-radius:var(--img-radius)}
+.slide.dark .frame-img{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+.frame-img > img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+/* 定位变体（swiss 引入，editorial 也可用） */
+.frame-img.fit-contain > img{object-fit:contain;object-position:center center}
+.frame-img.pos-top > img{object-position:top center}
+.frame-img.pos-face > img{object-position:center 35%}
+.frame-img.pos-center > img{object-position:center center}
+
+/* ---- 比例变体（两风格共用） ---- */
+.frame-img.r-21x9{aspect-ratio:21/9;max-height:54vh}
+.frame-img.r-16x9{aspect-ratio:16/9;max-height:64vh}
+.frame-img.r-16x10{aspect-ratio:16/10;max-height:56vh}
+.frame-img.r-4x3{aspect-ratio:4/3;max-height:56vh}
+.frame-img.r-3x2{aspect-ratio:3/2;max-height:46vh}
+.frame-img.r-3x4{aspect-ratio:3/4;max-height:60vh}
+.frame-img.r-1x1{aspect-ratio:1/1;max-height:50vh}
+/* 固定高度变体（图片网格用） */
+.frame-img.h-16{height:16vh}.frame-img.h-18{height:18vh}.frame-img.h-22{height:22vh}
+.frame-img.h-26{height:26vh}.frame-img.h-28{height:28vh}.frame-img.h-32{height:32vh}
+/* swiss 专属边框变体 */
+.frame-img.swiss-lined{border-top:2px solid var(--accent)}
+.frame-img.swiss-keyline{border:0}
+
+/* ---- 图片说明 ---- */
+.frame-cap{display:flex;justify-content:space-between;align-items:baseline;gap:1.2rem;margin-top:.54rem;font-family:var(--mono);font-size:.625rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);opacity:.78}
+.frame-cap .pf{font-family:var(--serif-zh);font-weight:600;font-size:.8125rem;letter-spacing:.04em;text-transform:none;color:currentColor;opacity:.94}
+.frame-cap .nb{font-family:var(--serif-en);font-style:italic;font-size:.9375rem;letter-spacing:.02em;text-transform:none;color:currentColor;opacity:.88}
+.frame-cap .idx{font-family:var(--mono);opacity:.6}
+figure.tile{display:flex;flex-direction:column;margin:0;min-width:0}
+figure.tile > .frame-img{flex:0 0 auto}
+figure.frame-img{margin:0;display:flex;flex-direction:column;min-width:0}
+.img-cap{
+  display:block;
+  margin-top:.54rem;
+  font-family:var(--mono);
+  font-size:.625rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  opacity:.75;
+}

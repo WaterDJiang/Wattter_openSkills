@@ -1,0 +1,19 @@
+/* @theme-id: default
+   @name: 默认主题
+   @style: STYLE_ID
+   @usage: 新风格默认主题。复制后替换为真实主题色。 */
+:root{
+  --ink:#111111;
+  --ink-rgb:17,17,17;
+  --paper:#f4f1ea;
+  --paper-rgb:244,241,234;
+  --paper-tint:#e9e3d8;
+  --ink-tint:#222222;
+  --accent:#3157d5;
+  --accent-rgb:49,87,213;
+  --accent-2:#7c93ee;
+  --accent-on:#ffffff;
+  --grey-1:#eeeeee;
+  --grey-2:#d4d4d4;
+  --grey-3:#777777;
+}

@@ -1,0 +1,19 @@
+/* 🌊 靛蓝瓷 indigo-porcelain
+   适用：科技 / 研究 / 数据分享 / 工程师文化 / 技术发布会 / 理性叙事
+   气质：深靛蓝 + 冷瓷白，蓝青花瓷感，冷静、理性、有深度
+   关键词：科技、数据、研究、理性、深蓝、瓷白 */
+:root{
+  --ink:#0b1d3a;
+  --ink-rgb:11,29,58;
+  --paper:#eef2f6;
+  --paper-rgb:238,242,246;
+  --paper-tint:#dde4ec;
+  --ink-tint:#15294a;
+  --accent:#2f5fa8;
+  --accent-2:#6ea3d8;
+  --accent-on:#ffffff;
+  --text-1:#eef2f6;
+  --ok:#22c55e;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+}

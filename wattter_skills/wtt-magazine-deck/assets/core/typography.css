@@ -1,0 +1,77 @@
+/* ============ 字体规则（共享骨架） ============
+   所有字体/尺寸走 var()，由风格层 style.css 注入具体值。
+   editorial 注入：衬线 + rem 尺寸 + 900/700 权重
+   swiss 注入：Inter sans + vw 尺寸 + 200/300 权重
+   换算基准：1vw = 19.2px @1920，1rem = 16px，所以 vw × 1.2 = rem */
+
+/* ---- Kicker & Meta（小标签） ---- */
+.kicker{font-family:var(--mono);font-size:var(--kicker-size);letter-spacing:.3em;text-transform:uppercase;color:var(--accent);opacity:.82;margin-bottom:2.025rem}
+.meta{font-family:var(--mono);font-size:var(--meta-size);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);opacity:.72}
+
+/* ---- 标题层级（LAYOUTS API） ---- */
+.h-hero{
+  font-family:var(--serif-zh);
+  font-weight:var(--h-hero-weight);
+  font-size:var(--h-hero-size);
+  line-height:var(--h-hero-lh);
+  letter-spacing:-.02em;
+}
+.h-xl{
+  font-family:var(--serif-zh);
+  font-weight:var(--h-xl-weight);
+  font-size:var(--h-xl-size);
+  line-height:var(--h-xl-lh);
+  letter-spacing:-.01em;
+}
+.h-sub{
+  font-family:var(--serif-zh);
+  font-weight:var(--h-sub-weight);
+  font-size:var(--h-sub-size);
+  line-height:var(--h-sub-lh);
+  letter-spacing:0;
+  opacity:.7;
+}
+.h-md{
+  font-family:var(--serif-zh);
+  font-weight:var(--h-md-weight);
+  font-size:var(--h-md-size);
+  line-height:var(--h-md-lh);
+}
+
+/* ---- Lead 引语 ---- */
+.lead{
+  font-family:var(--serif-zh);
+  font-weight:400;
+  font-size:var(--lead-size);
+  line-height:var(--lead-lh);
+  opacity:.86;
+}
+
+/* ---- Meta-row 底部元数据 ---- */
+.meta-row{
+  display:flex;
+  gap:1.2em;
+  align-items:baseline;
+  flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:var(--meta-size);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  opacity:.72;
+}
+
+/* ---- Editorial 独有标题（editorial style.css 展开这些） ---- */
+.display{font-family:var(--serif-en);font-weight:700;font-size:13.2rem;line-height:.92;letter-spacing:-.025em}
+.display-zh{font-family:var(--serif-zh);font-weight:700;font-size:9.36rem;line-height:1.04;letter-spacing:-.005em}
+.h1-zh{font-family:var(--serif-zh);font-weight:700;font-size:5.52rem;line-height:1.12;letter-spacing:-.005em}
+.h2-zh{font-family:var(--serif-zh);font-weight:600;font-size:3.84rem;line-height:1.2;letter-spacing:0}
+.h3-zh{font-family:var(--serif-zh);font-weight:500;font-size:2.28rem;line-height:1.35}
+.body-zh{font-family:var(--sans-zh);font-weight:400;font-size:.9375rem;line-height:1.75;opacity:.82;letter-spacing:.01em}
+.body-serif{font-family:var(--serif-zh);font-weight:400;font-size:1rem;line-height:1.65;opacity:.88}
+.big-num{font-family:var(--serif-en);font-weight:800;font-size:12rem;line-height:.85;letter-spacing:-.03em;font-feature-settings:"tnum"}
+.mid-num{font-family:var(--serif-en);font-weight:700;font-size:6.6rem;line-height:.88;letter-spacing:-.02em;font-feature-settings:"tnum"}
+.ghost{font-family:var(--serif-en);font-weight:900;font-size:40.8rem;line-height:.8;opacity:.06;letter-spacing:-.04em;position:absolute;font-feature-settings:"tnum"}
+em{font-style:italic;font-family:var(--serif-en)}
+.en{font-family:var(--serif-en);font-style:italic;font-weight:500}
+.h-hero-en,.h-xl-en{font-family:var(--serif-en);letter-spacing:-.025em}

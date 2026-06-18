@@ -1,0 +1,23 @@
+{
+  "style": "STYLE_ID",
+  "description": "STYLE_NAME 风格专属校验规则。validate-deck.mjs 读取并执行。",
+  "allowedLayouts": [
+    "STYLE_ID-01",
+    "STYLE_ID-02"
+  ],
+  "rules": [
+    {
+      "id": "STYLE-V1",
+      "description": "每个 slide 必须写 data-layout，且命中本风格登记版式",
+      "check": "allowlist-attr",
+      "attr": "data-layout",
+      "required": true,
+      "allowlist": ["STYLE_ID-01", "STYLE_ID-02"]
+    },
+    {
+      "id": "STYLE-V2",
+      "description": "首页必须体现本风格主题色或核心视觉元素",
+      "check": "style-cover-accent"
+    }
+  ]
+}

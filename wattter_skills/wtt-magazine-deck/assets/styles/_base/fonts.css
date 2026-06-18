@@ -1,0 +1,32 @@
+/* ============ 跨风格字体变量基线 ============
+   加载顺序（template.html 中）：
+     1. core/tokens.css  → 默认值（衬线，风格 A）
+     2. styles/_base/fonts.css → 基线（不修改，仅作文档参考）
+     3. styles/<id>/style.css → 风格覆写（如瑞士风重定义为 Inter 无衬线）
+     4. styles/<id>/themes/<name>.css → 主题色覆写
+
+   新增风格时：在 style.css 里重新定义这些变量即可，core CSS 一行不用改。
+   =================================================================== */
+
+/* ---- 风格 A · 电子杂志（衬线基线，与 core/tokens.css 一致） ----
+   --serif-en:  "Playfair Display"  （英文大标题/数字 · 衬线）
+   --serif-body-en: "Source Serif 4"（英文正文可选）
+   --serif-zh:  "Noto Serif SC"     （中文标题/正文 · 衬线）
+   --sans-zh:   "Noto Sans SC"      （中文辅助/元数据 · 无衬线）
+   --mono:      "IBM Plex Mono"     （代码/kicker/元数据 · 等宽）*/
+
+/* ---- 风格 B · 瑞士国际主义（覆写建议，复制到 swiss/style.css） ----
+   :root{
+     --serif-en: "Inter", "Helvetica Neue", Arial, sans-serif;
+     --serif-zh: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+     --sans-zh:  "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+     --mono:     "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+   }
+   .slide{ border-radius: 0 !important; }
+   .frame-img{ border-radius: 0 !important; }
+   瑞士风还建议加：
+   - 字号对比极致：.h-hero 字号用 18-20vw
+   - 直角 0 圆角
+   - 1px 发丝线 border 替代粗边框
+   - 大量 negative space，不用 fluid shader 背景（可保留 canvas 但透明度更低）
+   ================================================================ */

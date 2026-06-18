@@ -1,0 +1,73 @@
+/* ============ 设计令牌（共享层 · 仅占位与 fallback） ============
+   本文件是 core 层的「变量契约」：声明所有风格共享的 CSS 变量名。
+   - 具体值由各风格的 style.css 注入（editorial 注入衬线 + rem，swiss 注入 Inter + vw）
+   - 这里只给 fallback 默认值，确保即使忘记注入也能渲染（用 editorial 墨水经典作 fallback）
+   - 加新风格 = 写一份 style.css 覆盖下面的变量，core 一行不动 */
+:root{
+  /* ---- 字体（风格层必须注入） ---- */
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sans-zh:"Noto Sans SC",source-han-sans-sc,sans-serif;
+  --sans:"Inter","Helvetica Neue",Arial,system-ui,sans-serif;
+  --serif-zh:"Noto Serif SC",source-han-serif-sc,serif;
+  --serif-en:"Playfair Display","Source Serif 4",Georgia,serif;
+  --serif-body-en:"Source Serif 4",Georgia,serif;
+
+  /* ---- 基础配色（默认 = 墨水经典，被 theme.css 覆盖） ---- */
+  --ink:#0a0a0b;
+  --ink-rgb:10,10,11;
+  --paper:#f1efea;
+  --paper-rgb:241,239,234;
+  --paper-tint:#e8e5de;
+  --ink-tint:#18181a;
+  /* accent 由 theme.css 提供；fallback 用一个中性蓝，避免 var() 空值 */
+  --accent:#3a5a8c;
+  --accent-rgb:58,90,140;
+  --accent-2:#6b8cc7;
+  --accent-on:#ffffff;
+  --text-1:var(--ink);
+
+  /* ---- 灰阶（swiss 用；editorial 不依赖） ---- */
+  --grey-1:#f0f0ee;
+  --grey-2:#d4d4d2;
+  --grey-3:#737373;
+
+  /* ---- 尺寸 token（风格层注入，决定字号量级 / 间距 / 圆角） ---- */
+  /* 流式根字号（editorial 用流式；swiss 在 style.css 里关闭流式改用固定 + vw） */
+  --root-font-size:clamp(13px,min(0.83vw,1.48vh),22px);
+  /* slide 内边距 */
+  --slide-pad:4.05rem 7.2rem 6.75rem 7.2rem;
+  /* slide 背景机制：pseudo(伪元素遮罩，editorial) | canvas(swiss 的 canvas-card) */
+  --slide-backdrop:pseudo;
+  /* 标题字号量级（editorial rem / swiss vw，各自注入） */
+  --h-hero-size:12rem;     --h-hero-weight:900;   --h-hero-lh:.96;
+  --h-xl-size:7.44rem;     --h-xl-weight:700;     --h-xl-lh:1.08;
+  --h-md-size:2.76rem;     --h-md-weight:600;     --h-md-lh:1.3;
+  --h-sub-size:3.72rem;    --h-sub-weight:500;    --h-sub-lh:1.25;
+  --lead-size:2.1rem;      --lead-lh:1.5;
+  --kicker-size:.75rem;    --meta-size:.6875rem;
+  /* 图片圆角（editorial 4px / swiss 0） */
+  --img-radius:4px;
+  /* 网格间距 */
+  --grid-gap:3.6rem 2.7rem;
+
+  /* ---- 装饰语汇开关（风格层覆写） ---- */
+  /* hairline: 0 = 不要发丝线装饰（editorial）；1 = 启用 1px 发丝线（swiss） */
+  --hairline:0;
+  /* kicker 是否带前置短横线装饰：0 无（editorial）/ 1 有（swiss） */
+  --kicker-line:0;
+
+  /* ---- 间距模数（Carbon，swiss 用；editorial 不依赖） ---- */
+  --sp-3:8px; --sp-4:12px; --sp-5:16px; --sp-6:24px; --sp-7:32px;
+  --sp-8:40px; --sp-9:48px; --sp-10:64px; --sp-11:80px; --sp-12:96px; --sp-13:160px;
+
+  /* ---- Motion token（Carbon，两风格共享） ---- */
+  --ease-prod:cubic-bezier(.2,0,.38,.9);
+  --ease-exp:cubic-bezier(.4,.14,.3,1);
+  --ease-entry-prod:cubic-bezier(0,0,.38,.9);
+  --ease-entry-exp:cubic-bezier(0,0,.3,1);
+  --dur-fast-1:.07s; --dur-fast-2:.11s;
+  --dur-mod-1:.15s;  --dur-mod-2:.24s;
+  --dur-slow-1:.4s;  --dur-slow-2:.7s;
+
+  --nav-safe-bottom:8vh;
+}

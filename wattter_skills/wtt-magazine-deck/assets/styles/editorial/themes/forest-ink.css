@@ -1,0 +1,19 @@
+/* 🌿 森林墨 forest-ink
+   适用：自然 / 可持续 / 文化 / 非虚构 / 户外品牌 / 环保主题
+   气质：深森林墨绿 + 象牙暖米，沉稳、有呼吸感、带泥土气
+   关键词：自然、环保、文化、墨绿、翠绿、可持续 */
+:root{
+  --ink:#16291c;
+  --ink-rgb:22,41,28;
+  --paper:#f3efe2;
+  --paper-rgb:243,239,226;
+  --paper-tint:#e8e2cf;
+  --ink-tint:#213a29;
+  --accent:#2d6a4f;
+  --accent-2:#7fb069;
+  --accent-on:#ffffff;
+  --text-1:#f3efe2;
+  --ok:#22c55e;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+}

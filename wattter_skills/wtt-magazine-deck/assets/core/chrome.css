@@ -1,0 +1,44 @@
+/* ============ Chrome / Foot / Tag / Rule（共享骨架） ============
+   兼容两套子选择器命名：.chrome .left/.right（editorial）与 .chrome .l/.r（swiss）
+   颜色走 var(--accent)；swiss style.css 可覆写为 currentColor + opacity
+   圆角通过 var(--img-radius) 间接影响（tag 不圆角） */
+
+.chrome{display:flex;justify-content:space-between;align-items:flex-start;font-family:var(--mono);font-size:var(--meta-size);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);opacity:.72;margin-bottom:auto}
+/* 双命名兼容：editorial 用 .left/.right，swiss 用 .l/.r */
+.chrome .left,.chrome .right,.chrome .l,.chrome .r{display:flex;gap:1.6em;align-items:center}
+.chrome .sep{width:24px;height:1px;background:currentColor;opacity:.5}
+
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--mono);font-size:var(--meta-size);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);opacity:.6;padding-top:2vh;border-top:1px solid currentColor;border-color:rgba(127,127,127,.25)}
+/* 双命名兼容：editorial .foot .title / swiss .foot .nb */
+.foot .title,.foot .nb{font-family:var(--serif-zh);font-weight:400;letter-spacing:.05em;text-transform:none;color:currentColor;opacity:.72;font-size:.8125rem}
+.foot .nb{font-family:var(--sans);font-weight:600;letter-spacing:.04em}
+
+/* 极简 chrome 变体（swiss 用 .chrome-min） */
+.chrome-min{display:flex;justify-content:space-between;align-items:flex-start;font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-3);flex:0 0 auto;margin-bottom:var(--sp-9)}
+.chrome-min.tight{margin-bottom:var(--sp-7)}
+.chrome-min .l,.chrome-min .r{display:flex;gap:1.4em;align-items:center}
+.chrome-min .sep{width:20px;height:1px;background:currentColor;opacity:.5}
+
+/* ---- Tag & Kicker 装饰 ---- */
+.tag{display:inline-block;font-family:var(--mono);font-size:var(--meta-size);letter-spacing:.24em;text-transform:uppercase;padding:.375rem .875rem;border:1px solid currentColor;opacity:.85}
+.tag.solid{background:currentColor;color:var(--paper);border-color:transparent}
+.tag.accent{background:var(--accent);color:var(--accent-on);border-color:transparent;opacity:1}
+
+.kicker.no-line::before{display:none}
+.kicker.accent{color:var(--accent);opacity:1;font-weight:600}
+/* swiss 的 kicker 前置短横线：由 --kicker-line 控制 */
+.kicker{display:inline-flex;align-items:center;gap:.8em}
+.kicker::before{content:"";width:24px;height:1px;background:currentColor;opacity:.6;display:none}
+/* 当风格层设置 --kicker-line:1 时启用短横线 */
+:root:has(.slide[data-style="swiss"]) .kicker::before,
+body[data-style="swiss"] .kicker::before{display:inline-block}
+
+/* ---- Rule / 分隔线 ---- */
+.rule{width:100%;height:1px;background:currentColor;opacity:.18;margin:0}
+.rule.thick{height:2px;opacity:.85}
+.rule.accent{background:var(--accent);opacity:1;height:2px}
+.rule.v{width:1px;height:100%;margin:0}
+
+.mark{background:var(--accent);color:var(--accent-on);padding:0 .2em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.mark.ink{background:var(--ink);color:var(--paper)}
+.underline-accent{background-image:linear-gradient(to bottom, transparent 70%, var(--accent) 70%, var(--accent) 96%, transparent 96%);padding:0 .05em}

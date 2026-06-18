@@ -1,0 +1,215 @@
+{
+  "version": 2,
+  "description": "风格注册表（v2 · 三层组件化架构）。SKILL.md / 校验脚本 / 构建脚本都读此文件。\n\n架构：core（共享骨架）+ motions/fx/webgl（共享行为层）+ styles/<id>/（风格自包含：语汇 style.css + 配色 themes/ + 版式 layouts + 专属组件 components/）。\n\n加新风格 = 在 styles/ 建目录（style.css + themes/ + layouts + template.html + 可选 components/recipes.js/validate-rules.json）+ 在本文件 styles 数组加一段。core/motions/fx/webgl 一行不动。",
+  "architecture": {
+    "layers": {
+      "core": "assets/core/ — 共享骨架（tokens/slide/layout/typography/chrome/image/components/nav/fit）。所有 var() 占位，值由风格层注入",
+      "motions": "assets/motions/ — 共享动效（animations.css + subtle.js + cinematic.js）。主题热切换由 core/nav.js 统一处理",
+      "fx": "assets/fx/ — 共享 Canvas FX（fx-runtime.js 自动加载 21 模块）。零硬编码，读 CSS 变量",
+      "webgl": "assets/webgl/ — 共享 shader（fluid.js 流体 / grid.js 网格）。风格通过 webgl 字段选 shader"
+    },
+    "buildOrder": [
+      "1. cp core → base.css（cat tokens slide typography layout components image chrome nav responsive）",
+      "2. cp <style>/style.css → css/style.css（注入字体/尺寸/圆角变量值）",
+      "3. cp <style>/themes/*.css → css/；预设主题让 theme-link 指向 css/<theme>.css，自定义主题才生成 css/theme.css 并锁定 T 键",
+      "4. （swiss）cp <style>/components/*.css → css/swiss/（专属组件）",
+      "5. cp motions/animations.css（微动/沉浸）+ motions/subtle.js|cinematic.js → js/motion.js",
+      "6. cp webgl/<shader>.js → js/webgl.js（按风格 webgl 字段）",
+      "7. cp core/nav.js → js/nav.js；cp core/fit.js → js/fit.js",
+      "8. （swiss）cp <style>/recipes.js → js/recipes.js（专属动效）",
+      "9. （沉浸）cp fx/*.js → js/fx/"
+    ]
+  },
+  "styles": [
+    {
+      "id": "editorial",
+      "name": "电子杂志 × 电子墨水",
+      "name_en": "Editorial × E-ink",
+      "version": "2.0",
+      "default": true,
+      "bestFor": "叙事 / 观点 / 分享 / 个人风格表达",
+      "anchor": "Monocle / Apartamento / Wallpaper* / IDEAT 等独立杂志的视觉语汇",
+      "designTokens": "衬线主导（Noto Serif SC + Playfair Display）· rem 尺寸 · 4px 微圆角 · 重字重 700-900",
+      "files": {
+        "template": "assets/styles/editorial/template.html",
+        "style": "assets/styles/editorial/style.css",
+        "themesDir": "assets/styles/editorial/themes",
+        "themesDoc": "assets/styles/editorial/themes.md",
+        "layoutsDir": "assets/styles/editorial/layouts",
+        "layoutsDoc": "references/layouts.md",
+        "presetsDir": "assets/styles/editorial/presets",
+        "recipes": null,
+        "validateRules": "assets/styles/editorial/validate-rules.json"
+      },
+      "defaultTheme": "ink-classic",
+      "availableThemes": [
+        "ink-classic",
+        "indigo-porcelain",
+        "forest-ink",
+        "kraft-paper",
+        "dune"
+      ],
+      "motions": [
+        "static",
+        "subtle",
+        "cinematic"
+      ],
+      "webgl": "fluid",
+      "usesSharedCore": true,
+      "styleIsolation": {
+        "forbidLayoutPattern": "^(S\\d{2}|SWISS-.+)$",
+        "forbidClasses": [
+          "canvas-card",
+          "chrome-min",
+          "ascii-bg",
+          "split-half",
+          "sub-grid-3-2",
+          "timeline-v",
+          "timeline-h",
+          "th-node",
+          "kpi-row-4",
+          "kpi-cell",
+          "kpi-hero",
+          "kpi-big",
+          "kpi-mid",
+          "kpi-thin",
+          "kpi-thin-sm",
+          "num-mega",
+          "name-mega",
+          "t-cat",
+          "t-body",
+          "t-body-sm",
+          "t-body-emp",
+          "t-h-prod",
+          "duo-compare",
+          "bar-towers",
+          "h-bar-chart",
+          "stack-row",
+          "stack-block",
+          "force-card",
+          "loop-diagram",
+          "system-diagram",
+          "why-now-grid",
+          "four-cards",
+          "stacked-ledger",
+          "ledger-row",
+          "ledger-num",
+          "spec-kpi",
+          "spec-bars",
+          "hero-ink-col",
+          "image-hero-stats",
+          "history-map-grid",
+          "relation-card",
+          "map-panel",
+          "accent-block",
+          "ink-block",
+          "grey-block",
+          "card-fill",
+          "card-ink",
+          "card-accent",
+          "card-outlined",
+          "dot-mat",
+          "ring-mat",
+          "cross-mat",
+          "hatch",
+          "swiss-img-split",
+          "swiss-img-copy",
+          "swiss-img-grid",
+          "swiss-img-caption"
+        ]
+      }
+    },
+    {
+      "id": "swiss",
+      "name": "瑞士国际主义",
+      "name_en": "Swiss International",
+      "version": "2.0",
+      "default": false,
+      "bestFor": "事实 / 产品 / 分析 / 方法论 / 数据汇报",
+      "anchor": "Massimo Vignelli / Josef Müller-Brockmann / Helvetica Forever / Beck Design",
+      "designTokens": "无衬线统一（Inter + JetBrains Mono）· vw/vh 尺寸 · 0 圆角 · 1px 发丝线 · 极细字重 200/300 + 极重 800 · Carbon 2x Grid 8px 模数 · 单 accent 锚点",
+      "files": {
+        "template": "assets/styles/swiss/template.html",
+        "style": "assets/styles/swiss/style.css",
+        "themesDir": "assets/styles/swiss/themes",
+        "themesDoc": "assets/styles/swiss/themes.md",
+        "layoutsDoc": "assets/styles/swiss/layouts.md",
+        "lockDoc": "references/swiss-layout-lock.md",
+        "mapDoc": "references/swiss-map-component.md",
+        "componentsDir": "assets/styles/swiss/components",
+        "recipes": "assets/styles/swiss/recipes.js",
+        "validateRules": "assets/styles/swiss/validate-rules.json"
+      },
+      "defaultTheme": "ikb-blue",
+      "availableThemes": [
+        "ikb-blue",
+        "hermes-orange",
+        "bank-red",
+        "tiffany-blue",
+        "valentino-pink",
+        "bottega-green",
+        "lemon-yellow",
+        "lemon-green",
+        "safety-orange"
+      ],
+      "motions": [
+        "static",
+        "subtle"
+      ],
+      "webgl": "grid",
+      "usesSharedCore": true,
+      "registeredLayouts": 22,
+      "registeredExtensions": [
+        "S08 + Swiss Map Component"
+      ],
+      "asciiVariants": [
+        "SWISS-COVER-ASCII",
+        "SWISS-CLOSING-ASCII"
+      ],
+      "recipes": 22,
+      "styleIsolation": {
+        "forbidLayoutPattern": "^L\\d{2}$",
+        "forbidClasses": [
+          "chrome",
+          "foot",
+          "display",
+          "display-zh",
+          "h1-zh",
+          "h2-zh",
+          "h3-zh",
+          "body-zh",
+          "body-serif",
+          "big-num",
+          "mid-num",
+          "ghost",
+          "en",
+          "stat",
+          "plat",
+          "rowline",
+          "quote-wall",
+          "qw-item",
+          "qw-text",
+          "qw-cite"
+        ]
+      }
+    }
+  ],
+  "shared": {
+    "core": "assets/core/ — 所有风格共享的骨架层（var() 占位，值由风格层 style.css 注入）",
+    "base": "base.css = cat core/{tokens,slide,typography,layout,components,image,chrome,nav,responsive}.css",
+    "motions": "assets/motions/ — animations.css + subtle.js（微动）+ cinematic.js（沉浸）",
+    "fx": "assets/fx/fx-runtime.js — 自动加载 21 个 FX 模块（沉浸模式）",
+    "webgl": {
+      "fluid": "assets/webgl/fluid.js — 流体色散 shader（editorial 用，双 canvas）",
+      "grid": "assets/webgl/grid.js — 极简网格 shader（swiss 用，单 canvas）"
+    },
+    "nav": "assets/core/nav.js — 统一翻页（键盘/滚轮/触屏/圆点/按钮/BroadcastChannel/hash/progress/T 键主题切换），所有风格共用",
+    "fit": "assets/core/fit.js — 统一内容适配；Editorial 缩放 .frame，Swiss 缩放显式 .fit-shell 并标记过密风险",
+    "fontsBase": "assets/styles/_base/fonts.md — 字体加载规范文档"
+  },
+  "scripts": {
+    "validate": "scripts/validate-deck.mjs — 跨风格统一校验（读本 registry + 各风格 validate-rules.json）",
+    "validateThemeContract": "scripts/validate-theme-contract.mjs — 跨风格主题契约校验（registry/template/theme files/T button/accent contrast）",
+    "makeCustomTheme": "scripts/make-custom-theme.mjs — 用户给出明确品牌/主题色时，生成 deck 专属 css/theme.css（不登记进 skill）"
+  }
+}

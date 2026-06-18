@@ -1,0 +1,22 @@
+/* ============ swiss · S08 Map 组件（MapLibre + 静态 fallback） ============
+   swiss 独有扩展组件：S08 右侧 MapLibre 地图 + 左侧关系卡
+   editorial 无对应组件。详见 references/swiss-map-component.md */
+
+.history-map-grid{display:grid;grid-template-columns:4.2fr 7.8fr;gap:2vw;flex:1;min-height:0;margin-top:2vh;align-items:stretch}
+.history-side{display:grid;grid-template-rows:1.08fr repeat(4,1fr);gap:1vh}
+.history-side-head{background:var(--accent);color:var(--accent-on);padding:2.2vh 1.4vw 1.8vh;border-radius:3px}
+.relation-card{background:var(--grey-1);padding:1.45vh 1.1vw;border-radius:3px;display:grid;grid-template-columns:auto 1fr;gap:.8vw;align-items:start}
+.map-panel{position:relative;background:var(--grey-1);border-radius:3px;overflow:hidden;min-height:0;height:100%}
+.map-panel .map-title{position:absolute;top:1.4vh;left:1.2vw;z-index:3;background:rgba(250,250,248,.92);padding:1.2vh 1vw;border-radius:3px;max-width:28vw}
+.map-controls{position:absolute;top:1.4vh;right:1.2vw;z-index:4;display:flex;gap:6px;background:rgba(250,250,248,.9);padding:6px;border-radius:3px}
+.map-ctrl{min-width:32px;height:32px;border:1px solid var(--ink);background:transparent;color:var(--ink);font-family:var(--mono);font-size:12px;border-radius:0;cursor:pointer;text-transform:uppercase}
+.map-ctrl.drag{min-width:58px}
+.map-ctrl.active{background:var(--accent);border-color:var(--accent);color:var(--accent-on)}
+.static-marker{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2}
+.pin-dot{width:12px;height:12px;border-radius:50%;background:var(--ink);border:2px solid var(--paper)}
+.person-marker.accent .pin-dot{background:var(--accent);border-color:var(--paper)}
+.pin-line{position:absolute;height:1px;background:var(--grey-3);opacity:.5;z-index:1;transform-origin:0 50%}
+.pin-card{min-width:72px;background:rgba(250,250,248,.9);box-shadow:0 0 0 1px rgba(0,0,0,.06);border-radius:2px;padding:6px 7px;font-family:var(--sans),var(--sans-zh);font-size:12px;line-height:1.3}
+.pin-card .nm{font-weight:600}
+.pin-card .mt{opacity:.55;font-size:10px}
+.maplibregl-ctrl-bottom-left,.maplibregl-ctrl-bottom-right,.maplibregl-ctrl-top-left,.maplibregl-ctrl-top-right{display:none!important}

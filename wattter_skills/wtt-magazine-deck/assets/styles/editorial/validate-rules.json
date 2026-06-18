@@ -1,0 +1,28 @@
+{
+  "style": "editorial",
+  "description": "电子杂志风格专属校验规则。validate-deck.mjs 读取并执行。",
+  "rules": [
+    {
+      "id": "E-001",
+      "description": "frame-img 不允许 border-radius > 8px（杂志感微圆角 ≤ 8px）",
+      "check": "forbid-style",
+      "selector": ".frame-img",
+      "style": "border-radius",
+      "max": "8px"
+    },
+    {
+      "id": "E-002",
+      "description": "大标题字号必须 < 18vw（电子杂志风克制）",
+      "check": "max-font-size",
+      "selector": ".h-hero",
+      "max": "18vw"
+    },
+    {
+      "id": "E-003",
+      "description": "callout 必须有 border-left（电子杂志感）",
+      "check": "require-style",
+      "selector": ".callout",
+      "style": "border-left"
+    }
+  ]
+}

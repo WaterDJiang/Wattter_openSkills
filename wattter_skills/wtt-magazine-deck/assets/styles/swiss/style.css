@@ -1,0 +1,223 @@
+/* ============ 风格 B · 瑞士国际主义 · 风格层（注入式） ============
+   加载于 core（base.css）之后、theme 之前。
+   作用：注入字体变量值（Inter 无衬线主导）+ 尺寸量级（vw/vh · 极细字重）+ 0 圆角 +
+        1px 发丝线装饰开关 + Carbon 间距/动效 token。
+   core 层所有 .h-hero/.h-xl/.lead/.stat-card/.callout/.pipeline/.timeline 等
+   通过 var() 间接引用，本文件注入具体值后，整个风格自动呈现瑞士国际主义语汇。
+
+   核心承诺：加新风格 = 复制本文件改注入值，core 一行不动。
+   参考：Massimo Vignelli / Josef Müller-Brockmann / Helvetica Forever */
+
+:root{
+  /* ---- 字体注入（无衬线统一 · Inter + JetBrains Mono） ---- */
+  --sans:"Inter","Helvetica Neue","Helvetica","Arial","Segoe UI Variable","Segoe UI",system-ui,-apple-system,sans-serif;
+  --sans-zh:"PingFang SC","Hiragino Sans GB","Source Han Sans SC","Noto Sans SC","Microsoft YaHei UI","Microsoft YaHei","微软雅黑",sans-serif;
+  --mono:"JetBrains Mono","IBM Plex Mono","SF Mono","Cascadia Code","Consolas","Courier New",ui-monospace,monospace;
+  /* swiss 不用衬线，但保留变量占位（避免 core 里 var(--serif-zh) 落空时崩溃，映射到 sans） */
+  --serif-zh:var(--sans-zh);
+  --serif-en:var(--sans);
+  --serif-body-en:var(--sans);
+
+  /* ---- 尺寸量级注入（vw/vh · 极致字号对比：越大越细，越小越粗） ---- */
+  /* swiss 关闭流式根字号，改用固定 + vw 双约束（大字号用 min(Xvw,Yvh)） */
+  --root-font-size:16px;
+  --slide-pad:5.5vh 5vw 7vh 5vw;
+  --slide-backdrop:canvas;
+
+  /* 标题字号（vw · 极轻字重 200/300，与 editorial 的 900/700 形成鲜明对比） */
+  --h-hero-size:11vw;      --h-hero-weight:200;   --h-hero-lh:.92;
+  --h-xl-size:6vw;         --h-xl-weight:200;     --h-xl-lh:1;
+  --h-md-size:2.6vw;       --h-md-weight:300;     --h-md-lh:1.18;
+  --h-sub-size:2.2vw;      --h-sub-weight:400;    --h-sub-lh:1.3;
+  --lead-size:1.55vw;      --lead-lh:1.4;
+  --kicker-size:14px;      --meta-size:14px;
+
+  /* ---- 圆角：0（瑞士风直角纯色） ---- */
+  --img-radius:0;
+
+  /* ---- 网格间距（vw/vh） ---- */
+  --grid-gap:3vw 4vh;
+
+  /* ---- 装饰开关：swiss 启用 1px 发丝线 + kicker 前置短横线 ---- */
+  --hairline:1;
+  --kicker-line:1;
+
+  /* ---- Carbon 2x Grid 间距模数（基础 8px） ---- */
+  --sp-3:8px; --sp-4:12px; --sp-5:16px; --sp-6:24px; --sp-7:32px;
+  --sp-8:40px; --sp-9:48px; --sp-10:64px; --sp-11:80px; --sp-12:96px; --sp-13:160px;
+
+  /* ---- Carbon text-role token（role-based，代替 opacity） ---- */
+  --text-primary:#0a0a0a;
+  --text-secondary:#525252;
+  --text-helper:#737373;
+  --text-placeholder:#a3a3a3;
+  --text-on-color:#ffffff;
+  --border-subtle:#e0e0e0;
+  --border-strong:#a3a3a3;
+  --border-subtle-dark:rgba(255,255,255,.18);
+  --border-strong-dark:rgba(255,255,255,.36);
+
+  --nav-safe-bottom:8vh;
+}
+
+/* ============ swiss 专属：主题底色与可读性基线 ============ */
+.slide.light,.slide.grey{background:var(--paper);color:var(--ink)}
+.slide.accent{background:var(--accent);color:var(--accent-on)}
+.slide.dark{background:var(--ink);color:var(--paper)}
+.slide.accent .h-hero,
+.slide.accent .h-hero-zh,
+.slide.accent .h-xl,
+.slide.accent .h-xl-zh,
+.slide.accent .h-md,
+.slide.accent .h-sub,
+.slide.accent h1,
+.slide.accent h2,
+.slide.accent h3,
+.slide.accent h4,
+.slide.accent .lead,
+.slide.accent .body,
+.slide.accent .body-sm,
+.slide.accent .t-body,
+.slide.accent .t-body-sm,
+.slide.accent .t-body-emp,
+.slide.accent .t-h-prod{color:var(--accent-on)}
+.slide.accent .t-meta,
+.slide.accent .t-cat,
+.slide.accent .t-helper,
+.slide.accent .meta,
+.slide.accent .meta-row,
+.slide.accent .kicker{color:color-mix(in srgb,var(--accent-on) 72%,transparent)}
+.slide.dark .h-hero,
+.slide.dark .h-hero-zh,
+.slide.dark .h-xl,
+.slide.dark .h-xl-zh,
+.slide.dark .h-md,
+.slide.dark .h-sub,
+.slide.dark h1,
+.slide.dark h2,
+.slide.dark h3,
+.slide.dark h4{color:var(--paper)}
+.slide.dark .lead,
+.slide.dark .body,
+.slide.dark .body-sm{color:rgba(255,255,255,.82)}
+.slide.dark .t-meta,
+.slide.dark .t-cat,
+.slide.dark .t-helper,
+.slide.dark .meta,
+.slide.dark .meta-row,
+.slide.dark .kicker{color:rgba(255,255,255,.62)}
+.slide.dark .t-body,
+.slide.dark .t-body-sm,
+.slide.dark .t-body-emp,
+.slide.dark .t-h-prod{color:var(--paper)}
+.slide.dark .stat-card.thin,
+.slide.dark .pipeline-section,
+.slide.dark .step,
+.slide.dark .rule{border-color:var(--border-subtle-dark)}
+.slide.dark .frame-img{background:rgba(255,255,255,.04)}
+.slide.dark .canvas-card{--border-subtle:var(--border-subtle-dark);--border-strong:var(--border-strong-dark)}
+
+/* 生成时常见的白字白底/黑字黑底组合，默认拉回可读色。 */
+.slide.light [style*="color:var(--paper)"],
+.slide.light [style*="color: var(--paper)"],
+.slide.grey [style*="color:var(--paper)"],
+.slide.grey [style*="color: var(--paper)"]{color:var(--ink)!important}
+.slide.dark [style*="color:var(--ink)"],
+.slide.dark [style*="color: var(--ink)"]{color:var(--paper)!important}
+.slide.accent [style*="color:var(--ink)"],
+.slide.accent [style*="color: var(--ink)"]{color:var(--accent-on)!important}
+
+/* ============ swiss 专属：大字号双约束 ============
+   swiss-layout-lock 要求大字号 font-size:min(Xvw, Yvh)，Y ≥ X × 1.6
+   editorial 的 .h-hero 用单值 rem，swiss 覆写为双约束 */
+.h-hero{font-family:var(--sans),var(--sans-zh);font-weight:var(--h-hero-weight);font-size:min(11vw,19vh);line-height:.94;letter-spacing:-.025em}
+.h-hero-zh{font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(8.4vw,14vh);line-height:.96;letter-spacing:-.025em}
+.h-xl{font-family:var(--sans),var(--sans-zh);font-weight:var(--h-xl-weight);font-size:min(6vw,10vh);line-height:1;letter-spacing:-.03em}
+.h-xl-zh{font-family:var(--sans),var(--sans-zh);font-weight:200;font-size:min(5vw,8.4vh);line-height:1.05;letter-spacing:-.025em}
+.h-md{font-family:var(--sans),var(--sans-zh);font-weight:300;font-size:2.6vw;line-height:1.18;letter-spacing:-.015em}
+.h-sub{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:2.2vw;line-height:1.3;letter-spacing:-.01em;opacity:.7}
+
+/* ============ swiss 专属：lead / body / meta 走 sans + vw ============ */
+.lead{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:1.55vw;line-height:1.4;letter-spacing:-.005em;opacity:.86}
+.body{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(18px,1.08vw);line-height:1.6;letter-spacing:0;opacity:.78}
+.body-sm{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(16px,.92vw);line-height:1.55;opacity:.7}
+.meta{font-family:var(--mono);font-size:max(14px,.82vw);letter-spacing:.18em;text-transform:uppercase;opacity:.6}
+.meta-row{font-family:var(--mono);font-size:max(14px,.88vw);letter-spacing:.16em;text-transform:uppercase;opacity:.65;color:currentColor}
+
+/* ============ swiss 专属：kicker 带前置短横线 ============ */
+.kicker{font-family:var(--mono);font-size:14px;letter-spacing:.24em;text-transform:uppercase;opacity:.65;margin-bottom:2.4vh;display:inline-flex;align-items:center;gap:.8em;color:currentColor}
+.kicker::before{content:"";width:24px;height:1px;background:currentColor;opacity:.6;display:inline-block}
+.kicker.no-line::before{display:none}
+.kicker.accent{color:var(--accent);opacity:1;font-weight:600}
+
+/* ============ swiss 专属：tag 直角 + accent 变体 ============ */
+.tag{display:inline-block;font-family:var(--mono);font-size:14px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border:1px solid currentColor;opacity:.85}
+
+/* ============ swiss 专属：chrome / foot 覆写 ============ */
+.chrome{color:currentColor;opacity:.7;letter-spacing:.16em}
+.foot{color:currentColor;opacity:.55;letter-spacing:.14em}
+
+/* ============ swiss 专属：stat-card 覆写（无衬线 + 2px 顶线 + vw 字号） ============ */
+.stat-card{padding-top:1.6vh;border-top:2px solid currentColor}
+.stat-card.thin{border-top-width:1px;border-color:rgba(127,127,127,.4)}
+.stat-card.accent-top{border-top-color:var(--accent);border-top-width:3px}
+.stat-card .stat-label{font-size:max(14px,.82vw);opacity:.6;color:currentColor}
+.stat-card .stat-nb{font-family:var(--sans);font-weight:800;font-size:5.6vw;line-height:.88;letter-spacing:-.035em;font-feature-settings:"tnum";margin-top:.4vh}
+.stat-card .stat-nb .stat-unit{font-family:var(--sans),var(--sans-zh);font-weight:500;font-size:.32em;letter-spacing:0;opacity:.6;margin-left:.14em;vertical-align:.4em}
+.stat-card .stat-note{font-size:max(16px,.98vw);line-height:1.5;opacity:.7;margin-top:.6vh}
+.grid-4 .stat-card .stat-nb{font-size:4.6vw}
+.grid-3 .stat-card .stat-nb{font-size:6.4vw}
+
+/* ============ swiss 专属：pipeline / step 覆写（Carbon 间距 + 2px 顶线） ============ */
+.pipeline{gap:1vw}
+.pipeline-section{margin-top:var(--sp-7);padding-top:var(--sp-5)}
+.pipeline-section:first-of-type{margin-top:var(--sp-7)}
+.pipeline-label{font-size:max(14px,.84vw);opacity:.6;margin-bottom:var(--sp-5)}
+.step{gap:.6vh;padding-top:1.2vh;border-top:2px solid currentColor}
+.step.accent-top{border-top-color:var(--accent);border-top-width:3px}
+.step-nb{font-family:var(--mono);font-size:max(14px,1vw);opacity:.5;letter-spacing:.04em;font-style:normal}
+.step-title{font-size:1.4vw;line-height:1.2}
+.step-desc{font-size:max(16px,.94vw);opacity:.7;line-height:1.45}
+
+/* ============ swiss 专属：callout 覆写（accent 边 + sans） ============ */
+.callout{padding:2vh 2vw;border-left:3px solid var(--accent);font-family:var(--sans),var(--sans-zh);font-size:max(14px,1vw);line-height:1.55;opacity:.9}
+.callout.ink{border-left-color:currentColor}
+.callout .cite,.callout .callout-src{font-size:14px;opacity:.6;color:currentColor}
+
+/* ============ swiss 专属：直角基线 + frame-img 定位变体 ============ */
+.slide,
+.canvas-card,
+.frame,
+.frame-img,
+.stat-card,
+.callout,
+.tag,
+.sub-card,
+.force-card,
+.relation-card,
+.map-panel,
+.map-title,
+.map-controls,
+.pin-card,
+.ledger-row,
+.stack-block,
+.bar-tower .body-block{border-radius:0!important}
+.frame-img{background:var(--paper)}
+
+/* ============ swiss 专属：ico 图标尺寸 ============ */
+.ico{width:1em;height:1em;display:inline-block;stroke:currentColor;stroke-width:1.6;fill:none}
+.ico-lg{width:2.4vw;height:2.4vw;stroke-width:1.4}
+.ico-md{width:1.6vw;height:1.6vw;stroke-width:1.5}
+.ico-sm{width:1vw;height:1vw;stroke-width:1.6}
+
+/* lucide 默认图标尺寸，避免 SVG 被字号或 grid auto 列撑坏。 */
+[data-lucide]{width:3.2vh;height:3.2vh;stroke:currentColor;stroke-width:1.5;fill:none;flex-shrink:0}
+
+/* ============ swiss 专属：动效基线 ============ */
+[data-anim]{opacity:0}
+[data-anim].in{opacity:1}
+body.motion-ready [data-anim]{transition:opacity var(--dur-mod-2) var(--ease-prod)}
+body.motion-ready [data-anim].in{opacity:1}
+
+/* ============ Windows 字重补偿（Inter 在 Win 下 200 偏粗） ============ */
+body.is-win .h-hero,body.is-win .h-xl,body.is-win .h-xl-zh,body.is-win .h-hero-zh{font-weight:300}

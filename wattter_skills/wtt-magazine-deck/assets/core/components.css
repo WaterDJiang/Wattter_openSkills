@@ -1,0 +1,228 @@
+/* ============ 共享组件（两风格共有 · 骨架在 core，值由风格层注入） ============
+   所有组件走 var(--serif-zh)/var(--sans-zh)/var(--mono) 间接引用字体，
+   风格层 style.css 注入字体变量后自动适配各自语汇。 */
+
+/* ============ Stat（数字矩阵 · editorial 专属形态） ============ */
+.stat{display:flex;flex-direction:column;gap:.675rem;align-items:flex-start}
+.stat .n{font-family:var(--serif-en);font-weight:800;font-size:9.6rem;line-height:.88;letter-spacing:-.03em;font-feature-settings:"tnum"}
+.stat .l{font-family:var(--sans-zh);font-size:.8125rem;opacity:.7;margin-top:.675rem;font-weight:400;line-height:1.5}
+.stat .m{font-family:var(--mono);font-size:.625rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);opacity:.75;margin-bottom:.135rem}
+
+/* ============ stat-card（数据大字报 · 两风格共有） ============ */
+.stat-card{
+  display:flex;
+  flex-direction:column;
+  gap:.54rem;
+  align-items:flex-start;
+  padding-top:1.08rem;
+  border-top:1px solid currentColor;
+  border-color:rgba(127,127,127,.3);
+}
+.stat-card .stat-label{
+  font-family:var(--mono);
+  font-size:.625rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--accent);
+  opacity:.78;
+}
+.stat-card .stat-nb{
+  font-family:var(--serif-en);
+  font-weight:800;
+  font-size:6.96rem;
+  line-height:.9;
+  letter-spacing:-.03em;
+  font-feature-settings:"tnum";
+  margin-top:.27rem;
+}
+.stat-card .stat-nb .stat-unit{
+  font-family:var(--serif-zh);
+  font-weight:500;
+  font-size:.38em;
+  letter-spacing:0;
+  opacity:.72;
+  margin-left:.14em;
+}
+.stat-card .stat-note{
+  font-family:var(--sans-zh);
+  font-weight:400;
+  font-size:.8125rem;
+  line-height:1.5;
+  opacity:.72;
+  margin-top:.405rem;
+}
+.grid-4 .stat-card .stat-nb{font-size:9rem}
+.grid-3 .stat-card .stat-nb{font-size:8.16rem}
+.grid-6 .stat-card .stat-nb{font-size:7rem}
+
+/* ============ Callout（引用框 · 两风格共有） ============ */
+.callout{padding:2.025rem 2.88rem;border-left:3px solid currentColor;position:relative;font-family:var(--serif-zh);font-size:.9375rem;line-height:1.55;opacity:.92}
+.slide.light .callout{background:rgba(var(--ink-rgb),.05)}
+.slide.dark .callout{background:rgba(var(--paper-rgb),.06)}
+.callout .cite{display:block;margin-top:1.08rem;font-family:var(--mono);font-size:.6875rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);opacity:.72}
+.callout .q-big{font-family:var(--serif-zh);font-weight:600;font-size:1.92rem;line-height:1.42}
+.callout-src{
+  display:block;
+  margin-top:1.08rem;
+  font-family:var(--mono);
+  font-size:.6875rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  opacity:.72;
+}
+
+/* ============ Platform（平台卡） ============ */
+.plat{display:flex;flex-direction:column;justify-content:flex-end;padding:1.35rem 0;border-top:1px solid currentColor;border-color:rgba(127,127,127,.35)}
+.plat .name{font-family:var(--serif-zh);font-weight:700;font-size:2.16rem;margin-bottom:.405rem}
+.plat .nb{font-family:var(--serif-en);font-weight:700;font-size:3.84rem;letter-spacing:-.02em;line-height:1;font-feature-settings:"tnum"}
+.plat .sub{font-family:var(--mono);font-size:.625rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);opacity:.75;margin-top:.405rem}
+.plat .fill{font-family:var(--sans-zh);font-weight:300;font-size:2.88rem;opacity:.28;letter-spacing:-.01em;line-height:1}
+
+/* ============ Rowline（表格行） ============ */
+.rowline{display:grid;grid-template-columns:1fr 2fr 1fr;gap:2.4rem;padding:1.485rem 0;border-top:1px solid currentColor;align-items:center;border-color:rgba(127,127,127,.25)}
+.rowline:last-child{border-bottom:1px solid currentColor;border-color:rgba(127,127,127,.25)}
+.rowline .k{font-family:var(--serif-zh);font-weight:700;font-size:2.04rem}
+.rowline .v{font-family:var(--sans-zh);font-weight:400;font-size:.9375rem;opacity:.85;line-height:1.55}
+.rowline .m{font-family:var(--mono);font-size:.6875rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);opacity:.72;justify-self:end}
+
+/* ============ Pillar（支柱卡片） ============ */
+.pillar{display:flex;flex-direction:column;gap:1.215rem}
+.pillar .ic{font-family:var(--serif-en);font-style:italic;font-size:3.12rem;opacity:.45;font-weight:400}
+.pillar .ic svg{width:3.36rem;height:3.36rem;stroke-width:1.2;opacity:.7}
+.pillar .t{font-family:var(--serif-zh);font-weight:700;font-size:2.88rem;line-height:1.1}
+.pillar .d{font-family:var(--sans-zh);font-weight:400;font-size:.875rem;opacity:.76;line-height:1.6}
+
+/* ============ pipeline（流水线） ============ */
+.pipeline-section{
+  margin-top:2.97rem;
+  padding-top:1.89rem;
+  border-top:1px dashed rgba(127,127,127,.32);
+}
+.pipeline-section:first-of-type{
+  border-top:0;
+  padding-top:0;
+  margin-top:2.025rem;
+}
+.pipeline-label{
+  font-family:var(--mono);
+  font-size:.6875rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--accent);
+  opacity:.78;
+  margin-bottom:1.485rem;
+}
+.pipeline{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:1.44rem;
+}
+.pipeline[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.pipeline[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.pipeline[data-cols="6"]{grid-template-columns:repeat(6,1fr)}
+.step{
+  display:flex;
+  flex-direction:column;
+  gap:.54rem;
+  padding-top:.945rem;
+  border-top:1px solid currentColor;
+  border-color:rgba(127,127,127,.35);
+}
+.step-nb{
+  font-family:var(--serif-en);
+  font-style:italic;
+  font-weight:500;
+  font-size:1.38rem;
+  color:var(--accent);
+  opacity:.7;
+}
+.step-title{
+  font-family:var(--sans-zh);
+  font-weight:700;
+  font-size:1.86rem;
+  letter-spacing:.01em;
+  line-height:1.2;
+}
+.step-desc{
+  font-family:var(--sans-zh);
+  font-weight:400;
+  font-size:.75rem;
+  line-height:1.45;
+  opacity:.72;
+}
+
+/* ============ Signature / Highlight ============ */
+.sign{font-family:var(--serif-en);font-style:italic;font-weight:500;font-size:2.4rem;opacity:.7}
+.hi{position:relative;display:inline}
+.slide.dark .hi::after{content:"";position:absolute;left:-.1em;right:-.1em;bottom:-.05em;height:.28em;background:rgba(var(--paper-rgb),.15);z-index:-1}
+.slide.light .hi::after{content:"";position:absolute;left:-.1em;right:-.1em;bottom:-.05em;height:.28em;background:rgba(var(--ink-rgb),.08);z-index:-1}
+
+/* ============ Timeline（editorial 纵向时间轴） ============ */
+.timeline{display:flex;flex-direction:column;gap:0;flex:1;justify-content:center;position:relative}
+.tl-node{
+  display:grid;
+  grid-template-columns:9rem 1fr;
+  gap:2.4rem;
+  padding:1.62rem 0;
+  border-top:1px solid currentColor;
+  border-color:rgba(127,127,127,.3);
+  align-items:baseline;
+}
+.tl-node:first-child{border-top:0;padding-top:0}
+.tl-year{
+  font-family:var(--serif-en);
+  font-style:italic;
+  font-weight:500;
+  font-size:2.04rem;
+  color:var(--accent);
+  opacity:.72;
+  letter-spacing:-.01em;
+}
+.tl-title{
+  font-family:var(--serif-zh);
+  font-weight:700;
+  font-size:2.04rem;
+  line-height:1.2;
+}
+.tl-desc{
+  font-family:var(--sans-zh);
+  font-weight:400;
+  font-size:.875rem;
+  line-height:1.6;
+  opacity:.74;
+  margin-top:.405rem;
+}
+
+/* ============ Quote Wall（引用墙 · editorial 专属） ============ */
+.quote-wall{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:2.7rem 3.6rem;
+  flex:1;
+  align-content:center;
+}
+.quote-wall[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.quote-wall[data-cols="1"]{grid-template-columns:1fr}
+.qw-item{
+  padding-top:1.35rem;
+  border-top:1px solid currentColor;
+  border-color:rgba(127,127,127,.28);
+}
+.qw-text{
+  font-family:var(--serif-zh);
+  font-weight:500;
+  font-size:1.5rem;
+  line-height:1.45;
+  opacity:.92;
+}
+.qw-cite{
+  display:block;
+  margin-top:.945rem;
+  font-family:var(--mono);
+  font-size:.625rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  opacity:.75;
+}

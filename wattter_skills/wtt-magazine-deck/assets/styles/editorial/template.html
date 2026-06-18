@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[必填] 替换为 PPT 标题</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/style.css">
+<link id="theme-link" rel="stylesheet" href="css/ink-classic.css">
+<!-- {{MOTION_CSS}} -->
+</head>
+<body data-style="editorial" data-theme-list="ink-classic,indigo-porcelain,forest-ink,kraft-paper,dune">
+
+<canvas id="bg-dark" class="bg"></canvas>
+<canvas id="bg-light" class="bg"></canvas>
+<div id="hint">← → 翻页</div>
+<div id="progress"></div>
+
+<div id="deck">
+
+<!-- {{LAYOUT_SECTIONS}} -->
+
+</div>
+
+<div id="nav"></div>
+<div id="nav-btns">
+  <button class="nav-btn" id="btn-prev" aria-label="上一页"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <button class="nav-btn" id="btn-next" aria-label="下一页"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+<div id="nav-tools">
+  <button class="nav-tool" id="btn-theme" type="button" aria-label="切换主题" title="切换主题 (T)">T</button>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/fit.js"></script>
+<!-- {{WEBGL_JS}} -->
+<!-- {{MOTION_JS}} -->
+<!-- {{FX_JS}} -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+/* ============ 导航 ============ */
+#nav{position:fixed;left:50%;bottom:1.625rem;transform:translateX(-50%);z-index:30;display:flex;gap:.625rem;padding:.5rem .875rem;border-radius:999px;background:rgba(0,0,0,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+#nav .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);transition:all .3s ease;border:0;padding:0;cursor:default}
+#nav .dot.active{background:rgba(255,255,255,.95);width:22px;border-radius:999px}
+body.light-bg #nav{background:rgba(255,255,255,.25)}
+body.light-bg #nav .dot{background:rgba(var(--ink-rgb),.25)}
+body.light-bg #nav .dot.active{background:rgba(var(--ink-rgb),.9)}
+#hint{position:fixed;bottom:1.875rem;right:1.875rem;z-index:30;font-family:var(--mono);font-size:.625rem;letter-spacing:.2em;text-transform:uppercase;opacity:.4;mix-blend-mode:difference;color:#aaa}
+
+/* ============ 翻页按钮 ============ */
+#nav-btns{position:fixed;inset:0;z-index:25;pointer-events:none;display:flex;justify-content:space-between;align-items:center;padding:0 1.375rem}
+.nav-btn{pointer-events:auto;width:48px;height:48px;border:1px solid rgba(255,255,255,.16);border-radius:50%;background:rgba(0,0,0,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:rgba(255,255,255,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .35s ease;opacity:.35}
+.nav-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.nav-btn:hover{background:rgba(0,0,0,.28);color:rgba(255,255,255,.9);border-color:rgba(255,255,255,.32);transform:scale(1.06);opacity:1}
+.nav-btn:disabled{opacity:0!important;pointer-events:none;cursor:default}
+body.light-bg .nav-btn{border-color:rgba(var(--ink-rgb),.1);background:rgba(255,255,255,.16);color:rgba(var(--ink-rgb),.4)}
+body.light-bg .nav-btn:hover{background:rgba(255,255,255,.35);color:rgba(var(--ink-rgb),.8);border-color:rgba(var(--ink-rgb),.22)}
+
+/* ============ 工具按钮 ============ */
+#nav-tools{position:fixed;right:1.375rem;top:1.375rem;z-index:32;display:flex;gap:.625rem;pointer-events:none}
+.nav-tool{pointer-events:auto;width:40px;height:40px;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:rgba(0,0,0,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:rgba(255,255,255,.78);font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease,opacity .25s ease;opacity:.62}
+.nav-tool:hover{background:var(--accent);color:var(--accent-on);border-color:transparent;transform:scale(1.06);opacity:1}
+.nav-tool:disabled{opacity:.18;cursor:default;pointer-events:none}
+body.light-bg .nav-tool{border-color:rgba(var(--ink-rgb),.12);background:rgba(255,255,255,.22);color:rgba(var(--ink-rgb),.68)}
+body.light-bg .nav-tool:hover{background:var(--accent);color:var(--accent-on);border-color:transparent}
+
+/* ============ Notes 抽屉 ============ */
+#notes-drawer{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(var(--ink-rgb),.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--paper);padding:1.5rem 2.5rem;font-family:var(--sans-zh);font-size:.9375rem;line-height:1.65;max-height:35vh;overflow-y:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);border-top:1px solid rgba(255,255,255,.1)}
+#notes-drawer.open{transform:translateY(0)}
+#notes-drawer .notes-kicker{font-family:var(--mono);font-size:.6875rem;letter-spacing:.24em;text-transform:uppercase;opacity:.5;margin-bottom:.75rem}
+#notes-drawer strong{color:rgba(var(--paper-rgb),.95);font-weight:700}
+#notes-drawer em{color:rgba(var(--paper-rgb),.7);font-family:var(--serif-en);font-style:italic}
+body.light-bg #notes-drawer{background:rgba(var(--paper-rgb),.94);color:var(--ink);border-top:1px solid rgba(var(--ink-rgb),.1)}
+body.light-bg #notes-drawer strong{color:rgba(var(--ink-rgb),.95)}
+body.light-bg #notes-drawer em{color:rgba(var(--ink-rgb),.6)}
+
+/* ============ Overview 网格 ============ */
+#overview{position:fixed;inset:0;z-index:50;background:rgba(var(--ink-rgb),.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:none;padding:2.5rem 2.5rem;overflow-y:auto}
+#overview.open{display:block}
+#overview .ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem 1.25rem;max-width:87.5rem;margin:0 auto}
+#overview .ov-card{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;border:2px solid rgba(255,255,255,.1)}
+#overview .ov-card:hover{transform:scale(1.03);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+#overview .ov-card .ov-inner{position:absolute;inset:0;transform-origin:top left}
+#overview .ov-card .ov-num{position:absolute;top:6px;left:8px;font-family:var(--mono);font-size:.625rem;opacity:.5;letter-spacing:.1em;z-index:2}

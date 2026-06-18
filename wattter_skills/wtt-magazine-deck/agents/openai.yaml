@@ -1,0 +1,4 @@
+interface:
+  display_name: "杂志风网页演示"
+  short_description: "生成杂志风或瑞士风网页演示文稿"
+  default_prompt: "使用 $wtt-magazine-deck 根据我的主题、大纲或素材生成一个自包含的横向网页演示文稿。"

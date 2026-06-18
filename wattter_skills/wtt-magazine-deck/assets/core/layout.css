@@ -1,0 +1,53 @@
+/* ============ 布局工具（共享骨架） ============
+   grid gap 走 var(--grid-gap)，风格层注入具体值（editorial rem / swiss vw-vh） */
+.col{display:flex;flex-direction:column;gap:1.62rem}
+.row{display:flex;align-items:center;gap:3.6rem}
+.grid-6{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:4.8rem 7.2rem;flex:1;align-content:center;padding:1.35rem 0}
+.grid-9{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:2.025rem 4.8rem;flex:1;align-content:center}
+.grid-4{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:2.7rem 7.2rem;flex:1;align-content:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:4.8rem;flex:1;align-content:center}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:4.8rem;flex:1;align-items:center}
+.split-55{display:grid;grid-template-columns:55fr 45fr;gap:6rem;flex:1;align-items:stretch}
+.fill{flex:1}
+.center{align-items:center;justify-content:center;text-align:center}
+.bottom-left{position:absolute;left:7.2rem;bottom:6.075rem;max-width:50vw}
+.bottom-right{position:absolute;right:7.2rem;bottom:6.075rem;max-width:50vw;text-align:right}
+.top-right{position:absolute;right:7.2rem;top:4.05rem;text-align:right}
+.top-left{position:absolute;left:7.2rem;top:4.05rem}
+
+/* ---------- .frame：每页主内容容器 ---------- */
+.frame{flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.frame::-webkit-scrollbar{display:none}
+.frame{scrollbar-width:none}
+.frame.grid-2-7-5,
+.frame.grid-2-6-6,
+.frame.grid-2-8-4,
+.frame.grid-2-5-7,
+.frame.grid-2-4-8,
+.frame.grid-3-3,
+.frame.grid-6{display:grid}
+
+/* ---------- 网格（layouts 所用，gap 走 --grid-gap） ---------- */
+.grid-2-7-5{display:grid;grid-template-columns:7fr 5fr;gap:var(--grid-gap);align-items:start}
+.grid-2-6-6{display:grid;grid-template-columns:1fr 1fr;gap:var(--grid-gap);align-items:start}
+.grid-2-8-4{display:grid;grid-template-columns:8fr 4fr;gap:var(--grid-gap);align-items:start}
+.grid-2-5-7{display:grid;grid-template-columns:5fr 7fr;gap:var(--grid-gap);align-items:start}
+.grid-2-4-8{display:grid;grid-template-columns:4fr 8fr;gap:var(--grid-gap);align-items:start}
+.grid-3-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-auto-rows:minmax(0,1fr);
+  gap:1.62rem 2.4rem;
+}
+
+/* ---------- 12 栏网格（swiss 用，editorial 不依赖） ---------- */
+.grid-12{display:grid;grid-template-columns:repeat(12,1fr);gap:2vh 1.2vw;align-items:start}
+.span-2{grid-column:span 2}.span-3{grid-column:span 3}.span-4{grid-column:span 4}
+.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}
+.span-8{grid-column:span 8}.span-9{grid-column:span 9}.span-12{grid-column:span 12}
+
+/* ---------- 工具类 ---------- */
+.right{text-align:right}
+.top{align-self:flex-start}.bottom{align-self:flex-end}.va-center{align-self:center}
+.nowrap{white-space:nowrap}.pos-absolute{position:absolute}
+.nav-safe-bottom{padding-bottom:var(--nav-safe-bottom)}.nav-safe-bottom-tight{padding-bottom:4vh}

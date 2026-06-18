@@ -1,0 +1,81 @@
+{
+  "style": "swiss",
+  "description": "瑞士国际主义风格专属校验规则。validate-deck.mjs 读取并执行。规则源自原 validate-swiss-deck.mjs 的 V1-V8。",
+  "allowedLayouts": [
+    "S01","S02","S03","S04","S05","S06","S07","S08","S09","S10","S11",
+    "S12","S13","S14","S15","S16","S17","S18","S19","S20","S21","S22",
+    "SWISS-COVER-ASCII","SWISS-CLOSING-ASCII"
+  ],
+  "experimentalLayouts": ["P23","P24","SWISS-IMAGE-SPLIT","EVIDENCE-GRID","THREE-CIRCLES"],
+  "statementLayouts": ["S03","S09","S10","SWISS-COVER-ASCII","SWISS-CLOSING-ASCII"],
+  "rules": [
+    {
+      "id": "SW-V1",
+      "description": "每个 slide 必须写 data-layout（S01-S22 或 SWISS-COVER-ASCII/SWISS-CLOSING-ASCII）",
+      "check": "require-attr",
+      "selector": ".slide",
+      "attr": "data-layout",
+      "pattern": "^(S\\d{2}|SWISS-COVER-ASCII|SWISS-CLOSING-ASCII)$"
+    },
+    {
+      "id": "SW-V2",
+      "description": "data-layout 必须在登记版式白名单内（实验版式需 --allow-experimental）",
+      "check": "allowlist-attr",
+      "attr": "data-layout",
+      "allowlist": ["S01","S02","S03","S04","S05","S06","S07","S08","S09","S10","S11","S12","S13","S14","S15","S16","S17","S18","S19","S20","S21","S22","SWISS-COVER-ASCII","SWISS-CLOSING-ASCII"]
+    },
+    {
+      "id": "SW-V2B",
+      "description": "data-animate 必须命中 Swiss 22 个登记 recipe 名之一",
+      "check": "allowlist-attr",
+      "attr": "data-animate",
+      "required": true,
+      "allowlist": ["hero","progression","statement","grid-reveal","stack-build","measure-up","bar-grow","duo-mirror","matrix-statement","split-statement","timeline-walk","manifesto","three-forces","loop-form","matrix-fill","field-notes","system-diagram","why-now","four-cards","stacked-ledger","tech-spec","image-hero"]
+    },
+    {
+      "id": "SW-V3",
+      "description": "非 statement 页（S03/S09/S10/ASCII）顶部标题区禁止 text-align:center（瑞士风标题左对齐）",
+      "check": "swiss-no-center-title"
+    },
+    {
+      "id": "SW-V4",
+      "description": "非 statement 页 h1/h2 禁止 align-self:center（避免垂直居中标题）",
+      "check": "swiss-no-centered-heading"
+    },
+    {
+      "id": "SW-V5",
+      "description": "SVG 内禁止 <text>（标签放 HTML grid，SVG 只画几何）",
+      "check": "swiss-no-svg-text"
+    },
+    {
+      "id": "SW-V6",
+      "description": "本地图片（images/...）必须带 data-image-slot 属性",
+      "check": "swiss-img-requires-slot"
+    },
+    {
+      "id": "SW-V7",
+      "description": "S15/S16 图片组必须统一 21:9 或 16:10 比例，禁止 fit-contain",
+      "check": "swiss-s15-s16-ratio"
+    },
+    {
+      "id": "SW-V8",
+      "description": "S22 必须有 data-image-slot=s22-hero-21x9，禁止 object-position:top center",
+      "check": "swiss-s22-hero"
+    },
+    {
+      "id": "SW-E1",
+      "description": "大标题字重必须 ≤ 300（瑞士风极细字重 200/300，与 editorial 900 对比）",
+      "check": "max-font-weight",
+      "selector": ".h-hero,.h-xl,.h-hero-zh,.h-xl-zh",
+      "max": 300
+    },
+    {
+      "id": "SW-E2",
+      "description": "图片圆角必须为 0（瑞士风直角）",
+      "check": "require-style",
+      "selector": ".frame-img",
+      "style": "border-radius",
+      "value": "0"
+    }
+  ]
+}

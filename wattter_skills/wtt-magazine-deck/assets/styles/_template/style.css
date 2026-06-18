@@ -1,0 +1,51 @@
+/* ============ 新风格模板 · style.css ============
+   使用方法：
+   1. 将本目录复制为 assets/styles/<style-id>/。
+   2. 把 STYLE_ID、名称、字体、字号、颜色语汇替换为新风格自己的设计。
+   3. 只写该风格的视觉语汇和专属组件；不要把组件放回 assets/core/。
+   4. 深色/浅色/accent 页必须在这里定义可读色，不依赖生成任务临时写 inline color。 */
+
+:root{
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:Inter,"Helvetica Neue",Arial,system-ui,sans-serif;
+  --sans-zh:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --serif-zh:"Noto Serif SC",serif;
+  --serif-en:Georgia,serif;
+  --serif-body-en:Georgia,serif;
+
+  --root-font-size:clamp(13px,min(.83vw,1.48vh),22px);
+  --slide-pad:5vh 6vw 7vh 6vw;
+  --slide-backdrop:pseudo;
+
+  --h-hero-size:10rem; --h-hero-weight:700; --h-hero-lh:1;
+  --h-xl-size:6rem; --h-xl-weight:700; --h-xl-lh:1.08;
+  --h-md-size:2.6rem; --h-md-weight:600; --h-md-lh:1.25;
+  --h-sub-size:2rem; --h-sub-weight:500; --h-sub-lh:1.3;
+  --lead-size:1.6rem; --lead-lh:1.5;
+  --kicker-size:.75rem; --meta-size:.6875rem;
+
+  --img-radius:4px;
+  --grid-gap:3rem 3rem;
+  --hairline:0;
+  --kicker-line:0;
+  --nav-safe-bottom:8vh;
+}
+
+.slide.light{background:var(--paper);color:var(--ink)}
+.slide.dark{background:var(--ink);color:var(--paper)}
+.slide.accent{background:var(--accent);color:var(--accent-on)}
+
+.slide.dark .meta,
+.slide.dark .meta-row,
+.slide.dark .kicker{color:rgba(var(--paper-rgb),.72)}
+.slide.accent .meta,
+.slide.accent .meta-row,
+.slide.accent .kicker{color:color-mix(in srgb,var(--accent-on) 72%,transparent)}
+
+/* 示例专属组件：复制后改名为该风格自己的组件，避免与其他风格 class 冲突。 */
+.STYLE_ID-panel{
+  display:grid;
+  gap:1.2rem;
+  padding:2rem;
+  border:1px solid currentColor;
+}
