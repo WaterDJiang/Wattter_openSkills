@@ -5,8 +5,8 @@
     "email": "wattterjiang@gmail.com"
   },
   "metadata": {
-    "description": "Water's personal collection of AI skills, featuring automation tools for content publishing, information collection, trend analysis, app review insights, wiki building, and project harness generation.",
-    "version": "2.0.0",
+    "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, wiki building, and project harness generation.",
+    "version": "2.1.0",
     "license": "CC BY-NC-SA 4.0"
   },
   "plugins": [
@@ -44,6 +44,15 @@
       "strict": false,
       "skills": [
         "wtt-app-review-insights"
+      ]
+    },
+    {
+      "name": "wtt-magazine-deck-skills",
+      "description": "Magazine-style HTML deck generator for editorial and swiss presentation systems with self-contained output.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-magazine-deck"
       ]
     },
     {
