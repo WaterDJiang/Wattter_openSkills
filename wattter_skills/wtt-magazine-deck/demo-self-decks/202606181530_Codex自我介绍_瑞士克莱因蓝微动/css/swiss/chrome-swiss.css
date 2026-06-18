@@ -1,0 +1,23 @@
+/* ============ swiss · chrome-min + 方形 dot 导航 ============
+   swiss 独有变体：极简 chrome（chrome-min）+ 方形 dot 导航
+   editorial 用圆形 dot（core/nav.css 默认），swiss 覆写为方形 */
+
+/* ---- 底部 dot 导航（方形 · swiss 覆写 core 的圆形） ---- */
+#nav{position:fixed;left:50%;bottom:2vh;transform:translateX(-50%);z-index:30;display:flex;gap:10px;background:transparent;border:0;padding:0;border-radius:0}
+#nav .dot{width:6px;height:6px;background:rgba(0,0,0,.28);border-radius:0;cursor:pointer;border:0;padding:0}
+#nav .dot.active{background:var(--accent);width:18px}
+#nav .dot:hover{background:rgba(0,0,0,.5)}
+#nav .dot.active:hover{background:var(--accent-bright,#5B7BFF)}
+
+/* ---- hint 提示 ---- */
+#hint{position:fixed;bottom:2.4vh;right:2.5vw;font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;opacity:.4;z-index:25}
+
+/* ---- 页面 chrome ---- */
+.chrome-min{color:var(--ink)}
+.chrome-min .t-meta,
+.chrome-min .t-cat{color:currentColor}
+.slide.dark .chrome-min{color:rgba(255,255,255,.72)}
+.slide.dark #nav .dot{background:rgba(255,255,255,.32)}
+
+/* ---- swiss 仍保留通用翻页按钮 ---- */
+/* #nav-btns / #btn-prev / #btn-next 来自 core nav 契约；Swiss 只在视觉上保持克制，不移除交互入口。 */

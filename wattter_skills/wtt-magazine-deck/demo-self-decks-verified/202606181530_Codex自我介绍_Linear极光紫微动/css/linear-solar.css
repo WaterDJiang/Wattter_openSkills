@@ -1,0 +1,20 @@
+/* linear-solar · 暗底暖金 */
+:root{
+  --ink:#0D0A07;
+  --ink-rgb:13,10,7;
+  --paper:#FFF8ED;
+  --paper-rgb:255,248,237;
+  --paper-tint:#1B1510;
+  --ink-tint:#17100B;
+  --panel:#17110D;
+  --panel-rgb:23,17,13;
+  --accent:#F59E0B;
+  --accent-rgb:245,158,11;
+  --accent-2:#FACC15;
+  --accent-on:#0A0A0B;
+  --accent-bright:#FDE68A;
+  --text-1:#FFF8ED;
+  --ok:#22c55e;
+  --warn:#FACC15;
+  --danger:#EF4444;
+}

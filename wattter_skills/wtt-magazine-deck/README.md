@@ -2,6 +2,10 @@
 
 本文档只约束新增模板和新增风格的维护方式。运行 skill 生成 deck 时，以 `SKILL.md` 和相关 `references/` 为准。
 
+生成 deck 的运行工作流必须先经过 `references/brief-gate.md`。当用户没有指定内容组织、风格、颜色、模板预设或动效模式时，先提供选项并确认，再进入构建，避免后续反复返工。
+
+生成结果目录不再使用 `_Mdeck` 后缀；必须用 `YYYYMMDDHHmm_内容主题_模板主题色动效` 命名，例如 `202606181530_AI课程合作介绍_瑞士克莱因蓝电影`。
+
 ## 模板定义
 
 这里的模板指 `assets/styles/<style-id>/` 下的一套可复用风格，不是某一次生成出来的 deck 成品。
@@ -72,6 +76,19 @@ rg -l "STYLE_ID|STYLE_NAME" "assets/styles/$STYLE_ID" | xargs perl -pi -e "s/STY
 - **隔离组件**：在 `registry.json` 写 `styleIsolation.forbidLayoutPattern` 和 `styleIsolation.forbidClasses`，禁止其他风格 layout/class 混入。
 - **校验组件**：`validate-rules.json` 至少检查 layout allowlist 和首页主题信号。
 
+### 组件减法契约
+
+新增风格和新增 layout 不要把组件库做成场景清单。组件入口统一收敛到 `references/required-components.md` 的 6 个必须组件：
+
+- `title-block`：标题组。
+- `figure-frame`：图像、截图、产品窗口。
+- `metric-block`：数字、变化、KPI。
+- `comparison-block`：对比、决策、风险、表格。
+- `sequence-block`：步骤、流程、时间线、路线图、行动清单。
+- `evidence-strip`：来源、口径、注释、限制。
+
+现有组件和 class 不删除、不改视觉；它们只是归类为上述 6 个组件的风格变体。新增组件类别前，必须先证明无法归入这 6 类，并且能跨 editorial / swiss / linear 三种风格复用。
+
 ### 最小组件矩阵
 
 | 组件 | 必需文件 | 最低要求 | 常见遗漏 |
@@ -124,6 +141,8 @@ rg -l "STYLE_ID|STYLE_NAME" "assets/styles/$STYLE_ID" | xargs perl -pi -e "s/STY
 可以调整按钮视觉强弱，但不能移除按钮，也不能只依赖键盘、滚轮或 dots 翻页。
 
 模板还必须暴露可读的深浅主题契约。深色页、浅色页、accent 色块不要依赖生成任务临时写内联 `color`，要在风格 CSS 里定义好对应 class 的背景色、文字色、meta 色和边框色。
+
+共享 surface contract 位于 `assets/core/slide.css`。新模板和新组件必须支持 `.on-dark` / `.on-light` / `.on-accent`、`data-surface`、`.readable-zone` 这组通用入口；文字色使用 `--surface-text`、次级文字使用 `--surface-muted`、边框使用 `--surface-line`。凡是局部背景和页面整体背景不一致，例如底部深色遮罩、图片压暗文字区、主题色标签区，都必须声明 surface，让 validator 可以检查深字深底、浅字浅底的问题。
 
 ## 主题规范
 

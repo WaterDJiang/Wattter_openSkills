@@ -28,6 +28,71 @@ canvas.bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:bloc
 .slide.grey{background:var(--grey-1)}
 .slide.accent{background:var(--accent);color:var(--accent-on)}
 
+/* ============ Surface / Contrast Contract ============
+   文字颜色必须跟随所在底色 surface，而不是跟随页面猜测。
+   用法：
+   - 深色局部底：加 .surface-dark 或 .on-dark
+   - 浅色局部底：加 .surface-light 或 .on-light
+   - 主题色底：加 .surface-accent 或 .on-accent
+   - 图片/暗色底部文字：在文字容器上加 .readable-zone.on-dark
+ */
+.slide,
+.surface-light,.on-light,[data-surface="light"]{
+  --surface-text:var(--text-on-light);
+  --surface-muted:var(--text-muted-light);
+  --surface-line:var(--line-on-light);
+  --surface-accent:var(--accent);
+}
+.slide.dark,
+.surface-dark,.on-dark,[data-surface="dark"]{
+  --surface-text:var(--text-on-dark);
+  --surface-muted:var(--text-muted-dark);
+  --surface-line:var(--line-on-dark);
+  --surface-accent:var(--accent-2);
+}
+.slide.accent,
+.surface-accent,.on-accent,[data-surface="accent"]{
+  --surface-text:var(--text-on-accent);
+  --surface-muted:color-mix(in srgb,var(--text-on-accent) 72%,transparent);
+  --surface-line:color-mix(in srgb,var(--text-on-accent) 22%,transparent);
+  --surface-accent:var(--accent-on);
+}
+.surface-light,.on-light,[data-surface="light"],
+.surface-dark,.on-dark,[data-surface="dark"],
+.surface-accent,.on-accent,[data-surface="accent"]{color:var(--surface-text)}
+.text-primary,.surface-text{color:var(--surface-text)!important}
+.text-muted,.surface-muted{color:var(--surface-muted)!important}
+.text-accent,.surface-accent-text{color:var(--surface-accent)!important}
+.surface-line{border-color:var(--surface-line)!important}
+.readable-zone{position:relative;isolation:isolate}
+.readable-zone::before{
+  content:"";
+  position:absolute;
+  inset:-.8em -1em;
+  z-index:-1;
+  border-radius:var(--img-radius);
+  background:transparent;
+  pointer-events:none;
+}
+.readable-zone.on-dark::before,
+.readable-zone.surface-dark::before,
+.readable-zone[data-surface="dark"]::before{
+  background:linear-gradient(180deg,rgba(var(--ink-rgb),.78),rgba(var(--ink-rgb),.5));
+  box-shadow:0 18px 60px rgba(var(--ink-rgb),.28);
+}
+.readable-zone.on-light::before,
+.readable-zone.surface-light::before,
+.readable-zone[data-surface="light"]::before{
+  background:linear-gradient(180deg,rgba(var(--paper-rgb),.82),rgba(var(--paper-rgb),.58));
+  box-shadow:0 18px 60px rgba(var(--ink-rgb),.08);
+}
+.readable-zone.on-accent::before,
+.readable-zone.surface-accent::before,
+.readable-zone[data-surface="accent"]::before{
+  background:linear-gradient(180deg,rgba(var(--accent-rgb),.86),rgba(var(--accent-rgb),.58));
+  box-shadow:0 18px 60px rgba(var(--accent-rgb),.16);
+}
+
 /* ============ 遮罩机制（仅 editorial pseudo 模式启用） ============ */
 /* 默认页：遮罩较厚，保证文字可读 */
 .slide::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;transition:background .7s ease}

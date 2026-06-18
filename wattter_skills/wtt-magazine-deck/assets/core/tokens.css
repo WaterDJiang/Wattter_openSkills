@@ -25,6 +25,13 @@
   --accent-2:#6b8cc7;
   --accent-on:#ffffff;
   --text-1:var(--ink);
+  --text-on-light:var(--ink);
+  --text-on-dark:var(--paper);
+  --text-on-accent:var(--accent-on);
+  --text-muted-light:rgba(var(--ink-rgb),.68);
+  --text-muted-dark:rgba(var(--paper-rgb),.72);
+  --line-on-light:rgba(var(--ink-rgb),.16);
+  --line-on-dark:rgba(var(--paper-rgb),.18);
 
   /* ---- 灰阶（swiss 用；editorial 不依赖） ---- */
   --grey-1:#f0f0ee;

@@ -1,0 +1,19 @@
+/* 🍂 牛皮纸 kraft-paper
+   适用：怀旧 / 人文 / 阅读 / 历史 / 文学 / 独立杂志 / 手作品牌
+   气质：深暖褐 + 牛皮米黄，焦糖点缀，像牛皮信封或老笔记本，温暖、有年代感
+   关键词：人文、文学、怀旧、暖褐、焦糖、牛皮纸 */
+:root{
+  --ink:#2a1e13;
+  --ink-rgb:42,30,19;
+  --paper:#eedfc7;
+  --paper-rgb:238,223,199;
+  --paper-tint:#e0d0b6;
+  --ink-tint:#3a2a1d;
+  --accent:#8b5e3c;
+  --accent-2:#c9a96e;
+  --accent-on:#ffffff;
+  --text-1:#eedfc7;
+  --ok:#22c55e;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+}

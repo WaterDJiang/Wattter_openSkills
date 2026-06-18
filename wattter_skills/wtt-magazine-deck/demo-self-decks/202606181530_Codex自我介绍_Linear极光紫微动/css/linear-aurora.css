@@ -1,0 +1,20 @@
+/* linear-aurora · 紫蓝极光 */
+:root{
+  --ink:#080711;
+  --ink-rgb:8,7,17;
+  --paper:#F8F7FF;
+  --paper-rgb:248,247,255;
+  --paper-tint:#171426;
+  --ink-tint:#100D1D;
+  --panel:#12101F;
+  --panel-rgb:18,16,31;
+  --accent:#8B5CF6;
+  --accent-rgb:139,92,246;
+  --accent-2:#22D3EE;
+  --accent-on:#0A0A0B;
+  --accent-bright:#C4B5FD;
+  --text-1:#F8F7FF;
+  --ok:#22c55e;
+  --warn:#F59E0B;
+  --danger:#EF4444;
+}

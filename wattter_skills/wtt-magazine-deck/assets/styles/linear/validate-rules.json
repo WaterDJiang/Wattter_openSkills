@@ -1,0 +1,27 @@
+{
+  "style": "linear",
+  "description": "Linear 科技型风格专属校验规则。validate-deck.mjs 读取并执行。",
+  "allowedLayouts": [
+    "LNR-01",
+    "LNR-02",
+    "LNR-03",
+    "LNR-04",
+    "LNR-05",
+    "LNR-06"
+  ],
+  "rules": [
+    {
+      "id": "LNR-V1",
+      "description": "每个 slide 必须写 data-layout，且命中 Linear 科技型登记版式",
+      "check": "allowlist-attr",
+      "attr": "data-layout",
+      "required": true,
+      "allowlist": ["LNR-01", "LNR-02", "LNR-03", "LNR-04", "LNR-05", "LNR-06"]
+    },
+    {
+      "id": "LNR-V2",
+      "description": "首页必须体现 Linear 科技型主题色、产品界面面板或 hero surface",
+      "check": "style-cover-accent"
+    }
+  ]
+}

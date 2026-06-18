@@ -1,0 +1,30 @@
+/* 🟠 safety-orange · 安全橙
+   适合：警示、行动、风险、增长黑客、紧迫感主题。
+   注意：--accent 用深一档 #CC3D00（背景橙上文字可读），--accent-2 用纯 #FF4D00（高亮块）。 */
+:root{
+  --ink:#0a0a0a;
+  --ink-rgb:10,10,10;
+  --paper:#fafaf8;
+  --paper-rgb:250,250,248;
+  --paper-tint:#f5e4d8;
+  --ink-tint:#1a0800;
+  --grey-1:#f0f0ee;
+  --grey-2:#d4d4d2;
+  --grey-3:#737373;
+  --accent:#CC3D00;       /* 深一档安全橙，背景橙上能看清 */
+  --accent-rgb:204,61,0;
+  --accent-2:#FF4D00;     /* 纯安全橙，做高亮块用 */
+  --accent-on:#ffffff;    /* 橙色背景白字勉强可读，建议 font-weight:600+ */
+  --accent-bright:#FFB088;
+  --text-1:#fafaf8;
+  --text-primary:#0a0a0a;
+  --text-secondary:#525252;
+  --text-helper:#737373;
+  --text-placeholder:#a3a3a3;
+  --text-on-color:#ffffff;
+  --border-subtle:#e0e0e0;
+  --border-strong:#a3a3a3;
+  --ok:#22c55e;
+  --warn:#FF4D00;
+  --danger:#EF4444;
+}

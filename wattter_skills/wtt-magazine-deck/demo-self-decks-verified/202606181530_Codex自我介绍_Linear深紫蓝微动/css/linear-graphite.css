@@ -1,0 +1,20 @@
+/* linear-graphite · 石墨银灰 */
+:root{
+  --ink:#090A0C;
+  --ink-rgb:9,10,12;
+  --paper:#F3F4F6;
+  --paper-rgb:243,244,246;
+  --paper-tint:#17191D;
+  --ink-tint:#101216;
+  --panel:#14161A;
+  --panel-rgb:20,22,26;
+  --accent:#94A3B8;
+  --accent-rgb:148,163,184;
+  --accent-2:#D1D5DB;
+  --accent-on:#0A0A0B;
+  --accent-bright:#E5E7EB;
+  --text-1:#F3F4F6;
+  --ok:#22c55e;
+  --warn:#F59E0B;
+  --danger:#EF4444;
+}

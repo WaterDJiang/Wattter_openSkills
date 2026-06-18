@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex 自我介绍 · 杂志墨水经典</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/style.css">
+<link id="theme-link" rel="stylesheet" href="css/ink-classic.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body data-style="editorial" data-theme-list="ink-classic,indigo-porcelain,forest-ink,kraft-paper,dune">
+
+<canvas id="bg-dark" class="bg"></canvas>
+<canvas id="bg-light" class="bg"></canvas>
+<div id="hint">← → 翻页</div>
+<div id="progress"></div>
+
+<div id="deck">
+
+
+<section class="slide hero dark" data-layout="L01" data-anim="fade-up">
+  <div class="chrome"><div class="left"><span>Codex</span><span class="sep"></span><span>Self Introduction</span></div><div class="right">01 / 03</div></div>
+  <div class="frame grid-2-7-5">
+    <div class="title-block hero">
+      <div class="title-kicker">AI CODING PARTNER</div>
+      <h1 class="title-heading fit-safe-text">我是 Codex，负责把想法落成可运行的东西。</h1>
+      <p class="title-lead">我读代码、改文件、跑校验、看真实结果；目标不是给建议，而是把工作推进到可用状态。</p>
+    </div>
+    <div class="comparison-block" data-cols="1">
+      <article class="comparison-item on-dark">
+        <div class="comparison-label">Role</div>
+        <h3 class="comparison-title">工程执行 + 产品判断</h3>
+        <p class="comparison-body">适合处理跨文件改造、UI 体验修正、文档流程固化和验证闭环。</p>
+        <div class="comparison-result">Build · Verify · Iterate</div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="slide light" data-layout="L03" data-anim="stagger-list">
+  <div class="chrome"><div class="left"><span>Capabilities</span><span class="sep"></span><span>Core Blocks</span></div><div class="right">02 / 03</div></div>
+  <div class="frame">
+    <div class="title-block compact">
+      <div class="title-kicker">WHAT I DO</div>
+      <h2 class="title-heading fit-safe-text">把模糊任务拆成结构、实现和校验。</h2>
+    </div>
+    <div class="grid-3" style="margin-top:3rem">
+      <div class="metric-block"><div class="metric-label">Code</div><div class="metric-value">01</div><p class="metric-note">理解现有架构，尽量沿用本地模式。</p></div>
+      <div class="metric-block"><div class="metric-label">Design</div><div class="metric-value">02</div><p class="metric-note">用组件和流程避免反复单点修补。</p></div>
+      <div class="metric-block"><div class="metric-label">Proof</div><div class="metric-value">03</div><p class="metric-note">跑脚本、看截图、用结果说话。</p></div>
+    </div>
+  </div>
+</section>
+<section class="slide dark" data-layout="L06" data-anim="stagger-list">
+  <div class="chrome"><div class="left"><span>Workflow</span><span class="sep"></span><span>How I Work</span></div><div class="right">03 / 03</div></div>
+  <div class="frame grid-2-5-7">
+    <div class="title-block">
+      <div class="title-kicker">WORKING MODE</div>
+      <h2 class="title-heading fit-safe-text">先收敛问题，再动手改。</h2>
+      <p class="title-lead">我会优先找真实证据，避免靠猜测修 UI 或流程。</p>
+    </div>
+    <div class="sequence-block">
+      <div class="sequence-step"><span class="sequence-index">01</span><div><h3 class="sequence-title">读上下文</h3><p class="sequence-body">先看 skill、registry、模板和校验器。</p></div></div>
+      <div class="sequence-step"><span class="sequence-index">02</span><div><h3 class="sequence-title">小步实施</h3><p class="sequence-body">保持改动边界清晰，不破坏现有体验。</p></div></div>
+      <div class="sequence-step"><span class="sequence-index">03</span><div><h3 class="sequence-title">验证交付</h3><p class="sequence-body">用命令、截图和检查清单收口。</p></div></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div id="nav"></div>
+<div id="nav-btns">
+  <button class="nav-btn" id="btn-prev" aria-label="上一页"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <button class="nav-btn" id="btn-next" aria-label="下一页"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+<div id="nav-tools">
+  <button class="nav-tool" id="btn-theme" type="button" aria-label="切换主题" title="切换主题 (T)">T</button>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/fit.js"></script>
+<script src="js/webgl.js"></script>
+<script src="js/motion.js"></script>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

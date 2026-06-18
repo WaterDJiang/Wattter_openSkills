@@ -1,0 +1,19 @@
+/* 🖋 墨水经典 ink-classic
+   适用：通用分享 / 商业发布 / 默认选择 / 任何拿不准的场景
+   气质：纯墨黑 + 暖米白，冷灰蓝点缀，杂志感最强、最克制
+   关键词：通用、商业、经典、墨黑、杂志 */
+:root{
+  --ink:#0a0a0b;
+  --ink-rgb:10,10,11;
+  --paper:#f1efea;
+  --paper-rgb:241,239,234;
+  --paper-tint:#e8e5de;
+  --ink-tint:#18181a;
+  --accent:#4a5a6e;
+  --accent-2:#8a98aa;
+  --accent-on:#ffffff;
+  --text-1:#f1efea;
+  --ok:#22c55e;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+}

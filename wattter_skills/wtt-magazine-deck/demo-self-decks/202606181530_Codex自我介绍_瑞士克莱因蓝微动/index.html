@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex 自我介绍 · 瑞士克莱因蓝</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+SC:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/style.css">
+<link id="theme-link" rel="stylesheet" href="css/ikb-blue.css">
+<!-- swiss 专属组件（按需加载，全部加载也无副作用。拷贝到 css/swiss/ 子目录） -->
+<link rel="stylesheet" href="css/swiss/kpi.css">
+<link rel="stylesheet" href="css/swiss/text-roles.css">
+<link rel="stylesheet" href="css/swiss/charts.css">
+<link rel="stylesheet" href="css/swiss/diagrams.css">
+<link rel="stylesheet" href="css/swiss/map.css">
+<link rel="stylesheet" href="css/swiss/canvas-bg.css">
+<link rel="stylesheet" href="css/swiss/chrome-swiss.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body data-style="swiss" data-theme-list="ikb-blue,hermes-orange,bank-red,tiffany-blue,valentino-pink,bottega-green,lemon-yellow,lemon-green,safety-orange">
+
+<canvas id="bg-grid" class="bg" aria-hidden="true"></canvas>
+<div id="hint">← → 翻页 · T 主题 · B 低功耗 · ESC 索引</div>
+
+<div id="deck">
+
+
+<section class="slide accent" data-layout="S01" data-animate="cover-rise" data-anim="fade-up">
+  <div class="canvas-card on-accent">
+    <div class="chrome-min"><span>CODEX</span><span>01 / 03</span></div>
+    <div class="grid-12" style="flex:1;align-content:center">
+      <div class="span-8">
+        <div class="title-block hero on-accent">
+          <div class="title-kicker">AI EXECUTION SYSTEM</div>
+          <h1 class="title-heading fit-safe-text">我把任务推进到可验证的状态</h1>
+          <p class="title-lead">代码、设计、文档、校验，都围绕一个目标：减少反复，让结果可用。</p>
+        </div>
+      </div>
+      <div class="span-4">
+        <div class="metric-block on-accent"><div class="metric-label">MODE</div><div class="metric-value">E2E</div><p class="metric-note">从需求到验证闭环。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide" data-layout="S16" data-animate="matrix-fill" data-anim="stagger-list">
+  <div class="canvas-card fit-shell">
+    <div class="chrome-min"><span>CAPABILITY MATRIX</span><span>02 / 03</span></div>
+    <div class="title-block compact">
+      <div class="title-kicker">CAPABILITIES</div>
+      <h2 class="title-heading fit-safe-text">我的能力不是聊天，而是执行链路。</h2>
+    </div>
+    <div class="comparison-block" data-cols="3" style="margin-top:5vh">
+      <article class="comparison-item"><div class="comparison-label">Inspect</div><h3 class="comparison-title">读代码和规则</h3><p class="comparison-body">先确认真实架构、约束和历史决策。</p></article>
+      <article class="comparison-item accent"><div class="comparison-label">Implement</div><h3 class="comparison-title">改文件和组件</h3><p class="comparison-body">优先组件化、流程化，避免只修局部。</p></article>
+      <article class="comparison-item"><div class="comparison-label">Validate</div><h3 class="comparison-title">跑校验和截图</h3><p class="comparison-body">用可复现证据确认交付质量。</p></article>
+    </div>
+  </div>
+</section>
+<section class="slide" data-layout="S11" data-animate="timeline-walk" data-anim="stagger-list">
+  <div class="canvas-card">
+    <div class="chrome-min"><span>WORKFLOW</span><span>03 / 03</span></div>
+    <div class="title-block compact">
+      <div class="title-kicker">OPERATING LOOP</div>
+      <h2 class="title-heading fit-safe-text">一次协作应该形成闭环。</h2>
+    </div>
+    <div class="sequence-block" data-orientation="horizontal" data-cols="3" style="margin-top:7vh">
+      <div class="sequence-step"><span class="sequence-index">01</span><div><h3 class="sequence-title">Clarify</h3><p class="sequence-body">目标、模板、主题、动效先确认。</p></div></div>
+      <div class="sequence-step"><span class="sequence-index">02</span><div><h3 class="sequence-title">Build</h3><p class="sequence-body">沿用当前 skill 组件和校验规则。</p></div></div>
+      <div class="sequence-step"><span class="sequence-index">03</span><div><h3 class="sequence-title">Check</h3><p class="sequence-body">截图、命令和人工观察一起收口。</p></div></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div id="nav"></div>
+<div id="nav-btns">
+  <button class="nav-btn" id="btn-prev" aria-label="上一页"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <button class="nav-btn" id="btn-next" aria-label="下一页"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+<div id="nav-tools">
+  <button class="nav-tool" id="btn-theme" type="button" aria-label="切换主题" title="切换主题 (T)">T</button>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/fit.js"></script>
+<script src="js/webgl.js"></script>
+<script src="js/motion.js"></script>
+
+<script src="js/recipes.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</body>
+</html>

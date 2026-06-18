@@ -135,6 +135,7 @@ function checkThemeCss(style, theme, file) {
     '--accent-on',
   ];
   if (style.id === 'swiss') required.push('--accent-rgb', '--accent-bright');
+  if (style.id === 'linear') required.push('--accent-rgb', '--accent-bright', '--panel', '--panel-rgb');
   for (const name of required) {
     if (!vars[name]) errors.push(`${style.id}/${theme}: missing required CSS variable ${name}.`);
   }

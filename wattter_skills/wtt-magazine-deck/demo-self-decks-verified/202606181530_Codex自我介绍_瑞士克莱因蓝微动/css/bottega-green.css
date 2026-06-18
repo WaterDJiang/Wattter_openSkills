@@ -1,0 +1,29 @@
+/* bottega-green · 宝缇嘉绿
+   适合：时尚、生活方式、可持续品牌、高端零售。深绿色块使用白字。 */
+:root{
+  --ink:#0a0a0a;
+  --ink-rgb:10,10,10;
+  --paper:#fafaf8;
+  --paper-rgb:250,250,248;
+  --paper-tint:#e2ede6;
+  --ink-tint:#00150e;
+  --grey-1:#f0f0ee;
+  --grey-2:#d4d4d2;
+  --grey-3:#737373;
+  --accent:#006A4E;
+  --accent-rgb:0,106,78;
+  --accent-2:#26A67D;
+  --accent-on:#ffffff;
+  --accent-bright:#7BE0BD;
+  --text-1:#fafaf8;
+  --text-primary:#0a0a0a;
+  --text-secondary:#525252;
+  --text-helper:#737373;
+  --text-placeholder:#a3a3a3;
+  --text-on-color:#ffffff;
+  --border-subtle:#e0e0e0;
+  --border-strong:#a3a3a3;
+  --ok:#22c55e;
+  --warn:#F59E0B;
+  --danger:#EF4444;
+}

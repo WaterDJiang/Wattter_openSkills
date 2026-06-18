@@ -1,0 +1,30 @@
+/* 🟡 lemon-yellow · 柠檬黄
+   适合：年轻、运动、零售、消费品、活力主题、Y2K 复古。
+   注意：--accent 用深一档 #C8A800（背景黄上文字可读），--accent-2 用纯 #FFE800（高亮块）。 */
+:root{
+  --ink:#0a0a0a;
+  --ink-rgb:10,10,10;
+  --paper:#fafaf8;
+  --paper-rgb:250,250,248;
+  --paper-tint:#f4f0d8;
+  --ink-tint:#1a1a00;
+  --grey-1:#f0f0ee;
+  --grey-2:#d4d4d2;
+  --grey-3:#737373;
+  --accent:#C8A800;       /* 深一档柠檬黄，背景黄上能看清 */
+  --accent-rgb:200,168,0;
+  --accent-2:#FFE800;     /* 纯柠檬黄，做高亮块用 */
+  --accent-on:#0a0a0a;    /* 黄色背景必须黑字 */
+  --accent-bright:#FFEC8C;
+  --text-1:#0a0a0a;
+  --text-primary:#0a0a0a;
+  --text-secondary:#525252;
+  --text-helper:#737373;
+  --text-placeholder:#a3a3a3;
+  --text-on-color:#0a0a0a;
+  --border-subtle:#e0e0e0;
+  --border-strong:#a3a3a3;
+  --ok:#22c55e;
+  --warn:#FFE800;
+  --danger:#EF4444;
+}

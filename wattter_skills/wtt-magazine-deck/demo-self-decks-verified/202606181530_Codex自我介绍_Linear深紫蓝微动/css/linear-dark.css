@@ -1,0 +1,20 @@
+/* linear-dark · Linear 科技型默认主题 */
+:root{
+  --ink:#07080D;
+  --ink-rgb:7,8,13;
+  --paper:#F7F8FF;
+  --paper-rgb:247,248,255;
+  --paper-tint:#151821;
+  --ink-tint:#0D1018;
+  --panel:#11131B;
+  --panel-rgb:17,19,27;
+  --accent:#5E6AD2;
+  --accent-rgb:94,106,210;
+  --accent-2:#8A90FF;
+  --accent-on:#ffffff;
+  --accent-bright:#B7B9FF;
+  --text-1:#F7F8FF;
+  --ok:#22c55e;
+  --warn:#F59E0B;
+  --danger:#EF4444;
+}

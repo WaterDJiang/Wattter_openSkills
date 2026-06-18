@@ -4,8 +4,8 @@
    然后对 index.html 做 10+ 项硬规则检查。
 
    Usage: node scripts/validate-deck.mjs <index.html> [style-id]
-   示例:  node scripts/validate-deck.mjs 202606171500_个人业务介绍_Mdeck/index.html editorial
-         node scripts/validate-deck.mjs 202606171500_个人业务介绍_Mdeck/index.html # 自动从 <body data-style> 检测
+   示例:  node scripts/validate-deck.mjs 202606181530_AI课程合作介绍_瑞士克莱因蓝电影/index.html swiss
+         node scripts/validate-deck.mjs 202606181530_AI课程合作介绍_瑞士克莱因蓝电影/index.html # 自动从 <body data-style> 检测
          node scripts/validate-deck.mjs old-deck/index.html swiss --allow-legacy-dir
 */
 import { readFileSync, existsSync } from 'node:fs';
@@ -121,15 +121,95 @@ function inferTheme(slide) {
   return isSwiss() ? 'paper' : null;
 }
 
-function checkOutputDirectoryName(file, errors, warnings, allowLegacy) {
+const STYLE_NAME_ALIASES = {
+  editorial: ['杂志', '叙事', 'editorial'],
+  swiss: ['瑞士', 'swiss'],
+  linear: ['Linear', 'linear', '科技']
+};
+
+const THEME_NAME_ALIASES = {
+  'ink-classic': ['墨水经典', '墨水', 'ink-classic'],
+  'indigo-porcelain': ['靛蓝瓷', '靛蓝', 'indigo-porcelain'],
+  'forest-ink': ['森林墨', '森林', 'forest-ink'],
+  'kraft-paper': ['牛皮纸', 'kraft-paper'],
+  dune: ['沙丘', 'dune'],
+  'ikb-blue': ['克莱因蓝', 'IKB', 'ikb-blue'],
+  'hermes-orange': ['爱马仕橙', '爱马仕', 'hermes-orange'],
+  'bank-red': ['银行红', 'bank-red'],
+  'tiffany-blue': ['蒂芙尼蓝', '蒂芙尼', 'tiffany-blue'],
+  'valentino-pink': ['华伦天奴粉', '华伦天奴', 'valentino-pink'],
+  'bottega-green': ['宝缇嘉绿', '宝缇嘉', 'bottega-green'],
+  'lemon-yellow': ['柠檬黄', 'lemon-yellow'],
+  'lemon-green': ['柠檬绿', 'lemon-green'],
+  'safety-orange': ['安全橙', 'safety-orange'],
+  'linear-dark': ['Linear深紫蓝', '深紫蓝', 'linear-dark'],
+  'linear-aurora': ['极光紫', 'linear-aurora'],
+  'linear-graphite': ['石墨银灰', '石墨', 'linear-graphite'],
+  'linear-solar': ['暗底暖金', '暖金', 'linear-solar']
+};
+
+const MOTION_NAME_ALIASES = {
+  static: ['静态', 'static'],
+  subtle: ['微动', 'subtle'],
+  cinematic: ['电影', '沉浸', 'cinematic']
+};
+
+function detectThemeIdFromHtml(html) {
+  const href = html.match(/<link\b[^>]*id="theme-link"[^>]*href="([^"]+)"/)?.[1] || '';
+  const file = basename(href).replace(/\.css(?:\?.*)?$/, '');
+  if (!file || file === 'theme') return '';
+  return file;
+}
+
+function detectMotionIdFromHtml(html) {
+  if (/fx-runtime\.js|js\/fx\//i.test(html)) return 'cinematic';
+  if (/animations\.css|motion\.js/i.test(html)) return 'subtle';
+  return 'static';
+}
+
+function includesAny(text, aliases) {
+  return aliases.some(alias => text.includes(alias));
+}
+
+function checkOutputDirectoryName(file, errors, warnings, allowLegacy, styleId, html) {
   const dirName = basename(dirname(resolve(file)));
-  const pattern = /^\d{12}_[^\s_][^\s]*_Mdeck$/u;
-  if (pattern.test(dirName)) return;
-  const msg = `Global: output directory "${dirName}" must be named YYYYMMDDHHmm_内容主题_Mdeck, e.g. 202606171500_个人业务介绍_Mdeck.`;
+  const pattern = /^(\d{12})_([^_\s][^_]*)_([^_\s][^_]*)$/u;
+  const match = dirName.match(pattern);
+  const example = '202606181530_AI课程合作介绍_瑞士克莱因蓝电影';
+  const msg = `Global: output directory "${dirName}" must be named YYYYMMDDHHmm_内容主题_模板主题色动效, e.g. ${example}. Do not use the old *_Mdeck suffix.`;
   if (allowLegacy) {
     warnings.push(`${msg} Skipped because --allow-legacy-dir is set.`);
-  } else {
+    return;
+  }
+  if (!match) {
     errors.push(`${msg} Use --allow-legacy-dir only when validating old decks.`);
+    return;
+  }
+  const [, , topicPart, configPart] = match;
+  if (/^(Mdeck|deck|slides|output|dist)$/i.test(configPart) || /Mdeck$/i.test(dirName)) {
+    errors.push(`${msg} Config segment must describe the actual template/theme/motion, not a generic output type.`);
+  }
+  if (topicPart.length < 2) {
+    errors.push(`${msg} Content topic segment is too short to describe the deck.`);
+  }
+
+  const styleAliases = STYLE_NAME_ALIASES[styleId] || [styleId].filter(Boolean);
+  if (styleAliases.length && !includesAny(configPart, styleAliases)) {
+    errors.push(`Global: output directory config segment "${configPart}" must include the selected template/style name, e.g. ${styleAliases[0]}.`);
+  }
+
+  const themeId = detectThemeIdFromHtml(html);
+  const themeAliases = THEME_NAME_ALIASES[themeId] || [themeId].filter(Boolean);
+  if (themeAliases.length && !includesAny(configPart, themeAliases)) {
+    errors.push(`Global: output directory config segment "${configPart}" must include the selected theme/color, e.g. ${themeAliases[0]}.`);
+  } else if (!themeAliases.length) {
+    warnings.push('Global: cannot infer preset theme from theme-link; custom theme directories should include a human theme/color label in the config segment.');
+  }
+
+  const motionId = detectMotionIdFromHtml(html);
+  const motionAliases = MOTION_NAME_ALIASES[motionId] || [];
+  if (motionAliases.length && !includesAny(configPart, motionAliases)) {
+    errors.push(`Global: output directory config segment "${configPart}" must include the selected motion label, e.g. ${motionAliases[0]}.`);
   }
 }
 
@@ -160,7 +240,7 @@ function checkStyleIsolation(slides, html, styleId, errors) {
 }
 
 checkStyleIsolation(slides, htmlStripped, styleId, errors);
-checkOutputDirectoryName(file, errors, warnings, allowLegacyDir);
+checkOutputDirectoryName(file, errors, warnings, allowLegacyDir, styleId, htmlStripped);
 
 // 1. <title> 不含 [必填]
 if (/<title>[^<]*\[必填\]/.test(html)) {
@@ -248,7 +328,10 @@ if (!/id="btn-theme"/.test(html)) {
   warnings.push('Global: #btn-theme not found in template. nav.js will create it at runtime, but new decks should include the visible T theme button.');
 }
 
-// 12. Swiss 颜色/字体可读性：拦截常见白字白底、黑字黑底、过粗大标题和圆角。
+// 12. 跨风格 surface 可读性：拦截深字深底、浅字浅底，并要求局部底色声明 surface。
+checkSurfaceContrastRules(slides, errors, warnings);
+
+// 13. Swiss 颜色/字体可读性：拦截过粗大标题和圆角；颜色冲突由通用 surface 规则处理。
 if (isSwiss()) {
   checkSwissCoverTheme(slides, errors);
   checkSwissStaticStyleRules(slides, errors, warnings);
@@ -410,37 +493,78 @@ function applyRule(rule, slides, html, errors, warnings, allowExp) {
 }
 
 function checkSwissStaticStyleRules(slides, errors, warnings) {
-  slides.forEach(s => {
-    const theme = inferTheme(s);
-    const sectionStyle = getStyleAttr(s.tag);
-    if ((theme === 'paper' || theme === 'light' || theme === 'grey') && /color\s*:\s*var\(--paper\)/i.test(sectionStyle)) {
-      addError(s.idx, 'Swiss color conflict: light/grey/default slide sets color:var(--paper), causing pale text on pale background.');
-    }
-    if ((theme === 'dark' || theme === 'accent') && /color\s*:\s*var\(--ink\)/i.test(sectionStyle)) {
-      addError(s.idx, 'Swiss color conflict: dark/accent slide sets color:var(--ink), causing dark text on dark background.');
-    }
+  checkNoBorderRadius(slides, errors, 'SW-E2');
+  checkMaxFontWeightRule({ id: 'SW-E1', selector: '.h-hero,.h-xl,.h-hero-zh,.h-xl-zh', max: 300 }, slides, errors);
+}
 
-    for (const m of s.html.matchAll(/<([a-z0-9-]+)\b[^>]*style="([^"]*)"[^>]*>/gi)) {
-      const tag = m[0];
-      const style = m[2];
-      const hasDarkBg = /background(?:-color)?\s*:\s*var\(--(?:ink|accent)\)/i.test(style) || /\b(b-ink|b-accent|hero-ink-col|ink-banner-full)\b/.test(tag);
-      const hasLightBg = /background(?:-color)?\s*:\s*var\(--(?:paper|grey-1|grey-2)\)/i.test(style);
-      if (/color\s*:\s*var\(--paper\)/i.test(style) && !hasDarkBg && theme !== 'dark' && theme !== 'accent') {
-        addWarning(s.idx, 'possible Swiss color conflict: color:var(--paper) appears without a dark/accent background in the same element or slide.');
-      }
-      if (/color\s*:\s*var\(--ink\)/i.test(style) && (hasDarkBg || theme === 'dark')) {
-        addWarning(s.idx, 'possible Swiss color conflict: color:var(--ink) appears on a dark/accent background.');
-      }
-      if (hasLightBg && /color\s*:\s*var\(--paper\)/i.test(style)) {
-        addError(s.idx, 'Swiss color conflict: same element uses light background with color:var(--paper).');
-      }
-      if (hasDarkBg && /color\s*:\s*var\(--ink\)/i.test(style)) {
-        addError(s.idx, 'Swiss color conflict: same element uses dark/accent background with color:var(--ink).');
+function checkSurfaceContrastRules(slides, errors, warnings) {
+  slides.forEach(s => {
+    const slideSurface = inferSurfaceFromSlide(s);
+    const sectionStyle = getStyleAttr(s.tag);
+    checkTextAgainstSurface(s.idx, slideSurface, sectionStyle, 'slide section', errors);
+
+    for (const m of s.html.matchAll(/<([a-z0-9-]+)\b([^>]*)>/gi)) {
+      const tagName = m[1].toLowerCase();
+      if (tagName === 'section' || tagName === 'script' || tagName === 'style') continue;
+      const attrs = m[2] || '';
+      const style = attrs.match(/\bstyle="([^"]*)"/i)?.[1] || '';
+      const cls = attrs.match(/\bclass="([^"]*)"/i)?.[1] || '';
+      const explicitSurface = inferSurfaceFromAttrs(attrs, style, cls);
+      const surface = explicitSurface || slideSurface;
+
+      if (style) checkTextAgainstSurface(s.idx, surface, style, `<${tagName}>`, errors);
+
+      const hasLocalBackground = /background(?:-color)?\s*:/i.test(style) ||
+        /\b(?:b-ink|b-accent|hero-ink-col|ink-banner-full|card-ink|card-accent|accent-block|ink-block|grey-block|card-fill)\b/i.test(cls);
+      const hasSurfaceMarker = /\b(?:surface-light|surface-dark|surface-accent|on-light|on-dark|on-accent)\b/i.test(cls) ||
+        /\bdata-surface="(?:light|dark|accent)"/i.test(attrs);
+      if (hasLocalBackground && !hasSurfaceMarker && !/color\s*:/i.test(style)) {
+        addWarning(s.idx, `local background on <${tagName}> has no surface marker. Add .on-dark/.on-light/.on-accent or data-surface so text tokens follow the local background.`);
       }
     }
   });
-  checkNoBorderRadius(slides, errors, 'SW-E2');
-  checkMaxFontWeightRule({ id: 'SW-E1', selector: '.h-hero,.h-xl,.h-hero-zh,.h-xl-zh', max: 300 }, slides, errors);
+}
+
+function inferSurfaceFromSlide(slide) {
+  const theme = inferTheme(slide);
+  if (theme === 'dark' || theme === 'hero') return 'dark';
+  if (theme === 'accent') return 'accent';
+  return 'light';
+}
+
+function inferSurfaceFromAttrs(attrs, style, cls) {
+  if (/\bdata-surface="dark"/i.test(attrs) || /\b(?:surface-dark|on-dark)\b/i.test(cls)) return 'dark';
+  if (/\bdata-surface="light"/i.test(attrs) || /\b(?:surface-light|on-light)\b/i.test(cls)) return 'light';
+  if (/\bdata-surface="accent"/i.test(attrs) || /\b(?:surface-accent|on-accent)\b/i.test(cls)) return 'accent';
+  if (/\b(?:b-ink|hero-ink-col|ink-banner-full|card-ink|ink-block)\b/i.test(cls)) return 'dark';
+  if (/\b(?:b-accent|card-accent|accent-block)\b/i.test(cls)) return 'accent';
+  if (/\b(?:grey-block|card-fill)\b/i.test(cls)) return 'light';
+  if (/background(?:-color)?\s*:\s*var\(--(?:ink|ink-tint|panel)\)/i.test(style)) return 'dark';
+  if (/background(?:-color)?\s*:\s*var\(--accent\)/i.test(style)) return 'accent';
+  if (/background(?:-color)?\s*:\s*var\(--(?:paper|paper-tint|grey-1|grey-2)\)/i.test(style)) return 'light';
+  if (/background(?:-color)?\s*:\s*#(?:0[0-9a-f]{2,4}|1[0-9a-f]{2,4}|2[0-9a-f]{2,4})\b/i.test(style)) return 'dark';
+  if (/background(?:-color)?\s*:\s*#(?:e[0-9a-f]{2,4}|f[0-9a-f]{2,4})\b/i.test(style)) return 'light';
+  return '';
+}
+
+function checkTextAgainstSurface(slideIdx, surface, style, context, errors) {
+  if (!surface || !/color\s*:/i.test(style)) return;
+  if ((surface === 'dark' || surface === 'accent') && isDarkTextColor(style)) {
+    addError(slideIdx, `surface contrast conflict: ${context} uses dark text on ${surface} surface. Use .on-dark/.on-accent with var(--surface-text), or change text to var(--paper)/var(--accent-on).`);
+  }
+  if (surface === 'light' && isLightTextColor(style)) {
+    addError(slideIdx, `surface contrast conflict: ${context} uses light text on light surface. Use .on-light with var(--surface-text), or change text to var(--ink).`);
+  }
+}
+
+function isDarkTextColor(style) {
+  return /color\s*:\s*var\(--(?:ink|text-on-light)\)/i.test(style) ||
+    /color\s*:\s*#(?:0[0-9a-f]{2,5}|1[0-9a-f]{2,5}|2[0-9a-f]{2,5}|333(?:333)?|000(?:000)?)\b/i.test(style);
+}
+
+function isLightTextColor(style) {
+  return /color\s*:\s*var\(--(?:paper|text-on-dark)\)/i.test(style) ||
+    /color\s*:\s*#(?:e[0-9a-f]{2,5}|f[0-9a-f]{2,5}|fff(?:fff)?|eee(?:eee)?)\b/i.test(style);
 }
 
 function checkOverflowRisk(slides, warnings) {

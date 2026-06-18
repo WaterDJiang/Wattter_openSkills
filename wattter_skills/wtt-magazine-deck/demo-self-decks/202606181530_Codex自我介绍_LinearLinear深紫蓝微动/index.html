@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex 自我介绍 · Linear深紫蓝</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/style.css">
+<link id="theme-link" rel="stylesheet" href="css/linear-dark.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body data-style="linear" data-theme-list="linear-dark,linear-aurora,linear-graphite,linear-solar">
+
+<canvas id="bg-grid" class="bg" aria-hidden="true"></canvas>
+<div id="hint">← → 翻页 · T 主题</div>
+<div id="progress"></div>
+
+<div id="deck">
+
+
+<section class="slide hero dark" data-layout="LNR-01" data-anim="fade-up">
+  <div class="chrome"><div class="left"><span>Codex OS</span><span class="sep"></span><span>Agent Profile</span></div><div class="right">01 / 03</div></div>
+  <div class="frame grid-2-7-5">
+    <div class="title-block hero">
+      <div class="title-kicker">LOCAL WORKFLOW AGENT</div>
+      <h1 class="title-heading fit-safe-text">我把复杂任务变成可执行队列。</h1>
+      <p class="title-lead">从代码阅读到文件修改，从视觉校准到截图验证，我负责把协作推进到真实结果。</p>
+    </div>
+    <div class="linear-window on-dark" data-anim="zoom-pop">
+      <div class="linear-window-head"><span class="linear-dot accent"></span><span class="linear-dot"></span><span class="linear-dot"></span></div>
+      <div class="linear-code"><b>AGENT-001</b> inspect repo context<br><em>Status</em> Implementing<br><em>Output</em> verified deck sample</div>
+    </div>
+  </div>
+</section>
+<section class="slide dark" data-layout="LNR-03" data-anim="counter-up">
+  <div class="chrome"><div class="left"><span>Pulse</span><span class="sep"></span><span>Capabilities</span></div><div class="right">02 / 03</div></div>
+  <div class="frame">
+    <div class="title-block compact">
+      <div class="title-kicker">CORE LOOP</div>
+      <h2 class="title-heading fit-safe-text">每一步都对应一个可检查产物。</h2>
+    </div>
+    <div class="linear-grid">
+      <div class="metric-block linear-card"><div class="metric-label label">Context</div><div class="metric-value nb">01</div><p class="metric-note copy">读取当前 skill、模板、规则和约束。</p></div>
+      <div class="metric-block linear-card"><div class="metric-label label">Patch</div><div class="metric-value nb">02</div><p class="metric-note copy">用最小边界修改文件，不破坏旧体验。</p></div>
+      <div class="metric-block linear-card"><div class="metric-label label">Verify</div><div class="metric-value nb">03</div><p class="metric-note copy">跑校验、看截图、报告剩余风险。</p></div>
+    </div>
+  </div>
+</section>
+<section class="slide dark" data-layout="LNR-02" data-anim="stagger-list">
+  <div class="linear-shell">
+    <aside class="linear-sidebar">
+      <div class="linear-brand"><span class="linear-mark"></span><span>Codex</span></div>
+      <nav class="linear-nav"><span class="active">Today <b>3</b></span><span>Checks <b>4</b></span><span>Artifacts <b>6</b></span></nav>
+    </aside>
+    <main class="linear-main">
+      <div class="meta-row"><span>Self Introduction</span><span>03 / 03</span></div>
+      <div class="linear-list">
+        <div class="linear-row"><span class="linear-key">CTX</span><span class="linear-title">Read the local rules before changing files</span><span class="linear-pill">Ready</span></div>
+        <div class="linear-row"><span class="linear-key">UI</span><span class="linear-title">Keep existing experience stable while adding reusable components</span><span class="linear-pill">Safe</span></div>
+        <div class="linear-row"><span class="linear-key">QA</span><span class="linear-title">Validate scripts and screenshots before reporting back</span><span class="linear-pill">Done</span></div>
+      </div>
+      <div class="evidence-strip compact"><span class="evidence-item"><b>Build</b><span>wtt-magazine-deck</span></span><span class="evidence-item"><b>Mode</b><span>subtle</span></span></div>
+    </main>
+  </div>
+</section>
+
+</div>
+
+<div id="nav"></div>
+<div id="nav-btns">
+  <button class="nav-btn" id="btn-prev" aria-label="上一页"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <button class="nav-btn" id="btn-next" aria-label="下一页"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+<div id="nav-tools">
+  <button class="nav-tool" id="btn-theme" type="button" aria-label="切换主题" title="切换主题 (T)">T</button>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/fit.js"></script>
+<script src="js/webgl.js"></script>
+<script src="js/motion.js"></script>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+/* 🌙 沙丘 dune
+   适用：艺术 / 设计 / 创意 / 时尚 / 画廊手册 / 审美优先的私享会
+   气质：炭褐 + 冷沙金，克制、高级、中性偏冷，像沙漠黄昏或建筑设计图册
+   关键词：艺术、设计、创意、沙金、冷调、高级 */
+:root{
+  --ink:#241e16;
+  --ink-rgb:36,30,22;
+  --paper:#ede4d1;
+  --paper-rgb:237,228,209;
+  --paper-tint:#ddd2b8;
+  --ink-tint:#322a20;
+  --accent:#b8860b;
+  --accent-2:#d4a853;
+  --accent-on:#0a0a0b;
+  --text-1:#ede4d1;
+  --ok:#22c55e;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+}

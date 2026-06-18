@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[必填] 替换为 PPT 标题</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/style.css">
+<link id="theme-link" rel="stylesheet" href="css/linear-dark.css">
+<!-- {{MOTION_CSS}} -->
+</head>
+<body data-style="linear" data-theme-list="linear-dark,linear-aurora,linear-graphite,linear-solar">
+
+<canvas id="bg-grid" class="bg" aria-hidden="true"></canvas>
+<div id="hint">← → 翻页 · T 主题</div>
+<div id="progress"></div>
+
+<div id="deck">
+
+<!-- {{LAYOUT_SECTIONS}} -->
+
+</div>
+
+<div id="nav"></div>
+<div id="nav-btns">
+  <button class="nav-btn" id="btn-prev" aria-label="上一页"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <button class="nav-btn" id="btn-next" aria-label="下一页"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+<div id="nav-tools">
+  <button class="nav-tool" id="btn-theme" type="button" aria-label="切换主题" title="切换主题 (T)">T</button>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/fit.js"></script>
+<!-- {{WEBGL_JS}} -->
+<!-- {{MOTION_JS}} -->
+<!-- {{FX_JS}} -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>

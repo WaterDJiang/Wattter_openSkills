@@ -16,7 +16,7 @@
 
 **做法**：
 - **生成 PPT 前,必须先 `Read` `css/base.css`**,确认 layouts.md 里用到的类都已定义
-- 最常见遗漏的类:`h-hero / h-xl / h-sub / h-md / lead / meta-row / stat-card / stat-label / stat-nb / stat-unit / stat-note / pipeline-section / pipeline-label / pipeline / step / step-nb / step-title / step-desc / grid-2-7-5 / grid-2-6-6 / grid-2-8-4 / grid-2-5-7 / grid-2-4-8 / grid-3-3 / grid-6 / grid-4 / grid-3 / frame / img-cap / callout-src / timeline / tl-node / tl-year / tl-title / tl-desc / quote-wall / qw-item / qw-text / qw-cite / pillar / big-num / mid-num / bottom-left / bottom-right / rule`
+- 最常见遗漏的类:`title-block / title-heading / figure-frame / figure-media / metric-block / metric-value / comparison-block / comparison-item / sequence-block / sequence-step / evidence-strip / h-hero / h-xl / h-sub / h-md / lead / meta-row / stat-card / stat-label / stat-nb / stat-unit / stat-note / pipeline-section / pipeline-label / pipeline / step / step-nb / step-title / step-desc / grid-2-7-5 / grid-2-6-6 / grid-2-8-4 / grid-2-5-7 / grid-2-4-8 / grid-3-3 / grid-6 / grid-4 / grid-3 / frame / img-cap / callout-src / timeline / tl-node / tl-year / tl-title / tl-desc / quote-wall / qw-item / qw-text / qw-cite / pillar / big-num / mid-num / bottom-left / bottom-right / rule`
 - 如果某个类确实缺了,**在 `base.css` 末尾补上**,不要在每页 inline 重写
 - 生成后打开浏览器,如果看到"大标题是非衬线"或"pipeline 步骤挤在一行",几乎 100% 是这个问题
 
@@ -243,6 +243,7 @@ FX 的 canvas 插入为容器第一个子元素（z-index:0），容器内的文
 ```
 预检(生成前)
   □ 已读过 css/base.css，确认所需类都存在
+  □ 已读过 references/required-components.md，页面表达已收敛到 6 个必须组件，不新增一次性顶层组件
   □ 已选定主题色（5 选 1）
   □ 已选定动效模式（静态/微动/沉浸）
   □ 已选定预设方案或自定义布局序列
@@ -251,12 +252,13 @@ FX 的 canvas 插入为容器第一个子元素（z-index:0），容器内的文
   □ 节奏表满足硬规则
 
 template 组装
+  □ 已完成 Brief Gate：内容组织 / 风格 / 颜色主题 / 模板预设或页面结构 / 动效模式均已确认
   □ index.html 由选定风格的 template.html + style.css + theme.css + 动效模式 + 布局序列组装生成
   □ template 中所有 {{占位符}} 已替换或删除（grep "{{" 应无结果）
   □ `<title>` 已改为实际 deck 标题(grep "[必填]" 应无结果)
 
 文件结构
-  □ deck 父目录命名符合 `YYYYMMDDHHmm_内容主题_Mdeck`，例如 `202606171500_个人业务介绍_Mdeck`
+  □ deck 父目录命名符合 `YYYYMMDDHHmm_内容主题_模板主题色动效`，例如 `202606181530_AI课程合作介绍_瑞士克莱因蓝电影`
   □ css/base.css 存在且完整
   □ css/theme.css 是选定的主题
   □ 已运行 `node scripts/validate-theme-contract.mjs`，registry / template / theme CSS / T 按钮 / accent 对比度一致
@@ -269,9 +271,12 @@ template 组装
   □ 没有使用 emoji 作图标
   □ 术语用法统一
   □ 每页的 kicker + 标题 + 正文 三级信息清晰
+  □ 每页主体能归入 title-block / figure-frame / metric-block / comparison-block / sequence-block / evidence-strip 中至少一种
 
 排版
   □ 所有大标题没有 1 字 1 行的换行
+  □ 所有局部底色都已声明 surface：深色/底部压暗/图片文字区用 `.on-dark` 或 `data-surface="dark"`，浅色卡片用 `.on-light`，主题色块用 `.on-accent`
+  □ 图片、渐变、深色底部上的文字使用 `.readable-zone.on-dark` / `.readable-zone.on-light` 或等价 surface 容器，未出现深字深底、浅字浅底
   □ 图片网格用 height:Nvh 而非 aspect-ratio
   □ 图片只裁底部
   □ 衬线/非衬线字体分工正确

@@ -2,6 +2,23 @@
 
 这是 `wtt-magazine-deck` skill 的组件手册。template.html 已经定义好了所有样式，这里只写"这个组件长什么样、怎么用"。
 
+> 组件库的权威入口是 `references/required-components.md`。6 个必须组件的可用 class 已在 `assets/core/components.css` 实现。本文件保留现有 class 的用法说明，主要作为 editorial 及历史组件变体参考；不要把这里的每个小组件都当成新的顶层组件。
+
+## 组件减法原则
+
+新 deck 先用 6 个必须组件组织内容：
+
+| 必须组件 | 本文件中的常见变体 |
+|---|---|
+| `title-block` | Chrome、Kicker、Typography、lead/meta |
+| `figure-frame` | Figure 图片框、图片占位、截图框 |
+| `metric-block` | Stat 数字矩阵、Platform 平台卡 |
+| `comparison-block` | Rowline 表格行、Pillar 支柱卡 |
+| `sequence-block` | pipeline、Timeline |
+| `evidence-strip` | Callout 出处、figcaption、meta-row |
+
+如果一个想法可以归入上表，就不要新增顶层组件。
+
 ## 目录
 
 - [基础 Slide 外壳](#基础-slide-外壳)

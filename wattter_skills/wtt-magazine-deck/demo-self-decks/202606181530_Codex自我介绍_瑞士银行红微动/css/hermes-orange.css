@@ -1,0 +1,29 @@
+/* hermes-orange · 爱马仕橙
+   适合：奢侈品、零售、生活方式、品牌发布。高识别暖橙，色块上使用黑字。 */
+:root{
+  --ink:#0a0a0a;
+  --ink-rgb:10,10,10;
+  --paper:#fafaf8;
+  --paper-rgb:250,250,248;
+  --paper-tint:#f5e7dc;
+  --ink-tint:#1a0b00;
+  --grey-1:#f0f0ee;
+  --grey-2:#d4d4d2;
+  --grey-3:#737373;
+  --accent:#F37021;
+  --accent-rgb:243,112,33;
+  --accent-2:#FF9A5C;
+  --accent-on:#0a0a0a;
+  --accent-bright:#FFB383;
+  --text-1:#0a0a0a;
+  --text-primary:#0a0a0a;
+  --text-secondary:#525252;
+  --text-helper:#737373;
+  --text-placeholder:#a3a3a3;
+  --text-on-color:#0a0a0a;
+  --border-subtle:#e0e0e0;
+  --border-strong:#a3a3a3;
+  --ok:#22c55e;
+  --warn:#F37021;
+  --danger:#EF4444;
+}

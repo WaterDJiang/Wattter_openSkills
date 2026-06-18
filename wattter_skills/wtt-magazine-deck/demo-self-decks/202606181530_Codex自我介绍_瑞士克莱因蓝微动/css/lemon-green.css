@@ -1,0 +1,30 @@
+/* 🟢 lemon-green · 柠檬绿
+   适合：环保、可持续、生态、农业、绿色能源。
+   注意：--accent 用深一档 #7A8B00（背景绿上文字可读），--accent-2 用纯 #C5E803（高亮块）。 */
+:root{
+  --ink:#0a0a0a;
+  --ink-rgb:10,10,10;
+  --paper:#fafaf8;
+  --paper-rgb:250,250,248;
+  --paper-tint:#eef0d8;
+  --ink-tint:#0a1a00;
+  --grey-1:#f0f0ee;
+  --grey-2:#d4d4d2;
+  --grey-3:#737373;
+  --accent:#7A8B00;       /* 深一档柠檬绿，背景绿上能看清 */
+  --accent-rgb:122,139,0;
+  --accent-2:#C5E803;     /* 纯荧光绿，做高亮块用 */
+  --accent-on:#0a0a0a;    /* 绿色背景必须黑字 */
+  --accent-bright:#E4FF66;
+  --text-1:#0a0a0a;
+  --text-primary:#0a0a0a;
+  --text-secondary:#525252;
+  --text-helper:#737373;
+  --text-placeholder:#a3a3a3;
+  --text-on-color:#0a0a0a;
+  --border-subtle:#e0e0e0;
+  --border-strong:#a3a3a3;
+  --ok:#22c55e;
+  --warn:#C5E803;
+  --danger:#EF4444;
+}

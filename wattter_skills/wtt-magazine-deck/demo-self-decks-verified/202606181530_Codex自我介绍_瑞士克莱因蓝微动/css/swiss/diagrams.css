@@ -1,0 +1,100 @@
+/* ============ swiss · 图表型版式组件（diagrams） ============
+   swiss 独有：loop-diagram / system-diagram / why-now / four-cards / stacked-ledger / spec-kpi
+   对应 S13-S21 版式。editorial 无对应组件。 */
+
+/* ---- stack-cards（S13 三力卡） ---- */
+.stack-cards{display:flex;flex-direction:column;gap:1.2vw}
+.force-card{display:grid;grid-template-columns:auto 1fr;gap:1.4vw;padding:2vh 1.6vw;align-items:start;background:#f5f5f4}
+.force-card .force-num{font-family:var(--sans);font-weight:200;color:var(--accent);font-size:9.2vw;line-height:.85;letter-spacing:-.04em;align-self:start}
+
+/* ---- loop-diagram（S14 闭环图） ---- */
+.loop-diagram{position:relative;display:flex;align-items:center;justify-content:center;min-height:30vh}
+.loop-diagram .loop-svg{width:100%;max-width:34vw;height:auto}
+.loop-steps{display:flex;flex-direction:column;gap:1.6vh}
+.loop-steps .step{padding:1.6vh 1.2vw;background:transparent;border:0;border-top:1px solid currentColor}
+.loop-steps .step.accent-top{border-top:2px solid var(--accent)}
+
+/* ---- system-diagram（S17） ---- */
+.system-diagram{position:relative;display:flex;align-items:center;justify-content:center;min-height:24vh}
+.system-diagram svg{width:100%;max-width:30vw;height:auto}
+
+/* ---- why-now（S18） ---- */
+.why-now-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;margin-top:2.4vh;flex:1;align-items:end}
+.why-col{display:flex;flex-direction:column;gap:1.4vh;padding:2.4vh 1.6vw 0;border-top:1px solid var(--grey-2);position:relative}
+.why-col.accent{background:var(--accent);color:var(--accent-on);margin:0 -1.6vw;padding:2.4vh 1.6vw 2.4vh;border-top-color:transparent}
+.why-col .why-num-bottom{font-family:var(--sans);font-weight:200;font-size:8.4vw;line-height:.9;letter-spacing:-.04em;margin-top:auto}
+
+/* ---- four-cards（S19） ---- */
+.four-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6vw;margin-top:9vh;flex:1}
+.fc-col{display:flex;flex-direction:column;gap:1.2vh}
+.fc-col .t-meta{opacity:.7}
+
+/* ---- timeline-v（S02 纵向时间线） ---- */
+.timeline-v{position:relative;display:grid;gap:1.6vh;margin-top:3vh;margin-left:.6vw;padding-left:2vw}
+.timeline-v::before{content:"";position:absolute;left:.35vw;top:.7vh;bottom:.7vh;width:1px;background:repeating-linear-gradient(to bottom,currentColor 0 7px,transparent 7px 13px);opacity:.32}
+.timeline-v .tl-node{position:relative;display:grid;grid-template-columns:minmax(4.8em,auto) minmax(3.4em,auto) minmax(0,1fr);gap:1vw;align-items:baseline;padding:1.1vh 0;border-top:1px solid var(--border-subtle)}
+.timeline-v .tl-node:first-child{border-top:0}
+.timeline-v .tl-node .dot{position:absolute;left:-2.05vw;top:1.45vh;width:10px;height:10px;background:var(--accent);border-radius:0}
+.timeline-v .tl-node .yr{font-family:var(--mono);font-size:max(13px,.86vw);letter-spacing:.12em;color:var(--text-helper)}
+.timeline-v .tl-node .multi{font-family:var(--sans);font-weight:200;font-size:min(4.2vw,6.6vh);line-height:1;letter-spacing:-.04em;color:var(--accent)}
+.timeline-v .tl-node .desc{font-family:var(--sans),var(--sans-zh);font-size:max(15px,1vw);line-height:1.45;color:currentColor;opacity:.78}
+
+/* ---- timeline-h（S11 横向时间线） ---- */
+.timeline-h{position:relative;margin-top:4vh;padding-top:2.8vh}
+.timeline-h::before{content:"";position:absolute;left:0;right:0;top:1.2vh;height:1px;background:currentColor;opacity:.28}
+.timeline-h .tl-row{display:grid;grid-template-columns:repeat(var(--n,5),minmax(0,1fr));gap:1.2vw}
+.timeline-h .th-node{position:relative;min-width:0;padding:0 .6vw 0 1vw;border-left:2px solid var(--accent);display:grid;gap:.9vh;align-content:start}
+.timeline-h .th-node .dot{position:absolute;left:-7px;top:-2.2vh;width:12px;height:12px;background:var(--accent);border-radius:0}
+.timeline-h .th-node .label{display:grid;gap:.7vh}
+.timeline-h .th-node .yr{font-family:var(--mono);font-size:max(13px,.82vw);letter-spacing:.12em;color:var(--text-helper)}
+.timeline-h .th-node .name{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(16px,1.16vw);line-height:1.25;color:currentColor}
+
+/* ---- stacked-ledger（S20） ---- */
+.stacked-ledger{display:flex;flex-direction:column;margin-top:1.6vh;flex:1;justify-content:center}
+.ledger-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2vw;padding:3vh 0;border-bottom:1px solid var(--border-subtle)}
+.ledger-row:first-child{border-top:1px solid var(--border-subtle)}
+.ledger-row .ledger-num{font-family:var(--sans);font-weight:200;font-size:min(13vw,16vh);letter-spacing:-.045em;line-height:1}
+.ledger-row .ledger-num-text{font-size:min(8vw,10vh)!important;letter-spacing:-.035em}
+.ledger-row .ledger-num-sm{font-size:min(7vw,8vh)!important;letter-spacing:-.025em}
+.ledger-row .ledger-label{font-family:var(--sans),var(--sans-zh);font-weight:400;font-size:max(15px,1.1vw);opacity:.7;line-height:1.3}
+.ledger-row .ledger-icon{color:var(--accent);width:3.6vh;height:3.6vh;flex-shrink:0}
+.ledger-row .ledger-icon svg{width:100%;height:100%}
+
+/* ---- tech-spec（S21） ---- */
+.spec-title-col{display:flex;flex-direction:column;gap:1.6vh}
+.spec-kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;margin-top:1vh}
+.spec-kpi{position:relative;padding-top:.8vh}
+.spec-kpi::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;transition:transform 1s var(--ease-prod)}
+.spec-kpi.in::before{transform:scaleX(1)}
+.spec-kpi .t-meta{display:block;margin-top:.6vh;margin-bottom:.4vh}
+.spec-kpi .kpi-num{font-family:var(--sans);font-weight:200;font-size:min(8.4vw,14vh);line-height:1;letter-spacing:-.04em;display:block}
+.spec-kpi .kpi-num small{font-size:.4em;opacity:.5;font-weight:500;margin-left:.12em}
+.spec-bars{display:grid;grid-template-columns:repeat(9,1fr);gap:.6vw;height:24vh;align-items:end}
+.spec-bars .vbar{background:var(--grey-1);width:100%;height:30%;transition:height 1s var(--ease-prod);transform-origin:bottom}
+
+/* ---- image-hero（S22 主视觉） ---- */
+.image-hero-body{display:grid;grid-template-columns:6fr 6fr;gap:3vw;padding:6.6vh 5vw 4.4vh;flex:1;align-content:start}
+.image-hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2vw}
+.image-hero-stats > div{position:relative;padding-top:.6vh}
+.image-hero-stats > div::before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:var(--ink)}
+.image-hero-stats .t-meta{display:block;margin-top:.6vh;font-size:max(12px,.7vw);letter-spacing:.14em}
+.image-hero-stats > div > div:nth-child(3){font-family:var(--sans);font-weight:200;font-size:min(4.6vw,7.6vh);line-height:1;letter-spacing:-.04em;margin-top:.4vh}
+.image-hero-stats > div > p.body-sm{font-size:max(13px,.84vw);opacity:.7;line-height:1.45;margin-top:.6vh}
+.hero-overlay-block{position:absolute;left:5vw;top:11vh;background:var(--paper);padding:3.2vh 3.2vw;max-width:40vw;z-index:2}
+.hero-overlay-block .h-title{font-weight:200;font-size:min(5.2vw,9vh);line-height:1;letter-spacing:-.035em}
+
+/* ---- Swiss 图文布局组件 ---- */
+.swiss-img-split{display:grid;grid-template-columns:5fr 7fr;gap:3vw;align-items:start;flex:1;min-height:0}
+.swiss-img-split.reverse{grid-template-columns:7fr 5fr}
+.swiss-img-split.align-image-bottom{align-items:end;padding-bottom:var(--nav-safe-bottom)}
+.swiss-img-copy{display:flex;flex-direction:column;gap:var(--sp-6);min-width:0}
+.swiss-img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);margin-top:var(--sp-7)}
+.swiss-img-grid.two{grid-template-columns:repeat(2,1fr)}
+.swiss-img-grid.tight{margin-top:0}
+.swiss-img-caption{display:flex;justify-content:space-between;font-family:var(--mono);font-size:max(14px,.74vw);letter-spacing:.16em;text-transform:uppercase;color:var(--grey-3);border-top:1px solid var(--border-subtle,#e0e0e0);padding-top:var(--sp-4)}
+
+/* ---- hero-ink-col（顶部 ink hero 列） ---- */
+.hero-ink-col{background:var(--ink);color:var(--paper);padding:4vh 3vw;display:flex;flex-direction:column;gap:1.6vh;position:relative}
+.hero-ink-col .t-cat{color:rgba(255,255,255,.7)}
+.hero-ink-col .h-xl{color:var(--paper)}
+.hero-ink-col .dot-mat{position:absolute;right:-6vw;bottom:-6vw;width:28vw;height:28vw;opacity:.4}

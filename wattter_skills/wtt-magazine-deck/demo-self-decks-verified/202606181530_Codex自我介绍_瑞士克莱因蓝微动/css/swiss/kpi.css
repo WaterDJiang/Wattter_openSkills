@@ -1,0 +1,25 @@
+/* ============ swiss · KPI 巨数字系统 ============
+   swiss 独有：22vw 满屏巨数 + 极轻/极重字重对比
+   editorial 无此组件（用 .stat / .stat-card 的衬线数字） */
+
+/* KPI 巨数字（22vw 满屏巨数） */
+.kpi-hero{font-family:var(--sans);font-weight:800;font-size:22vw;line-height:.82;letter-spacing:-.05em;font-feature-settings:"tnum","ss01"}
+.kpi-hero.accent{color:var(--accent)}
+.kpi-hero .unit{font-family:var(--sans),var(--sans-zh);font-weight:500;font-size:.18em;letter-spacing:0;opacity:.5;margin-left:.12em;vertical-align:.5em}
+
+.kpi-big{font-family:var(--sans);font-weight:800;font-size:11vw;line-height:.85;letter-spacing:-.04em;font-feature-settings:"tnum"}
+.kpi-mid{font-family:var(--sans);font-weight:700;font-size:6vw;line-height:.88;letter-spacing:-.03em;font-feature-settings:"tnum"}
+.kpi-thin{font-family:var(--sans);font-weight:200;font-size:14vw;line-height:.92;letter-spacing:-.045em;font-feature-settings:"tnum"}
+.kpi-thin-sm{font-family:var(--sans);font-weight:250;font-size:5.6vw;line-height:1.04;letter-spacing:-.03em;font-feature-settings:"tnum"}
+
+.num-mega{font-family:var(--sans);font-weight:200;font-size:9vw;line-height:1;letter-spacing:-.04em}
+.num-mega.thin{font-weight:200}
+.name-mega{font-family:var(--sans);font-weight:200;font-size:9vw;line-height:1;letter-spacing:-.035em}
+
+/* Windows 字重补偿 */
+body.is-win .name-mega,body.is-win .num-mega,body.is-win .kpi-thin{font-weight:300;letter-spacing:-.02em}
+
+/* KPI row（S02 底部 4 列 + 1px 左线分隔） */
+.kpi-row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-top:2.4vh;border-top:1px solid var(--grey-2)}
+.kpi-row-4 > .kpi-cell{padding:1.6vh 1.6vw 0;border-left:1px solid var(--grey-2)}
+.kpi-row-4 > .kpi-cell:first-child{padding-left:0;border-left:none}

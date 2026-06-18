@@ -1,0 +1,29 @@
+/* tiffany-blue · 蒂芙尼蓝
+   适合：消费品牌、服务体验、女性用户、清爽产品叙事。亮蓝绿色块使用黑字。 */
+:root{
+  --ink:#0a0a0a;
+  --ink-rgb:10,10,10;
+  --paper:#fafaf8;
+  --paper-rgb:250,250,248;
+  --paper-tint:#e2f3f1;
+  --ink-tint:#001716;
+  --grey-1:#f0f0ee;
+  --grey-2:#d4d4d2;
+  --grey-3:#737373;
+  --accent:#0ABAB5;
+  --accent-rgb:10,186,181;
+  --accent-2:#64D8D4;
+  --accent-on:#0a0a0a;
+  --accent-bright:#95F0EC;
+  --text-1:#0a0a0a;
+  --text-primary:#0a0a0a;
+  --text-secondary:#525252;
+  --text-helper:#737373;
+  --text-placeholder:#a3a3a3;
+  --text-on-color:#0a0a0a;
+  --border-subtle:#e0e0e0;
+  --border-strong:#a3a3a3;
+  --ok:#22c55e;
+  --warn:#F59E0B;
+  --danger:#EF4444;
+}
