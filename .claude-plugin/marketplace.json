@@ -5,8 +5,8 @@
     "email": "wattterjiang@gmail.com"
   },
   "metadata": {
-    "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, wiki building, and project harness generation.",
-    "version": "2.1.0",
+    "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, course PPTX building, wiki building, and project harness generation.",
+    "version": "2.2.0",
     "license": "CC BY-NC-SA 4.0"
   },
   "plugins": [
@@ -53,6 +53,15 @@
       "strict": false,
       "skills": [
         "wtt-magazine-deck"
+      ]
+    },
+    {
+      "name": "wtt-course-pptx-builder-skills",
+      "description": "AI-driven course PPTX builder that converts source documents into high-quality SVG slides and exports them to PPTX.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-course-pptx-builder"
       ]
     },
     {

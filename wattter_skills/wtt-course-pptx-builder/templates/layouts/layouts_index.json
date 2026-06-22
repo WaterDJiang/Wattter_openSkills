@@ -1,0 +1,185 @@
+{
+  "academic_defense": {
+    "path": "templates/layouts/academic_defense/",
+    "kind": "layout",
+    "summary": "Thesis defense, academic presentations, research progress reports, grant applications.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "ai_ops": {
+    "path": "templates/layouts/ai_ops/",
+    "kind": "layout",
+    "summary": "Telecom AI operations architecture, IT system overviews, digital transformation proposals, smart infrastructure reports.",
+    "canvas_format": "ppt169",
+    "page_count": 6,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending",
+      "reference_style"
+    ]
+  },
+  "china_telecom_template": {
+    "path": "templates/layouts/china_telecom_template/",
+    "kind": "layout",
+    "summary": "China Telecom related briefings, 政企数字化方案, 转型规划, 内部汇报.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "exhibit": {
+    "path": "templates/layouts/exhibit/",
+    "kind": "layout",
+    "summary": "Strategic planning, executive reports, investment analysis, board presentations.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "google_style": {
+    "path": "templates/layouts/google_style/",
+    "kind": "layout",
+    "summary": "Annual work reports, technical sharing, project showcases, data-driven presentations.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "government_blue": {
+    "path": "templates/layouts/government_blue/",
+    "kind": "layout",
+    "summary": "Key project briefings, Five-Year Plan presentations, work summaries, investment promotion, policy interpretation.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "government_red": {
+    "path": "templates/layouts/government_red/",
+    "kind": "layout",
+    "summary": "Government briefings, policy interpretation, work summaries, project introductions, investment promotion.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "mckinsey": {
+    "path": "templates/layouts/mckinsey/",
+    "kind": "layout",
+    "summary": "Strategic consulting, executive briefings, investment analysis, business proposals.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "medical_university": {
+    "path": "templates/layouts/medical_university/",
+    "kind": "layout",
+    "summary": "Medical academic reports, case discussions, research presentations, hospital work reports, medical education and training.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "pixel_retro": {
+    "path": "templates/layouts/pixel_retro/",
+    "kind": "layout",
+    "summary": "Tech talks, programming tutorials, game introductions, geek-style showcases.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "psychology_attachment": {
+    "path": "templates/layouts/psychology_attachment/",
+    "kind": "layout",
+    "summary": "Psychotherapy training, academic lectures, counseling case analysis, professional sharing.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "smart_red": {
+    "path": "templates/layouts/smart_red/",
+    "kind": "layout",
+    "summary": "Company introductions, product launches, solution presentations, education industry courseware.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  },
+  "科技蓝商务": {
+    "path": "templates/layouts/科技蓝商务/",
+    "kind": "layout",
+    "summary": "Corporate reports, product launches, proposals, process standards, training materials.",
+    "canvas_format": "ppt169",
+    "page_count": 5,
+    "page_types": [
+      "cover",
+      "toc",
+      "chapter",
+      "content",
+      "ending"
+    ]
+  }
+}
