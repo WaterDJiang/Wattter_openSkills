@@ -1,0 +1,188 @@
+# 简历筛选评估标准
+# 每个岗位级别定义：评估维度（weights 加总 = 100）+ 评分要点（key_signals）
+# AI 评估时按权重计算综合分；HR/业务双视角共用同一套维度，输出不同侧重点的点评
+
+intern:
+  description: "实习生 - 潜力 > 经验，考察学习能力、基础功、相关项目/课程"
+  weights:
+    education_background: 25    # 学校/专业/课程匹配
+    basic_skills: 25            # 编程/工具基础
+    projects: 20                # 课程项目/个人项目/竞赛
+    learning_ability: 15        # 自学、新技术吸收速度
+    attitude: 10                # 稳定性、积极性、可塑性
+    stability: 5                # 可实习时长、与地理位置匹配
+  hard_requirements:
+    - 每周可实习 >= 3 天
+    - 计算机/统计/数学/电子等相关专业优先
+    - 有编程基础（不限定语言）
+  soft_focus:
+    - 成长潜力与学习曲线
+    - 主动性与自驱力
+    - 与团队的协作意识
+  ignore_or_relax:
+    - 多年工作经验
+    - 大厂背景
+    - 高级管理能力
+
+fresh_grad:
+  description: "校招/应届生 - 学校 + 基础 + 实习经历三件套"
+  weights:
+    education_background: 25
+    basic_skills: 20
+    internship: 20              # 实习公司/实习内容质量
+    projects: 15                # 校内外项目
+    learning_ability: 10
+    attitude: 5
+    stability: 5
+  hard_requirements:
+    - 应届毕业（毕业时间符合预期）
+    - 学历/专业与岗位匹配
+  soft_focus:
+    - 实习产出的真实深度
+    - 算法/工程基础扎实度
+    - 团队合作与沟通
+  ignore_or_relax:
+    - 行业工作年限
+    - 架构/管理经验
+
+junior:
+  description: "初级（0-3 年）- 能不能独立上手"
+  weights:
+    basic_skills: 25
+    work_experience: 25
+    projects: 20
+    education_background: 10
+    learning_ability: 10
+    attitude: 5
+    stability: 5
+  hard_requirements:
+    - 1-3 年相关经验
+    - 至少一个完整项目周期经验
+  soft_focus:
+    - 独立交付能力
+    - 排查问题/调试能力
+    - 主动沟通
+  ignore_or_relax:
+    - 团队管理经验
+    - 系统架构能力
+
+mid:
+  description: "中级（3-5 年）- 业务骨干，能独当一面"
+  weights:
+    work_experience: 30
+    projects: 20
+    technical_skills: 15
+    basic_skills: 10
+    education_background: 5
+    learning_ability: 10
+    attitude: 5
+    stability: 5
+  hard_requirements:
+    - 3-5 年相关行业经验
+    - 至少 2 个独立负责的项目
+  soft_focus:
+    - 业务理解深度
+    - 跨团队协作
+    - 自驱与责任心
+  ignore_or_relax:
+    - 顶级学校要求
+    - 大厂年限硬性要求
+
+senior:
+  description: "高级（5-8 年）- 技术 / 业务带头人"
+  weights:
+    work_experience: 30
+    projects: 20
+    technical_skills: 20
+    leadership: 10
+    learning_ability: 5
+    education_background: 5
+    attitude: 5
+    stability: 5
+  hard_requirements:
+    - 5-8 年相关经验
+    - 至少 1 个核心系统/模块的 owner 经历
+  soft_focus:
+    - 复杂问题分解与设计能力
+    - 技术决策与权衡
+    - 影响力与 mentorship
+  ignore_or_relax:
+    - 频繁跳槽（但要追因）
+
+staff:
+  description: "技术专家 - 行业影响力、技术深度、方向判断"
+  weights:
+    technical_skills: 30
+    work_experience: 25
+    projects: 15
+    leadership: 15
+    learning_ability: 10
+    education_background: 5
+  hard_requirements:
+    - 8 年以上深度相关经验
+    - 行业可见成果（开源、专利、文章、内部分享）
+  soft_focus:
+    - 技术战略与方向
+    - 跨团队技术推动
+    - 培养技术梯队
+
+manager:
+  description: "技术经理 - 管理 + 业务 + 团队"
+  weights:
+    leadership: 30
+    work_experience: 20
+    projects: 15
+    technical_skills: 10
+    attitude: 10
+    stability: 10
+    education_background: 5
+  hard_requirements:
+    - 5 年以上带团队经验
+    - 完整的招聘/绩效/团队建设经验
+  soft_focus:
+    - 业务理解与产品 sense
+    - 跨部门沟通
+    - 团队成长与文化塑造
+  ignore_or_relax:
+    - 写代码的细节（重点看结果与赋能）
+
+director:
+  description: "总监及以上 - 战略、组织、商业"
+  weights:
+    leadership: 35
+    work_experience: 25
+    projects: 10
+    technical_skills: 5
+    attitude: 10
+    stability: 10
+    education_background: 5
+  hard_requirements:
+    - 10 年以上管理经验
+    - 业务结果导向
+  soft_focus:
+    - 行业视野与战略
+    - 组织设计
+    - 高层沟通与谈判
+
+# 通用评分阈值（综合匹配度 → 推荐结论）
+recommendation_thresholds:
+  strong_recommend: 85
+  recommend: 70
+  hold: 55
+  # 低于 hold 视为 not_recommend
+
+# 双视角差异（HR 关心的是基础素质/动机/适配；业务关心的是技术深度/产出）
+dual_perspective_bias:
+  hr_extra_dimensions:
+    - 职业稳定性
+    - 动机与价值观
+    - 沟通表达能力
+    - 文化匹配度
+    - 薪资预期匹配
+    - 地理/到岗灵活度
+  hiring_manager_extra_dimensions:
+    - 技术/业务深度
+    - 项目复杂度
+    - 解决问题的方法论
+    - 团队协作与 influence
+    - 成长空间与 T 型能力

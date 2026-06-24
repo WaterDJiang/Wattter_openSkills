@@ -5,8 +5,8 @@
     "email": "wattterjiang@gmail.com"
   },
   "metadata": {
-    "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, course PPTX building, wiki building, and project harness generation.",
-    "version": "2.2.0",
+    "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, course PPTX building, wiki building, project harness generation, and resume screening.",
+    "version": "2.3.0",
     "license": "CC BY-NC-SA 4.0"
   },
   "plugins": [
@@ -17,7 +17,12 @@
       "strict": false,
       "skills": [
         "wtt-auto-poster"
-      ]
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     },
     {
       "name": "wtt-info-collector-skills",
@@ -26,7 +31,12 @@
       "strict": false,
       "skills": [
         "wtt-info-collector"
-      ]
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     },
     {
       "name": "wtt-trend-radar-skills",
@@ -35,7 +45,12 @@
       "strict": false,
       "skills": [
         "wtt-trend-radar"
-      ]
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     },
     {
       "name": "wtt-app-review-insights-skills",
@@ -44,7 +59,12 @@
       "strict": false,
       "skills": [
         "wtt-app-review-insights"
-      ]
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     },
     {
       "name": "wtt-magazine-deck-skills",
@@ -53,7 +73,12 @@
       "strict": false,
       "skills": [
         "wtt-magazine-deck"
-      ]
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     },
     {
       "name": "wtt-course-pptx-builder-skills",
@@ -62,7 +87,12 @@
       "strict": false,
       "skills": [
         "wtt-course-pptx-builder"
-      ]
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     },
     {
       "name": "wtt-llm-wiki-builder-skills",
@@ -71,7 +101,12 @@
       "strict": false,
       "skills": [
         "wtt-llm-wiki-builder"
-      ]
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     },
     {
       "name": "wtt-project-harness-generator-skills",
@@ -80,7 +115,26 @@
       "strict": false,
       "skills": [
         "wtt-project-harness-generator"
-      ]
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
+    },
+    {
+      "name": "wtt-resume-screener-skills",
+      "description": "Config-driven resume screening with level-adaptive evaluation standards, HR + hiring-manager dual-perspective AI review, and Markdown screening reports.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-resume-screener"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     }
   ]
 }

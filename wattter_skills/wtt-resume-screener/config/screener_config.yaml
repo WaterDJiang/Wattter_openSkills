@@ -1,0 +1,32 @@
+# 简历筛选 Skill 全局配置
+# 行为开关、默认值 — 可被 CLI 参数覆盖
+
+defaults:
+  # 若 JD 未指定 level，按文本长度和关键词推断；强制覆盖可传 --level
+  default_level: mid
+  # 评分细则：综合分 = Σ(维度权重 × 维度得分)
+  score_range: [0, 100]
+  # 报告输出语言（zh / en）
+  language: zh
+  # 推荐结论阈值（可在 evaluation_standards.yaml 的 recommendation_thresholds 覆盖）
+  thresholds:
+    strong_recommend: 85
+    recommend: 70
+    hold: 55
+
+behavior:
+  # 是否强制要求用户提供 JD（true: 缺失时主动询问；false: 使用 default_level）
+  require_jd: true
+  # 是否在评估中输出 HR 与业务负责人两份点评
+  dual_role_review: true
+  # 是否使用模板中的人物卡（方便后续 export 到 ATS）
+  emit_candidate_cards: true
+  # 是否生成可视化进度（控制台表格）
+  emit_console_table: true
+
+# 文件路径约定
+paths:
+  standards: config/evaluation_standards.yaml
+  template: templates/screening_report.md
+  prompts: assets/prompts/
+  output_dir: ./output
