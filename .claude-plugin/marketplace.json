@@ -5,8 +5,8 @@
     "email": "wattterjiang@gmail.com"
   },
   "metadata": {
-    "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, course PPTX building, wiki building, project harness generation, and resume screening.",
-    "version": "2.3.0",
+    "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, course PPTX building, wiki building, project harness generation, resume screening, multi-platform OpenCLI publishing, and SEO/GEO content writing.",
+    "version": "2.4.0",
     "license": "CC BY-NC-SA 4.0"
   },
   "plugins": [
@@ -129,6 +129,34 @@
       "strict": false,
       "skills": [
         "wtt-resume-screener"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
+    },
+    {
+      "name": "wtt-post-opencli-skills",
+      "description": "One-shot publishing of content to WeChat Official Account, Weibo, Zhihu Column, and Xiaohongshu via OpenCLI with unified format adaptation, media constraints, status verification, and precise reporting.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-post-opencli"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
+    },
+    {
+      "name": "wtt-seo-geo-writer-skills",
+      "description": "Converts input content into SEO- or GEO-optimized Markdown articles on two main paths; vertical profiles (e.g. 9day.tech, Beidou9, fortune-telling) are opt-in and loaded only when explicitly requested.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-seo-geo-writer"
       ],
       "version": "0.1.0",
       "author": {
