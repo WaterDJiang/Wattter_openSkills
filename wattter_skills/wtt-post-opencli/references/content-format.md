@@ -31,6 +31,7 @@ source:
     - weibo
     - zhihu
     - xiaohongshu
+    - twitter
   mode: publish|draft|fill_and_confirm|format_only
 ```
 
@@ -49,6 +50,7 @@ platform_payloads:
       videos: []
     tags: []
     links: []
+    variant: short_post|longform|article|null
     mode: publish|draft|fill_and_confirm|format_only
     adaptation_notes:
       - ...

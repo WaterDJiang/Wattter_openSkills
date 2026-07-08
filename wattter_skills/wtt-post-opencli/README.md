@@ -1,6 +1,6 @@
 # wtt-post-opencli
 
-通过 OpenCLI 把内容发布或创建草稿到微信公众号、微博、知乎专栏、小红书。这个 skill 会先做平台内容格式适配，再执行真实账号写入，并在平台侧校验结果。
+通过 OpenCLI 把内容发布或创建草稿到微信公众号、微博、知乎专栏、小红书、Twitter/X。这个 skill 会先做平台内容格式适配，再执行真实账号写入，并在平台侧校验结果。
 
 ## 需要准备的工具
 
@@ -41,6 +41,8 @@ opencli weixin --help -f yaml
 opencli weibo --help -f yaml
 opencli zhihu --help -f yaml
 opencli xiaohongshu --help -f yaml
+opencli twitter --help -f yaml
+opencli x --help -f yaml
 ```
 
 如果某个平台返回 `unknown command`、`unknown site`、`plugin not found` 或类似错误，说明对应平台插件或适配器缺失。此时应先确认当前 OpenCLI 推荐的安装命令，再征得用户确认后安装。
@@ -55,6 +57,8 @@ opencli browser weixin state
 opencli browser weibo state
 opencli browser zhihu state
 opencli browser xiaohongshu state
+opencli browser twitter state
+opencli browser x state
 ```
 
 需要用户在浏览器中登录目标账号。账号不明确时，不要发布，先让用户确认账号身份。
@@ -110,5 +114,6 @@ wtt-post-opencli/
     ├── weixin.md
     ├── weibo.md
     ├── zhihu.md
-    └── xiaohongshu.md
+    ├── xiaohongshu.md
+    └── twitter.md
 ```
