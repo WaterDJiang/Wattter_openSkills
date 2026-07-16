@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "accent": "#002FA7",
+  "assets": {
+    "weixin_cover": {
+      "file": "weixin-cover.png",
+      "width": 900,
+      "height": 383,
+      "source": "bundled_default"
+    },
+    "weibo": {
+      "file": "social-landscape.png",
+      "width": 1200,
+      "height": 900,
+      "source": "bundled_default"
+    },
+    "universal": {
+      "file": "universal-square.png",
+      "width": 1200,
+      "height": 1200,
+      "source": "bundled_default"
+    },
+    "xiaohongshu": {
+      "file": "xiaohongshu-portrait.png",
+      "width": 1080,
+      "height": 1440,
+      "source": "bundled_default"
+    }
+  }
+}

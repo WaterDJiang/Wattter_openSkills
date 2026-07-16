@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import json; json.load\\(open\\('.claude-plugin/marketplace.json'\\)\\)\")",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}

@@ -137,12 +137,12 @@
       }
     },
     {
-      "name": "wtt-post-opencli-skills",
-      "description": "One-shot publishing of content to WeChat Official Account, Weibo, Zhihu Column, and Xiaohongshu via OpenCLI with unified format adaptation, media constraints, status verification, and precise reporting.",
+      "name": "wtt-post-geo-skills",
+      "description": "Multi-platform GEO publishing across WeChat Official Account, Weibo, Zhihu Column, CSDN, Juejin, Baijiahao, Cnblogs, Xiaohongshu and Twitter/X with a layered official-API / browser-login-adapter / OpenCLI fallback route, unified format adaptation, GEO link surfacing, media constraints, status verification and precise reporting.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [
-        "wtt-post-opencli"
+        "wtt-post-geo"
       ],
       "version": "0.1.0",
       "author": {

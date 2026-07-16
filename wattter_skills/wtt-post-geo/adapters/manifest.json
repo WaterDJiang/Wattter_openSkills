@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "provider": "opencli_login_adapter",
+  "stability": "experimental",
+  "reference_snapshot": "csdn-sync-extension_1.0.5",
+  "last_static_verified_at": "2026-07-16",
+  "commands": {
+    "weibo": { "command": "weibo/article-draft", "auth_command": "weibo/whoami", "mode": "draft", "variant": "longform", "format": "html", "images": false },
+    "zhihu": { "command": "zhihu/article-draft", "auth_command": "zhihu/whoami", "mode": "draft", "format": "html", "images": false },
+    "juejin": { "command": "juejin/article-draft", "auth_command": "juejin/draft-account", "mode": "draft", "format": "markdown", "images": false },
+    "baijiahao": { "command": "baijiahao/article-draft", "auth_command": "baijiahao/draft-account", "mode": "draft", "format": "html", "images": false },
+    "cnblogs": { "command": "cnblogs/article-draft", "auth_command": "cnblogs/draft-account", "mode": "draft", "format": "markdown", "images": false }
+  }
+}
