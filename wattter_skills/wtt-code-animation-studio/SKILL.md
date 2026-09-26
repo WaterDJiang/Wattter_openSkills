@@ -79,4 +79,4 @@ python3 "$SKILL_DIR/scripts/pipeline.py" init "$PROJECT_DIR"
 
 ## 复用来源与验证
 
-本 skill 独立运行，无须安装短剧技能、Remotion 或付费视频生成服务。生产契约为 `code-animation/v1`。本仓库的实现沿用了实际视频制作中有效的编剧、角色一致性和逐帧导出方法；开发过程与实测边界见 [验证记录](tests/validation.md)。
+本 skill 独立运行，无须安装短剧技能、Remotion 或付费视频生成服务。生产契约为 `code-animation/v1`。本仓库的实现沿用了实际视频制作中有效的编剧、角色一致性和逐帧导出方法。
