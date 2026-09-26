@@ -177,6 +177,20 @@
         "name": "Water",
         "email": "wattterjiang@gmail.com"
       }
+    },
+    {
+      "name": "wtt-code-animation-studio-skills",
+      "description": "Turns ideas, topics, articles, or ready scripts into front-end code animations with Chinese script, storyboard, editable source, and narrated MP4 export; recommends styles for user choice across hand-drawn, print, pixel, watercolor, sand, chalk, particle, clay, motion-graphics, and mixed-media looks via Canvas/p5.js and FFmpeg.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-code-animation-studio"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     }
   ]
 }

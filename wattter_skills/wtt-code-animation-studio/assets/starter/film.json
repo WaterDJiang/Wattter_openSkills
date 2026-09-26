@@ -1,0 +1,66 @@
+{
+  "schema": "code-animation/v1",
+  "title": "一粒种子的想象（组合画法示例，按用户内容改写）",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "seed": 42,
+  "speechCharsPerSecond": 3.8,
+  "scenes": [
+    {
+      "id": "seed",
+      "title": "我，想去看看世界",
+      "visualSeconds": 6,
+      "narration": "一粒种子，想去看看外面的世界。",
+      "visual": {
+        "subject": {
+          "id": "seed-hero",
+          "type": "seed-character"
+        },
+        "style": "flat",
+        "motion": {
+          "action": "hop",
+          "effect": "none"
+        },
+        "renderer": "canvas2d"
+      }
+    },
+    {
+      "id": "rain",
+      "title": "风把我画进沙里",
+      "visualSeconds": 8,
+      "narration": "风吹过，它的身影在沙粒中浮现。",
+      "visual": {
+        "subject": {
+          "id": "seed-hero",
+          "type": "seed-character"
+        },
+        "style": "sand",
+        "motion": {
+          "action": "hop",
+          "effect": "reveal"
+        },
+        "renderer": "canvas2d"
+      }
+    },
+    {
+      "id": "bloom",
+      "title": "星光，也记得我的模样",
+      "visualSeconds": 7,
+      "narration": "夜幕降临，同一颗种子又被星光点亮。",
+      "visual": {
+        "subject": {
+          "id": "seed-hero",
+          "type": "seed-character"
+        },
+        "style": "particles",
+        "motion": {
+          "action": "hop",
+          "effect": "assemble"
+        },
+        "renderer": "canvas2d"
+      }
+    }
+  ],
+  "audioTracks": []
+}
