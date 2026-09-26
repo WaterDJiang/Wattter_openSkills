@@ -6,6 +6,8 @@
 
 ---
 
+实际制作含字图默认采用 [真实字体排字流程](font-typesetting.md)：以下文字块作为排字参数，生图时替换为无字与对应区域留白要求，再加载 `assets/fonts/FontQuSmile-Regular.ttf` 排字。只有直接生图近似路径才把文字块交给图像模型。
+
 ## 模板 A：中文版（默认 · 推荐）
 
 ```text
@@ -278,7 +280,7 @@ full body visible and unobstructed; no box torso or double outline;
 
 先执行 [风格 D 封面决策](style-d-line-figure.md#封面模式先判断内容再确定标题)：读取相关素材判断文章/课程/播客/视频/其他；文章默认使用完整文章标题，其他内容使用对应名称。已有标题直接提取，仅缺失或冲突时补问。用户指定文案或无字要求优先。
 
-写出 `内容类型 / 标题来源 / 标题原文 / 画面文字 / 分行方案 / 目标比例`，再替换下面的变量。不得将占位符直接交给生图模型，也不得把文章标题缩成金句。
+先读取 [平台构图模式](platform-cover-layouts.md)，写出 `内容类型 / 标题来源 / 标题原文 / 平台与展示位 / layout_id / title_box / scene_box / 分行方案 / 目标比例`，再替换下面的变量。不得将占位符直接交给生图模型，也不得把文章标题缩成金句。
 
 在模板 A 中，将整个【文字（非封面，可选）】段替换为以下段落，移除非封面的说明数量、小字尺寸及六字建议。英文模板同理替换整个 Text (non-cover, optional) 块。无字封面则移除文字段并明确 no text。
 
@@ -294,14 +296,18 @@ full body visible and unobstructed; no box torso or double outline;
 统一使用「喜脉喜欢体」手写风格，参照随附字形图下方大字：
 细笔自然书写，修长舒展、轻微倾斜、大小错落、自然提按与少量连笔，
 清晰可读，不复制参考样张文字、背景或布局，不用标准印刷体。
-标题用浅灰 #999999，标题块位于画面中央或中心略偏下，不遮挡人物和蓝色主体。
-短标题一行，字高约画面高度 1/12–1/8；长标题优先分 2–3 行，
-按语义断行，不拆词组，必要时减小字号并重排场景，完整且清晰优先。
+复用策略：跨渠道或未指定平台默认 D-U1，一个抽象母版；仅明确单平台优化用 D-C 模式。
+平台/展示位：{platform / placement}；构图：{D-U1（跨渠道默认）/D-C1/D-C2/D-C3/D-C4}。
+标题容器：{title_box}；场景容器：{scene_box}；标题对齐：{alignment}。
+主标题默认近黑 #1A1A1A，字高按平台模式实测容器适配；辅助字用 #666666。
+完整标题按语义分行，不拆词组，不遮挡人物；按目标缩略图检查可读性。
 
 【硬约束（封面模式追加）】
 - 目标比例：{本次实际输出比例和尺寸}；人物全身与完整标题均在画面内
-- 以中央 40% 宽 × 70% 高为初始安全区，按实际目标裁剪检查，不承诺任意裁剪安全
-- 标题块居中或略偏下，统一喜脉喜欢体，不描边、不加阴影
+- D-U1 把完整标题、完整人物与唯一蓝色物件组成一个核心单元，外围可有低显著性的环境线条或次要装饰，裁掉后不损失信息；不加平台 UI 或标识
+- 记录目标比例集合与裁剪交集；各比例保持同一核心单元，按实际窗口与缩略图验收
+- 使用所选模式的标题/场景容器与实际裁剪窗口；公众号同图双裁剪单独验收
+- 标题对齐与位置按构图模式，统一喜脉喜欢体，不描边、不加阴影
 - 长标题调整行数、字号与构图，不删字，不改成短金句
 ```
 
@@ -318,17 +324,33 @@ caption guideline does NOT apply to cover titles. No extra text by default.
 Use “喜脉喜欢体” (Ximai Xihuan) handwriting matching the attached large-letter
 sample: slender elongated characters, slight tilt, natural baseline and pen
 pressure, clear and legible. Do not copy the sample text, background or layout.
-Light gray #999999, no outline or shadow. Center the title block or place it
-slightly below center, clear of the complete figure and the blue subject.
-Short titles: one line, letter height 1/12–1/8 of frame height. Long titles:
-prefer 2–3 semantic lines; reduce size and rearrange the scene if needed,
-never remove title text to fit. Preserve readability and the complete title.
+For cross-channel or unspecified-platform covers, default to D-U1: ONE
+abstract cover master, with the complete title above a single metaphor scene.
+Keep the complete figure and blue object with the title as one central unit;
+use expendable peripheral content: sparse environmental lines, distant
+outlines or secondary motifs, visually subordinate to the core. The perimeter
+need not be blank; preserve the white base and restrained line-art style.
+Keep every essential relationship inside the core. Cropping away peripheral
+content must not alter the meaning or remove any required text or body part. No platform logos, UI cards or extra slogans.
+Record target crops and their intersection; fit the whole unit inside it.
+Ratio exports crop peripheral content or extend the background, preserving the unit
+and its internal layout. Validate legibility as well as crop containment.
+Platform / placement: {platform / placement}. Layout: {D-U1/D-C1/D-C2/D-C3/D-C4}.
+Title box: {title_box}; scene box: {scene_box}; alignment: {alignment}.
+Main title near-black #1A1A1A; secondary text #666666. No outline or shadow.
+Measure the real font to fit the selected layout; preserve semantic line
+breaks and every title character. Do not force all covers into centered gray text.
 Target aspect ratio and size: {actual ratio and dimensions}.
-Start with a central 40% width × 70% height safe area and verify the actual
-crop; do not assume safety at every ratio. Keep the full figure and title visible.
+Validate the actual crop and thumbnail legibility; preserve the complete figure.
+WeChat wide and square crops need separate checks. X Article cropping follows
+the current editor, not the profile-banner specification.
 ```
 
 ---
+
+## 文章交付提醒
+
+若本次为公众号或 Twitter/X 完整文章准备配图，生成配图之外还需按 [文末素材规则](article-footer.md) 直接复用个人介绍图，放在文章最后并去重。该图不使用本文件的角色、字体与封面约束，不送入生图模型重绘。
 
 ## 快速复用清单
 
@@ -345,7 +367,7 @@ crop; do not assume safety at every ratio. Keep the full figure and title visibl
 - [ ] 金句位置写了吗？（默认右下角）
 - [ ] 封面内容类型与标题来源已确定？文章完整标题已逐字填入，未被六字限制缩写？无字/指定文案等用户要求已优先处理？
 - [ ] 长标题分行后拼回与原文一致，实际目标比例下标题和完整人物均可见？
-- [ ] 用作封面吗？→ 改用「封面模式变体」：文字居中放大 + 全部元素收进中央安全区（否则右下角金句会被裁掉）
+- [ ] 用作封面吗？→ 改用「封面模式变体」并选择平台/展示位与构图；检查缩略图和实际裁剪，不套统一中央区
 - [ ] 所有文字写明「喜脉喜欢体」并附字形参考与笔触描述了吗？封面尺寸是否替换了非封面小字尺寸？
 - [ ] 留白够 40% 吗？
 - [ ] 负面约束都写了吗？
