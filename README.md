@@ -22,7 +22,7 @@
 - **wtt-magazine-deck**：杂志风网页演示生成工具。支持生成自包含横向翻页 HTML deck，覆盖 editorial 与 swiss 两种风格，适用于分享、发布会、报告和作品展示。
 - **wtt-course-pptx-builder**：课程 PPT 构建器。支持将 PDF、DOCX、URL、Markdown 等源文档转换为高质量 SVG 页面并导出为 PPTX，覆盖模板套用、AI 生图、图像搜索、实时预览、图表校准、动画定制和旁白生成等完整流程。
 - **wtt-nine-comic-imagegen**：多风格漫画与信息图提示词生成器。支持 9 号漫画恶搞科普、手绘信息图、四格漫画、线条人插画、生活感人像五种风格，默认输出中文提示词，可直接用于 ChatGPT / 即梦 / Midjourney 等图片生成平台。
-- **wtt-code-animation-studio**：代码动画工坊。将想法、主题、文章或现成剧本制作为前端代码动画，覆盖手绘纸纹、复古印刷、像素、水彩、沙画、粉笔、粒子、黏土、MG 与混合画法，交付中文剧本、分镜、可改源码和带声音的 MP4。
+- **wtt-code-animation-studio**：代码动画工坊。将想法、主题、文章或现成剧本制作为前端代码动画，按内容与实际旁白决定时长，先推荐风格由用户选择再制作，覆盖手绘纸纹、复古印刷网点、像素、水彩、沙画、粉笔、粒子、马赛克、黏土外观、MG 与混合画法，交付中文剧本、分镜、可改源码和带声音的 MP4。
 
 ### 知识库与项目工程
 - **wtt-llm-wiki-builder**：LLM 友好知识库构建工具。支持三种模式：从零搭建 wiki 范式（Build）、增量编译新资料（Compile）、扫描修复已有 wiki 健康问题（Lint）。
@@ -33,25 +33,40 @@
 
 ## 安装与使用
 
-本项目使用 `openskills` 管理和加载技能。
+支持三种安装方式，按所用 Agent 选择。
 
-### 1. 同步技能
-将本仓库中所有技能注册到当前环境：
-
-```bash
-openskills sync
-```
-
-该命令会更新根目录下的 `AGENTS.md` 文件，使 AI 代理能够发现可用技能。
-
-### 2. 使用技能
-同步完成后，可以直接向 AI 代理发出相关指令。代理会检查 `AGENTS.md` 并通过以下方式调用技能：
+### 方式一：Claude Code Plugin 市场（推荐）
+本仓库已注册为 Claude Code Plugin 市场（`.claude-plugin/marketplace.json`），在 Claude Code 中直接安装：
 
 ```bash
-openskills read <技能名>
+# 1. 添加市场
+/plugin marketplace add WaterDJiang/Wattter_openSkills
+
+# 2. 按需安装单个技能，如 auto-poster
+/plugin install wtt-auto-poster-skills@wattter-skills
 ```
 
-使用示例：
+插件名与 marketplace.json 的 `plugins[].name` 一致，格式为 `wtt-<技能名>-skills`。
+
+### 方式二：Codex
+Codex CLI 原生支持 Agent Skills 开放标准，把技能目录放入其技能目录即可被自动发现：
+
+```bash
+git clone https://github.com/WaterDJiang/Wattter_openSkills.git
+mkdir -p ~/.codex/skills
+cp -r Wattter_openSkills/wattter_skills/wtt-auto-poster ~/.codex/skills/
+```
+
+### 方式三：openskills（跨 Agent 通用）
+适用于任何基于 AGENTS.md 发现技能的代理（Codex、Trae 等）：
+
+```bash
+openskills sync          # 将本仓库技能注册到 AGENTS.md
+openskills read <技能名>  # 代理按需读取技能内容
+```
+
+### 调用技能
+安装后直接向 AI 代理发出自然语言指令即可，例如：
 "帮我把这篇文章发布到微信公众号。"
 "帮我收集关于这个话题的信息。"
 
@@ -61,4 +76,4 @@ openskills read <技能名>
 - `.claude-plugin/`：Plugin 市场打包配置。
 
 ## 许可证
-各技能的具体许可信息请查看对应目录。
+本项目采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 许可，禁止商业用途。
