@@ -14,9 +14,19 @@ const fileHash = p => hash(fs.readFileSync(p));
 const errors = [], sourceSha256 = {};
 let browser, encoder, server;
 
+function materialCheck() {
+  return JSON.parse(execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname, 'asset_review.py'), 'check', root], {encoding:'utf8'}));
+}
+
 async function main() {
+  const assetReview = materialCheck();
+  const assetSelection = JSON.parse(fs.readFileSync(path.join(root,'assets.json')));
+  const view = JSON.parse(execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname,'asset_review.py'),'view',root], {encoding:'utf8'}));
+  const approved = new Map(view.selection.assets.map(a=>[a.path,a.sha256]));
+  const approvedLinks = new Set([...assetSelection.links.map(a=>a.url), ...assetSelection.assets.map(a=>a.landingUrl).filter(Boolean)].map(u=>new URL(u).href));
   const t = JSON.parse(fs.readFileSync(path.join(root, 'timeline.json')));
   if (mode === 'render') execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname, 'pipeline.py'), 'check', root], {stdio: 'inherit'});
+  if (t.assetReview?.version!==assetReview.version || t.assetReview?.manifestSha256!==assetReview.manifestSha256) throw Error('时间轴未绑定当前素材锁；重新编译时间轴');
   if (t.filmSha256 !== fileHash(path.join(root, 'film.json'))) throw Error('film.json 已变化；重新编译时间轴');
   let playwright;
   try { playwright = createRequire(path.join(root, 'package.json'))('playwright'); }
@@ -30,7 +40,18 @@ async function main() {
       const name = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
       const file = path.resolve(root, '.' + (name === '/' ? '/index.html' : name));
       if (!file.startsWith(root + path.sep) || !fs.existsSync(file) || !fs.statSync(file).isFile() || !fs.realpathSync(file).startsWith(fs.realpathSync(root) + path.sep)) { res.writeHead(404).end(); return; }
+      const relative=path.relative(root,file).split(path.sep).join('/');
+      if (relative.startsWith('.asset-review/') || relative.startsWith('.voice-local/')) {res.writeHead(403).end();return;}
+      const isCode = !relative.includes('/') && ['.html','.js','.css'].includes(path.extname(relative)) || relative.startsWith('code/') && ['.js','.css','.html'].includes(path.extname(relative));
+      const isControl = ['timeline.json','assets.json'].includes(relative);
+      const isMix = relative==='audio/mix-master.wav';
+      if (!approved.has(relative) && !isCode && !isControl && !isMix) {errors.push(`未登记的素材请求：${relative}`);res.writeHead(403).end();return;}
       const data = fs.readFileSync(file);
+      if (approved.has(relative) && hash(data)!==approved.get(relative)) {errors.push(`素材在渲染中变化：${relative}`);res.writeHead(409).end();return;}
+      if (isMix) {
+        const mix=JSON.parse(fs.readFileSync(path.join(root,'audio/mix-report.json')));
+        if(mix.assetReview?.manifestSha256!==assetReview.manifestSha256 || mix.mixSha256!==hash(data)) {errors.push('混音版本/哈希不符');res.writeHead(409).end();return;}
+      }
       sourceSha256[path.relative(root, file)] = hash(data);
       res.setHeader('Content-Type', mime[path.extname(file)] || 'application/octet-stream');
       res.end(data);
@@ -45,7 +66,21 @@ async function main() {
   page.on('console', e => { if(e.type() === 'error') errors.push(e.text()); });
   page.on('requestfailed', r => errors.push(`${r.url()} ${r.failure()?.errorText}`));
   page.on('response', r => { if(r.status() >= 400) errors.push(`HTTP ${r.status()} ${r.url()}`); });
-  await page.goto(`http://127.0.0.1:${server.address().port}/?export=1`, {waitUntil:'load'});
+  const origin=`http://127.0.0.1:${server.address().port}`;
+  await page.route('**/*', route=>{
+    if(new URL(route.request().url()).origin!==origin){errors.push(`禁止未锁定远程资源：${route.request().url()}`);return route.abort();}
+    const relative=decodeURIComponent(new URL(route.request().url()).pathname.slice(1));
+    if(['image','font','media'].includes(route.request().resourceType()) && !approved.has(relative) && relative!=='audio/mix-master.wav'){errors.push(`媒体未登记：${relative}`);return route.abort();}
+    return route.continue();
+  });
+  const checkLinks = async()=>{
+    const links=await page.evaluate(()=>[...document.querySelectorAll('a[href],area[href],form[action]')].map(e=>e.href||e.action));
+    for(const link of links){if(new URL(link).origin!==origin && !approvedLinks.has(new URL(link).href)){
+      execFileSync(process.env.PYTHON || 'python3',[path.join(__dirname,'asset_review.py'),'observe',root,'--url',link],{stdio:'inherit'});
+      throw Error(`网页导流未在锁定清单中：${link}`);
+    }}
+  };
+  await page.goto(`${origin}/?export=1`, {waitUntil:'load'});
   await page.waitForFunction(() => window.__ready === true, null, {timeout:30000});
   await page.evaluate(() => document.fonts.ready);
   const meta = await page.evaluate(() => window.__filmMeta);
@@ -53,6 +88,7 @@ async function main() {
   const stage = page.locator('#stage');
   const grab = async frame => {
     await page.evaluate(async f => { await window.renderFrame(f); }, frame);
+    await checkLinks();
     return stage.screenshot({type:'png', animations:'allow'});
   };
   const preview = path.join(root, 'preview'); fs.mkdirSync(preview, {recursive:true});
@@ -68,7 +104,7 @@ async function main() {
     const b = hash(await grab(f)); determinism.push({frame:f, sha256:a, repeatSha256:b, match:a===b});
   }
   if (errors.length || determinism.some(c=>!c.match)) throw Error(JSON.stringify({errors,determinism}));
-  const report = {mode, timelineSha256:fileHash(path.join(root,'timeline.json')), browser:browser.version(),
+  const report = {mode, assetReview, timelineSha256:fileHash(path.join(root,'timeline.json')), browser:browser.version(),
     totalFrames:t.totalFrames, durationSeconds:t.durationSeconds, determinism, browserErrors:errors, sourceSha256};
   if (mode === 'render') {
     const log = fs.openSync(path.join(root, 'render-ffmpeg.log'), 'w');
@@ -93,6 +129,9 @@ async function main() {
       report.videoSha256=fileHash(path.join(root,'silent.mp4'));
     } finally { fs.closeSync(log); }
   }
+  const finalAssets=materialCheck();
+  if(finalAssets.manifestSha256!==assetReview.manifestSha256) throw Error('渲染期间素材版本变化；不能验收');
+  if(errors.length) throw Error(errors.join('\n'));
   fs.writeFileSync(path.join(root, mode==='render'?'render-report.json':'preview-report.json'), JSON.stringify(report,null,2)+'\n');
   console.log(`${mode} complete: ${root}`);
 }

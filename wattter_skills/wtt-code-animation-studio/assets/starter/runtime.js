@@ -1,5 +1,13 @@
 /* One timeline drives preview, narration, captions and export. */
 (async () => {
+  const assetResponse = await fetch('assets.json');
+  if (!assetResponse.ok) throw Error('缺少素材声明 assets.json');
+  const assetSelection = await assetResponse.json();
+  window.assetLink = id => {
+    const link = assetSelection.links.find(x=>x.id===id);
+    if(!link) throw Error(`未登记的导流 ID: ${id}`);
+    return link.url;
+  };
   const response = await fetch('timeline.json');
   if (!response.ok) throw Error('先编译 timeline.json');
   const t = await response.json();

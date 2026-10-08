@@ -1,0 +1,25 @@
+{
+  "schema": "code-animation-voice/v1",
+  "defaultVoice": "my-voice",
+  "models": {
+    "qwen3-tts-1.7b-base-mlx": {
+      "path": "./models/qwen3-tts-1.7b-base-mlx",
+      "manifest": "./models/qwen3-tts-1.7b-base-mlx/model-manifest.json"
+    }
+  },
+  "voices": {
+    "my-voice": {
+      "label": "我的旁白",
+      "model": "qwen3-tts-1.7b-base-mlx",
+      "referenceAudio": "./voices/my-voice/reference.wav",
+      "referenceTextFile": "./voices/my-voice/reference.txt",
+      "referenceTextVerified": false,
+      "language": "chinese"
+    }
+  },
+  "generation": {
+    "seed": 42,
+    "temperature": 0.7,
+    "maxTokens": 1200
+  }
+}

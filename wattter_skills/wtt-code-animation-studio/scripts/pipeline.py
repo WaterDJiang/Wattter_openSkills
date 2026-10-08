@@ -10,6 +10,11 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Allow direct script use and module-based unit checks.
+if str(Path(__file__).resolve().parent) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+import asset_review
+
 SCHEMA = 'code-animation/v1'
 
 
@@ -152,12 +157,16 @@ def compile_timeline(root, lock=False):
                 'assetSha256': assets, 'title': c.get('title', ''), 'width': c['width'], 'height': c['height'],
                 'fps': fps, 'totalFrames': cursor, 'durationSeconds': duration,
                 'seed': c.get('seed', 42), 'scenes': shots, 'captions': captions,
-                'captionTiming': 'character-weighted-approximation', 'audioTracks': c.get('audioTracks', [])}
+                'captionTiming': 'character-weighted-approximation', 'audioTracks': c.get('audioTracks', []),
+                'assetReview': asset_review.guard_if_locked(root)}
     return timeline
 
 
 def locked(root):
+    receipt = asset_review.require(root)
     t = read(root / 'timeline.json')
+    if t.get('assetReview') != receipt:
+        raise ValueError('时间轴未绑定当前素材版本；先重新锁时')
     if not t.get('locked'):
         raise ValueError('时间轴尚未锁定：执行 pipeline.py timeline 项目 --lock')
     if t != compile_timeline(root, lock=True):
@@ -166,6 +175,7 @@ def locked(root):
 
 
 def tts(root, voice, rate):
+    asset_review.guard_if_locked(root)
     c = config(root)
     for s in c['scenes']:
         text = s.get('narration', '').strip()
@@ -182,6 +192,7 @@ def tts(root, voice, rate):
         if path.exists() and record.exists() and read(record).get('key') == key and read(record).get('audioSha256') == digest(path):
             print(f'复用：{path.name}')
             continue
+        asset_review.protect_output(root, path)
         if sys.platform != 'darwin' or not shutil.which('say'):
             raise ValueError('本机不支持 macOS say；使用可用 TTS 或用户音频，并按契约登记外部语音')
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -195,6 +206,29 @@ def tts(root, voice, rate):
         print(f'生成：{path.name}')
 
 
+def default_tts(root, system_voice=None, rate=None, voice_config=None, voice_id=None):
+    asset_review.guard_if_locked(root)
+    if system_voice is not None:
+        if voice_config is not None or voice_id is not None:
+            raise ValueError('--voice 为系统音色，不能与 --voice-config/--voice-id 同时使用')
+        return tts(root, system_voice, rate if rate is not None else 205)
+    import voice as voice_tools
+    chosen = voice_tools.discover_config(root, voice_config)
+    if chosen is None:
+        if voice_id is not None:
+            raise ValueError('指定了克隆音色，但未发现声音配置')
+        return tts(root, 'Tingting', rate if rate is not None else 205)
+    if rate is not None:
+        raise ValueError('--rate 仅适用于 macOS 系统配音；已配置克隆音色不支持此参数')
+    selected = voice_tools.load_config(chosen, voice_id)
+    print(f'使用已配置音色：{selected["voiceId"]}（{chosen}）', flush=True)
+    interpreter = chosen.parent / '.venv/bin/python'
+    if not interpreter.is_file():
+        interpreter = Path(sys.executable)
+    run([interpreter, Path(__file__).with_name('voice.py'), 'synthesize',
+         '--config', chosen, '--voice', selected['voiceId'], '--project', root])
+
+
 def mix(root):
     t = locked(root)
     duration = t['durationSeconds']
@@ -203,6 +237,7 @@ def mix(root):
     args = ['ffmpeg', '-y', '-v', 'error', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo']
     tracks = [(s['voice'], s['voiceStartFrame'] / t['fps'], 1.0) for s in t['scenes'] if s['voice']]
     tracks += [(s['file'], s.get('startSeconds', 0), s.get('gain', .2)) for s in t['audioTracks']]
+    asset_review.registered(root, [str(file) for file, _, _ in tracks])
     filters, labels = [], ['[0:a]']
     for i, (file, start, gain) in enumerate(tracks, 1):
         args += ['-i', local(root, file)]
@@ -213,33 +248,52 @@ def mix(root):
     filter_path = out / 'mix-filter.txt'
     filter_path.write_text(';\n'.join(filters))
     run(args + ['-filter_complex_script', filter_path, '-map', '[out]', '-t', duration, out / 'mix-master.wav'])
-    write(out / 'mix-report.json', {'timelineSha256': digest(root / 'timeline.json'),
+    receipt = asset_review.require(root)
+    write(out / 'mix-report.json', {'assetReview': receipt, 'timelineSha256': digest(root / 'timeline.json'),
           'mixSha256': digest(out / 'mix-master.wav'), 'durationSeconds': duration, 'tracks': len(tracks)})
 
 
 def check_mix(root):
     report = read(root / 'audio/mix-report.json')
+    if report.get('assetReview') != asset_review.require(root):
+        raise ValueError('混音素材版本已过期')
     if report['timelineSha256'] != digest(root / 'timeline.json') or report['mixSha256'] != digest(root / 'audio/mix-master.wav'):
         raise ValueError('混音已过期，重新执行 mix')
 
 
-def finish(root):
+def check_render(root):
     t = locked(root)
     check_mix(root)
     r = read(root / 'render-report.json')
+    if r.get('assetReview') != t['assetReview']:
+        raise ValueError('渲染素材版本已过期；不能验收旧版本')
     if r.get('mode') != 'render' or r['timelineSha256'] != digest(root / 'timeline.json') or r['videoSha256'] != digest(root / 'silent.mp4'):
         raise ValueError('画面已过期，重新执行 render')
     for name, expected in r.get('sourceSha256', {}).items():
         if digest(local(root, name)) != expected:
             raise ValueError(f'渲染源文件已变化：{name}；重新执行 render')
+    return t
+
+
+def finish(root):
+    t = check_render(root)
     run(['ffmpeg', '-y', '-v', 'error', '-i', root / 'silent.mp4', '-i', root / 'audio/mix-master.wav',
          '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
          '-movflags', '+faststart', root / 'final.mp4'])
+    asset_review.require(root)
+    write(root / 'finalization.json', {'assetReview': t['assetReview'],
+          'finalSha256': digest(root / 'final.mp4'), 'renderReportSha256': digest(root / 'render-report.json'),
+          'mixReportSha256': digest(root / 'audio/mix-report.json')})
     validate(root)
 
 
 def validate(root):
-    t = locked(root)
+    t = check_render(root)
+    finalization = read(root / 'finalization.json')
+    expected_receipt = {'assetReview': t['assetReview'], 'finalSha256': digest(root / 'final.mp4'),
+        'renderReportSha256': digest(root / 'render-report.json'), 'mixReportSha256': digest(root / 'audio/mix-report.json')}
+    if finalization != expected_receipt:
+        raise ValueError('成片未绑定当前素材、画面和混音；重新 finish，不能重写哈希报告跳过')
     file = root / 'final.mp4'
     m = probe(file)
     video = next(s for s in m['streams'] if s['codec_type'] == 'video')
@@ -259,8 +313,9 @@ def validate(root):
     peak = float(match[1]) if match else None
     if peak is not None and peak >= 0:
         raise ValueError('音频达到 0 dBFS；降低母带峰值后重混')
+    asset_review.require(root)
     write(root / 'media-info.json', m)
-    write(root / 'delivery-check.json', {'passed': True, 'durationSeconds': t['durationSeconds'],
+    write(root / 'delivery-check.json', {'passed': True, 'assetReview': t['assetReview'], 'durationSeconds': t['durationSeconds'],
           'totalFrames': t['totalFrames'], 'decodeErrors': [], 'samplePeakDbfs': peak,
           'finalSha256': digest(file), 'timelineSha256': digest(root / 'timeline.json'),
           'visualReview': 'pending-human-or-agent-image-inspection', 'userAcceptance': 'pending'})
@@ -274,9 +329,24 @@ def init(root):
     shutil.copytree(base / 'assets/starter', root, dirs_exist_ok=True)
     target = root / 'tools'
     target.mkdir()
-    for name in ('pipeline.py', 'render.cjs'):
+    for name in ('pipeline.py', 'render.cjs', 'voice.py', 'asset_review.py'):
         shutil.copy2(base / 'scripts' / name, target / name)
+    (root / 'config').mkdir()
+    for name in ('model-catalog.json', 'voice.example.json'):
+        shutil.copy2(base / 'config' / name, root / 'config' / name)
+    shutil.copy2(base / 'requirements-voice.txt', root / 'requirements-voice.txt')
+    shutil.copy2(base / 'references/voice.md', root / 'VOICE.md')
+    shutil.copy2(base / 'references/material-review.md', root / 'ASSETS.md')
+    shutil.copy2(base / '.gitignore', root / '.gitignore')
     print(f'已创建起步项目：{root}；先按用户内容改 film.json 和 scenes.js')
+    import voice as voice_tools
+    report = voice_tools.doctor(root)
+    print('声音首次检查：' + report['nextStep'])
+    for issue in report['issues']:
+        print('提醒：' + issue)
+    if report['issues']:
+        print('可先继续剧本和画面；普通配音沿用系统/外部路线。已指定个人音色时，合成前须补齐配置。')
+
 
 
 def main():
@@ -284,16 +354,26 @@ def main():
     p.add_argument('command', choices=['init', 'timeline', 'tts', 'mix', 'check', 'finish', 'validate'])
     p.add_argument('project', type=Path)
     p.add_argument('--lock', action='store_true')
-    p.add_argument('--voice', default='Tingting')
-    p.add_argument('--rate', type=int, default=205)
+    p.add_argument('--voice', help='显式使用 macOS 系统音色，覆盖已配置的个人音色')
+    p.add_argument('--rate', type=int, help='macOS say 语速，缺省 205')
+    p.add_argument('--voice-config', type=Path, help='覆盖自动发现的声音配置')
+    p.add_argument('--voice-id', help='覆盖配置中的 defaultVoice')
     a = p.parse_args()
     root = a.project.resolve()
     if a.command == 'init': init(root)
     elif a.command == 'timeline':
+        if a.lock:
+            asset_review.require(root)
+            c = config(root)
+            media = [s.get('voice', f'audio/{s["id"]}.wav') for s in c['scenes'] if s.get('narration', '').strip()]
+            media += [t['file'] for t in c.get('audioTracks', [])]
+            asset_review.registered(root, media)
+        else:
+            asset_review.guard_if_locked(root)
         t = compile_timeline(root, a.lock)
         write(root / 'timeline.json', t)
         print(f'{"已锁定" if a.lock else "估时预览"}：{t["totalFrames"]} 帧 / {t["durationSeconds"]:.3f}s')
-    elif a.command == 'tts': tts(root, a.voice, a.rate)
+    elif a.command == 'tts': default_tts(root, a.voice, a.rate, a.voice_config, a.voice_id)
     elif a.command == 'mix': mix(root)
     elif a.command == 'check': locked(root)
     elif a.command == 'finish': finish(root)
