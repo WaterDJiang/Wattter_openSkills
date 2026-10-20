@@ -105,3 +105,7 @@
 已有工程验证覆盖扁平/沙画/粒子示例及其动作组合；本目录的其他方向是指导 agent 按本片实现的配方，没有逐风格真实成片验证。推荐时按这一边界说明，不能把外部热门案例当成本 Skill 的已交付效果。
 
 可供后续研究的作者公开项目：[ClaudeAnimationBase](https://github.com/JohnHeibel/ClaudeAnimationBase)、[riso-windowseat](https://github.com/sevenevesai/riso-windowseat)。使用其代码或资产前实际检查许可、依赖与运行行为；本目录不要求安装或复制它们。热度数字会过期，不写入执行规则。
+
+## 类型与叠加效果不增加风格枚举
+
+界面变形、像素循环、历史影像、真人混合和公式推演是 [制作类型](video-formats.md)，可与上面的风格组合。CRT 扫描线/曲面、胶片颗粒、运动模糊是效果层；不要与沙画或角色身份互斥。新技术先验证小样，不把条目加入目录就宣称已有渲染后端。

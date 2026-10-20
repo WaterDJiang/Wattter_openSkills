@@ -30,6 +30,9 @@ Canvas、p5.js、SVG、PixiJS、Three.js 负责画面；统一时间轴负责哪
 | 任意主体的粒子构成与聚散 | 主体采样点集 + 固定映射 + 动作变换 | 真正深度遮挡、灯光和后期特效才用 Three.js |
 | 流程、公式和复杂排版 | Canvas/SVG/DOM | 现成网页布局可 DOM + 暂停的 GSAP 时间轴 |
 | 真正三维模型和材质 | Three.js / WebGL | 明确相机和资产，不把 2D 投影称作真实 3D |
+| 屏幕质感/复古电视 | Canvas 或 WebGL 后处理 | CRT 扫描线、曲面、色差属效果层，先做开/关对照，不能替代主体设计 |
+| 写实人物/复杂表演 | 已有视频 + 代码场景合成 | 需抠像/透明素材与精确解码；未验证适配不得声称纯代码人物已实现 |
+| 复杂数学推演 | SVG/Canvas 或评估 Manim | Manim 是独立 Python 渲染路线；导出/素材审阅须单独衔接 |
 | 已有 React 视频与复杂多轨 | Remotion 可作宿主 | 采用其帧时钟和实际导出命令，不嵌套独立时钟 |
 
 ### 起步实现的范围
@@ -69,3 +72,15 @@ Canvas、p5.js、SVG、PixiJS、Three.js 负责画面；统一时间轴负责哪
 - GSAP 的定位与暂停见 [Timeline](https://gsap.com/docs/v3/GSAP/Timeline/)。
 - Three.js 的显式渲染和循环接口见 [WebGLRenderer](https://threejs.org/docs/pages/WebGLRenderer.html)。
 - Remotion 的帧语义见 [useCurrentFrame 源码](https://github.com/remotion-dev/remotion/blob/main/packages/core/src/use-current-frame.ts) 与 [时间偏移规则](https://www.remotion.dev/docs/timing)。
+
+## 扩展路线的接入要求
+
+- **UI 连续变形**：共享外容器和状态 ID，尺寸/圆角/内容由同一个 frame 求值；鼠标按下、拖动值、松手回弹有明确区间。解析弹簧或固定初始条件求值，不在任意 seek 后继续积累速度。文字独立出入场，检查变形时新旧内容重叠和缩放后的模糊。
+- **像素动作**：小逻辑画布先整数网格绘制，再整数倍放大，关闭平滑；角色按离散姿态采样，粒子仍可以每帧求值。未变形的画面也必须重建，避免依赖上一帧残留。
+- **CRT/胶片后处理**：属于叠加层，可用于像素、图形或三维场景，不另造互斥风格。先导出有/无后处理同帧对照，确认效果生效且不损失字幕；需要时用 WebGL readPixels 辅助定位，不能仅凭“没有异常”判断生效。
+- **p5.brush**：只在手绘笔触确有必要时选用，核对所选 p5/插件版本和许可证，固定依赖；随机笔触预生成或按 seed 重放，不能让笔刷历史累积破坏乱序重画。当前未内置该插件适配器。
+- **真人合成**：先检查源视频帧率、时长、颜色/透明信息与裁切；按目标 frame 解码到指定源帧并等待就绪，不使用自动播放作为导出时钟。抠像前后保留边缘对照；原片与派生透明序列/视频各自登记素材哈希。当前工具未内置逐帧视频解码或 chroma-key 处理器。
+- **HyperFrames/Remotion**：是编排宿主，不是画风。不因按秒或按帧这一点断言谁更高级；需实际验证随机定位、字体/媒体等待、素材审阅和导出回执。现有浏览器报告不能充当外部宿主已验证的证据。
+- **Manim**：用于数学对象/变换的候选路线；用其自己的真实渲染命令输出，经相同媒体检查和素材审阅接入；不把 Manim MP4 伪装为本项目 browser render-report。当前不安装或承诺现成适配器。
+
+API 核对入口：[GSAP seek](https://gsap.com/docs/v3/GSAP/Timeline/seek()/)、[WebGL readPixels](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/readPixels)、[Remotion useCurrentFrame](https://www.remotion.dev/docs/use-current-frame)、[Manim 官方文档](https://docs.manim.community/en/stable/)。选用时再核对具体版本。

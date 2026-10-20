@@ -86,7 +86,10 @@ async function main() {
   const meta = await page.evaluate(() => window.__filmMeta);
   if (!meta || ['width','height','fps','totalFrames'].some(k => meta[k] !== t[k])) throw Error('页面 __filmMeta 与时间轴不符');
   const stage = page.locator('#stage');
+  let grabbedFrames=0;
+  const previewStarted=Date.now();
   const grab = async frame => {
+    grabbedFrames++;
     await page.evaluate(async f => { await window.renderFrame(f); }, frame);
     await checkLinks();
     return stage.screenshot({type:'png', animations:'allow'});
@@ -96,6 +99,13 @@ async function main() {
   const samples = new Set([0, t.totalFrames - 1]);
   for (const s of t.scenes) for (const f of [s.startFrame, s.startFrame + Math.floor(s.durationFrames / 2), s.endFrame - 1]) samples.add(f);
   for (const c of t.captions) samples.add(Math.floor((c.startFrame + c.endFrame - 1) / 2));
+  // Beat grid is sampled for long clips; every declared action gets before/on/after evidence.
+  const beatFrames=(t.rhythm?.beats||[]).map(b=>b.frame);
+  const beatSamples=[...new Set(beatFrames.length<=64?beatFrames:Array.from({length:64},(_,i)=>beatFrames[Math.round(i*(beatFrames.length-1)/63)]))];
+  for(const f of beatSamples)samples.add(f);
+  for(const e of t.rhythm?.events||[])for(const f of [e.frame-1,e.frame,e.frame+1])if(f>=0&&f<t.totalFrames)samples.add(f);
+  const loopFrames=t.loop?[...new Set([0,1,2,t.totalFrames-3,t.totalFrames-2,t.totalFrames-1].filter(f=>f>=0&&f<t.totalFrames))]:[];
+  for(const f of loopFrames)samples.add(f);
   for (const f of [...samples].sort((a,b)=>a-b)) fs.writeFileSync(path.join(preview, `frame-${String(f).padStart(6,'0')}.png`), await grab(f));
   const determinism = [];
   const tests = [...new Set([0, .19, .47, .79, 1].map(x=>Math.round(x*(t.totalFrames-1))))];
@@ -104,7 +114,16 @@ async function main() {
     const b = hash(await grab(f)); determinism.push({frame:f, sha256:a, repeatSha256:b, match:a===b});
   }
   if (errors.length || determinism.some(c=>!c.match)) throw Error(JSON.stringify({errors,determinism}));
-  const report = {mode, assetReview, timelineSha256:fileHash(path.join(root,'timeline.json')), browser:browser.version(),
+  const previewWallSeconds=(Date.now()-previewStarted)/1000;
+  const sampleFrames=[...samples].sort((a,b)=>a-b);
+  const previewCoverage={sampleFrames,beatCount:beatFrames.length,beatSampleCount:beatSamples.length,
+    eventCount:(t.rhythm?.events||[]).length,loopFrames,
+    loopStatus:t.loop?'sampled-needs-motion-and-audio-review':'not-requested'};
+  const previewPerformance={wallSeconds:previewWallSeconds,screenshotCalls:grabbedFrames,
+    estimatedRenderSeconds:previewWallSeconds/Math.max(1,grabbedFrames)*t.totalFrames,
+    estimateScope:'画面截图粗估；不含浏览器启动、完整编码与混音，不是完成时间承诺'};
+  fs.writeFileSync(path.join(preview,'index.html'),'<!doctype html><meta charset="utf-8"><title>逐帧审阅</title><style>body{background:#eee;font:14px system-ui}main{display:flex;flex-wrap:wrap;gap:12px}figure{margin:0;background:white;padding:8px}img{max-width:320px;height:auto}</style><h1>逐帧审阅</h1><p>抽样证据不等于观感通过；检查事件前后、文字和循环接缝。</p><main>'+sampleFrames.map(f=>`<figure><img loading="lazy" src="frame-${String(f).padStart(6,'0')}.png"><figcaption>帧 ${f} · ${(f/t.fps).toFixed(3)}s</figcaption></figure>`).join('')+'</main>');
+  const report = {mode, assetReview, previewCoverage, previewPerformance, timelineSha256:fileHash(path.join(root,'timeline.json')), browser:browser.version(),
     totalFrames:t.totalFrames, durationSeconds:t.durationSeconds, determinism, browserErrors:errors, sourceSha256};
   if (mode === 'render') {
     const log = fs.openSync(path.join(root, 'render-ffmpeg.log'), 'w');

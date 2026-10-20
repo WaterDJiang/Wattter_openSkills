@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 # Allow direct script use and module-based unit checks.
@@ -99,6 +100,60 @@ def caption_parts(text):
     return pieces
 
 
+def compile_rhythm(value, fps, total_frames, scenes):
+    """Quantize absolute beat times once; never retime narration or infer beats from audio."""
+    if not isinstance(value, dict): raise ValueError('rhythm 必须为对象')
+    allowed = {'bpm', 'offsetSeconds', 'beatTimesSeconds', 'beatsPerBar', 'basis', 'audioFile', 'events'}
+    if set(value) - allowed: raise ValueError('rhythm 含未知字段')
+    if ('bpm' in value) == ('beatTimesSeconds' in value):
+        raise ValueError('rhythm 只选 bpm 或 beatTimesSeconds 一种节拍来源')
+    basis = value.get('basis', '')
+    if not isinstance(basis, str) or not basis.strip(): raise ValueError('rhythm.basis 须说明节拍来源与核对依据')
+    per_bar = value.get('beatsPerBar', 4)
+    if type(per_bar) is not int or per_bar < 1: raise ValueError('beatsPerBar 须为正整数')
+    def quantize(t): return math.floor(t * fps + Fraction(1, 2))
+    if 'bpm' in value:
+        bpm = number(value['bpm'], 'rhythm.bpm', .01)
+        if bpm > fps * 60: raise ValueError('拍点间隔小于一帧，无法表示')
+        offset = Fraction(str(number(value.get('offsetSeconds', 0), 'rhythm.offsetSeconds')))
+        step = Fraction(60) / Fraction(str(bpm))
+        times = []
+        i = 0
+        while quantize(offset + step * i) < total_frames:
+            times.append(offset + step * i); i += 1
+    else:
+        if 'offsetSeconds' in value: raise ValueError('beatTimesSeconds 已是全片绝对时间，不再叠加 offsetSeconds')
+        raw = value['beatTimesSeconds']
+        if not isinstance(raw, list) or not raw: raise ValueError('beatTimesSeconds 不能为空')
+        times = [Fraction(str(number(t, 'beatTimesSeconds'))) for t in raw]
+        if any(a >= b for a, b in zip(times, times[1:])): raise ValueError('拍点必须严格递增')
+    if not times: raise ValueError('片内没有有效拍点')
+    frames = [quantize(t) for t in times]
+    if any(f >= total_frames for f in frames): raise ValueError('拍点超出片尾半开区间')
+    if len(set(frames)) != len(frames): raise ValueError('多个拍点量化到同一帧，请调整节拍网格或帧率')
+    beats = [{'beat': i, 'frame': f, 'seconds': f / fps, 'bar': i // per_bar,
+              'beatInBar': i % per_bar} for i, f in enumerate(frames)]
+    events, ids = [], set()
+    raw_events = value.get('events', [])
+    if not isinstance(raw_events, list): raise ValueError('rhythm.events 须为数组')
+    for event in raw_events:
+        if not isinstance(event, dict) or set(event) - {'id', 'beat', 'action', 'sceneId'}:
+            raise ValueError('rhythm.events 字段仅 id/beat/action/sceneId')
+        eid, beat, action = event.get('id'), event.get('beat'), event.get('action')
+        if not isinstance(eid, str) or not re.fullmatch(r'[a-z][a-z0-9-]*', eid) or eid in ids:
+            raise ValueError('节奏事件 id 必须唯一且为 kebab-case')
+        ids.add(eid)
+        if type(beat) is not int or not 0 <= beat < len(beats): raise ValueError('事件 beat 越界，拍号从 0 开始')
+        if not isinstance(action, str) or not action.strip(): raise ValueError('节奏事件 action 不能为空')
+        frame = frames[beat]
+        scene = next(s for s in scenes if s['startFrame'] <= frame < s['endFrame'])
+        if 'sceneId' in event and event['sceneId'] != scene['id']:
+            raise ValueError(f'节奏事件 {eid} 不在声明的 sceneId 内；旁白或镜头时长可能已变化')
+        events.append(dict(event, frame=frame, seconds=frame / fps, sceneId=scene['id']))
+    return {'basis': basis, 'audioFile': value.get('audioFile'), 'beatsPerBar': per_bar,
+            'beats': beats, 'events': events}
+
+
 def compile_timeline(root, lock=False):
     c = config(root)
     fps, cursor, shots, captions, assets = c['fps'], 0, [], [], {}
@@ -143,7 +198,17 @@ def compile_timeline(root, lock=False):
     duration = cursor / fps
     if c.get('maxSeconds') is not None and duration > number(c['maxSeconds'], 'maxSeconds', .01) + 1 / fps:
         raise ValueError(f'内容需要 {duration:.3f}s，超过 maxSeconds={c["maxSeconds"]}；修改剧本或时长约束，不能裁切语音')
-    for track in c.get('audioTracks', []):
+    rhythm = compile_rhythm(c['rhythm'], fps, cursor, shots) if 'rhythm' in c else None
+    tracks = [dict(track) for track in c.get('audioTracks', [])]
+    if rhythm and rhythm['audioFile'] is not None and rhythm['audioFile'] not in [t['file'] for t in tracks]:
+        raise ValueError('rhythm.audioFile 必须引用本片 audioTracks 中的音频，沿素材锁校验')
+    for track in tracks:
+        if 'startBeat' in track:
+            beat = track.pop('startBeat')
+            if 'startSeconds' in track: raise ValueError('startBeat 与 startSeconds 不能同时指定')
+            if not rhythm or type(beat) is not int or not 0 <= beat < len(rhythm['beats']):
+                raise ValueError('startBeat 需要有效节拍网格及片内整数拍号')
+            track['startSeconds'] = rhythm['beats'][beat]['frame'] / fps
         path = local(root, track['file'])
         start = number(track.get('startSeconds', 0), 'audioTracks.startSeconds')
         number(track.get('gain', .2), 'audioTracks.gain')
@@ -157,8 +222,12 @@ def compile_timeline(root, lock=False):
                 'assetSha256': assets, 'title': c.get('title', ''), 'width': c['width'], 'height': c['height'],
                 'fps': fps, 'totalFrames': cursor, 'durationSeconds': duration,
                 'seed': c.get('seed', 42), 'scenes': shots, 'captions': captions,
-                'captionTiming': 'character-weighted-approximation', 'audioTracks': c.get('audioTracks', []),
+                'captionTiming': 'character-weighted-approximation', 'audioTracks': tracks,
                 'assetReview': asset_review.guard_if_locked(root)}
+    if rhythm is not None: timeline['rhythm'] = rhythm
+    if 'loop' in c:
+        if type(c['loop']) is not bool: raise ValueError('loop 须为布尔值；它只请求首尾接缝审查')
+        timeline['loop'] = c['loop']
     return timeline
 
 
