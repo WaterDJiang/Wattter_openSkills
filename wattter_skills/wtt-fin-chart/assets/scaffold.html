@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Financial Insight Chart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fin-chart.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="report-header">
+      <div class="header-meta">
+        <span class="kicker">FINANCIAL INSIGHT</span>
+        <span id="periodLabel">FY2022-FY2025</span>
+      </div>
+      <div class="header-grid">
+        <div>
+          <h1 id="reportTitle">Growth is compounding while margin quality improves</h1>
+          <p id="reportSubtitle">ExampleCo revenue scaled at a 22.6% CAGR, with operating leverage visible across gross margin, operating margin, and free cash flow conversion.</p>
+        </div>
+        <div class="source-box">
+          <span>Source</span>
+          <strong id="sourceLabel">User-provided data</strong>
+          <small id="unitLabel">USD millions unless noted</small>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-grid">
+        <article class="thesis-panel">
+          <span class="section-label">Core read</span>
+          <h2 id="thesisTitle">The business is not just larger; it is structurally better.</h2>
+          <p id="thesisBody">Growth, gross margin, and cash generation are moving in the same direction. That combination is a stronger signal than revenue acceleration alone.</p>
+          <ul id="signalList" class="signal-list">
+            <li><strong>Revenue:</strong> +22.6% CAGR over four fiscal years.</li>
+            <li><strong>Gross margin:</strong> +7 pts, suggesting mix or pricing improvement.</li>
+            <li><strong>FCF:</strong> conversion rose from 10.2% to 17.7%.</li>
+          </ul>
+        </article>
+
+        <article class="metric-strip" id="metricStrip"></article>
+      </section>
+
+      <section class="chart-grid">
+        <article class="chart-panel span-8">
+          <div class="panel-header">
+            <div>
+              <span class="section-label">Scale and quality</span>
+              <h3>Revenue expansion is arriving with higher margin</h3>
+            </div>
+            <p>Readout: Bars show scale; lines show whether each extra dollar is becoming more profitable.</p>
+          </div>
+          <div id="chartRevenueMargin" class="chart"></div>
+        </article>
+
+        <article class="chart-panel span-4">
+          <div class="panel-header compact">
+            <div>
+              <span class="section-label">Mix shift</span>
+              <h3>Subscription now drives most growth</h3>
+            </div>
+          </div>
+          <div id="chartSegmentMix" class="chart chart-small"></div>
+          <p class="chart-note">Subscription share rose as services stayed comparatively flat.</p>
+        </article>
+
+        <article class="chart-panel span-6">
+          <div class="panel-header">
+            <div>
+              <span class="section-label">Cash conversion</span>
+              <h3>Free cash flow scales faster than revenue</h3>
+            </div>
+            <p>Readout: FCF margin shows whether accounting profit is becoming cash.</p>
+          </div>
+          <div id="chartCashFlow" class="chart"></div>
+        </article>
+
+        <article class="chart-panel span-6">
+          <div class="panel-header">
+            <div>
+              <span class="section-label">Profit bridge</span>
+              <h3>Operating profit bridge isolates the drivers</h3>
+            </div>
+            <p>Readout: Use bridge charts when the audience needs cause, not just trend.</p>
+          </div>
+          <div id="chartBridge" class="chart"></div>
+        </article>
+      </section>
+
+      <section class="chart-grid">
+        <article class="chart-panel span-6">
+          <div class="panel-header">
+            <div>
+              <span class="section-label">P&L structure</span>
+              <h3>Common-size P&L shows where each revenue dollar goes</h3>
+            </div>
+            <p>Readout: Negative bars expose cost intensity; the line shows operating margin after cost absorption.</p>
+          </div>
+          <div id="chartPnlCommonSize" class="chart"></div>
+        </article>
+
+        <article class="chart-panel span-6">
+          <div class="panel-header">
+            <div>
+              <span class="section-label">Expense mix</span>
+              <h3>Latest-period cost structure is concentrated in delivery and go-to-market</h3>
+            </div>
+            <p>Readout: The donut is for current cost mix only; use trend charts for cost scaling.</p>
+          </div>
+          <div id="chartExpenseMix" class="chart"></div>
+        </article>
+
+        <article class="chart-panel span-6">
+          <div class="panel-header">
+            <div>
+              <span class="section-label">Balance sheet</span>
+              <h3>Assets and funding base expand without breaking the equity cushion</h3>
+            </div>
+            <p>Readout: Compare asset stack with liabilities plus equity to check capital structure.</p>
+          </div>
+          <div id="chartBalanceSheet" class="chart"></div>
+        </article>
+
+        <article class="chart-panel span-6">
+          <div class="panel-header">
+            <div>
+              <span class="section-label">Cash statement</span>
+              <h3>Operating cash flow covers reinvestment while financing needs fall</h3>
+            </div>
+            <p>Readout: CFO, investing, and financing bars reveal whether cash generation is self-funded.</p>
+          </div>
+          <div id="chartCashFlowStatement" class="chart"></div>
+        </article>
+
+        <article class="chart-panel span-6">
+          <div class="panel-header">
+            <div>
+              <span class="section-label">Margin ladder</span>
+              <h3>Gross, operating, net, and FCF margins move in the same direction</h3>
+            </div>
+            <p>Readout: The ladder separates quality of revenue from opex leverage and cash conversion.</p>
+          </div>
+          <div id="chartMarginLadder" class="chart"></div>
+        </article>
+
+        <article class="chart-panel span-6">
+          <div class="panel-header">
+            <div>
+              <span class="section-label">Financial health</span>
+              <h3>Liquidity remains above leverage while asset turnover improves</h3>
+            </div>
+            <p>Readout: Ratio trends are directional checks; keep denominators explicit in the data file.</p>
+          </div>
+          <div id="chartRatioTrend" class="chart"></div>
+        </article>
+      </section>
+
+      <section class="insight-grid">
+        <article>
+          <span class="section-label">Implication</span>
+          <h3>Management should protect the margin engine.</h3>
+          <p>When scale and margin improve together, growth quality depends on mix, pricing discipline, and operating cost absorption. The next review should separate volume, price, and retention effects.</p>
+        </article>
+        <article>
+          <span class="section-label">Risk</span>
+          <h3>Services drag can hide customer expansion signals.</h3>
+          <p>A flat services line is not necessarily bad, but if it carries onboarding, support, or enterprise implementation load, margin quality may be overstated without cohort-level analysis.</p>
+        </article>
+        <article>
+          <span class="section-label">Next data request</span>
+          <h3>Ask for retention, CAC payback, and segment gross margin.</h3>
+          <p>The current view proves directional quality. It does not yet prove durability. Add NRR, logo retention, CAC payback, and segment contribution margin to test whether this compounding can persist.</p>
+        </article>
+      </section>
+
+      <footer class="assumption-footer">
+        <div>
+          <strong>Assumptions</strong>
+          <span id="assumptionText">Fiscal year ends Dec 31. Amounts are rounded. Percentages are shown as absolute margin percentages.</span>
+        </div>
+        <div class="footer-mark">wtt-fin-chart</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+  <script src="js/fin-chart.js"></script>
+  <script>
+    const FIN_DATA = {
+      company: "ExampleCo",
+      currency: "USD",
+      unit: "million",
+      periodLabel: "FY2022-FY2025",
+      source: "User-provided data",
+      assumptions: [
+        "Fiscal year ends Dec 31",
+        "Amounts are rounded",
+        "Percentages are shown as absolute margin percentages"
+      ],
+      periods: ["2022", "2023", "2024", "2025"],
+      metrics: {
+        revenue: [820, 1040, 1260, 1510],
+        grossProfit: [476, 634, 794, 982],
+        cogs: [344, 406, 466, 528],
+        salesMarketing: [185, 225, 258, 285],
+        researchDevelopment: [120, 150, 178, 206],
+        generalAdmin: [73, 103, 131, 174],
+        operatingIncome: [98, 156, 227, 317],
+        netIncome: [62, 104, 154, 226],
+        operatingCashFlow: [118, 170, 244, 336],
+        capex: [-34, -34, -50, -68],
+        investingCashFlow: [-62, -88, -125, -160],
+        financingCashFlow: [8, -12, -30, -45],
+        currentAssets: [430, 520, 660, 850],
+        nonCurrentAssets: [520, 640, 830, 1000],
+        totalAssets: [950, 1160, 1490, 1850],
+        currentLiabilities: [240, 290, 340, 405],
+        nonCurrentLiabilities: [210, 240, 310, 370],
+        totalLiabilities: [450, 530, 650, 775],
+        totalDebt: [260, 300, 390, 450],
+        shareholdersEquity: [500, 630, 840, 1075],
+        grossMargin: [0.58, 0.61, 0.63, 0.65],
+        operatingMargin: [0.12, 0.15, 0.18, 0.21],
+        fcf: [84, 136, 194, 268]
+      },
+      segments: [
+        { name: "Subscription", values: [510, 690, 890, 1110] },
+        { name: "Services", values: [310, 350, 370, 400] }
+      ],
+      bridge: [
+        { name: "FY2022 OP", value: 98 },
+        { name: "Revenue scale", value: 145 },
+        { name: "Gross margin", value: 76 },
+        { name: "Opex drag", value: -2 },
+        { name: "FY2025 OP", value: 317, total: true }
+      ]
+    };
+
+    FinChart.renderTemplateReport(FIN_DATA);
+  </script>
+</body>
+</html>

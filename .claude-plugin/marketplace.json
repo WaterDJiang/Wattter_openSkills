@@ -191,6 +191,20 @@
         "name": "Water",
         "email": "wattterjiang@gmail.com"
       }
+    },
+    {
+      "name": "wtt-fin-chart-skills",
+      "description": "Turns financial data, KPIs, spreadsheets (CSV/Excel), and investor materials into insight-rich HTML financial charts, dashboards, operating analysis pages, and board-ready interactive data stories, with long-screenshot PNG backups.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-fin-chart"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     }
   ]
 }

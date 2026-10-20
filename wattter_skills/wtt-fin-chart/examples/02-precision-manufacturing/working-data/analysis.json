@@ -1,0 +1,642 @@
+{
+  "sourceFile": "01-quarterly-statements.md + 02-balance-sheet-and-cashflow.md + 03-customer-and-cross-dimensional.md",
+  "company": "MingYuan Precision (东莞市铭远精密结构件)",
+  "currency": "CNY",
+  "unit": "million",
+  "periodLabel": "FY2023 - FY2025E (annual)",
+  "reportType": "Board / pre-IPO review",
+  "audience": "Founder, CFO, IPO sponsor, lead investors",
+  "source": "Audited financial statements + management projections",
+  "fiscalYear": "Calendar year (Jan-Dec)",
+  "asOfDate": "2025-09-30 (interim); 2025-12-31E (full year forecast)",
+  "assumptions": [
+    "Currency: CNY millions. 2024 + onward audited; 2025 Q4 is management forecast.",
+    "Periods: FY2023 actual, FY2024 actual, FY2025E (Jan-Sep actual + Oct-Dec plan).",
+    "Margins computed with the same denominator (total revenue).",
+    "Tax rate: 15% (高新技术企业 + 专精特新 since 2024).",
+    "Customer names anonymized (A-J) due to NDA; industry tags retained.",
+    "FY2025E revenue and margins reflect current backlog + seasonal Q4 pattern + ongoing capex absorption."
+  ],
+  "periods": [
+    "FY2023",
+    "FY2024",
+    "FY2025E"
+  ],
+  "metrics": {
+    "revenue": [
+      492.1,
+      550.1,
+      757.3
+    ],
+    "cogs": [
+      348.9,
+      384.0,
+      535.0
+    ],
+    "grossProfit": [
+      143.2,
+      166.1,
+      222.3
+    ],
+    "salesMarketing": [
+      19.6,
+      22.2,
+      28.2
+    ],
+    "researchDevelopment": [
+      24.1,
+      32.7,
+      41.5
+    ],
+    "generalAdmin": [
+      32.0,
+      39.0,
+      48.5
+    ],
+    "otherOpex": [
+      4.0,
+      4.6,
+      4.6
+    ],
+    "operatingIncome": [
+      63.5,
+      67.6,
+      99.5
+    ],
+    "netIncome": [
+      53.9,
+      67.0,
+      105.0
+    ],
+    "operatingCashFlow": [
+      41.6,
+      45.5,
+      75.5
+    ],
+    "capex": [
+      -52.4,
+      -85.6,
+      -82.0
+    ],
+    "fcf": [
+      -10.8,
+      -40.1,
+      -6.5
+    ],
+    "investingCashFlow": [
+      -49.4,
+      -78.1,
+      -71.5
+    ],
+    "financingCashFlow": [
+      3.0,
+      23.8,
+      -18.5
+    ],
+    "currentAssets": [
+      217.8,
+      296.0,
+      381.4
+    ],
+    "nonCurrentAssets": [
+      210.5,
+      298.9,
+      341.5
+    ],
+    "totalAssets": [
+      428.3,
+      594.9,
+      722.9
+    ],
+    "currentLiabilities": [
+      154.7,
+      214.2,
+      282.5
+    ],
+    "nonCurrentLiabilities": [
+      43.4,
+      100.5,
+      136.7
+    ],
+    "totalLiabilities": [
+      198.1,
+      314.7,
+      419.2
+    ],
+    "totalDebt": [
+      81.0,
+      157.0,
+      230.0
+    ],
+    "shareholdersEquity": [
+      230.2,
+      280.2,
+      303.7
+    ],
+    "grossMargin": [
+      0.291,
+      0.302,
+      0.2936
+    ],
+    "operatingMargin": [
+      0.129,
+      0.1229,
+      0.1314
+    ],
+    "netMargin": [
+      0.1095,
+      0.1218,
+      0.1387
+    ],
+    "fcfMargin": [
+      -0.022,
+      -0.0729,
+      -0.0086
+    ]
+  },
+  "segments_by_industry": [
+    {
+      "name": "消费电子",
+      "values": [
+        285.4,
+        308.2,
+        340.0
+      ]
+    },
+    {
+      "name": "新能源汽车",
+      "values": [
+        38.5,
+        108.6,
+        215.0
+      ]
+    },
+    {
+      "name": "工业自动化",
+      "values": [
+        62.5,
+        78.0,
+        112.0
+      ]
+    },
+    {
+      "name": "医疗器械",
+      "values": [
+        28.4,
+        32.5,
+        45.0
+      ]
+    },
+    {
+      "name": "其他",
+      "values": [
+        77.3,
+        22.8,
+        45.3
+      ]
+    }
+  ],
+  "segments_by_process": [
+    {
+      "name": "冲压 Stamping",
+      "values": [
+        215.2,
+        234.8,
+        312.0
+      ]
+    },
+    {
+      "name": "CNC 加工",
+      "values": [
+        162.8,
+        178.5,
+        248.0
+      ]
+    },
+    {
+      "name": "注塑 + 嵌件",
+      "values": [
+        48.5,
+        62.4,
+        95.0
+      ]
+    },
+    {
+      "name": "表面处理",
+      "values": [
+        41.8,
+        48.2,
+        64.0
+      ]
+    },
+    {
+      "name": "组装 OBA",
+      "values": [
+        23.8,
+        26.2,
+        38.3
+      ]
+    }
+  ],
+  "topCustomers2024": {
+    "rows": [
+      "富鸿集团A",
+      "蔚蓝新能源B",
+      "华兴通信C",
+      "北辰机器人D",
+      "盛达医疗E",
+      "中科智驾F",
+      "优选电子G",
+      "凯瑞汽配H",
+      "富邦智能I",
+      "万顺精工J",
+      "其他"
+    ],
+    "columns": [
+      "消费电子",
+      "新能源汽车",
+      "工业自动化",
+      "医疗器械"
+    ],
+    "cells": [
+      [
+        82.4,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        58.6,
+        0,
+        0
+      ],
+      [
+        48.5,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        42.8,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        26.5
+      ],
+      [
+        0,
+        22.4,
+        0,
+        0
+      ],
+      [
+        20.5,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        16.8,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15.6,
+        0
+      ],
+      [
+        14.5,
+        0,
+        0,
+        0
+      ],
+      [
+        160.4,
+        12.2,
+        22.1,
+        6.8
+      ]
+    ]
+  },
+  "customerProcessCross2024": {
+    "rows": [
+      "富鸿A",
+      "蔚蓝B",
+      "华兴C",
+      "北辰D",
+      "盛达E",
+      "中科F",
+      "优选G",
+      "凯瑞H",
+      "富邦I",
+      "万顺J"
+    ],
+    "columns": [
+      "冲压",
+      "CNC",
+      "注塑",
+      "表面处理",
+      "组装"
+    ],
+    "cells": [
+      [
+        35.2,
+        22.5,
+        6.8,
+        12.0,
+        5.9
+      ],
+      [
+        28.5,
+        15.2,
+        2.5,
+        9.0,
+        3.4
+      ],
+      [
+        18.5,
+        14.8,
+        5.8,
+        6.2,
+        3.2
+      ],
+      [
+        14.2,
+        18.5,
+        4.2,
+        4.5,
+        1.4
+      ],
+      [
+        8.5,
+        9.8,
+        3.5,
+        3.2,
+        1.5
+      ],
+      [
+        11.5,
+        6.2,
+        1.8,
+        2.2,
+        0.7
+      ],
+      [
+        8.2,
+        5.8,
+        2.8,
+        2.0,
+        1.7
+      ],
+      [
+        7.5,
+        5.0,
+        0.5,
+        3.5,
+        0.3
+      ],
+      [
+        4.2,
+        6.8,
+        2.0,
+        1.5,
+        1.1
+      ],
+      [
+        5.0,
+        5.2,
+        1.8,
+        1.2,
+        1.3
+      ]
+    ]
+  },
+  "quarterlyPnL": {
+    "periods": [
+      "23Q1",
+      "23Q2",
+      "23Q3",
+      "23Q4",
+      "24Q1",
+      "24Q2",
+      "24Q3",
+      "24Q4",
+      "25Q1",
+      "25Q2",
+      "25Q3",
+      "25Q4"
+    ],
+    "revenue": [
+      96.4,
+      112.5,
+      138.2,
+      145.0,
+      115.8,
+      138.0,
+      142.5,
+      153.8,
+      158.1,
+      187.9,
+      196.0,
+      215.3
+    ],
+    "netIncome": [
+      7.1,
+      12.2,
+      17.3,
+      17.3,
+      11.5,
+      15.6,
+      14.2,
+      25.7,
+      16.2,
+      21.1,
+      21.2,
+      46.5
+    ]
+  },
+  "costStructure": {
+    "direct_material": [
+      218.5,
+      243.1,
+      335.0
+    ],
+    "direct_labor": [
+      38.2,
+      41.2,
+      54.9
+    ],
+    "depreciation": [
+      18.4,
+      20.2,
+      28.3
+    ],
+    "utilities": [
+      14.2,
+      14.9,
+      20.6
+    ],
+    "outsourcing": [
+      22.5,
+      28.8,
+      45.9
+    ],
+    "indirect_labor": [
+      36.6,
+      35.8,
+      50.3
+    ]
+  },
+  "kpis": [
+    {
+      "label": "2024 营收",
+      "value": "¥550.1M",
+      "delta": "+11.8% YoY"
+    },
+    {
+      "label": "2025E 营收",
+      "value": "¥757.3M",
+      "delta": "+37.7% YoY"
+    },
+    {
+      "label": "2024 毛利率",
+      "value": "30.2%",
+      "delta": "+1.1 pts"
+    },
+    {
+      "label": "2025E 净利率",
+      "value": "13.9%",
+      "delta": "+1.7 pts"
+    },
+    {
+      "label": "ROE (2024)",
+      "value": "23.9%",
+      "delta": "Industry top tier"
+    },
+    {
+      "label": "资产负债率",
+      "value": "52.9%",
+      "delta": "Capex-driven rise"
+    }
+  ],
+  "insights": [
+    {
+      "headline": "新能源汽车品类是收入与利润的双引擎",
+      "detail": "2023→2025E 新能源汽车收入从 38.5M 跃升至 215.0M（×5.6），占比 7.8% → 28.4%；同期毛利率最优（结构性工艺壁垒 + 客单价高）。"
+    },
+    {
+      "headline": "客户集中度动态重塑：旧王富鸿让位，新王蔚蓝崛起",
+      "detail": "TOP1 富鸿占比从 16.0% 降至 11.2%，但蔚蓝单一客户 2025E 占比预计冲到 16.9%。集中度本质风险并未下降，只是换了主体。"
+    },
+    {
+      "headline": "产能扩张期 FCF 为负是正确选择，但融资压力要管住",
+      "detail": "FCF 三年都是负值（-10.8 / -40.1 / -6.5），但这背后是 Capex 15.6% / 10.8% 的高强度投入，匹配订单储备 0.42 的需求。关键风险点是 2025E 有息负债从 81M 增至 230M，资产负债率突破 56%。"
+    },
+    {
+      "headline": "毛利率 2025Q3 已经边际承压，是预警不是事故",
+      "detail": "2025Q3 毛利率 29.3%，相对 2024 全年的 30.2% 略降 0.9 pts，原因是铝铜价格上涨 + 新能源汽车品类工艺切换良率下降。短期可消化，但若 2026 不回升 30% 以上，会影响 IPO 估值锚。"
+    },
+    {
+      "headline": "回款周期结构性拉长，营运资金压力上升",
+      "detail": "应收账款周转天数 65.8 → 78.5，存货 68.5 → 76.5，CCC 由 88 升至 106，与新能源汽车 DSO 95-110 天的结构性拉长高度相关。"
+    }
+  ],
+  "risks": [
+    {
+      "title": "蔚蓝新能源单一客户依赖",
+      "detail": "2025E 该客户预计贡献 16.9% 收入 + 显著拉动毛利率；如果其车型销量不达预期，2026H1 收入可能下滑 8–12%。"
+    },
+    {
+      "title": "Capex 投入回收周期长",
+      "detail": "松山湖二厂 2024 投产，2025E 仍未满产，折旧前置增加 31M/年；若 2026 订单增速不能稳定在 25% 以上，毛利率将被折旧吞噬。"
+    },
+    {
+      "title": "原材料价格二次反弹",
+      "detail": "铝 +8.7%、铜 +10.3%，公司年度锁价覆盖 60% 用量，剩余 40% 跟随现货；Q4 现货端价格继续上行的话，毛利率会击穿 28%。"
+    },
+    {
+      "title": "应收账款减值",
+      "detail": "12 个月以上应收账款 7.7M（占比 5.3%），绝对值不高，但 6-12 个月段升至 16.2M，需要在 IPO 前做一次专项坏账审。"
+    }
+  ],
+  "actions": [
+    {
+      "owner": "Chief Engineer / 工艺部",
+      "lever": "新能源汽车良率",
+      "next": "把蔚蓝 B 项目良率从 96.0% 提到 97.5%，对应毛利率回升 0.8 个百分点。"
+    },
+    {
+      "owner": "Treasury / 财务总监",
+      "lever": "应收账款融资",
+      "next": "与蔚蓝谈 30% 预付款 + 60 天票据贴现，把 DSO 从 95 天压到 75 天，单家客户可释放 25M 营运资本。"
+    },
+    {
+      "owner": "Procurement / 供应链",
+      "lever": "铝锭对冲",
+      "next": "Q4 在 SHFE 买 800 吨铝锭 12 月期货，锁 Q1 价格；规模相当于 1.5 个月用量。"
+    },
+    {
+      "owner": "IPO Sponsor / 董秘",
+      "lever": "招股书叙事",
+      "next": "把 'MingYuan 是新能源汽车精密结构件第二曲线 + 全球消费电子稳定盘' 作为主轴，并在 '重大客户依赖' 章节给出蔚蓝的备用合作名单。"
+    }
+  ],
+  "thesis": {
+    "title": "MingYuan 用 Capex 换了一个新增长曲线，但接下来半年是验证期。",
+    "body": "营收增速从 +11.8% 拉到 +37.7%，靠新能源汽车品类拉动。但 FCF 仍未转正、客户集中度实质上升、产能爬坡良率承压，三件事决定了 2026 是 IPO 估值能否守住的关键半年。下一阶段要回答的不是'能不能涨'，而是'增长是否带着利润和回款'。",
+    "signals": [
+      "Revenue 两年 CAGR 24.0%（¥492.1M → ¥757.3M）",
+      "新能源汽车占比从 7.8% 升至 28.4%，结构性切换完成中段",
+      "Gross margin 30.2%（2024）→ 29.3%（2025Q3），0.9 pt 预警已出现",
+      "FCF 三年负值：-10.8 / -40.1 / -6.5；CFO 仍正向（41.6 / 45.5 / 75.5）",
+      "有息负债从 ¥81M 增至 ¥230M，资产负债率 46.3% → 56.9%"
+    ]
+  },
+  "platformData": {
+    "title": "行业结构 (2024)",
+    "yearSummary": [
+      {
+        "name": "消费电子",
+        "value": 308.2
+      },
+      {
+        "name": "新能源汽车",
+        "value": 108.6
+      },
+      {
+        "name": "工业自动化",
+        "value": 78.0
+      },
+      {
+        "name": "医疗器械",
+        "value": 32.5
+      },
+      {
+        "name": "其他",
+        "value": 22.8
+      }
+    ]
+  },
+  "readouts": {
+    "revenueMargin": "Readout: 实心柱是营收，折线是净利率。营收加速但净利率未明显抬升，说明规模扩张吃掉了部分利润。",
+    "segmentMix": "Readout: 100% 堆叠柱展示行业结构切换。新能源汽车占比快速放大是核心叙事。",
+    "cashFlow": "Readout: CFO 为正但 FCF 三年负值；折线 FCF margin 显示扩张期的现金特征。",
+    "bridge": "Readout: 利润桥显示 2024 → 2025E 净利润增量 38M，结构贡献 / 规模贡献 / 毛利变化的拆分。",
+    "pnlCommonSize": "Readout: 各项成本占收入百分比，研发费用率 5.9% 在制造业属于偏高，反映研发投入期。",
+    "expenseMix": "Readout: 直接材料占总成本 62.7%，是制造业典型结构；外协加工 8.6% 是弹性杠杆。",
+    "balanceSheet": "Readout: 资产侧固定资产 + 在建工程主导；负债侧长期借款扩至 100M+ 表示产能扩张期。",
+    "cashFlowStatement": "Readout: CFI 主导（Capex 持续），CFF 从正转负表明开始偿还前期借款。",
+    "marginLadder": "Readout: 毛利率 / 营业利润率 / 净利率 / FCF margin 阶梯，FCF 一层是负值。",
+    "ratioTrend": "Readout: 资产负债率持续上升 + ROE 在 24-30% 区间。这是制造业扩张期的典型组合。"
+  },
+  "_quarterlyNotice": "Quarterly 23Q1-25Q4 (12 quarters); FY sums reconcile to annual statements."
+}

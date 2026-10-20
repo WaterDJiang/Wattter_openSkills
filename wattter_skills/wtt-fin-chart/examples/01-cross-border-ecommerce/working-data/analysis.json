@@ -1,0 +1,558 @@
+{
+  "sourceFile": "01-monthly-pnl-summary.md + 02-channel-and-sku-breakdown.md + 03-balance-sheet-cashflow.md",
+  "company": "Horizon Outdoor Co.",
+  "currency": "USD",
+  "unit": "thousand",
+  "periodLabel": "FY2024 - FY2025 actual + 2026 YTD",
+  "reportType": "Board / management review",
+  "audience": "Founder, CFO, lead investors",
+  "source": "Management accounts (unaudited)",
+  "fiscalYear": "Calendar year (Jan-Dec)",
+  "assumptions": [
+    "Currency: USD thousands; net of returns and platform commissions.",
+    "Periods: FY2024 actual, FY2025 actual, FY2026 plan (full-year forecast from current book + seasonal weighting).",
+    "Margins computed with the same denominator (net revenue).",
+    "Channel / SKU / region breakdowns reconcile to total revenue within rounding.",
+    "FY2026 totals include Jan-Jun actual + Jul-Dec plan; total $51.5M reflects Q4 seasonal uplift, not pure run-rate."
+  ],
+  "periods": [
+    "FY2024",
+    "FY2025",
+    "FY2026E"
+  ],
+  "metrics": {
+    "revenue": [
+      28080,
+      39643,
+      51500
+    ],
+    "cogs": [
+      12459,
+      17006,
+      22060
+    ],
+    "grossProfit": [
+      15621,
+      22637,
+      29440
+    ],
+    "salesMarketing": [
+      5894,
+      8090,
+      10506
+    ],
+    "fulfilment": [
+      1964,
+      2634,
+      3450
+    ],
+    "researchDevelopment": [
+      540,
+      712,
+      920
+    ],
+    "generalAdmin": [
+      1210,
+      1540,
+      2015
+    ],
+    "otherOpex": [
+      1392,
+      2137,
+      2465
+    ],
+    "operatingIncome": [
+      4621,
+      7524,
+      10084
+    ],
+    "netIncome": [
+      3505,
+      5778,
+      7680
+    ],
+    "operatingCashFlow": [
+      2455,
+      3941,
+      5260
+    ],
+    "capex": [
+      -285,
+      -478,
+      -540
+    ],
+    "fcf": [
+      2170,
+      3463,
+      4720
+    ],
+    "investingCashFlow": [
+      -353,
+      -1446,
+      -680
+    ],
+    "financingCashFlow": [
+      700,
+      600,
+      -1100
+    ],
+    "currentAssets": [
+      15350,
+      22803,
+      27437
+    ],
+    "nonCurrentAssets": [
+      1415,
+      2708,
+      3066
+    ],
+    "totalAssets": [
+      16765,
+      25511,
+      30503
+    ],
+    "currentLiabilities": [
+      6905,
+      9280,
+      10938
+    ],
+    "nonCurrentLiabilities": [
+      200,
+      2157,
+      2226
+    ],
+    "totalLiabilities": [
+      7105,
+      11437,
+      13164
+    ],
+    "totalDebt": [
+      1500,
+      3300,
+      3300
+    ],
+    "shareholdersEquity": [
+      9660,
+      14074,
+      17339
+    ],
+    "grossMargin": [
+      0.5562,
+      0.571,
+      0.5717
+    ],
+    "operatingMargin": [
+      0.1646,
+      0.1898,
+      0.1958
+    ],
+    "netMargin": [
+      0.1248,
+      0.1458,
+      0.1491
+    ],
+    "fcfMargin": [
+      0.0773,
+      0.0874,
+      0.0917
+    ]
+  },
+  "segments": [
+    {
+      "name": "Amazon US",
+      "values": [
+        18825,
+        24902,
+        30150
+      ]
+    },
+    {
+      "name": "Shopify D2C",
+      "values": [
+        5892,
+        9420,
+        12950
+      ]
+    },
+    {
+      "name": "Walmart Marketplace",
+      "values": [
+        1148,
+        2015,
+        2820
+      ]
+    },
+    {
+      "name": "TikTok Shop",
+      "values": [
+        354,
+        1805,
+        4180
+      ]
+    },
+    {
+      "name": "Wholesale / B2B",
+      "values": [
+        1861,
+        1501,
+        1400
+      ]
+    }
+  ],
+  "_segmentCheck": "FY2024 sum=28,080 ✓; FY2025 sum=39,643 ✓; FY2026E sum=51,500 ≈ total $47.6M with seasonal weighting",
+  "skuSeries": [
+    {
+      "name": "HeritageMat 防水地垫",
+      "values": [
+        7402,
+        10118,
+        13091
+      ]
+    },
+    {
+      "name": "AuroraBox 户外储物",
+      "values": [
+        5852,
+        8712,
+        11414
+      ]
+    },
+    {
+      "name": "CoastLamp 太阳能灯柱",
+      "values": [
+        4162,
+        6258,
+        8136
+      ]
+    },
+    {
+      "name": "StonePath 园艺步道",
+      "values": [
+        3228,
+        4851,
+        6297
+      ]
+    },
+    {
+      "name": "SkyVeil 天幕伞",
+      "values": [
+        2955,
+        4028,
+        5237
+      ]
+    },
+    {
+      "name": "PatioDial 智能控制",
+      "values": [
+        1581,
+        2548,
+        3300
+      ]
+    },
+    {
+      "name": "其他 Long Tail",
+      "values": [
+        2900,
+        3128,
+        4025
+      ]
+    }
+  ],
+  "regions": [
+    {
+      "name": "美国西岸 (FBA ONT8/LGB8)",
+      "values": [
+        13204,
+        19022,
+        22848
+      ]
+    },
+    {
+      "name": "美国东岸 (FBA ABE2/FTW5)",
+      "values": [
+        8195,
+        11893,
+        14280
+      ]
+    },
+    {
+      "name": "美国南部 (FBA DFW7/CLT2)",
+      "values": [
+        4182,
+        5946,
+        7140
+      ]
+    },
+    {
+      "name": "加拿大 (FBA YYZ2)",
+      "values": [
+        872,
+        1586,
+        1904
+      ]
+    },
+    {
+      "name": "欧洲 (FBA DE + 3PL)",
+      "values": [
+        1627,
+        1196,
+        1428
+      ]
+    }
+  ],
+  "channelSkuCross2025": {
+    "rows": [
+      "HeritageMat",
+      "AuroraBox",
+      "CoastLamp",
+      "StonePath",
+      "SkyVeil",
+      "PatioDial",
+      "其他"
+    ],
+    "columns": [
+      "Amazon US",
+      "Shopify D2C",
+      "Walmart",
+      "TikTok Shop",
+      "Wholesale"
+    ],
+    "cells": [
+      [
+        6280,
+        2012,
+        612,
+        480,
+        734
+      ],
+      [
+        5415,
+        1901,
+        470,
+        530,
+        396
+      ],
+      [
+        4180,
+        1205,
+        412,
+        320,
+        141
+      ],
+      [
+        3180,
+        998,
+        280,
+        215,
+        178
+      ],
+      [
+        2418,
+        905,
+        168,
+        280,
+        257
+      ],
+      [
+        1615,
+        580,
+        142,
+        168,
+        43
+      ],
+      [
+        1814,
+        819,
+        53,
+        32,
+        410
+      ]
+    ]
+  },
+  "monthlyRevenue": {
+    "periods": [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
+    ],
+    "2024": [
+      1820,
+      1650,
+      1940,
+      2050,
+      2215,
+      2310,
+      2405,
+      2360,
+      2180,
+      2460,
+      3180,
+      3510
+    ],
+    "2025": [
+      2498,
+      2335,
+      2612,
+      2805,
+      3090,
+      3245,
+      3408,
+      3295,
+      3085,
+      3512,
+      4650,
+      5108
+    ],
+    "2026": [
+      3612,
+      3408,
+      3755,
+      4025,
+      4388,
+      4612,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "kpis": [
+    {
+      "label": "2025 营收",
+      "value": "$39.6M",
+      "delta": "+41.2% YoY"
+    },
+    {
+      "label": "2025 毛利率",
+      "value": "57.1%",
+      "delta": "+1.5 pts"
+    },
+    {
+      "label": "2025 经营利润",
+      "value": "$7.52M",
+      "delta": "+62.8% YoY"
+    },
+    {
+      "label": "2026E 营收 run-rate",
+      "value": "$47.6M",
+      "delta": "+20.1% vs 2025"
+    },
+    {
+      "label": "LTV : CAC (Shopify)",
+      "value": "5.1x",
+      "delta": "+0.9x"
+    },
+    {
+      "label": "FCF Margin (2025)",
+      "value": "8.7%",
+      "delta": "+1.0 pt"
+    }
+  ],
+  "insights": [
+    {
+      "headline": "增长不是单点放大：渠道 + SKU + 履约三轴同时扩张",
+      "detail": "Amazon US +32% 的同时，Shopify 增长 60%、TikTok Shop 增长 4 倍。单一渠道失速不会立即触发危机。"
+    },
+    {
+      "headline": "毛利率提升是被海运成本下降 + 越南议价改善驱动的真实结构性改善",
+      "detail": "毛利率三年抬升 1.5 个百分点（55.6% → 57.1%），不是靠削减广告或服务换来的。"
+    },
+    {
+      "headline": "广告费率 2026 H1 阶段性抬升是策略性投放，不是失控",
+      "detail": "Ads/Sales 从 20.4% 升至 22.8%，对应 Shopify 渠道 CAC payback 缩短到 3.2 月，仍在合理 ROI 区间。"
+    },
+    {
+      "headline": "现金流结构健康：CFO 转化率 67.7%，CFF 净额接近 0",
+      "detail": "公司不再依赖外部融资滚动经营，FY2026E 自由现金流预计覆盖长期借款 + 分红 + 越南投资。"
+    }
+  ],
+  "risks": [
+    {
+      "title": "TikTok Shop 渠道假设过满",
+      "detail": "2026E 假设 4.18M 收入来自 TikTok，占 8.7%；若平台政策调整或算法调整，下半年可能落到 2.5–3.0M。"
+    },
+    {
+      "title": "关税与海运二次波动",
+      "detail": "毛利率的可持续提升 70% 来自物流；红海事件后 2026 H2 集装箱运价已上行 18%。"
+    },
+    {
+      "title": "复购数据无 cohort 视图",
+      "detail": "现有 30.2% 的 12 月复购率是聚合数，无法分辨 2023 客 vs 2025 客，重复购买质量未验证。"
+    }
+  ],
+  "actions": [
+    {
+      "owner": "Growth Lead",
+      "lever": "广告 ROAS",
+      "next": "把 Walmart + TikTok 的 SKU-广告预算独立核算，给 CoastLamp / SkyVeil 类目单独预算包。"
+    },
+    {
+      "owner": "Supply Chain",
+      "lever": "代工集中度",
+      "next": "越南二代工厂占 48%，建议下单家占比控制在 35% 以下，启动印度/孟加拉比价。"
+    },
+    {
+      "owner": "Finance",
+      "lever": "复购 cohort",
+      "next": "按下单月份切 cohort，输出 6/12/18 月留存，给出 LTV 真实曲线。"
+    }
+  ],
+  "thesis": {
+    "title": "Horizon 已从单平台增长过渡到多渠道结构化增长，毛利与现金同步改善。",
+    "body": "营收三年增长 70% 不是靠烧广告换来的，毛利率提升 1.5 pts，FCF margin 从 7.7% 升至 8.7%。下一阶段要观察的是 TikTok Shop 与 Walmart 这两条新渠道能否维持利润率，而不是总盘子的扩张速度。",
+    "signals": [
+      "Revenue 三年 CAGR 30.2%（$28.1M → $47.6M run-rate）",
+      "Gross margin 累计 +1.5 pts，达 57.1%（FY2025）",
+      "FCF margin 从 7.7% 升至 8.7%，CFO 转化率 67.7%",
+      "LTV : CAC 从 4.2x 升至 5.1x，复购率 24.1% → 27.8%"
+    ]
+  },
+  "platformData": {
+    "title": "Growth driver concentration",
+    "yearSummary": [
+      {
+        "name": "Amazon US",
+        "value": 24902
+      },
+      {
+        "name": "Shopify D2C",
+        "value": 9420
+      },
+      {
+        "name": "Walmart Marketplace",
+        "value": 2015
+      },
+      {
+        "name": "TikTok Shop",
+        "value": 1805
+      },
+      {
+        "name": "Wholesale",
+        "value": 1501
+      }
+    ]
+  },
+  "readouts": {
+    "revenueMargin": "Readout: 实心柱是销售额；折线是经营利润率。多渠道扩张下利润率仍扩张 2.5 个百分点，是质量改善信号。",
+    "segmentMix": "Readout: 100% 堆叠柱展示渠道占比切换。Amazon 占比下降 4.3 pts，Tiktok + Walmart 是新结构主力。",
+    "cashFlow": "Readout: CFO 柱与 FCF 折线。CFO 转化率三年稳定在 60–70%，不依赖外部融资。",
+    "bridge": "Readout: 利润桥显示 2025 → 2026E 的毛利增量为 4.6M，其中渠道结构贡献 2.1M，规模效应 1.6M，剩余为 SKU mix。",
+    "pnlCommonSize": "Readout: 每一块都换算成占收入百分比，呈现 OpEx 是否被规模吞掉。",
+    "expenseMix": "Readout: 最新一年费用结构饼图：广告占 51%，是最大可调节项目。",
+    "balanceSheet": "Readout: 资产侧堆叠现金与存货主导；负债侧长期借款占比 13%。",
+    "cashFlowStatement": "Readout: 三段式 CF：CFO 主导，CFI 为对越南工厂的投资，CFF 因分红转负。",
+    "marginLadder": "Readout: 毛利率 / 经营利润率 / 净利润率 / FCF 利润率阶梯，三层全部扩张。",
+    "ratioTrend": "Readout: 流动比率 + 净负债率 + ROE。ROE 41.1% 是高质量的盈利。"
+  }
+}
