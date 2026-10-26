@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>缓存的保鲜期 · 概念装置 01</title>
+<style>
+:root{--paper:#f5f4ef;--ink:#282d29;--muted:#737a72;--line:#d7d9d0;--green:#27775b}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:1160px;padding:42px 38px 30px;margin:auto}.mast{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px;font:11px ui-monospace,monospace;letter-spacing:2px;color:var(--muted)}
+header{display:flex;justify-content:space-between;align-items:end;gap:40px;margin:28px 0 25px}h1{font:500 clamp(30px,4vw,43px)/1.3 "Songti SC","STSong",serif;letter-spacing:2px;margin:0}header p{font-size:13px;line-height:1.9;max-width:390px;margin:0;color:#626960}
+.figure{background:#fcfcf9;border:1px solid #c9cdc3;position:relative;overflow:hidden}.corners{display:flex;justify-content:space-between;font:10px ui-monospace,monospace;letter-spacing:1.3px;color:#80867c;padding:18px 22px}
+svg{display:block;width:100%;height:auto;max-height:500px;overflow:visible}.svg-label{font:12px "PingFang SC",sans-serif;fill:#596358;letter-spacing:1px}.micro{font:9px ui-monospace,monospace;fill:#899083;letter-spacing:1px}.part{stroke:#8f998c;stroke-width:.8;stroke-linejoin:round}.detail{fill:none;stroke:#a8b0a0;stroke-width:.65}
+.route{fill:none;stroke:#98ad9d;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.route.active{stroke:var(--green);stroke-width:3}.dim{opacity:.32}
+#packet{fill:#316c52;stroke:#fcfff7;stroke-width:2;opacity:0}#needle{transition:transform .65s cubic-bezier(.2,.8,.2,1)}#cartridge{transition:transform .6s cubic-bezier(.2,.8,.2,1)}#fresh-strip{transition:opacity .5s}
+.legend{display:flex;gap:22px;align-items:center;font-size:11px;color:var(--muted)}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#27775b;margin-right:7px}.dot.gray{background:#a4ad9c}
+.caption{display:flex;justify-content:space-between;gap:20px;padding:0 22px 18px;font-size:11px;color:var(--muted)}
+.controls{display:flex;align-items:center;gap:10px;padding:20px 0 18px;border-bottom:1px solid var(--line)}button{border:1px solid #c5cbbf;background:transparent;border-radius:4px;padding:10px 17px;color:#43523f;font:12px inherit;cursor:pointer}button.primary{background:#2f4d3b;color:#f9fff5;border-color:#2f4d3b}button:hover{border-color:#27775b;background:#e6ede2}button.primary:hover{background:#3c654c}button:focus-visible{outline:2px solid #27775b;outline-offset:4px}button:disabled{opacity:.5;cursor:wait}.clock{margin-left:auto;font:13px ui-monospace,monospace;color:#5d6858}.clock strong{font-size:24px;color:var(--ink);font-weight:400}
+.explanation{display:grid;grid-template-columns:180px 1fr;gap:30px;padding-top:22px;min-height:90px}.phase{font-size:17px;font-weight:500}.phase small{font:10px ui-monospace,monospace;letter-spacing:1px;color:#7d8777;display:block;margin-top:8px}#result{margin:0;line-height:1.9;font-size:13px;color:#697162}
+footer{font-size:10px;line-height:1.8;color:#8c9287;margin-top:24px}.mobile-note{display:none}
+@media(max-width:620px){main{padding:22px 16px}header{display:block;margin:22px 0}header p{margin-top:12px;font-size:12px}.mast{font-size:9px;letter-spacing:1px}.corners{padding:12px;font-size:8px}.figure svg{width:100%;max-height:none}.figure #labels{display:none}.caption{padding:0 12px 14px;display:block}.legend{gap:14px;font-size:10px}.caption>span{display:block;margin-top:10px}.controls{flex-wrap:wrap}button{padding:10px 12px}.clock{margin-left:0;width:100%;margin-top:8px}.explanation{grid-template-columns:1fr;gap:12px}.phase small{display:inline;margin-left:14px}.mobile-note{display:block;font-size:10px;color:#828b7b;text-align:center;margin:0 0 14px}}
+@media(prefers-reduced-motion:reduce){#needle,#cartridge,#fresh-strip{transition:none}}
+</style>
+<main>
+<div class="mast"><span>CONCEPT STUDIES / 01</span><span>交互图解 · FIXED TTL</span></div>
+<header><h1>缓存，也有保鲜期。</h1><p>命中，只是再次取用。<br>它不会把写入时启动的那只钟，重新拨回原点。</p></header>
+<section class="figure" aria-label="缓存机制装置">
+<div class="corners"><span>FIG. 01 / THE CACHE APPARATUS</span><span>TTL = 60 s</span></div>
+<svg id="scene" viewBox="140 40 760 460" role="img" aria-label="请求经过入口进入缓存匣；有效时复用本地副本，到期后经后方路径从数据源取回新版本。表盘显示剩余有效期。">
+<defs>
+<linearGradient id="metal" x2=".9" y2="1"><stop stop-color="#fcfdf7"/><stop offset=".45" stop-color="#e9ede1"/><stop offset="1" stop-color="#d2d9c8"/></linearGradient>
+<linearGradient id="glass" x2=".3" y2="1"><stop stop-color="#deefe2" stop-opacity=".85"/><stop offset="1" stop-color="#a2c4ac" stop-opacity=".4"/></linearGradient>
+<radialGradient id="ground"><stop stop-color="#64715a" stop-opacity=".17"/><stop offset="1" stop-color="#64715a" stop-opacity="0"/></radialGradient>
+<filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+</defs>
+<ellipse cx="513" cy="454" rx="283" ry="72" fill="url(#ground)"/>
+<g id="drawing"></g>
+<g id="paths"></g>
+<circle id="packet" r="5"/>
+<g id="labels">
+<path d="M309 224 L252 288 L202 288" class="detail"/><text x="177" y="309" class="svg-label">01 / 请求入口</text>
+<path d="M487 185 L400 150 L311 150" class="detail"/><text x="253" y="137" class="svg-label">02 / 本地缓存匣</text>
+<path d="M756 200 L795 170 L840 170" class="detail"/><text x="780" y="152" class="svg-label">03 / 数据源</text>
+<text x="610" y="75" class="micro">FIXED EXPIRY TIMER</text>
+</g>
+</svg>
+<div class="mobile-note">请求入口 → 本地缓存匣 → 数据源</div>
+<div class="caption"><div class="legend"><span><i class="dot"></i>当前请求路径</span><span><i class="dot gray"></i>存储与支撑结构</span></div><span id="figure-state">空匣 · 等待第一次请求</span></div>
+</section>
+<div class="controls">
+<button id="request" class="primary">发送请求 ↗</button><button id="advance">推进 30 秒</button><button id="tour">演示一轮</button><button id="reset">重置</button>
+<span class="clock">模拟时钟 <strong id="clock">00</strong> s</span>
+</div>
+<div class="explanation" aria-live="polite"><div class="phase"><span id="status">等待写入</span><small id="phase-code">READY / EMPTY</small></div><p id="result">发出第一个请求。空的缓存匣无法提供副本，请求将回到数据源，带回版本 1，并启动 60 秒倒计时。</p></div>
+<footer>教学模型：固定 TTL，命中不续期，恰好到期视为失效。图中输送路径是请求流向的比喻，动画回放本次事件；模拟时钟只由控件推进。无真实网络请求，不涉及容量淘汰与并发更新。</footer>
+</main>
+<script>
+const svgNS="http://www.w3.org/2000/svg";
+const P=(x,y,z=0)=>[440+(x-y)*.85,175+(x+y)*.4-z];
+const pts=a=>a.map(v=>v.map(n=>n.toFixed(2)).join(",")).join(" ");
+const poly=(a,fill,extra="")=>`<polygon points="${pts(a)}" fill="${fill}" class="part" ${extra}/>`;
+function box(x,y,z,w,d,h,top="#f4f6ef",side="#d4dbc9"){
+ const a=P(x,y,z+h),b=P(x+w,y,z+h),c=P(x+w,y+d,z+h),e=P(x,y+d,z+h);
+ return poly([e,c,P(x+w,y+d,z),P(x,y+d,z)],side)+poly([b,c,P(x+w,y+d,z),P(x+w,y,z)],"#c2ccb8")+poly([a,b,c,e],top);
+}
+const line=(a,b,cls="detail")=>`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" class="${cls}"/>`;
+function ring(cx,cy,z,r,h=0){
+ const a=Array.from({length:49},(_,i)=>P(cx+r*Math.cos(i*Math.PI/24),cy+r*Math.sin(i*Math.PI/24),z+h));
+ const low=Array.from({length:25},(_,i)=>P(cx+r*Math.cos(i*Math.PI/24),cy+r*Math.sin(i*Math.PI/24),z));
+ return (h?poly([...a.slice(0,25),...low.reverse()],"#c5cdbb"):"")+poly(a,"url(#metal)");
+}
+function screw(x,y,z){
+ const [cx,cy]=P(x,y,z);
+ return `<ellipse cx="${cx}" cy="${cy}" rx="3.5" ry="1.65" fill="#d7dece" stroke="#9ca591" stroke-width=".7"/>`+line([cx-1.7,cy-.7],[cx+1.7,cy+.7]);
+}
+const path=a=>"M"+a.map(p=>p.join(",")).join(" L");
+let art="";
+for(const [x,y] of [[20,20],[418,20],[20,230],[418,230]]) art+=ring(x,y,-7,12,12);
+art+=box(0,0,5,440,255,16,"#eef1e7","#d3d9cb");
+art+=poly([P(8,8,22),P(432,8,22),P(432,247,22),P(8,247,22)],"#f7f8f1");
+for(const [x,y] of [[15,15],[425,15],[15,240],[425,240]])art+=screw(x,y,23);
+// Printed scales follow the edge of the base.
+for(let x=35;x<=405;x+=5) art+=line(P(x,239,24),P(x,239-(x%25===10?9:4),24));
+for(let x=60;x<=400;x+=50){const q=P(x,224,24);art+=`<text x="${q[0]}" y="${q[1]}" class="micro" transform="rotate(25 ${q[0]} ${q[1]})">${x-60}</text>`;}
+// Fixed routes, firmly terminating at the housings.
+const localRoute=[P(40,199,37),P(112,199,37),P(112,145,37),P(146,145,68)];
+const sourceRoute=[P(245,100,66),P(295,100,66),P(295,48,66),P(343,48,92)];
+for(const route of [localRoute,sourceRoute]){
+ art+=`<path d="${path(route)}" fill="none" stroke="#aeb9a5" stroke-width="8" stroke-linejoin="round"/><path d="${path(route)}" fill="none" stroke="#edf0e6" stroke-width="5.5" stroke-linejoin="round"/>`;
+}
+// Archive tower: stacked plates, visible seams, cooling slots and clamped posts.
+art+=box(325,5,23,85,76,12);
+for(const [x,y] of [[330,10],[400,10],[330,70],[400,70]])art+=ring(x,y,34,3.5,105);
+for(let j=0;j<5;j++){
+ const z=40+j*19;art+=box(333,12,z,70,63,13,j===4?"#f2f4ec":"#e6ebde","#d4dcc8");
+ for(let i=0;i<7;i++)art+=line(P(340+i*8,76,z+4),P(340+i*8,76,z+10));
+ const led=P(395,77,z+7);art+=`<circle cx="${led[0]}" cy="${led[1]}" r="1.5" fill="#6d8663"/>`;
+}
+art+=box(325,5,138,85,76,7,"#f8f9f3");
+for(const [x,y] of [[330,10],[400,10],[330,70],[400,70]])art+=screw(x,y,146);
+// Cache housing, rails and replaceable memory cassette.
+art+=box(132,82,23,144,94,9);
+for(const [x,y] of [[139,89],[267,89],[139,168],[267,168]])art+=screw(x,y,33);
+art+=box(143,93,33,122,72,37,"#eff2e6","#d4ddc9");
+art+=box(150,97,71,108,60,5,"#c4ceba");
+art+=`<g id="cartridge">${box(157,102,77,94,50,9,"url(#glass)","#aabfa3")}`;
+for(let i=0;i<8;i++)art+=box(163+i*10,111,87,6,29,2,"#b6cbb0","#91a587");
+art+=`<g id="fresh-strip">${box(157,147,87,94,4,2,"#5f9575","#3d7755")}</g>`;
+for(let i=0;i<9;i++)art+=line(P(163+i*9,153,79),P(163+i*9,156,79));
+art+=`</g>`;
+art+=box(172,166,47,61,3,14,"#f5f7ee","#d9e0d0");
+const plate=P(176,170,53);art+=`<text x="${plate[0]}" y="${plate[1]}" transform="matrix(.85 .4 0 1 ${plate[0]*.15} ${-plate[0]*.4})" class="micro" id="version-label">CACHE / —</text>`;
+// A timer mounted on a physical stem; the dial's face shares the vertical projection.
+art+=ring(229,83,72,12,5)+ring(229,83,77,4,68);
+const gauge=P(229,83,167);
+art+=`<g transform="translate(${gauge})"><g transform="matrix(.94 .23 -.08 .98 0 0)">
+<ellipse cx="5" cy="5" rx="46" ry="46" fill="#c6cfbd" stroke="#98a38e"/>
+<circle r="46" fill="url(#metal)" stroke="#9ca792"/><circle r="40" fill="#fcfdf6" stroke="#a6b19c" stroke-width=".8"/>`;
+for(let i=0;i<60;i++){let a=i*Math.PI/30;let r=i%5?35:32;art+=line([Math.sin(a)*r,-Math.cos(a)*r],[Math.sin(a)*38,-Math.cos(a)*38]);}
+for(const [t,a] of [["60",0],["45",90],["30",180],["15",270]]){const r=a*Math.PI/180;art+=`<text x="${Math.sin(r)*24}" y="${-Math.cos(r)*24+3}" text-anchor="middle" class="micro">${t}</text>`;}
+art+=`<path id="time-arc" d="M0 -42 A42 42 0 1 1 -.01 -42" fill="none" stroke="#4e8864" stroke-width="1.7" stroke-dasharray="264" stroke-dashoffset="264"/>
+<g id="needle"><path d="M-2 8 L0 -29 L2 8Z" fill="#3d5640"/></g><circle r="3.5" fill="#829b73" stroke="#496142"/><text y="15" text-anchor="middle" font-size="5" fill="#839078">REMAINING / s</text></g></g>`;
+// Inlet with a slotted receptacle and collar.
+art+=box(20,178,23,48,42,10);
+art+=box(25,183,33,38,32,13,"#edf1e4","#c7d1bc");
+art+=poly([P(32,190,47),P(56,190,47),P(56,205,47),P(32,205,47)],"#8a9f80");
+art+=poly([P(35,193,48),P(53,193,48),P(53,202,48),P(35,202,48)],"#e9f0df");
+for(const [x,y] of [[24,181],[63,181],[24,216],[63,216]])art+=screw(x,y,34);
+document.getElementById("drawing").innerHTML=art;
+document.getElementById("paths").innerHTML=`<path id="local-path" d="${path(localRoute)}" class="route"/><path id="source-path" d="${path(sourceRoute)}" class="route dim"/>`;
+const TTL=60;
+function initialState(){return {now:0,written:null,version:0,last:"empty"};}
+function isFresh(s){return s.written!==null&&s.now<s.written+TTL;}
+function transition(s,a){
+ if(a==="reset")return initialState();
+ if(a==="advance")return {...s,now:s.now+30,last:"time"};
+ if(a==="request")return isFresh(s)?{...s,last:"hit"}:{...s,written:s.now,version:s.version+1,last:"miss"};
+ throw new Error("未知操作："+a);
+}
+let state=initialState(),frame=0,tourTimers=[],touring=false;
+const el=id=>document.getElementById(id);
+const reduced=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+function draw(){
+ const fresh=isFresh(state),remaining=fresh?state.written+TTL-state.now:0,empty=state.written===null;
+ el("clock").textContent=String(state.now).padStart(2,"0");
+ el("needle").style.transform=`rotate(${remaining/60*360}deg)`;
+ el("time-arc").setAttribute("stroke-dashoffset",264*(1-remaining/60));
+ el("fresh-strip").style.opacity=fresh?"1":".12";
+ el("cartridge").style.transform=empty?"translate(0,-17px)":"translate(0,0)";
+ el("version-label").textContent=empty?"CACHE / —":`CACHE / V${state.version}`;
+ el("status").textContent=empty?"等待写入":!fresh?"缓存已到期":state.last==="hit"?"直接取用，不续期":"副本已就位";
+ el("phase-code").textContent=empty?"READY / EMPTY":!fresh?"EXPIRED / REFRESH ON REQUEST":state.last==="hit"?"CACHE HIT / SAME DEADLINE":"CACHED / TIMER RUNNING";
+ el("figure-state").textContent=empty?"空匣 · 等待第一次请求":`版本 ${state.version} · 剩余 ${remaining} s · 到期 ${state.written+TTL} s`;
+ el("result").textContent=empty?"发出第一个请求。空的缓存匣无法提供副本，请求将回到数据源，带回版本 1，并启动 60 秒倒计时。":
+ !fresh?`当前 ${state.now} 秒，已到 ${state.written+TTL} 秒的期限。表盘归零，存储匣失去有效标记；下次请求才会触发回源。`:
+ state.last==="hit"?`命中版本 ${state.version}，沿本地路径取用。写入时间仍为 ${state.written} 秒，到期时间仍为 ${state.written+TTL} 秒；表盘没有回到起点。`:
+ state.last==="miss"?`已从数据源取得版本 ${state.version} 并放入缓存匣。写入时间 ${state.written} 秒，到期时间 ${state.written+TTL} 秒。装置回放本次回源路径。`:
+ `时间走到 ${state.now} 秒，表盘剩余 ${remaining} 秒。推进时间没有发出请求，也没有改动版本 ${state.version} 的到期时间。`;
+ el("local-path").classList.toggle("active",state.last==="hit"||state.last==="miss");
+ el("source-path").setAttribute("class",state.last==="miss"?"route active":"route dim");
+}
+function stopReplay(){cancelAnimationFrame(frame);el("packet").style.opacity=0;}
+function replay(){
+ stopReplay();if(reduced())return;
+ const legs=state.last==="miss"?[localRoute,sourceRoute,sourceRoute.slice().reverse(),localRoute.slice().reverse()]:[localRoute,localRoute.slice().reverse()];
+ const segments=legs.flatMap(points=>points.slice(1).map((b,i)=>[points[i],b]));
+ const lengths=segments.map(([a,b])=>Math.hypot(b[0]-a[0],b[1]-a[1]));
+ const total=lengths.reduce((a,b)=>a+b,0),started=performance.now(),duration=state.last==="miss"?2200:1200;
+ const tick=now=>{
+  const t=Math.min(1,(now-started)/duration);let distance=total*t,index=0;
+  while(index<lengths.length-1&&distance>lengths[index])distance-=lengths[index++];
+  const f=lengths[index]?distance/lengths[index]:0,[a,b]=segments[index];
+  el("packet").setAttribute("cx",a[0]+(b[0]-a[0])*f);el("packet").setAttribute("cy",a[1]+(b[1]-a[1])*f);el("packet").style.opacity=t===1?0:1;
+  if(t<1)frame=requestAnimationFrame(tick);
+ };frame=requestAnimationFrame(tick);
+}
+function stopTour(){tourTimers.forEach(clearTimeout);tourTimers=[];touring=false;el("tour").textContent="演示一轮";}
+function act(action,manual=true){if(manual)stopTour();stopReplay();state=transition(state,action);draw();if(action==="request")replay();}
+for(const id of ["request","advance","reset"])el(id).addEventListener("click",()=>act(id));
+el("tour").addEventListener("click",()=>{
+ if(touring){stopTour();stopReplay();return;}act("reset");touring=true;el("tour").textContent="停止演示";
+ [[200,"request"],[2800,"advance"],[3700,"request"],[5500,"advance"],[6500,"request"]].forEach(([ms,a])=>tourTimers.push(setTimeout(()=>act(a,false),ms)));
+ tourTimers.push(setTimeout(stopTour,9000));
+});
+document.addEventListener("visibilitychange",()=>{if(document.hidden){stopTour();stopReplay();}});
+draw();
+</script>
+</html>

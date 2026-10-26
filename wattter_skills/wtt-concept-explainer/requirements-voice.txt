@@ -1,0 +1,6 @@
+# Optional Apple Silicon voice environment; Python 3.12 tested.
+mlx==0.32.2
+mlx-audio==0.5.6
+transformers==5.17.0
+huggingface-hub==1.33.0
+soundfile==0.14.0

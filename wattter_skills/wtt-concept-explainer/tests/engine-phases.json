@@ -1,0 +1,30 @@
+[
+  {
+    "angle": "90° / 720°",
+    "exhaust": "关闭",
+    "intake": "开启",
+    "phase": "进气",
+    "travel": "57.9%"
+  },
+  {
+    "angle": "270° / 720°",
+    "exhaust": "关闭",
+    "intake": "关闭",
+    "phase": "压缩",
+    "travel": "57.9%"
+  },
+  {
+    "angle": "450° / 720°",
+    "exhaust": "关闭",
+    "intake": "关闭",
+    "phase": "做功",
+    "travel": "57.9%"
+  },
+  {
+    "angle": "630° / 720°",
+    "exhaust": "开启",
+    "intake": "关闭",
+    "phase": "排气",
+    "travel": "57.9%"
+  }
+]

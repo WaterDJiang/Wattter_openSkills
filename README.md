@@ -24,6 +24,16 @@
 - **wtt-nine-comic-imagegen**：多风格漫画与信息图提示词生成器。支持 9 号漫画恶搞科普、手绘信息图、四格漫画、线条人插画、生活感人像五种风格，默认输出中文提示词，可直接用于 ChatGPT / 即梦 / Midjourney 等图片生成平台。
 - **wtt-code-animation-studio**：代码动画工坊。将想法、主题、文章或现成剧本制作为前端代码动画，按内容与实际旁白决定时长，先推荐风格由用户选择再制作，覆盖手绘纸纹、复古印刷网点、像素、水彩、沙画、粉笔、粒子、马赛克、黏土外观、MG 与混合画法，交付中文剧本、分镜、可改源码和带声音的 MP4。
 - **wtt-fin-chart**：财务图表生成器。将财务数据、经营指标、财报表格（CSV/Excel/PDF）转化为带洞察的 HTML 财务图表、仪表盘与经营分析页，同步输出长截图 PNG 备份，适用于董事会/投资人汇报与投研分析。
+- **wtt-concept-explainer**：概念解释器。将抽象概念、技术原理或传统知识体系做成精细图解、单文件交互页面或带旁白的 MP4 视频讲解，制作前先确认构图、脚本与图例预览；内置本地声音克隆、逐帧导出与画面复核验收，不依赖其他 Skill。
+
+  <p align="center">
+    <img src="wattter_skills/wtt-concept-explainer/tests/engine-desktop.png" width="49%" alt="四冲程发动机交互图解">
+    <img src="wattter_skills/wtt-concept-explainer/tests/cache-crafted-desktop.png" width="49%" alt="固定 TTL 缓存交互图解">
+  </p>
+  <p align="center">
+    <video src="https://raw.githubusercontent.com/WaterDJiang/Wattter_openSkills/main/wattter_skills/wtt-concept-explainer/assets/tesla-flight-demo.mp4" controls width="72%" muted></video>
+    <br><sub>带旁白的视频讲解演示：《特斯拉怎么飞起来》封面钩子（1080p / 108 秒）</sub>
+  </p>
 
 ### 知识库与项目工程
 - **wtt-llm-wiki-builder**：LLM 友好知识库构建工具。支持三种模式：从零搭建 wiki 范式（Build）、增量编译新资料（Compile）、扫描修复已有 wiki 健康问题（Lint）。

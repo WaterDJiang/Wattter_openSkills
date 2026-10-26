@@ -205,6 +205,20 @@
         "name": "Water",
         "email": "wattterjiang@gmail.com"
       }
+    },
+    {
+      "name": "wtt-concept-explainer-skills",
+      "description": "Turns abstract concepts, technical principles, and traditional knowledge systems into fine-grained diagrams, interactive single-file HTML pages, or narrated MP4 videos with storyboard, text effects, model-linked animation, and audio-visual sync; includes local voice cloning, frame-by-frame export, and acceptance checks without depending on other skills.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-concept-explainer"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     }
   ]
 }

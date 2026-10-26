@@ -1,0 +1,28 @@
+{
+  "task": "CE-15",
+  "source": "wtt-code-animation-studio current working checkout",
+  "scope": "一次性移植自有实现；运行无源技能依赖；保留数据协议",
+  "files": {
+    "scripts/pipeline.py": "832b24814137bfa27ee9a7181f03a666110b4014bc3e3f226ff753fcbc3ab79f",
+    "scripts/voice.py": "6a66ed9a029b459a8c3563ac2877fc83a1e7e3d3c65da41aeede91a3cd06c5a0",
+    "scripts/render.cjs": "d970aa4be0334d9b488dc24f0fd372e328132de047d3ed073d48afc6fc3d5d89",
+    "scripts/asset_review.py": "3386fd67836a3e7e83f0c28b55246a779b7a4389b790d953012b715df2c51238",
+    "assets/starter/runtime.js": "36e29d83ae3392f150ff2ed69c14421496e1809b0c0ff21c71e9d85d3ab8a0ac",
+    "config/model-catalog.json": "f64b16722bfe3d21aa8b3b82ea34152dafb2437b8524dfbaeb857104c16bac9c",
+    "config/voice.example.json": "20afe5279de1f6121d99249b48a8df61b86b6846b5baba47592351eb9b0f053b",
+    "requirements-voice.txt": "242b61c9c5bd432eddaff7cc131c71bce7bbe2a5269e82183a1f97999ac240bb"
+  },
+  "notCopied": [
+    "第三方包或二进制",
+    "模型权重",
+    "私人录音/配置",
+    "种子角色与画风库",
+    "源技能评测历史及snapshot维护器"
+  ],
+  "adaptations": [
+    "本技能声音配置优先，旧用户数据可选兼容",
+    "CSS/JPEG/WebP MIME、舞台尺寸检查、可选JPEG95导出",
+    "轻量模板替代角色画风库",
+    "迁移行为测试但不复制源技能snapshot维护器测试"
+  ]
+}

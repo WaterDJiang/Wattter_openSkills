@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>四次往复，一次做功 · 发动机剖面</title>
+<style>
+:root{--paper:#F3F6FB;--ink:#142746;--muted:#4B627F;--line:#9CB2CF;--active:#A84B23}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:1280px;margin:auto;padding:30px 36px}.mast{display:flex;justify-content:space-between;font:10px ui-monospace,monospace;letter-spacing:2px;border-bottom:1px solid var(--line);padding-bottom:16px;color:var(--muted)}
+header{display:flex;justify-content:space-between;align-items:end;margin:25px 0;gap:30px}h1{color:#002FA7;font:500 clamp(30px,4vw,44px)/1.3 "Songti SC","STSong",serif;letter-spacing:2px;margin:0}header p{font-size:12px;line-height:1.9;margin:0;color:#4B627F}
+.workbench{display:grid;grid-template-columns:minmax(0,1fr) 276px;border:1px solid #9CB2CF;background:#FFFFFF}.figure{position:relative;border-right:1px solid var(--line);min-width:0}
+.figure-head{display:flex;justify-content:space-between;padding:16px 20px;font:9px ui-monospace,monospace;letter-spacing:1.6px;color:#4B627F}
+#engine{display:block;width:100%;height:auto;max-height:620px}.part{stroke:#516FA9;stroke-width:.8;stroke-linejoin:round}.fine{fill:none;stroke:#9CB2CF;stroke-width:.65}.engrave{font:9px ui-monospace,monospace;fill:#4B627F;letter-spacing:1px}
+.annotation{font:11px "PingFang SC",sans-serif;fill:#4B627F;letter-spacing:.6px}.hardware{cursor:pointer}.hardware:focus{outline:none}.hardware.selected{filter:drop-shadow(0 0 3px #A84B23)}
+.figure-foot{display:flex;justify-content:space-between;font:10px ui-monospace,monospace;color:#4B627F;padding:0 20px 16px}.figure-foot b{font-weight:400;color:#A84B23}
+aside{padding:24px 22px;background:#F8FAFE}.eyebrow{font:10px ui-monospace,monospace;letter-spacing:2px;color:#4B627F}.phase-number{font:200 64px/1 ui-monospace,monospace;color:#D1DCF1;margin:18px 0 10px}h2{font:500 26px "Songti SC",serif;margin:0 0 15px}.phase-copy{font-size:12px;line-height:1.9;min-height:78px;color:#4B627F}
+.readings{border-top:1px solid var(--line);margin:22px 0;padding:14px 0 0}.row{display:flex;justify-content:space-between;font-size:11px;margin:11px 0;color:#4B627F}.row strong{font:12px ui-monospace,monospace;color:#142746;font-weight:500}
+.selector-title{font-size:10px;color:#4B627F;margin-top:25px}.parts{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}.parts button{padding:6px 9px;font-size:10px;border-radius:3px}.parts button[aria-pressed=true]{background:#E2EAF8;border-color:#002FA7;color:#002FA7}
+#part-description{font-size:11px;line-height:1.85;color:#4B627F;min-height:60px}
+.cycles{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:18px}.cycle{position:relative;border:0;border-bottom:2px solid #9CB2CF;background:transparent;padding:14px 14px 15px;text-align:left;cursor:pointer;color:#4B627F}.cycle small{font:10px ui-monospace,monospace;letter-spacing:1px;display:block;margin-bottom:7px}.cycle span{font-size:14px;letter-spacing:2px}.cycle[aria-pressed=true]{border-color:var(--active);background:#E2EAF8;color:#142746}
+.timeline{margin:22px 0 0}.timeline-head{display:flex;justify-content:space-between;font:10px ui-monospace,monospace;color:#4B627F;margin-bottom:8px}input[type=range]{width:100%;accent-color:#002FA7;cursor:pointer}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:20px 0}button,select{font-family:inherit;font-size:12px;color:#142746;border:1px solid #9CB2CF;background:transparent;padding:10px 16px;border-radius:4px;cursor:pointer}button:hover{background:#E2EAF8}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #002FA7;outline-offset:3px}button.primary{background:#002FA7;color:#FFFFFF;border-color:#002FA7;min-width:116px}.control-label{font-size:11px;color:#4B627F;display:flex;gap:8px;align-items:center}.switch{margin-left:auto}
+.bottom{display:flex;justify-content:space-between;gap:30px;border-top:1px solid var(--line);padding-top:16px;font-size:10px;line-height:1.85;color:#4B627F}.bottom p{margin:0;max-width:780px}.bottom a{color:#002FA7;text-underline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media(max-width:850px){main{padding:22px}.workbench{grid-template-columns:minmax(0,1fr) 230px}aside{padding:18px 16px}.phase-number{font-size:50px}.annotation{font-size:12px}.parts button{font-size:10px;padding:5px 7px}}
+@media(max-width:620px){main{padding:20px 14px}.mast{font-size:8px;letter-spacing:1px}header{display:block;margin:20px 0}header p{margin-top:12px}.workbench{display:block}.figure{border-right:0;border-bottom:1px solid var(--line)}.figure-head{font-size:8px;padding:12px}.figure-foot{font-size:8px;padding:0 12px 12px}#annotations{display:none}aside{padding:18px;display:grid;grid-template-columns:70px 1fr;column-gap:14px}.eyebrow{grid-column:1/-1}.phase-number{grid-row:2/4;margin-top:14px}h2{margin:14px 0 8px}.phase-copy{min-height:0;margin:0}.readings{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;margin:16px 0 0}.selector-title,.parts,#part-description{grid-column:1/-1}.selector-title{margin-top:14px}#part-description{min-height:0;margin:0}.cycles{margin-top:12px}.cycle{padding:12px 7px}.cycle small{font-size:8px}.cycle span{font-size:12px}.controls{gap:8px}.controls button,.controls select{padding:10px 12px}.switch{margin-left:0}.bottom{display:block}.bottom a{display:inline-block;margin-top:10px}}
+</style>
+<main>
+<div class="mast"><span>CONCEPT STUDIES / 02</span><span>MECHANICAL ANATOMY</span></div>
+<header><h1>四次往复，一次做功。</h1><p>单缸四冲程 · 火花点火发动机<br>让往复变成旋转，让每个动作都有来处。</p></header>
+<div class="workbench">
+<section class="figure" aria-label="发动机剖面交互区">
+<div class="figure-head"><span>FIG. 02 / SINGLE-CYLINDER ENGINE</span><span>SECTION A—A</span></div>
+<svg id="engine" viewBox="160 110 610 580" role="img" aria-label="单缸四冲程发动机剖面。活塞通过固定长度连杆连接曲柄销；气门、气流、点火和飞轮跟随720度循环。">
+<defs>
+<linearGradient id="metal" x2="1" y2=".7"><stop stop-color="#f0f3fb"/><stop offset=".4" stop-color="#c8d0e5"/><stop offset=".65" stop-color="#e1e7f6"/><stop offset="1" stop-color="#8d9ec9"/></linearGradient>
+<linearGradient id="steel" x2="1"><stop stop-color="#7d90c2"/><stop offset=".4" stop-color="#e1e7f6"/><stop offset=".6" stop-color="#c9d1e6"/><stop offset="1" stop-color="#4d66a4"/></linearGradient>
+<linearGradient id="bore" x2="1"><stop stop-color="#6a80b9"/><stop offset=".16" stop-color="#d3d9ea"/><stop offset=".8" stop-color="#e7ecf8"/><stop offset="1" stop-color="#7b8fc1"/></linearGradient>
+<radialGradient id="shadow"><stop stop-color="#2f3e64" stop-opacity=".2"/><stop offset="1" stop-color="#2f3e64" stop-opacity="0"/></radialGradient>
+<radialGradient id="fire"><stop stop-color="#ffeab7"/><stop offset=".4" stop-color="#e9ac60" stop-opacity=".8"/><stop offset="1" stop-color="#c56e34" stop-opacity="0"/></radialGradient>
+<pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V6" stroke="#8698c6" stroke-width="1"/></pattern>
+<clipPath id="chamber-clip"><path id="chamber-outline"/></clipPath>
+</defs>
+<ellipse cx="460" cy="638" rx="238" ry="40" fill="url(#shadow)"/>
+<g id="static-back"></g><g id="flywheel" class="hardware" data-part="crank"></g>
+<g id="casing-back"></g><g id="gas" clip-path="url(#chamber-clip)"></g>
+<g id="crank" class="hardware" data-part="crank"></g>
+<g id="rod" class="hardware" data-part="rod"></g><g id="piston" class="hardware" data-part="piston"></g>
+<g id="static-front"></g><g id="valves" class="hardware" data-part="valves"></g>
+<g id="spark" class="hardware" data-part="spark"></g><g id="flow"></g>
+<g id="cover"></g>
+<g id="annotations">
+<path d="M397 244 L332 187 L280 187" class="fine"/><text x="235" y="175" class="annotation">气门与弹簧</text>
+<path d="M432 296 L506 225 L560 225" class="fine"/><text x="565" y="229" class="annotation">火花塞</text>
+<path d="M391 385 L300 363 L248 363" class="fine"/><text x="205" y="350" class="annotation">活塞 / 活塞环</text>
+<path d="M440 456 L540 419 L580 419" class="fine"/><text x="585" y="422" class="annotation">连杆</text>
+<path d="M430 555 L334 568 L280 568" class="fine"/><text x="229" y="582" class="annotation">曲轴 / 飞轮</text>
+</g>
+</svg>
+<div class="figure-foot"><span id="section-state">剖面视图 · 可点击部件</span><span>曲轴 <b id="angle-small">400°</b> / 720°</span></div>
+</section>
+<aside>
+<div class="eyebrow">THE FOUR-STROKE CYCLE</div><div id="phase-number" class="phase-number">03</div>
+<h2 id="phase-name">做功</h2><p id="phase-copy" class="phase-copy"></p>
+<div class="readings">
+<div class="row"><span>活塞方向</span><strong id="direction"></strong></div>
+<div class="row"><span>行程位置</span><strong id="travel"></strong></div>
+<div class="row"><span>进气门</span><strong id="intake-state"></strong></div>
+<div class="row"><span>排气门</span><strong id="exhaust-state"></strong></div>
+</div>
+<div class="selector-title">观察一个部件</div>
+<div class="parts" aria-label="部件说明">
+<button data-select="piston" aria-pressed="true">活塞</button><button data-select="rod" aria-pressed="false">连杆</button><button data-select="crank" aria-pressed="false">曲轴</button><button data-select="valves" aria-pressed="false">气门</button><button data-select="spark" aria-pressed="false">火花塞</button>
+</div><p id="part-description"></p>
+</aside>
+</div>
+<div class="cycles" aria-label="跳到冲程中段">
+<button class="cycle" data-phase="0" aria-pressed="false"><small>01 / 0—180°</small><span>进气 ↓</span></button>
+<button class="cycle" data-phase="1" aria-pressed="false"><small>02 / 180—360°</small><span>压缩 ↑</span></button>
+<button class="cycle" data-phase="2" aria-pressed="true"><small>03 / 360—540°</small><span>做功 ↓</span></button>
+<button class="cycle" data-phase="3" aria-pressed="false"><small>04 / 540—720°</small><span>排气 ↑</span></button>
+</div>
+<div class="timeline"><div class="timeline-head"><label for="angle">拖动曲轴，观察任意瞬间</label><span id="angle-readout">400° / 720°</span></div><input id="angle" type="range" min="0" max="720" step="1" value="400" aria-label="曲轴角度"></div>
+<div class="controls"><button id="play" class="primary">▶ 启动演示</button><button id="step">单步 +15°</button><label class="control-label">演示速度 <select id="speed" aria-label="演示速度"><option value=".25">0.25×</option><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><button id="section" class="switch" aria-pressed="true">显示完整外壳</button><button id="reset">复位</button></div>
+<div id="announcement" class="sr-only" aria-live="polite"></div>
+<footer class="bottom"><p>教学剖面模型，非生产图纸。一个循环为曲轴两转（720°）；气门采用理想相位，省略完整配气驱动、冷却和润滑系统。色彩表示气体阶段，不代表实测温度或压力。倍速只改变演示速度；行程百分比以顶部为 0%。</p><a href="https://www.grc.nasa.gov/www/k-12/airplane/engopt.html" target="_blank" rel="noopener">原理依据 / NASA ↗</a></footer>
+</main>
+<script>
+
+const R=48,L=155,HEAD=260;
+const PHASES=[
+ {name:"进气",accent:"#08798D",color:"#08798D",copy:"活塞下行，进气门开启。新鲜混合气经进气通道进入气缸；排气门保持关闭。"},
+ {name:"压缩",accent:"#86630D",color:"#86630D",copy:"两只气门关闭，活塞上行。气缸内可用空间缩小，混合气被压缩，准备点火。"},
+ {name:"做功",accent:"#A84B23",color:"#DC9C57",copy:"压缩末端点火，燃烧气体膨胀推动活塞下行。连杆把力传到曲柄销，形成旋转输出。"},
+ {name:"排气",accent:"#53677D",color:"#53677D",copy:"排气门开启，活塞上行。废气被推出气缸；排气结束后，开始下一轮进气。"}
+];
+function model(degrees){
+ const angle=((degrees%720)+720)%720,t=angle*Math.PI/180,phase=Math.floor(angle/180),progress=(angle%180)/180;
+ const crankX=R*Math.sin(t),crankZ=R*Math.cos(t),pinZ=crankZ+Math.sqrt(L*L-crankX*crankX);
+ const lift=13*Math.sin(progress*Math.PI)**2;
+ return {angle,t,phase,progress,crankX,crankZ,pinZ,crown:pinZ+27,travel:(L+R-pinZ)/(2*R),intake:phase===0?lift:0,exhaust:phase===3?lift:0,ignition:angle>=360&&angle<388};
+}
+const P=(x,y,z)=>[430+x*.94+y*.52,555+x*.17-y*.29-z];
+const fmt=a=>a.map(p=>p.join(",")).join(" ");
+const polygon=(a,fill,extra="")=>`<polygon points="${fmt(a)}" fill="${fill}" class="part" ${extra}/>`;
+const path=a=>"M"+a.map(p=>p.join(",")).join("L")+"Z";
+const line=(a,b,stroke="#7287bd",w=.7)=>`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round"/>`;
+const face=(x1,z1,x2,z2,y=0,fill="#dee5f5")=>polygon([P(x1,y,z1),P(x2,y,z1),P(x2,y,z2),P(x1,y,z2)],fill);
+function box(x,y,z,w,d,h,top="#e3e9f7",front="#bcc6df"){
+ return polygon([P(x,y,z),P(x+w,y,z),P(x+w,y,z+h),P(x,y,z+h)],front)+
+ polygon([P(x+w,y,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x+w,y,z+h)],"#9aa9cf")+
+ polygon([P(x,y,z+h),P(x+w,y,z+h),P(x+w,y+d,z+h),P(x,y+d,z+h)],top);
+}
+function circlePoints(x,y,z,r,n=64){return Array.from({length:n},(_,i)=>{const a=i/n*2*Math.PI;return P(x+Math.cos(a)*r,y,z+Math.sin(a)*r);});}
+function disc(x,y,z,r,fill="#d0daf1"){return polygon(circlePoints(x,y,z,r),fill);}
+function washer(x,y,z,r,inside,fill="url(#metal)"){return `<path d="${path(circlePoints(x,y,z,r))} ${path(circlePoints(x,y,z,inside).reverse())}" fill="${fill}" fill-rule="evenodd" class="part"/>`;}
+function bolt(x,y,z,r=3){return disc(x,y,z,r,"#c0c9e1")+line(P(x-r*.55,y,z),P(x+r*.55,y,z),"#516bac",.7);}
+function tube(world,r=13){
+ const d="M"+world.map(p=>P(...p).join(",")).join("L");
+ return `<path d="${d}" fill="none" stroke="#4e67a6" stroke-width="${r*2+2}" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#c6cee4" stroke-width="${r*2}" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#e9eef9" stroke-width="${r*.75}" stroke-linejoin="round"/>`;
+}
+const $=id=>document.getElementById(id);
+// Base, rear bearings, pipework and mounting studs.
+let back=box(-155,-35,-111,340,150,15,"#e1e7f6","#a7b4d5");
+for(const x of [-130,145])for(const y of [-20,92])back+=box(x-10,y,-124,22,24,13,"#94a4cd","#697fb8");
+for(const x of [-137,164])for(const y of [-17,96])back+=polygon(circlePoints(x,y,-94,4).map(p=>p),"#a9b6d7");
+back+=box(-95,35,-95,190,60,22)+box(-78,45,-73,155,45,25);
+back+=disc(0,86,0,100,"#7a8ec1")+disc(0,90,0,94,"#cdd4e7");
+back+=tube([[-65,43,278],[-130,43,278],[-161,43,292]],12);
+back+=tube([[67,42,278],[125,42,278],[160,42,240],[160,42,193],[190,42,173]],13);
+// Flanges and bolt ears at manifold interfaces.
+for(const x of [-84,84]){back+=box(x-5,24,257,10,38,40,"#c2cbe2");back+=bolt(x,23,263)+bolt(x,23,291);}
+for(let i=0;i<6;i++)back+=line(P(-156+i*3,27,281),P(-156+i*3,56,297),"#657cb7",1);
+back+=`<text x="252" y="232" class="engrave">INTAKE</text><text x="650" y="365" class="engrave">EXHAUST</text>`;
+$("static-back").innerHTML=back;
+// Rear crankcase and cylinder: front surface is deliberately cut away.
+let casing=disc(0,50,0,103,"#9baad0")+washer(0,0,0,103,86);
+casing+=box(-69,0,105,138,81,159,"#c8d0e5","#b0bcda");
+casing+=face(-50,108,50,260,-1,"url(#bore)");
+for(let z=119;z<253;z+=13){
+ casing+=box(68,0,z,8,86,4,"#d2dbf2","#8295c4");
+ casing+=box(-77,0,z,8,86,4,"#d2dbf2","#93a3cc");
+ casing+=line(P(77,8,z+5),P(77,82,z+5),"#f3f5fb",.7);
+}
+// The head has a central chamber recess and solid sides.
+casing+=box(-78,-2,264,156,87,28,"#e4eaf7","#bbc5df");
+casing+=face(-46,256,46,266,-3,"#d1daf2");
+casing+=face(-68,268,-46,287,-4,"url(#hatch)")+face(46,268,68,287,-4,"url(#hatch)");
+for(const x of [-65,65]){
+ casing+=line(P(x,8,102),P(x,8,309),"#4f69a9",4);
+ casing+=line(P(x-1,6,102),P(x-1,6,309),"#d5dbeb",1.2);
+ casing+=box(x-7,0,293,14,16,9,"#e0e6f6","#98a8cf");
+ for(let z=303;z<=310;z+=2)casing+=line(P(x-3,4,z),P(x+3,4,z),"#4c65a2",.6);
+}
+// Fixed valve guide deck and spring seats.
+casing+=box(-57,9,297,114,43,7,"#e8edf8","#9fadd2");
+for(const x of [-28,28])casing+=box(x-11,2,301,22,25,4,"#d5dbeb","#91a1cb");
+// Spark plug: thread, ceramic ribs and terminal.
+casing+=box(-8,26,285,16,16,10,"#c1cae2","#778cbf");
+for(let z=295;z<319;z+=4)casing+=box(-6,28,z,12,13,2,"#f5f7fc","#c1cbe2");
+casing+=box(-3,31,319,6,7,12,"#9eacd1","#5771b0");
+casing+=tube([[0,35,331],[0,35,349],[40,35,357],[68,35,349]],2.2);
+$("casing-back").innerHTML=casing;
+let front=washer(0,-4,0,103,87,"url(#metal)");
+for(let i=0;i<12;i++){const a=i*Math.PI/6;front+=bolt(Math.cos(a)*95,-5,Math.sin(a)*95,3.4);}
+front+=face(-69,108,-51,263,-5,"url(#hatch)")+face(51,108,69,263,-5,"url(#hatch)");
+for(let z=114;z<256;z+=13){front+=line(P(-76,-6,z),P(-53,-6,z),"#455b92",1);front+=line(P(53,-6,z),P(76,-6,z),"#455b92",1);}
+front+=box(-82,-12,91,164,24,12,"#c7cfe4","#92a2cc");
+for(const x of [-72,72])front+=bolt(x,-13,97,3);
+// A slotted stand under the crankcase.
+front+=box(-57,-16,-98,114,30,14,"#cad2e6","#9cabd0");
+for(const x of [-44,44])front+=bolt(x,-17,-90,4);
+front+=`<text x="447" y="654" class="engrave">SINGLE / 4T / SECTION A—A</text>`;
+$("static-front").innerHTML=front;
+let cover=face(-69,108,69,263,-9,"url(#metal)");
+for(let z=119;z<260;z+=13)cover+=box(-77,-15,z,154,15,4,"#dfe5f6","#9eadd1");
+cover+=disc(0,-12,0,87,"url(#metal)")+washer(0,-14,0,53,45);
+cover+=disc(0,-16,0,18,"#96a6ce");
+for(let i=0;i<8;i++){const a=i*Math.PI/4;cover+=bolt(Math.cos(a)*75,-15,Math.sin(a)*75,3);}
+$("cover").innerHTML=cover;
+const intakeWorld=[[-161,43,292],[-130,43,278],[-65,43,278],[-28,0,258]];
+const exhaustWorld=[[28,0,258],[67,42,278],[125,42,278],[160,42,240],[160,42,193],[190,42,173]];
+function pointsAlong(points,progress){const f=progress*(points.length-1),i=Math.min(points.length-2,Math.floor(f)),t=f-i;return points[i].map((n,k)=>n+(points[i+1][k]-n)*t);}
+function spring(x,lift){
+ const bottom=306,top=334-lift,pts=[];
+ for(let i=0;i<=100;i++){const q=i/100,a=q*12*Math.PI;pts.push(P(x+8*Math.sin(a),-3+3*Math.cos(a),bottom+(top-bottom)*q));}
+ return `<polyline points="${fmt(pts)}" fill="none" stroke="#445a91" stroke-width="1.8"/><polyline points="${fmt(pts)}" fill="none" stroke="#c9d1e6" stroke-width=".65"/>`;
+}
+function renderValves(m){
+ let out="";
+ for(const [x,lift] of [[-28,m.intake],[28,m.exhaust]]){
+  out+=line(P(x,-2,258-lift),P(x,-2,335-lift),"#4a629d",5)+line(P(x-1,-3,260-lift),P(x-1,-3,335-lift),"#e1e7f6",1.5);
+  out+=box(x-13,-7,254-lift,26,19,4,"#d1d8e9","#5770b0");
+  out+=spring(x,lift)+box(x-10,-7,334-lift,20,18,4,"#dce3f5","#8799c6");
+  const pivot=x<0?-59:59;
+  out+=line(P(pivot,0,342),P(x,-2,338-lift),"#506aab",7)+line(P(pivot,0,343),P(x,-2,339-lift),"#c4cde3",3);
+  out+=bolt(pivot,-2,342,4)+box(pivot-5,2,306,10,18,36,"#bec7e0","#8e9fca");
+ }
+ return out;
+}
+// Build the detailed wheel once; an affine projection carries its rotation.
+function buildFlywheel(){
+ let fly=washer(0,82,0,100,76,"#002FA7");
+ for(let i=0;i<6;i++){const a=i*Math.PI/3;fly+=line(P(Math.sin(a)*18,82,Math.cos(a)*18),P(Math.sin(a)*80,82,Math.cos(a)*80),"#92a2cc",13);}
+ for(let i=0;i<60;i++){const a=i*Math.PI/30;fly+=line(P(Math.sin(a)*96,82,Math.cos(a)*96),P(Math.sin(a)*100,82,Math.cos(a)*100),"#44598f",.8);}
+ fly+=disc(0,80,0,24,"url(#metal)");$("flywheel").innerHTML=fly;
+}
+buildFlywheel();
+function renderMoving(m){
+ const center=P(0,82,0),sn=Math.sin(m.t),cs=Math.cos(m.t);
+ $("flywheel").setAttribute("transform",`translate(${center}) matrix(${cs+.17*sn} ${1.0289/.94*sn} ${-.94*sn} ${cs-.17*sn} 0 0) translate(${-center[0]} ${-center[1]})`);
+ const c=P(m.crankX,-3,m.crankZ),origin=P(0,-3,0),pin=P(0,-3,m.pinZ);
+ const opposite=P(-m.crankX*.7,0,-m.crankZ*.7);
+ let crank=line(opposite,c,"#002FA7",30)+line(opposite,c,"#b0bcda",24)+disc(0,-6,0,19,"url(#steel)");
+ crank+=disc(m.crankX,-5,m.crankZ,13,"#abb8d8")+bolt(m.crankX,-6,m.crankZ,5);$("crank").innerHTML=crank;
+ $("rod").innerHTML=line(c,pin,"#4a629e",18)+line(c,pin,"#cdd4e7",14)+line(c,pin,"#8a9cc8",5)+washer(m.crankX,-7,m.crankZ,14,6,"url(#steel)")+washer(0,-7,m.pinZ,11,5,"url(#steel)");
+ let piston=box(-47,-6,m.pinZ-16,94,42,43,"#e1e7f6","url(#steel)");
+ for(const z of [m.pinZ+20,m.pinZ+14,m.pinZ+8])piston+=face(-47,z,47,z+2,-7,"#677eb8");
+ piston+=disc(0,-8,m.pinZ,9,"#6d83ba")+disc(0,-9,m.pinZ,5,"#d5def3");
+ for(const x of [-35,35])piston+=bolt(x,-8,m.pinZ-7,2);
+ $("piston").innerHTML=piston;
+ const chamber=[P(-49,-1,m.crown),P(49,-1,m.crown),P(49,-1,HEAD),P(-49,-1,HEAD)];
+ $("chamber-outline").setAttribute("d",path(chamber));
+ let gas=polygon(chamber,PHASES[m.phase].color,`opacity="${m.phase===2?.25+.3*(1-m.progress):.14+.1*m.travel}"`);
+ // Fixed molecule samples stay inside the instantaneous chamber.
+ for(let i=0;i<24;i++){const x=-42+(i%6)*16.8,z=m.crown+4+(HEAD-m.crown-8)*(Math.floor(i/6)+.5)/4,p=P(x,-4,z);gas+=`<circle cx="${p[0]}" cy="${p[1]}" r="${m.phase===2?2.1:1.4}" fill="${PHASES[m.phase].color}" opacity=".45"/>`;}
+ if(m.phase===2){const q=P(0,-3,253);gas+=`<ellipse cx="${q[0]}" cy="${q[1]+(HEAD-m.crown)*.25}" rx="64" ry="${18+(HEAD-m.crown)*.65}" fill="url(#fire)" opacity="${1-m.progress*.65}"/>`;}
+ $("gas").innerHTML=gas;
+ $("valves").innerHTML=renderValves(m);
+ const plug=P(0,-4,258),sparkSize=m.ignition?7+6*Math.sin(m.progress*Math.PI*8):0;
+ $("spark").innerHTML=`<path d="M${plug[0]-3} ${plug[1]-18}v14h5" fill="none" stroke="#44598f" stroke-width="2"/>`+(m.ignition?`<path d="M${plug[0]-sparkSize} ${plug[1]}l${sparkSize} -5l-2 11l${sparkSize} -5" fill="none" stroke="#e8a24a" stroke-width="2"/>`:"");
+ let flow="";
+ const route=m.phase===0?intakeWorld:exhaustWorld;
+ if((m.phase===0&&m.intake>.1)||(m.phase===3&&m.exhaust>.1))for(let i=0;i<9;i++){
+  const f=(m.progress*2+i/9)%1,q=P(...pointsAlong(route,f));flow+=`<circle cx="${q[0]}" cy="${q[1]}" r="2.3" fill="${PHASES[m.phase].color}" stroke="#e8edf8" stroke-width=".7"/>`;
+ }
+ $("flow").innerHTML=flow;
+}
+const DESCRIPTIONS={
+ piston:"活塞沿气缸轴线往复。顶部承受气体作用，活塞环形成密封；销把活塞与连杆连接起来。",
+ rod:"两端分别连在活塞销与曲柄销上。模型保持杆长不变，因此活塞运动不是简单的正弦曲线。",
+ crank:"偏心曲柄销把往复与旋转连接起来。飞轮与曲轴同速转动；这里用恒定演示角速度观察运动关系。",
+ valves:"进气门在进气阶段开启，排气门在排气阶段开启。弹簧压缩与气门升程同步；完整配气驱动未画出。",
+ spark:"火花出现在压缩结束、做功开始附近。点火启动燃烧；这里显示的是阶段示意，不模拟燃烧化学。"
+};
+let angle=400,playing=false,speed=1,section=true,selected="piston",raf=0,lastTime=null;
+function selectPart(name){selected=name;$("part-description").textContent=DESCRIPTIONS[name];document.querySelectorAll("[data-select]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.select===name));document.querySelectorAll(".hardware").forEach(g=>g.classList.toggle("selected",g.dataset.part===name));}
+function render(announce=false){
+ const m=model(angle);angle=m.angle;renderMoving(m);selectPart(selected);
+ $("phase-number").textContent=String(m.phase+1).padStart(2,"0");$("phase-name").textContent=PHASES[m.phase].name;$("phase-copy").textContent=PHASES[m.phase].copy;
+ $("direction").textContent=Math.abs(Math.sin(m.t))<1e-7?"止点":m.phase%2?"上行 ↑":"下行 ↓";
+ $("travel").textContent=(m.travel*100).toFixed(1)+"%";$("intake-state").textContent=m.intake>.01?"开启":"关闭";$("exhaust-state").textContent=m.exhaust>.01?"开启":"关闭";
+ $("angle").value=angle;$("angle-readout").textContent=Math.round(angle)+"° / 720°";$("angle-small").textContent=Math.round(angle)+"°";
+ document.querySelectorAll("[data-phase]").forEach(b=>b.setAttribute("aria-pressed",Number(b.dataset.phase)===m.phase));
+ document.documentElement.style.setProperty("--active",PHASES[m.phase].accent);
+ $("cover").style.display=section?"none":"block";$("annotations").style.opacity=section?"1":"0";
+ $("section-state").textContent=section?"剖面视图 · 可点击部件":"外壳视图 · 切回剖面观察内部";
+ if(announce)$("announcement").textContent=`${PHASES[m.phase].name}，曲轴 ${Math.round(angle)} 度，活塞行程 ${(m.travel*100).toFixed(0)}%。`;
+}
+function stop(){playing=false;cancelAnimationFrame(raf);lastTime=null;$("play").textContent="▶ 启动演示";}
+function tick(now){if(!playing)return;if(lastTime!==null)angle+=Math.min((now-lastTime)/1000,.05)*90*speed;lastTime=now;render();raf=requestAnimationFrame(tick);}
+function start(){playing=true;lastTime=null;$("play").textContent="Ⅱ 暂停";raf=requestAnimationFrame(tick);}
+$("play").addEventListener("click",()=>playing?stop():start());
+$("step").addEventListener("click",()=>{stop();angle+=15;render(true);});
+$("angle").addEventListener("input",e=>{stop();angle=Number(e.target.value);render(true);});
+$("speed").addEventListener("change",e=>{speed=Number(e.target.value);});
+$("section").addEventListener("click",()=>{section=!section;$("section").textContent=section?"显示完整外壳":"返回剖面";$("section").setAttribute("aria-pressed",section);render(true);});
+$("reset").addEventListener("click",()=>{stop();angle=0;render(true);});
+document.querySelectorAll("[data-phase]").forEach(b=>b.addEventListener("click",()=>{stop();angle=Number(b.dataset.phase)*180+90;render(true);}));
+document.querySelectorAll("[data-select]").forEach(b=>b.addEventListener("click",()=>selectPart(b.dataset.select)));
+document.querySelectorAll(".hardware").forEach(g=>g.addEventListener("click",()=>selectPart(g.dataset.part)));
+document.addEventListener("visibilitychange",()=>{if(document.hidden)stop();});
+matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change",e=>{if(e.matches)stop();});
+render();
+</script>
+</html>

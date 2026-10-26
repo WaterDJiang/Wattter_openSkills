@@ -1,0 +1,36 @@
+{
+  "schema": "code-animation-models/v1",
+  "checkedOn": "2026-09-27",
+  "models": [
+    {
+      "id": "qwen3-tts-1.7b-base-mlx",
+      "name": "Qwen3-TTS 1.7B Base（本地声音克隆）",
+      "role": "tts",
+      "engine": "qwen3-tts-mlx",
+      "repo": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16",
+      "revision": "a6eb4f68e4b056f1215157bb696209bc82a6db48",
+      "license": "Apache-2.0",
+      "source": "https://huggingface.co/mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16",
+      "upstream": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+      "platform": "macOS Apple Silicon / Metal",
+      "downloadBytes": 4544212739,
+      "testedHardware": "M1 Max / 64GB；单次短句峰值约 10.14GB，非最低配置承诺",
+      "status": "local-synthesis-tested",
+      "notes": "需要参考录音与一致文字；不是 CustomVoice 或 VoiceDesign，不能填预设音色名或情绪 instruct。"
+    },
+    {
+      "id": "whisper-small-mlx",
+      "name": "Whisper small（可选离线转录核对）",
+      "role": "asr",
+      "engine": "mlx-audio-whisper",
+      "repo": "mlx-community/whisper-small-asr-fp16",
+      "revision": "42fc41c2ab1c78e844fd01477cf398eec6801c47",
+      "license": "Apache-2.0",
+      "source": "https://huggingface.co/mlx-community/whisper-small-asr-fp16",
+      "platform": "macOS Apple Silicon / Metal",
+      "downloadBytes": 485624250,
+      "status": "optional-reference-only",
+      "notes": "不是配音模型；可检索和下载，本脚本不提供转录命令。历史转录出现静音幻觉与重复标点，不能自动代替本人核对。"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "code-animation/v1",
+  "title": "概念讲解舞台 · 帧接口示例",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "seed": 42,
+  "scenes": [
+    {"id":"overview","title":"先看整体，再看变化","visualSeconds":3,"narration":"","director":{"labels":["输入","变化","结果"],"focus":0}},
+    {"id":"change","title":"焦点与字幕由同一时间轴驱动","visualSeconds":3,"narration":"","director":{"labels":["输入","变化","结果"],"focus":1}}
+  ],
+  "audioTracks": []
+}

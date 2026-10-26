@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>缓存命中，为什么不续期？</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f4ef;color:#21322b;font:16px/1.7 system-ui,sans-serif}
+main{max-width:880px;margin:6vh auto;padding:28px}small{color:#526b60}h1{font-size:clamp(26px,5vw,42px);line-height:1.25;margin:10px 0 20px}
+.stage{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0}.tile{border:1px solid #c5d2c9;border-radius:12px;background:white;padding:22px}
+.metric{font-size:32px;font-weight:650;display:block}.controls{display:flex;gap:12px;flex-wrap:wrap}button{background:#24563e;color:white;border:0;border-radius:8px;padding:12px 18px;font:inherit;cursor:pointer}
+button.secondary{background:#e0e7df;color:#21322b}button:focus-visible{outline:3px solid #bc550d;outline-offset:3px}
+#result{min-height:100px;padding:18px 20px;background:#e5eddf;border-left:4px solid #24563e}
+ol{padding-left:24px}footer{font-size:14px;color:#526b60;margin-top:26px}@media(max-width:520px){main{padding:20px;margin:12px auto}.stage{grid-template-columns:1fr}.tile{padding:16px}}
+</style>
+<main>
+<small>概念实验 · 固定有效期</small>
+<h1>缓存命中，为什么不续期？</h1>
+<p>写入后有效 <strong>60 秒</strong>。再次访问可以复用缓存，但不会延长有效期。时间恰好到期，就需要重新取值。</p>
+<div class="stage">
+<section class="tile" aria-label="模拟时间"><small>当前模拟时间</small><span class="metric" id="clock">0 秒</span><span id="written">尚未写入</span></section>
+<section class="tile" aria-label="缓存状态"><small>缓存状态</small><span class="metric" id="status">空缓存</span><span id="expiry">暂无到期时间</span></section>
+</div>
+<div class="controls">
+<button id="request">发送请求</button><button id="advance" class="secondary">推进 30 秒</button><button id="reset" class="secondary">重置</button>
+</div>
+<p id="result" role="status" aria-live="polite"></p>
+<ol>
+<li>先发送请求：没有缓存，从数据源取值。</li>
+<li>推进 30 秒后请求：命中缓存，到期时间保持不变。</li>
+<li>再推进 30 秒后请求：恰好到期，重新取值并写入。</li>
+</ol>
+<footer>教学示例：时间由按钮推进；数据源用版本号模拟，没有网络请求。这里只解释固定 TTL，不包含访问后续期、容量淘汰或并发更新。</footer>
+</main>
+<script>
+const TTL = 60;
+function initialState() { return {now:0,written:null,version:0,message:"点击“发送请求”，开始一次缓存访问。"}; }
+function isFresh(s) { return s.written !== null && s.now < s.written + TTL; }
+function transition(s,action) {
+  if(action === "reset") return initialState();
+  if(action === "advance") {
+    const next = {...s,now:s.now+30};
+    next.message = next.written === null ? "时间已推进，仍未写入缓存。" :
+      isFresh(next) ? "时间已推进，缓存仍有效；没有发生数据请求。" : "缓存已到期；下一次请求将重新取值。";
+    return next;
+  }
+  if(action === "request") {
+    if(isFresh(s)) return {...s,message:`命中版本 ${s.version}。到期时间仍是 ${s.written+TTL} 秒，本次访问没有续期。`};
+    const reason = s.written === null ? "没有缓存" : "缓存已到期";
+    return {...s,written:s.now,version:s.version+1,message:`${reason}：从模拟数据源取回版本 ${s.version+1}，写入后在 ${s.now+TTL} 秒到期。`};
+  }
+  throw new Error("未知操作：" + action);
+}
+let state = initialState();
+function render() {
+  const fresh = isFresh(state);
+  document.getElementById("clock").textContent = `${state.now} 秒`;
+  document.getElementById("written").textContent = state.written === null ? "尚未写入" : `上次写入：${state.written} 秒 · 版本 ${state.version}`;
+  document.getElementById("status").textContent = state.written === null ? "空缓存" : fresh ? "有效" : "已到期";
+  document.getElementById("expiry").textContent = state.written === null ? "暂无到期时间" : `到期：${state.written+TTL} 秒 · 剩余 ${Math.max(0,state.written+TTL-state.now)} 秒`;
+  document.getElementById("result").textContent = state.message;
+}
+for(const action of ["request","advance","reset"]) document.getElementById(action).addEventListener("click",()=>{state=transition(state,action);render();});
+render();
+</script>
+</html>

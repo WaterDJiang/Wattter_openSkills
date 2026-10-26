@@ -1,0 +1,1 @@
+*{box-sizing:border-box}body{margin:0;background:#F3F6FB;color:#142746;font-family:system-ui}canvas{display:block;width:100%;height:auto}#controls{display:flex;align-items:center;gap:20px;padding:20px}#seek{flex:1}button{border:0;padding:12px 24px;background:#002FA7;color:white;border-radius:5px}.export #controls{display:none}.export canvas{width:auto;height:auto}

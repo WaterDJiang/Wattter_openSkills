@@ -1,0 +1,3 @@
+# 核心脚本（Python）仅依赖标准库，无需安装第三方包。
+# 可选配音环境（Apple Silicon + MLX 声音克隆）见 requirements-voice.txt。
+# 浏览器渲染依赖本地 Chrome（Playwright/Node 侧驱动）与 FFmpeg。
