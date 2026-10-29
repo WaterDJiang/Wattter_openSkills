@@ -1,0 +1,31 @@
+{
+  "name": "WTT Reader",
+  "version": "0.2.4",
+  "license": "AGPL-3.0-only",
+  "authors": "WTT",
+  "implementation": "independent Lua interface using unchanged KOReader reading/device modules",
+  "backend": {
+    "repository": "https://github.com/koreader/koreader",
+    "tag": "v2026.07.1",
+    "license": "AGPL-3.0-only",
+    "source": "https://github.com/koreader/koreader/tree/v2026.07.1"
+  },
+  "modifications": "WTT library/control_dialog; shared main menu sorting hint; truthful native fallback with standalone emergency continue/exit; unchanged reading/device core",
+  "weread": "Calls installed upstream openBookshelf; plugin source not copied",
+  "startup_derivative": {
+    "source": "https://github.com/koreader/koreader/tree/v2026.07.1",
+    "release_entry": "koreader/koreader.sh",
+    "original_sha256": "99135d6711d96ac6c0c13aabb9c80b59292bd370ff527a9920de9aa37770bb51",
+    "artifact": "device/koreader-start-wtt.sh",
+    "sha256": "d31c3f7c474991eef191c528abbee049114c8c6f036d6df441be7cbeda93333a",
+    "change": "one eips success-start line replaced with a WTT_READER_UI conditional; upstream lifecycle and startup self-check unchanged",
+    "authors": "KOReader contributors; WTT conditional display text",
+    "license": "AGPL-3.0-only"
+  },
+  "mark": {
+    "authors": "WTT",
+    "source": "wtt-icon.svg",
+    "artifact": "wtt-icon.png",
+    "license": "AGPL-3.0-only"
+  }
+}

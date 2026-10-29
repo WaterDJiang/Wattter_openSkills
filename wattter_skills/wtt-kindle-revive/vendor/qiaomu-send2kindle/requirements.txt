@@ -1,0 +1,5 @@
+paramiko==4.0.0
+keyring==25.7.0
+filelock==4.2.4
+psutil==7.2.2
+

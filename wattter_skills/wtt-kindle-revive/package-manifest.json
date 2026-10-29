@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "skill": "wtt-kindle-revive",
+  "version": "0.15.0",
+  "package_stage": "internal_runtime_migration_hardware_pending",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6"
+    },
+    {
+      "path": "README.md",
+      "sha256": "b10327a8fc40a28161b72e68563a120e1e2955900648763a4c71d9e762da3c97"
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "03a281795574207cabd36b6f1406696b7e26a599a104cd5606bb8d9d49d5a9d2"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "sha256": "5931311b27fdc51da29fd76c5d28e4289cfc532c1f85bde40849338b761c3909"
+    },
+    {
+      "path": "assets/hash-release.json",
+      "sha256": "9dbae3c1c08c75411be60fc1e17529080778b064f67113193abc8c048d7e0e40"
+    },
+    {
+      "path": "assets/hash-source.json",
+      "sha256": "fad8300b89b2770b8673c3caa5f82df76e6d1cd35bfd2d20b5803f2bb81824a2"
+    },
+    {
+      "path": "assets/reuse-lock.json",
+      "sha256": "59aacc9217330ee1b5c276dd414646e0755f9fdff0f50cfeb1bf67a68bcec54c"
+    },
+    {
+      "path": "assets/sources/mupdf-sha256-source.tar.gz",
+      "sha256": "8e621d64a90f08d55b1964ed5c7eb1e5e30d11ca29b36791c2374abe78c94d93"
+    },
+    {
+      "path": "assets/ssh-runtime-lock.txt",
+      "sha256": "ea0ee3fb9748e4821c5135f4e4e927a78e4239c538284d2814e4f367bc09a194"
+    },
+    {
+      "path": "assets/wtt-sha256-armel",
+      "sha256": "095f285dddb3429ca509afa66926c212ace7cf286b03e084c8ac85cc657439c0"
+    },
+    {
+      "path": "components.json",
+      "sha256": "530a4158419e03c6c5fd0b582e6a5ef5a34d847a25f8531304faf115db245330"
+    },
+    {
+      "path": "device/hash.c",
+      "sha256": "d03cc46e0448599d45ac5517b339c8e6b24b131f948d3387c53d49db989f2e6e"
+    },
+    {
+      "path": "device/hash_build.py",
+      "sha256": "afe2a50fffc91eb2d55ff796d808cf630f94416f7f77c088401a5ed6a2ec2189"
+    },
+    {
+      "path": "device/koreader-start-wtt.sh",
+      "sha256": "d31c3f7c474991eef191c528abbee049114c8c6f036d6df441be7cbeda93333a"
+    },
+    {
+      "path": "device/probe.sh",
+      "sha256": "a55e64f79ff4be7e41b340b7b77c37e640a55b3f7c6dceb5328cf7ee4c006821"
+    },
+    {
+      "path": "device/wttui-launcher.sh",
+      "sha256": "347fab6aaba28b4a4ca3eac4df247cb58360aec8a8049df72b18d8efac393238"
+    },
+    {
+      "path": "device/wttui.koplugin/LICENSE",
+      "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6"
+    },
+    {
+      "path": "device/wttui.koplugin/ORIGIN.json",
+      "sha256": "7b71510ec3a9e8ecd07afa36ef806d4ae5beda2de9259622e7f975ebdd16d5f0"
+    },
+    {
+      "path": "device/wttui.koplugin/_meta.lua",
+      "sha256": "bd60707061952331027762a46379b2f587a1352d86cdf11fbdb5c3b4540da0e8"
+    },
+    {
+      "path": "device/wttui.koplugin/main.lua",
+      "sha256": "9787748ecbee8d1f4d9c8504267ee496e0ddc54a5f1cee97125e015e5224276b"
+    },
+    {
+      "path": "device/wttui.koplugin/wtt-icon.png",
+      "sha256": "dd653b223c9540e033d193a6426b0b15bf1187e9ace3ff52de1e3e00145be606"
+    },
+    {
+      "path": "device/wttui.koplugin/wtt-icon.svg",
+      "sha256": "2a8e566dbfd9510dc11a8cb753e6d254c4783d8a4efe9b59ef87a38240b6e1de"
+    },
+    {
+      "path": "device/wttui.koplugin/wttui/library.lua",
+      "sha256": "d2bc4be0475a0576a47cc3fbb51260312a9b2a4197960d51302cde231861995d"
+    },
+    {
+      "path": "references/bootstrap.md",
+      "sha256": "f46c8c29c101c113d040986004daaa410eee21f3516804c410237ed7a07fa0de"
+    },
+    {
+      "path": "references/koreader-workflow.md",
+      "sha256": "c275f283c35095b1c2672de3fc8b046fa2367999350ddf84bcbd25e370e7a109"
+    },
+    {
+      "path": "references/runtime-migration.md",
+      "sha256": "db57c0fa5afb03375268ca72dd0f13c2a4a5d287f0dac45cfdffd1b78b1e10c3"
+    },
+    {
+      "path": "references/troubleshooting.md",
+      "sha256": "27cce1d473592ab70598dd1318c527d8e751c59a9874f045835df7bd2c613854"
+    },
+    {
+      "path": "references/verified-scope.md",
+      "sha256": "13d40e46333b385a88e9a4115eaedb6a28ec97c6f8861ad7909c112f2fc35bba"
+    },
+    {
+      "path": "references/wtt-ui.md",
+      "sha256": "e6544582fa0caccd04413866b12578c6a47babf9a33cc3c68a84c78ab85ff448"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "960acd4438cd374625b2f420df489395105058c828bebbb3d0e560a33d8a6a42"
+    },
+    {
+      "path": "scripts/wtt_bootstrap.py",
+      "sha256": "68a1a2156a2d5e2c14de2546f1f587620188e241d8ef14539557ec1f78fd06fe"
+    },
+    {
+      "path": "scripts/wtt_diagnose.py",
+      "sha256": "c48ed8c826ea3f0c5da2b88e836ff105c86a5bd44a9672d6d62f5add0c1ca415"
+    },
+    {
+      "path": "scripts/wtt_install.py",
+      "sha256": "849e9800b631829ca15d6dd5ef297ff0de8ad3ce79cae261de279cd4cfab745c"
+    },
+    {
+      "path": "scripts/wtt_kindle.py",
+      "sha256": "8ec699f2f001e71fdac1bafc53cd1215ed37a458d6a6b866e88b3b151d8efde2"
+    },
+    {
+      "path": "scripts/wtt_koreader.py",
+      "sha256": "86f05d1bbe7db664f8be09995dba1b7032be4b557fe6972d5db0b87cbb8a9a7d"
+    },
+    {
+      "path": "scripts/wtt_layout.py",
+      "sha256": "78a2aed92822416aba6d703de1e7b031814fd38bc65a628587c1cff55df9680b"
+    },
+    {
+      "path": "scripts/wtt_migrate.py",
+      "sha256": "cc1def1195ec9935cb45b6d0ec67cb2960236f01230b2086364fbae7e80c5229"
+    },
+    {
+      "path": "scripts/wtt_transfer.py",
+      "sha256": "bb7cf4c64f75d7365bc8cc29dabe4a54adeab5dc729f0a166dae847ec2b7a10f"
+    },
+    {
+      "path": "scripts/wtt_ui.py",
+      "sha256": "1c8f1e44cab59ecb6b153baf47965eb2f9fb21bf5f7dd5fac71468ae86073d9b"
+    },
+    {
+      "path": "vendor/qiaomu-send2kindle/LICENSE",
+      "sha256": "e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052"
+    },
+    {
+      "path": "vendor/qiaomu-send2kindle/ORIGIN.json",
+      "sha256": "a7e6b6b96971823d7120dd5d9fc80d5874bb8411a627b6e78663cd3f18f12520"
+    },
+    {
+      "path": "vendor/qiaomu-send2kindle/kindle_store.py",
+      "sha256": "2a51fe5ffd81120b70b3d2fb2ef5d6979fe370d6967b754cb07909c72c730a0b"
+    },
+    {
+      "path": "vendor/qiaomu-send2kindle/kindle_transport.py",
+      "sha256": "c636be8badfada0461aaf4bbad0b1b21d7675d22c97e36ba2d34862a44c9b6bb"
+    },
+    {
+      "path": "vendor/qiaomu-send2kindle/kindle_usb.py",
+      "sha256": "8ed1ef11f8259bd20b0b1ed76ba6cd5ac91c878e78f9381d3c787a985ae5db64"
+    },
+    {
+      "path": "vendor/qiaomu-send2kindle/requirements.txt",
+      "sha256": "930879860e1df9febd55101ba82daae320ac071583db72bd2f5f4387cf3bc80c"
+    },
+    {
+      "path": "vendor/qiaomu-send2kindle/runtime_paths.py",
+      "sha256": "120dc9a2b8f8dcb60ebfc755b270c9921b42bcbe7824d90348194a4a03bd20e2"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "artifact": "assets/wtt-sha256-armel",
+  "sha256": "095f285dddb3429ca509afa66926c212ace7cf286b03e084c8ac85cc657439c0",
+  "platform": "kindle-linux-armel",
+  "static": true,
+  "source": "device/hash.c + MuPDF 1.28.5 source/fitz/crypt-sha2.c",
+  "device_verified": false,
+  "features": [
+    "sha256",
+    "base64_decode"
+  ],
+  "corresponding_source": "assets/hash-source.json",
+  "artifact_unchanged_since": "0.13.4"
+}

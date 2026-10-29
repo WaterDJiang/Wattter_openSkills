@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/joeseesun/qiaomu-send2kindle",
+  "commit": "a921ce6c5b2f296b5c14d7cb41233ac614f83426",
+  "license": "GPL-3.0",
+  "scope": "Pinned SSH/SFTP, pairing and credential modules with small WTT layout adapters; original upstream commit retained",
+  "wtt_modifications": {
+    "kindle_usb.py": "configurable RUNTIME_ROOT, default old upstream path",
+    "kindle_transport.py": "open_sftp factory, default unchanged subsystem; WTT uses explicit internal exec-channel",
+    "binary_modifications": false
+  }
+}

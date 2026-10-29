@@ -35,6 +35,9 @@
     <br><sub>带旁白的视频讲解演示：《特斯拉怎么飞起来》封面钩子（1080p / 108 秒）</sub>
   </p>
 
+### 旧设备与阅读工具
+- **[wtt-kindle-revive](wattter_skills/wtt-kindle-revive/README.md)**：Kindle 检查、备份、固定组件部署与日常导书。设备上使用 WTT Reader 文字书架和大按钮控制，复用 KOReader、成熟微信读书插件与 SSH/SFTP；首台 PW1/5.6.1.1 已有本地与微信正文阅读反馈，Wi-Fi 真机传书尚未验收，其它机型需单独确认。支持把完整 Skill 目录交给 WorkBuddy 或其它本地 Agent 按说明执行。
+
 ### 知识库与项目工程
 - **wtt-llm-wiki-builder**：LLM 友好知识库构建工具。支持三种模式：从零搭建 wiki 范式（Build）、增量编译新资料（Compile）、扫描修复已有 wiki 健康问题（Lint）。
 - **wtt-project-harness-generator**：项目 Harness 生成器。扫描项目代码，通过对话引导理解项目 DNA，自动生成 CLAUDE.md 和 AGENTS.md，包含组件化、规则、UI/UX 等规范。
@@ -87,4 +90,4 @@ openskills read <技能名>  # 代理按需读取技能内容
 - `.claude-plugin/`：Plugin 市场打包配置。
 
 ## 许可证
-本项目采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 许可，禁止商业用途。
+除各 Skill 或第三方文件另有明确许可外，本项目内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 许可。`wtt-kindle-revive` 按其目录内 AGPL/GPL 等许可证与来源说明使用，不适用本仓库其它内容的非商业限制；微信插件仅提供上游获取配方，其用途和分发条件见上游声明。

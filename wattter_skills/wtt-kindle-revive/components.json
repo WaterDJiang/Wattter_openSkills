@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "skill_version": "0.15.0",
+  "package_stage": "internal_runtime_migration_hardware_pending",
+  "user_install_units": 1,
+  "modes": {
+    "revive": {
+      "purpose": "首次复活或明确修复",
+      "automatic_reset": false
+    },
+    "transfer": {
+      "purpose": "给已配置设备 Wi-Fi 传书",
+      "requires_usb_by_default": false,
+      "runs_revival": false,
+      "automatic_reset": false
+    },
+    "auto": {
+      "known_device": "transfer",
+      "unknown_intent": "choose"
+    }
+  },
+  "required_host": "Python 3.12 / macOS arm64 validated; other hosts not hardware tested",
+  "components": [
+    {
+      "id": "host-preparation",
+      "status": "implemented",
+      "entry": "scripts/wtt_kindle.py",
+      "required_for_revival": false
+    },
+    {
+      "id": "device-reader",
+      "status": "implemented_experimental",
+      "required_for_revival": true,
+      "artifact": "assets/reuse-lock.json",
+      "sha256": "59aacc9217330ee1b5c276dd414646e0755f9fdff0f50cfeb1bf67a68bcec54c",
+      "verified_devices": [],
+      "features": [
+        "upstream_native_library",
+        "upstream_reading",
+        "bookmarks_highlights",
+        "WTT_Books_directory"
+      ],
+      "hardware_verified": false,
+      "formats": [
+        "epub",
+        "pdf",
+        "txt",
+        "mobi",
+        "azw3"
+      ],
+      "format_engines": {
+        "epub_txt_mobi_azw3": "KOReader CREngine",
+        "pdf": "KOReader MuPDF"
+      },
+      "upstream": "KOReader v2026.07.1 kindle (PW1)",
+      "backend_user_validation": {
+        "device": "PW1/B024/5.6.1.1",
+        "txt_pdf_open_turn_exit": true,
+        "corrected_epub_open_turn": true,
+        "other_formats_marks_sleep": "not_verified_on_koreader",
+        "wtt_ui_hardware_verified": false
+      }
+    },
+    {
+      "id": "weread-integration",
+      "status": "implemented_experimental",
+      "content_api_verified": false,
+      "required_for_revival": true,
+      "artifact": "assets/reuse-lock.json",
+      "sha256": "59aacc9217330ee1b5c276dd414646e0755f9fdff0f50cfeb1bf67a68bcec54c",
+      "verified_devices": [],
+      "upstream": "finlater/weread.koplugin v1.6.0",
+      "hardware_verified": false,
+      "distribution_scope": "pinned upstream fetch; current personal validation; public redistribution clarification pending",
+      "validation_scope": "PW1 user confirmed login/body opening/page turning; sync/download/list not separately verified"
+    },
+    {
+      "id": "wifi-transfer",
+      "status": "implemented_experimental",
+      "required_for_revival": true,
+      "artifact": "scripts/wtt_transfer.py",
+      "sha256": "bb7cf4c64f75d7365bc8cc29dabe4a54adeab5dc729f0a166dae847ec2b7a10f",
+      "verified_devices": [],
+      "hardware_verified": false,
+      "host_transport_verified": false,
+      "transport": "upstream SSH/SFTP modules + Paramiko",
+      "adapter_tests_verified": true,
+      "autostart": false
+    },
+    {
+      "id": "device-deployment",
+      "status": "implemented_experimental",
+      "required_for_revival": true,
+      "artifact": "scripts/wtt_koreader.py",
+      "sha256": "86f05d1bbe7db664f8be09995dba1b7032be4b557fe6972d5db0b87cbb8a9a7d",
+      "verified_devices": [],
+      "scope": "new_paths_or_proven_cleanup_state_preserving_overlay",
+      "requires_authorized_device_shell": true
+    },
+    {
+      "id": "platform-bootstrap",
+      "status": "implemented_experimental",
+      "required_for_revival": true,
+      "artifact": "scripts/wtt_bootstrap.py",
+      "sha256": "68a1a2156a2d5e2c14de2546f1f587620188e241d8ef14539557ec1f78fd06fe",
+      "verified_devices": [],
+      "scope": "PW1_B024_5.6.1.1_only",
+      "hardware_verified": false,
+      "upstream": "WinterBreak2 v1.1.0 + jb.sh v2.4.0; fetched at runtime",
+      "hardware_execution_verified": false,
+      "verified_scope": "prior PW1 root/OTA/execution evidence retained; new first-install shell probe not yet run on hardware",
+      "new_probe_kind": "shell_execution_v2",
+      "new_probe_validation": "host_only; existing successful device/old receipts not changed"
+    },
+    {
+      "id": "bootstrap-sha256",
+      "status": "implemented_experimental",
+      "required_for_revival": true,
+      "artifact": "assets/wtt-sha256-armel",
+      "sha256": "095f285dddb3429ca509afa66926c212ace7cf286b03e084c8ac85cc657439c0",
+      "verified_devices": []
+    },
+    {
+      "id": "wtt-reader-ui",
+      "status": "implemented_experimental",
+      "required_for_revival": true,
+      "artifact": "scripts/wtt_ui.py",
+      "sha256": "1c8f1e44cab59ecb6b153baf47965eb2f9fb21bf5f7dd5fac71468ae86073d9b",
+      "version": "0.2.4",
+      "hardware_verified": false,
+      "verified_devices": [],
+      "scope": "UI0.2.3 reading controls preserved; about and internal launcher adapted; current migration not yet hardware verified",
+      "prior_ui_device_validation": {
+        "version": "0.2.2",
+        "font_typesetting": true,
+        "return_library": true,
+        "reading_settings": false,
+        "source": "user hardware feedback, PW1/B024/5.6.1.1"
+      }
+    },
+    {
+      "id": "read-only-diagnostics",
+      "status": "implemented",
+      "required_for_revival": false,
+      "artifact": "scripts/wtt_diagnose.py",
+      "sha256": "c48ed8c826ea3f0c5da2b88e836ff105c86a5bd44a9672d6d62f5add0c1ca415",
+      "device_writes": false,
+      "network": false
+    },
+    {
+      "id": "internal-runtime-migration",
+      "status": "implemented_experimental",
+      "required_for_revival": false,
+      "artifact": "scripts/wtt_migrate.py",
+      "hardware_verified": false,
+      "scope": "copy full state; activate; user validation gate; exact archived cleanup; state-preserving rollback",
+      "sha256": "cc1def1195ec9935cb45b6d0ec67cb2960236f01230b2086364fbae7e80c5229"
+    }
+  ],
+  "implementation_route": "wtt_ui_on_koreader_weread_ssh_sftp",
+  "upstream_fetch_required": true,
+  "legacy_experiments": {
+    "in_delivery": false,
+    "project_history": "legacy/wtt-kindle-revive",
+    "active_runtime_dependency": false
+  },
+  "known_device_regression": {
+    "component": "wtt-reader-ui",
+    "resolved_version": "0.2.3",
+    "resolved_scope": "font/return/normal settings confirmed by user on PW1; emergency branch host-only",
+    "history": [
+      "parent dialog collision in0.2.1",
+      "filemanager-only sorting hint in0.2.2"
+    ]
+  },
+  "validation_evidence": {
+    "scope": "one PW1 Wi-Fi/B024/5.6.1.1",
+    "date": "2026-10-29",
+    "source": "user hardware feedback; no account/book identifiers",
+    "local_core_and_settings": "passed",
+    "weread_login_and_body_page_turn": "passed",
+    "wifi_transfer": "skipped_by_user",
+    "advanced_marks_resume_full_formats_sync": "not_fully_verified",
+    "independent_llm": "per evaluation run; not inferred from unit tests"
+  },
+  "runtime_layout": {
+    "root": "WTT/Runtime/koreader",
+    "evidence": "WTT/Runtime/Evidence",
+    "extensions": "WTT/Runtime/extensions/koreader",
+    "legacy_root": "migration_and_rollback_only",
+    "native_ota": "disabled_use_wtt_maintenance",
+    "libkh_platform_exception": true
+  }
+}

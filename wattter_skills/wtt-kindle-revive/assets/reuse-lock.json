@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "koreader": {
+    "name": "koreader-kindle-v2026.07.1.zip",
+    "size": 40718690,
+    "sha256": "sha256:1fa9cc2784ffa42eaa309445d4e81661f825614c9c32349554fed6e4c8757a1d",
+    "url": "https://github.com/koreader/koreader/releases/download/v2026.07.1/koreader-kindle-v2026.07.1.zip",
+    "version": "v2026.07.1",
+    "license": "AGPL-3.0",
+    "target": "PW1_B024_5.6.1.1",
+    "source": "https://github.com/koreader/koreader/tree/v2026.07.1"
+  },
+  "weread": {
+    "name": "weread.koplugin-v1.6.0.zip",
+    "size": 910252,
+    "sha256": "sha256:647abca30fe7638d67c5c24e483409acdedaa758194f177863d1385365258d51",
+    "url": "https://github.com/finlater/weread.koplugin/releases/download/v1.6.0/weread.koplugin-v1.6.0.zip",
+    "version": "v1.6.0",
+    "license": "AGPL-3.0-only",
+    "redistribution_review": "README also says non-commercial; personal verification only until clarified",
+    "source": "https://github.com/finlater/weread.koplugin/tree/v1.6.0"
+  },
+  "launcher": {
+    "name": "koreader_launcher_asap.sh",
+    "url": "https://scriptlets.notmarek.com/scriptlets/koreader_launcher_asap.sh",
+    "sha256": "sha256:eda3cd24c6a3843b0f20d49d5922f0fb89c91fb04a7486ebd612254a85710563",
+    "size": 154,
+    "source": "Official KOReader installation wiki linked scriptlet; HTTPS content reviewed and pinned by WTT",
+    "author": "Marek",
+    "license": "upstream attribution retained; no rebranding"
+  }
+}

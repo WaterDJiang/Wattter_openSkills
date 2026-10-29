@@ -1,0 +1,3 @@
+# USB/备份/包验证使用 Python 3.10+ 标准库。
+# Wi-Fi 功能采用同一固定依赖锁；常规通过 wtt_transfer.py setup 安装到私有隔离环境。
+-r assets/ssh-runtime-lock.txt

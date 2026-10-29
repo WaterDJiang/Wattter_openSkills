@@ -1,0 +1,4 @@
+interface:
+  display_name: "WTT Kindle 复活"
+  short_description: "WTT 极简界面复用 KOReader；首次复活与日常 Wi-Fi 传书分流，传书不重置"
+  default_prompt: "使用 $wtt-kindle-revive 检查设备状态，按我的需求选择复活或 Wi-Fi 传书，未明确要求时不要重新初始化。"

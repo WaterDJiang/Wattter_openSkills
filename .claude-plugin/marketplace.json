@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, course PPTX building, wiki building, project harness generation, resume screening, multi-platform OpenCLI publishing, SEO/GEO content writing, and multi-style comic/infographic prompt generation.",
-    "version": "2.5.0",
+    "version": "2.6.0",
     "license": "CC BY-NC-SA 4.0"
   },
   "plugins": [
@@ -218,6 +218,20 @@
       "author": {
         "name": "Water",
         "email": "wattterjiang@gmail.com"
+      }
+    },
+    {
+      "name": "wtt-kindle-revive-skills",
+      "description": "Kindle 检查、备份、固定组件部署维护与 USB/Wi-Fi 导书；WTT Reader 复用 KOReader、微信读书插件和 SSH/SFTP。首台 PW1 已有本地及微信正文阅读反馈，真机无线传书仍待验收。",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-kindle-revive"
+      ],
+      "version": "0.15.0",
+      "license": "AGPL-3.0-only",
+      "author": {
+        "name": "Water"
       }
     }
   ]
