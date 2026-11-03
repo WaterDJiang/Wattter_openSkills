@@ -18,14 +18,35 @@
 
 - 六类用途：知识、故事、产品、纪实、数据、创意。
 - 参考目录完整覆盖11组66条；与本库原有风格去重后，共81项方法（含15项本库补充）。这与用途数量、样片数量分别统计。
-- 打开[完整风格库](assets/gallery/styles.html)，可按用途、风格组和关键词筛选；每条都有中文适配、完整方法原文、来源与验收要点。方法已收录不代表81项全部已有本库成片测试，原画廊样片为6片，新增地图模板另有20秒工程测试。
+- 打开[完整风格库](assets/gallery/styles.html)，可按具体用法、用途、风格组和关键词组合筛选；展开卡片查看匹配理由、关键镜头构想与条件。方法已收录不代表81项全部已有本库成片测试，原画廊样片为6片，新增地图模板另有20秒工程测试。
+- [主题用法映射](references/use-case-mapping.md)把23个内容入口与全部81项建立187条多对多关系，附正向与反向表；原18类之外补充动态设计作品集、交互实验、代码库讲解、口播补画、配方过程。同一风格可用于多类内容，交叉主题可合并查找，不新增开场分类题。
 - 五方向从全库按剧本筛选；指定“黑板粉笔”“产品拆解”等可直接定位，不需要层层选目录。
 - 方法原文按MIT许可保留来源和声明，见[第三方归属](THIRD_PARTY_NOTICES.md)。媒体仍全部使用自有示例，不搬运参考仓库样片。
 
 ```sh
 python3 scripts/catalog.py list --purpose documentary
 python3 scripts/catalog.py list --query 水墨
+python3 scripts/catalog.py use-cases
+python3 scripts/catalog.py list --use-case 广告
+python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩
+python3 scripts/catalog.py list --use-case 口播补画
+python3 scripts/catalog.py cases --use-case 概念解释
+python3 scripts/catalog.py cases --query p5
 ```
+
+映射中的187个标题/关键镜头是**未渲染的原创构想**；标注的同风格工程样片是独立已有证据，不表示该构想已制作。目录没有自动评分器，候选仍按本片目标、受众、事实和素材条件筛选。可直接说：“给我的个人品牌做宣传，温暖克制，先按内容推荐五个完整方向”；不用知道风格名。
+
+新主题会先在脚本中比较至多三种有意义的内容结构并择优，再把五个完整方向交给你选；现成或锁定剧本直接沿用。选定后先用真实代码核对关键画面和必要动作，再扩为全片，不增加逐站确认。你已指定画风或委托代选时按已有决定继续。
+
+## 从高关注作品选择底层技术
+
+[外部案例目录](references/production-cases.md)记录17个代表案例，其中7个有注明来源的播放量快照，其余用于技术或用法参考。区分纯绘制视频、交互作品演示、原视频补画和生成素材混合；原作依赖未披露时保持未知，不能凭画风猜库。
+
+[案例驱动选型](references/case-driven-techniques.md)说明内容动作如何对应Canvas/SVG、p5.brush、WebGL/Three.js、Remotion，以及外部Manim/Blender路线。比如P(doom)原版有p5.brush源码，混合重制版另有生成素材；历史战役使用自写WebGL2，不能一律称Three.js。收录案例不表示依赖已安装或新后端可一键运行；本轮没有下载原作媒体或重新制作这些作品。
+
+## 风格保真与技术选型
+
+选定画风后读取完整方法，以本片关键材质、造型、空间与动作决定技术，并用真实小样核对。Canvas/SVG、p5.js、WebGL、Three.js、GSAP、D3、Remotion按需要组合；目录列出方法不表示后端已安装。最小样例保留风格成立的机制，技术检查与风格审阅分别报告。具体流程见[风格保真](references/style-fidelity.md)。
 
 ## 原创样片
 

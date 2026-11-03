@@ -8,6 +8,228 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+def validate_use_cases(data):
+    """Editorial mappings must not invent rendered evidence."""
+    if 'useCases' not in data:
+        return
+    cases = data['useCases']
+    if not isinstance(cases, list) or not cases:
+        raise ValueError('用法映射不能为空；旧元数据可不含useCases字段')
+    styles = {s['id'] for s in data['styles']}
+    purposes = {c['id'] for c in data['categories']}
+    samples = {s['id']: s for s in data['samples']}
+    ids, aliases, covered = set(), {}, set()
+    def required(value, label):
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError('用法映射缺少'+label)
+    for case in cases:
+        cid = case['id']
+        if cid in ids:
+            raise ValueError('useCases: duplicate id')
+        ids.add(cid)
+        for key in ('id', 'name', 'goal', 'structure'):
+            required(case.get(key), key)
+        if not case.get('purposes') or not set(case['purposes']) <= purposes:
+            raise ValueError('用法映射包含未知用途')
+        for key in ('aliases', 'needs'):
+            if not isinstance(case.get(key), list) or not case[key]:
+                raise ValueError('用法映射缺少'+key)
+            for value in case[key]:
+                required(value, key)
+        for alias in [cid, case['name'], *case['aliases']]:
+            key = alias.strip().casefold()
+            if key in aliases and aliases[key] != cid:
+                raise ValueError('用法别名冲突：'+alias)
+            aliases[key] = cid
+        if not case.get('matches'):
+            raise ValueError('用法映射缺少风格候选')
+        seen = set()
+        for match in case['matches']:
+            sid = match['styleId']
+            if sid not in styles:
+                raise ValueError('用法映射引用未知风格：'+sid)
+            if sid in seen:
+                raise ValueError('用法风格映射重复：'+cid+'/'+sid)
+            seen.add(sid); covered.add(sid)
+            if match.get('fit') not in ('primary', 'conditional'):
+                raise ValueError('未知匹配条件：'+sid)
+            required(match.get('why'), '推荐理由')
+            if not isinstance(match.get('conditions'), list) or not match['conditions']:
+                raise ValueError('用法映射缺少适用条件')
+            for value in match['conditions']:
+                required(value, '适用条件')
+            example = match.get('example', {})
+            if example.get('status') != 'concept':
+                raise ValueError('样例构想不能冒充已渲染样片')
+            for key in ('title', 'keyShot'):
+                required(example.get(key), '示例'+key)
+            evidence = match.get('evidenceSampleIds', [])
+            if not isinstance(evidence, list) or len(evidence) != len(set(evidence)):
+                raise ValueError('样片证据引用重复或格式错误')
+            for sample_id in evidence:
+                sample = samples.get(sample_id)
+                if not sample or sample['style'] != sid or sample['category'] not in case['purposes'] or sample['status'] != 'rendered':
+                    raise ValueError('样片证据与用法/风格不匹配：'+sample_id)
+    if covered != styles:
+        raise ValueError('用法映射漏覆盖风格：'+', '.join(sorted(styles-covered)))
+
+
+def use_case_matches(data, style_id, case_id=None):
+    return [dict(m, useCaseId=c['id'], useCaseName=c['name'])
+            for c in data.get('useCases', []) if not case_id or c['id'] == case_id
+            for m in c['matches'] if m['styleId'] == style_id]
+
+
+def validate_reference_cases(data):
+    cases = data.get('referenceCases', [])
+    if 'referenceCases' in data and (not isinstance(cases, list) or not cases):
+        raise ValueError('研究案例不能为空')
+    use_cases = {c['id']: c for c in data.get('useCases', [])}
+    engines = {e['id'] for e in data['engines']}
+    ids = set()
+    for case in cases:
+        cid = case['id']
+        if cid in ids:
+            raise ValueError('研究案例ID重复：'+cid)
+        ids.add(cid)
+        if case.get('verification') != 'research-only':
+            raise ValueError('研究案例不能冒充本库已渲染样片')
+        if case.get('outputKind') not in ('video', 'interactive-demo', 'hybrid-video', 'mixed-footage'):
+            raise ValueError('未知作品形态：'+cid)
+        if not case.get('useCases') or not set(case['useCases']) <= set(use_cases):
+            raise ValueError('研究案例引用未知用法：'+cid)
+        if not set(case.get('suggestedEngines', [])) <= engines:
+            raise ValueError('复现建议引用未知引擎：'+cid)
+        for key in ('id', 'title', 'selectionReason'):
+            if not isinstance(case.get(key), str) or not case[key].strip():
+                raise ValueError('研究案例缺少'+key)
+        for key in ('reportedTechnology', 'unknownTechnology', 'evidence'):
+            if not isinstance(case.get(key), list) or not case[key]:
+                raise ValueError('研究案例缺少'+key)
+        if not case.get('originalUrl', '').startswith('https://'):
+            raise ValueError('研究案例缺少原始URL')
+        for evidence in case['evidence']:
+            if evidence.get('level') not in ('source-inspected', 'author-article', 'relayed-author', 'index-only'):
+                raise ValueError('未知案例证据等级')
+            if not evidence.get('url', '').startswith('https://') or not evidence.get('finding', '').strip():
+                raise ValueError('研究案例缺少证据URL或依据')
+        heat = case.get('attention', {})
+        views = heat.get('views')
+        if views is None:
+            if heat.get('basis') != 'not-verified' or heat.get('sourceUrl') is not None:
+                raise ValueError('未核实热度不能保留已核实标记')
+        elif type(views) is not int or views < 0 or heat.get('basis') != 'index-snapshot' or not heat.get('sourceUrl', '').startswith('https://') or not heat.get('metricAsOf') or not heat.get('retrievedAt'):
+            raise ValueError('热度数字缺少来源、日期或快照口径')
+    for use_case in use_cases.values():
+        refs = use_case.get('referenceCaseIds', [])
+        if len(refs) != len(set(refs)) or not set(refs) <= ids:
+            raise ValueError('用法引用未知或重复研究案例')
+        expected = {c['id'] for c in cases if use_case['id'] in c['useCases']}
+        if set(refs) != expected:
+            raise ValueError('案例与用法反向引用不一致')
+
+
+def select_reference_cases(data, purpose=None, query='', use_case=None):
+    validate_reference_cases(data)
+    cid = resolve_use_case(data, use_case) if use_case else None
+    categories = {c['id'] for c in data['categories']}
+    if purpose and purpose not in categories:
+        raise ValueError('未知用途：'+purpose)
+    purpose_cases = {c['id'] for c in data.get('useCases', []) if not purpose or purpose in c['purposes']}
+    return [c for c in data.get('referenceCases', [])
+            if (not cid or cid in c['useCases']) and set(c['useCases']) & purpose_cases
+            and query.casefold() in ' '.join([c['id'], c['title'], *c['reportedTechnology'], *c['unknownTechnology']]).casefold()]
+
+
+def resolve_use_case(data, value):
+    key = value.strip().casefold()
+    for case in data.get('useCases', []):
+        if key in {x.casefold() for x in [case['id'], case['name'], *case['aliases']]}:
+            return case['id']
+    raise ValueError('未知用法：'+value+'；运行 catalog.py use-cases 查看入口')
+
+
+def search_text(data, style):
+    matches = use_case_matches(data, style['id'])
+    cases = {m['useCaseId'] for m in matches}
+    extra = [x for c in data.get('useCases', []) if c['id'] in cases for x in [c['name'], *c['aliases']]]
+    extra += [x for m in matches for x in [m['why'], m['example']['title'], m['example']['keyShot']]]
+    return ' '.join([style['id'], style['name'], style.get('en', ''), style.get('material', ''), *style.get('aliases', []), *extra]).casefold()
+
+
+def select_styles(data, purpose=None, query='', use_case=None):
+    validate_use_cases(data)
+    validate_reference_cases(data)
+    cid = resolve_use_case(data, use_case) if use_case else None
+    if purpose and purpose not in {c['id'] for c in data['categories']}:
+        raise ValueError('未知用途：'+purpose)
+    result = []
+    for style in data['styles']:
+        matches = use_case_matches(data, style['id'], cid)
+        if (purpose and purpose not in style.get('purposes', [])) or (cid and not matches) or query.casefold() not in search_text(data, style):
+            continue
+        result.append(dict(style, useCaseMatches=matches) if cid else style)
+    return result
+
+
+def mapping_document(data):
+    styles = {s['id']: s for s in data['styles']}
+    samples = {s['id']: s for s in data['samples']}
+    esc = lambda text: str(text).replace('|', '\\|').replace('\n', ' ')
+    lines = ['# 主题用法与风格映射', '',
+             '由 `config/capabilities.json` 的 useCases 生成。用法与风格多对多；六个主用途和现有风格ID不变。', '',
+             '## 怎么使用', '',
+             '先识别内容目标、受众、事实/虚构和素材条件，再检索用法；交叉题材可取多个入口。候选是检索起点，模型结合本片脚本重新推荐五个完整方向，由用户决定。主匹配不是自动选中，有条件匹配不代表已具备依赖。', '',
+             '每条示例均为**原创样例构想，未渲染**；另列的同风格工程样片只证明其已有实现范围，不证明该构想、题材效果或全部81项均已验证。', '',
+             '```sh', 'python3 scripts/catalog.py use-cases', 'python3 scripts/catalog.py list --use-case 广告',
+             'python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩', '```', '',
+             '## 用法入口', '', '| 用法 | 主用途 | 内容目标 | 结构起点 | 候选数 |', '|---|---|---|---|---|']
+    categories = {c['id']: c['name'] for c in data['categories']}
+    for case in data['useCases']:
+        lines.append(f"| [{case['name']}](#{case['id']}) | {' / '.join(categories[p] for p in case['purposes'])} | {esc(case['goal'])} | {esc(case['structure'])} | {len(case['matches'])} |")
+    for case in data['useCases']:
+        lines += ['', f'<a id="{case["id"]}"></a>', '', f"## {case['name']}", '',
+                  '检索：`'+case['id']+'`；别名：'+'、'.join(case['aliases'])+'。', '',
+                  '内容/素材条件：'+'；'.join(case['needs'])+'。', '',
+                  '| 风格 / 匹配 | 为什么适合 | 样例构想（未渲染）与关键镜头 | 条件 / 已有工程证据 |', '|---|---|---|---|']
+        for m in case['matches']:
+            style = styles[m['styleId']]
+            link = Path(style['reference']).relative_to('references').as_posix()
+            evidence = '；'.join(f"[同风格工程样片：{samples[s]['title']}](../{samples[s]['project']}/DEMO.md)" for s in m['evidenceSampleIds'])
+            lines.append(f"| [{style['name']}]({link}) / {'主匹配' if m['fit']=='primary' else '有条件'} | {esc(m['why'])} | **{esc(m['example']['title'])}**：{esc(m['example']['keyShot'])} | {esc('；'.join(m['conditions']))}"+('；'+evidence if evidence else '')+' |')
+        refs = case.get('referenceCaseIds', [])
+        if refs:
+            research = {c['id']: c for c in data['referenceCases']}
+            lines += ['', '外部研究案例（非本库成片验收）：'+'、'.join(f"[{research[cid]['title']}](production-cases.md#{cid})" for cid in refs)+'。']
+    lines += ['', '## 反向查询：81种风格适合哪些用法', '', '| ID / 风格 | 可匹配用法 |', '|---|---|']
+    for style in data['styles']:
+        links = '、'.join(f"[{m['useCaseName']}](#{m['useCaseId']})"+('（有条件）' if m['fit']=='conditional' else '') for m in use_case_matches(data, style['id']))
+        lines.append(f"| `{style['id']}` / {style['name']} | {links} |")
+    return '\n'.join(lines)+'\n'
+
+
+def reference_case_document(data):
+    labels = {'source-inspected':'源码已查看', 'author-article':'作者制作记录', 'relayed-author':'作者陈述的公开转引', 'index-only':'索引描述'}
+    kinds = {'video':'视频', 'interactive-demo':'交互作品的演示', 'hybrid-video':'生成素材与代码混合', 'mixed-footage':'原视频与代码补画'}
+    uses = {c['id']: c['name'] for c in data['useCases']}
+    lines = ['# 外部作品与技术依据', '', '由config/capabilities.json的referenceCases生成。只存研究信息，不搬运媒体；均为research-only，不是本库渲染验收。', '',
+             '热度来自注明来源的索引快照，不是实时播放量、全网排名或效果保证。作者未公开或本次未读到的库保持未知；复现建议与原片实际技术分开。选择时配合[案例驱动选型](case-driven-techniques.md)和[用法映射](use-case-mapping.md)。', '',
+             '```sh', 'python3 scripts/catalog.py cases --use-case 概念解释', 'python3 scripts/catalog.py cases --query p5', '```', '',
+             '| 案例 | 形态 | 对应用法 | 关注依据 |', '|---|---|---|---|']
+    for c in data['referenceCases']:
+        a=c['attention'];heat=f"{a['views']:,}次播放（索引快照）" if a['views'] is not None else '未核实热度；技术/用法参考'
+        lines.append(f"| [{c['title']}](#{c['id']}) | {kinds[c['outputKind']]} | {' / '.join(uses[x] for x in c['useCases'])} | {heat} |")
+    for c in data['referenceCases']:
+        a=c['attention']
+        lines += ['', f'<a id="{c["id"]}"></a>', '', '## '+c['title'], '', f"[原作或作者入口]({c['originalUrl']})。{c['selectionReason']}。", '',
+                  '- 已披露或可查的做法：'+'；'.join(c['reportedTechnology'])+'。',
+                  '- 尚不确定：'+'；'.join(c['unknownTechnology'])+'。',
+                  '- 本库复现候选：'+(' / '.join(c['suggestedEngines']) if c['suggestedEngines'] else '独立外部渲染路线，按指南评估')+'；不是原片依赖认定或已适配声明。']
+        if a['views'] is not None:
+            lines.append(f"- [热度来源]({a['sourceUrl']})：{a['views']:,}次播放；指标日期：{a['metricAsOf']}；检索日期：{a['retrievedAt']}。")
+        lines += ['']+[f"- [{labels[e['level']]}]({e['url']})：{e['finding']}。" for e in c['evidence']]
+    return '\n'.join(lines)+'\n'
+
 def documents(root):
     data = json.loads((root/'config/capabilities.json').read_text())
     for collection in ('categories','styles','engines','samples'):
@@ -49,6 +271,8 @@ def documents(root):
             if not report.get('passed') or report['durationSeconds']!=sample['durationSeconds']:
                 raise ValueError('样片技术检查或时长与目录不一致')
             if report['finalSha256']!=digest(root/sample['project']/'final.mp4'): raise ValueError('样片检查未绑定当前成片')
+    validate_use_cases(data)
+    validate_reference_cases(data)
     lines=['# 分类路径与能力状态','','由 `config/capabilities.json` 生成；修改元数据后运行 `python3 scripts/catalog.py build`。','','## 按目的找到制作路径','','| 目的 | 形式（可组合） | 输入示例 | 方法 |','|---|---|---|---|']
     for c in data['categories']:
         lines.append(f"| **{c['name']}**：{c['goal']} | {' / '.join(c['forms'])} | {c['prompt']} | [配方]({Path(c['reference']).name}) |")
@@ -78,18 +302,39 @@ def documents(root):
     options=lambda items: ''.join('<option value="'+html.escape(i['id'])+'">'+html.escape(i['name'])+'</option>' for i in items)
     cards=[]
     for style in data['styles']:
-        search=' '.join([style['name'],style.get('en',''),style['id'],style.get('material',''),' '.join(style.get('aliases',[]))]).lower()
-        cards.append('<article data-group="'+style.get('group','local')+'" data-purposes="'+','.join(style.get('purposes',[]))+'" data-search="'+html.escape(search,quote=True)+'"><h2>'+html.escape(style['name'])+'</h2><p>'+html.escape(style.get('material','本库原有组合画法，按片实现。'))+'</p><p>'+html.escape(style.get('action','按内容设计动作。'))+'</p><a href="../../'+style['reference']+'">方法与验收</a><small>方法配方 · 按本片验证</small></article>')
+        matches=use_case_matches(data,style['id'])
+        details=[]
+        for m in matches:
+            evidence=''.join('<p><a href="../../'+next(s['project'] for s in data['samples'] if s['id']==sid)+'/DEMO.md">同风格工程样片（非此构想）</a></p>' for sid in m['evidenceSampleIds'])
+            details.append('<details><summary>'+html.escape(m['useCaseName'])+(' · 有条件' if m['fit']=='conditional' else '')+'</summary><p>'+html.escape(m['why'])+'</p><p>构想，未渲染：'+html.escape(m['example']['title'])+'。'+html.escape(m['example']['keyShot'])+'</p><p>条件：'+html.escape('；'.join(m['conditions']))+'</p>'+evidence+'</details>')
+        cards.append('<article data-group="'+style.get('group','local')+'" data-purposes="'+','.join(style.get('purposes',[]))+'" data-cases="'+','.join(m['useCaseId'] for m in matches)+'" data-search="'+html.escape(search_text(data,style),quote=True)+'"><h2>'+html.escape(style['name'])+'</h2><p>'+html.escape(style.get('material','本库原有组合画法，按片实现。'))+'</p><p>'+html.escape(style.get('action','按内容设计动作。'))+'</p>'+''.join(details)+'<a href="../../'+style['reference']+'">方法与验收</a><small>方法配方 · 按本片验证</small></article>')
     stylepage='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>完整风格库 · 代码视频</title><style>body{max-width:1280px;margin:40px auto;padding:0 22px;background:#f3f0e9;color:#163a3c;font:17px system-ui}input,select{font:inherit;padding:10px;max-width:100%;margin:8px 4px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:16px}article{padding:20px;background:#fffdf8;border:1px solid #d6ded4;border-radius:12px}article[hidden]{display:none}p{line-height:1.7}a{color:#176e67}small{display:block;margin-top:12px;color:#61726b}h2{font-size:22px}</style><h1>完整风格库</h1><p>11参考组66条方法已完整收录，加本库补充共STYLE_COUNT项。按用途、组别或关键词查找；新吸收方法尚未逐条在本库制作成片。</p><label>搜索<input id="query" placeholder="例如 水墨 / 纪录片 / 3D"></label><label>用途<select id="purpose"><option value="">全部用途</option>'''+options(data['categories'])+'</select></label><label>风格组<select id="group"><option value="">全部组别</option>'+options(data.get('styleGroups',[]))+'</select></label><p id="count"></p><main>'+''.join(cards)+'''</main><p><a href="index.html">原创样片</a> · <a href="../../references/classification.md">分类与技术状态</a></p><script>function update(){const q=document.querySelector('#query').value.toLowerCase(),p=document.querySelector('#purpose').value,g=document.querySelector('#group').value;let n=0;document.querySelectorAll('article').forEach(a=>{a.hidden=!!(q&&!a.dataset.search.includes(q)||p&&!a.dataset.purposes.split(',').includes(p)||g&&a.dataset.group!==g);if(!a.hidden)n++});document.querySelector('#count').textContent=n+' 项可浏览方法';}document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',update));update();</script></html>'''
     stylepage=stylepage.replace('STYLE_COUNT',str(len(styles)))
-    return {'references/classification.md':'\n'.join(lines),'assets/gallery/index.html':page,'assets/gallery/styles.html':stylepage}
+    result={'references/classification.md':'\n'.join(lines),'assets/gallery/index.html':page,'assets/gallery/styles.html':stylepage}
+    if data.get('useCases'):
+        result['references/use-case-mapping.md']=mapping_document(data)
+        result['references/classification.md']=result['references/classification.md'].replace('## 视觉风格（与用途自由组合）', f"## 按具体主题用法检索\n\n[{len(data['useCases'])}种主题用法与{len(styles)}种风格的正反向映射](use-case-mapping.md)：广告、个人宣传、纪录片、浪漫故事、概念解释等。每条含理由、关键镜头构想和条件；不增加开场分类选择。\n\n## 视觉风格（与用途自由组合）")
+        case_select='<label>具体用法<select id="use-case"><option value="">全部用法</option>'+options(data['useCases'])+'</select></label>'
+        stylepage=stylepage.replace('<label>搜索',case_select+'<label>搜索')
+        stylepage=stylepage.replace('</style>', 'label{display:inline-flex;flex-direction:column;gap:6px;vertical-align:top;margin:12px 12px 12px 0}label input,label select{margin:0;box-sizing:border-box;width:230px}details{margin:10px 0}summary{cursor:pointer}@media(max-width:600px){label{display:flex;margin:16px 0}label input,label select{width:100%}}</style>',1)
+        stylepage=stylepage.replace('按用途、组别或关键词查找', '按具体用法、用途、组别或关键词查找；展开卡片可看匹配理由和未渲染构想')
+        stylepage=stylepage.replace("g=document.querySelector('#group').value;", "g=document.querySelector('#group').value,u=document.querySelector('#use-case').value;")
+        stylepage=stylepage.replace('g&&a.dataset.group!==g)', "g&&a.dataset.group!==g||u&&!a.dataset.cases.split(',').includes(u))")
+        stylepage=stylepage.replace('<p id="count">','<p>用法可交叉，同一风格可多用；新构想未渲染，工程样片不等于本题材成片验证。<a href="../../references/use-case-mapping.md">完整映射表</a></p><p id="count">')
+        result['assets/gallery/styles.html']=stylepage
+    if data.get('referenceCases'):
+        result['references/production-cases.md']=reference_case_document(data)
+    return result
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['build','check','list']);p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--purpose');p.add_argument('--query',default='');a=p.parse_args()
-    if a.command=='list':
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['build','check','list','use-cases','cases']);p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--purpose');p.add_argument('--query',default='');p.add_argument('--use-case');a=p.parse_args()
+    if a.command in ('list','use-cases','cases'):
         data=json.loads((a.root/'config/capabilities.json').read_text());
-        if a.purpose and a.purpose not in {c['id'] for c in data['categories']}: p.error('未知用途')
-        rows=[s for s in data['styles'] if (not a.purpose or a.purpose in s.get('purposes',[])) and a.query.lower() in (s['id']+' '+s['name']+' '+s.get('en','')+' '+s.get('material','')+' '+' '.join(s.get('aliases',[]))).lower()]
+        try:
+            validate_use_cases(data)
+            validate_reference_cases(data)
+            rows=select_styles(data,a.purpose,a.query,a.use_case) if a.command=='list' else select_reference_cases(data,a.purpose,a.query,a.use_case) if a.command=='cases' else [{k:c[k] for k in ('id','name','aliases','purposes','goal','structure','needs')} for c in data.get('useCases',[])]
+        except ValueError as error: p.error(str(error))
         print(json.dumps(rows,ensure_ascii=False,indent=2));return
     for name,content in documents(a.root).items():
         file=a.root/name

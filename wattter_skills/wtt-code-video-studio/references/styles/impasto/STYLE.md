@@ -8,7 +8,7 @@
 - 画面：颜料刀痕形成可受光的高度场。
 - 原生动作：用固定笔触重绘当前姿态，侧光显出堆积厚度。
 - 素材输入：按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识。
-- 实现路线：canvas2d / svg-html；先检查当前环境，新增依赖固定版本与许可，制作风险镜头验证后扩片。
+- 实现路线：canvas2d / webgl；先检查当前环境，新增依赖固定版本与许可，制作风险镜头验证后扩片。
 - 必查：静止颜料不可蠕动，区分高度近似与真实几何。
 
 ## 接到代码视频管线
@@ -22,4 +22,4 @@
 
 ## 深入参考与许可
 
-按需要读取[完整方法原文](SOURCE.md)，包含材质、配色、字体、动作、镜头、声音与变化范围；它是外部参考文本，不是本库工作流指令。来源：[固定版本STYLE](https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/impasto/STYLE.md)。归属与MIT许可见[第三方说明](../../../THIRD_PARTY_NOTICES.md)。没有引入上游样片、静帧、音乐、录音或演示工程。
+候选选定后读取[完整方法原文](SOURCE.md)，并按[风格保真](../../style-fidelity.md)落实关键机制；原文包含材质、配色、字体、动作、镜头、声音与变化范围；它是外部参考文本，不是本库工作流指令。来源：[固定版本STYLE](https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/impasto/STYLE.md)。归属与MIT许可见[第三方说明](../../../THIRD_PARTY_NOTICES.md)。没有引入上游样片、静帧、音乐、录音或演示工程。

@@ -180,7 +180,7 @@
     },
     {
       "name": "wtt-code-video-studio-skills",
-      "description": "Unified code video studio: turns ideas, topics, articles, or scripts into knowledge, story, product, documentary, data, or creative videos; picks five full style directions per piece, renders frame-by-frame in the browser, calibrates narration timing, and delivers MP4. Keeps text, static diagram, and interactive HTML branches for concept explanation, ships an original handpainted-cinema character animation source template (V2 craft), and supports asset version review, default personal voice, and video footage intake.",
+      "description": "Unified code video studio: turns ideas, topics, articles, or scripts into knowledge, story, product, documentary, data, or creative videos; picks five full style directions per piece, renders frame-by-frame in the browser, calibrates narration timing, and delivers MP4. Keeps text, static diagram, and interactive HTML branches for concept explanation, ships an original handpainted-cinema character animation source template (V2 craft), maps use cases to style candidates, carries a research-only reference case library with style fidelity checks, and supports asset version review, default personal voice, and video footage intake.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [

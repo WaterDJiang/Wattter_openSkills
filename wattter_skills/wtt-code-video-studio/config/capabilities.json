@@ -131,7 +131,7 @@
       ],
       "engines": [
         "canvas2d",
-        "svg-html"
+        "webgl"
       ],
       "material": "少量半透明专色独立印版，网点与套色偏移",
       "action": "缓存各色版，随对象运动保持同一版纹",
@@ -746,7 +746,7 @@
       ],
       "engines": [
         "canvas2d",
-        "svg-html"
+        "webgl"
       ],
       "material": "颜料刀痕形成可受光的高度场",
       "action": "用固定笔触重绘当前姿态，侧光显出堆积厚度",
@@ -1795,6 +1795,11 @@
       "id": "remotion",
       "status": "recipe",
       "use": "React视频合成；需要适配原素材/声音/验收契约"
+    },
+    {
+      "id": "webgl",
+      "status": "recipe",
+      "use": "高度场、逐版分色与屏幕材质shader；按镜头实现并验证，当前未提供预装引擎"
     }
   ],
   "samples": [
@@ -2666,5 +2671,3810 @@
         "localSourceSha256": "e2a78c325925d41a9a2764dea75f6290d89febcd8ea8865efcc944635a585848"
       }
     ]
-  }
+  },
+  "useCases": [
+    {
+      "id": "brand-ad",
+      "name": "品牌与广告",
+      "aliases": [
+        "广告",
+        "商业广告",
+        "品牌广告",
+        "advertising"
+      ],
+      "purposes": [
+        "product",
+        "creative"
+      ],
+      "goal": "让目标受众记住一个可验证的产品价值",
+      "structure": "处境或欲望 → 产品介入 → 可见差异 → 行动入口",
+      "needs": [
+        "品牌与卖点依据；授权产品图或可重建外观；不虚构性能"
+      ],
+      "matches": [
+        {
+          "styleId": "product-light",
+          "fit": "primary",
+          "why": "留白界面把注意力集中在任务变化",
+          "conditions": [
+            "有实际界面；动画不冒充实机性能"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "十个窗口变一张清单",
+            "keyShot": "同一界面从散乱窗口重组为待办，保留操作因果"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "swiss-motion",
+          "fit": "primary",
+          "why": "网格重排适合压缩单一卖点",
+          "conditions": [
+            "字少；留足阅读时间"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一格放下所有日程",
+            "keyShot": "日程卡从冲突叠压变成整齐时间列"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pictogram-motion",
+          "fit": "primary",
+          "why": "象形动作可在静音时传达使用价值",
+          "conditions": [
+            "产品容量有依据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "随手少一件",
+            "keyShot": "出门物件逐一归入一只原创收纳包"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "clay-stopmotion",
+          "fit": "primary",
+          "why": "挤压与接触能让日用品显得可亲",
+          "conditions": [
+            "标明定格外观；真实材质须实测"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "杯子的早班",
+            "keyShot": "黏土外观杯子接住一滴水再稳稳落桌"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "riso-halftone",
+          "fit": "primary",
+          "why": "少量专色叠印适合小众品牌的触感",
+          "conditions": [
+            "品牌字体和标识有授权"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "周末面包出炉",
+            "keyShot": "面包轮廓分两版印出，最后出现店名"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "memphis-diorama",
+          "fit": "primary",
+          "why": "活泼几何与空间层次适合年轻品牌",
+          "conditions": [
+            "产品外观与尺度需确认"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一双鞋的城市",
+            "keyShot": "鞋沿几何坡道前进并停在主展台"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "glass-product",
+          "fit": "primary",
+          "why": "透射与轮廓光适合透明材质产品细节",
+          "conditions": [
+            "需要真实3D材质和几何；不可用渐变冒充"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "看见杯壁",
+            "keyShot": "光扫过杯口与底部，转台展示真实厚度"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "particles",
+          "fit": "primary",
+          "why": "聚合与散开能把品牌核心意象具象化",
+          "conditions": [
+            "仅作视觉隐喻；不证明产品能力"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "把散落想法聚成形",
+            "keyShot": "离散点组成同一个原创产品轮廓"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "silkscreen-poster",
+          "fit": "primary",
+          "why": "专色海报能把地点或活动浓缩为主视觉",
+          "conditions": [
+            "字号可读；活动事实核对"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一张周末通行证",
+            "keyShot": "刮墨逐层显出街区、人物与活动日期"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "flat",
+          "fit": "primary",
+          "why": "清晰色块能直接演示前后差异",
+          "conditions": [
+            "卖点真实；品牌和场景按内容设计"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "雨天的最后一百米",
+            "keyShot": "人物收起湿伞并进入有遮雨设施的店门"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "ui-morph",
+        "startup-launch",
+        "remotion-promo"
+      ]
+    },
+    {
+      "id": "personal-promo",
+      "name": "个人宣传与作品集",
+      "aliases": [
+        "个人宣传",
+        "个人IP",
+        "个人品牌",
+        "自我介绍",
+        "作品集"
+      ],
+      "purposes": [
+        "story",
+        "product"
+      ],
+      "goal": "让观众知道你是谁、做过什么、能帮谁",
+      "structure": "身份切口 → 作品或经历证据 → 方法与服务 → 联系入口",
+      "needs": [
+        "本人经历与可公开作品；肖像、商标及客户信息的使用范围"
+      ],
+      "matches": [
+        {
+          "styleId": "kinetic-type",
+          "fit": "primary",
+          "why": "时间与关键词排布适合串联履历",
+          "conditions": [
+            "不把履历变成只有口号的字幕"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "我解决过的三个问题",
+            "keyShot": "三个项目动词依次成为作品卡的标题"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "one-line",
+          "fit": "primary",
+          "why": "连续路径能连接不同人生节点",
+          "conditions": [
+            "经历由本人提供；不固定励志结局"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一根线画出我的转行",
+            "keyShot": "笔尖从旧工位连到新作品，原线保留"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "urban-sketch",
+          "fit": "primary",
+          "why": "空间细节能承接个人工作方式",
+          "conditions": [
+            "可公开工作环境与作品"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "我的桌边方法",
+            "keyShot": "先画工作台再上色，推近一个自有作品"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "printed-long-take",
+          "fit": "primary",
+          "why": "连续空间适合串起作品与方法",
+          "conditions": [
+            "作品与客户信息已获准展示"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "走过我的三张图纸",
+            "keyShot": "镜头沿同一工作桌穿过项目证据"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "desktop-flythrough",
+          "fit": "primary",
+          "why": "桌面任务与卡片路径适合展示创作者工作流",
+          "conditions": [
+            "界面为真实或标注的示意"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "从笔记到交付",
+            "keyShot": "角色从需求纸卡走向运行界面和成果卡"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "ink-paper",
+          "fit": "primary",
+          "why": "墨线与纸纹适合口述经历和手稿",
+          "conditions": [
+            "手稿由用户提供或原创"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "那本改了七遍的笔记",
+            "keyShot": "一段旧笔记逐步变为今天的方法图"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pixel-rpg",
+          "fit": "primary",
+          "why": "成长与任务机制适合技能经历表达",
+          "conditions": [
+            "明确游戏化隐喻"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "我的职业存档",
+            "keyShot": "物品栏逐格出现已完成作品而非虚构技能"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "art-deco",
+          "fit": "primary",
+          "why": "对称开合和舞台灯可突出职业身份",
+          "conditions": [
+            "适合演出与设计类身份；不套奢华标签"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "今晚由我开场",
+            "keyShot": "原创舞台拱门打开，作品名随灯光出现"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "archive-lighttable",
+          "fit": "conditional",
+          "why": "档案细节适合有作品证据的个人回顾",
+          "conditions": [
+            "需真实可公开档案；隐私遮蔽"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "第一张设计稿",
+            "keyShot": "放大镜从日期移向修改痕迹与最终成品"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "documentary",
+      "name": "纪录片与真实事件",
+      "aliases": [
+        "纪录片",
+        "记录片",
+        "纪实",
+        "documentary"
+      ],
+      "purposes": [
+        "documentary"
+      ],
+      "goal": "用可核验的材料讲清真实人物、事件或变化",
+      "structure": "提出问题 → 证据和过程 → 发现 → 仍未知的部分",
+      "needs": [
+        "原始资料、日期、事实来源与素材许可；示意画面明确标注"
+      ],
+      "matches": [
+        {
+          "styleId": "visual-investigation",
+          "fit": "primary",
+          "why": "共享时钟让不同来源互相验证",
+          "conditions": [
+            "至少多种独立来源；不能编造证据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一条河道何时改了线",
+            "keyShot": "照片、文件与地图定位到同一地点和时间"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "archive-lighttable",
+          "fit": "primary",
+          "why": "原件比例和局部放大适合档案研究",
+          "conditions": [
+            "有原始扫描和来源"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一页工单里的工厂",
+            "keyShot": "从真实工单编号进入照片与记录细节"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "archive-dark",
+          "fit": "primary",
+          "why": "地图与档案对照适合解释空间变化",
+          "conditions": [
+            "需地点与日期证据；示意须标注"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "老站房的两次搬迁",
+            "keyShot": "旧图与新图按同一地理范围切换"
+          },
+          "evidenceSampleIds": [
+            "documentary"
+          ]
+        },
+        {
+          "styleId": "newsreel",
+          "fit": "primary",
+          "why": "影调统一与纸面信息适合历史资料组织",
+          "conditions": [
+            "不得把新画面伪装为历史影像"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "电车开通的那一天",
+            "keyShot": "真实报纸标题与同期街景互相补充"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "city-symphony",
+          "fit": "primary",
+          "why": "延时节奏能呈现城市日常系统",
+          "conditions": [
+            "有许可的真实延时与当地原声"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一座市场醒来",
+            "keyShot": "同一市场开门、补货、散场按时间推进"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "satellite-briefing",
+          "fit": "primary",
+          "why": "真实经纬对齐适合地景变化",
+          "conditions": [
+            "真实影像、日期、测量与许可"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "湿地的十年",
+            "keyShot": "同范围卫星图逐年对照并标比例尺"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "lidar-survey",
+          "fit": "primary",
+          "why": "点云剥离能揭示地表和遗存关系",
+          "conditions": [
+            "实测点云和分类依据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "树下的旧路",
+            "keyShot": "同位置点云先去植被再显露地形"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "white-model",
+          "fit": "primary",
+          "why": "白模与数据投影适合城市更新过程",
+          "conditions": [
+            "真实几何或标示意；投影数据可核验"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "街区的白天和夜晚",
+            "keyShot": "真实建筑白模承接同口径人流数据"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "microscope",
+          "fit": "primary",
+          "why": "注册尺度缩放适合样本观察",
+          "conditions": [
+            "真实图像层级、比例尺及科学核对"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "叶片里的气孔",
+            "keyShot": "从真实叶片全景缩放到同一样本局部"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "briefing-board",
+          "fit": "primary",
+          "why": "照片和测量批注适合现场工程纪实",
+          "conditions": [
+            "实拍、工况与数据来源"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "桥面检修的一天",
+            "keyShot": "现场照片落板后在同一位置标出测量点"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "woodcut",
+          "fit": "conditional",
+          "why": "刻痕可以重述有来源的劳动过程",
+          "conditions": [
+            "仅作绘制复原；不能充当现场证据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一口炉子的记忆",
+            "keyShot": "手工工序逐刀显露，事实字幕标明出处"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "austerlitz-code",
+        "runway-documentary"
+      ]
+    },
+    {
+      "id": "romance-film",
+      "name": "浪漫故事与爱情短片",
+      "aliases": [
+        "浪漫电影",
+        "爱情电影",
+        "爱情",
+        "婚礼",
+        "浪漫"
+      ],
+      "purposes": [
+        "story"
+      ],
+      "goal": "通过人物行动、错过与回应建立亲密感",
+      "structure": "建立关系 → 距离或错过 → 行动回应 → 情绪回扣",
+      "needs": [
+        "原创或授权人物与故事；纪念片使用本人确认的时间地点"
+      ],
+      "matches": [
+        {
+          "styleId": "handpainted-cinema",
+          "fit": "primary",
+          "why": "角色表演与分层光景适合细腻关系变化",
+          "conditions": [
+            "先验证表情、接地和双人道具交接"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "把围巾还给你",
+            "keyShot": "人物先犹豫再递出围巾，对方伸手接住"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "watercolor-brush",
+          "fit": "primary",
+          "why": "透明色带适合记忆与情绪渐显",
+          "conditions": [
+            "颜料混合服务情节，不以漂浮纹理代替表演"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "雨停之前",
+            "keyShot": "两人各自的色带在同一伞沿交叠"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "one-line",
+          "fit": "primary",
+          "why": "不断线的路径能把两个人的距离变成可见关系",
+          "conditions": [
+            "连续路径可重建，不只揭示线稿"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "差一站的相遇",
+            "keyShot": "两条行走轨迹由同一连续线接成车站"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "paper-lantern",
+          "fit": "primary",
+          "why": "背光纸层适合分隔与靠近",
+          "conditions": [
+            "保留灯箱厚度与层间遮挡"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "窗后的那盏灯",
+            "keyShot": "两扇窗先在不同纸层亮起，角色走向同一层"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "cel-anime-80s",
+          "fit": "primary",
+          "why": "有限角色动作与连续镜头适合都市情感",
+          "conditions": [
+            "原创人物；关键表情和手部动作可读"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "末班车的回信",
+            "keyShot": "站台风吹起衣角，手中信封慢慢递出"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "impasto",
+          "fit": "primary",
+          "why": "有体积的颜料笔触适合情绪转暖",
+          "conditions": [
+            "保留高度场与受光，不能仅加噪点"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "给冬天一点橙色",
+            "keyShot": "人物移近时暖色笔触覆盖旧的冷色边缘"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "sand",
+          "fit": "primary",
+          "why": "擦除与重构适合回忆、错过和重逢",
+          "conditions": [
+            "变化必须有因果与固定沙粒"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "留在沙面的约定",
+            "keyShot": "一双脚印被风抹去，又从新方向接近"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "hd-2d",
+          "fit": "primary",
+          "why": "像素人物与景深空间适合远行和等待",
+          "conditions": [
+            "真实空间受光与像素轮廓均需成立"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "灯塔下的两张车票",
+            "keyShot": "同一光源照亮两个不同深度的角色"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "ink-wash",
+          "fit": "primary",
+          "why": "留白和浓淡适合克制的距离表达",
+          "conditions": [
+            "隐喻可读；不把所有角色简化成墨点"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "隔岸的回声",
+            "keyShot": "两岸淡墨逐渐连成一座小桥"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "concept-explainer",
+      "name": "概念解释与机制科普",
+      "aliases": [
+        "概念解释",
+        "概念讲解",
+        "科普",
+        "原理",
+        "explainer"
+      ],
+      "purposes": [
+        "knowledge"
+      ],
+      "goal": "让观众理解要素、规则、变化和适用边界",
+      "structure": "问题 → 可观察模型 → 改变条件 → 解释与边界",
+      "needs": [
+        "可靠定义和必要条件；模型参数；隐喻与真实机制分开"
+      ],
+      "matches": [
+        {
+          "styleId": "technical",
+          "fit": "primary",
+          "why": "结构与量的对应适合展示约束机制",
+          "conditions": [
+            "给出模型规则及适用边界"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "最窄处决定流量",
+            "keyShot": "通道变窄，计数与流速从同一模型计算"
+          },
+          "evidenceSampleIds": [
+            "knowledge"
+          ]
+        },
+        {
+          "styleId": "whiteboard",
+          "fit": "primary",
+          "why": "同板区域和回溯擦除适合分步推理",
+          "conditions": [
+            "推导准确；信息不要挤在一角"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "为什么排队越排越长",
+            "keyShot": "笔尖画出到达与服务两个速率再改变参数"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "chalk",
+          "fit": "primary",
+          "why": "保留与修正痕迹适合纠正直觉",
+          "conditions": [
+            "真实例数或明确模拟"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "平均数藏住了什么",
+            "keyShot": "板上原结论擦去一半，按分组重算"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "blueprint",
+          "fit": "primary",
+          "why": "剖面与制图顺序适合结构原理",
+          "conditions": [
+            "结构关系正确；量化结论有依据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一只阀门如何控水",
+            "keyShot": "同张剖面图中阀芯移动，流量随开度变化"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "iso-infographic",
+          "fit": "primary",
+          "why": "可定位流程与图例适合系统概览",
+          "conditions": [
+            "流程不是随意的装饰路线"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "包裹为什么绕路",
+            "keyShot": "包裹沿同一等距分拣路径通过瓶颈"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "isometric-picture-book",
+          "fit": "primary",
+          "why": "同场景行为能解释规则变化",
+          "conditions": [
+            "仿真与统计同源"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "多开一个窗口会更快吗",
+            "keyShot": "排队人物按服务规则移动并显示等待时间"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "circuit-board",
+          "fit": "primary",
+          "why": "信号脉冲与分叉适合网络依赖",
+          "conditions": [
+            "拓扑对应机制；不暗示真实电路"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "请求怎样到达缓存",
+            "keyShot": "光脉冲沿节点传播，命中后返回短路径"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "transit-map",
+          "fit": "primary",
+          "why": "站点与换乘适合知识结构和依赖路径",
+          "conditions": [
+            "路线图是类比；说明不是地理距离"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一条知识怎样接到下一条",
+            "keyShot": "第二条线到达时才形成换乘关系"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "engraving",
+          "fit": "primary",
+          "why": "逐层排线与放大适合形态结构讲解",
+          "conditions": [
+            "科学结构核对；不伪称真实显微图"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一片叶子的气孔",
+            "keyShot": "刻线显出叶面结构再标出气孔功能"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "flat",
+          "fit": "primary",
+          "why": "少量对象与明确位置适合初学者机制",
+          "conditions": [
+            "抽象不省略必要条件"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "两台机器的一次交接",
+            "keyShot": "两台机器按同一任务队列轮流处理"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "particles",
+          "fit": "conditional",
+          "why": "个体规则与群体图形适合涌现机制",
+          "conditions": [
+            "模型真实驱动；不能仅播放预定形变"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "鱼群为何不相撞",
+            "keyShot": "调整邻域规则，点群由散乱转为协同行进"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "lens-lab",
+        "raptor-lab",
+        "manim-derivative"
+      ]
+    },
+    {
+      "id": "product-launch",
+      "name": "产品发布与能力介绍",
+      "aliases": [
+        "产品发布",
+        "发布会",
+        "产品介绍",
+        "能力介绍"
+      ],
+      "purposes": [
+        "product"
+      ],
+      "goal": "展示一个产品如何改变具体任务",
+      "structure": "旧任务阻力 → 核心能力 → 结果与限制 → 使用入口",
+      "needs": [
+        "真实产品资料、界面或结构；演示与实测结论分开"
+      ],
+      "matches": [
+        {
+          "styleId": "dark-keynote",
+          "fit": "primary",
+          "why": "舞台聚焦和界面重组适合核心能力揭示",
+          "conditions": [
+            "真实或明确概念界面；不虚构实测"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "把搜索变成工作台",
+            "keyShot": "同一搜索框展开为有状态的任务界面"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "product-light",
+          "fit": "primary",
+          "why": "连续组件变化适合展示任务前后",
+          "conditions": [
+            "流程与产品版本一致"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一张卡片完成报销",
+            "keyShot": "发票卡在同一位置依次校验和归档"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "teardown",
+          "fit": "primary",
+          "why": "装配轴与细部连续观察适合硬件介绍",
+          "conditions": [
+            "CAD、BOM及尺寸可用"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "打开一把键盘",
+            "keyShot": "外壳沿实际装配轴分离并显出主控"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "hologram-hud",
+          "fit": "primary",
+          "why": "扫描和轴向拆解适合部件能力说明",
+          "conditions": [
+            "数据来自结构；不能随意编HUD读数"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "看见机器的三层协作",
+            "keyShot": "扫描平面经过外壳并定位关键组件"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "glass-product",
+          "fit": "primary",
+          "why": "转台与光扫适合材质型新品",
+          "conditions": [
+            "真实3D与材质测试"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "光穿过新杯壁",
+            "keyShot": "杯体转动时折射随几何一致变化"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "swiss-motion",
+          "fit": "primary",
+          "why": "精确网格适合多能力的统一信息层级",
+          "conditions": [
+            "不能只剩大字和宣传口号"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "三个动作完成一件事",
+            "keyShot": "三个功能词依次让界面发生对应变化"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "desktop-flythrough",
+          "fit": "primary",
+          "why": "连续工作桌适合展示工具组合价值",
+          "conditions": [
+            "每步产物有实际依据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "从需求到一次交付",
+            "keyShot": "镜头沿需求、代码和成果卡连续前进"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "brick-toy",
+          "fit": "primary",
+          "why": "模块拼装适合解释组合型产品",
+          "conditions": [
+            "积木是表达隐喻；不借用第三方IP角色"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "把工具一块块接起来",
+            "keyShot": "模块以真实连接关系扣合后共同运转"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "ascii-crt",
+          "fit": "primary",
+          "why": "终端状态适合开发者工具能力介绍",
+          "conditions": [
+            "区分真实执行与脚本演示"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一条命令跑完检查",
+            "keyShot": "真实命令与结果在字符网格中逐步出现"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "ui-morph",
+        "startup-launch",
+        "remotion-promo"
+      ]
+    },
+    {
+      "id": "product-tutorial",
+      "name": "操作教程与流程演示",
+      "aliases": [
+        "操作教程",
+        "教程",
+        "使用方法",
+        "流程演示"
+      ],
+      "purposes": [
+        "product",
+        "knowledge"
+      ],
+      "goal": "让用户能复现一次操作",
+      "structure": "任务 → 前置条件 → 关键步骤 → 成功结果与异常",
+      "needs": [
+        "正确版本与操作路径；可验证结果；私密数据遮蔽"
+      ],
+      "matches": [
+        {
+          "styleId": "living-screencast",
+          "fit": "primary",
+          "why": "真实状态路径与角色指引适合软件教学",
+          "conditions": [
+            "对应实际版本；不得画不存在的功能"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "第一次创建项目",
+            "keyShot": "角色依次指向新建、输入、运行和结果"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "product-light",
+          "fit": "primary",
+          "why": "同一组件的状态变化适合操作闭环",
+          "conditions": [
+            "提示与成功条件可复现"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "提交前再检查一次",
+            "keyShot": "表单从缺项提示变成可提交再到成功回执"
+          },
+          "evidenceSampleIds": [
+            "product"
+          ]
+        },
+        {
+          "styleId": "midcentury-toon",
+          "fit": "primary",
+          "why": "主持人和道具能把步骤讲得亲切清楚",
+          "conditions": [
+            "动作与实际说明一致"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "三步装好支架",
+            "keyShot": "人物按顺序拿起并装配同一组零件"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pictogram-motion",
+          "fit": "primary",
+          "why": "统一象形动作适合少字流程",
+          "conditions": [
+            "指令清晰且不依赖细小文字"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "离开会议室前",
+            "keyShot": "关屏、整理、关灯三个动作依次完成"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "blueprint",
+          "fit": "primary",
+          "why": "同一图纸剖面适合装配与维修步骤",
+          "conditions": [
+            "需准确结构与操作范围"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "滤芯怎样换下来",
+            "keyShot": "锁扣解开后滤芯沿实际轴线移出"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "iso-infographic",
+          "fit": "primary",
+          "why": "世界路径适合跨岗位流程",
+          "conditions": [
+            "职责与异常分支核对"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一张工单怎样流转",
+            "keyShot": "同一工单经过受理、分派、复核节点"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "microgame",
+          "fit": "primary",
+          "why": "指令、动作、判定适合操作练习",
+          "conditions": [
+            "不是实际交互游戏；判定逻辑准确"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "五秒学会选对工具",
+            "keyShot": "每段给一个任务，动作后出现正确与错误反馈"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "ascii-crt",
+          "fit": "primary",
+          "why": "命令与可核验结果适合CLI教程",
+          "conditions": [
+            "锁定版本与依赖；演示结果可复现"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "从空目录到第一次运行",
+            "keyShot": "命令逐行执行并显示真实产物路径"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "technical",
+          "fit": "conditional",
+          "why": "部件细节适合关键步骤的局部解释",
+          "conditions": [
+            "不越过专业维修的知识边界"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "拧紧之前看这一处",
+            "keyShot": "放大卡扣断面后回到整体装配"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "news-brief",
+      "name": "新闻与资讯摘要",
+      "aliases": [
+        "新闻",
+        "资讯",
+        "新闻简报",
+        "热点解读"
+      ],
+      "purposes": [
+        "documentary"
+      ],
+      "goal": "用少量证据解释发生了什么及其影响",
+      "structure": "最新事实 → 必要背景 → 证据或比较 → 影响与不确定性",
+      "needs": [
+        "发布日期与事件时间；原始来源；可用的照片或影像"
+      ],
+      "matches": [
+        {
+          "styleId": "caption-news",
+          "fit": "primary",
+          "why": "大字与证据切换适合静音资讯",
+          "conditions": [
+            "事实和生效时间需原始来源"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一条新规改了哪一步",
+            "keyShot": "原文关键行与旧新流程在同框对照"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "news-package",
+          "fit": "primary",
+          "why": "固定栏目语法适合多条新闻组织",
+          "conditions": [
+            "多条来源分别登记"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "本周三件值得知道的事",
+            "keyShot": "导视标出三条新闻，逐条回到原始证据"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "kino-montage",
+          "fit": "primary",
+          "why": "碰撞剪辑适合明确论点与对比",
+          "conditions": [
+            "不能通过错置时间制造结论"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "两种通勤速度",
+            "keyShot": "真实交通画面对照同口径时间数据"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "visual-investigation",
+          "fit": "primary",
+          "why": "同步和定位适合核查争议信息",
+          "conditions": [
+            "未知保留未知；不填造坐标"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "这张照片拍在哪里",
+            "keyShot": "照片细节与地图逐步锁定同一位置"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "archive-dark",
+          "fit": "primary",
+          "why": "地图和文件适合补新闻背景",
+          "conditions": [
+            "路线与时间可核对"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一条线路为何调整",
+            "keyShot": "原通告与地图对照说明变化"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "data-editorial",
+          "fit": "primary",
+          "why": "图表与解释适合数字新闻",
+          "conditions": [
+            "统一口径；给出数据来源"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "价格涨在什么地方",
+            "keyShot": "同一篮子数据逐项分解而非只展示总数"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "swiss-motion",
+          "fit": "conditional",
+          "why": "层级排版适合少量确定信息的快讯",
+          "conditions": [
+            "不以排版代替新闻证据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "四个时间点",
+            "keyShot": "四个经核对节点依次落格并保留来源"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "live-event",
+      "name": "直播感与事件倒计时",
+      "aliases": [
+        "直播风格",
+        "直播",
+        "倒计时",
+        "多机位",
+        "赛事回放"
+      ],
+      "purposes": [
+        "documentary"
+      ],
+      "goal": "让观众跟随同一事件的时间和关键节点",
+      "structure": "事件前状态 → 同步进展 → 零点或关键动作 → 后续",
+      "needs": [
+        "同一事件的同步依据、原声和可用机位；明确录播或模拟"
+      ],
+      "matches": [
+        {
+          "styleId": "countdown",
+          "fit": "primary",
+          "why": "共享时钟和分屏数量适合零点张力",
+          "conditions": [
+            "真实同步依据；录播明确标识"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "开幕前的最后一分钟",
+            "keyShot": "同一秒多机位逐渐展开，开幕时合为主画面"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "telestrator",
+          "fit": "primary",
+          "why": "先完整播放再分析适合赛事回放",
+          "conditions": [
+            "有许可的比赛影像与场地透视"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一次进球如何发生",
+            "keyShot": "动作完整播放后定格标出传球路线"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "news-package",
+          "fit": "primary",
+          "why": "栏目导视适合现场节点串联",
+          "conditions": [
+            "是录播摘要，不冒充正在直播"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "发布现场三个时刻",
+            "keyShot": "主持导视切到已标时间的关键片段"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "dataviz",
+          "fit": "conditional",
+          "why": "实时样式的图表适合赛事或活动数据",
+          "conditions": [
+            "真实或明确模拟数据；不宣称实时接入"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "跑到同一个终点",
+            "keyShot": "多个参与者数据按统一时钟变化"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "game-show",
+          "fit": "conditional",
+          "why": "评分舞台适合有规则的活动回顾",
+          "conditions": [
+            "真实规则与分数；模拟活动需标注"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一场答题赛的最后三题",
+            "keyShot": "每题结果在同一拍点显示并更新计分"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "city-symphony",
+          "fit": "conditional",
+          "why": "固定地点延时适合展现活动准备到散场",
+          "conditions": [
+            "只能称延时回顾；不能冒充连续直播"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "广场的一天",
+            "keyShot": "同一广场从搭台到散场对应真实时间"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "data-report",
+      "name": "数据故事与业务汇报",
+      "aliases": [
+        "数据汇报",
+        "数据故事",
+        "业务汇报",
+        "经营分析"
+      ],
+      "purposes": [
+        "data"
+      ],
+      "goal": "解释指标变化、比较及其业务含义",
+      "structure": "问题与口径 → 变化 → 驱动因素 → 决策与限制",
+      "needs": [
+        "数据表、单位、时间范围与来源；模拟数据显著标注"
+      ],
+      "matches": [
+        {
+          "styleId": "data-editorial",
+          "fit": "primary",
+          "why": "解释性注释适合业务指标变化",
+          "conditions": [
+            "需要真实表或明确示例数据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "少了一半的等待",
+            "keyShot": "先统一口径再分解等待时间各环节"
+          },
+          "evidenceSampleIds": [
+            "data"
+          ]
+        },
+        {
+          "styleId": "dataviz",
+          "fit": "primary",
+          "why": "数据标记与坐标同源适合趋势比较",
+          "conditions": [
+            "轴与单位可核验，不截轴误导"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "哪一年发生了变化",
+            "keyShot": "时间线图逐步揭示拐点与驱动项"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "data-physical",
+          "fit": "primary",
+          "why": "可数物体适合规模与比例直觉",
+          "conditions": [
+            "每块代表量固定，避免遮挡丢数"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一小时去了哪里",
+            "keyShot": "同单位小块按流程堆叠并对比"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "white-model",
+          "fit": "primary",
+          "why": "空间投影适合区域业务分布",
+          "conditions": [
+            "真实地理与口径；非测量模型标示意"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "灯光落在哪些街区",
+            "keyShot": "同一建筑白模按统一指标投色"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "briefing-board",
+          "fit": "primary",
+          "why": "证据照片与批注适合工程进展汇报",
+          "conditions": [
+            "照片日期和数据来源一致"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "进度表之外",
+            "keyShot": "现场照片和实际里程碑并排核验"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "iso-infographic",
+          "fit": "primary",
+          "why": "流转路径适合成本或资源去向",
+          "conditions": [
+            "节点之和与总额一致"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "每一百元走向哪里",
+            "keyShot": "资金单位沿真实流程分配到各节点"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "transit-map",
+          "fit": "conditional",
+          "why": "线路拓扑适合部门依赖和项目路线",
+          "conditions": [
+            "非地理图；不把距离当时长"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "延期从哪一站开始",
+            "keyShot": "节点状态按依赖链传播并定位阻塞"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "swiss-motion",
+          "fit": "conditional",
+          "why": "层级与对齐适合少量关键数字",
+          "conditions": [
+            "保留口径、单位和比较基准"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "三项指标的一次复盘",
+            "keyShot": "目标、实际、差额在同一网格对齐"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "travel-postcard",
+      "name": "城市文旅与地图明信片",
+      "aliases": [
+        "文旅",
+        "旅行",
+        "旅游宣传",
+        "明信片",
+        "地图明信片",
+        "城市宣传"
+      ],
+      "purposes": [
+        "creative",
+        "documentary"
+      ],
+      "goal": "让地点的空间、季节和生活形成可辨认的记忆",
+      "structure": "地点线索 → 空间游历或生活动作 → 地方细节 → 回扣",
+      "needs": [
+        "地点消歧、地标与季节依据、地图和当地声音许可"
+      ],
+      "matches": [
+        {
+          "styleId": "seasonal-map-postcard",
+          "fit": "primary",
+          "why": "同世界换视角适合地点和季节的空间记忆",
+          "conditions": [
+            "先核对地标和季节；原创构想不复用旧成片"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "兰州秋日一张卡",
+            "keyShot": "黄河、桥与山在俯视和两侧斜俯视中保持位置"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "urban-sketch",
+          "fit": "primary",
+          "why": "线稿到淡彩适合街区游历",
+          "conditions": [
+            "地名与建筑依据；不自动画他人品牌"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "转角有家小书店",
+            "keyShot": "沿街道推近门头细节再回到全景"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "silkscreen-poster",
+          "fit": "primary",
+          "why": "专色层次适合旅行目的地记忆",
+          "conditions": [
+            "本地线索具体，标题有阅读时间"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一张海边车票",
+            "keyShot": "海岸、车站和海风意象逐版显出"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "tilt-shift",
+          "fit": "primary",
+          "why": "清晰带与延时能突出地点系统",
+          "conditions": [
+            "真实3D或明确重建；保留移轴机制"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "市场里的早高峰",
+            "keyShot": "焦带跟随一辆货车穿过微缩市场"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "lowpoly-island",
+          "fit": "primary",
+          "why": "几何地形适合概括河谷或海岛",
+          "conditions": [
+            "示意比例与真实地理分开"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "沿河生长的小城",
+            "keyShot": "地形、桥和城区依次生长于同一坐标"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "memphis-diorama",
+          "fit": "primary",
+          "why": "明快几何适合城市生活方式短片",
+          "conditions": [
+            "不把纹样冒充当地文化"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "城市的周末三站",
+            "keyShot": "角色在同一微缩街区经过公园和市集"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "watercolor-brush",
+          "fit": "primary",
+          "why": "透明色层适合季节水气与柔和旅行",
+          "conditions": [
+            "地点特征明确；不使用任意通用地景"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "秋风经过湖边",
+            "keyShot": "固定笔带铺出湖面，树影随同一风向变化"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "ukiyoe",
+          "fit": "primary",
+          "why": "横向层次适合海岸和山路游历",
+          "conditions": [
+            "尊重版画文化语境，不把它当所有地区传统"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "沿海岸走到灯塔",
+            "keyShot": "前景裁切与卷轴推进揭示远近地形"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "printed-long-take",
+          "fit": "primary",
+          "why": "连续空间能把游历路径讲清楚",
+          "conditions": [
+            "路线有依据；尺度变化需交代"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "从车站步行到河边",
+            "keyShot": "同一条街保持空间方向直至开阔河岸"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "children-story",
+      "name": "儿童故事与启蒙",
+      "aliases": [
+        "儿童故事",
+        "儿童",
+        "童话",
+        "绘本",
+        "亲子"
+      ],
+      "purposes": [
+        "story",
+        "knowledge"
+      ],
+      "goal": "用清晰行动和后果讲一个儿童能理解的故事",
+      "structure": "小目标 → 尝试 → 可见后果 → 温和解决",
+      "needs": [
+        "受众年龄；原创角色；必要知识核对与阅读时长"
+      ],
+      "matches": [
+        {
+          "styleId": "crayon-book",
+          "fit": "primary",
+          "why": "蜡笔断线与大形体适合儿童动作故事",
+          "conditions": [
+            "按年龄控制词汇与镜头信息量"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "小熊借一把椅子",
+            "keyShot": "椅子被借给不同动物，体型差异直接可见"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "paper-theatre",
+          "fit": "primary",
+          "why": "纸偶舞台适合明确角色目标和交接",
+          "conditions": [
+            "不能只滑行；交接和情绪可读"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "把灯借给邻居",
+            "keyShot": "纸偶在同一舞台依次传递灯"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "clay-stopmotion",
+          "fit": "primary",
+          "why": "软形挤压适合有重量的温和笑点",
+          "conditions": [
+            "明确黏土定格外观；形变连续"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "面团不肯起床",
+            "keyShot": "面团预备、跳起、落下后慢慢回弹"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "flat",
+          "fit": "primary",
+          "why": "简洁轮廓适合初次建立分类和规则",
+          "conditions": [
+            "不让颜色成为唯一识别信息"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "颜色排队去野餐",
+            "keyShot": "不同颜色角色按规则归队再交换位置"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "rubber-hose",
+          "fit": "primary",
+          "why": "夸张预备与反应适合无对白追逐",
+          "conditions": [
+            "动作读得懂；不复用既有卡通IP"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "帽子追上主人",
+            "keyShot": "帽檐先拉长再弹回，角色停顿理解后追赶"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "paper-popup",
+          "fit": "primary",
+          "why": "纸页展开适合空间探索",
+          "conditions": [
+            "保留折痕与纸片空间"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "打开书里的花园",
+            "keyShot": "门和花沿纸页铰链展开，人物从纸桥经过"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "midcentury-toon",
+          "fit": "primary",
+          "why": "主持和道具解释适合儿童启蒙",
+          "conditions": [
+            "步骤安全与知识准确"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "小小修理员",
+            "keyShot": "人物用正确工具修好一辆原创玩具车"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "brick-toy",
+          "fit": "primary",
+          "why": "模块组装适合合作与搭建",
+          "conditions": [
+            "不借用受保护角色；桥梁是故事示意"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一起搭一座桥",
+            "keyShot": "不同角色把模块放到正确连接处"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "handpainted-cinema",
+          "fit": "primary",
+          "why": "表情与层次场景适合情感成长",
+          "conditions": [
+            "先动作验证；情绪由行为呈现"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "第一次自己送信",
+            "keyShot": "人物从踌躇到迈步，信始终握在手里"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "blender-clay"
+      ]
+    },
+    {
+      "id": "allegory",
+      "name": "寓言与观点表达",
+      "aliases": [
+        "寓言",
+        "观点",
+        "哲理故事",
+        "先故事后揭示"
+      ],
+      "purposes": [
+        "story",
+        "knowledge"
+      ],
+      "goal": "通过选择与后果呈现观点或抽象机制",
+      "structure": "困境 → 选择 → 后果与线索 → 揭示 → 解释边界",
+      "needs": [
+        "明确观点或概念；故事与机制对应关系；不充当真实证据"
+      ],
+      "matches": [
+        {
+          "styleId": "sand",
+          "fit": "primary",
+          "why": "擦除与重建适合选择的不可逆后果",
+          "conditions": [
+            "故事机制对应观点；结尾说明边界"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "被反复修改的路",
+            "keyShot": "角色每改一次沙面路线就失去一段旧路径"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "one-line",
+          "fit": "primary",
+          "why": "不可断线的限制适合资源与路径隐喻",
+          "conditions": [
+            "约束贯穿全片，不临时新增规则"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "只能画一笔的桥",
+            "keyShot": "角色必须让有限线长连接两岸"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "paper-theatre",
+          "fit": "primary",
+          "why": "舞台与道具关系适合可见因果",
+          "conditions": [
+            "原创角色；不把寓言当真实案例"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "谁来接下一盏灯",
+            "keyShot": "灯在角色间传递，每次改变后续路径"
+          },
+          "evidenceSampleIds": [
+            "story"
+          ]
+        },
+        {
+          "styleId": "isometric-picture-book",
+          "fit": "primary",
+          "why": "同一场景规则变化适合系统寓言",
+          "conditions": [
+            "结果由规则推得，解释局限"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "村口的三个水桶",
+            "keyShot": "角色分配水桶的方法改变排队结果"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "shadow-puppet",
+          "fit": "primary",
+          "why": "透光叠层适合真假与视角主题",
+          "conditions": [
+            "实际投影逻辑与隐喻分开"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "影子比人先到",
+            "keyShot": "同一皮片在不同光位投出不同大小的影"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "watercolor-brush",
+          "fit": "primary",
+          "why": "透明叠色适合关系和影响的累积",
+          "conditions": [
+            "隐喻不能替代概念必要条件"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "每个人带来一点颜色",
+            "keyShot": "人物经过后留下可追踪的叠色"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pixel-rpg",
+          "fit": "primary",
+          "why": "明确任务规则适合机会成本与反馈",
+          "conditions": [
+            "选择与结果一致；结尾解释映射"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "只能带走三件物品",
+            "keyShot": "角色选择物品，后续关卡保留相应后果"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "data-physical",
+          "fit": "conditional",
+          "why": "可数物体适合分配与公平寓言",
+          "conditions": [
+            "不将规范性立场伪装成数据证明"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "同样多是否一样公平",
+            "keyShot": "同单位块按两种规则分给不同需求角色"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "comedy-short",
+      "name": "幽默与喜剧短片",
+      "aliases": [
+        "喜剧",
+        "幽默",
+        "搞笑",
+        "情景喜剧"
+      ],
+      "purposes": [
+        "story"
+      ],
+      "goal": "让动作、预期与反应形成可读笑点",
+      "structure": "建立预期 → 尝试 → 意外 → 反应或回扣",
+      "needs": [
+        "原创人物与情境；动作停顿；避免靠读不完的台词制造节奏"
+      ],
+      "matches": [
+        {
+          "styleId": "rubber-hose",
+          "fit": "primary",
+          "why": "软管肢体和节拍反应适合动作笑点",
+          "conditions": [
+            "完整预备动作与反应间隙"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一把不肯合上的伞",
+            "keyShot": "预备拉伞、伞弹开、角色停顿后被带走"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "scifi-toon",
+          "fit": "primary",
+          "why": "双人反应和打断适合对话喜剧",
+          "conditions": [
+            "原创角色；对白可读且配音留停顿"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "只想调低一度空调",
+            "keyShot": "两人轮流操作原创装置，后果逐次升级"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "silent-film",
+          "fit": "primary",
+          "why": "宽景表演与少量字幕适合视觉误会",
+          "conditions": [
+            "不要把默片当真实历史影像"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "门口的两顶帽子",
+            "keyShot": "观众先看到拿错，人物稍后察觉并交换"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "clay-stopmotion",
+          "fit": "primary",
+          "why": "软材质回弹适合动作失控",
+          "conditions": [
+            "形变有重量和连续性"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "果冻的第十次站稳",
+            "keyShot": "果冻每次落地回弹影响下一次动作"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "microgame",
+          "fit": "primary",
+          "why": "快速任务判定适合连续反差",
+          "conditions": [
+            "任务之间仍有一致舞台与逻辑"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "新员工的五秒训练",
+            "keyShot": "指令看似简单，真实动作引出意外判定"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pixel-rpg",
+          "fit": "primary",
+          "why": "菜单和道具规则适合元游戏笑点",
+          "conditions": [
+            "原创游戏界面与人物"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "勇者把说明书卖了",
+            "keyShot": "卖出道具后关键提示消失，角色重新寻找"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "midcentury-toon",
+          "fit": "primary",
+          "why": "一本正经的主持适合轻微荒诞",
+          "conditions": [
+            "表情和反应能看清，不靠语速挤笑点"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "如何照顾一盆倔强的花",
+            "keyShot": "主持每示范一步，花以相反动作回应"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "blender-clay"
+      ]
+    },
+    {
+      "id": "suspense-short",
+      "name": "悬疑与氛围故事",
+      "aliases": [
+        "悬疑",
+        "惊悚",
+        "谜案",
+        "悬念"
+      ],
+      "purposes": [
+        "story"
+      ],
+      "goal": "让线索与观众认知差推动悬念",
+      "structure": "异常 → 线索 → 假设变化 → 揭示或开放结尾",
+      "needs": [
+        "原创线索与空间；虚构标识；真实案件不得编造证据"
+      ],
+      "matches": [
+        {
+          "styleId": "backrooms",
+          "fit": "primary",
+          "why": "重复空间和设备变化适合不确定感",
+          "conditions": [
+            "原创虚构；不以加载错误代替恐怖"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "走廊尽头多了一扇门",
+            "keyShot": "同一走廊返回时门的位置改变且留下线索"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "halftone-dossier",
+          "fit": "primary",
+          "why": "编号证物与放大适合线索递进",
+          "conditions": [
+            "虚构案件标明；保留线索因果"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "少掉的那张车票",
+            "keyShot": "档案格中缺口被发现，放大旁边印记"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "spy-titles",
+          "fit": "primary",
+          "why": "剪影和字形空间适合追逐悬念",
+          "conditions": [
+            "原创间谍世界；不复制经典片头"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "密钥穿过一个字",
+            "keyShot": "人物穿入标题的负形并留下钥匙形线索"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "ascii-crt",
+          "fit": "primary",
+          "why": "字符状态与缺失日志适合信息悬念",
+          "conditions": [
+            "日志为虚构时显式标注"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "第十三行没有发送",
+            "keyShot": "终端显示消息序号，缺失行在结尾得到解释"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "paper-lantern",
+          "fit": "primary",
+          "why": "前后纸层遮挡适合轮廓误认",
+          "conditions": [
+            "真实纸层和光位关系"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "灯箱后的来客",
+            "keyShot": "投影先出现巨大轮廓，移灯后揭示来源"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "archive-dark",
+          "fit": "conditional",
+          "why": "文件与地图可以组织虚构推理",
+          "conditions": [
+            "明确虚构，不借档案外观伪造史实"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "最后一班邮车",
+            "keyShot": "三封原创信件的时间和路线逐步对齐"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "cultural-story",
+      "name": "传统文化与历史叙事",
+      "aliases": [
+        "传统文化",
+        "文化",
+        "历史",
+        "非遗",
+        "节庆"
+      ],
+      "purposes": [
+        "story",
+        "documentary",
+        "creative"
+      ],
+      "goal": "让工艺、历史与文化背景被理解",
+      "structure": "人或物切口 → 来历与过程 → 关键变化 → 当代联系",
+      "needs": [
+        "史料与文化语境；复原和想象标注；不套刻板符号"
+      ],
+      "matches": [
+        {
+          "styleId": "ink-wash",
+          "fit": "primary",
+          "why": "墨层和留白适合山水诗意与书写过程",
+          "conditions": [
+            "文化语境和笔法核对"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一笔如何成为一座山",
+            "keyShot": "落笔渗化后镜头沿同一笔势进入山形"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "shadow-puppet",
+          "fit": "primary",
+          "why": "皮片结构和透光可直接展示戏偶工艺",
+          "conditions": [
+            "工艺来源；不声称虚构角色为传统原型"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一只戏偶怎样转身",
+            "keyShot": "放大铆钉与操纵杆，再回到舞台动作"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "papercut-red",
+          "fit": "primary",
+          "why": "负形和镂空适合窗花与节庆叙事",
+          "conditions": [
+            "剪纸结构可成立；符号来源核对"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一扇窗里的四季",
+            "keyShot": "同张红纸的镂空逐步显出不同植物"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "woodcut",
+          "fit": "primary",
+          "why": "刀痕形成过程适合劳动与印刷史",
+          "conditions": [
+            "工艺史料核验；复原标注"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一块木版的旅程",
+            "keyShot": "从刻版、上墨到揭纸，工具与动作有依据"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "engraving",
+          "fit": "primary",
+          "why": "交叉排线与压印适合博物志和工艺细节",
+          "conditions": [
+            "结构和印制过程准确"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "铜版上留下的一株草",
+            "keyShot": "细刀刻出植物后印到纸上"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "stained-glass",
+          "fit": "primary",
+          "why": "铅条分格与移动背光适合建筑工艺",
+          "conditions": [
+            "不复制受保护花窗设计；说明文化背景"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一扇花窗的一天",
+            "keyShot": "光扫过原创花窗并把颜色投向室内"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "ukiyoe",
+          "fit": "primary",
+          "why": "套印和横向层次适合版画工艺说明",
+          "conditions": [
+            "区分工艺展示与史实复原"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一幅海景怎样套印",
+            "keyShot": "不同印版依次对齐并显露渐变"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "newsreel",
+          "fit": "primary",
+          "why": "档案与纸面信息适合近代城市史",
+          "conditions": [
+            "原始档案许可与事实来源"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "第一条电车线",
+            "keyShot": "真实报纸、线路图和影像按日期展开"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "sand",
+          "fit": "primary",
+          "why": "擦除重构适合口述记忆的绘制表达",
+          "conditions": [
+            "口述与可考事实分开"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一条老街的三次模样",
+            "keyShot": "沙面街道按口述线索重画并标示时间"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "riso-halftone",
+          "fit": "primary",
+          "why": "分色叠印适合独立出版与社区文化",
+          "conditions": [
+            "不把孔版效果混同具体非遗工艺"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一本小刊的诞生",
+            "keyShot": "不同色版叠合出原创社区小刊"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "sand-history",
+        "austerlitz-code"
+      ]
+    },
+    {
+      "id": "public-interest",
+      "name": "公益与社会议题",
+      "aliases": [
+        "公益",
+        "社会议题",
+        "环保",
+        "公益广告"
+      ],
+      "purposes": [
+        "story",
+        "knowledge",
+        "documentary"
+      ],
+      "goal": "让处境、因果与可行动的改变可见",
+      "structure": "具体处境 → 原因或关系 → 改变 → 可行行动",
+      "needs": [
+        "议题事实与当事人范围；避免编造效果或煽情冒充证据"
+      ],
+      "matches": [
+        {
+          "styleId": "pictogram-motion",
+          "fit": "primary",
+          "why": "简单动作可直接呈现可行改变",
+          "conditions": [
+            "行动适用条件；不虚构节能数字"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "少留一盏空灯",
+            "keyShot": "人离开后灯仍亮，再回身关灯"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "flat",
+          "fit": "primary",
+          "why": "轮廓清楚适合公共服务指引",
+          "conditions": [
+            "依据真实无障碍要求"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "给轮椅留一条路",
+            "keyShot": "通道由障碍堆积变为可通行路径"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "one-line",
+          "fit": "primary",
+          "why": "同一路径能连接个体与共同结果",
+          "conditions": [
+            "人物多样性；不空喊口号"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "路留给彼此",
+            "keyShot": "不断线的通行路线串起不同出行者"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "dataviz",
+          "fit": "conditional",
+          "why": "同口径趋势适合环境议题解释",
+          "conditions": [
+            "真实统计和边界；模拟显著标注"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "垃圾去了哪里",
+            "keyShot": "有来源的处理量依次流向各去处"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "data-physical",
+          "fit": "conditional",
+          "why": "单位物体适合看见日常累积",
+          "conditions": [
+            "换算有依据；不夸大单个行为效果"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "每天多一小杯水",
+            "keyShot": "等量单元累积形成可比较体积"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "paper-popup",
+          "fit": "primary",
+          "why": "纸页空间适合服务设施可达性",
+          "conditions": [
+            "设施原理正确，纸景仅为示意"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "打开一座能进入的城",
+            "keyShot": "坡道展开后纸片角色才可通过"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "glass-mosaic",
+          "fit": "conditional",
+          "why": "碎片重组适合共同体修复的隐喻",
+          "conditions": [
+            "不以修复意象承诺真实社会效果"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "每一片都有位置",
+            "keyShot": "不同玻璃片形成原创公共空间意象"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "handpainted-cinema",
+          "fit": "conditional",
+          "why": "角色行为可把议题落实到个人处境",
+          "conditions": [
+            "尊重当事人；虚构与真实案例分开"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "等最后一位乘客",
+            "keyShot": "人物看见行动不便者后改变自己的动作"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": []
+    },
+    {
+      "id": "music-visual",
+      "name": "音乐视觉与循环氛围",
+      "aliases": [
+        "音乐视觉",
+        "MV",
+        "氛围动画",
+        "循环动画",
+        "视觉实验"
+      ],
+      "purposes": [
+        "creative"
+      ],
+      "goal": "用材质、节奏与空间承接音乐或情绪",
+      "structure": "视觉母题 → 节奏或材质变化 → 峰值 → 收束或循环",
+      "needs": [
+        "音乐许可及拍点；循环目标；静音作品也可沿动作节奏设计"
+      ],
+      "matches": [
+        {
+          "styleId": "particles",
+          "fit": "primary",
+          "why": "可控相位和聚散适合节拍与密度变化",
+          "conditions": [
+            "固定seed；循环检查含速度与声音"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "呼吸的星群",
+            "keyShot": "同一群点按已核对拍点聚散并回到初态"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "sand",
+          "fit": "primary",
+          "why": "显影和擦除适合音乐段落的连续变形",
+          "conditions": [
+            "固定粒子与确定性；不直接复用旧样片"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "沙上的潮汐",
+            "keyShot": "粒沙轮廓随音乐由岸线变为波纹再回原态"
+          },
+          "evidenceSampleIds": [
+            "creative"
+          ]
+        },
+        {
+          "styleId": "ink-paper",
+          "fit": "primary",
+          "why": "纸面线条可承接克制的节奏",
+          "conditions": [
+            "不把静态噪点变化称为绘画表现"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "纸上的四次呼吸",
+            "keyShot": "线条伸展、回收，纸纹保持空间稳定"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pixel",
+          "fit": "primary",
+          "why": "低分辨率色块适合芯片音乐节拍",
+          "conditions": [
+            "整周期与最近邻采样"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一座八位夜城",
+            "keyShot": "窗灯与车辆按拍点循环，精灵保留像素网格"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "kinetic-type",
+          "fit": "primary",
+          "why": "字形节奏适合歌词和语言母题",
+          "conditions": [
+            "歌词授权；阅读时间可满足"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一句话的回声",
+            "keyShot": "同句文字在网格中延迟重现后合拢"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "riso-halftone",
+          "fit": "primary",
+          "why": "色版错位与叠色适合印刷节奏实验",
+          "conditions": [
+            "版纹随对象固定，不逐帧随机闪烁"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "两种颜色的合奏",
+            "keyShot": "两版独立运动在重拍准确套合"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "watercolor-brush",
+          "fit": "primary",
+          "why": "颜料铺色适合舒缓段落",
+          "conditions": [
+            "真笔带与叠色；不只贴纹理"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一阵雨的长度",
+            "keyShot": "水洗路径逐步铺色又按预定遮罩收回"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "impasto",
+          "fit": "primary",
+          "why": "受光刀痕适合慢速材质变化",
+          "conditions": [
+            "高度场或等效受光验证"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "听见颜料的厚度",
+            "keyShot": "侧光移动显露固定高度场的笔触"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "stained-glass",
+          "fit": "primary",
+          "why": "彩光投影适合空间与和声变化",
+          "conditions": [
+            "玻璃刚性与投影成立"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "光落在不同位置",
+            "keyShot": "背光沿整周期移动，彩色投影随几何变化"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "art-deco",
+          "fit": "primary",
+          "why": "中轴和连续点灯适合舞曲段落",
+          "conditions": [
+            "不强塞旁白；完整周期验证"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "午夜的拱门",
+            "keyShot": "灯泡按乐句点亮，拱门开合后回到初态"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "glass-mosaic",
+          "fit": "primary",
+          "why": "片状折射与拼合适合几何氛围",
+          "conditions": [
+            "需材质验证；不要假称真实玻璃后端已内置"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一片光的拼图",
+            "keyShot": "原创玻璃片按节拍拼合，反射保持连续"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "lowpoly-island",
+          "fit": "conditional",
+          "why": "地形生长和日照适合环境音乐",
+          "conditions": [
+            "循环拓扑可行；不靠重复首帧掩盖跳变"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一座岛的一次呼吸",
+            "keyShot": "地块和日光按整周期变化并回到起点"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "pdoom-code",
+        "claude-pop-hybrid",
+        "pixel-wizard",
+        "glass-mosaic"
+      ]
+    },
+    {
+      "id": "motion-showreel",
+      "name": "动态设计作品集与品牌片头",
+      "aliases": [
+        "showreel",
+        "动态图形",
+        "动态设计",
+        "片头",
+        "motion design"
+      ],
+      "purposes": [
+        "creative",
+        "product"
+      ],
+      "goal": "用统一视觉语法展示设计语言与节奏，不虚构产品价值",
+      "structure": "一个母题 → 状态/材质递进 → 关键变化 → 收束或循环",
+      "needs": [
+        "字标/色板/允许的素材与音乐；不能把通用showreel当所有产品广告"
+      ],
+      "matches": [
+        {
+          "styleId": "swiss-motion",
+          "fit": "primary",
+          "why": "网格与字重可直接承担节奏变化",
+          "conditions": [
+            "标题必须可读"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一张网格的四种秩序",
+            "keyShot": "同一字标由压缩、展开到对齐，结尾回扣起态"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "kinetic-type",
+          "fit": "primary",
+          "why": "字形形态与信息节奏能成为主动作",
+          "conditions": [
+            "文案原创或授权；不是只加弹跳"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "四个动词同一张纸",
+            "keyShot": "每个动词改变下一个字的空间关系"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pictogram-motion",
+          "fit": "primary",
+          "why": "统一符号语法能串起少字动作",
+          "conditions": [
+            "动作与图形形变有接续"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一条线接起四种工作",
+            "keyShot": "同一主体连续成为不同任务图标"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "particles",
+          "fit": "primary",
+          "why": "同一点集的密度和轮廓可承接节拍",
+          "conditions": [
+            "固定映射；不乱闪"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一群点的转场练习",
+            "keyShot": "点群从网格到轮廓再回到网格"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pixel",
+          "fit": "primary",
+          "why": "整数像素与离散姿态适合短循环",
+          "conditions": [
+            "逻辑分辨率固定；不模糊放大"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "像素天气轮转",
+            "keyShot": "同一小场景按整周期由晴转雨再回晴"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "glass-mosaic",
+          "fit": "primary",
+          "why": "刚性拼片的开合适合材质主导短片",
+          "conditions": [
+            "需要验证空间与材质，不只平面光斑"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "碎片重新找到位置",
+            "keyShot": "原创拼片升起、翻转、合回同一图案"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "ui-morph",
+        "pixel-wizard",
+        "glass-mosaic"
+      ]
+    },
+    {
+      "id": "interactive-lab",
+      "name": "交互实验与科学演示",
+      "aliases": [
+        "交互实验",
+        "科学实验",
+        "交互科普",
+        "参数实验",
+        "interactive lab"
+      ],
+      "purposes": [
+        "knowledge",
+        "product"
+      ],
+      "goal": "让观众改变一个参数并看到机制后果，区分交互页面与演示视频",
+      "structure": "提出问题 → 展示模型 → 改变参数 → 比较与边界",
+      "needs": [
+        "真实规则/单位/数据；交互HTML与MP4输出明确，视频采用可重放参数轨迹"
+      ],
+      "matches": [
+        {
+          "styleId": "technical",
+          "fit": "primary",
+          "why": "模型与标注同源可验证参数变化",
+          "conditions": [
+            "量化依据和类比边界明确"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "把阀门开大一点",
+            "keyShot": "滑杆改变开度，流量与文字从同一规则计算"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "teardown",
+          "fit": "primary",
+          "why": "装配关系有助于理解部件协作",
+          "conditions": [
+            "需实际结构或明确示意"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "看见转轴带动哪一层",
+            "keyShot": "旋转、剖切与部件标注读取同一几何"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "hologram-hud",
+          "fit": "primary",
+          "why": "扫描层与读数适合观察隐藏状态",
+          "conditions": [
+            "温度有数据或注明模拟"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "热量在哪里积累",
+            "keyShot": "同一模型显示开关前后热区"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "blueprint",
+          "fit": "primary",
+          "why": "同图纸的剖面变化适合机械规则",
+          "conditions": [
+            "工程几何核对"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "推动一毫米会怎样",
+            "keyShot": "推杆改变齿轮位置并同步标尺寸"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "isometric-picture-book",
+          "fit": "primary",
+          "why": "同场景行为能显示系统结果",
+          "conditions": [
+            "固定模拟种子和输入"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "改一条排队规则",
+            "keyShot": "按同一到达数据切换服务规则并对比等待"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "microscope",
+          "fit": "primary",
+          "why": "注册尺度层级适合尺度观察",
+          "conditions": [
+            "实测素材与比例尺；示意另标"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "从叶片看进细胞",
+            "keyShot": "用户缩放与影片轨迹进入相同图像层级"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "lens-lab",
+        "raptor-lab"
+      ]
+    },
+    {
+      "id": "codebase-tour",
+      "name": "代码库与系统架构讲解",
+      "aliases": [
+        "代码库讲解",
+        "开源项目讲解",
+        "架构讲解",
+        "代码导览",
+        "执行轨迹"
+      ],
+      "purposes": [
+        "knowledge",
+        "product"
+      ],
+      "goal": "让观众理解真实代码如何完成一次任务",
+      "structure": "用途 → 模块地图 → 一次请求路径 → 关键抽象 → 真实结果与限制",
+      "needs": [
+        "指定仓库/版本、可公开代码路径与实际运行或明确示例轨迹"
+      ],
+      "matches": [
+        {
+          "styleId": "transit-map",
+          "fit": "primary",
+          "why": "节点和换乘可表示模块依赖",
+          "conditions": [
+            "路线是架构类比，标真实文件路径"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一次查询穿过五个模块",
+            "keyShot": "同一请求沿真实调用关系经过节点"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "circuit-board",
+          "fit": "primary",
+          "why": "信号走线适合服务调用与缓存命中",
+          "conditions": [
+            "节点来自实际代码，不画虚构依赖"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一个请求的返回路",
+            "keyShot": "光脉冲沿调用图前进，命中缓存后返回"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "blueprint",
+          "fit": "primary",
+          "why": "同图纸剖层适合解释代码边界",
+          "conditions": [
+            "层级与源码版本一致"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "打开系统的三层",
+            "keyShot": "同一系统图逐层显露接口、状态和存储"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "living-screencast",
+          "fit": "primary",
+          "why": "实际操作状态适合演示从命令到结果",
+          "conditions": [
+            "真实执行与演示清楚区分"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "从命令行看见一次执行",
+            "keyShot": "操作界面与模块高亮共享事件顺序"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "iso-infographic",
+          "fit": "primary",
+          "why": "有空间位置的流程适合路径讲解",
+          "conditions": [
+            "步骤、异常与数据来源有依据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一条任务怎样完成",
+            "keyShot": "请求对象经过解析、处理和输出的位置"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "technical",
+          "fit": "primary",
+          "why": "细部展开适合解释核心数据结构",
+          "conditions": [
+            "不把任意伪代码当仓库实现"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一个节点怎样被索引",
+            "keyShot": "展示真实结构的一次插入与查找"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "sqlite-tour"
+      ]
+    },
+    {
+      "id": "audio-broll",
+      "name": "口播播客与课程可视化补画",
+      "aliases": [
+        "口播补画",
+        "播客动画",
+        "可视化播客",
+        "B-roll",
+        "口播转动画",
+        "课程补画"
+      ],
+      "purposes": [
+        "knowledge",
+        "documentary",
+        "product"
+      ],
+      "goal": "保留原讲话信息和时间，用补画解释难以看见的关系",
+      "structure": "核对原声字幕 → 标解释缺口 → 动画/证据补画 → 回到说话者",
+      "needs": [
+        "有权使用的原音视频、可靠转录与时间码；不能默认为用户换音色或改原话"
+      ],
+      "matches": [
+        {
+          "styleId": "one-line",
+          "fit": "primary",
+          "why": "连续线能跟随一句话展开关系",
+          "conditions": [
+            "不把句子逐字变成无意义装饰"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "讲到这一刻画出来",
+            "keyShot": "说到任务传递时，线从人物连向对象"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "whiteboard",
+          "fit": "primary",
+          "why": "板面推演适合补充口述中的因果",
+          "conditions": [
+            "有准确时间码和文字"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "他说的两个条件",
+            "keyShot": "原声到条件处才出现对应图形与箭头"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "flat",
+          "fit": "primary",
+          "why": "简洁轮廓适合人物画中画旁的解释",
+          "conditions": [
+            "不遮挡字幕和人脸"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "把看不见的交接画出来",
+            "keyShot": "主画面演示交接，讲话者保留在安全区"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "technical",
+          "fit": "primary",
+          "why": "机制示意适合课程中的抽象步骤",
+          "conditions": [
+            "公式和图形同源；不改原声时长"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一句话拆成一次过程",
+            "keyShot": "原声提到瓶颈时才改变通道截面"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "archive-dark",
+          "fit": "primary",
+          "why": "原件与地图可为讲述提供证据",
+          "conditions": [
+            "来源许可明确；不能伪造旁证"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "这句话的出处",
+            "keyShot": "说到时间地点时展示已核验的原件局部"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "kinetic-type",
+          "fit": "primary",
+          "why": "少量关键词可突出语音结构",
+          "conditions": [
+            "不重复大段字幕；留足阅读时间"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "三个词留下来",
+            "keyShot": "关键语音点出现短词，其余时间让图形说话"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "talkinghead-broll"
+      ]
+    },
+    {
+      "id": "recipe-process",
+      "name": "配方与实物步骤图解",
+      "aliases": [
+        "配方图解",
+        "食谱",
+        "烹饪动画",
+        "调饮",
+        "工序动画",
+        "配比演示"
+      ],
+      "purposes": [
+        "knowledge",
+        "product"
+      ],
+      "goal": "用同一容器或对象的连续状态解释顺序和用量",
+      "structure": "原料与工具 → 按顺序加入/处理 → 状态变化 → 完成与限制",
+      "needs": [
+        "准确配方、单位、步骤及安全边界；不可把示意液面当物理求解结果"
+      ],
+      "matches": [
+        {
+          "styleId": "flat",
+          "fit": "primary",
+          "why": "稳定容器和清晰色块能显示逐步累积",
+          "conditions": [
+            "总量、比例与标签一致"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一杯柠檬饮的四步",
+            "keyShot": "同一杯中加入对应刻度的原料并显示单位"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "technical",
+          "fit": "primary",
+          "why": "剖面与刻度适合配比和工序精度",
+          "conditions": [
+            "示意模型与实际工艺边界明确"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "两种配比看得见",
+            "keyShot": "同样大小容器按真实比例填充并对比"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "iso-infographic",
+          "fit": "primary",
+          "why": "空间动线适合从原料到成品的流程",
+          "conditions": [
+            "时间压缩标明；不省略关键条件"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "面包怎样经过一间工坊",
+            "keyShot": "原料对象沿称量、搅拌、发酵工位前进"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "midcentury-toon",
+          "fit": "primary",
+          "why": "主持和道具能解释一个步骤为何需要",
+          "conditions": [
+            "结论有配方或实验依据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "先后顺序很重要",
+            "keyShot": "主持在同一台面演示两种顺序的后果"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "watercolor-brush",
+          "fit": "primary",
+          "why": "透明色层适合液体与食材的感官表达",
+          "conditions": [
+            "艺术表现不声称真实流体或扩散仿真"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "茶色慢慢展开",
+            "keyShot": "按预定笔带显出茶汤，旁边保留真实用量"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "recipe-negroni"
+      ]
+    }
+  ],
+  "referenceCases": [
+    {
+      "id": "pdoom-code",
+      "title": "P(doom) 原版代码绘制MV",
+      "useCases": [
+        "music-visual"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://github.com/johnheibel/pdoomvideo",
+      "reportedTechnology": [
+        "p5.js + p5.brush绘图",
+        "Puppeteer驱动Chrome，FFmpeg编码，已有歌曲混入"
+      ],
+      "unknownTechnology": [
+        "未在本库复现；不与后续混合重制版混同"
+      ],
+      "suggestedEngines": [
+        "p5js"
+      ],
+      "verification": "research-only",
+      "selectionReason": "有完整源码的代表案例；热度未单独核实",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "source-inspected",
+          "url": "https://github.com/johnheibel/pdoomvideo/blob/fa546a38092e75f2b079e6a86d6abc54dd525d17/studio.html",
+          "finding": "入口实际加载p5与p5.brush"
+        },
+        {
+          "level": "source-inspected",
+          "url": "https://github.com/johnheibel/pdoomvideo/blob/fa546a38092e75f2b079e6a86d6abc54dd525d17/render.mjs",
+          "finding": "实际导入puppeteer-core并调用FFmpeg"
+        },
+        {
+          "level": "author-article",
+          "url": "https://github.com/johnheibel/pdoomvideo/blob/fa546a38092e75f2b079e6a86d6abc54dd525d17/README.md",
+          "finding": "作者说明原有歌曲与代码画面的来源，不是全部音频原创合成"
+        }
+      ]
+    },
+    {
+      "id": "claude-pop-hybrid",
+      "title": "Claude Pop 五分钟混合重制",
+      "useCases": [
+        "music-visual"
+      ],
+      "outputKind": "hybrid-video",
+      "originalUrl": "https://x.com/anabology/status/2103534482930491441",
+      "reportedTechnology": [
+        "作者提示包含角色图、Seedance底片及JavaScript重绘/歌词覆盖"
+      ],
+      "unknownTechnology": [
+        "提示词不证明每步均按计划完成；没有核对最终源码"
+      ],
+      "suggestedEngines": [
+        "canvas2d"
+      ],
+      "verification": "research-only",
+      "selectionReason": "高关注索引快照；不能当纯代码证明",
+      "attention": {
+        "views": 20000000,
+        "metricAsOf": "索引日期未显示",
+        "sourceUrl": "https://clawshelf.com/zh/ai-videos/opus-5-5/elaborate-overnight-scene-shared-prompt",
+        "basis": "index-snapshot",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://clawshelf.com/zh/ai-videos/opus-5-5/elaborate-overnight-scene-shared-prompt",
+          "finding": "公开转引作者要求调用图像/视频模型并叠加JS动画；原帖本次未直接读取"
+        }
+      ]
+    },
+    {
+      "id": "ui-morph",
+      "title": "同一个形状连续变成多种UI状态",
+      "useCases": [
+        "motion-showreel",
+        "product-launch",
+        "brand-ad"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://x.com/twoclipping/status/2103273003555402193",
+      "reportedTechnology": [
+        "作者公开方案为单HTML、seek(t)、解析弹簧、Playwright多子帧及FFmpeg运动模糊"
+      ],
+      "unknownTechnology": [
+        "最终采用DOM/SVG/Canvas的具体比例没有源码确认；不把索引svg标签当实测"
+      ],
+      "suggestedEngines": [
+        "svg-html",
+        "gsap"
+      ],
+      "verification": "research-only",
+      "selectionReason": "高关注索引快照",
+      "attention": {
+        "views": 1200000,
+        "metricAsOf": "索引日期未显示",
+        "sourceUrl": "https://clawshelf.com/zh/ai-videos/opus-5-5/code-based-ui-motion-design-showreel",
+        "basis": "index-snapshot",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://clawshelf.com/zh/ai-videos/opus-5-5/code-based-ui-motion-design-showreel",
+          "finding": "公开转引作者制作规格；包括纯时间函数与多子帧渲染"
+        }
+      ]
+    },
+    {
+      "id": "pixel-wizard",
+      "title": "低分辨率像素巫师施法循环",
+      "useCases": [
+        "motion-showreel",
+        "music-visual"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://x.com/majidmanzarpour/status/2102476258948927543",
+      "reportedTechnology": [
+        "作者公开规格明确原生JavaScript和Canvas2D，128×96逻辑画布整数倍放大"
+      ],
+      "unknownTechnology": [
+        "未核对最终实现与实际帧率"
+      ],
+      "suggestedEngines": [
+        "canvas2d"
+      ],
+      "verification": "research-only",
+      "selectionReason": "高关注索引快照",
+      "attention": {
+        "views": 456500,
+        "metricAsOf": "索引日期未显示",
+        "sourceUrl": "https://clawshelf.com/zh/ai-videos/opus-5-5/animated-pixel-art-wizard-casting-spell",
+        "basis": "index-snapshot",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://clawshelf.com/zh/ai-videos/opus-5-5/animated-pixel-art-wizard-casting-spell",
+          "finding": "转引原始规格明确禁用外部资产与库"
+        }
+      ]
+    },
+    {
+      "id": "sand-history",
+      "title": "两分钟沙画叙述历史",
+      "useCases": [
+        "cultural-story"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://x.com/Michaelzsguo/status/2102592355165782312",
+      "reportedTechnology": [
+        "作者自述代码沙画，未用Blender或Three.js"
+      ],
+      "unknownTechnology": [
+        "具体绘图库未披露；不能确定是p5.js、Canvas或shader"
+      ],
+      "suggestedEngines": [
+        "canvas2d",
+        "webgl"
+      ],
+      "verification": "research-only",
+      "selectionReason": "早期传播代表；热度数字未核实",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://github.com/X-RayLuan/awesome-opus-5-5-video-prompts/blob/b9524552dfcf96c4bf3569fa1145f94b63bc2a76/README.md#michaelzsguo-us-history-sand-animation",
+          "finding": "作者陈述由合集转引；只能确认其披露边界"
+        }
+      ]
+    },
+    {
+      "id": "lens-lab",
+      "title": "可拖动对焦环的镜头实验",
+      "useCases": [
+        "interactive-lab",
+        "concept-explainer"
+      ],
+      "outputKind": "interactive-demo",
+      "originalUrl": "https://lens.lab.sael.net",
+      "reportedTechnology": [
+        "拖动对焦环改变镜片和清晰平面；本体为交互实验"
+      ],
+      "unknownTechnology": [
+        "作者未披露具体库；演示视频不等于离线逐帧渲染"
+      ],
+      "suggestedEngines": [
+        "threejs",
+        "webgl"
+      ],
+      "verification": "research-only",
+      "selectionReason": "高关注索引快照",
+      "attention": {
+        "views": 3200000,
+        "metricAsOf": "2026-10-07（索引时）",
+        "sourceUrl": "https://claudevideo.org/videos/interactive-lab-explains-focus-with-an-exploded-camera-lens",
+        "basis": "index-snapshot",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "index-only",
+          "url": "https://claudevideo.org/videos/interactive-lab-explains-focus-with-an-exploded-camera-lens",
+          "finding": "索引明确注明作者未命名工具，链接可交互原作"
+        }
+      ]
+    },
+    {
+      "id": "raptor-lab",
+      "title": "交互式火箭发动机拆解",
+      "useCases": [
+        "interactive-lab",
+        "concept-explainer"
+      ],
+      "outputKind": "interactive-demo",
+      "originalUrl": "https://airsup.ai/rocket-engine",
+      "reportedTechnology": [
+        "公开陈述包含拆解、流路观察与节流操作"
+      ],
+      "unknownTechnology": [
+        "具体库没有源码核验；索引Three.js/shader标签只作线索"
+      ],
+      "suggestedEngines": [
+        "threejs",
+        "webgl"
+      ],
+      "verification": "research-only",
+      "selectionReason": "高关注索引快照",
+      "attention": {
+        "views": 1200000,
+        "metricAsOf": "索引日期未显示",
+        "sourceUrl": "https://clawshelf.com/zh/ai-videos",
+        "basis": "index-snapshot",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://clawshelf.com/zh/ai-videos",
+          "finding": "首页转引作者目标并链接原作；详情本次抓取超时"
+        }
+      ]
+    },
+    {
+      "id": "startup-launch",
+      "title": "推理创业公司发布片",
+      "useCases": [
+        "brand-ad",
+        "product-launch"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://x.com/deedydas/status/2102787937482252537",
+      "reportedTechnology": [
+        "公开案例为短时长排版、图表与界面发布片"
+      ],
+      "unknownTechnology": [
+        "原片具体库未披露；后来的开源复刻不能证明原片使用相同技术"
+      ],
+      "suggestedEngines": [
+        "svg-html",
+        "gsap",
+        "remotion"
+      ],
+      "verification": "research-only",
+      "selectionReason": "高关注索引快照",
+      "attention": {
+        "views": 349000,
+        "metricAsOf": "索引日期未显示",
+        "sourceUrl": "https://clawshelf.com/zh/ai-videos/opus-5-5/ai-inference-startup-launch-video",
+        "basis": "index-snapshot",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://github.com/X-RayLuan/awesome-opus-5-5-video-prompts/blob/b9524552dfcf96c4bf3569fa1145f94b63bc2a76/README.md#deedydas-startup-launch-video",
+          "finding": "作者的简短任务被公开转引；合集另列的是后续复刻仓库"
+        }
+      ]
+    },
+    {
+      "id": "remotion-promo",
+      "title": "Danny Stuart 应用与素材包宣传片",
+      "useCases": [
+        "brand-ad",
+        "product-launch"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://dannystuart.substack.com/p/claude-code-opus-remotion-agentic-promo-video",
+      "reportedTechnology": [
+        "作者文章明确使用Remotion/React，第二支接入自己已有图片与视频素材"
+      ],
+      "unknownTechnology": [
+        "未获取完整工程或复现；不沿用其成本和耗时保证"
+      ],
+      "suggestedEngines": [
+        "remotion",
+        "svg-html"
+      ],
+      "verification": "research-only",
+      "selectionReason": "技术或用法补充",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "author-article",
+          "url": "https://dannystuart.substack.com/p/claude-code-opus-remotion-agentic-promo-video",
+          "finding": "第一人称制作记录明确框架与用户资产来源"
+        }
+      ]
+    },
+    {
+      "id": "austerlitz-code",
+      "title": "五分钟历史战役程序化重建",
+      "useCases": [
+        "cultural-story",
+        "documentary"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://github.com/WinterArc21/Battle-of-Austerlitz-Film",
+      "reportedTechnology": [
+        "自写WebGL2/GLSL，地形与精灵系统，Playwright/FFmpeg；作者说明Kokoro旁白和合成音乐"
+      ],
+      "unknownTechnology": [
+        "本轮未渲染、未核验全部历史事实；不能把重建画面称现场档案"
+      ],
+      "suggestedEngines": [
+        "webgl"
+      ],
+      "verification": "research-only",
+      "selectionReason": "技术或用法补充",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "source-inspected",
+          "url": "https://github.com/WinterArc21/Battle-of-Austerlitz-Film/blob/86dae32d20f0a0f2395e7dc8938846fd51e355a6/web/engine/renderer.js",
+          "finding": "检查到独立GL渲染器实现"
+        },
+        {
+          "level": "source-inspected",
+          "url": "https://github.com/WinterArc21/Battle-of-Austerlitz-Film/blob/86dae32d20f0a0f2395e7dc8938846fd51e355a6/tools/render.mjs",
+          "finding": "实际导入Playwright并调用FFmpeg"
+        },
+        {
+          "level": "author-article",
+          "url": "https://github.com/WinterArc21/Battle-of-Austerlitz-Film/blob/86dae32d20f0a0f2395e7dc8938846fd51e355a6/README.md",
+          "finding": "作者列明地形、WebGL2、GLSL、Kokoro及事实简化"
+        }
+      ]
+    },
+    {
+      "id": "recipe-negroni",
+      "title": "配方逐步装入杯中的图解",
+      "useCases": [
+        "recipe-process"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://x.com/Ror_Fly/status/2102853258582880547",
+      "reportedTechnology": [
+        "作者公开任务为HTML/JavaScript，从参考图生成连续配方演示"
+      ],
+      "unknownTechnology": [
+        "具体库未披露；不是流体求解器证明"
+      ],
+      "suggestedEngines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "verification": "research-only",
+      "selectionReason": "较高关注且有公开制作规格的用法补充",
+      "attention": {
+        "views": 78861,
+        "metricAsOf": "2026-10-15",
+        "sourceUrl": "https://createmotion.io/motions/ror-fly-9950f1/",
+        "basis": "index-snapshot",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://createmotion.io/motions/ror-fly-9950f1/",
+          "finding": "转引作者配方演示说明及输入范围"
+        }
+      ]
+    },
+    {
+      "id": "talkinghead-broll",
+      "title": "口播保留原声并补线稿解释画面",
+      "useCases": [
+        "audio-broll"
+      ],
+      "outputKind": "mixed-footage",
+      "originalUrl": "https://x.com/AxtonLiu/status/2102827887732932956",
+      "reportedTechnology": [
+        "作者规格保留原声、字幕、时长，人物画中画和概念补画"
+      ],
+      "unknownTechnology": [
+        "最终绘图库未披露；未核对对齐或抠像结果"
+      ],
+      "suggestedEngines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "verification": "research-only",
+      "selectionReason": "技术或用法补充",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://github.com/X-RayLuan/awesome-opus-5-5-video-prompts/blob/b9524552dfcf96c4bf3569fa1145f94b63bc2a76/README.md#axtonliu-talking-head-to-line-art",
+          "finding": "公开转引作者的原声保留和画中画要求"
+        }
+      ]
+    },
+    {
+      "id": "sqlite-tour",
+      "title": "七分钟代码库与查询执行讲解",
+      "useCases": [
+        "codebase-tour"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://x.com/deedydas/status/2104391577091407965",
+      "reportedTechnology": [
+        "作者陈述按代码地图、查询生命期、抽象和执行轨迹组织，提及外部TTS"
+      ],
+      "unknownTechnology": [
+        "具体画面库未披露；不能据索引推断执行轨迹已验证"
+      ],
+      "suggestedEngines": [
+        "svg-html",
+        "canvas2d"
+      ],
+      "verification": "research-only",
+      "selectionReason": "技术或用法补充",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://github.com/yihui-dev/awesome-opus5-5-videos/blob/92aee2f586ac0715cb3cbcb6384834f98a33383d/data/videos.json",
+          "finding": "索引保留作者帖子说明；本轮未直接访问原帖"
+        }
+      ]
+    },
+    {
+      "id": "manim-derivative",
+      "title": "Manim 导数概念教学",
+      "useCases": [
+        "concept-explainer"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://x.com/LinearUncle/status/2103128559174971663",
+      "reportedTechnology": [
+        "作者公开任务明确Manim和edge-tts"
+      ],
+      "unknownTechnology": [
+        "本轮仅读转引任务，未取得或执行源码"
+      ],
+      "suggestedEngines": [],
+      "verification": "research-only",
+      "selectionReason": "技术或用法补充",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://github.com/X-RayLuan/awesome-opus-5-5-video-prompts/blob/b9524552dfcf96c4bf3569fa1145f94b63bc2a76/README.md#linearuncle-derivative-lesson-manim",
+          "finding": "具体Python路线来自作者任务，不表示所有科普都用Manim"
+        }
+      ]
+    },
+    {
+      "id": "runway-documentary",
+      "title": "调用Runway的超智能纪录片",
+      "useCases": [
+        "documentary"
+      ],
+      "outputKind": "hybrid-video",
+      "originalUrl": "https://x.com/gavinpurcell/status/2103304514329854102",
+      "reportedTechnology": [
+        "作者披露提供Runway MCP访问，代理统筹纪录片"
+      ],
+      "unknownTechnology": [
+        "完整剪辑链和具体生成步骤未核实；不能归为全片代码绘制"
+      ],
+      "suggestedEngines": [
+        "canvas2d",
+        "remotion"
+      ],
+      "verification": "research-only",
+      "selectionReason": "技术或用法补充",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://github.com/X-RayLuan/awesome-opus-5-5-video-prompts/blob/b9524552dfcf96c4bf3569fa1145f94b63bc2a76/README.md#gavinpurcell-superintelligence-documentary",
+          "finding": "公开转引作者工具访问陈述"
+        }
+      ]
+    },
+    {
+      "id": "glass-mosaic",
+      "title": "WebGL2玻璃金箔拼片短片",
+      "useCases": [
+        "music-visual",
+        "motion-showreel"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://x.com/LCSlates/status/2102503027340988559",
+      "reportedTechnology": [
+        "作者公开规格明确WebGL2/原生JavaScript和浏览器声音合成"
+      ],
+      "unknownTechnology": [
+        "任务描述不等于已核对全部源码与材质实现"
+      ],
+      "suggestedEngines": [
+        "webgl"
+      ],
+      "verification": "research-only",
+      "selectionReason": "技术或用法补充",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "relayed-author",
+          "url": "https://github.com/X-RayLuan/awesome-opus-5-5-video-prompts/blob/b9524552dfcf96c4bf3569fa1145f94b63bc2a76/README.md#lcslates-glass-mosaic-film",
+          "finding": "转引作者要求，具体库声明与视觉效果分开"
+        }
+      ]
+    },
+    {
+      "id": "blender-clay",
+      "title": "Blender黏土外观角色演示",
+      "useCases": [
+        "children-story",
+        "comedy-short"
+      ],
+      "outputKind": "video",
+      "originalUrl": "https://x.com/alexalbert__/status/2102458348511879448",
+      "reportedTechnology": [
+        "公开演示记录为Claude驱动Blender"
+      ],
+      "unknownTechnology": [
+        "作者未分享提示词；未核实Python脚本、具体渲染器或源码"
+      ],
+      "suggestedEngines": [],
+      "verification": "research-only",
+      "selectionReason": "技术或用法补充",
+      "attention": {
+        "views": null,
+        "metricAsOf": "未核实",
+        "sourceUrl": null,
+        "basis": "not-verified",
+        "retrievedAt": "2026-11-03"
+      },
+      "evidence": [
+        {
+          "level": "index-only",
+          "url": "https://github.com/X-RayLuan/awesome-opus-5-5-video-prompts/blob/b9524552dfcf96c4bf3569fa1145f94b63bc2a76/README.md#alexalbert-blender-claymation",
+          "finding": "仅作为外部3D路线案例，不声称本库可直接运行"
+        }
+      ]
+    }
+  ]
 }

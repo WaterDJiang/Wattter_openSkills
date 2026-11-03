@@ -11,7 +11,8 @@ description: 代码视频工作室。将想法、主题、文章或剧本编成�
 
 - 先识别目标、受众、输入完整度及输出。想法/主题先发展内容；文章提炼并改编；现成剧本保留原意与锁定文案，补可见动作和分镜。不直接把文章逐段当字幕。
 - [分类导航](references/classification.md)分六用途：知识与原理、故事与观点、产品与教程、资讯与纪实、数据与汇报、视觉与创意。首次介绍或用户要看能力时展示；日常直接路由，不增加开场模式题。
-- 完整风格库收录固定版本的11组66条参考方法，并合并本库补充，去重并补充后81项。目录见[分类导航](references/classification.md)，可筛选页面见[风格库](assets/gallery/styles.html)。先用 `scripts/catalog.py list --purpose knowledge` 等检索相关候选，只读取候选对应 STYLE.md；确需细节再读 SOURCE.md，不一次加载全库。
+- 广告、个人宣传、纪录片、浪漫电影、概念解释等先查[主题用法映射](references/use-case-mapping.md)或 `scripts/catalog.py list --use-case 广告`；23个具体用法与81项风格多对多，包含动态作品集、交互实验、代码库讲解、口播补画和配方过程。按本片目标/动作/素材条件取候选，不把目录排序当推荐，不把样例构想当已制成片。
+- 完整风格库收录固定版本的11组66条参考方法，并合并本库补充，去重并补充后81项。目录见[分类导航](references/classification.md)，可筛选页面见[风格库](assets/gallery/styles.html)。先用 `scripts/catalog.py list --purpose knowledge` 等检索相关候选，候选阶段读取对应STYLE.md；选定后按[风格保真](references/style-fidelity.md)读取完整SOURCE与相关实现方法，不一次加载全库。
 - 用途、制作形式、解释策略、画风、主体/效果、技术、输出分别判断。角色可由沙或粒子构成；Three.js/Remotion 是技术选项，不是与纪录片并列的风格。
 - 用户只要文字直接解释；只要图/交互/剧本就在对应范围交付。动态输出不明确且影响交付时才问视频或交互；明确要视频不重复问。
 - 新片先完成目标、内容关系、开头/变化/结尾，再读技术示例。借用绘制/运动方法不自动继承示例剧情、角色、品牌、时码。纪实可先查材料能证明什么。
@@ -24,7 +25,8 @@ description: 代码视频工作室。将想法、主题、文章或剧本编成�
 | 原理、机制、尺度、反事实；静态/交互 | [解释模型](references/explanation.md) | 要素/规则/变化/边界，模型、数字与图形同源 |
 | 纪录片、档案、新闻、多机位/直播外观 | [制作形式](references/video-formats.md)、[视频素材](references/footage.md) | 来源、时间、事实/推断/示意分开；直播外观不冒充正在直播 |
 | 产品/机制的连续镜头与主体细节 | [镜头排布](references/video-layout.md)、[视觉工艺](references/visual-craft.md) | 内容适合才用产品发布式构图；旁白分段不自动切镜 |
-| 选择画风和绘图库 | [选择流程](references/style-selection.md)、[风格配方](references/style-catalog.md)、[画法选型](references/visual-recipes.md) | 五方向按本片重新筛选；依赖及实现状态明确 |
+| 选择画风和绘图库 | [选择流程](references/style-selection.md)、[风格配方](references/style-catalog.md)、[画法选型](references/visual-recipes.md) | 五方向按本片重新筛选；选定后落实[关键视觉机制](references/style-fidelity.md)，依赖及实现状态明确 |
+| 参考热门作品、MV/交互演示/补画或需判断原片技术 | [案例驱动选型](references/case-driven-techniques.md)、[外部案例依据](references/production-cases.md) | 先分作品形态；`scripts/catalog.py cases --use-case 概念解释`按需检索，原作披露/本片复现建议/未知分开，不把混合素材称全代码绘制 |
 | 季节地图、地名明信片、无缝循环 | [地图模板](references/seasonal-map.md)、[配色与视角](references/map-art-direction.md) | 先[查地点与地标](references/map-research.md)，按网络选Google/百度；默认沿兰州V2鲜明粉彩与单片俯视→两侧斜俯视→回俯视，显式要求可改固定/柔和；frame(i)、Node PNG、配乐与接缝检查 |
 | 城市/乡村/文旅的地方音乐与声景 | [地点声音](references/location-sound.md) | 核对地方线索；本地到区域逐级匹配，小众地点有依据地兜底；许可、实际录音地与试听状态分开记录 |
 | 手绘电影感、绘画背景与原创角色表演 | [手绘电影动画](references/handpainted-cinema.md) | 默认沿自有V2工艺与源码示例：形体笔触/暗前亮远/接地/道具绑定；先静帧再动作，HTML播放器不当绘图源码 |
@@ -33,7 +35,9 @@ description: 代码视频工作室。将想法、主题、文章或剧本编成�
 ## 一次可审阅的方案选择
 
 - 保存 `script.md`：核心内容、解释或故事主线、旁白草稿、可见动作、估时与依据。精确时长由真实旁白和动作决定；超用户上限回到内容取舍，不能裁音或无意义拖长。
+- 新主题/自由改编先在同一脚本比较至多三种有意义的内容结构，写明所取结构及理由；现成或锁定剧本直接沿用，不凑候选。先设计自己的内容再读样片剧情与代码；纪实先查材料能证明什么。详见[编剧参考](references/story-and-timing.md#内容结构候选与取舍)。
 - 从完整风格库按本片关键动作、素材条件、信息密度和受众重新筛选，提供**五种完整方向，1首选+4备选**。每项写类型/策略/画风、同一关键镜头的呈现、必要素材、声音安排、实现状态与限制。不是固定五个名字，也不按每一维重复询问。可行不足五项就说明原因。
+- 每项推荐说明“本片内容动作 → 风格机制 → 观众能看见的变化”，引用匹配用法与尚缺条件；可跨用法查找，库外个人风格若已指定则优先。用户选定后以真实绘制代码验证代表帧/角色关键姿态与高风险动作，再扩成全片；自查不自动增加用户审片节点。
 - 将脚本、必要的构图/图例预览与五方向放进同一个决策包。会改变台词/顺序的选项明确差异。用户选定即按该方案制作，不再增加概念版的第二轮脚本确认。
 - 用户已指定风格、已选方向或明确委托代选，记录依据后直接沿用。普通“继续”不能替代一个仍待回答的选择；不把预选、超时或沉默当确认。只写剧本、工程维护/已授权测试不机械增加新片五选。
 - `style-choice.md` 是唯一选择记录，包含方案版本、selected/delegated/pending、所选方向与用户依据。选 B 就实施 B；不静默换回 A。实质改换内容/效果时只确认受影响部分。
@@ -57,7 +61,7 @@ python3 "$SKILL_DIR/scripts/pipeline.py" init "$PROJECT_DIR"
 ```
 
 - 已选手绘电影式角色动画时，使用 `python3 "$SKILL_DIR/scripts/handpainted.py" "$PROJECT_DIR"` 代替上面的通用init；内部复用同一管线。按V2工艺基线先设计静帧/色彩与景层，再验证角色接地、道具连接和完整动作；源码例子的12秒/森林/信使不限定正式题材和时长。
-- 起步模板只验证运行接口，正式场景按内容重写。按风险先做代表帧/短动作，再扩全片。默认 Canvas/SVG；p5.js、Three.js、GSAP、D3、Remotion 等按效果和现有环境选择。新增路线先实测，不能把配方列表称为已装后端。
+- 起步模板只验证运行接口，正式场景按内容重写。按[风格保真](references/style-fidelity.md)先落实关键材质、造型、空间与原生动作，再选Canvas/SVG、p5.js、WebGL、Three.js、GSAP、D3或Remotion；按风险做真实代表帧/短动作后扩片。最小测试保留风格成立的机制，不能擅自降为统一基础图形；新增路线须实测，不能把库名或像素变化当作风格验证。
 - `film.json` 是内容源，`timeline.json` 由工具编译成整数帧。每帧只依赖帧号/seed/资产，await 异步绘制，重置画布状态；不依赖系统时钟或累积 ticker。暂停、拖动、乱序导出共用模型。
 - 需要旁白时生成或接入音频和文字旁车；台词变化重新生成/核对。声音动作事件与时间轴共用时码，旁白/原声/环境/音乐按需分轨；不强制音乐或固定次数运镜。ASR、自动 ducking 目前无内置验证后端。
 - 素材完整登记并 seal 后 `timeline --lock → mix → preview → render → finish`。视频素材先用 footage.py 做可追溯帧序列，再通过异步 runtime 接入。现有素材锁仍约束全部派生帧。
