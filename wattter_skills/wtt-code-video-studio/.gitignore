@@ -1,0 +1,17 @@
+# Personal voice configuration and assets are never part of the skill package.
+voice.local.json
+*.local.json
+.voice-local/
+models/
+voices/
+.venv*/
+*.wav
+*.mp3
+*.m4a
+*.flac
+*.safetensors
+*.partial
+__pycache__/
+
+# 六个自制短片是可分发的Skill示例；私人声音仍排除。
+!assets/examples/*/final.mp4

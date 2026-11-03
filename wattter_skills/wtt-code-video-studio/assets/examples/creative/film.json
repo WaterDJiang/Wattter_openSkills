@@ -1,0 +1,33 @@
+{
+  "assetReview": {
+    "manifestSha256": "2265da0e583e046eca8c40635224992abd1f2ed503c548312a6cb565767380b6",
+    "version": "v0001"
+  },
+  "audioTracks": [
+    {
+      "file": "audio/events.wav",
+      "gain": 1,
+      "startSeconds": 0
+    }
+  ],
+  "fps": 20,
+  "height": 540,
+  "scenes": [
+    {
+      "director": {
+        "group": "creative",
+        "reviewAtSeconds": 1.5
+      },
+      "id": "creative",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "风把山，写进沙里",
+      "visualSeconds": 8
+    }
+  ],
+  "schema": "code-animation/v1",
+  "seed": 20261103,
+  "title": "风把山，写进沙里",
+  "width": 960
+}

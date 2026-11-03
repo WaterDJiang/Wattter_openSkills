@@ -1,0 +1,77 @@
+{
+  "mode": "render",
+  "frameEncoding": {
+    "format": "jpeg",
+    "quality": 95,
+    "preview": "png"
+  },
+  "assetReview": {
+    "manifestSha256": "34072e4c7be437d5a9941a92b99fa338c0119b664a722ec9c15acd210e656bdb",
+    "version": "v0001"
+  },
+  "previewCoverage": {
+    "sampleFrames": [
+      0,
+      70,
+      139
+    ],
+    "beatCount": 0,
+    "beatSampleCount": 0,
+    "eventCount": 0,
+    "loopFrames": [],
+    "loopStatus": "not-requested"
+  },
+  "previewPerformance": {
+    "wallSeconds": 1.494,
+    "screenshotCalls": 18,
+    "estimatedRenderSeconds": 11.620000000000001,
+    "estimateScope": "画面截图粗估；不含浏览器启动、完整编码与混音，不是完成时间承诺"
+  },
+  "timelineSha256": "d2c7da320c5f890a0d4cdd4ca8bc29b057400dd9e6cf2c2c05cfd3b2c29f60a9",
+  "browser": "156.0.8078.80",
+  "totalFrames": 140,
+  "durationSeconds": 7,
+  "determinism": [
+    {
+      "frame": 0,
+      "sha256": "69456ac1355ad5703ffe01bf2960440d6ae511c99fafe9e66f9b281fd9599b5d",
+      "repeatSha256": "69456ac1355ad5703ffe01bf2960440d6ae511c99fafe9e66f9b281fd9599b5d",
+      "match": true
+    },
+    {
+      "frame": 26,
+      "sha256": "69456ac1355ad5703ffe01bf2960440d6ae511c99fafe9e66f9b281fd9599b5d",
+      "repeatSha256": "69456ac1355ad5703ffe01bf2960440d6ae511c99fafe9e66f9b281fd9599b5d",
+      "match": true
+    },
+    {
+      "frame": 65,
+      "sha256": "4c4aa315f79efb079ddd479a19521433cc120478fc367e5caaaef4faafe359f4",
+      "repeatSha256": "4c4aa315f79efb079ddd479a19521433cc120478fc367e5caaaef4faafe359f4",
+      "match": true
+    },
+    {
+      "frame": 110,
+      "sha256": "7f612f927e3893505352d687b3c3decb9d638279cb286c6b94e3e9ba69e03785",
+      "repeatSha256": "7f612f927e3893505352d687b3c3decb9d638279cb286c6b94e3e9ba69e03785",
+      "match": true
+    },
+    {
+      "frame": 139,
+      "sha256": "7f612f927e3893505352d687b3c3decb9d638279cb286c6b94e3e9ba69e03785",
+      "repeatSha256": "7f612f927e3893505352d687b3c3decb9d638279cb286c6b94e3e9ba69e03785",
+      "match": true
+    }
+  ],
+  "browserErrors": [],
+  "sourceSha256": {
+    "index.html": "6aaa001ef95974e95d4dfffeb02009caac6fea6db4980e1019c7b84cdf4c5179",
+    "footage.js": "5d87ed61dec488723ac5cea31b60f3dfda999d5f9465161dbe0fb15f52fbc320",
+    "scenes.js": "da661b19d422990f69fbece00f2b07ba8e38459220f43da5c01c477cac04be81",
+    "runtime.js": "453894d64b81115d5713d83735508ffa3b7236c9dda7ac0e1a505a80c4b0de9d",
+    "assets.json": "8177e43080ca678e2cc98f9aefdf2cb0e7b98623af104654206bdaefebd021ae",
+    "timeline.json": "d2c7da320c5f890a0d4cdd4ca8bc29b057400dd9e6cf2c2c05cfd3b2c29f60a9"
+  },
+  "renderWallSeconds": 9.486,
+  "videoSha256": "f9d5927f60025c7bb94ec5a45c1dde829d298982d6a0ba499d7632d41174924c"
+}

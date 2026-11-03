@@ -1,0 +1,33 @@
+{
+  "assetReview": {
+    "manifestSha256": "ae431badd1b632a9314a739780f5defb58517cf3ce99f00082ea520153a00d00",
+    "version": "v0001"
+  },
+  "audioTracks": [
+    {
+      "file": "audio/events.wav",
+      "gain": 1,
+      "startSeconds": 0
+    }
+  ],
+  "fps": 20,
+  "height": 540,
+  "scenes": [
+    {
+      "director": {
+        "group": "story",
+        "reviewAtSeconds": 1.5
+      },
+      "id": "story",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "把光，递给下一个人",
+      "visualSeconds": 8
+    }
+  ],
+  "schema": "code-animation/v1",
+  "seed": 20261103,
+  "title": "把光，递给下一个人",
+  "width": 960
+}

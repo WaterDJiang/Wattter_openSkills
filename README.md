@@ -22,17 +22,15 @@
 - **wtt-magazine-deck**：杂志风网页演示生成工具。支持生成自包含横向翻页 HTML deck，覆盖 editorial 与 swiss 两种风格，适用于分享、发布会、报告和作品展示。
 - **wtt-course-pptx-builder**：课程 PPT 构建器。支持将 PDF、DOCX、URL、Markdown 等源文档转换为高质量 SVG 页面并导出为 PPTX，覆盖模板套用、AI 生图、图像搜索、实时预览、图表校准、动画定制和旁白生成等完整流程。
 - **wtt-nine-comic-imagegen**：多风格漫画与信息图提示词生成器。支持 9 号漫画恶搞科普、手绘信息图、四格漫画、线条人插画、生活感人像五种风格，默认输出中文提示词，可直接用于 ChatGPT / 即梦 / Midjourney 等图片生成平台。
-- **wtt-code-animation-studio**：代码动画工坊。将想法、主题、文章或现成剧本制作为前端代码动画，按内容与实际旁白决定时长，先推荐风格由用户选择再制作，覆盖手绘纸纹、复古印刷网点、像素、水彩、沙画、粉笔、粒子、马赛克、黏土外观、MG 与混合画法，交付中文剧本、分镜、可改源码和带声音的 MP4。
+- **wtt-code-video-studio**：代码视频工作室。将想法、主题、文章或剧本编成知识原理、故事观点、产品教程、资讯纪实、数据汇报、视觉创意六类视频；每片按内容给五种完整方向，经用户选择后用前端逐帧绘制、实际配音校时并交付 MP4。保留概念解释的文字、静态图解和交互 HTML 分支，支持素材版本审阅、默认个人音色与视频素材接入；原 code-animation-studio 与 concept-explainer 的统一入口。
 - **wtt-fin-chart**：财务图表生成器。将财务数据、经营指标、财报表格（CSV/Excel/PDF）转化为带洞察的 HTML 财务图表、仪表盘与经营分析页，同步输出长截图 PNG 备份，适用于董事会/投资人汇报与投研分析。
-- **wtt-concept-explainer**：概念解释器。将抽象概念、技术原理或传统知识体系做成精细图解、单文件交互页面或带旁白的 MP4 视频讲解，制作前先确认构图、脚本与图例预览；内置本地声音克隆、逐帧导出与画面复核验收，不依赖其他 Skill。
 
   <p align="center">
-    <img src="wattter_skills/wtt-concept-explainer/tests/engine-desktop.png" width="49%" alt="四冲程发动机交互图解">
-    <img src="wattter_skills/wtt-concept-explainer/tests/cache-crafted-desktop.png" width="49%" alt="固定 TTL 缓存交互图解">
+    <img src="wattter_skills/wtt-code-video-studio/assets/gallery/overview.png" width="72%" alt="六类用途样片静帧总览：知识原理、故事观点、产品教程、资讯纪实、数据汇报、视觉创意">
   </p>
   <p align="center">
-    <video src="https://raw.githubusercontent.com/WaterDJiang/Wattter_openSkills/main/wattter_skills/wtt-concept-explainer/assets/tesla-flight-demo.mp4" controls width="72%" muted></video>
-    <br><sub>带旁白的视频讲解演示：《特斯拉怎么飞起来》封面钩子（1080p / 108 秒）</sub>
+    <video src="https://raw.githubusercontent.com/WaterDJiang/Wattter_openSkills/main/wattter_skills/wtt-code-video-studio/assets/examples/creative/final.mp4" controls width="72%" muted></video>
+    <br><sub>示例短片《风把山，写进沙里》（960×540 / 8 秒 / 带旁白；六类完整样片见 assets/examples）</sub>
   </p>
 
 ### 旧设备与阅读工具

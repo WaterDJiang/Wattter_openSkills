@@ -1,0 +1,33 @@
+{
+  "assetReview": {
+    "manifestSha256": "7555f33491f250d491c9308ee4512e087d80923c08959f6eceb8df8a536145b4",
+    "version": "v0001"
+  },
+  "audioTracks": [
+    {
+      "file": "audio/events.wav",
+      "gain": 1,
+      "startSeconds": 0
+    }
+  ],
+  "fps": 20,
+  "height": 540,
+  "scenes": [
+    {
+      "director": {
+        "group": "knowledge",
+        "reviewAtSeconds": 1.5
+      },
+      "id": "knowledge",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "慢的一环，决定流速",
+      "visualSeconds": 8
+    }
+  ],
+  "schema": "code-animation/v1",
+  "seed": 20261103,
+  "title": "慢的一环，决定流速",
+  "width": 960
+}

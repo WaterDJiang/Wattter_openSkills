@@ -1,0 +1,129 @@
+{
+  "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+  "indexSha256": "a09e996a575150590d3e29163bf29651f55300050d007c2af715ae3f3bb253a8",
+  "styleIds": [
+    "caption-news",
+    "newsreel",
+    "countdown",
+    "city-symphony",
+    "visual-investigation",
+    "kino-montage",
+    "telestrator",
+    "news-package",
+    "satellite-briefing",
+    "briefing-board",
+    "lidar-survey",
+    "white-model",
+    "data-physical",
+    "teardown",
+    "microscope",
+    "archive-lighttable",
+    "crayon-book",
+    "watercolor",
+    "ink-wash",
+    "impasto",
+    "one-line",
+    "whiteboard",
+    "urban-sketch",
+    "chalkboard",
+    "shadow-puppet",
+    "ukiyoe",
+    "papercut-red",
+    "paper-lantern",
+    "risograph",
+    "halftone-dossier",
+    "woodcut",
+    "engraving",
+    "silkscreen-poster",
+    "printed-long-take",
+    "swiss-motion",
+    "spy-titles",
+    "art-deco",
+    "blueprint",
+    "stained-glass",
+    "pictogram-motion",
+    "ascii-crt",
+    "dataviz",
+    "iso-infographic",
+    "dark-keynote",
+    "living-screencast",
+    "hologram-hud",
+    "transit-map",
+    "isometric-picture-book",
+    "circuit-board",
+    "rubber-hose",
+    "cel-anime-80s",
+    "scifi-toon",
+    "midcentury-toon",
+    "pixel-rpg",
+    "hd-2d",
+    "microgame",
+    "game-show",
+    "silent-film",
+    "backrooms",
+    "brick-toy",
+    "paper-popup",
+    "tilt-shift",
+    "lowpoly-island",
+    "glass-product",
+    "memphis-diorama",
+    "desktop-flythrough"
+  ],
+  "groups": [
+    {
+      "id": "group-01",
+      "name": "剪辑与纪实",
+      "en": "Edit & Documentary"
+    },
+    {
+      "id": "group-02",
+      "name": "实证影像",
+      "en": "Evidence Films"
+    },
+    {
+      "id": "group-03",
+      "name": "手绘与绘画",
+      "en": "Hand-drawn & Painting"
+    },
+    {
+      "id": "group-04",
+      "name": "东方传统",
+      "en": "East Asian Traditions"
+    },
+    {
+      "id": "group-05",
+      "name": "印刷与版画",
+      "en": "Print & Printmaking"
+    },
+    {
+      "id": "group-06",
+      "name": "图形与排版",
+      "en": "Graphic & Type"
+    },
+    {
+      "id": "group-07",
+      "name": "信息与发布",
+      "en": "Information & Keynote"
+    },
+    {
+      "id": "group-08",
+      "name": "卡通与动画",
+      "en": "Cartoon & Anime"
+    },
+    {
+      "id": "group-09",
+      "name": "游戏",
+      "en": "Games"
+    },
+    {
+      "id": "group-10",
+      "name": "电影与时代",
+      "en": "Cinema & Eras"
+    },
+    {
+      "id": "group-11",
+      "name": "材质与 3D",
+      "en": "Materials & 3D"
+    }
+  ]
+}

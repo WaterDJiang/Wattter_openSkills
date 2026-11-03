@@ -1,0 +1,28 @@
+{
+  "schema": "location-sound/v1",
+  "status": "pending",
+  "place": {
+    "name": "待填写真实地点并消歧",
+    "region": "待核对上级行政区与文化区域",
+    "scope": "待填写片中范围",
+    "seasonAndTime": "待填写季节与时段"
+  },
+  "intent": {
+    "mood": "按剧本填写",
+    "density": "按画面和旁白填写",
+    "roles": [],
+    "loopRequired": null,
+    "durationSeconds": null
+  },
+  "identityClues": [],
+  "searchLog": [],
+  "candidates": [],
+  "selectedIds": [],
+  "fallbackReason": null,
+  "listening": {
+    "status": "not_checked",
+    "reviewer": null,
+    "method": null,
+    "notes": null
+  }
+}

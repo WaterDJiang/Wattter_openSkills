@@ -1,0 +1,33 @@
+{
+  "assetReview": {
+    "manifestSha256": "a8b092a603a01b98bddff8ec04f38b428f84f8a8151a5354dca96c9b08766393",
+    "version": "v0001"
+  },
+  "audioTracks": [
+    {
+      "file": "audio/events.wav",
+      "gain": 1,
+      "startSeconds": 0
+    }
+  ],
+  "fps": 20,
+  "height": 540,
+  "scenes": [
+    {
+      "director": {
+        "group": "documentary",
+        "reviewAtSeconds": 1.5
+      },
+      "id": "documentary",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "六分钟，一条时间线",
+      "visualSeconds": 8
+    }
+  ],
+  "schema": "code-animation/v1",
+  "seed": 20261103,
+  "title": "六分钟，一条时间线",
+  "width": 960
+}

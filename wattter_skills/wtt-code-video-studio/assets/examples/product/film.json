@@ -1,0 +1,33 @@
+{
+  "assetReview": {
+    "manifestSha256": "3a5db0192424e2f27ce8b3defeb786597423f7c7493b660a984ab0033c0bc7d5",
+    "version": "v0001"
+  },
+  "audioTracks": [
+    {
+      "file": "audio/events.wav",
+      "gain": 1,
+      "startSeconds": 0
+    }
+  ],
+  "fps": 20,
+  "height": 540,
+  "scenes": [
+    {
+      "director": {
+        "group": "product",
+        "reviewAtSeconds": 1.5
+      },
+      "id": "product",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "把杂乱，收进一个动作",
+      "visualSeconds": 7
+    }
+  ],
+  "schema": "code-animation/v1",
+  "seed": 20261103,
+  "title": "把杂乱，收进一个动作",
+  "width": 960
+}

@@ -1,0 +1,33 @@
+{
+  "assetReview": {
+    "manifestSha256": "34072e4c7be437d5a9941a92b99fa338c0119b664a722ec9c15acd210e656bdb",
+    "version": "v0001"
+  },
+  "audioTracks": [
+    {
+      "file": "audio/events.wav",
+      "gain": 1,
+      "startSeconds": 0
+    }
+  ],
+  "fps": 20,
+  "height": 540,
+  "scenes": [
+    {
+      "director": {
+        "group": "data",
+        "reviewAtSeconds": 1.5
+      },
+      "id": "data",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "总量增长，来源不同",
+      "visualSeconds": 7
+    }
+  ],
+  "schema": "code-animation/v1",
+  "seed": 20261103,
+  "title": "总量增长，来源不同",
+  "width": 960
+}

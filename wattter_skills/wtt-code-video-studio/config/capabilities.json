@@ -1,0 +1,2670 @@
+{
+  "schema": "code-video-capabilities/v1",
+  "categories": [
+    {
+      "id": "knowledge",
+      "name": "知识与原理",
+      "goal": "把知识讲明白",
+      "forms": [
+        "概念图解",
+        "机制演示",
+        "尺度漫游",
+        "反事实实验",
+        "知识寓言"
+      ],
+      "reference": "references/explanation.md",
+      "prompt": "给初学者讲清瓶颈怎样限制流量"
+    },
+    {
+      "id": "story",
+      "name": "故事与观点",
+      "goal": "让经历与观点被理解",
+      "forms": [
+        "角色故事",
+        "寓言",
+        "个人经历",
+        "观点短片",
+        "手绘电影式角色动画"
+      ],
+      "reference": "references/story-and-timing.md",
+      "prompt": "把一次失败写成有转折的小故事"
+    },
+    {
+      "id": "product",
+      "name": "产品与教程",
+      "goal": "让人看懂功能与操作",
+      "forms": [
+        "产品展示",
+        "UI操作",
+        "流程教程",
+        "机械拆解"
+      ],
+      "reference": "references/video-layout.md",
+      "prompt": "用40秒介绍我这个工具的使用过程"
+    },
+    {
+      "id": "documentary",
+      "name": "资讯与纪实",
+      "goal": "把事件和证据讲清楚",
+      "forms": [
+        "档案纪录片",
+        "视觉调查",
+        "新闻包装",
+        "多机位事件回顾",
+        "直播式录播包装"
+      ],
+      "reference": "references/video-formats.md",
+      "prompt": "根据我提供的视频和记录梳理事件时间线"
+    },
+    {
+      "id": "data",
+      "name": "数据与汇报",
+      "goal": "让数字支持结论",
+      "forms": [
+        "动态图表",
+        "对比分析",
+        "业务复盘",
+        "研究摘要"
+      ],
+      "reference": "references/explanation.md",
+      "prompt": "用这份CSV解释增长来自哪里"
+    },
+    {
+      "id": "creative",
+      "name": "视觉与创意",
+      "goal": "用运动与材质表达",
+      "forms": [
+        "沙画演变",
+        "生成艺术",
+        "片头",
+        "像素循环",
+        "音乐视觉化",
+        "季节地图明信片",
+        "手绘电影式动画"
+      ],
+      "reference": "references/visual-recipes.md",
+      "prompt": "做一个沙粒聚成山川的片头"
+    }
+  ],
+  "styles": [
+    {
+      "id": "flat",
+      "name": "扁平插画",
+      "status": "template",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "ink-paper",
+      "name": "墨线与纸纹",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "riso-halftone",
+      "name": "Risograph 孔版印刷",
+      "status": "recipe",
+      "reference": "references/styles/risograph/STYLE.md",
+      "en": "Risograph Print",
+      "group": "group-05",
+      "purposes": [
+        "story",
+        "creative",
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "少量半透明专色独立印版，网点与套色偏移",
+      "action": "缓存各色版，随对象运动保持同一版纹",
+      "risk": "压缩后检查摩尔纹，错版不能每帧乱跳",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "sourceId": "risograph"
+    },
+    {
+      "id": "pixel",
+      "name": "像素",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "watercolor-brush",
+      "name": "水彩笔刷",
+      "status": "recipe",
+      "reference": "references/styles/watercolor/STYLE.md",
+      "en": "Watercolor Brush",
+      "group": "group-03",
+      "purposes": [
+        "story",
+        "knowledge",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "透明颜料笔带、飞白和重叠深色",
+      "action": "按固定笔刷路径逐步铺色，用纸色擦除",
+      "risk": "不以描边矢量图叠噪声冒充水彩，不逐帧重随机",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "sourceId": "watercolor"
+    },
+    {
+      "id": "sand",
+      "name": "沙画",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "chalk",
+      "name": "黑板粉笔",
+      "status": "recipe",
+      "reference": "references/styles/chalkboard/STYLE.md",
+      "en": "Chalkboard",
+      "group": "group-03",
+      "purposes": [
+        "story",
+        "knowledge",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "暗哑板面、粉笔压力和正确笔顺",
+      "action": "在同一位置写出主张、擦除再修正",
+      "risk": "完整写成才计阅读时间，不能用字体轮廓描边替代正确笔顺",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "sourceId": "chalkboard"
+    },
+    {
+      "id": "particles",
+      "name": "粒子构成",
+      "status": "template",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "glass-mosaic",
+      "name": "玻璃马赛克",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "clay-stopmotion",
+      "name": "黏土定格外观",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "technical",
+      "name": "精细技术图解",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "paper-theatre",
+      "name": "纸偶舞台",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "product-light",
+      "name": "留白产品界面",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "archive-dark",
+      "name": "档案与地图",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "data-editorial",
+      "name": "编辑式图表",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "kinetic-type",
+      "name": "动态文字",
+      "status": "recipe",
+      "reference": "references/style-catalog.md",
+      "group": "local",
+      "purposes": [
+        "knowledge",
+        "story",
+        "product",
+        "documentary",
+        "data",
+        "creative"
+      ]
+    },
+    {
+      "id": "caption-news",
+      "status": "recipe",
+      "name": "字幕新闻",
+      "en": "Caption News",
+      "group": "group-01",
+      "purposes": [
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "全幅实拍加大字分块，关键词使用唯一强调底色",
+      "action": "按核对过的事实切换证据和字幕，静音也能理解",
+      "risk": "字幕不得替代证据，长句改写后留足完整阅读时间",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/caption-news/STYLE.md",
+      "sourceId": "caption-news"
+    },
+    {
+      "id": "newsreel",
+      "status": "recipe",
+      "name": "1920s 新闻影片",
+      "en": "1920s Newsreel",
+      "group": "group-01",
+      "purposes": [
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "真实档案统一银盐影调，报纸与电报作为可移动物件",
+      "action": "翻页、推近、下划线与旁白共用时码",
+      "risk": "年代与来源不可凭做旧滤镜推定",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/newsreel/STYLE.md",
+      "sourceId": "newsreel"
+    },
+    {
+      "id": "countdown",
+      "status": "recipe",
+      "name": "实时倒计时分屏",
+      "en": "Live Countdown Split-screen",
+      "group": "group-01",
+      "purposes": [
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "同一事件多视角分屏，时钟是叙事中心",
+      "action": "将每机时间偏移换算为同一事件秒，零点触发状态变化",
+      "risk": "录播明确标识，禁止用异时影像伪装同步或实时直播",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/countdown/STYLE.md",
+      "sourceId": "countdown"
+    },
+    {
+      "id": "city-symphony",
+      "status": "recipe",
+      "name": "延时交响",
+      "en": "Time-lapse Symphony",
+      "group": "group-01",
+      "purposes": [
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "城市真实延时素材组成节奏结构",
+      "action": "先核对音乐网格，再安排加速、停顿和慢镜对比",
+      "risk": "可压缩观测时间，但不要将音乐节拍当事件真实时间",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/city-symphony/STYLE.md",
+      "sourceId": "city-symphony"
+    },
+    {
+      "id": "visual-investigation",
+      "status": "recipe",
+      "name": "视觉调查",
+      "en": "Visual Investigation",
+      "group": "group-01",
+      "purposes": [
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "影像、文件、照片在共享事件时钟中互相核验",
+      "action": "把同地同秒证据排成对照，再定位差异",
+      "risk": "来源冲突保留，不按剧情需要捏造同步或因果",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/visual-investigation/STYLE.md",
+      "sourceId": "visual-investigation"
+    },
+    {
+      "id": "kino-montage",
+      "status": "recipe",
+      "name": "构成主义蒙太奇",
+      "en": "Constructivist Montage",
+      "group": "group-01",
+      "purposes": [
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "双色真实影像、红色文字与几何印刷叠层",
+      "action": "按论点安排撞切、比例对照和节拍递进",
+      "risk": "剪辑关系是论证，不能让真实材料脱离语境",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/kino-montage/STYLE.md",
+      "sourceId": "kino-montage"
+    },
+    {
+      "id": "telestrator",
+      "status": "recipe",
+      "name": "体育战术板",
+      "en": "Sports Telestrator",
+      "group": "group-01",
+      "purposes": [
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "完整播放动作后再定格分析，标线贴合透视",
+      "action": "用帧号保存回放段、定格点和场上坐标",
+      "risk": "标注需跟踪真实人物位置，转播许可单独核对",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/telestrator/STYLE.md",
+      "sourceId": "telestrator"
+    },
+    {
+      "id": "news-package",
+      "status": "recipe",
+      "name": "电视新闻包装",
+      "en": "Broadcast News Package",
+      "group": "group-01",
+      "purposes": [
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "同一新闻栏目标识、栏目条与日期系统",
+      "action": "导视到各条报道再回扣导视，事实逐条出现",
+      "risk": "包装不可借用真实台标或伪称正在直播",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/news-package/STYLE.md",
+      "sourceId": "news-package"
+    },
+    {
+      "id": "satellite-briefing",
+      "status": "recipe",
+      "name": "卫星简报",
+      "en": "Satellite Briefing",
+      "group": "group-02",
+      "purposes": [
+        "documentary",
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "threejs",
+        "canvas2d"
+      ],
+      "material": "真实地理影像配稀疏测量线，俯视逐级下降",
+      "action": "不同分辨率影像按真实经纬范围对齐",
+      "risk": "没有坐标、日期或比例依据不得报告精确测量",
+      "inputs": "可追溯地理/点云/显微原始数据与尺度元信息",
+      "reference": "references/styles/satellite-briefing/STYLE.md",
+      "sourceId": "satellite-briefing"
+    },
+    {
+      "id": "briefing-board",
+      "status": "recipe",
+      "name": "工程简报板",
+      "en": "Engineering Briefing Board",
+      "group": "group-02",
+      "purposes": [
+        "documentary",
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "真实照片贴在有反光的实体白板，标记说明规则",
+      "action": "照片落板、测量与批注共享板面坐标",
+      "risk": "照片与示意图分清，模拟数字必须标示",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/briefing-board/STYLE.md",
+      "sourceId": "briefing-board"
+    },
+    {
+      "id": "lidar-survey",
+      "status": "recipe",
+      "name": "点云测绘",
+      "en": "LiDAR Survey",
+      "group": "group-02",
+      "purposes": [
+        "documentary",
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "threejs",
+        "canvas2d"
+      ],
+      "material": "实测点云保留原位置，按地物分类剥离",
+      "action": "扫描前沿显露点云，再展示同一位置表面",
+      "risk": "不能把随机粒子拼成形状冒充激光测绘",
+      "inputs": "可追溯地理/点云/显微原始数据与尺度元信息",
+      "reference": "references/styles/lidar-survey/STYLE.md",
+      "sourceId": "lidar-survey"
+    },
+    {
+      "id": "white-model",
+      "status": "recipe",
+      "name": "白模投影",
+      "en": "Projection on White Model",
+      "group": "group-02",
+      "purposes": [
+        "documentary",
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "真实建筑白模承接数据投影，材质与投射光分离",
+      "action": "按投影方向、遮挡和表面法线计算着色",
+      "risk": "模型尺度、建筑高度和数据年份需登记",
+      "inputs": "可追溯地理/点云/显微原始数据与尺度元信息",
+      "reference": "references/styles/white-model/STYLE.md",
+      "sourceId": "white-model"
+    },
+    {
+      "id": "data-physical",
+      "status": "recipe",
+      "name": "数据实物化",
+      "en": "Data Physicalization",
+      "group": "group-02",
+      "purposes": [
+        "documentary",
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "一个可数物体代表一个明确数据单位",
+      "action": "同单位堆叠与同尺度镜头揭示两序列差别",
+      "risk": "数量、尺寸与总量同源，四舍五入规则可查",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/data-physical/STYLE.md",
+      "sourceId": "data-physical"
+    },
+    {
+      "id": "teardown",
+      "status": "recipe",
+      "name": "产品拆解",
+      "en": "Exploded Teardown",
+      "group": "group-02",
+      "purposes": [
+        "documentary",
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "从CAD、PCB、BOM建立真实装配关系",
+      "action": "部件沿装配轴爆炸分层，宏观到细部连续观察",
+      "risk": "无原文件时明确教学示意，不声称工程尺寸准确",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/teardown/STYLE.md",
+      "sourceId": "teardown"
+    },
+    {
+      "id": "microscope",
+      "status": "recipe",
+      "name": "显微叙事",
+      "en": "Microscope Story",
+      "group": "group-02",
+      "purposes": [
+        "documentary",
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "threejs",
+        "canvas2d"
+      ],
+      "material": "真实显微图像金字塔配比例尺",
+      "action": "在同一样本的注册层级间对数缩放",
+      "risk": "不可用生成纹理充当真实样本，单位按像素标定",
+      "inputs": "可追溯地理/点云/显微原始数据与尺度元信息",
+      "reference": "references/styles/microscope/STYLE.md",
+      "sourceId": "microscope"
+    },
+    {
+      "id": "archive-lighttable",
+      "status": "recipe",
+      "name": "档案灯台",
+      "en": "Archive Light Table",
+      "group": "group-02",
+      "purposes": [
+        "documentary",
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "真实档案按原始比例铺在背光桌面",
+      "action": "放大镜引导进入细节，桌面和材料共用投影",
+      "risk": "修补、配色与想象重建不得混为原始档案",
+      "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
+      "reference": "references/styles/archive-lighttable/STYLE.md",
+      "sourceId": "archive-lighttable"
+    },
+    {
+      "id": "crayon-book",
+      "status": "recipe",
+      "name": "蜡笔儿童绘本",
+      "en": "Crayon Picture Book",
+      "group": "group-03",
+      "purposes": [
+        "story",
+        "knowledge",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "纸齿承接蜡笔断续线，透明水洗显露留白",
+      "action": "按笔画绘制形体，角色动作与绘画揭示分开",
+      "risk": "纸纹跟随纸面，轻微线沸不改变角色身份",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/crayon-book/STYLE.md",
+      "sourceId": "crayon-book"
+    },
+    {
+      "id": "ink-wash",
+      "status": "recipe",
+      "name": "中国水墨",
+      "en": "Chinese Ink Wash",
+      "group": "group-03",
+      "purposes": [
+        "story",
+        "knowledge",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "宣纸留白、浓淡墨层和没骨笔触",
+      "action": "落笔渗化、飞白、卷轴移动形成段落",
+      "risk": "墨色层次服务形体，不给所有对象西式描边",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/ink-wash/STYLE.md",
+      "sourceId": "ink-wash"
+    },
+    {
+      "id": "impasto",
+      "status": "recipe",
+      "name": "油画厚涂",
+      "en": "Impasto Oil Painting",
+      "group": "group-03",
+      "purposes": [
+        "story",
+        "knowledge",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "颜料刀痕形成可受光的高度场",
+      "action": "用固定笔触重绘当前姿态，侧光显出堆积厚度",
+      "risk": "静止颜料不可蠕动，区分高度近似与真实几何",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/impasto/STYLE.md",
+      "sourceId": "impasto"
+    },
+    {
+      "id": "one-line",
+      "status": "recipe",
+      "name": "一笔画",
+      "en": "One-line Drawing",
+      "group": "group-03",
+      "purposes": [
+        "story",
+        "knowledge",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "单条连续路径构成人物、物体与空间",
+      "action": "镜头跟随笔尖，既有线段保留成为后续线索",
+      "risk": "转场不得靠偷偷断线完成，连续性检查路径参数",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/one-line/STYLE.md",
+      "sourceId": "one-line"
+    },
+    {
+      "id": "whiteboard",
+      "status": "recipe",
+      "name": "白板讲解",
+      "en": "Whiteboard Explainer",
+      "group": "group-03",
+      "purposes": [
+        "story",
+        "knowledge",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "反光白板与单线笔画，知识点占不同区域",
+      "action": "笔尖带镜头穿行知识地图，擦除回溯推演",
+      "risk": "真正按中心线生长，避免文字透明淡入伪装书写",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/whiteboard/STYLE.md",
+      "sourceId": "whiteboard"
+    },
+    {
+      "id": "urban-sketch",
+      "status": "recipe",
+      "name": "钢笔淡彩",
+      "en": "Urban Sketch · Pen & Wash",
+      "group": "group-03",
+      "purposes": [
+        "story",
+        "knowledge",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "细褐墨线与偏离轮廓的透明淡彩分层",
+      "action": "先线后色，推近细节再回到写生整体",
+      "risk": "线宽随空间变化，轻微越线保留主体可读性",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/urban-sketch/STYLE.md",
+      "sourceId": "urban-sketch"
+    },
+    {
+      "id": "shadow-puppet",
+      "status": "recipe",
+      "name": "皮影戏",
+      "en": "Shadow Puppetry",
+      "group": "group-04",
+      "purposes": [
+        "story",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "染色半透明皮片、镂空、铆钉和操纵杆",
+      "action": "关节驱动皮片，乘色透光表现重叠",
+      "risk": "透光而非实色剪纸，灯光变化不得淹没轮廓",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/shadow-puppet/STYLE.md",
+      "sourceId": "shadow-puppet"
+    },
+    {
+      "id": "ukiyoe",
+      "status": "recipe",
+      "name": "浮世绘",
+      "en": "Ukiyo-e",
+      "group": "group-04",
+      "purposes": [
+        "story",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "纸面色版、墨线、渐变套印与横向层次",
+      "action": "卷轴移动、前景裁切和色版揭示形成空间",
+      "risk": "不用现代体积光破坏平面版画逻辑",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/ukiyoe/STYLE.md",
+      "sourceId": "ukiyoe"
+    },
+    {
+      "id": "papercut-red",
+      "status": "recipe",
+      "name": "红色窗花剪纸",
+      "en": "Red Paper-cut",
+      "group": "group-04",
+      "purposes": [
+        "story",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "红色纸片与负形镂空构成表情细节",
+      "action": "铆接肢体以离散姿态动作，换场仍沿纸片逻辑",
+      "risk": "不加透明皮影或油画式渐变，形体靠切口辨认",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/papercut-red/STYLE.md",
+      "sourceId": "papercut-red"
+    },
+    {
+      "id": "paper-lantern",
+      "status": "recipe",
+      "name": "纸雕灯影",
+      "en": "Paper-cut Lightbox",
+      "group": "group-04",
+      "purposes": [
+        "story",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "平行纸雕层置于浅灯箱，背光形成层间阴影",
+      "action": "相机进入纸层空间，剪影只在所属平面运动",
+      "risk": "层不能互穿，区分灯箱框内和全幅拍摄",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/paper-lantern/STYLE.md",
+      "sourceId": "paper-lantern"
+    },
+    {
+      "id": "halftone-dossier",
+      "status": "recipe",
+      "name": "复古半调案卷",
+      "en": "Halftone Dossier",
+      "group": "group-05",
+      "purposes": [
+        "story",
+        "creative",
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "纸张案卷、编号与多角度半调网点",
+      "action": "证物入档、印章落下、局部放大推进线索",
+      "risk": "不让装饰性案卷编号伪装真实来源",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/halftone-dossier/STYLE.md",
+      "sourceId": "halftone-dossier"
+    },
+    {
+      "id": "woodcut",
+      "status": "recipe",
+      "name": "木刻版画",
+      "en": "Woodcut Print",
+      "group": "group-05",
+      "purposes": [
+        "story",
+        "creative",
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "黑面留存、白处由刀痕刻出",
+      "action": "粗刀到细刀逐笔揭示，排线沿形体走向",
+      "risk": "灰度用刀线疏密而非灰色填充",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/woodcut/STYLE.md",
+      "sourceId": "woodcut"
+    },
+    {
+      "id": "engraving",
+      "status": "recipe",
+      "name": "铜版画",
+      "en": "Copperplate Engraving",
+      "group": "group-05",
+      "purposes": [
+        "story",
+        "creative",
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "铜版凹线的粗细起伏和多组交叉排线",
+      "action": "轮廓到排线再到细部放大，显露版印压痕",
+      "risk": "不使用实心灰块替代线条明暗，缩小检查糊线",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/engraving/STYLE.md",
+      "sourceId": "engraving"
+    },
+    {
+      "id": "silkscreen-poster",
+      "status": "recipe",
+      "name": "丝印旅行海报",
+      "en": "Silkscreen Travel Poster",
+      "group": "group-05",
+      "purposes": [
+        "story",
+        "creative",
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "不透明专色平涂，阶梯色带和轻微漏白",
+      "action": "刮墨前沿逐层显露海报，各色覆盖顺序固定",
+      "risk": "与透明孔版区分，不把渐变作为主要色面",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/silkscreen-poster/STYLE.md",
+      "sourceId": "silkscreen-poster"
+    },
+    {
+      "id": "printed-long-take",
+      "status": "recipe",
+      "name": "印刷长镜头",
+      "en": "Printed Long Take",
+      "group": "group-05",
+      "purposes": [
+        "story",
+        "creative",
+        "documentary"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "印刷线面置于真实纵深的连续空间",
+      "action": "一镜跟随目标穿行前中后景，保持同一空间比例",
+      "risk": "镜头连续不代表线纹可游动，灰阶仍由刻线形成",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/printed-long-take/STYLE.md",
+      "sourceId": "printed-long-take"
+    },
+    {
+      "id": "swiss-motion",
+      "status": "recipe",
+      "name": "瑞士动态排版",
+      "en": "Swiss Motion Graphics",
+      "group": "group-06",
+      "purposes": [
+        "product",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "模块网格、单字体和一个信号色",
+      "action": "位移与遮罩准确落格，字号对比承担信息层级",
+      "risk": "不要用无意义弹跳抵消排版秩序",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/swiss-motion/STYLE.md",
+      "sourceId": "swiss-motion"
+    },
+    {
+      "id": "spy-titles",
+      "status": "recipe",
+      "name": "60s 间谍片头",
+      "en": "60s Spy Title Sequence",
+      "group": "group-06",
+      "purposes": [
+        "product",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "少色剪纸剪影和成为建筑的标题字",
+      "action": "人物穿过字形，音乐重音触发剪切转场",
+      "risk": "原创片名与轮廓，不搬用经典电影标志画面",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/spy-titles/STYLE.md",
+      "sourceId": "spy-titles"
+    },
+    {
+      "id": "art-deco",
+      "status": "recipe",
+      "name": "装饰艺术",
+      "en": "Art Deco",
+      "group": "group-06",
+      "purposes": [
+        "product",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "中轴构图、雕刻金线和硬边喷绘体块",
+      "action": "沿中轴开合、阶梯拱门和灯泡逐次点亮",
+      "risk": "金属高光必须保住文字，避免仅贴金色渐变",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/art-deco/STYLE.md",
+      "sourceId": "art-deco"
+    },
+    {
+      "id": "blueprint",
+      "status": "recipe",
+      "name": "蓝图 / 工程制图",
+      "en": "Blueprint",
+      "group": "group-06",
+      "purposes": [
+        "product",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "一张蓝晒工程纸承载白色线、剖线与标注",
+      "action": "按制图顺序描线，镜头沿同张图纸推进",
+      "risk": "保持正投影或明确斜投影，示意尺寸不冒充实测",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/blueprint/STYLE.md",
+      "sourceId": "blueprint"
+    },
+    {
+      "id": "stained-glass",
+      "status": "recipe",
+      "name": "彩色玻璃窗",
+      "en": "Stained Glass",
+      "group": "group-06",
+      "purposes": [
+        "product",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "彩色玻璃块、铅条和灰褐彩绘",
+      "action": "背光区域移动，刚性玻璃片分段动作并投色到地面",
+      "risk": "玻璃不自发光，2D透光合成与物理折射区分",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/stained-glass/STYLE.md",
+      "sourceId": "stained-glass"
+    },
+    {
+      "id": "pictogram-motion",
+      "status": "recipe",
+      "name": "象形运动图形",
+      "en": "Pictogram Motion",
+      "group": "group-06",
+      "purposes": [
+        "product",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "一个象形主体、一个动作和大标题构成卡片",
+      "action": "卡片之间用主体运动衔接，章节有一致主色",
+      "risk": "图标要重画动作，不能变成同一套图标轮播",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/pictogram-motion/STYLE.md",
+      "sourceId": "pictogram-motion"
+    },
+    {
+      "id": "ascii-crt",
+      "status": "recipe",
+      "name": "ASCII / CRT 终端",
+      "en": "ASCII / CRT Terminal",
+      "group": "group-06",
+      "purposes": [
+        "product",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "固定等宽字符网格承载所有图像",
+      "action": "字形密度表示明暗，网格字号承担推近",
+      "risk": "不能用像素图片盖扫描线代替实际字符画",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/ascii-crt/STYLE.md",
+      "sourceId": "ascii-crt"
+    },
+    {
+      "id": "dataviz",
+      "status": "recipe",
+      "name": "数据叙事",
+      "en": "Data Storytelling",
+      "group": "group-07",
+      "purposes": [
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "真实数据标记和手写式说明构成叙事",
+      "action": "按问题选择图形，标记、轴与注释随数据变化",
+      "risk": "不篡改数值迎合故事，变换比例尺必须交代",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/dataviz/STYLE.md",
+      "sourceId": "dataviz"
+    },
+    {
+      "id": "iso-infographic",
+      "status": "recipe",
+      "name": "等距信息图",
+      "en": "Isometric Infographic",
+      "group": "group-07",
+      "purposes": [
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "固定等距投影、三面明度和可定位图例",
+      "action": "沿世界路径追踪流程，用图标数量呈现统计",
+      "risk": "数量必须可复核，不能暗中旋转投影混淆前后",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/iso-infographic/STYLE.md",
+      "sourceId": "iso-infographic"
+    },
+    {
+      "id": "dark-keynote",
+      "status": "recipe",
+      "name": "暗色科技发布",
+      "en": "Dark Tech Keynote",
+      "group": "group-07",
+      "purposes": [
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "近黑舞台与单一强调色，界面为主体",
+      "action": "组件在网格上精确重组，用光和巨数揭示功能",
+      "risk": "真实UI需核对功能，辉光不可代替产品证据",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/dark-keynote/STYLE.md",
+      "sourceId": "dark-keynote"
+    },
+    {
+      "id": "living-screencast",
+      "status": "recipe",
+      "name": "活体实机录屏",
+      "en": "Living Screencast",
+      "group": "group-07",
+      "purposes": [
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "高分辨率重绘界面与低分辨率像素角色形成反差",
+      "action": "角色沿读取、编辑、运行路径驱动真实界面状态",
+      "risk": "明确演示重绘，不能伪造产品已完成的功能",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/living-screencast/STYLE.md",
+      "sourceId": "living-screencast"
+    },
+    {
+      "id": "hologram-hud",
+      "status": "recipe",
+      "name": "科幻全息界面",
+      "en": "Sci-fi Hologram HUD",
+      "group": "group-07",
+      "purposes": [
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "threejs",
+        "canvas2d"
+      ],
+      "material": "线框光模型、扫描平面和前中后HUD层",
+      "action": "扫描构建主体，部件沿轴拆解、读数从模型计算",
+      "risk": "光线框不自动等于真实测量，单位来源明确",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/hologram-hud/STYLE.md",
+      "sourceId": "hologram-hud"
+    },
+    {
+      "id": "transit-map",
+      "status": "recipe",
+      "name": "地铁线路图",
+      "en": "Transit Map",
+      "group": "group-07",
+      "purposes": [
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "八方向路线、圆角和换乘节点统一网格",
+      "action": "笔尖画到才出现站点，第二线抵达才产生换乘",
+      "risk": "拓扑关系优先，不把示意线路距离当真实地理距离",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/transit-map/STYLE.md",
+      "sourceId": "transit-map"
+    },
+    {
+      "id": "isometric-picture-book",
+      "status": "recipe",
+      "name": "等距绘本",
+      "en": "Isometric Picture Book",
+      "group": "group-07",
+      "purposes": [
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "一处连续等距场景，人物行为直接解释规则",
+      "action": "队列、座位和动线从状态改变，不逐章换漂浮小岛",
+      "risk": "人物动作与规则同源，保持同一地点和比例",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/isometric-picture-book/STYLE.md",
+      "sourceId": "isometric-picture-book"
+    },
+    {
+      "id": "circuit-board",
+      "status": "recipe",
+      "name": "电路板",
+      "en": "Circuit Board",
+      "group": "group-07",
+      "purposes": [
+        "knowledge",
+        "data",
+        "product"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "顶视铜走线、金焊盘和白丝印表达网络",
+      "action": "沿0/45/90度路径传递光脉冲，逐级放大节点",
+      "risk": "信号方向和时序有含义，装饰电路不可冒充实际PCB",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/circuit-board/STYLE.md",
+      "sourceId": "circuit-board"
+    },
+    {
+      "id": "rubber-hose",
+      "status": "recipe",
+      "name": "1930s 橡皮管卡通",
+      "en": "1930s Rubber Hose Cartoon",
+      "group": "group-08",
+      "purposes": [
+        "story",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "黑白平涂、无肘膝软管肢体与夸张鞋手套",
+      "action": "弧线摆动、挤压拉伸、预备动作和音乐呼应",
+      "risk": "设计原创角色，不照搬历史动画人物外形",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/rubber-hose/STYLE.md",
+      "sourceId": "rubber-hose"
+    },
+    {
+      "id": "cel-anime-80s",
+      "status": "recipe",
+      "name": "80 年代赛璐璐动画",
+      "en": "80s Cel Anime",
+      "group": "group-08",
+      "purposes": [
+        "story",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "硬边双色赛璐璐角色对比柔和背景与透光层",
+      "action": "有限姿态更新与连续镜头分开，关键动作保留起落",
+      "risk": "背景霓虹不进入角色内部渐变，区分姿态帧与输出帧率",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/cel-anime-80s/STYLE.md",
+      "sourceId": "cel-anime-80s"
+    },
+    {
+      "id": "scifi-toon",
+      "status": "recipe",
+      "name": "科幻情景喜剧卡通",
+      "en": "Sci-Fi Sitcom Toon",
+      "group": "group-08",
+      "purposes": [
+        "story",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "粗线平涂、夸张表情与不对称双人反应",
+      "action": "对话停顿、打断和反应镜头推进笑点",
+      "risk": "原创人物与世界设定，线沸保持轮廓身份",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/scifi-toon/STYLE.md",
+      "sourceId": "scifi-toon"
+    },
+    {
+      "id": "midcentury-toon",
+      "status": "recipe",
+      "name": "50s 扁平卡通",
+      "en": "Mid-century Cartoon",
+      "group": "group-08",
+      "purposes": [
+        "story",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "几何人物、薄墨线和略错位色面",
+      "action": "主持人稳住身体，用手臂表情和道具解释",
+      "risk": "不要把每个部位都持续晃动，错位保持可读",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/midcentury-toon/STYLE.md",
+      "sourceId": "midcentury-toon"
+    },
+    {
+      "id": "pixel-rpg",
+      "status": "recipe",
+      "name": "16-bit 像素 RPG",
+      "en": "16-bit Pixel RPG",
+      "group": "group-09",
+      "purposes": [
+        "story",
+        "product",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "低分辨率有限色板、精灵与对话框",
+      "action": "用菜单、物品、战斗或存档机制承接故事转折",
+      "risk": "最近邻整数缩放，长中文要重排，不把清晰字幕压毁",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/pixel-rpg/STYLE.md",
+      "sourceId": "pixel-rpg"
+    },
+    {
+      "id": "hd-2d",
+      "status": "recipe",
+      "name": "HD-2D",
+      "en": "HD-2D",
+      "group": "group-09",
+      "purposes": [
+        "story",
+        "product",
+        "creative"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "像素角色在真实受光的3D微缩场景中",
+      "action": "精灵投影、光源变化和高位相机共同塑造空间",
+      "risk": "保持角色像素尺寸，景深不能吞掉脸与关键字",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/hd-2d/STYLE.md",
+      "sourceId": "hd-2d"
+    },
+    {
+      "id": "microgame",
+      "status": "recipe",
+      "name": "微游戏快闪",
+      "en": "Microgame Frenzy",
+      "group": "group-09",
+      "purposes": [
+        "story",
+        "product",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "统一主持舞台串联不同媒介的单动作小游戏",
+      "action": "发指令、执行动作、判定结果，再回主舞台",
+      "risk": "切换要能看懂规则，不机械套固定秒数",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/microgame/STYLE.md",
+      "sourceId": "microgame"
+    },
+    {
+      "id": "game-show",
+      "status": "recipe",
+      "name": "综艺节奏扁平",
+      "en": "Game Show Flat",
+      "group": "group-09",
+      "purposes": [
+        "story",
+        "product",
+        "creative"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "粗线玩具角色、饱和几何舞台和呼应节奏",
+      "action": "动作、评分与音效事件读取同一拍点网格",
+      "risk": "无实测拍点不编造BPM，旁白不能被节拍裁断",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/game-show/STYLE.md",
+      "sourceId": "game-show"
+    },
+    {
+      "id": "silent-film",
+      "status": "recipe",
+      "name": "1920s 默片",
+      "en": "1920s Silent Film",
+      "group": "group-10",
+      "purposes": [
+        "story",
+        "documentary"
+      ],
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "material": "黑白银盐插画、放映窗与字幕卡",
+      "action": "用宽景表演交代事件，字幕卡只补必要信息",
+      "risk": "无对白是用户所选形式，仍可有原创伴奏音效",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/silent-film/STYLE.md",
+      "sourceId": "silent-film"
+    },
+    {
+      "id": "backrooms",
+      "status": "recipe",
+      "name": "后室 / 新怪谈",
+      "en": "Liminal Found Footage",
+      "group": "group-10",
+      "purposes": [
+        "story",
+        "documentary"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "重复室内空间、第一人称摄像与受控VHS瑕疵",
+      "action": "连续行走、规则提示和设备异常逐步积累悬念",
+      "risk": "原创空间规则，闪烁与暗部不能妨碍观看",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/backrooms/STYLE.md",
+      "sourceId": "backrooms"
+    },
+    {
+      "id": "brick-toy",
+      "status": "recipe",
+      "name": "积木玩具",
+      "en": "Brick Toy",
+      "group": "group-11",
+      "purposes": [
+        "product",
+        "creative",
+        "story"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "带凸点塑料积木置于真实尺度桌面",
+      "action": "定格姿态与宏观镜头分开，接触阴影保持重量",
+      "risk": "用原创砖块造型与人物，不包含品牌标志",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/brick-toy/STYLE.md",
+      "sourceId": "brick-toy"
+    },
+    {
+      "id": "paper-popup",
+      "status": "recipe",
+      "name": "纸片立体书",
+      "en": "Paper Pop-up Book",
+      "group": "group-11",
+      "purposes": [
+        "product",
+        "creative",
+        "story"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "实体书页上的纸卡绕底边铰接展开",
+      "action": "翻页改变舞台，角色保持纸片厚度与折痕",
+      "risk": "纸片不得穿页，展开角度与书页状态一致",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/paper-popup/STYLE.md",
+      "sourceId": "paper-popup"
+    },
+    {
+      "id": "tilt-shift",
+      "status": "recipe",
+      "name": "移轴微缩",
+      "en": "Tilt-Shift Miniature",
+      "group": "group-11",
+      "purposes": [
+        "product",
+        "creative",
+        "story"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "高视角空间、窄清晰带与延时动作",
+      "action": "焦带跟随观察对象，快节奏活动形成微缩错觉",
+      "risk": "模糊不是唯一条件，保留尺度与关键主体",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/tilt-shift/STYLE.md",
+      "sourceId": "tilt-shift"
+    },
+    {
+      "id": "lowpoly-island",
+      "status": "recipe",
+      "name": "低多边形等距",
+      "en": "Low-poly Isometric Island",
+      "group": "group-11",
+      "purposes": [
+        "product",
+        "creative",
+        "story"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "平面着色几何与正交等距相机组成微缩世界",
+      "action": "物体逐步生长，日照方向改变面片亮度",
+      "risk": "不要混入写实纹理，阴影随同一光源变化",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/lowpoly-island/STYLE.md",
+      "sourceId": "lowpoly-island"
+    },
+    {
+      "id": "glass-product",
+      "status": "recipe",
+      "name": "玻璃质感产品",
+      "en": "Glass Product Render",
+      "group": "group-11",
+      "purposes": [
+        "product",
+        "creative",
+        "story"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "黑棚中玻璃、金属与条形轮廓光",
+      "action": "慢速转台、光扫和内部结构揭示",
+      "risk": "原创产品造型，透明近似与真实折射效果明确",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/glass-product/STYLE.md",
+      "sourceId": "glass-product"
+    },
+    {
+      "id": "memphis-diorama",
+      "status": "recipe",
+      "name": "孟菲斯微缩景观",
+      "en": "Memphis Diorama",
+      "group": "group-11",
+      "purposes": [
+        "product",
+        "creative",
+        "story"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "孟菲斯几何纹样和高位微缩场景",
+      "action": "纹样跟随表面，局部动作引导观察不同空间",
+      "risk": "图案不能淹没人物，不将全片化为无主题花纹",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/memphis-diorama/STYLE.md",
+      "sourceId": "memphis-diorama"
+    },
+    {
+      "id": "desktop-flythrough",
+      "status": "recipe",
+      "name": "桌面穿梭",
+      "en": "Desktop Flythrough",
+      "group": "group-11",
+      "purposes": [
+        "product",
+        "creative",
+        "story"
+      ],
+      "engines": [
+        "threejs"
+      ],
+      "material": "纸卡界面位于实体桌面，像素体素角色串联工作",
+      "action": "连续飞行相机从卡片到卡片，保持同一桌面方位",
+      "risk": "界面内容需可读，镜头速度不能替代真实操作步骤",
+      "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
+      "reference": "references/styles/desktop-flythrough/STYLE.md",
+      "sourceId": "desktop-flythrough"
+    },
+    {
+      "id": "seasonal-map-postcard",
+      "name": "季节地图明信片",
+      "en": "Seasonal Map Postcard",
+      "status": "template",
+      "group": "local",
+      "purposes": [
+        "creative",
+        "product",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d"
+      ],
+      "reference": "references/seasonal-map.md",
+      "material": "鲜明或柔和粉彩微缩地图、纸白边框；俯视/等距斜俯视可按片设计，立面用面色区分体积",
+      "action": "同场景可周期平移或俯视转两侧斜俯视后返回；车辆船只/水车等按绝对帧循环",
+      "risk": "真实地点/季节/声音需核对；截图多卡片不能证明原片运镜；斜视必须重画几何高度、处理地面与物件遮挡，不能倾斜旧画面冒充新视角",
+      "inputs": "地点/季节、地理/建筑资料与声音计划；在原方案内明确配色及单片/多版本视角，原2D模板之外的新场景显式调用投影组件",
+      "aliases": [
+        "地址图",
+        "地名地图",
+        "地图明信片"
+      ]
+    },
+    {
+      "id": "handpainted-cinema",
+      "name": "手绘电影式角色动画",
+      "en": "Hand-painted Character Cinema",
+      "status": "recipe",
+      "group": "local",
+      "purposes": [
+        "story",
+        "creative",
+        "knowledge"
+      ],
+      "engines": [
+        "canvas2d",
+        "p5js",
+        "threejs"
+      ],
+      "reference": "references/handpainted-cinema.md",
+      "material": "绘画背景、平涂原创角色、植被细节与分层光景",
+      "action": "骨架驱动主体表演，次级动作与缓慢运镜形成叙事",
+      "risk": "V1参考美术未通过；纯代码V2已重制/实测，用户与参考画质待判断。人物/树冠仍偏几何。p5.js/Three.js未测，附件无绘图源码",
+      "inputs": "原创剧本、角色与场景设定；参考仅提取可见规律",
+      "aliases": [
+        "风格动画",
+        "手绘电影",
+        "绘画角色动画"
+      ]
+    }
+  ],
+  "engines": [
+    {
+      "id": "canvas2d",
+      "status": "tested-core",
+      "use": "确定性逐帧绘图，内置导出"
+    },
+    {
+      "id": "svg-html",
+      "status": "reference",
+      "use": "静态矢量/交互；自有参考代码"
+    },
+    {
+      "id": "p5js",
+      "status": "recipe",
+      "use": "生成艺术、噪声、笔刷；须处理帧时钟"
+    },
+    {
+      "id": "threejs",
+      "status": "recipe",
+      "use": "空间遮挡、真实3D镜头；本轮未跑3D"
+    },
+    {
+      "id": "gsap",
+      "status": "recipe",
+      "use": "复杂补间，必须可seek且禁用自主ticker"
+    },
+    {
+      "id": "d3",
+      "status": "recipe",
+      "use": "数据比例尺/路径，动画仍从整数帧派生"
+    },
+    {
+      "id": "remotion",
+      "status": "recipe",
+      "use": "React视频合成；需要适配原素材/声音/验收契约"
+    }
+  ],
+  "samples": [
+    {
+      "id": "knowledge",
+      "category": "knowledge",
+      "title": "慢的一环，决定流速",
+      "style": "technical",
+      "durationSeconds": 8,
+      "engine": "canvas2d",
+      "status": "rendered",
+      "source": "assets/examples/knowledge/scenes.js",
+      "project": "assets/examples/knowledge",
+      "fictional": false
+    },
+    {
+      "id": "story",
+      "category": "story",
+      "title": "把光，递给下一个人",
+      "style": "paper-theatre",
+      "durationSeconds": 8,
+      "engine": "canvas2d",
+      "status": "rendered",
+      "source": "assets/examples/story/scenes.js",
+      "project": "assets/examples/story",
+      "fictional": false
+    },
+    {
+      "id": "product",
+      "category": "product",
+      "title": "把杂乱，收进一个动作",
+      "style": "product-light",
+      "durationSeconds": 7,
+      "engine": "canvas2d",
+      "status": "rendered",
+      "source": "assets/examples/product/scenes.js",
+      "project": "assets/examples/product",
+      "fictional": true
+    },
+    {
+      "id": "documentary",
+      "category": "documentary",
+      "title": "六分钟，一条时间线",
+      "style": "archive-dark",
+      "durationSeconds": 8,
+      "engine": "canvas2d",
+      "status": "rendered",
+      "source": "assets/examples/documentary/scenes.js",
+      "project": "assets/examples/documentary",
+      "fictional": true
+    },
+    {
+      "id": "data",
+      "category": "data",
+      "title": "总量增长，来源不同",
+      "style": "data-editorial",
+      "durationSeconds": 7,
+      "engine": "canvas2d",
+      "status": "rendered",
+      "source": "assets/examples/data/scenes.js",
+      "project": "assets/examples/data",
+      "fictional": true
+    },
+    {
+      "id": "creative",
+      "category": "creative",
+      "title": "风把山，写进沙里",
+      "style": "sand",
+      "durationSeconds": 8,
+      "engine": "canvas2d",
+      "status": "rendered",
+      "source": "assets/examples/creative/scenes.js",
+      "project": "assets/examples/creative",
+      "fictional": false
+    }
+  ],
+  "styleGroups": [
+    {
+      "id": "group-01",
+      "name": "剪辑与纪实",
+      "en": "Edit & Documentary"
+    },
+    {
+      "id": "group-02",
+      "name": "实证影像",
+      "en": "Evidence Films"
+    },
+    {
+      "id": "group-03",
+      "name": "手绘与绘画",
+      "en": "Hand-drawn & Painting"
+    },
+    {
+      "id": "group-04",
+      "name": "东方传统",
+      "en": "East Asian Traditions"
+    },
+    {
+      "id": "group-05",
+      "name": "印刷与版画",
+      "en": "Print & Printmaking"
+    },
+    {
+      "id": "group-06",
+      "name": "图形与排版",
+      "en": "Graphic & Type"
+    },
+    {
+      "id": "group-07",
+      "name": "信息与发布",
+      "en": "Information & Keynote"
+    },
+    {
+      "id": "group-08",
+      "name": "卡通与动画",
+      "en": "Cartoon & Anime"
+    },
+    {
+      "id": "group-09",
+      "name": "游戏",
+      "en": "Games"
+    },
+    {
+      "id": "group-10",
+      "name": "电影与时代",
+      "en": "Cinema & Eras"
+    },
+    {
+      "id": "group-11",
+      "name": "材质与 3D",
+      "en": "Materials & 3D"
+    },
+    {
+      "id": "local",
+      "name": "本库补充",
+      "en": "Local extensions"
+    }
+  ],
+  "referenceLibrary": {
+    "name": "Lemo-Opuscar",
+    "commit": "bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00",
+    "indexUrl": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/README.md",
+    "license": "MIT (style instructions)",
+    "coverage": [
+      {
+        "id": "caption-news",
+        "styleId": "caption-news",
+        "group": "group-01",
+        "name": "字幕新闻",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/caption-news/STYLE.md",
+        "upstreamSha256": "71d67fb2f47eac1489bc96d302f9b206700cb0533c332e3650b498e3e2014603",
+        "reference": "references/styles/caption-news/STYLE.md",
+        "sourceFile": "references/styles/caption-news/SOURCE.md",
+        "localSourceSha256": "6d41a5809b1d37e90e91dde0dd6fc65f97ac9c5c2ef44755765a8c0e1ff195fb"
+      },
+      {
+        "id": "newsreel",
+        "styleId": "newsreel",
+        "group": "group-01",
+        "name": "1920s 新闻影片",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/newsreel/STYLE.md",
+        "upstreamSha256": "ec7cf8cef4efdc557c70f7743c5eb431d20e219e43a0a3dc2cbea1cfeea41e8d",
+        "reference": "references/styles/newsreel/STYLE.md",
+        "sourceFile": "references/styles/newsreel/SOURCE.md",
+        "localSourceSha256": "6769118c50bf5c5294807f9607f9b76c796c2ef7c0a089d1253a5cda94583d4b"
+      },
+      {
+        "id": "countdown",
+        "styleId": "countdown",
+        "group": "group-01",
+        "name": "实时倒计时分屏",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/countdown/STYLE.md",
+        "upstreamSha256": "867cca6e0c9bb0d6fb914cc4e9a2e295623ecd345fda9bd00bc362ff233f220f",
+        "reference": "references/styles/countdown/STYLE.md",
+        "sourceFile": "references/styles/countdown/SOURCE.md",
+        "localSourceSha256": "6f83edf7c60263770e3999f3b302ab72b353beca9df07112e25720e3b3bb42b3"
+      },
+      {
+        "id": "city-symphony",
+        "styleId": "city-symphony",
+        "group": "group-01",
+        "name": "延时交响",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/city-symphony/STYLE.md",
+        "upstreamSha256": "8b78d2b08cadb045ac1649cade1e5274fba935b1177c64c176e7567c6e8b31e1",
+        "reference": "references/styles/city-symphony/STYLE.md",
+        "sourceFile": "references/styles/city-symphony/SOURCE.md",
+        "localSourceSha256": "d435605d29bbefba7bbd7a29f4f1cf4e2389c750c66753d25e499cb33eb45d15"
+      },
+      {
+        "id": "visual-investigation",
+        "styleId": "visual-investigation",
+        "group": "group-01",
+        "name": "视觉调查",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/visual-investigation/STYLE.md",
+        "upstreamSha256": "9b39ebaa00c3d77ae544d7453e99b79caf4dfaae1d37798b1f995a5578aac30b",
+        "reference": "references/styles/visual-investigation/STYLE.md",
+        "sourceFile": "references/styles/visual-investigation/SOURCE.md",
+        "localSourceSha256": "26e419f6a704de081b13af28d3cc89307527e55357ff5ba65ab524f8c6d940d4"
+      },
+      {
+        "id": "kino-montage",
+        "styleId": "kino-montage",
+        "group": "group-01",
+        "name": "构成主义蒙太奇",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/kino-montage/STYLE.md",
+        "upstreamSha256": "8c63deefda22d4677d286ddfffb243ce6385dfa7ab56fbc493705fe13908f204",
+        "reference": "references/styles/kino-montage/STYLE.md",
+        "sourceFile": "references/styles/kino-montage/SOURCE.md",
+        "localSourceSha256": "6f06decc81d5f7f99fd244f30c891b94889906edf679f560d41fcbdf259779f2"
+      },
+      {
+        "id": "telestrator",
+        "styleId": "telestrator",
+        "group": "group-01",
+        "name": "体育战术板",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/telestrator/STYLE.md",
+        "upstreamSha256": "7289027728dc5e1b6d095b7c7bc7806790bb579934c81682265c0c1b4897a3d0",
+        "reference": "references/styles/telestrator/STYLE.md",
+        "sourceFile": "references/styles/telestrator/SOURCE.md",
+        "localSourceSha256": "31ecfe48e4a7e1df017cbd64aa4270d429c02953fe4f9df1cc4765d67b49774e"
+      },
+      {
+        "id": "news-package",
+        "styleId": "news-package",
+        "group": "group-01",
+        "name": "电视新闻包装",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/news-package/STYLE.md",
+        "upstreamSha256": "f6249a97d12ad6a71d11741f625a6b7d9cc6fb25006385b23f394ea56fb6610d",
+        "reference": "references/styles/news-package/STYLE.md",
+        "sourceFile": "references/styles/news-package/SOURCE.md",
+        "localSourceSha256": "e1f419a667e15b6315730ad63f3772e45ba1b989564e087b19747c77e5904855"
+      },
+      {
+        "id": "satellite-briefing",
+        "styleId": "satellite-briefing",
+        "group": "group-02",
+        "name": "卫星简报",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/satellite-briefing/STYLE.md",
+        "upstreamSha256": "d8d4856407fba8394c2cd9102a4aa23525db0171275a85b1aeeab2f0597e26a8",
+        "reference": "references/styles/satellite-briefing/STYLE.md",
+        "sourceFile": "references/styles/satellite-briefing/SOURCE.md",
+        "localSourceSha256": "0d7612476dff43c718b72bc1c657502f28a6eef0753f7f1593f6c8d9a592f072"
+      },
+      {
+        "id": "briefing-board",
+        "styleId": "briefing-board",
+        "group": "group-02",
+        "name": "工程简报板",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/briefing-board/STYLE.md",
+        "upstreamSha256": "44669da808da4ed37e2a4a0f6e5d2b23008775a3c4870add04641d714e9f323d",
+        "reference": "references/styles/briefing-board/STYLE.md",
+        "sourceFile": "references/styles/briefing-board/SOURCE.md",
+        "localSourceSha256": "29872b07c1c619663ea2521881fb54a05d915a6205b1e2b0eeebf58287658734"
+      },
+      {
+        "id": "lidar-survey",
+        "styleId": "lidar-survey",
+        "group": "group-02",
+        "name": "点云测绘",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/lidar-survey/STYLE.md",
+        "upstreamSha256": "d1b60fda2793932286372e7cf68d62af5723bba14c37e9a437639ea57b1a310d",
+        "reference": "references/styles/lidar-survey/STYLE.md",
+        "sourceFile": "references/styles/lidar-survey/SOURCE.md",
+        "localSourceSha256": "072f9727fdb3f0fccc4062aa93834c534b46bdd20b43907c0a7dd072d1c6a5ea"
+      },
+      {
+        "id": "white-model",
+        "styleId": "white-model",
+        "group": "group-02",
+        "name": "白模投影",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/white-model/STYLE.md",
+        "upstreamSha256": "02b6423a69ac5a30322997ec9523bd6b6f776b7c8cf14f249eeb996b9d21e2c2",
+        "reference": "references/styles/white-model/STYLE.md",
+        "sourceFile": "references/styles/white-model/SOURCE.md",
+        "localSourceSha256": "1acdb3863614fb5fe0a0a477bef004e78c27e078c227438bd070ac8a256df497"
+      },
+      {
+        "id": "data-physical",
+        "styleId": "data-physical",
+        "group": "group-02",
+        "name": "数据实物化",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/data-physical/STYLE.md",
+        "upstreamSha256": "2d2e6685b0dcf8a1e2ba2ff904ab02d51aede1f5dbb246fd2f6e81c8d146f208",
+        "reference": "references/styles/data-physical/STYLE.md",
+        "sourceFile": "references/styles/data-physical/SOURCE.md",
+        "localSourceSha256": "f79b4c245df00df9d270bb2715e6e3fe64246c2f2bb007e18116b19ab9524d96"
+      },
+      {
+        "id": "teardown",
+        "styleId": "teardown",
+        "group": "group-02",
+        "name": "产品拆解",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/teardown/STYLE.md",
+        "upstreamSha256": "90df05a02a3d33add58e0dd99bef19ca20ea16b10390b3c2350d8483106922ee",
+        "reference": "references/styles/teardown/STYLE.md",
+        "sourceFile": "references/styles/teardown/SOURCE.md",
+        "localSourceSha256": "ebc93dff3bf4461199c4e1d8a3adfbc0025970fb5ef856b6571224608182d379"
+      },
+      {
+        "id": "microscope",
+        "styleId": "microscope",
+        "group": "group-02",
+        "name": "显微叙事",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microscope/STYLE.md",
+        "upstreamSha256": "63040631bdc28a3c7f8cf05e2e8523969becd0267741e00dd3e171c22be16e92",
+        "reference": "references/styles/microscope/STYLE.md",
+        "sourceFile": "references/styles/microscope/SOURCE.md",
+        "localSourceSha256": "9b17ddaf835d3ded6bc1d66267f0d160912be8e904902a0abbb4006f6cd6056e"
+      },
+      {
+        "id": "archive-lighttable",
+        "styleId": "archive-lighttable",
+        "group": "group-02",
+        "name": "档案灯台",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/archive-lighttable/STYLE.md",
+        "upstreamSha256": "2f18ac9a42822b7a9941866c42b0642e5417dea5431d61f141f6e11b29c1ec14",
+        "reference": "references/styles/archive-lighttable/STYLE.md",
+        "sourceFile": "references/styles/archive-lighttable/SOURCE.md",
+        "localSourceSha256": "58d98f36aadd4a0cca6e16150e0e8f23a6e1cca9e4c2f4c7b863abc1dbab2a5d"
+      },
+      {
+        "id": "crayon-book",
+        "styleId": "crayon-book",
+        "group": "group-03",
+        "name": "蜡笔儿童绘本",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/crayon-book/STYLE.md",
+        "upstreamSha256": "ba558478fe519fa6777fe28fa7d1980117297c7beb6fe2e366ef6f00688aa175",
+        "reference": "references/styles/crayon-book/STYLE.md",
+        "sourceFile": "references/styles/crayon-book/SOURCE.md",
+        "localSourceSha256": "b4b2997b7a6de329fbfc3ee79d04a1b8a7b9ad5bfe380856504628eef1c14904"
+      },
+      {
+        "id": "watercolor",
+        "styleId": "watercolor-brush",
+        "group": "group-03",
+        "name": "水彩笔刷",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/watercolor/STYLE.md",
+        "upstreamSha256": "662d57568408a7c82ef8f64980ca85798b8bb239df3dc3a6715283d7f4555ef0",
+        "reference": "references/styles/watercolor/STYLE.md",
+        "sourceFile": "references/styles/watercolor/SOURCE.md",
+        "localSourceSha256": "4c69729d57957fa698c430f8f1288a9867ab691e36b45f92dd110e250649d9a3"
+      },
+      {
+        "id": "ink-wash",
+        "styleId": "ink-wash",
+        "group": "group-03",
+        "name": "中国水墨",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/ink-wash/STYLE.md",
+        "upstreamSha256": "5d71598f0b9cf4034c6461956b0d8bd63bd33750b4045376044f0d956b01d645",
+        "reference": "references/styles/ink-wash/STYLE.md",
+        "sourceFile": "references/styles/ink-wash/SOURCE.md",
+        "localSourceSha256": "efb15a1727740cef3db54fe25b1b630c26e413ad20f5f3381a014f163b0ef9e4"
+      },
+      {
+        "id": "impasto",
+        "styleId": "impasto",
+        "group": "group-03",
+        "name": "油画厚涂",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/impasto/STYLE.md",
+        "upstreamSha256": "38a0dcb2808c2ff03ef721c1319b9145438b4074ed37ab7a09dcf20b7268e062",
+        "reference": "references/styles/impasto/STYLE.md",
+        "sourceFile": "references/styles/impasto/SOURCE.md",
+        "localSourceSha256": "52d89b72998d201838b56efa67e46ef0ace00da1193fcc115ab1167e49ee23b0"
+      },
+      {
+        "id": "one-line",
+        "styleId": "one-line",
+        "group": "group-03",
+        "name": "一笔画",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/one-line/STYLE.md",
+        "upstreamSha256": "69d26cb06f48ab6b03c12a76c2390d0945cdaddc38bc109b7d5e292b9af1399b",
+        "reference": "references/styles/one-line/STYLE.md",
+        "sourceFile": "references/styles/one-line/SOURCE.md",
+        "localSourceSha256": "d1d09eb1c0bdbb2823cb62ff19c43d17be4d4bb6136bbf1537450bcb902be14e"
+      },
+      {
+        "id": "whiteboard",
+        "styleId": "whiteboard",
+        "group": "group-03",
+        "name": "白板讲解",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/whiteboard/STYLE.md",
+        "upstreamSha256": "19f66326257bcafb8aca18af3e209d1fee31d9e23902ce1708bbb606cbf4b718",
+        "reference": "references/styles/whiteboard/STYLE.md",
+        "sourceFile": "references/styles/whiteboard/SOURCE.md",
+        "localSourceSha256": "36d6798641866f8057d42503f173130ae7b171ae11161914df3682a6b75da68a"
+      },
+      {
+        "id": "urban-sketch",
+        "styleId": "urban-sketch",
+        "group": "group-03",
+        "name": "钢笔淡彩",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/urban-sketch/STYLE.md",
+        "upstreamSha256": "2baf1a19f31b06e55d66d62e4c3449c7a2686c689190976f3e3d0cbdce2faa9a",
+        "reference": "references/styles/urban-sketch/STYLE.md",
+        "sourceFile": "references/styles/urban-sketch/SOURCE.md",
+        "localSourceSha256": "f859c77097266a0dac5fc9d11c6f82768c32d08538a1493d72d35a0d565859d8"
+      },
+      {
+        "id": "chalkboard",
+        "styleId": "chalk",
+        "group": "group-03",
+        "name": "黑板粉笔",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/chalkboard/STYLE.md",
+        "upstreamSha256": "7f89f1a4694805e6bc767050007a6b44f2b7ab2474b0e3244032d3a0269b3e1c",
+        "reference": "references/styles/chalkboard/STYLE.md",
+        "sourceFile": "references/styles/chalkboard/SOURCE.md",
+        "localSourceSha256": "eb22760f2830f1881bb2027cfd385691e8857d18174c2fe51a04b1b4b7fe6791"
+      },
+      {
+        "id": "shadow-puppet",
+        "styleId": "shadow-puppet",
+        "group": "group-04",
+        "name": "皮影戏",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/shadow-puppet/STYLE.md",
+        "upstreamSha256": "8be075a8262d5a3deea9b05684d8a9abdc1e54c0d90649bf14609ecb4106c3af",
+        "reference": "references/styles/shadow-puppet/STYLE.md",
+        "sourceFile": "references/styles/shadow-puppet/SOURCE.md",
+        "localSourceSha256": "7e201a61545ca19df8795649b8fa6016dc7a841af9eb2c283d8ab2d52785fa5a"
+      },
+      {
+        "id": "ukiyoe",
+        "styleId": "ukiyoe",
+        "group": "group-04",
+        "name": "浮世绘",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/ukiyoe/STYLE.md",
+        "upstreamSha256": "218c48a204f9034d1c2fb7f11698b4834f1faee1ca68c9e336f3d6ab992ff2e4",
+        "reference": "references/styles/ukiyoe/STYLE.md",
+        "sourceFile": "references/styles/ukiyoe/SOURCE.md",
+        "localSourceSha256": "e9b3ddb48bfb209c46f5d2c8bdc304f7e9e39342f0f6d00154127cff92d3dbb1"
+      },
+      {
+        "id": "papercut-red",
+        "styleId": "papercut-red",
+        "group": "group-04",
+        "name": "红色窗花剪纸",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/papercut-red/STYLE.md",
+        "upstreamSha256": "65e317d83335e0cb34696b643e31ad9e46fb0bb93fd748c2e21d74358aea61ec",
+        "reference": "references/styles/papercut-red/STYLE.md",
+        "sourceFile": "references/styles/papercut-red/SOURCE.md",
+        "localSourceSha256": "fa58e4ed929e1b4db881ea31be46a617e51dca4e91a93b186a8fa25cf3840789"
+      },
+      {
+        "id": "paper-lantern",
+        "styleId": "paper-lantern",
+        "group": "group-04",
+        "name": "纸雕灯影",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/paper-lantern/STYLE.md",
+        "upstreamSha256": "e8be26d64f33229859e284a33d77969f9a4468b7bf1b478ca8fa924c7dd9f27d",
+        "reference": "references/styles/paper-lantern/STYLE.md",
+        "sourceFile": "references/styles/paper-lantern/SOURCE.md",
+        "localSourceSha256": "3f5bff4f2ed7ded7cf0db2671086f7d9a883d25dbc821005abb7d83339d1a7cf"
+      },
+      {
+        "id": "risograph",
+        "styleId": "riso-halftone",
+        "group": "group-05",
+        "name": "Risograph 孔版印刷",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/risograph/STYLE.md",
+        "upstreamSha256": "c3d85c91a81b0afde091d964482749482adc66c12730afe124708f7b18b331a6",
+        "reference": "references/styles/risograph/STYLE.md",
+        "sourceFile": "references/styles/risograph/SOURCE.md",
+        "localSourceSha256": "41acb739db62f208b38bd4d5dc9f596a7cf62ae155cb4b628a87e95fff06ba46"
+      },
+      {
+        "id": "halftone-dossier",
+        "styleId": "halftone-dossier",
+        "group": "group-05",
+        "name": "复古半调案卷",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/halftone-dossier/STYLE.md",
+        "upstreamSha256": "71b4b8f089836d95f6bd8fc3719ae184cbf2be4a04ecd935c6d55d89a5bb558d",
+        "reference": "references/styles/halftone-dossier/STYLE.md",
+        "sourceFile": "references/styles/halftone-dossier/SOURCE.md",
+        "localSourceSha256": "5cee5990b18477fcb40fab3ec39a67bd5c9451ab21afd0da96a09dbadefafde1"
+      },
+      {
+        "id": "woodcut",
+        "styleId": "woodcut",
+        "group": "group-05",
+        "name": "木刻版画",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/woodcut/STYLE.md",
+        "upstreamSha256": "b96fda6eeac038137310cc0766d979c8d8a5f3ff6acd87bada5aa50d5136a6a0",
+        "reference": "references/styles/woodcut/STYLE.md",
+        "sourceFile": "references/styles/woodcut/SOURCE.md",
+        "localSourceSha256": "68351ea186a4fb569c4b6694086814ebc9a691f52e181108e95fc8b05cc1a180"
+      },
+      {
+        "id": "engraving",
+        "styleId": "engraving",
+        "group": "group-05",
+        "name": "铜版画",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/engraving/STYLE.md",
+        "upstreamSha256": "0c6816b8b47163d158ae0ea668feecf53dcbef9d1310e27b9e797d9b9e7aac0d",
+        "reference": "references/styles/engraving/STYLE.md",
+        "sourceFile": "references/styles/engraving/SOURCE.md",
+        "localSourceSha256": "31502e361f4a6aa1f1fedb331b03c2c10fbcb2a3e3708134b8578db623d464bb"
+      },
+      {
+        "id": "silkscreen-poster",
+        "styleId": "silkscreen-poster",
+        "group": "group-05",
+        "name": "丝印旅行海报",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/silkscreen-poster/STYLE.md",
+        "upstreamSha256": "f1c86a9f0cbe735de9fb1421d33ab44465122158e6c45a4786c98852ea9952b1",
+        "reference": "references/styles/silkscreen-poster/STYLE.md",
+        "sourceFile": "references/styles/silkscreen-poster/SOURCE.md",
+        "localSourceSha256": "fc5560a9d0a369b50a3a3f83307a669fc98cd38ca0104aae0db01368fde0f7a4"
+      },
+      {
+        "id": "printed-long-take",
+        "styleId": "printed-long-take",
+        "group": "group-05",
+        "name": "印刷长镜头",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/printed-long-take/STYLE.md",
+        "upstreamSha256": "fafef88a98f73d73b578ef8591222d2287ac1b921f594fc08e5588a97d077b2d",
+        "reference": "references/styles/printed-long-take/STYLE.md",
+        "sourceFile": "references/styles/printed-long-take/SOURCE.md",
+        "localSourceSha256": "146df8ffed8dda0830a85439c8df71884bcfecea415fc51fbeb36602eadbdd3b"
+      },
+      {
+        "id": "swiss-motion",
+        "styleId": "swiss-motion",
+        "group": "group-06",
+        "name": "瑞士动态排版",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/swiss-motion/STYLE.md",
+        "upstreamSha256": "14ddeb6dc495e691a220497069a2ee4827d820f9ee7a3173de5846489ef41f57",
+        "reference": "references/styles/swiss-motion/STYLE.md",
+        "sourceFile": "references/styles/swiss-motion/SOURCE.md",
+        "localSourceSha256": "aaf108e9c38f58977d6fcd71d814f3d75c5f75fa0e961904bde3ad8cb9d51c68"
+      },
+      {
+        "id": "spy-titles",
+        "styleId": "spy-titles",
+        "group": "group-06",
+        "name": "60s 间谍片头",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/spy-titles/STYLE.md",
+        "upstreamSha256": "ea6e9e9073af43ef0bb860e368f60b16ec32a91668386115a142907d92cb1f75",
+        "reference": "references/styles/spy-titles/STYLE.md",
+        "sourceFile": "references/styles/spy-titles/SOURCE.md",
+        "localSourceSha256": "b598382b8cb60c75809c0cf99b02afa13b26ca88afb280bbe2a5e7edb48e4f4a"
+      },
+      {
+        "id": "art-deco",
+        "styleId": "art-deco",
+        "group": "group-06",
+        "name": "装饰艺术",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/art-deco/STYLE.md",
+        "upstreamSha256": "d73b30c0fa6d153487549d32d8c6c599733cf5e7576badec862a12da6d284761",
+        "reference": "references/styles/art-deco/STYLE.md",
+        "sourceFile": "references/styles/art-deco/SOURCE.md",
+        "localSourceSha256": "f4f000fd363040079392bd0e8a23e129a6d20952d985d0e04212e19c537c7b0f"
+      },
+      {
+        "id": "blueprint",
+        "styleId": "blueprint",
+        "group": "group-06",
+        "name": "蓝图 / 工程制图",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/blueprint/STYLE.md",
+        "upstreamSha256": "de01fc7fcb38b17b58eb017c9cdbcb36b9242b029435a33587614c93088e1717",
+        "reference": "references/styles/blueprint/STYLE.md",
+        "sourceFile": "references/styles/blueprint/SOURCE.md",
+        "localSourceSha256": "f77cc8be6cb28c0e70ae97b0fb9347df65b293e67ced1d6ca62958edd5d15959"
+      },
+      {
+        "id": "stained-glass",
+        "styleId": "stained-glass",
+        "group": "group-06",
+        "name": "彩色玻璃窗",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/stained-glass/STYLE.md",
+        "upstreamSha256": "0f6551bd109a4127404068aa1e75f18f16b58c80b486c23480b3d193e597b060",
+        "reference": "references/styles/stained-glass/STYLE.md",
+        "sourceFile": "references/styles/stained-glass/SOURCE.md",
+        "localSourceSha256": "bdf7002d62f708b2e384843e4c49aff88515f3dd00c1a41d4916021e77c7d67a"
+      },
+      {
+        "id": "pictogram-motion",
+        "styleId": "pictogram-motion",
+        "group": "group-06",
+        "name": "象形运动图形",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/pictogram-motion/STYLE.md",
+        "upstreamSha256": "52f0119e13e2d98ee9d2dbf5ea8b9dc84ffb309746fd93afc01eb07d1e2c2689",
+        "reference": "references/styles/pictogram-motion/STYLE.md",
+        "sourceFile": "references/styles/pictogram-motion/SOURCE.md",
+        "localSourceSha256": "29f2376b231ce8a7cec7eda363cf049afa67b83d0945c0eef6af9f54cc81dd67"
+      },
+      {
+        "id": "ascii-crt",
+        "styleId": "ascii-crt",
+        "group": "group-06",
+        "name": "ASCII / CRT 终端",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/ascii-crt/STYLE.md",
+        "upstreamSha256": "cbe0b8957c785a165f85ccb3b8eba61c30c0462b32983db6a16c76046a2bb333",
+        "reference": "references/styles/ascii-crt/STYLE.md",
+        "sourceFile": "references/styles/ascii-crt/SOURCE.md",
+        "localSourceSha256": "b798d83bb4f0753680a1b755261a47784a669cb96bf1cbbb4b824337335fa75c"
+      },
+      {
+        "id": "dataviz",
+        "styleId": "dataviz",
+        "group": "group-07",
+        "name": "数据叙事",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/dataviz/STYLE.md",
+        "upstreamSha256": "e94013d5a7c548c8844598a671ff0b49bc78770696cbca0d8d00846336f3c67f",
+        "reference": "references/styles/dataviz/STYLE.md",
+        "sourceFile": "references/styles/dataviz/SOURCE.md",
+        "localSourceSha256": "b3ff021e028666e80fd9c5b9424bdf3224b0461ba072784cbcd7e7fbee8d99aa"
+      },
+      {
+        "id": "iso-infographic",
+        "styleId": "iso-infographic",
+        "group": "group-07",
+        "name": "等距信息图",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/iso-infographic/STYLE.md",
+        "upstreamSha256": "a3bf89913255043ff2c8616bff9be9f9536efe1eb7a3b98c755cb4189bd7dff1",
+        "reference": "references/styles/iso-infographic/STYLE.md",
+        "sourceFile": "references/styles/iso-infographic/SOURCE.md",
+        "localSourceSha256": "81e91032cc0a09d58879ef5f363df4bf0d5934bee148d369bc12271d5a85abaf"
+      },
+      {
+        "id": "dark-keynote",
+        "styleId": "dark-keynote",
+        "group": "group-07",
+        "name": "暗色科技发布",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/dark-keynote/STYLE.md",
+        "upstreamSha256": "b0791b5e95f56bf46c621e6064d426ebbee810c7515fb87e951b73668a2a0d24",
+        "reference": "references/styles/dark-keynote/STYLE.md",
+        "sourceFile": "references/styles/dark-keynote/SOURCE.md",
+        "localSourceSha256": "a0e2bf38b9ae48f3983ab4e21cbfadc09c0b2213f7382553eac885c560143886"
+      },
+      {
+        "id": "living-screencast",
+        "styleId": "living-screencast",
+        "group": "group-07",
+        "name": "活体实机录屏",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/living-screencast/STYLE.md",
+        "upstreamSha256": "02e8e5521fe1f553b0e58dacc2a556aea361dd5823e2ca0996963839d3c7d5c7",
+        "reference": "references/styles/living-screencast/STYLE.md",
+        "sourceFile": "references/styles/living-screencast/SOURCE.md",
+        "localSourceSha256": "62f6bdd7a1b12f258d57eb552c91b2195be7ad01537f005fc2bc0ef5814a91ef"
+      },
+      {
+        "id": "hologram-hud",
+        "styleId": "hologram-hud",
+        "group": "group-07",
+        "name": "科幻全息界面",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/hologram-hud/STYLE.md",
+        "upstreamSha256": "81e2c6b0ede2cc211a8dd676417a1ce5efda278514f273c5249165e38ff34573",
+        "reference": "references/styles/hologram-hud/STYLE.md",
+        "sourceFile": "references/styles/hologram-hud/SOURCE.md",
+        "localSourceSha256": "c227e1cbdf6a2be9da4e71c548fe58f27006983cf02d2d9c898848d2b0514301"
+      },
+      {
+        "id": "transit-map",
+        "styleId": "transit-map",
+        "group": "group-07",
+        "name": "地铁线路图",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/transit-map/STYLE.md",
+        "upstreamSha256": "e6c62bc75071c86b67c30def595e919910d86245504c8c09882d151a3c719d1c",
+        "reference": "references/styles/transit-map/STYLE.md",
+        "sourceFile": "references/styles/transit-map/SOURCE.md",
+        "localSourceSha256": "50f2a317b7172a1622f68367a01039e0b59b7a0ac56b44fb8f4b06900779eb47"
+      },
+      {
+        "id": "isometric-picture-book",
+        "styleId": "isometric-picture-book",
+        "group": "group-07",
+        "name": "等距绘本",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/isometric-picture-book/STYLE.md",
+        "upstreamSha256": "9e838ed305b5fec5002b9aa452cb28730d13ec84dd529a801fb3b174e81cec83",
+        "reference": "references/styles/isometric-picture-book/STYLE.md",
+        "sourceFile": "references/styles/isometric-picture-book/SOURCE.md",
+        "localSourceSha256": "44e4aad7c82644563f585cf112d0a1816687f88304571576af55c4e2c67e0050"
+      },
+      {
+        "id": "circuit-board",
+        "styleId": "circuit-board",
+        "group": "group-07",
+        "name": "电路板",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/circuit-board/STYLE.md",
+        "upstreamSha256": "3f5244726e732a8407355bebdec309942410104af32c956372ff4f1477a0cd9b",
+        "reference": "references/styles/circuit-board/STYLE.md",
+        "sourceFile": "references/styles/circuit-board/SOURCE.md",
+        "localSourceSha256": "124ff9a6770180e489ba587581ecbb0a09334c719341aff0c025ba811c3ffeb4"
+      },
+      {
+        "id": "rubber-hose",
+        "styleId": "rubber-hose",
+        "group": "group-08",
+        "name": "1930s 橡皮管卡通",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/rubber-hose/STYLE.md",
+        "upstreamSha256": "bf850f9cd22e68b2125fed00d1b9804e91479620b44420ba7ec50e570e472a94",
+        "reference": "references/styles/rubber-hose/STYLE.md",
+        "sourceFile": "references/styles/rubber-hose/SOURCE.md",
+        "localSourceSha256": "681b450e20d7b61541f0e69f10f2ec127654b99433557b12a48a6b69fa177ad5"
+      },
+      {
+        "id": "cel-anime-80s",
+        "styleId": "cel-anime-80s",
+        "group": "group-08",
+        "name": "80 年代赛璐璐动画",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/cel-anime-80s/STYLE.md",
+        "upstreamSha256": "1e16f5c6f90ebf09556ec94d37434400d309c978e00ee89e9d38dec476664eaf",
+        "reference": "references/styles/cel-anime-80s/STYLE.md",
+        "sourceFile": "references/styles/cel-anime-80s/SOURCE.md",
+        "localSourceSha256": "0b332c7517c7ece5e1ed059d9d00514fd30836c8d6a99fdfe8d9039d1f0bb241"
+      },
+      {
+        "id": "scifi-toon",
+        "styleId": "scifi-toon",
+        "group": "group-08",
+        "name": "科幻情景喜剧卡通",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/scifi-toon/STYLE.md",
+        "upstreamSha256": "9a720a57ce50dc554e9237e698a979cdf7311527e6e6a0dad803278dfe8ad2ce",
+        "reference": "references/styles/scifi-toon/STYLE.md",
+        "sourceFile": "references/styles/scifi-toon/SOURCE.md",
+        "localSourceSha256": "f389664585c389b41b95cef2ec94424d4537982dec678b77b8dd9a8dba3e891a"
+      },
+      {
+        "id": "midcentury-toon",
+        "styleId": "midcentury-toon",
+        "group": "group-08",
+        "name": "50s 扁平卡通",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/midcentury-toon/STYLE.md",
+        "upstreamSha256": "e73614b6f9e2f2e8ee279f4909da8429235b96f6d13a12345b6e57d5823c30b8",
+        "reference": "references/styles/midcentury-toon/STYLE.md",
+        "sourceFile": "references/styles/midcentury-toon/SOURCE.md",
+        "localSourceSha256": "660e3ad0094113e016e0db1d32dd2d85c260c3912647793bfcbcd15fabaa8eb5"
+      },
+      {
+        "id": "pixel-rpg",
+        "styleId": "pixel-rpg",
+        "group": "group-09",
+        "name": "16-bit 像素 RPG",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/pixel-rpg/STYLE.md",
+        "upstreamSha256": "f79fac0d9aed03d2a69f17a50b37adca2da84156b3fa525537761c507bcaea8e",
+        "reference": "references/styles/pixel-rpg/STYLE.md",
+        "sourceFile": "references/styles/pixel-rpg/SOURCE.md",
+        "localSourceSha256": "6187cfddc5ff0db60988c23d70fa26efe9073d5403225be53cd0c5e06b77bae3"
+      },
+      {
+        "id": "hd-2d",
+        "styleId": "hd-2d",
+        "group": "group-09",
+        "name": "HD-2D",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/hd-2d/STYLE.md",
+        "upstreamSha256": "bdc5ef4f60d8ba9ff6e5151391a6a62d8da4685d393c242699fd5c6188f0551a",
+        "reference": "references/styles/hd-2d/STYLE.md",
+        "sourceFile": "references/styles/hd-2d/SOURCE.md",
+        "localSourceSha256": "67fdaaae0c84b70468e83f52a21e546c92d6a4a4d9f2c702d7874ea3af69ed1e"
+      },
+      {
+        "id": "microgame",
+        "styleId": "microgame",
+        "group": "group-09",
+        "name": "微游戏快闪",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/microgame/STYLE.md",
+        "upstreamSha256": "ad13d34bd06a65bef81b04f531c4f256bcc0bff4f229f976d52e07d5beef9dd5",
+        "reference": "references/styles/microgame/STYLE.md",
+        "sourceFile": "references/styles/microgame/SOURCE.md",
+        "localSourceSha256": "a0d7995ada7ee6de91ba09ae1dbb525e3de2ffc2d6839d92cf83cfb5a807b046"
+      },
+      {
+        "id": "game-show",
+        "styleId": "game-show",
+        "group": "group-09",
+        "name": "综艺节奏扁平",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/game-show/STYLE.md",
+        "upstreamSha256": "cadee8f0ff8cfc206b49d852e5a0b15d7da432ad497fa8b19ac568ce386ff8e3",
+        "reference": "references/styles/game-show/STYLE.md",
+        "sourceFile": "references/styles/game-show/SOURCE.md",
+        "localSourceSha256": "0466dfe6d013d4ac4c772aa577a1b8ac1a520d119e1dfa9b0d9b51f683db1c0e"
+      },
+      {
+        "id": "silent-film",
+        "styleId": "silent-film",
+        "group": "group-10",
+        "name": "1920s 默片",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/silent-film/STYLE.md",
+        "upstreamSha256": "44633a4edd4ec6b84be809bd48b38503a75a71531112b3d28a52f27135012b20",
+        "reference": "references/styles/silent-film/STYLE.md",
+        "sourceFile": "references/styles/silent-film/SOURCE.md",
+        "localSourceSha256": "4b3976a80d9b62a68878791d8409196a7f87dcbcb08057c62a7b4a5e82a1a010"
+      },
+      {
+        "id": "backrooms",
+        "styleId": "backrooms",
+        "group": "group-10",
+        "name": "后室 / 新怪谈",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/backrooms/STYLE.md",
+        "upstreamSha256": "2a3697a1ce37d0fbae3281220ae6154eeb9789233f1fae472d55ac169ba26fb4",
+        "reference": "references/styles/backrooms/STYLE.md",
+        "sourceFile": "references/styles/backrooms/SOURCE.md",
+        "localSourceSha256": "ac38026f061ba483faa22d562d545120b21b2622929bd4a3cd538c50ef9b85f5"
+      },
+      {
+        "id": "brick-toy",
+        "styleId": "brick-toy",
+        "group": "group-11",
+        "name": "积木玩具",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/brick-toy/STYLE.md",
+        "upstreamSha256": "29b23e846951856b722a698a03c9458cfc17b4fc71d044f45d773acf2a742768",
+        "reference": "references/styles/brick-toy/STYLE.md",
+        "sourceFile": "references/styles/brick-toy/SOURCE.md",
+        "localSourceSha256": "9eeef48aefb9e9aa4a5e9b459193fbb4785b49ae7f3f9c04fb53930be3160f24"
+      },
+      {
+        "id": "paper-popup",
+        "styleId": "paper-popup",
+        "group": "group-11",
+        "name": "纸片立体书",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/paper-popup/STYLE.md",
+        "upstreamSha256": "8e5c0ca430fd96b75c4d9c2af92a87c84d4d1af8cda64280a189c51279e1ee9b",
+        "reference": "references/styles/paper-popup/STYLE.md",
+        "sourceFile": "references/styles/paper-popup/SOURCE.md",
+        "localSourceSha256": "ffc86ef75fefadea41c78ffa77ee41a4442686ee2152ccd462ef51dffbc38a9e"
+      },
+      {
+        "id": "tilt-shift",
+        "styleId": "tilt-shift",
+        "group": "group-11",
+        "name": "移轴微缩",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/tilt-shift/STYLE.md",
+        "upstreamSha256": "131ae50c6bddd30922638cbd5f2fae5c047223360a3f6924b074b0db525a5c63",
+        "reference": "references/styles/tilt-shift/STYLE.md",
+        "sourceFile": "references/styles/tilt-shift/SOURCE.md",
+        "localSourceSha256": "f65effc8de8f27c14e6f7ffe5c19b373370ddaa05e24a08cdd210d749a21a273"
+      },
+      {
+        "id": "lowpoly-island",
+        "styleId": "lowpoly-island",
+        "group": "group-11",
+        "name": "低多边形等距",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/lowpoly-island/STYLE.md",
+        "upstreamSha256": "1ae7bcd6aa3d521f563d8905f8109842fd7252ff8b70c1bd18265105a8a450f9",
+        "reference": "references/styles/lowpoly-island/STYLE.md",
+        "sourceFile": "references/styles/lowpoly-island/SOURCE.md",
+        "localSourceSha256": "98182ee2845a687a293dd869faba8fa6b52a9e9ab39ef2344384cb5e299bab22"
+      },
+      {
+        "id": "glass-product",
+        "styleId": "glass-product",
+        "group": "group-11",
+        "name": "玻璃质感产品",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/glass-product/STYLE.md",
+        "upstreamSha256": "630fa80cde0930154ba64f15bce5c8ee0c8dcf48d921253f8c7e3194712c8fb5",
+        "reference": "references/styles/glass-product/STYLE.md",
+        "sourceFile": "references/styles/glass-product/SOURCE.md",
+        "localSourceSha256": "8a817f4915420ea4b0fea728aa8e705bab33622badec32391c84e7c7b67a72e8"
+      },
+      {
+        "id": "memphis-diorama",
+        "styleId": "memphis-diorama",
+        "group": "group-11",
+        "name": "孟菲斯微缩景观",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/memphis-diorama/STYLE.md",
+        "upstreamSha256": "7f1748f2741d069e074172800d501ec00527db8a018e1e5ab4ecfa630ed6763b",
+        "reference": "references/styles/memphis-diorama/STYLE.md",
+        "sourceFile": "references/styles/memphis-diorama/SOURCE.md",
+        "localSourceSha256": "fdbb361b58d1e5c00555751e6a3a1b9c31fc76b1f3c266cb047373cec7be19e9"
+      },
+      {
+        "id": "desktop-flythrough",
+        "styleId": "desktop-flythrough",
+        "group": "group-11",
+        "name": "桌面穿梭",
+        "url": "https://github.com/lemomo-ai/lemo-opuscar/blob/bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00/styles/desktop-flythrough/STYLE.md",
+        "upstreamSha256": "d8c9113e10d7b3a5f65bbee86643305a5dc29739d0338091e1d0974ecf6d5eb7",
+        "reference": "references/styles/desktop-flythrough/STYLE.md",
+        "sourceFile": "references/styles/desktop-flythrough/SOURCE.md",
+        "localSourceSha256": "e2a78c325925d41a9a2764dea75f6290d89febcd8ea8865efcc944635a585848"
+      }
+    ]
+  }
+}

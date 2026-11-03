@@ -179,12 +179,12 @@
       }
     },
     {
-      "name": "wtt-code-animation-studio-skills",
-      "description": "Turns ideas, topics, articles, or ready scripts into front-end code animations with Chinese script, storyboard, editable source, and narrated MP4 export; recommends styles for user choice across hand-drawn, print, pixel, watercolor, sand, chalk, particle, clay, motion-graphics, and mixed-media looks via Canvas/p5.js and FFmpeg.",
+      "name": "wtt-code-video-studio-skills",
+      "description": "Unified code video studio: turns ideas, topics, articles, or scripts into knowledge, story, product, documentary, data, or creative videos; picks five full style directions per piece, renders frame-by-frame in the browser, calibrates narration timing, and delivers MP4. Keeps text, static diagram, and interactive HTML branches for concept explanation, with asset version review, default personal voice, video footage intake, and final visual evidence.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [
-        "wtt-code-animation-studio"
+        "wtt-code-video-studio"
       ],
       "version": "0.1.0",
       "author": {
@@ -199,20 +199,6 @@
       "strict": false,
       "skills": [
         "wtt-fin-chart"
-      ],
-      "version": "0.1.0",
-      "author": {
-        "name": "Water",
-        "email": "wattterjiang@gmail.com"
-      }
-    },
-    {
-      "name": "wtt-concept-explainer-skills",
-      "description": "Turns abstract concepts, technical principles, and traditional knowledge systems into fine-grained diagrams, interactive single-file HTML pages, or narrated MP4 videos with storyboard, text effects, model-linked animation, and audio-visual sync; includes local voice cloning, frame-by-frame export, and acceptance checks without depending on other skills.",
-      "source": "../wattter_skills",
-      "strict": false,
-      "skills": [
-        "wtt-concept-explainer"
       ],
       "version": "0.1.0",
       "author": {

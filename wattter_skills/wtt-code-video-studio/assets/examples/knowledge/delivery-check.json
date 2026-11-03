@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "assetReview": {
+    "manifestSha256": "7555f33491f250d491c9308ee4512e087d80923c08959f6eceb8df8a536145b4",
+    "version": "v0001"
+  },
+  "durationSeconds": 8.0,
+  "totalFrames": 160,
+  "decodeErrors": [],
+  "samplePeakDbfs": -1.5,
+  "finalSha256": "2949fa0c00155c978d302ada3fe37ae0e52ae26a3b7915116aa7fae47f9385d2",
+  "timelineSha256": "09b43743d4719210fad3ee816a7806bf36de25bf97f79378227558d105250ba2",
+  "visualReview": "pending-human-or-agent-image-inspection",
+  "userAcceptance": "pending"
+}

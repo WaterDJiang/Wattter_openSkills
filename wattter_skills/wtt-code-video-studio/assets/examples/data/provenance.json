@@ -1,0 +1,20 @@
+{
+  "createdAt": "2026-11-03T06:12:28.240886+00:00",
+  "original": true,
+  "externalMedia": [],
+  "description": "自写图形/动作/示例数据/合成音；系统字体仅由浏览器调用，未分发字体文件",
+  "sourceSha256": "da661b19d422990f69fbece00f2b07ba8e38459220f43da5c01c477cac04be81",
+  "generatorSha256": "fed5881b1cb4430b7649887d436beec91c44333aba95c4dd6958a9bb9cb687b9",
+  "artifacts": {
+    "final.mp4": "d17f496d85225ce692f9b6c74bdd3ef59dfec75d66b7b451642a375530d1e394",
+    "still.png": "c214cbb24ad9da51446d011e1b588eee9a5b98d46299c78ebb0e371a1412afb5",
+    "film.json": "90e741c8a251fba506a0db972f58c85e6a5bebd9585a29956bd8db10ee5687ca",
+    "assets.json": "8177e43080ca678e2cc98f9aefdf2cb0e7b98623af104654206bdaefebd021ae",
+    "render-report.json": "8c5ef997331cd39695f9de10aed4e4428a0951ff0bbd57bd4ea158b8a2a764e4",
+    "delivery-check.json": "754a23794c02ec67b471ca652c9971228770bb8d70dfcaa0934c2e84167dd697"
+  },
+  "visualReview": "agent-sampled-frames-pass",
+  "audioListening": "not_checked",
+  "userAcceptance": "pending",
+  "reviewScope": "首中尾640宽与1.5–3.5秒连续窗口；非独立审阅；不保证所有帧"
+}

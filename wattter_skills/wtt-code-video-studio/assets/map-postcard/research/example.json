@@ -1,0 +1,15 @@
+{
+ "schema":"map-research/v1","fixture":true,
+ "place":{"nameZh":"纸湾（虚构）","nameEn":"Paper Bay (Fictional)","scope":"河岸与老街的概念范围","season":"春","orientation":"北向上示意，位置经艺术压缩","latitude":null,"longitude":null,"sourceIds":["own-design"]},
+ "sources":[{"id":"own-design","provider":"self","reviewed":true,"rightsStatus":"user-owned","license":"本库原创测试设定","useBasis":"只用于验证构图交接，不是真实地点事实","localReference":"example.json 原创虚构设定"}],
+ "geographyTreatment":"保留水岸与街区分区；全部为虚构，不提供真实导航。",
+ "cameraRoute":"由北向南，先塔再屋顶，最后到桥。",
+ "loopTreatment":"首尾接入重复绿地缓冲，特色地标只出现一次；不将真实街道强行正弦变形。",
+ "elements":[
+ {"id":"water","type":"river","name":"纸河","box":[740,30,150,1350],"reason":"右侧留出纵向水面","sourceIds":["own-design"]},
+ {"id":"green","type":"greenery","name":"循环缓冲绿地","box":[50,1160,600,200],"reason":"承接首尾，避免重复地标","sourceIds":["own-design"]},
+ {"id":"tower","type":"landmark","shape":"tower","name":"纸湾钟塔","box":[140,130,200,280],"features":["窄高塔身","三角尖顶"],"reason":"第一视觉锚点","sourceIds":["own-design"]},
+ {"id":"hall","type":"landmark","shape":"roof","name":"折纸会馆","box":[380,540,270,210],"features":["对称曲屋顶","横向长屋身"],"reason":"街区中段的横向对比","sourceIds":["own-design"]},
+ {"id":"bridge","type":"landmark","shape":"bridge","name":"纸拱桥","box":[650,900,320,150],"features":["单孔拱","细长桥面"],"reason":"跨水连接两个区域，允许桥与水面重叠","sourceIds":["own-design"]}
+ ]
+}

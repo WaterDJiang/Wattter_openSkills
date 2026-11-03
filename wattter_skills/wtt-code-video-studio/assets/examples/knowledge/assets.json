@@ -1,0 +1,14 @@
+{
+  "assets": [
+    {
+      "id": "events",
+      "landingUrl": null,
+      "license": "本项目自制合成音；随仓库许可发布",
+      "path": "audio/events.wav",
+      "sourceUrl": null,
+      "useBasis": "make_examples.py 数学振荡器生成，无外部采样或私人录音"
+    }
+  ],
+  "links": [],
+  "schema": "code-animation-assets/v1"
+}
