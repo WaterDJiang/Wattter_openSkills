@@ -11,6 +11,11 @@ const root = path.resolve(process.argv[2] || '.');
 const mode = process.argv.includes('--render') ? 'render' : 'preview';
 const formatFlag = process.argv.indexOf('--frame-format');
 const frameFormat = formatFlag < 0 ? 'png' : process.argv[formatFlag + 1];
+const reviewFlag = process.argv.indexOf('--review-frames');
+let previewApproval;
+function reviewTool(command, extra=[]) {
+  return JSON.parse(execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname,'preview_review.py'),command,root,...extra], {encoding:'utf8'}));
+}
 const hash = b => crypto.createHash('sha256').update(b).digest('hex');
 const fileHash = p => hash(fs.readFileSync(p));
 const errors = [], sourceSha256 = {};
@@ -30,7 +35,10 @@ async function main() {
   const approved = new Map(view.selection.assets.map(a=>[a.path,a.sha256]));
   const approvedLinks = new Set([...assetSelection.links.map(a=>a.url), ...assetSelection.assets.map(a=>a.landingUrl).filter(Boolean)].map(u=>new URL(u).href));
   const t = JSON.parse(fs.readFileSync(path.join(root, 'timeline.json')));
-  if (mode === 'render') execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname, 'pipeline.py'), 'check', root], {stdio: 'inherit'});
+  if (mode === 'render') {
+    execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname, 'pipeline.py'), 'check', root], {stdio: 'inherit'});
+    previewApproval=reviewTool('check',['--kind','pipeline']);
+  }
   if (t.assetReview?.version!==assetReview.version || t.assetReview?.manifestSha256!==assetReview.manifestSha256) throw Error('时间轴未绑定当前素材锁；重新编译时间轴');
   if (t.filmSha256 !== fileHash(path.join(root, 'film.json'))) throw Error('film.json 已变化；重新编译时间轴');
   let playwright;
@@ -101,9 +109,17 @@ async function main() {
     await checkLinks();
     return stage.screenshot({type:format, ...(format==='jpeg'?{quality:95}:{}), animations:'allow'});
   };
-  const preview = path.join(root, 'preview'); fs.mkdirSync(preview, {recursive:true});
+  let preview = path.join(root, 'preview');
+  if(mode==='render'){
+    const candidates=path.join(root,'.preview-review','candidates');fs.mkdirSync(candidates,{recursive:true});
+    const ids=fs.readdirSync(candidates).filter(x=>/^render-\d+$/.test(x)).map(x=>Number(x.slice(7)));
+    preview=path.join(candidates,`render-${String(Math.max(0,...ids)+1).padStart(4,'0')}`);
+  }
+  fs.mkdirSync(preview, {recursive:true});
   // Boundaries plus each scene midpoint: review cuts, captions and representative poses.
-  const samples = new Set([0, t.totalFrames - 1]);
+  const quadFrames=reviewFlag<0?(previewApproval?.frameIndices||[.08,.35,.65,.92].map(x=>Math.min(t.totalFrames-1,Math.floor(x*t.totalFrames)))):String(process.argv[reviewFlag+1]||'').split(',').map(v=>Number(v));
+  if(t.totalFrames<4 || quadFrames.length!==4 || new Set(quadFrames).size!==4 || quadFrames.some(f=>!Number.isInteger(f)||f<0||f>=t.totalFrames)) throw Error('--review-frames须为四个不同且未越界的整数帧号，如20,90,170,260');
+  const samples = new Set([0, t.totalFrames - 1,...quadFrames]);
   for (const s of t.scenes) for (const f of [s.startFrame, s.startFrame + Math.floor(s.durationFrames / 2), s.endFrame - 1]) samples.add(f);
   for (const c of t.captions) samples.add(Math.floor((c.startFrame + c.endFrame - 1) / 2));
   // Beat grid is sampled for long clips; every declared action gets before/on/after evidence.
@@ -131,8 +147,12 @@ async function main() {
     estimateScope:'画面截图粗估；不含浏览器启动、完整编码与混音，不是完成时间承诺'};
   fs.writeFileSync(path.join(preview,'index.html'),'<!doctype html><meta charset="utf-8"><title>逐帧审阅</title><style>body{background:#eee;font:14px system-ui}main{display:flex;flex-wrap:wrap;gap:12px}figure{margin:0;background:white;padding:8px}img{max-width:320px;height:auto}</style><h1>逐帧审阅</h1><p>抽样证据不等于观感通过；检查事件前后、文字和循环接缝。</p><main>'+sampleFrames.map(f=>`<figure><img loading="lazy" src="frame-${String(f).padStart(6,'0')}.png"><figcaption>帧 ${f} · ${(f/t.fps).toFixed(3)}s</figcaption></figure>`).join('')+'</main>');
   const report = {mode, frameEncoding:{format:frameFormat,quality:frameFormat==='jpeg'?95:null,preview:'png'}, assetReview, previewCoverage, previewPerformance, timelineSha256:fileHash(path.join(root,'timeline.json')), browser:browser.version(),
-    totalFrames:t.totalFrames, durationSeconds:t.durationSeconds, determinism, browserErrors:errors, sourceSha256};
+    totalFrames:t.totalFrames, durationSeconds:t.durationSeconds, determinism, browserErrors:errors, sourceSha256, ...(previewApproval?{previewReview:previewApproval}:{})};
   if (mode === 'render') {
+    const requestFile=path.join(preview,'review-request.json');
+    fs.writeFileSync(requestFile,JSON.stringify({frames:quadFrames.map(frame=>({frame,file:path.relative(root,path.join(preview,`frame-${String(frame).padStart(6,'0')}.png`))}))},null,2)+'\n');
+    const resampled=reviewTool('check',['--kind','pipeline','--request',requestFile]);
+    if(JSON.stringify(resampled)!==JSON.stringify(previewApproval))throw Error('整片导出前四帧批准变化；停止渲染');
     const log = fs.openSync(path.join(root, 'render-ffmpeg.log'), 'w');
     try {
       encoder = spawn('ffmpeg', ['-y','-hide_banner','-loglevel','warning','-f','image2pipe','-vcodec',frameFormat==='jpeg'?'mjpeg':'png','-framerate',String(t.fps),'-i','pipe:0','-an','-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',path.join(root,'silent.mp4')], {stdio:['pipe','ignore',log]});
@@ -155,10 +175,27 @@ async function main() {
       report.videoSha256=fileHash(path.join(root,'silent.mp4'));
     } finally { fs.closeSync(log); }
   }
+  if(mode==='render'){
+    const finalApproval=reviewTool('check',['--kind','pipeline']);
+    if(JSON.stringify(finalApproval)!==JSON.stringify(previewApproval)) throw Error('渲染期间四帧批准变化；不能验收');
+  }
   const finalAssets=materialCheck();
   if(finalAssets.manifestSha256!==assetReview.manifestSha256) throw Error('渲染期间素材版本变化；不能验收');
   if(errors.length) throw Error(errors.join('\n'));
   fs.writeFileSync(path.join(root, mode==='render'?'render-report.json':'preview-report.json'), JSON.stringify(report,null,2)+'\n');
+  if(mode==='preview'){
+    const bound={...sourceSha256};
+    const add=file=>{if(fs.existsSync(file)&&fs.statSync(file).isFile())bound[path.relative(root,file).split(path.sep).join('/')]=fileHash(file);};
+    for(const name of ['film.json','timeline.json','assets.json'])add(path.join(root,name));
+    for(const name of fs.readdirSync(root))if(/\.(js|html|css)$/.test(name))add(path.join(root,name));
+    const scan=folder=>{if(!fs.existsSync(folder))return;for(const name of fs.readdirSync(folder)){const file=path.join(folder,name);if(fs.statSync(file).isDirectory())scan(file);else if(/\.(js|html|css)$/.test(name))add(file);}};scan(path.join(root,'code'));
+    for(const name of ['pipeline.py','render.cjs','preview_review.py','asset_review.py'])add(path.join(root,'tools',name));
+    const request={kind:'pipeline',fps:t.fps,totalFrames:t.totalFrames,width:t.width,height:t.height,assetReview,sourceSha256:bound,frames:quadFrames.map(frame=>({frame,file:`preview/frame-${String(frame).padStart(6,'0')}.png`}))};
+    const requestFile=path.join(preview,'review-request.json');fs.writeFileSync(requestFile,JSON.stringify(request,null,2)+'\n');
+    report.previewReview=reviewTool('prepare',['--request',requestFile]);
+    fs.writeFileSync(path.join(root,'preview-report.json'),JSON.stringify(report,null,2)+'\n');
+    console.log(`四帧拼图待用户确认：${report.previewReview.contactSheet} (${report.previewReview.version})`);
+  }
   console.log(`${mode} complete: ${root}`);
 }
 main().catch(e=>{

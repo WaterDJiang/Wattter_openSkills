@@ -7,9 +7,13 @@ const Spatial=node?require('./world.js'):root.SpatialPostcard;
 const VIEWS=['multi-angle','top-down','isometric','scroll-top-down'];
 function resolve(config={}){
  if(!config||typeof config!=='object'||Array.isArray(config))throw Error('config须为对象');
- const c={season:'春',scene:'village',seed:20261103,viewProfile:'multi-angle',palette:'vivid',paletteOverrides:{},...config};
+ const c={season:'春',scene:'village',seed:20261103,viewProfile:'multi-angle',palette:'vivid',paletteOverrides:{},fps:30,durationSeconds:20,...config};
+ if(!Number.isInteger(c.fps)||c.fps<1||c.fps>120)throw Error('fps须为1–120整数');
+ if(!Number.isFinite(c.durationSeconds)||c.durationSeconds<4||c.durationSeconds>180)throw Error('durationSeconds须为4–180秒');
+ c.frames=Math.round(c.fps*c.durationSeconds);if(Math.abs(c.frames-c.fps*c.durationSeconds)>1e-8)throw Error('片长必须对应整数帧');
  if(!VIEWS.includes(c.viewProfile))throw Error('viewProfile须为multi-angle/top-down/isometric/scroll-top-down');
- if(c.reveal===undefined)c.reveal=c.viewProfile==='scroll-top-down';
+ if(c.palette==='memphis'&&c.viewProfile==='scroll-top-down')throw Error('memphis须使用空间路线multi-angle/top-down/isometric；旧scroll-top-down只支持vivid/soft');
+ if(c.reveal===undefined)c.reveal=c.palette==='memphis'||c.viewProfile==='scroll-top-down';
  if(!['village','city'].includes(c.scene))throw Error('scene须为village/city');
  if(!Number.isInteger(c.seed))throw Error('seed须为整数');
  if(c.reveal!==undefined&&typeof c.reveal!=='boolean')throw Error('reveal须为布尔值');

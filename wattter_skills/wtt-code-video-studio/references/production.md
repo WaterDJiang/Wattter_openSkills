@@ -4,7 +4,7 @@
 
 制作前按 [风格选择](style-selection.md) 完成用户决定并保存候选/选择记录。`style-choice.md` 由执行者核对，当前 Python/JS 管线不解析对话、不自动强制这个交互门槛；不能把能运行导出命令当作用户已确认。
 
-初始化脚本把 `assets/starter/`、五个工具、声音配置模板/模型目录、声音依赖文件及 `VOICE.md`、`ASSETS.md`、`FOOTAGE.md`、`QUALITY.md` 复制到一个空项目目录。已有项目不能覆盖初始化。新片先 init，再在该目录保存剧本/风格候选与选择记录；init 是不依赖风格的准备，不代表选用了示例风格，也不能提前把示例导出为用户成片。已有工程直接沿用，不为补充选择记录重新 init。制作产物与 skill 源码分离。
+初始化脚本把 `assets/starter/`、六个工具、声音配置模板/模型目录、声音依赖文件及 `VOICE.md`、`ASSETS.md`、`FOOTAGE.md`、`QUALITY.md`、`PREVIEW.md` 复制到一个空项目目录。已有项目不能覆盖初始化。新片先 init，再在该目录保存剧本/风格候选与选择记录；init 是不依赖风格的准备，不代表选用了示例风格，也不能提前把示例导出为用户成片。已有工程直接沿用，不为补充选择记录重新 init。制作产物与 skill 源码分离。
 
 ```text
 project/
@@ -15,7 +15,7 @@ project/
   .asset-review/                    版本化清单、原素材、候选、diff 与授权
   timeline.json                     工具编译；不要手改
   index.html, runtime.js, scenes.js, footage.js  前端舞台与绘制代码
-  tools/pipeline.py, tools/render.cjs, tools/voice.py, tools/asset_review.py, tools/footage.py
+  tools/pipeline.py, tools/render.cjs, tools/voice.py, tools/asset_review.py, tools/footage.py, tools/preview_review.py
   config/model-catalog.json, config/voice.example.json
   requirements-voice.txt, VOICE.md, ASSETS.md   可选个人音色的依赖与说明
   .voice-local/                     用户私有声音配置、录音、模型；不打包
@@ -86,6 +86,8 @@ project/
 
 ## 常用命令
 
+完整渲染之前必须先按[四帧审阅](preview-review.md)展示当前代码四帧拼图并得到确认。方向选择不等于拼图确认；没有真实用户原话时只能preview，不能照抄命令中的占位说明冒用批准。预览可用`--review-frames 20,90,170,260`指定本片四个关键时刻。
+
 在初始化后的项目目录执行。先完成剧本、用户风格选择及分镜，再由执行者改写 `film.json` 和 `scenes.js`：
 
 素材统一采用 [审阅机制](material-review.md)，没有三档或开场模式选择。首次选材/下载自主进行，来源与使用依据写入 assets.json；所有素材与声音确定后 seal。已有锁时先 check，变化仅存候选并审阅。纯代码估时可先执行 `python3 tools/pipeline.py timeline .`；浏览器预览必须绑定素材锁，已有 timeline 时首次 seal 需如实填写 --migration-note。
@@ -97,6 +99,8 @@ python3 tools/asset_review.py seal .
 python3 tools/pipeline.py timeline . --lock
 python3 tools/pipeline.py mix .
 node tools/render.cjs . --preview
+# 展示输出的四帧拼图并等待用户确认，使用实际版本和用户原话
+python3 tools/preview_review.py approve . --version v0001 --message '用户对该拼图的明确原话'
 node tools/render.cjs . --render
 python3 tools/pipeline.py finish .
 ```
@@ -109,7 +113,7 @@ python3 tools/pipeline.py finish .
 
 前端播放可以在项目目录执行 `python3 -m http.server 8765 --bind 127.0.0.1` 后访问本机端口；`file://` 不能可靠加载 JSON。生成混音后，网页播放会使用 `mix-master.wav`。模板导出只截 `#stage`，不截播放按钮。
 
-派生视频/报告仍会重建；保留成片版本时使用项目备份目录，完整保留 .asset-review。素材文件不能直接覆盖，先提议与确认再提交新版。台词改变后候选 TTS→审阅提交→锁时→混音→渲染；仅画面代码改变且素材/导流不变时直接重新预览/渲染→合成，不触发素材确认。最终合成会拒绝已变化的已加载源文件、视频、音频或时间轴。
+派生视频/报告仍会重建；保留成片版本时使用项目备份目录，完整保留 .asset-review。素材文件不能直接覆盖，先提议与确认再提交新版。四帧确认单独绑定当前实际画面，变更失效不能冒用旧批准。台词改变后候选 TTS→素材审阅提交→锁时→混音→四帧确认→渲染；仅画面代码改变且素材/导流不变时重新预览→新版四帧确认→渲染/合成，不触发素材确认。最终合成会拒绝已变化的已加载源文件、视频、音频或时间轴。
 
 ## 浏览器接口
 
@@ -127,9 +131,9 @@ window.__ready = true; // 所有资产、字体、首帧就绪后
 
 ## 验证和故障
 
-`--preview` 生成每镜首、中、尾帧、每条字幕中点和全片首尾；代表帧重画前插入其他帧，验证 5 个样本是否一致。它不证明所有帧都没有瑕疵。先看图，再正式渲染。
+`--preview` 生成每镜首、中、尾帧、每条字幕中点和全片首尾；代表帧重画前插入其他帧，验证 5 个样本是否一致。它不证明所有帧都没有瑕疵。先自查看图和关键动作，再展示四帧拼图；用户明确确认后才正式渲染。
 
-`finish` 自动调用技术检查，也可单独运行 `python3 tools/pipeline.py validate .`。先校验当前素材锁、时间轴/混音/渲染/合成回执的素材版本绑定，再检查 H.264/AAC、宽高/fps、实际帧数、音画时长、完整解码和采样峰值。`delivery-check.json` 的视觉检查与用户确认初始为 pending；真实查看后另写 `review.md`，记审查时间、帧号、问题修正和未检查项。
+`finish` 自动调用技术检查，也可单独运行 `python3 tools/pipeline.py validate .`。先校验当前素材锁、时间轴/混音/渲染/合成回执的素材版本绑定，再检查 H.264/AAC、宽高/fps、实际帧数、音画时长、完整解码和采样峰值。`delivery-check.json` 的视觉检查与用户确认初始为 pending；之后执行review-init，实际查看最终编码证据并填写visual-review.json，再运行review；字段与状态只维护在[视频质量](video-quality.md)。
 
 - 浏览器报错、HTTP 素材缺失或不一致帧：保存 `render-failure.json`，先修页面再导出。
 - 缺配音/旧配音/过期时间轴：按错误提示更新源头，不删检查逻辑。
@@ -140,45 +144,7 @@ window.__ready = true; // 所有资产、字体、首帧就绪后
 
 ## 节拍与动作事件（可选）
 
-没有 rhythm / loop 的旧 film.json 保持原输出字段与时间语义。新增字段只编译节奏和审查信息，不选择画风、不改变旁白、不自动生成动作。修改这些代码/节奏配置需重锁时间轴和渲染；素材未变不重复确认。
-
-```json
-{
-  "rhythm": {
-    "bpm": 120,
-    "offsetSeconds": 0,
-    "beatsPerBar": 4,
-    "basis": "用户提供的 120 BPM；已核对首重拍位于全片 0 秒",
-    "audioFile": "audio/music.wav",
-    "events": [
-      {"id": "press", "beat": 2, "action": "光标按下按钮", "sceneId": "opening"},
-      {"id": "expand", "beat": 4, "action": "同一容器展开为结果面板"}
-    ]
-  },
-  "audioTracks": [
-    {"file": "audio/music.wav", "startSeconds": 0, "gain": 0.15},
-    {"file": "audio/click.wav", "startBeat": 2, "gain": 0.4}
-  ],
-  "loop": false
-}
-```
-
-这是 film.json 的可选片段，仍须有完整的 schema、画幅和 scenes；示例事件必须落在实际片长及 opening 镜头内。文件先登记资产并 seal，按原 timeline --lock → mix → preview → render → finish 流程执行。
-
-- 拍号从 0 开始。BPM 每个拍点从绝对时间单独量化到最近整数帧（半帧向上），不累计已舍入拍长。offsetSeconds 是**全片时间**，已包含音乐进入点；不额外加 audioTracks.startSeconds。
-- 变速/人工核对网格用 `"beatTimesSeconds": [0.15, 0.66, 1.18, 1.71]` 替代 bpm 和 offsetSeconds，不允许两种来源同时填写。时间点严格递增且落在 [0,totalFrames) 内，不允许不同拍点落到同一帧。
-- rhythm.basis 必填，说明用户提供/人工设计/分析后核对；不提供自动音频测拍或正确性认证。与实际音乐关联时填 audioFile，必须引用 audioTracks 内素材，受原哈希与审阅约束。无配乐的设计节奏可省略 audioFile。
-- events 为关键动作提示，不是动作引擎。id 唯一，action 必填；可填 sceneId 检查事件是否仍在指定镜头。生成代码读取 `timeline.rhythm.events` 的 frame，不能另造一套舍入规则。
-- 音轨 startBeat 与 startSeconds 互斥；编译器把 startBeat 转为同一拍点帧对应的 startSeconds，再按现有混音器定位。需要细分拍时提供更细的时间点网格；当前事件不接受小数拍号。
-- 拍点越界、非法输入、音效超片尾均报错，不自动截断音乐或旁白。BPM 自动网格只生成片内拍点；引用片外 beat 会失败。更改镜头后复核事件与音乐关系。
-- rhythm/loop 均写入 timeline 并由 filmSha256/时间轴过期检查约束。init 的工具副本需要同步升级 pipeline.py 和 render.cjs；原 asset_review.py、voice.py 保留在同目录。
-
-预览继续包含每镜首中尾与字幕中点，额外抽取最多 64 个均匀覆盖全片的拍点，以及**每个**事件前/当/后帧。报告 `previewCoverage` 列出实际帧、总拍数/抽样拍数，长片不能冒称看完每拍；`preview/index.html` 汇总本次抽帧，旧 PNG 不列入本次索引。
-
-`loop: true` 额外抽取片头/片尾连续三帧，并标 `sampled-needs-motion-and-audio-review`。不改变播放方式或导出长度，不调用区间外的第 N 帧，也不自动认定无缝；按制作类型说明人工检查接缝。
-
-`previewPerformance` 保存实际截图调用数与耗时，以及全片截图成本粗估；其范围不含浏览器启动、完整编码与混音。它不是硬性时限或性能保证，shader、多重曝光等改动后必须重新测量。
-
+用户给音乐拍点、BPM、事件或循环要求时才读[节拍配置](rhythm.md)。保留原rhythm/loop字段含义；普通无节拍任务不必读该schema。
 
 ## 可选视频片段
 

@@ -2,10 +2,17 @@
 (function(root){'use strict';
 const TAU=Math.PI*2,mod=(x,n)=>(x%n+n)%n,smooth=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x)};
 const PALETTES={
- vivid:{paper:'#FDFDF9',ink:'#4D6170',river:'#65BDE4',grass:'#80C9A0',fields:['#F8D45B','#92CE93','#8FCDE8'],trees:['#FFC94A','#50B792','#F59A66'],walls:['#F2ABC7','#B8AAE5','#91CEE5','#96D3B5'],roofs:['#F8D774','#D0C2F1','#B3DDE7'],road:'#CDD1DF',mark:'#FFFDF0'},
- soft:{paper:'#FDFDF9',ink:'#6C796E',river:'#B6D6DC',grass:'#D6E4BC',fields:['#E6CF65','#BDD895','#EEC4CE'],trees:['#D8C183','#ADC5A2','#DCA69D'],walls:['#D6C1C8','#C6C2D4','#B6CFD2','#BFCDB6'],roofs:['#E4D5AA','#D7CDD9','#C6D6D2'],road:'#E5E3D7',mark:'#FFFDF0'}
+ memphis:{paper:'#FDFDF9',ground:'#F1EFD9',ink:'#25214A',river:'#2E5BE6',grass:'#A9E6C6',fields:['#FFC93C','#FF8DB5','#8DD3F6'],trees:['#FFC93C','#FF5A5F','#A9E6C6'],walls:['#FF8DB5','#D3BEFF','#8DD3F6','#A9E6C6'],roofs:['#FFC93C','#2E5BE6','#FF5A5F'],road:'#D3BEFF',mark:'#FDFDF9'},
+ vivid:{paper:'#FDFDF9',ground:'#F1EFD9',ink:'#4D6170',river:'#65BDE4',grass:'#80C9A0',fields:['#F8D45B','#92CE93','#8FCDE8'],trees:['#FFC94A','#50B792','#F59A66'],walls:['#F2ABC7','#B8AAE5','#91CEE5','#96D3B5'],roofs:['#F8D774','#D0C2F1','#B3DDE7'],road:'#CDD1DF',mark:'#FFFDF0'},
+ soft:{paper:'#FDFDF9',ground:'#F1EFD9',ink:'#6C796E',river:'#B6D6DC',grass:'#D6E4BC',fields:['#E6CF65','#BDD895','#EEC4CE'],trees:['#D8C183','#ADC5A2','#DCA69D'],walls:['#D6C1C8','#C6C2D4','#B6CFD2','#BFCDB6'],roofs:['#E4D5AA','#D7CDD9','#C6D6D2'],road:'#E5E3D7',mark:'#FFFDF0'}
 };
 const SEASONS={
+ memphis:{
+  '春':{trees:['#FFC93C','#FF8DB5','#A9E6C6']},
+  '夏':{trees:['#A9E6C6','#8DD3F6','#FFC93C']},
+  '秋':{trees:['#FFC93C','#FF5A5F','#A9E6C6']},
+  '冬':{trees:['#8DD3F6','#D3BEFF','#FF8DB5']}
+ },
  vivid:{
   '春':{grass:'#9BD18B',trees:['#F6D45B','#65BF91','#F3ADC8'],fields:['#F8D45B','#92CE93','#8FCDE8']},
   '夏':{grass:'#77BE93',trees:['#2E9E7E','#66BC8D','#A4D274'],fields:['#80C7A4','#B9DA75','#81CEE2']},
@@ -20,7 +27,7 @@ const SEASONS={
  }
 };
 function palette(name='vivid',overrides={}){
- if(!Object.hasOwn(PALETTES,name))throw Error('palette须为vivid/soft');
+ if(!Object.hasOwn(PALETTES,name))throw Error('palette须为vivid/soft/memphis');
  if(!overrides||typeof overrides!=='object'||Array.isArray(overrides))throw Error('paletteOverrides须为对象');
  const base=PALETTES[name],out={};
  for(const key of Object.keys(overrides))if(!Object.hasOwn(base,key))throw Error('未知功能色 '+key);
@@ -32,7 +39,7 @@ function palette(name='vivid',overrides={}){
  return out;
 }
 function seasonPalette(season='春',{palette:name='vivid',overrides={}}={}){
- if(!Object.hasOwn(SEASONS,name))throw Error('palette须为vivid/soft');
+ if(!Object.hasOwn(SEASONS,name))throw Error('palette须为vivid/soft/memphis');
  if(!Object.hasOwn(SEASONS[name],season))throw Error('季节须为春/夏/秋/冬');
  palette(name,overrides);return palette(name,{...SEASONS[name][season],...overrides});
 }

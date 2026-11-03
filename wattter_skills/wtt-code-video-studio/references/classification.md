@@ -13,9 +13,9 @@
 | **数据与汇报**：让数字支持结论 | 动态图表 / 对比分析 / 业务复盘 / 研究摘要 | 用这份CSV解释增长来自哪里 | [配方](explanation.md) |
 | **视觉与创意**：用运动与材质表达 | 沙画演变 / 生成艺术 / 片头 / 像素循环 / 音乐视觉化 / 季节地图明信片 / 手绘电影式动画 | 做一个沙粒聚成山川的片头 | [配方](visual-recipes.md) |
 
-路径：**想法/材料 → 主用途 → 内容与脚本 → 五种完整方向（形式+策略+画风） → 用户决定 → 代码实现 → MP4及验收**。
+路径：**想法/材料 → 主用途 → 内容与脚本 → 五种完整方向（形式+策略+画风） → 风格决定 → 代码样帧 → 四帧拼图确认 → 完整渲染及验收**。
 
-分类用于浏览和自动路由，不是新加的开场选择。文字/静态SVG/交互HTML可从知识解释分支直接交付。
+分类用于浏览和自动路由，不是新加的开场选择。已指定画风跳过五选，仍须四帧审片；文字/静态SVG/交互HTML可从知识解释分支直接交付。
 
 ## 按具体主题用法检索
 
@@ -125,7 +125,7 @@
 | 电影与时代 | 2 | [1920s 默片](styles/silent-film/STYLE.md)、[后室 / 新怪谈](styles/backrooms/STYLE.md) |
 | 材质与 3D | 7 | [积木玩具](styles/brick-toy/STYLE.md)、[纸片立体书](styles/paper-popup/STYLE.md)、[移轴微缩](styles/tilt-shift/STYLE.md)、[低多边形等距](styles/lowpoly-island/STYLE.md)、[玻璃质感产品](styles/glass-product/STYLE.md)、[孟菲斯微缩景观](styles/memphis-diorama/STYLE.md)、[桌面穿梭](styles/desktop-flythrough/STYLE.md) |
 
-查看[可筛选风格库](../assets/gallery/styles.html)。SOURCE.md保留带MIT归属的完整方法，STYLE.md为本库中文适配。方法收录不等于每条都完成本库原创视频验证；当前实测样片仍为6个。
+查看[可筛选风格库](../assets/gallery/styles.html)。SOURCE.md存放方法参考，STYLE.md记录本项目的制作指引。方法收录不等于每条都完成本库原创视频验证；当前实测样片仍为6个。
 
 
 长篇画法见[风格配方](style-catalog.md)。具体样例状态独立列于下面，不能从一个样例推广到整类能力。
@@ -137,7 +137,7 @@
 | canvas2d | tested-core | 确定性逐帧绘图，内置导出 |
 | svg-html | reference | 静态矢量/交互；自有参考代码 |
 | p5js | recipe | 生成艺术、噪声、笔刷；须处理帧时钟 |
-| threejs | recipe | 空间遮挡、真实3D镜头；本轮未跑3D |
+| threejs | recipe | 空间遮挡、真实3D镜头；已有单片WebGL2实测，尚无预装通用Three脚手架；按片接入并验证 |
 | gsap | recipe | 复杂补间，必须可seek且禁用自主ticker |
 | d3 | recipe | 数据比例尺/路径，动画仍从整数帧派生 |
 | remotion | recipe | React视频合成；需要适配原素材/声音/验收契约 |

@@ -172,6 +172,60 @@ def select_styles(data, purpose=None, query='', use_case=None):
     return result
 
 
+def style_summary(style):
+    """Discovery view: keep source facts; do not invent missing legacy fields."""
+    result = {key: style[key] for key in ('id', 'name', 'status', 'material', 'action', 'reference')
+              if key in style}
+    if 'useCaseMatches' in style:
+        result['useCaseMatches'] = [
+            {key: match[key] for key in ('useCaseId', 'fit', 'why', 'conditions')}
+            for match in style['useCaseMatches']]
+    return result
+
+
+def style_detail(data, style_id, use_case=None):
+    """One chosen candidate, with only the requested topic's matches when given."""
+    cid = resolve_use_case(data, use_case) if use_case else None
+    style = next((s for s in data['styles'] if s['id'] == style_id), None)
+    if style is None:
+        raise ValueError('未知风格ID：'+style_id)
+    matches = use_case_matches(data, style_id, cid)
+    if cid and not matches:
+        raise ValueError('该风格没有此用法映射：'+style_id+'/'+cid)
+    result = dict(style, useCaseMatches=matches)
+    coverage = data.get('referenceLibrary', {}).get('coverage', [])
+    source = next((e for e in coverage if e['styleId'] == style_id), None)
+    if source:
+        result['sourceFile'] = source['sourceFile']
+    if style.get('engines'):
+        result['engineStates'] = [e for e in data['engines'] if e['id'] in style['engines']]
+    return result
+
+
+def discovery_rows(rows, command, view='full', limit=None, offset=None):
+    """Opt-in summaries/pagination leave legacy full-array output untouched."""
+    if limit is not None and limit < 1:
+        raise ValueError('limit须为正整数')
+    if offset is not None and offset < 0:
+        raise ValueError('offset须为非负整数')
+    total = len(rows)
+    if view == 'summary':
+        if command == 'list':
+            rows = [style_summary(row) for row in rows]
+        elif command == 'use-cases':
+            rows = [{k: row[k] for k in ('id', 'name', 'purposes', 'goal')} for row in rows]
+        elif command == 'cases':
+            rows = [{k: row[k] for k in ('id', 'title', 'verification', 'outputKind', 'useCases',
+                                         'selectionReason', 'originalUrl')} for row in rows]
+    if limit is None and offset is None:
+        return rows
+    start = offset or 0
+    selected = rows[start:] if limit is None else rows[start:start+limit]
+    return {'total': total, 'offset': start, 'returned': len(selected),
+            'hasMore': start+len(selected) < total,
+            'order': 'catalog-order-not-recommendation', 'items': selected}
+
+
 def mapping_document(data):
     styles = {s['id']: s for s in data['styles']}
     samples = {s['id']: s for s in data['samples']}
@@ -179,9 +233,10 @@ def mapping_document(data):
     lines = ['# 主题用法与风格映射', '',
              '由 `config/capabilities.json` 的 useCases 生成。用法与风格多对多；六个主用途和现有风格ID不变。', '',
              '## 怎么使用', '',
-             '先识别内容目标、受众、事实/虚构和素材条件，再检索用法；交叉题材可取多个入口。候选是检索起点，模型结合本片脚本重新推荐五个完整方向，由用户决定。主匹配不是自动选中，有条件匹配不代表已具备依赖。', '',
+             '先识别内容目标、受众、事实/虚构和素材条件，再检索用法；交叉题材可取多个入口。候选是检索起点，模型结合本片脚本重新推荐五个完整方向，由用户决定。主匹配不是自动选中，有条件匹配不代表已具备依赖。风格决定后先展示四张真实样帧拼图，用户确认后才完整渲染；已指定画风不重复五选，仍需四帧审片。', '',
              '每条示例均为**原创样例构想，未渲染**；另列的同风格工程样片只证明其已有实现范围，不证明该构想、题材效果或全部81项均已验证。', '',
-             '```sh', 'python3 scripts/catalog.py use-cases', 'python3 scripts/catalog.py list --use-case 广告',
+             '```sh', 'python3 scripts/catalog.py use-cases --view summary', 'python3 scripts/catalog.py list --use-case 广告 --view summary',
+             'python3 scripts/catalog.py show desktop-flythrough --use-case 个人宣传',
              'python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩', '```', '',
              '## 用法入口', '', '| 用法 | 主用途 | 内容目标 | 结构起点 | 候选数 |', '|---|---|---|---|---|']
     categories = {c['id']: c['name'] for c in data['categories']}
@@ -276,7 +331,7 @@ def documents(root):
     lines=['# 分类路径与能力状态','','由 `config/capabilities.json` 生成；修改元数据后运行 `python3 scripts/catalog.py build`。','','## 按目的找到制作路径','','| 目的 | 形式（可组合） | 输入示例 | 方法 |','|---|---|---|---|']
     for c in data['categories']:
         lines.append(f"| **{c['name']}**：{c['goal']} | {' / '.join(c['forms'])} | {c['prompt']} | [配方]({Path(c['reference']).name}) |")
-    lines += ['','路径：**想法/材料 → 主用途 → 内容与脚本 → 五种完整方向（形式+策略+画风） → 用户决定 → 代码实现 → MP4及验收**。','', '分类用于浏览和自动路由，不是新加的开场选择。文字/静态SVG/交互HTML可从知识解释分支直接交付。','', '## 视觉风格（与用途自由组合）','','| ID | 风格 | 基础状态 |','|---|---|---|']
+    lines += ['','路径：**想法/材料 → 主用途 → 内容与脚本 → 五种完整方向（形式+策略+画风） → 风格决定 → 代码样帧 → 四帧拼图确认 → 完整渲染及验收**。','', '分类用于浏览和自动路由，不是新加的开场选择。已指定画风跳过五选，仍须四帧审片；文字/静态SVG/交互HTML可从知识解释分支直接交付。','', '## 视觉风格（与用途自由组合）','','| ID | 风格 | 基础状态 |','|---|---|---|']
     for style in data['styles']: lines.append(f"| `{style['id']}` | [{style['name']}]({Path(style['reference']).relative_to('references').as_posix()}) | {'起步模板；按内容重画' if style['status']=='template' else '方法已收录；本片须实现验证'} |")
     if library:
         lines += ['', '## 完整参考目录覆盖', '', f"固定版本：`{library['commit']}`；参考11组66条全部映射，本库去重后共{len(styles)}项（含{sum(s.get('group')=='local' for s in data['styles'])}项本库补充），上面的6类是用途。", '', '| 参考组 | 数量 | 本地方法入口 |', '|---|---|---|']
@@ -284,7 +339,7 @@ def documents(root):
             members=[e for e in library['coverage'] if e['group']==group['id']]
             links='、'.join(f"[{e['name']}]({Path(e['reference']).relative_to('references').as_posix()})" for e in members)
             lines.append(f"| {group['name']} | {len(members)} | {links} |")
-        lines += ['', '查看[可筛选风格库](../assets/gallery/styles.html)。SOURCE.md保留带MIT归属的完整方法，STYLE.md为本库中文适配。方法收录不等于每条都完成本库原创视频验证；当前实测样片仍为6个。', '']
+        lines += ['', '查看[可筛选风格库](../assets/gallery/styles.html)。SOURCE.md存放方法参考，STYLE.md记录本项目的制作指引。方法收录不等于每条都完成本库原创视频验证；当前实测样片仍为6个。', '']
     lines += ['','长篇画法见[风格配方](style-catalog.md)。具体样例状态独立列于下面，不能从一个样例推广到整类能力。','','## 技术选项','','| 技术 | 状态 | 用途与边界 |','|---|---|---|']
     for e in data['engines']: lines.append(f"| {e['id']} | {e['status']} | {e['use']} |")
     lines += ['','**有 Three.js 路线**，但当前内置逐帧底座和本轮六例均为 Canvas；Three.js/p5.js/Remotion 等需要为具体镜头接入、检查确定性和渲染，不能当作已安装即用的全部后端。','','## 新制样片','','| 用途 | 作品 | 风格 | 秒数 | 状态 |','|---|---|---|---|---|']
@@ -327,13 +382,32 @@ def documents(root):
     return result
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['build','check','list','use-cases','cases']);p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--purpose');p.add_argument('--query',default='');p.add_argument('--use-case');a=p.parse_args()
-    if a.command in ('list','use-cases','cases'):
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('command',choices=['build','check','list','show','use-cases','cases'])
+    p.add_argument('style_id',nargs='?',help='show命令的风格ID')
+    p.add_argument('--root',type=Path,default=ROOT)
+    p.add_argument('--purpose');p.add_argument('--query',default='');p.add_argument('--use-case')
+    p.add_argument('--view',choices=['full','summary'],default='full',help='summary仅返回发现所需字段；默认完整JSON保持兼容')
+    p.add_argument('--limit',type=int,help='显式分页，不是推荐前N项')
+    p.add_argument('--offset',type=int,help='显式分页起点，源目录顺序不是推荐排名')
+    a=p.parse_args()
+    if a.command != 'show' and a.style_id:
+        p.error('只有show命令接受风格ID')
+    if a.command == 'show' and (not a.style_id or a.purpose or a.query or a.limit is not None or a.offset is not None):
+        p.error('show须指定风格ID，可选--use-case，不接受列表过滤或分页')
+    if a.command in ('build','check') and (a.view != 'full' or a.limit is not None or a.offset is not None):
+        p.error('build/check不接受摘要或分页')
+    if a.command in ('list','show','use-cases','cases'):
         data=json.loads((a.root/'config/capabilities.json').read_text());
         try:
             validate_use_cases(data)
             validate_reference_cases(data)
-            rows=select_styles(data,a.purpose,a.query,a.use_case) if a.command=='list' else select_reference_cases(data,a.purpose,a.query,a.use_case) if a.command=='cases' else [{k:c[k] for k in ('id','name','aliases','purposes','goal','structure','needs')} for c in data.get('useCases',[])]
+            if a.command == 'show':
+                row = style_detail(data, a.style_id, a.use_case)
+                rows = style_summary(row) if a.view == 'summary' else row
+            else:
+                rows=select_styles(data,a.purpose,a.query,a.use_case) if a.command=='list' else select_reference_cases(data,a.purpose,a.query,a.use_case) if a.command=='cases' else [{k:c[k] for k in ('id','name','aliases','purposes','goal','structure','needs')} for c in data.get('useCases',[])]
+                rows=discovery_rows(rows,a.command,a.view,a.limit,a.offset)
         except ValueError as error: p.error(str(error))
         print(json.dumps(rows,ensure_ascii=False,indent=2));return
     for name,content in documents(a.root).items():

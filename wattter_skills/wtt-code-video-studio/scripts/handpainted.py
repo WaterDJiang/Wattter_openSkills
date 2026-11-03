@@ -31,7 +31,7 @@ def create(project):
         'example': 'handpainted-cinema/v2', 'files': entries,
         'scope': '自有12秒工程示例；正式剧本/角色/时长另按内容重编，尚未合成声音/锁素材/渲染',
     }, ensure_ascii=False, indent=2) + '\n')
-    print(f'已创建V2手绘示例：{project}；画面入口scene.js，先做静帧和动作审阅，再正式渲染。')
+    print(f'已创建V2手绘示例：{project}；画面入口scene.js，tools/preview_review.py已复制；先生成四帧拼图与动作证据，用户明确确认后再完整渲染，见PREVIEW.md。')
     return project
 
 

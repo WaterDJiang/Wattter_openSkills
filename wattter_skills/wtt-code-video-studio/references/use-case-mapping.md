@@ -4,13 +4,14 @@
 
 ## 怎么使用
 
-先识别内容目标、受众、事实/虚构和素材条件，再检索用法；交叉题材可取多个入口。候选是检索起点，模型结合本片脚本重新推荐五个完整方向，由用户决定。主匹配不是自动选中，有条件匹配不代表已具备依赖。
+先识别内容目标、受众、事实/虚构和素材条件，再检索用法；交叉题材可取多个入口。候选是检索起点，模型结合本片脚本重新推荐五个完整方向，由用户决定。主匹配不是自动选中，有条件匹配不代表已具备依赖。风格决定后先展示四张真实样帧拼图，用户确认后才完整渲染；已指定画风不重复五选，仍需四帧审片。
 
 每条示例均为**原创样例构想，未渲染**；另列的同风格工程样片只证明其已有实现范围，不证明该构想、题材效果或全部81项均已验证。
 
 ```sh
-python3 scripts/catalog.py use-cases
-python3 scripts/catalog.py list --use-case 广告
+python3 scripts/catalog.py use-cases --view summary
+python3 scripts/catalog.py list --use-case 广告 --view summary
+python3 scripts/catalog.py show desktop-flythrough --use-case 个人宣传
 python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩
 ```
 

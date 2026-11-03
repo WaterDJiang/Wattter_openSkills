@@ -34,6 +34,7 @@ def main():
     dest=a.out.resolve()
     if dest.exists():raise SystemExit('输出目录已存在；使用全新目录，不覆盖已有作品或清单')
     dest.mkdir(parents=True)
+    pending=[]
     catalog=json.loads((ROOT/'config/capabilities.json').read_text())
     for index,sample in enumerate(catalog['samples']):
         if a.only and a.only!=sample['id']:continue
@@ -54,7 +55,10 @@ def main():
         run(sys.executable,project/'tools/pipeline.py','mix',project)
         if a.render:
             run('node',project/'tools/render.cjs',project,'--preview')
-            # Review image before publishing; this tool only renders and gathers technical evidence.
+            # New four-frame gate: never invent user consent during batch generation.
+            approval=subprocess.run([sys.executable,str(project/'tools/preview_review.py'),'check',str(project),'--kind','pipeline'],capture_output=True,text=True)
+            if approval.returncode:
+                pending.append(str(project));print('四帧待用户确认，未导出整片：'+str(project),flush=True);continue
             run('node',project/'tools/render.cjs',project,'--render','--frame-format','jpeg')
             run(sys.executable,project/'tools/pipeline.py','finish',project)
             run(sys.executable,project/'tools/pipeline.py','review-init',project)
@@ -65,4 +69,6 @@ def main():
                'artifacts':{name:sha(project/name) for name in ('final.mp4','still.png','film.json','assets.json','render-report.json','delivery-check.json')},
                'visualReview':'pending','audioListening':'not_checked','userAcceptance':'pending'})
         print('generated',project,flush=True)
+    if pending:
+        raise SystemExit('已生成预览但未获四帧确认；待审工程：'+', '.join(pending))
 if __name__=='__main__':main()

@@ -9,6 +9,8 @@ const river=y=>760+62*Math.sin(TAU*y/H)+24*Math.sin(2*TAU*y/H);
 const road=y=>365+36*Math.sin(TAU*y/H);
 function model(i){const t=mod(i,N)/N;return {t,camY:t*H,windmillAngle:t*TAU*3,cloudY:t*H*.55,planeX:mod(t*2,1)*1440-180};}
 function make(canvas,config={}){
+ const frames=config.frames||N,duration=config.durationSeconds||20;
+ const modelAt=i=>{const t=mod(i,frames)/frames;return {t,camY:t*H,windmillAngle:t*TAU*3,cloudY:t*H*.55,planeX:mod(t*2,1)*1440-180};};
  const c=canvas.getContext('2d'),rng=mulberry32(config.seed??20261103),autumn=config.season==='秋',city=config.scene==='city';
  const colors=P.seasonPalette(config.season||'春',{palette:config.palette||'vivid',overrides:config.paletteOverrides||{}}),p=colors.fields,BG=colors.paper;
  if(!p)throw Error('季节须为春/夏/秋/冬');if(!['village','city'].includes(config.scene||'village'))throw Error('scene须为village/city');
@@ -22,7 +24,7 @@ function make(canvas,config={}){
  function label(s,x,y,size){c.font=`${size}px "PingFang SC","Microsoft YaHei",sans-serif`;c.textAlign='center';c.fillStyle='#374f48';c.fillText(s,x,y);}
  function repeated(y,draw,height=H){for(let k=-2;k<=2;k++){const sy=y+k*height;if(sy>-220&&sy<W+220)draw(sy);}}
  function world(m){
-  rect(0,0,W,W,BG);
+  rect(0,0,W,W,Object.hasOwn(config.paletteOverrides||{},'ground')?colors.ground:BG);
   if(!city){for(let row=0;row<8;row++)for(let col=0;col<3;col++){
    let wy=row*180;repeated(wy-m.camY,sy=>{rect(38+col*101,sy+22,89,140,p[(row+col+30)%3]);c.strokeStyle='#FDFDF9';c.lineWidth=2;for(let k=1;k<8;k++){c.beginPath();c.moveTo(38+col*101+k*11,sy+22);c.lineTo(38+col*101+k*11,sy+162);c.stroke();}});
   }}
@@ -52,20 +54,20 @@ function make(canvas,config={}){
   c.save();c.translate(m.planeX,165+18*Math.sin(TAU*m.t*2));rect(-27,-3,54,6,'#839eab');rect(-6,-23,12,46,'#839eab');rect(-22,-12,6,24,'#839eab');c.restore();
  }
  function frame(i,{unmasked=false}={}){
-  if(!Number.isInteger(i))throw Error('frame index must be integer');const m=model(i);c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,canvas.width,canvas.height);c.save();c.scale(canvas.width/W,canvas.height/W);rect(0,0,W,W,BG);
-  const sec=m.t*20,open=Math.min(1,sec),close=sec<=18?1:Math.max(0,(20-sec)/2),scale=unmasked||config.reveal===false?1:Math.min(open,close);
+  if(!Number.isInteger(i))throw Error('frame index must be integer');const m=modelAt(i);c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,canvas.width,canvas.height);c.save();c.scale(canvas.width/W,canvas.height/W);rect(0,0,W,W,BG);
+  const sec=m.t*duration,open=Math.min(1,sec),close=sec<=duration-2?1:Math.max(0,(duration-sec)/2),scale=unmasked||config.reveal===false?1:Math.min(open,close);
   c.save();c.beginPath();c.rect(540-450*scale,490-450*scale,900*scale,900*scale);c.clip();world(m);c.restore();
   if(!unmasked){
    // Fixed paper-grain brush around border, never a fresh random mask each frame.
    for(const s of specks){if(Math.min(Math.abs(s.x-90),Math.abs(s.x-990),Math.abs(s.y-40),Math.abs(s.y-940))<25){c.globalAlpha=s.a;disk(s.x,s.y,s.r,BG);}}c.globalAlpha=1;
-   if(config.reveal!==false&&sec>19){const q=(sec-19),a=1-q;for(let k=0;k<18;k++){const ang=k*TAU/18;disk(540+Math.cos(ang)*q*95,490+Math.sin(ang)*q*70,a*2.5,`rgba(85,104,92,${a})`);}}
+   if(config.reveal!==false&&sec>duration-1){const q=(sec-duration+1),a=1-q;for(let k=0;k<18;k++){const ang=k*TAU/18;disk(540+Math.cos(ang)*q*95,490+Math.sin(ang)*q*70,a*2.5,`rgba(85,104,92,${a})`);}}
    rect(0,941,W,139,BG);const geo=config.latitude==null||config.longitude==null?'示意地图 · 未标注真实坐标':`${Math.abs(config.latitude)}° ${config.latitude<0?'S':'N'}, ${Math.abs(config.longitude)}° ${config.longitude<0?'W':'E'}`;
    label(`${config.placeZh||'示例小镇'}  ${config.placeEn||'Sample Town'}`,540,975,25);
    label(`${config.season||'春'} — ${config.moodZh||'风把日子吹得很慢'} / ${config.moodEn||'A quiet day drifts by'}`,540,1011,20);label(geo,540,1045,18);
   }
   c.restore();return canvas;
  }
- return {frame,model,river,road,colors,worldMode:'scroll'};
+ return {frame,model:modelAt,river,road,colors,worldMode:'scroll'};
 }
 const api={make,model,river,road,mod,N,H};if(typeof module!=='undefined')module.exports=api;else root.LegacyScrollPostcard=api;
 })(typeof window==='undefined'?globalThis:window);

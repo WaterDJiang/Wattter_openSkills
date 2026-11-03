@@ -15,6 +15,7 @@ from pathlib import Path
 if str(Path(__file__).resolve().parent) not in sys.path:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
 import asset_review
+import preview_review
 import footage
 
 SCHEMA = 'code-animation/v1'
@@ -341,6 +342,9 @@ def check_render(root):
     t = locked(root)
     check_mix(root)
     r = read(root / 'render-report.json')
+    approval = preview_review.check(root, 'pipeline')
+    if r.get('previewReview') != approval:
+        raise ValueError('渲染未绑定当前四帧批准；先确认拼图并重新完整渲染')
     if r.get('assetReview') != t['assetReview']:
         raise ValueError('渲染素材版本已过期；不能验收旧版本')
     if r.get('mode') != 'render' or r['timelineSha256'] != digest(root / 'timeline.json') or r['videoSha256'] != digest(root / 'silent.mp4'):
@@ -551,16 +555,17 @@ def init(root):
     shutil.copytree(base / 'assets/starter', root, dirs_exist_ok=True)
     target = root / 'tools'
     target.mkdir()
-    for name in ('pipeline.py', 'render.cjs', 'voice.py', 'asset_review.py', 'footage.py'):
+    for name in ('pipeline.py', 'render.cjs', 'voice.py', 'asset_review.py', 'footage.py', 'preview_review.py'):
         shutil.copy2(base / 'scripts' / name, target / name)
     (root / 'config').mkdir()
     for name in ('model-catalog.json', 'voice.example.json'):
         shutil.copy2(base / 'config' / name, root / 'config' / name)
     shutil.copy2(base / 'requirements-voice.txt', root / 'requirements-voice.txt')
     shutil.copy2(base / 'references/voice.md', root / 'VOICE.md')
-    (root / 'ASSETS.md').write_text((base / 'references/material-review.md').read_text().replace('(footage.md)', '(FOOTAGE.md)'), encoding='utf-8')
+    (root / 'ASSETS.md').write_text((base / 'references/material-review.md').read_text().replace('(footage.md)', '(FOOTAGE.md)').replace('(preview-review.md)', '(PREVIEW.md)'), encoding='utf-8')
     (root / 'FOOTAGE.md').write_text((base / 'references/footage.md').read_text().replace('(material-review.md)', '(ASSETS.md)'), encoding='utf-8')
-    shutil.copy2(base / 'references/video-quality.md', root / 'QUALITY.md')
+    shutil.copy2(base / 'assets/project-docs/QUALITY.md', root / 'QUALITY.md')
+    shutil.copy2(base / 'assets/project-docs/PREVIEW.md', root / 'PREVIEW.md')
     shutil.copy2(base / '.gitignore', root / '.gitignore')
     print(f'已创建起步项目：{root}；先按用户内容改 film.json 和 scenes.js')
     import voice as voice_tools
