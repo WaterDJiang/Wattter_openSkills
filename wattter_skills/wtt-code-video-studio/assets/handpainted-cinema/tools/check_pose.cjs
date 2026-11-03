@@ -1,0 +1,6 @@
+const assert=require('assert/strict'),fs=require('fs'),path=require('path'),{state,birdPoint,rootX}=require('../courier.js');
+let observations=[];
+for(const [leg,times]of [[0,[.02,.15,.3]],[1,[.35,.5,.65]]]){let anchors=times.map(t=>{let s=state(t);return[s.x+s.feet[leg][0]*s.scale,s.y+s.feet[leg][1]*s.scale];});for(let i=1;i<anchors.length;i++){assert(Math.abs(anchors[i][0]-anchors[0][0])<1e-8,'plant foot slides horizontally');assert(Math.abs(anchors[i][1]-936)<1e-8,'plant foot floats vertically');}observations.push({leg,times,anchors,passed:true});}
+let positions=Array.from({length:361},(_,i)=>rootX(i/30));assert(positions.every((x,i)=>!i||x>=positions[i-1]),'root goes backwards');assert.equal(rootX(4),850);assert.equal(rootX(12),850);
+for(let i=0;i<360;i++){let s=state(i/30);assert(Number.isFinite(s.x+s.y+s.wrist[0]+s.wrist[1]));assert.equal(s.release,i>=185);let d=Math.hypot(s.wrist[0]-27,s.wrist[1]+219);assert(d<=138&&d>10,'arm target unreachable');}
+const report={scope:'world-space planted-foot invariance, no root overshoot, finite reachable wrist targets, release-frame boundary; not an art-quality test',observations,totalSampledFrames:360,passed:true};fs.writeFileSync(path.join(__dirname,'..','pose-check.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

@@ -101,7 +101,7 @@
 | `memphis-diorama` | [孟菲斯微缩景观](styles/memphis-diorama/STYLE.md) | 方法已收录；本片须实现验证 |
 | `desktop-flythrough` | [桌面穿梭](styles/desktop-flythrough/STYLE.md) | 方法已收录；本片须实现验证 |
 | `seasonal-map-postcard` | [季节地图明信片](seasonal-map.md) | 起步模板；按内容重画 |
-| `handpainted-cinema` | [手绘电影式角色动画](handpainted-cinema.md) | 方法已收录；本片须实现验证 |
+| `handpainted-cinema` | [手绘电影式角色动画](handpainted-cinema.md) | 起步模板；按内容重画 |
 
 ## 完整参考目录覆盖
 

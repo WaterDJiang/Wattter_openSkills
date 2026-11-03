@@ -25,9 +25,9 @@ description: 代码视频工作室。将想法、主题、文章或剧本编成�
 | 纪录片、档案、新闻、多机位/直播外观 | [制作形式](references/video-formats.md)、[视频素材](references/footage.md) | 来源、时间、事实/推断/示意分开；直播外观不冒充正在直播 |
 | 产品/机制的连续镜头与主体细节 | [镜头排布](references/video-layout.md)、[视觉工艺](references/visual-craft.md) | 内容适合才用产品发布式构图；旁白分段不自动切镜 |
 | 选择画风和绘图库 | [选择流程](references/style-selection.md)、[风格配方](references/style-catalog.md)、[画法选型](references/visual-recipes.md) | 五方向按本片重新筛选；依赖及实现状态明确 |
-| 季节地图、地名明信片、无缝循环 | [地图模板](references/seasonal-map.md)、[配色与视角](references/map-art-direction.md) | 先[查地点与地标](references/map-research.md)，按网络选Google/百度；鲜明/柔和配色按内容选，俯视/斜俯视可同世界换角度；frame(i)、Node PNG、配乐与接缝检查 |
+| 季节地图、地名明信片、无缝循环 | [地图模板](references/seasonal-map.md)、[配色与视角](references/map-art-direction.md) | 先[查地点与地标](references/map-research.md)，按网络选Google/百度；默认沿兰州V2鲜明粉彩与单片俯视→两侧斜俯视→回俯视，显式要求可改固定/柔和；frame(i)、Node PNG、配乐与接缝检查 |
 | 城市/乡村/文旅的地方音乐与声景 | [地点声音](references/location-sound.md) | 核对地方线索；本地到区域逐级匹配，小众地点有依据地兜底；许可、实际录音地与试听状态分开记录 |
-| 手绘电影感、绘画背景与原创角色表演 | [手绘电影动画](references/handpainted-cinema.md) | 先原创角色风险动作小样；HTML播放器不当作绘图源码 |
+| 手绘电影感、绘画背景与原创角色表演 | [手绘电影动画](references/handpainted-cinema.md) | 默认沿自有V2工艺与源码示例：形体笔触/暗前亮远/接地/道具绑定；先静帧再动作，HTML播放器不当绘图源码 |
 | 导演/声音/风格沉淀与原创示例 | [风格包](references/style-pack.md) | 方法、可变内容、原创样片分离；库外个人风格显式保存 |
 
 ## 一次可审阅的方案选择
@@ -42,6 +42,7 @@ description: 代码视频工作室。将想法、主题、文章或剧本编成�
 
 - 新工程 `init` 自动执行轻量声音 doctor；已有工程首次调用也运行 `voice.py doctor --project ...`。缺模型/自定义音色提醒按 [README](README.md)配置；不阻塞无声片/已有外部配音，不自动下载。有效 `defaultVoice` 默认使用，不反复试音确认。
 - [配音指南](references/voice.md)规定发现顺序、旧配置兼容及失败边界。有配置但失效必须报错，不静默换系统音色。私人录音、逐字文本和模型不随开源包发布。
+- 明信片新片默认viewProfile:multi-angle、palette:vivid、reveal:false；通用模板已实际接入相机/高度投影/季节功能色，不只列库名。地方河水/树种/建筑依据高于色板；已指定固定视角或柔和方向就沿用，不新增选择题。旧滚动用scroll-top-down，旧工程不自动重渲染。
 - 真实地点视频按[地点声音](references/location-sound.md)研究音乐/环境声，适用于大城市及小众县镇乡村；记录sound-plan.json，先找本地，再按文化区域、省域、相似地景、原创逐级回退，标明匹配依据与非当地实录。八音盒/8bit只作示范或兜底，不固定套用；声音候选合入原决策包，已指定/委托就沿用，不新增开场选项。
 - 素材统一采用[审阅机制](references/material-review.md)，不设三档或开场模式。首次可搜索、下载和选材，记录来源与许可/使用依据；来源不清的外部内容不包装成可再分发资产。用户材料优先，互联网补缺口。
 - 确定后 seal 版本锁，保存 ID、路径、来源 URL、许可、SHA256、导流 URL。重跑 check，一致直接继续；代码变化且素材/导流未变不触发素材确认。
@@ -55,6 +56,7 @@ description: 代码视频工作室。将想法、主题、文章或剧本编成�
 python3 "$SKILL_DIR/scripts/pipeline.py" init "$PROJECT_DIR"
 ```
 
+- 已选手绘电影式角色动画时，使用 `python3 "$SKILL_DIR/scripts/handpainted.py" "$PROJECT_DIR"` 代替上面的通用init；内部复用同一管线。按V2工艺基线先设计静帧/色彩与景层，再验证角色接地、道具连接和完整动作；源码例子的12秒/森林/信使不限定正式题材和时长。
 - 起步模板只验证运行接口，正式场景按内容重写。按风险先做代表帧/短动作，再扩全片。默认 Canvas/SVG；p5.js、Three.js、GSAP、D3、Remotion 等按效果和现有环境选择。新增路线先实测，不能把配方列表称为已装后端。
 - `film.json` 是内容源，`timeline.json` 由工具编译成整数帧。每帧只依赖帧号/seed/资产，await 异步绘制，重置画布状态；不依赖系统时钟或累积 ticker。暂停、拖动、乱序导出共用模型。
 - 需要旁白时生成或接入音频和文字旁车；台词变化重新生成/核对。声音动作事件与时间轴共用时码，旁白/原声/环境/音乐按需分轨；不强制音乐或固定次数运镜。ASR、自动 ducking 目前无内置验证后端。

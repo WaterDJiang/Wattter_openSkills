@@ -1,0 +1,13 @@
+{
+  "basis": "自有《晚风来信》V2纯Canvas绘图源码；参考仅提取方法，无第三方成片/媒体",
+  "artSources": {
+    "forest.js": "84999fbc00de98f98bb9bb70b079fb9f43734bc83ce833cb35696da9e0f2d290",
+    "courier.js": "3c77d117d17859976f8f4a8eda8c2a60359f2dcacf03b55ca1d77e43fcbae28e",
+    "scene.js": "224f737594bc7485b121242291534acf200ce3ef4cc4fc45f5e7cc137ba71b7b"
+  },
+  "priorFinalSha256": "11d58fabf929f867abdfcb6ea85620278e88308847bcc58933c052f0a808ba7f",
+  "scope": "12秒原创建程示例；不是任意主题自动渲染器，不固定正式内容时长",
+  "priorVisualEvidence": "HANDPAINT-03，技术/代理基础帧序列自查；参考画质等同未宣称",
+  "referenceMediaBundled": false,
+  "privateVoiceBundled": false
+}

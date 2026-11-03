@@ -1,0 +1,8 @@
+{
+  "name": "handpainted-cinema-example",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "canvas": "3.2.0"
+  }
+}

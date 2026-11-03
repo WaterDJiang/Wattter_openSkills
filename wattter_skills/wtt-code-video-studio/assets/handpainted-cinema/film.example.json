@@ -1,0 +1,95 @@
+{
+  "audioTracks": [
+    {
+      "file": "audio/music.wav",
+      "gain": 0.82,
+      "startSeconds": 0
+    },
+    {
+      "file": "audio/foley.wav",
+      "gain": 0.6,
+      "startSeconds": 0
+    }
+  ],
+  "fps": 30,
+  "height": 1080,
+  "loop": false,
+  "scenes": [
+    {
+      "director": {
+        "group": "paper-bird-continuous",
+        "reviewAtSeconds": 0
+      },
+      "id": "beat-1",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "走入林间",
+      "visualSeconds": 2
+    },
+    {
+      "director": {
+        "group": "paper-bird-continuous",
+        "reviewAtSeconds": 0
+      },
+      "id": "beat-2",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "停步听风",
+      "visualSeconds": 2
+    },
+    {
+      "director": {
+        "group": "paper-bird-continuous",
+        "reviewAtSeconds": 0
+      },
+      "id": "beat-3",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "抬手寄信",
+      "visualSeconds": 2
+    },
+    {
+      "director": {
+        "group": "paper-bird-continuous",
+        "reviewAtSeconds": 0
+      },
+      "id": "beat-4",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "纸鸟离手",
+      "visualSeconds": 2
+    },
+    {
+      "director": {
+        "group": "paper-bird-continuous",
+        "reviewAtSeconds": 0
+      },
+      "id": "beat-5",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "目光相送",
+      "visualSeconds": 2
+    },
+    {
+      "director": {
+        "group": "paper-bird-continuous",
+        "reviewAtSeconds": 0
+      },
+      "id": "beat-6",
+      "leadSeconds": 0,
+      "narration": "",
+      "tailSeconds": 0,
+      "title": "晚风来信",
+      "visualSeconds": 2
+    }
+  ],
+  "schema": "code-animation/v1",
+  "seed": 20261103,
+  "title": "晚风来信",
+  "width": 1920
+}
