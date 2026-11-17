@@ -219,6 +219,62 @@
       "author": {
         "name": "Water"
       }
+    },
+    {
+      "name": "wtt-video-screenwriter-skills",
+      "description": "Screenwriter: develops ideas, material, or existing stories into serialized shorts, complete short films, and standalone episodes, delivering story briefs, characters, outlines, shootable scripts, and three-pass review; storyboards go to directing and asset/video prompts to production.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-video-screenwriter"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
+    },
+    {
+      "name": "wtt-video-director-skills",
+      "description": "Director: turns scripts, stories, or reference images into storyboards, spatial lighting and color, shot language, voice performance, and asset requirements; final image/video prompts and production packs are handed to the producer skill or any production workflow.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-video-director"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
+    },
+    {
+      "name": "wtt-video-producer-skills",
+      "description": "Producer: organizes storyboards into per-character, per-scene, and per-segment prompt cards plus one shared keyframe card, with a master index mapping assets, usage, and versions; delivers text production packs by default and drives real generation only with explicit authorization.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-video-producer"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
+    },
+    {
+      "name": "wtt-video-editor-skills",
+      "description": "Editor: joins existing footage or generated clips into a playable MP4 with FFmpeg — probing head/tail contact frames, trimming duplicated motion, handling transitions and audio continuity — and delivers an edit plan documenting every cut.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-video-editor"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
     }
   ]
 }
