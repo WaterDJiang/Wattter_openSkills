@@ -180,7 +180,7 @@
     },
     {
       "name": "wtt-code-video-studio-skills",
-      "description": "Code video studio: turns ideas, articles, or scripts into front-end code animations and MP4s; recommends five directions per piece, shows a four-frame contact sheet for user confirmation, then renders fully and delivers with narration-calibrated timing. Covers concept explanation (text, static diagrams, interactive HTML), personal promo, product tutorials, documentary, data stories, and map postcards, with default personal voice and asset version review. Ships an original handpainted-cinema character animation source template (V2 craft), maps use cases to style candidates, and carries a research-only reference case library with style fidelity checks.",
+      "description": "Code video studio: turns ideas, articles, or scripts into front-end code animations and MP4s; recommends five directions per piece, shows a four-frame contact sheet for user confirmation, then renders fully and delivers with narration-calibrated timing. Covers concept explanation (text, static diagrams, interactive HTML), personal promo, product tutorials, documentary, data stories, and map postcards, with default personal narration, stable per-character voices, per-utterance performance instructions on supported backends, and asset version review. Ships an original handpainted-cinema character animation source template (V2 craft), maps use cases to style candidates, and carries a research-only reference case library with style fidelity checks.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [

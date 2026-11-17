@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """检索模型、本地音色配置与离线配音；下载是独立显式命令。"""
 import argparse
+import gc
 import hashlib
 import json
 import math
@@ -11,6 +12,10 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+
+if str(Path(__file__).resolve().parent) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+import speech
 
 CATALOG = Path(__file__).resolve().parents[1] / 'config/model-catalog.json'
 
@@ -66,19 +71,29 @@ def load_config(path, voice_id=None):
         raise ValueError(f'未配置音色：{voice_id}')
     voice = c['voices'][voice_id]
     model = catalog(voice['model'])
-    if model['engine'] != 'qwen3-tts-mlx':
-        raise ValueError('该模型不是已接入的 Qwen3-TTS MLX 克隆模型')
+    variant = model.get('modelType', 'base')
+    if model['engine'] != 'qwen3-tts-mlx' or model.get('role') != 'tts' or variant not in ('base', 'custom_voice'):
+        raise ValueError('该模型不是已接入的 Qwen3-TTS MLX 配音模型')
     location = c.get('models', {}).get(model['id'])
     if not location:
         raise ValueError(f'没有配置模型路径：{model["id"]}')
-    if voice.get('referenceTextVerified') is not True:
-        raise ValueError('先核对参考录音与文字，再设置 referenceTextVerified=true')
-    allowed_voice = {'label', 'model', 'referenceAudio', 'referenceTextFile', 'referenceTextVerified', 'language'}
+    allowed_voice = {'label', 'model', 'language'}
+    if variant == 'base':
+        allowed_voice |= {'referenceAudio', 'referenceTextFile', 'referenceTextVerified'}
+        if voice.get('referenceTextVerified') is not True:
+            raise ValueError('先核对参考录音与文字，再设置 referenceTextVerified=true')
+        speaker = None
+    else:
+        allowed_voice.add('speaker')
+        speaker = voice.get('speaker')
+        if not isinstance(speaker, str) or speaker.lower() not in model.get('supportedSpeakers', []):
+            raise ValueError(f'未知 CustomVoice speaker：{speaker}；使用 catalog 中固定声线')
+        speaker = speaker.lower()
     if set(voice) - allowed_voice:
         raise ValueError(f'不支持的音色字段：{sorted(set(voice)-allowed_voice)}')
     settings = {'seed': 42, 'temperature': .7, 'maxTokens': 1200} | c.get('generation', {})
     if set(settings) != {'seed', 'temperature', 'maxTokens'}:
-        raise ValueError('generation 只支持 seed、temperature、maxTokens；不支持 speed/instruct')
+        raise ValueError('generation 只支持 seed、temperature、maxTokens；不支持 speed/instruct，逐句指令放 performance.instruct')
     if type(settings['seed']) is not int or not 0 <= settings['seed'] < 2**32:
         raise ValueError('seed 必须为 0 至 2^32-1 的整数')
     if type(settings['maxTokens']) is not int or not 16 <= settings['maxTokens'] <= 4096:
@@ -90,11 +105,14 @@ def load_config(path, voice_id=None):
     if language not in ('auto', 'chinese', 'english', 'japanese', 'korean', 'german',
                         'french', 'russian', 'portuguese', 'spanish', 'italian'):
         raise ValueError('不支持的 language；使用模型支持的完整英文语言名')
-    return {'voiceId': voice_id, 'model': model, 'settings': settings, 'language': language,
-            'modelPath': resolve(path.parent, location['path']),
-            'manifestPath': resolve(path.parent, location['manifest']),
-            'referenceAudio': resolve(path.parent, voice['referenceAudio']),
-            'referenceTextFile': resolve(path.parent, voice['referenceTextFile'])}
+    result = {'voiceId': voice_id, 'model': model, 'settings': settings, 'language': language,
+              'configPath': path, 'variant': variant, 'speaker': speaker,
+              'modelPath': resolve(path.parent, location['path']),
+              'manifestPath': resolve(path.parent, location['manifest'])}
+    if variant == 'base':
+        result.update(referenceAudio=resolve(path.parent, voice['referenceAudio']),
+                      referenceTextFile=resolve(path.parent, voice['referenceTextFile']))
+    return result
 
 
 def discover_config(project=None, explicit=None):
@@ -202,23 +220,33 @@ def doctor(project=None, explicit=None):
             result['modelFilesPresent'] = True
         except (ValueError, OSError, KeyError, TypeError, AttributeError) as error:
             issues.append(f'模型需要完善：{error}')
-        audio_ok = text_ok = False
-        try:
-            audio = resolve(path.parent, voice.get('referenceAudio'))
-            if not audio.is_file() or audio.stat().st_size == 0:
-                raise ValueError('参考录音不存在或为空；填写 referenceAudio')
-            audio_ok = True
-        except (ValueError, OSError, TypeError) as error:
-            issues.append(f'个人音色需要完善：{error}')
-        try:
-            text_file = resolve(path.parent, voice.get('referenceTextFile'))
-            if not text_file.read_text(encoding='utf-8').strip():
-                raise ValueError('参考逐字文本为空；填写 referenceTextFile')
-            text_ok = True
-        except (ValueError, OSError, TypeError) as error:
-            issues.append(f'个人音色文字需要完善：{error}')
-        result['customVoiceFilesPresent'] = audio_ok and text_ok
-        result['referenceTextVerified'] = voice.get('referenceTextVerified') is True
+        if isinstance(locals().get('entry'), dict) and entry.get('modelType', 'base') == 'custom_voice':
+            result['voiceMode'] = 'custom_voice'
+            result['referenceRequired'] = False
+            preset = voice.get('speaker')
+            result['presetSpeakerPresent'] = isinstance(preset, str) and preset.lower() in catalog(voice['model']).get('supportedSpeakers', [])
+            if not result['presetSpeakerPresent']:
+                issues.append('预设角色需要完善：填写catalog支持的speaker')
+        else:
+            result['voiceMode'] = 'base'
+            result['referenceRequired'] = True
+            audio_ok = text_ok = False
+            try:
+                audio = resolve(path.parent, voice.get('referenceAudio'))
+                if not audio.is_file() or audio.stat().st_size == 0:
+                    raise ValueError('参考录音不存在或为空；填写 referenceAudio')
+                audio_ok = True
+            except (ValueError, OSError, TypeError) as error:
+                issues.append(f'个人音色需要完善：{error}')
+            try:
+                text_file = resolve(path.parent, voice.get('referenceTextFile'))
+                if not text_file.read_text(encoding='utf-8').strip():
+                    raise ValueError('参考逐字文本为空；填写 referenceTextFile')
+                text_ok = True
+            except (ValueError, OSError, TypeError) as error:
+                issues.append(f'个人音色文字需要完善：{error}')
+            result['customVoiceFilesPresent'] = audio_ok and text_ok
+            result['referenceTextVerified'] = voice.get('referenceTextVerified') is True
         # Reuse the production schema/settings checks, including the human transcript check.
         try:
             load_config(path)
@@ -226,7 +254,7 @@ def doctor(project=None, explicit=None):
             issues.append(f'配置需要完善：{error}')
         if not issues:
             result['status'] = 'configured-unverified'
-            result['nextStep'] = '已发现模型与默认个人音色，直接沿用；正式合成仍执行模型 SHA256、录音格式与平台检查。'
+            result['nextStep'] = '已发现模型与默认声音，直接沿用；正式合成仍执行模型SHA256、所需参考文件/预设speaker与平台检查。'
     except (ValueError, OSError, KeyError, TypeError, AttributeError) as error:
         issues.append(f'声音配置需要完善：{error}')
     return result
@@ -234,8 +262,18 @@ def doctor(project=None, explicit=None):
 
 def check(c):
     if platform.system() != 'Darwin' or platform.machine() != 'arm64':
-        raise ValueError('本克隆引擎仅支持 macOS Apple Silicon；其他平台使用外部配音入口')
+        raise ValueError('本配音引擎仅支持 macOS Apple Silicon；其他平台使用外部配音入口')
     count = verify_model(c['modelPath'], c['manifestPath'], c['model'])
+    if c['variant'] == 'custom_voice':
+        config = read(c['modelPath'] / 'config.json')
+        if config.get('tts_model_type') != 'custom_voice' or config.get('tts_model_size') != '1b7':
+            raise ValueError('CustomVoice 路线需要实际1.7B CustomVoice权重，不能用Base/0.6B替代')
+        if c['speaker'] not in config.get('talker_config', {}).get('spk_id', {}):
+            raise ValueError('所选 speaker 不在实际模型配置中')
+        return {'voiceId': c['voiceId'], 'modelId': c['model']['id'], 'verifiedFiles': count,
+                'referenceSeconds': None, 'referenceText': '',
+                'referenceAudioSha256': None, 'referenceTextSha256': None,
+                'speaker': c['speaker'], 'instructSupported': True}
     text = c['referenceTextFile'].read_text(encoding='utf-8').strip()
     if not text:
         raise ValueError('参考文字不能为空')
@@ -250,7 +288,8 @@ def check(c):
         raise ValueError('参考片段须为连续 3–30 秒；本工作流先选 10–20 秒完整句子')
     return {'voiceId': c['voiceId'], 'modelId': c['model']['id'], 'verifiedFiles': count,
             'referenceSeconds': duration, 'referenceText': text,
-            'referenceAudioSha256': sha(audio), 'referenceTextSha256': sha(c['referenceTextFile'])}
+            'referenceAudioSha256': sha(audio), 'referenceTextSha256': sha(c['referenceTextFile']),
+            'speaker': None, 'instructSupported': False}
 
 
 def download(model_id, root):
@@ -294,33 +333,100 @@ def download(model_id, root):
 def jobs_for(args):
     if args.project:
         import pipeline
-        root = args.project.resolve()
         import asset_review
+        root = args.project.resolve()
         asset_review.guard_if_locked(root)
         film = pipeline.config(root)
-        jobs = [(s.get('narration', '').strip(), pipeline.local(root, s.get('voice', f'audio/{s["id"]}.wav')))
-                for s in film['scenes'] if s.get('narration', '').strip()]
+        if getattr(args, 'instruct', ''):
+            raise ValueError('项目表演指令放 utterance.performance.instruct，不用全局 --instruct')
+        jobs = []
+        for scene in film['scenes']:
+            for job in speech.scene_utterances(film, scene):
+                jobs.append(dict(job, out=pipeline.local(root, job['voice']), projectRoot=root))
     else:
         if not args.text_file or not args.out:
-            raise ValueError('试音需要 --text-file 和 --out，或使用 --project 按镜头生成')
-        jobs = [(args.text_file.read_text(encoding='utf-8').strip(), args.out.resolve())]
-    if not jobs or any(not text for text, _ in jobs):
+            raise ValueError('试音需要 --text-file 和 --out，或使用 --project 按台词生成')
+        jobs = [dict(id='audition', speakerId='narrator', voiceId=None,
+                     text=args.text_file.read_text(encoding='utf-8').strip(),
+                     voice=str(args.out), out=args.out.resolve(), projectRoot=None,
+                     performance=speech.performance({'instruct': getattr(args, 'instruct', '')}),
+                     pauseAfterSeconds=0, externalVoiceVerified=False, legacy=True)]
+    if not jobs or any(not job['text'] for job in jobs):
         raise ValueError('待合成文字不能为空')
-    if args.project:
-        for _, path in jobs:
-            asset_review.protect_output(root, path)
-    paths = [path for _, path in jobs]
+    paths = [job['out'] for job in jobs]
     if len(set(paths)) != len(paths):
-        raise ValueError('多个镜头不能使用同一个输出音频路径')
-    for _, path in jobs:
+        raise ValueError('多个台词不能使用同一个输出音频路径')
+    for job in jobs:
+        path = job['out']; record = path.with_suffix('.wav.json')
         if path.suffix.lower() != '.wav':
             raise ValueError('合成输出必须为 .wav')
-        if path.exists() or path.with_suffix('.wav.json').exists():
-            raise ValueError(f'输出已存在，改用新版本目录或新文件名：{path}')
+        if path.exists() != record.exists():
+            raise ValueError(f'输出已存在或记录不完整，不能覆盖；改用新版本目录/候选：{path}')
     return jobs
 
 
+def prepare_job(c, job, verified):
+    perf = speech.performance(job.get('performance'))
+    if perf['instruct'] and c['variant'] != 'custom_voice':
+        raise ValueError(f'{job["id"]} 的音色 {c["voiceId"]} 不支持 instruct；使用CustomVoice或外部表演配音')
+    settings = c['settings'] | {'seed': speech.utterance_seed(c['settings']['seed'], job['id'])}
+    request = {'schema': 'voice-request/v2', 'speechRequestSha256': speech.request_fingerprint(job),
+               'text': job['text'], 'voiceId': c['voiceId'], 'variant': c['variant'],
+               'speaker': c['speaker'], 'modelId': c['model']['id'], 'modelRevision': c['model']['revision'],
+               'modelManifestSha256': sha(c['manifestPath']),
+               'referenceAudioSha256': verified['referenceAudioSha256'],
+               'referenceTextSha256': verified['referenceTextSha256'],
+               'language': c['language'], 'generation': settings,
+               'performance': perf, 'postprocess': 'attenuate-only-peak-ceiling-minus3dbfs/v1'}
+    encoded = json.dumps(request, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()
+    return request, hashlib.sha256(encoded).hexdigest()
+
+
+def reusable(job, request_sha):
+    out = job['out']; sidecar = out.with_suffix('.wav.json')
+    if not out.exists() and not sidecar.exists():
+        return False
+    if not out.is_file() or not sidecar.is_file():
+        raise ValueError(f'输出已存在或记录不完整，不能覆盖：{out}')
+    report = read(sidecar)
+    if report.get('synthesisRequestSha256') != request_sha or report.get('audioSha256') != sha(out):
+        raise ValueError(f'已有声音的文本/角色/表演/配置指纹不一致或旧记录不完整：{out}；在新版本/素材候选生成')
+    return True
+
+
+def protect_job_output(job):
+    import asset_review
+    root = job.get('projectRoot')
+    if root is None:
+        root = next((p for p in job['out'].parents if (p / '.asset-review').exists()), None)
+    if root is not None:
+        asset_review.protect_output(root, job['out'])
+
+
 def synthesize(c, jobs):
+    # Resolve all roles and unsupported controls before loading GPU weights or creating WAVs.
+    prepared, configs, verified_configs = [], {}, {}
+    for job in jobs:
+        voice_id = job.get('voiceId') or c['voiceId']
+        if voice_id not in configs:
+            configs[voice_id] = load_config(c['configPath'], voice_id)
+        chosen = configs[voice_id]
+        perf = speech.performance(job.get('performance'))
+        if perf['instruct'] and chosen['variant'] != 'custom_voice':
+            raise ValueError(f'{job["id"]} 的音色 {voice_id} 不支持 instruct；不能静默忽略')
+        if voice_id not in verified_configs:
+            verified_configs[voice_id] = check(chosen)
+        verified = verified_configs[voice_id]
+        request, request_sha = prepare_job(chosen, job, verified)
+        reused = reusable(job, request_sha)
+        if not reused:
+            protect_job_output(job)
+        prepared.append((job, chosen, verified, request, request_sha, reused))
+    reports = {job['id']: {'file': str(job['out']), 'durationSeconds': read(job['out'].with_suffix('.wav.json'))['durationSeconds'], 'reused': True}
+               for job, _, _, _, _, reused in prepared if reused}
+    pending = [entry for entry in prepared if not entry[-1]]
+    if not pending:
+        return [reports[job['id']] for job in jobs]
     attempts = []
     def guard(event, args):
         if event == 'socket.connect':
@@ -329,7 +435,6 @@ def synthesize(c, jobs):
     for key in ('HF_HUB_OFFLINE', 'TRANSFORMERS_OFFLINE', 'HF_HUB_DISABLE_TELEMETRY', 'DO_NOT_TRACK'):
         os.environ[key] = '1'
     sys.addaudithook(guard)
-    verified = check(c)
     import mlx.core as mx
     import numpy as np
     import soundfile as sf
@@ -337,49 +442,65 @@ def synthesize(c, jobs):
     from mlx_audio.tts.utils import load_model
     if not mx.metal.is_available():
         raise ValueError('Metal GPU 不可用；检查运行权限与本机环境')
-    start = time.monotonic()
-    model = load_model(c['modelPath'], lazy=False, strict=True)
-    load_seconds = time.monotonic() - start
-    reports = []
-    for index, (text, out) in enumerate(jobs):
-        mx.random.seed((c['settings']['seed'] + index) % 2**32)
-        started = time.monotonic()
-        chunks, tokens = [], []
-        for result in model.generate(text=text, lang_code=c['language'],
-                                     ref_audio=str(c['referenceAudio']), ref_text=verified['referenceText'],
-                                     temperature=c['settings']['temperature'],
-                                     max_tokens=c['settings']['maxTokens'], verbose=False):
-            chunks.append(np.array(result.audio, dtype=np.float32).reshape(-1))
-            tokens.append(result.token_count)
-            sample_rate = result.sample_rate
-        if not chunks or any(t >= c['settings']['maxTokens'] for t in tokens):
-            raise ValueError('没有完整语音或已达到 token 上限；缩短单镜台词/调整上限后在新输出目录重跑')
-        audio = np.concatenate(chunks)
-        if not len(audio) or not np.isfinite(audio).all() or np.max(np.abs(audio)) < 1e-5:
-            raise ValueError('输出为空、非有限值或静音，不交付')
-        peak = float(np.max(np.abs(audio)))
-        # Static peak normalization preserves timing and pitch; final film loudness is handled by mix.
-        gain = 10 ** (-3 / 20) / peak
-        out.parent.mkdir(parents=True, exist_ok=True)
-        sf.write(out, audio * gain, sample_rate, subtype='PCM_16')
-        report = {'engine': c['model']['engine'], 'text': text, 'audioSha256': sha(out),
-                  'voiceId': c['voiceId'], 'modelId': c['model']['id'], 'modelRevision': c['model']['revision'],
-                  'modelManifestSha256': sha(c['manifestPath']),
-                  'referenceAudioSha256': verified['referenceAudioSha256'],
-                  'referenceTextSha256': verified['referenceTextSha256'], 'language': c['language'],
-                  'generation': c['settings'] | {'seed': (c['settings']['seed'] + index) % 2**32},
-                  'sampleRate': sample_rate, 'durationSeconds': len(audio)/sample_rate,
-                  'loadSeconds': load_seconds, 'generationSeconds': time.monotonic()-started,
-                  'peakMemoryGB': mx.get_peak_memory()/1e9, 'peakNormalizationDbfs': -3,
-                  'gainDb': 20*math.log10(gain), 'tokens': tokens,
-                  'versions': {n: importlib.metadata.version(n) for n in ('mlx', 'mlx-audio', 'transformers')},
-                  'networkConnectionsBlocked': True, 'networkAttempts': attempts,
-                  'contentReview': 'pending-listening', 'voiceSimilarity': 'pending-user'}
-        write(out.with_suffix('.wav.json'), report)
-        if attempts:
-            raise RuntimeError('检测到被拦截的网络尝试；不得标为离线成功')
-        reports.append({'file': str(out), 'durationSeconds': report['durationSeconds']})
-    return reports
+    groups = {}
+    for entry in pending:
+        chosen = entry[1]
+        groups.setdefault((str(chosen['modelPath']), chosen['variant']), []).append(entry)
+    for entries in groups.values():
+        chosen = entries[0][1]
+        start = time.monotonic()
+        model = load_model(chosen['modelPath'], lazy=False, strict=True)
+        load_seconds = time.monotonic() - start
+        try:
+            for job, chosen, verified, request, request_sha, _ in entries:
+                mx.random.seed(request['generation']['seed'])
+                started = time.monotonic()
+                common = dict(text=job['text'], temperature=chosen['settings']['temperature'],
+                              max_tokens=chosen['settings']['maxTokens'], verbose=False)
+                if chosen['variant'] == 'custom_voice':
+                    generated = model.generate_custom_voice(**common, speaker=chosen['speaker'],
+                                language=chosen['language'], instruct=request['performance']['instruct'] or None)
+                else:
+                    generated = model.generate(**common, lang_code=chosen['language'],
+                                ref_audio=str(chosen['referenceAudio']), ref_text=verified['referenceText'])
+                chunks, tokens = [], []
+                for result in generated:
+                    chunks.append(np.array(result.audio, dtype=np.float32).reshape(-1))
+                    tokens.append(result.token_count)
+                    sample_rate = result.sample_rate
+                if not chunks or any(t >= chosen['settings']['maxTokens'] for t in tokens):
+                    raise ValueError('没有完整语音或达到token上限；缩短台词/调整上限后在新候选重跑')
+                audio = np.concatenate(chunks)
+                if not len(audio) or not np.isfinite(audio).all() or np.max(np.abs(audio)) < 1e-5:
+                    raise ValueError('输出为空、非有限值或静音，不交付')
+                gain = min(1., 10 ** (-3 / 20) / float(np.max(np.abs(audio))))
+                out = job['out']; out.parent.mkdir(parents=True, exist_ok=True)
+                # Exclusive creation also protects against another job appearing during inference.
+                with out.open('xb') as file:
+                    sf.write(file, audio * gain, sample_rate, format='WAV', subtype='PCM_16')
+                report = dict(request, engine=chosen['model']['engine'],
+                    audioSha256=sha(out), speakerId=job['speakerId'], utteranceId=job['id'],
+                    speechRequestSha256=request['speechRequestSha256'], synthesisRequestSha256=request_sha,
+                    appliedPerformance={'instruct': request['performance']['instruct'] if chosen['variant']=='custom_voice' else None,
+                                        'intent': 'record-only'},
+                    sampleRate=sample_rate, durationSeconds=len(audio)/sample_rate,
+                    loadSeconds=load_seconds, generationSeconds=time.monotonic()-started,
+                    peakMemoryGB=mx.get_peak_memory()/1e9, peakCeilingDbfs=-3,
+                    gainDb=20*math.log10(gain), tokens=tokens,
+                    versions={n: importlib.metadata.version(n) for n in ('mlx','mlx-audio','transformers')},
+                    networkConnectionsBlocked=True, networkAttempts=attempts.copy(),
+                    contentReview='pending-listening', performanceReview='pending-listening',
+                    voiceSimilarity='pending-user' if chosen['variant']=='base' else 'preset-speaker')
+                with out.with_suffix('.wav.json').open('x') as file:
+                    json.dump(report, file, ensure_ascii=False, indent=2); file.write('\n')
+                if attempts:
+                    raise RuntimeError('检测到被拦截的网络尝试；不得标为离线成功')
+                reports[job['id']] = {'file': str(out), 'durationSeconds': report['durationSeconds'], 'reused': False}
+        finally:
+            del model
+            gc.collect()
+            mx.clear_cache()
+    return [reports[job['id']] for job in jobs]
 
 
 def main():
@@ -407,6 +528,7 @@ def main():
             group.add_argument('--text-file', type=Path)
             group.add_argument('--project', type=Path)
             p.add_argument('--out', type=Path)
+            p.add_argument('--instruct', default='', help='单句CustomVoice表演指令；项目按utterance.performance读取')
     args = parser.parse_args()
     if args.command == 'catalog':
         result = [m for m in catalog() if args.query.casefold() in json.dumps(m, ensure_ascii=False).casefold()]
@@ -424,7 +546,8 @@ def main():
                 continue
     elif args.command == 'voices':
         result = [{'id': k, 'label': v.get('label', k), 'model': v.get('model'),
-                   'referenceTextVerified': v.get('referenceTextVerified', False)}
+                   'referenceTextVerified': v.get('referenceTextVerified', False),
+                   'speaker': v.get('speaker'), 'variant': catalog(v['model']).get('modelType', 'base')}
                   for k, v in read(required_config(explicit=args.config)).get('voices', {}).items()]
         result = [v for v in result if args.query.casefold() in json.dumps(v, ensure_ascii=False).casefold()]
     elif args.command == 'doctor':

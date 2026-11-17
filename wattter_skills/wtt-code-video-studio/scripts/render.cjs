@@ -189,7 +189,7 @@ async function main() {
     for(const name of ['film.json','timeline.json','assets.json'])add(path.join(root,name));
     for(const name of fs.readdirSync(root))if(/\.(js|html|css)$/.test(name))add(path.join(root,name));
     const scan=folder=>{if(!fs.existsSync(folder))return;for(const name of fs.readdirSync(folder)){const file=path.join(folder,name);if(fs.statSync(file).isDirectory())scan(file);else if(/\.(js|html|css)$/.test(name))add(file);}};scan(path.join(root,'code'));
-    for(const name of ['pipeline.py','render.cjs','preview_review.py','asset_review.py'])add(path.join(root,'tools',name));
+    for(const name of ['pipeline.py','render.cjs','preview_review.py','asset_review.py','speech.py'])add(path.join(root,'tools',name));
     const request={kind:'pipeline',fps:t.fps,totalFrames:t.totalFrames,width:t.width,height:t.height,assetReview,sourceSha256:bound,frames:quadFrames.map(frame=>({frame,file:`preview/frame-${String(frame).padStart(6,'0')}.png`}))};
     const requestFile=path.join(preview,'review-request.json');fs.writeFileSync(requestFile,JSON.stringify(request,null,2)+'\n');
     report.previewReview=reviewTool('prepare',['--request',requestFile]);

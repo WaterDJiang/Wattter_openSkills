@@ -1,6 +1,6 @@
 {
   "schema": "code-animation-models/v1",
-  "checkedOn": "2026-09-27",
+  "checkedOn": "2026-11-05",
   "models": [
     {
       "id": "qwen3-tts-1.7b-base-mlx",
@@ -16,7 +16,46 @@
       "downloadBytes": 4544212739,
       "testedHardware": "M1 Max / 64GB；单次短句峰值约 10.14GB，非最低配置承诺",
       "status": "local-synthesis-tested",
-      "notes": "需要参考录音与一致文字；不是 CustomVoice 或 VoiceDesign，不能填预设音色名或情绪 instruct。"
+      "notes": "需要参考录音与一致文字；不是 CustomVoice 或 VoiceDesign，不能填预设音色名或情绪 instruct。",
+      "modelType": "base",
+      "capabilities": {
+        "voiceCloning": true,
+        "presetSpeaker": false,
+        "instruct": false
+      }
+    },
+    {
+      "id": "qwen3-tts-1.7b-customvoice-mlx",
+      "name": "Qwen3-TTS 1.7B CustomVoice（本地预设角色与文字表演）",
+      "role": "tts",
+      "engine": "qwen3-tts-mlx",
+      "modelType": "custom_voice",
+      "repo": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-bf16",
+      "revision": "52f4770fd9726457eae3d3b6aa92047a25a10776",
+      "license": "Apache-2.0",
+      "source": "https://huggingface.co/mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-bf16",
+      "upstream": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "platform": "macOS Apple Silicon / Metal",
+      "downloadBytes": 4520195613,
+      "status": "local-synthesis-tested",
+      "supportedSpeakers": [
+        "serena",
+        "vivian",
+        "uncle_fu",
+        "ryan",
+        "aiden",
+        "ono_anna",
+        "sohee",
+        "eric",
+        "dylan"
+      ],
+      "capabilities": {
+        "voiceCloning": false,
+        "presetSpeaker": true,
+        "instruct": true
+      },
+      "testedHardware": "本机MLX-Audio 0.5.6/Metal；三条短句峰值约5.84GB，非最低配置承诺",
+      "notes": "四句10秒pilot中三句CustomVoice真实生成；Vivian两次绑定同一声线且表演指令不同。不是任意用户克隆音色的instruct路线；主观试听待用户。"
     },
     {
       "id": "whisper-small-mlx",

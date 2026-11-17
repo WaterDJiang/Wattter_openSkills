@@ -1,0 +1,4 @@
+interface:
+  display_name: "编剧"
+  short_description: "开发连续短剧与完整短片，交付人物、大纲、可拍剧本和审校意见"
+  default_prompt: "使用 $wtt-video-screenwriter 把我的想法开发为可拍剧本，先确定故事方向。"

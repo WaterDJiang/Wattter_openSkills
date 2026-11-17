@@ -1,0 +1,72 @@
+{
+  "schema": "code-animation/v1",
+  "title": "10秒三声对白验证",
+  "width": 640,
+  "height": 360,
+  "fps": 30,
+  "maxSeconds": 10,
+  "seed": 42,
+  "cast": {
+    "narrator": {
+      "label": "本人旁白"
+    },
+    "character-a": {
+      "voiceId": "actor-a",
+      "label": "角色A"
+    },
+    "character-b": {
+      "voiceId": "actor-b",
+      "label": "角色B"
+    }
+  },
+  "scenes": [
+    {
+      "id": "voice-demo",
+      "visualSeconds": 10,
+      "leadSeconds": 0.25,
+      "tailSeconds": 0.25,
+      "utterances": [
+        {
+          "id": "narrator",
+          "speakerId": "narrator",
+          "text": "听，故事开口了。",
+          "performance": {
+            "instruct": "",
+            "intent": "引入"
+          },
+          "pauseAfterSeconds": 1.0
+        },
+        {
+          "id": "a-question",
+          "speakerId": "character-a",
+          "text": "是你吗？",
+          "performance": {
+            "instruct": "轻声发问，带一点惊讶和不确定，语气自然，句尾上扬，不要夸张。",
+            "intent": "疑问"
+          },
+          "pauseAfterSeconds": 1.0
+        },
+        {
+          "id": "b-answer",
+          "speakerId": "character-b",
+          "text": "是我，别怕。",
+          "performance": {
+            "instruct": "温和沉稳地安抚对方，声音放松、亲切，语速自然，清楚地说话。",
+            "intent": "安抚"
+          },
+          "pauseAfterSeconds": 0.8
+        },
+        {
+          "id": "a-relief",
+          "speakerId": "character-a",
+          "text": "太好了！",
+          "performance": {
+            "instruct": "松了一口气，露出自然的笑意，轻快而欣喜地说，不要大喊。",
+            "intent": "欣喜"
+          },
+          "pauseAfterSeconds": 0
+        }
+      ]
+    }
+  ]
+}

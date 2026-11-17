@@ -31,11 +31,20 @@
   const drawFrame=async frame=>{
     if(!Number.isInteger(frame)||frame<0||frame>=t.totalFrames) throw Error(`frame 越界: ${frame}`);
     const s=t.scenes.find(x=>frame>=x.startFrame&&frame<x.endFrame);
+    const activeSpeech=Array.isArray(t.speech)
+      ? t.speech.find(x=>frame>=x.voiceStartFrame&&frame<x.voiceStartFrame+x.voiceFrames)||null
+      : s.voice&&frame>=s.voiceStartFrame&&frame<s.voiceStartFrame+s.voiceFrames
+        ? {sceneId:s.id,utteranceId:s.id,speakerId:'narrator',voice:s.voice,
+           voiceStartFrame:s.voiceStartFrame,voiceFrames:s.voiceFrames,text:s.narration}
+        : null;
+    window.activeSpeakerId=activeSpeech?.speakerId||null;
+    window.activeUtteranceId=activeSpeech?.utteranceId||null;
     // Reset styles/clipping/baselines as well as pixels: captions must not leak into the next frame.
     if(ctx.reset) ctx.reset(); else canvas.width=canvas.width;
     ctx.save();
     await window.drawScene(ctx,{timeline:t,scene:s,frame,localFrame:frame-s.startFrame,
-      time:(frame-s.startFrame)/t.fps,progress:(frame-s.startFrame)/Math.max(1,s.durationFrames-1),width:t.width,height:t.height,footage});
+      time:(frame-s.startFrame)/t.fps,progress:(frame-s.startFrame)/Math.max(1,s.durationFrames-1),width:t.width,height:t.height,footage,
+      speech:activeSpeech,activeSpeakerId:window.activeSpeakerId,activeUtteranceId:window.activeUtteranceId});
     ctx.restore();
     const cap=t.captions.find(x=>frame>=x.startFrame&&frame<x.endFrame);
     if(cap){

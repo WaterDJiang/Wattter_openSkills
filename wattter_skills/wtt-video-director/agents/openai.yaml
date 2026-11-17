@@ -1,0 +1,4 @@
+interface:
+  display_name: "导演"
+  short_description: "把剧本转成分镜、空间光影、声音表演与资产需求，交接制作"
+  default_prompt: "使用 $wtt-video-director 把这份剧本做成分镜与视听设计，保留原句对白。"

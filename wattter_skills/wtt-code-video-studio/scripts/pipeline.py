@@ -17,6 +17,7 @@ if str(Path(__file__).resolve().parent) not in sys.path:
 import asset_review
 import preview_review
 import footage
+import speech
 
 SCHEMA = 'code-animation/v1'
 
@@ -84,6 +85,10 @@ def config(root):
             number(s.get(key, .3 if key == 'leadSeconds' else .6), f'{sid}.{key}')
         if not isinstance(s.get('narration', ''), str):
             raise ValueError(f'{sid}.narration 必须为字符串')
+    # This also validates the cast and project-wide utterance IDs before synthesis.
+    for scene in c['scenes']:
+        for job in speech.scene_utterances(c, scene):
+            local(root, job['voice'])
     return c
 
 
@@ -156,46 +161,70 @@ def compile_rhythm(value, fps, total_frames, scenes):
             'beats': beats, 'events': events}
 
 
+def speech_duration(root, job, lock, rate):
+    """Measure actual speech without consulting private model configuration."""
+    path = local(root, job['voice'])
+    if not lock:
+        return len(re.sub(r'\s', '', job['text'])) / rate
+    if not path.is_file():
+        raise ValueError(f'{job["id"]} 缺少旁白/配音 {job["voice"]}；先生成或提供音频，禁止静默导出无声版')
+    cache = path.with_suffix(path.suffix + '.json')
+    if cache.exists():
+        record = read(cache)
+        if record.get('text') != job['text'] or record.get('audioSha256') != digest(path):
+            raise ValueError(f'{job["id"]} 配音缓存与台词/音频不符；重新生成或重新登记外部音频')
+        fingerprint = record.get('speechRequestSha256')
+        if not job['legacy'] or fingerprint is not None:
+            if fingerprint != speech.request_fingerprint(job):
+                raise ValueError(f'{job["id"]} 配音缓存的角色/音色/表演请求已过期；重新生成声音')
+        elif job['voiceId'] is not None and record.get('voiceId') != job['voiceId']:
+            raise ValueError(f'{job["id"]} 配音缓存的音色与cast不符；重新生成声音')
+    elif not job['externalVoiceVerified']:
+        raise ValueError(f'{job["id"]} 外部音频需核对台词后设置 externalVoiceVerified=true')
+    return media_seconds(path)
+
+
 def compile_timeline(root, lock=False):
     c = config(root)
     fps, cursor, shots, captions, assets = c['fps'], 0, [], [], {}
     rate = number(c.get('speechCharsPerSecond', 3.8), 'speechCharsPerSecond', .1)
+    dialogue = speech.has_utterances(c)
+    speech_tracks = []
     for s in c['scenes']:
         sid, text = s['id'], s.get('narration', '').strip()
         lead = math.ceil(s.get('leadSeconds', .3) * fps)
         tail = math.ceil(s.get('tailSeconds', .6) * fps)
         voice, voice_frames = None, 0
-        if text:
-            voice = s.get('voice', f'audio/{sid}.wav')
-            path = local(root, voice)
+        elapsed = 0
+        for job in speech.scene_utterances(c, s):
+            segment_frames = math.ceil(speech_duration(root, job, lock, rate) * fps)
+            pause = math.ceil(job['pauseAfterSeconds'] * fps)
+            start = cursor + lead + elapsed
             if lock:
-                if not path.is_file():
-                    raise ValueError(f'{sid} 缺少旁白 {voice}；先生成或提供音频，禁止静默导出无声版')
-                cache = path.with_suffix(path.suffix + '.json')
-                if cache.exists():
-                    record = read(cache)
-                    if record.get('text') != text or record.get('audioSha256') != digest(path):
-                        raise ValueError(f'{sid} 旁白缓存与台词/音频不符；重新生成或重新登记外部音频')
-                elif not s.get('externalVoiceVerified', False):
-                    raise ValueError(f'{sid} 外部音频需核对台词后设置 externalVoiceVerified=true')
-                duration = media_seconds(path)
-                assets[voice] = digest(path)
-            else:
-                duration = len(re.sub(r'\s', '', text)) / rate
-            voice_frames = math.ceil(duration * fps)
-        frames = max(math.ceil(s['visualSeconds'] * fps), lead + voice_frames + tail)
+                assets[job['voice']] = digest(local(root, job['voice']))
+            if job['legacy']:
+                voice, voice_frames = job['voice'], segment_frames
+            if dialogue:
+                speech_tracks.append(dict(sceneId=sid, utteranceId=job['id'],
+                    speakerId=job['speakerId'], voiceId=job['voiceId'], text=job['text'],
+                    voice=job['voice'], voiceStartFrame=start, voiceFrames=segment_frames,
+                    pauseAfterFrames=pause, speechRequestSha256=speech.request_fingerprint(job)))
+            parts = caption_parts(job['text'])
+            total, offset = sum(map(len, parts)), 0
+            for part in parts:
+                a = start + round(segment_frames * offset / total)
+                offset += len(part)
+                b = start + round(segment_frames * offset / total)
+                if b > a:
+                    caption = {'text': part, 'startFrame': a, 'endFrame': b}
+                    if dialogue:
+                        caption.update(speakerId=job['speakerId'], utteranceId=job['id'])
+                    captions.append(caption)
+            elapsed += segment_frames + pause
+        frames = max(math.ceil(s['visualSeconds'] * fps), lead + elapsed + tail)
         item = dict(s, startFrame=cursor, durationFrames=frames, endFrame=cursor + frames,
                     voiceStartFrame=cursor + lead, voiceFrames=voice_frames, voice=voice)
         shots.append(item)
-        parts = caption_parts(text)
-        total = sum(map(len, parts))
-        offset = 0
-        for part in parts:
-            start = cursor + lead + round(voice_frames * offset / total)
-            offset += len(part)
-            end = cursor + lead + round(voice_frames * offset / total)
-            if end > start:
-                captions.append({'text': part, 'startFrame': start, 'endFrame': end})
         cursor += frames
     duration = cursor / fps
     if c.get('maxSeconds') is not None and duration > number(c['maxSeconds'], 'maxSeconds', .01) + 1 / fps:
@@ -226,6 +255,10 @@ def compile_timeline(root, lock=False):
                 'seed': c.get('seed', 42), 'scenes': shots, 'captions': captions,
                 'captionTiming': 'character-weighted-approximation', 'audioTracks': tracks,
                 'assetReview': asset_review.guard_if_locked(root)}
+    # Avoid making unchanged legacy timelines stale merely by upgrading the tools.
+    if dialogue:
+        timeline['speech'] = speech_tracks
+        timeline['cast'] = c.get('cast', {})
     if 'footageManifest' in c:
         if lock or asset_review.has_history(root):
             footage.check(root, c, cursor)
@@ -252,6 +285,8 @@ def locked(root):
 def tts(root, voice, rate):
     asset_review.guard_if_locked(root)
     c = config(root)
+    if speech.has_utterances(c):
+        raise ValueError('系统say不支持逐角色对白；配置本地角色音色后合成')
     for s in c['scenes']:
         text = s.get('narration', '').strip()
         if not text:
@@ -283,13 +318,19 @@ def tts(root, voice, rate):
 
 def default_tts(root, system_voice=None, rate=None, voice_config=None, voice_id=None):
     asset_review.guard_if_locked(root)
+    film = config(root) if (root / 'film.json').is_file() else None
+    dialogue = film is not None and speech.has_utterances(film)
     if system_voice is not None:
+        if dialogue:
+            raise ValueError('系统say不支持逐角色对白；配置本地角色音色后合成')
         if voice_config is not None or voice_id is not None:
             raise ValueError('--voice 为系统音色，不能与 --voice-config/--voice-id 同时使用')
         return tts(root, system_voice, rate if rate is not None else 205)
     import voice as voice_tools
     chosen = voice_tools.discover_config(root, voice_config)
     if chosen is None:
+        if dialogue or (film and film.get('cast')):
+            raise ValueError('多角色/指定cast需要声音配置；不降为系统单音色')
         if voice_id is not None:
             raise ValueError('指定了克隆音色，但未发现声音配置')
         return tts(root, 'Tingting', rate if rate is not None else 205)
@@ -311,7 +352,10 @@ def mix(root):
     out = root / 'audio'
     out.mkdir(exist_ok=True)
     args = ['ffmpeg', '-y', '-v', 'error', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo']
-    tracks = [(s['voice'], s['voiceStartFrame'] / t['fps'], 1.0) for s in t['scenes'] if s['voice']]
+    if 'speech' in t:
+        tracks = [(s['voice'], s['voiceStartFrame'] / t['fps'], 1.0) for s in t['speech']]
+    else:
+        tracks = [(s['voice'], s['voiceStartFrame'] / t['fps'], 1.0) for s in t['scenes'] if s['voice']]
     tracks += [(s['file'], s.get('startSeconds', 0), s.get('gain', .2)) for s in t['audioTracks']]
     asset_review.registered(root, [str(file) for file, _, _ in tracks])
     filters, labels = [], ['[0:a]']
@@ -555,13 +599,20 @@ def init(root):
     shutil.copytree(base / 'assets/starter', root, dirs_exist_ok=True)
     target = root / 'tools'
     target.mkdir()
-    for name in ('pipeline.py', 'render.cjs', 'voice.py', 'asset_review.py', 'footage.py', 'preview_review.py'):
+    for name in ('pipeline.py', 'render.cjs', 'voice.py', 'speech.py', 'asset_review.py', 'footage.py', 'preview_review.py'):
         shutil.copy2(base / 'scripts' / name, target / name)
     (root / 'config').mkdir()
     for name in ('model-catalog.json', 'voice.example.json'):
         shutil.copy2(base / 'config' / name, root / 'config' / name)
     shutil.copy2(base / 'requirements-voice.txt', root / 'requirements-voice.txt')
-    shutil.copy2(base / 'references/voice.md', root / 'VOICE.md')
+    voice_doc = (base / 'references/voice.md').read_text(encoding='utf-8')
+    voice_doc = voice_doc.replace('(../config/', '(config/')
+    for title, link in (('兼容说明', 'migration.md#多人配音迁移'),
+                        ('制作契约', 'production.md#角色与逐句话轮'),
+                        ('制作流程', 'production.md#常用命令')):
+        voice_doc = voice_doc.replace(f'[{title}]({link})',
+                                      f'{title}（Skill references/{link.split("#")[0]}）')
+    (root / 'VOICE.md').write_text(voice_doc, encoding='utf-8')
     (root / 'ASSETS.md').write_text((base / 'references/material-review.md').read_text().replace('(footage.md)', '(FOOTAGE.md)').replace('(preview-review.md)', '(PREVIEW.md)'), encoding='utf-8')
     (root / 'FOOTAGE.md').write_text((base / 'references/footage.md').read_text().replace('(material-review.md)', '(ASSETS.md)'), encoding='utf-8')
     shutil.copy2(base / 'assets/project-docs/QUALITY.md', root / 'QUALITY.md')
@@ -594,7 +645,7 @@ def main():
         if a.lock:
             asset_review.require(root)
             c = config(root)
-            media = [s.get('voice', f'audio/{s["id"]}.wav') for s in c['scenes'] if s.get('narration', '').strip()]
+            media = [job['voice'] for s in c['scenes'] for job in speech.scene_utterances(c, s)]
             media += [t['file'] for t in c.get('audioTracks', [])]
             asset_review.registered(root, media)
         else:

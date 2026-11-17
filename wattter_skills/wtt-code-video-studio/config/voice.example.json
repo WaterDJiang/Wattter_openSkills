@@ -5,6 +5,10 @@
     "qwen3-tts-1.7b-base-mlx": {
       "path": "./models/qwen3-tts-1.7b-base-mlx",
       "manifest": "./models/qwen3-tts-1.7b-base-mlx/model-manifest.json"
+    },
+    "qwen3-tts-1.7b-customvoice-mlx": {
+      "path": "./models/qwen3-tts-1.7b-customvoice-mlx",
+      "manifest": "./models/qwen3-tts-1.7b-customvoice-mlx/model-manifest.json"
     }
   },
   "voices": {
@@ -14,6 +18,18 @@
       "referenceAudio": "./voices/my-voice/reference.wav",
       "referenceTextFile": "./voices/my-voice/reference.txt",
       "referenceTextVerified": false,
+      "language": "chinese"
+    },
+    "actor-a": {
+      "label": "角色A（Vivian）",
+      "model": "qwen3-tts-1.7b-customvoice-mlx",
+      "speaker": "vivian",
+      "language": "chinese"
+    },
+    "actor-b": {
+      "label": "角色B（Uncle Fu）",
+      "model": "qwen3-tts-1.7b-customvoice-mlx",
+      "speaker": "uncle_fu",
       "language": "chinese"
     }
   },

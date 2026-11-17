@@ -68,7 +68,7 @@ def check_sources(root, binding):
             current_code |= {p.relative_to(root).as_posix() for p in (root / 'code').rglob('*') if p.is_file() and p.suffix in ('.js', '.css', '.html')}
         if current_code != {name for name in sources if code_path(name)}:
             raise ValueError('四帧批准已失效：绘图代码文件集合新增或删除；重新预览并取得用户确认')
-        for name in ('pipeline.py', 'render.cjs', 'preview_review.py', 'asset_review.py'):
+        for name in ('pipeline.py', 'render.cjs', 'preview_review.py', 'asset_review.py', 'speech.py'):
             if (root / 'tools' / name).is_file() and f'tools/{name}' not in sources:
                 raise ValueError(f'四帧预览须冻结执行工具：tools/{name}')
         import asset_review

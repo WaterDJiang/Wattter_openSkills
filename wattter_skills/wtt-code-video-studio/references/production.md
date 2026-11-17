@@ -4,7 +4,7 @@
 
 制作前按 [风格选择](style-selection.md) 完成用户决定并保存候选/选择记录。`style-choice.md` 由执行者核对，当前 Python/JS 管线不解析对话、不自动强制这个交互门槛；不能把能运行导出命令当作用户已确认。
 
-初始化脚本把 `assets/starter/`、六个工具、声音配置模板/模型目录、声音依赖文件及 `VOICE.md`、`ASSETS.md`、`FOOTAGE.md`、`QUALITY.md`、`PREVIEW.md` 复制到一个空项目目录。已有项目不能覆盖初始化。新片先 init，再在该目录保存剧本/风格候选与选择记录；init 是不依赖风格的准备，不代表选用了示例风格，也不能提前把示例导出为用户成片。已有工程直接沿用，不为补充选择记录重新 init。制作产物与 skill 源码分离。
+初始化脚本把`assets/starter/`、制作工具与speech.py语音协议模块、声音配置模板/模型目录、声音依赖文件及`VOICE.md`、`ASSETS.md`、`FOOTAGE.md`、`QUALITY.md`、`PREVIEW.md`复制到空项目目录。已有项目不能覆盖初始化。新视频先init，再保存剧本/方向记录；init不代表采用示例风格或获准完整导出。纯音频只使用必要语音工具，不强制初始化/渲染视频。制作产物与Skill源码分离。
 
 ```text
 project/
@@ -16,6 +16,7 @@ project/
   timeline.json                     工具编译；不要手改
   index.html, runtime.js, scenes.js, footage.js  前端舞台与绘制代码
   tools/pipeline.py, tools/render.cjs, tools/voice.py, tools/asset_review.py, tools/footage.py, tools/preview_review.py
+  tools/speech.py                   角色/话轮协议；voice与pipeline共同依赖
   config/model-catalog.json, config/voice.example.json
   requirements-voice.txt, VOICE.md, ASSETS.md   可选个人音色的依赖与说明
   .voice-local/                     用户私有声音配置、录音、模型；不打包
@@ -25,7 +26,7 @@ project/
   render-report.json, media-info.json, delivery-check.json
 ```
 
-必需 Node.js、Python 3、FFmpeg/FFprobe、Playwright 和 Chrome/Chromium。核心 pipeline.py 仅用标准库。默认配音先自动发现已配置的 defaultVoice；未配置时 macOS 使用 `say`，其他系统接入已有 TTS 或外部配音。可选 `voice.py` 克隆路线的额外依赖单独安装，见 [配音指南](voice.md)；不影响普通动画路线。
+完整视频需Node.js、Python 3、FFmpeg/FFprobe、Playwright和Chrome/Chromium。核心pipeline.py与speech.py使用标准库。旁白自动发现defaultVoice；旧单旁白未配置时macOS可用say，其他系统接外部配音。新多角色项目缺配置或显式使用系统say时拒绝，不降为单音色。Base克隆/CustomVoice角色的额外依赖见[配音指南](voice.md)；纯音频不依赖浏览器。
 
 先检查现有运行时：`node --version`、`python3 --version`、`ffmpeg -version`、`ffprobe -version`。在产物目录安装项目依赖可用 `npm install --save-exact playwright`，保存生成的 package.json/lockfile；Chrome 缺失时可运行 `npx playwright install chromium`。网络或运行权限失败按当前环境申请所需权限，不修改全局 registry 来绕过错误。
 
@@ -79,10 +80,35 @@ project/
 - 原有工程不会自动升级。迁移至组合模板时同步替换 scenes.js、改 film.json，重新编译时间轴/预览/渲染/合成；台词未变且指纹匹配可复用配音。runtime、字幕、混音及导出接口保持不变。
 - width/height 必须正偶数，fps 正整数。为实际画幅重排，不用修改 JSON 假装支持竖屏。
 - `visualSeconds` 必填且 >0；其他时间为秒。`maxSeconds` 可选，仅在用户给最大长度时设置；超限明确失败。
-- `narration` 空字符串表示无旁白。默认旁白路径是 `audio/<id>.wav`；所有媒体路径必须在项目目录内。
+- 旧式`narration`空字符串表示无旁白；未使用utterances时保持原行为。旧默认旁白路径是`audio/<id>.wav`；voice始终是文件路径，不是voiceId，所有媒体路径须在项目内。
 - 自带的 TTS 会生成文本、声音参数与文件哈希旁车记录；不依赖文件名判断可复用。已有外部配音手动核对台词后可设 `externalVoiceVerified: true`，修改台词时撤销这个标记并重新核对。若替换了带旁车记录的语音，先备份旧音频与记录，再登记新素材。
 - `audioTracks` 是可选背景音乐或音效列表，起点基于全片秒数。当前脚本不会自动循环、裁切或 duck；在声音设计阶段做好长度与音量，必要时先生成带 duck 的配乐文件。素材越过片尾会报错，不能依赖合成阶段截掉它。
-- 字幕自动来自 narration，按标点/22 字分块后按字符长度近似分配。成片审查需要核对实际发音和文字出现时间；它不是逐字转录系统。
+- 旧字幕来自narration；新对白分别在每个话轮的实际声音区间内按标点/字符近似分配，并携带speakerId/utteranceId。不是逐字转录系统，仍需核对实际发音与字幕。
+
+## 角色与逐句话轮
+
+保持code-animation/v1；新项目可在film.json增加cast，并在同一scene中使用utterances。具体配置和四话轮示例见[声音指南](voice.md#角色绑定与表演计划)，不把人物换材质或换说话人强制变成切镜。
+
+| 声明 | 含义与约束 |
+|---|---|
+| cast | kebab-case speakerId到角色条目的映射；条目只接受voiceId、label、description。仅narrator可省略voiceId，表示使用已发现的defaultVoice/显式默认覆盖 |
+| utterances[].id | 项目内唯一、稳定的kebab-case话轮ID，用于派生seed和局部复用，不使用列表序号充当身份 |
+| speakerId / text | 必须声明的角色和实际台词；除可沿默认音色的narrator外，角色须存在于cast。text不混入“惊讶地说”等表演标签 |
+| voice | 该句WAV在项目内的输出路径，与voiceId分开；缺省audio/<scene-id>-<utterance-id>.wav，不同话轮不能争用同一文件 |
+| performance.instruct | 传给支持该能力后端的逐句自然语言表演；当前CustomVoice可用，Base不接受非空值 |
+| performance.intent | 创作意图记录，不作为模型已经执行的参数；缺省为空串 |
+| pauseAfterSeconds | 句后停顿，默认0，按fps向上量化为整数帧；计入镜头长度 |
+| externalVoiceVerified | 仅无旁车的外部WAV在核对台词后可显式设true；不能覆盖已有错误旁车 |
+
+使用utterances时不再同时写非空narration或scene.voice；两种输入并用报错，不猜优先级。第一版只按列表顺序说话，不支持重叠/抢话。未知角色、音色、speaker、字段或不支持的instruct明确失败，不静默忽略或改成默认旁白。
+
+脚本通过speech.scene_utterances(film, scene)规范化语音任务。新话轮旁车用speechRequestSha256绑定id/speakerId/voiceId/text/performance；完整TTS配置指纹另含模型、参考素材与生成参数。路径和句后停顿不改变原WAV请求，但改变停顿必须重编时间轴；改声音或表演不能只凭同名文件、相同文字复用。旧单旁白继续兼容原text/audioSha256旁车；导出不要求读取私人模型/录音配置。
+
+仅当项目包含新utterances时，timeline新增顶层speech，平铺全部实际语音段，包括其中旧旁白的单段表示。每段记录voice、voiceStartFrame、voiceFrames、speakerId、utteranceId及量化停顿；新对白镜头的scene.voice=None、voiceFrames=0，不伪装成一个WAV。纯旧项目的timeline/字幕结构保持原样。
+
+每句按真实WAV向上取整voiceFrames，顺序推进“声音+句后停顿”；新镜头帧数为`max(ceil(visualSeconds*fps), leadFrames + Σ(voiceFrames+pauseFrames) + tailFrames)`。字幕不跨句后的停顿，换角色准确到话轮边界；句内字符定位仍是近似值。mix优先从speech收集声音，只有旧timeline没有speech字段时才消费原scene.voice，避免双重混音。
+
+runtime在每帧公开activeSpeakerId/activeUtteranceId，并传给drawScene；停顿或无台词时清空。场景可据此做角色高亮、表情或已实现的嘴部动作，不声称自动生成精确口型。保持原绝对帧绘制与媒体就绪约束。
 
 ## 常用命令
 
@@ -107,9 +133,9 @@ python3 tools/pipeline.py finish .
 
 重跑不再次 seal：先 `python3 tools/asset_review.py check .`，未变直接执行；已锁后需改变音频时，在候选目录生成并审阅，再锁时。首次素材未最终确定的预览也建立当次锁，后续改动按同一审阅流程处理。
 
-外部 TTS 直接保存实际声音文件并核对登记，跳过本机 `tts` 命令。语音可跨镜头连续叙述时，先切成镜头声音段并核对断句，或明确扩展时间轴契约，不把整段配音硬塞到第一镜。
+外部TTS保存实际WAV并核对登记，跳过本机tts；新对白使用话轮上的externalVoiceVerified规则。同镜多角色直接使用utterances；旧跨镜旁白可按director.group保持视觉连续，不把整段配音硬塞进第一镜。
 
-`pipeline.py tts .` 默认使用已配置个人音色，配置旁存在 `.venv/bin/python` 时自动使用该解释器，否则使用当前 Python。配置发现顺序见配音指南；坏配置明确失败，不回退系统声音。`--voice-config` 覆盖配置，`--voice-id` 覆盖 defaultVoice；原 `--voice Tingting --rate 205` 保留为显式系统音色覆盖。也可用安装声音依赖的 Python 运行 `voice.py synthesize --project .` 自动发现配置。新入口逐镜输出 WAV 和兼容的 `text/audioSha256` 旁车，锁时/混音/渲染契约不变。切换模型或参考音频后生成新版本声音，不覆盖旧输出。旧工程可直接调用新版 skill 的 voice.py，无须重新 init；详见配音指南。交付源码时排除 `.voice-local/`、其他私人配置与模型/录音，不能把整个项目无过滤打包。
+`pipeline.py tts .`默认使用已配置个人旁白；显式cast按各角色voiceId选声线。配置旁有`.venv/bin/python`时自动使用，否则使用当前Python。`--voice-config`覆盖配置，`--voice-id`覆盖未显式绑定的默认声音；旧`--voice Tingting --rate 205`仅用于单旁白。声音配置发现、逐句表演及复用边界维护在[配音指南](voice.md)。切换模型、参考、角色或表演时保留旧声音，按候选审阅生成新版本。旧工程可直接调用完整新版Skill中的脚本，无须重init；复制到tools时必须带speech.py及相关工具。交付源码排除`.voice-local`、私人配置、模型、录音和环境，不能无过滤打包整个项目。
 
 前端播放可以在项目目录执行 `python3 -m http.server 8765 --bind 127.0.0.1` 后访问本机端口；`file://` 不能可靠加载 JSON。生成混音后，网页播放会使用 `mix-master.wav`。模板导出只截 `#stage`，不截播放按钮。
 
@@ -150,11 +176,11 @@ window.__ready = true; // 所有资产、字体、首帧就绪后
 
 film.json 可选 `footageManifest` 指向项目内已登记的帧序列清单；timeline 原样携带路径，锁时检查帧率、片长和完整源/派生哈希关系。未使用该字段时原接口不变。预览/渲染执行前及 finish/validate 的 locked 校验都会检查；不能只登记 MP4 而漏登记派生帧。
 
-准备、候选审阅、原声及浏览器调用见 [视频素材接入](footage.md)。新 init 附 footage.py、footage.js 和 FOOTAGE.md；旧工程升级须同步五个 tools，默认 runtime 支持 await drawScene，自定义 runtime 要自行等待。原 schema、声音配置与素材锁格式保持不变。
+准备、候选审阅、原声及浏览器调用见[视频素材接入](footage.md)。新init附footage工具与说明；旧工程须按[迁移](migration.md)成套同步工具和依赖。默认runtime支持await drawScene，自定义runtime自行等待；原素材锁格式保持。
 
 ## 统一版补充
 
-声音仍兼容两个旧环境变量与用户目录，冲突规则以[声音指南](voice.md)为准。五个核心工具独立随 init 复制，原 schema 不变。
+声音仍兼容两个旧环境变量与用户目录，冲突规则以[声音指南](voice.md)为准。制作工具及speech.py随init复制；旧接口保持，新角色/话轮字段按本页约定扩展。
 
 - JPEG 导出：`node tools/render.cjs . --render --frame-format jpeg`；默认PNG，抽帧/确定性始终PNG。检查舞台实际尺寸，CSS/JPEG/WebP具备正确MIME。
 - 最终 MP4 后 `python3 tools/pipeline.py review-init .` 生成绑定成片哈希的缩小图和动作窗口；实际观察后填写 `visual-review.json`，再 `python3 tools/pipeline.py review .`。未填、缺证据、过期、素材变化均不通过。见[质量规则](video-quality.md)。
