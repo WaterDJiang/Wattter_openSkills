@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <g id="title" font-family="Hiragino Sans GB">
+    <rect x="64" y="49" width="30" height="4" fill="#C7A661"/>
+    <text x="106" y="59" font-size="22" font-weight="700" fill="#003396" data-text-width="740">{{SECTION_LABEL}}</text>
+    <text x="62" y="145" font-size="55" font-weight="800" fill="#262626" data-text-width="829">{{PAGE_TITLE}}</text>
+    <text x="65" y="200" font-size="32" fill="#44546A" data-text-width="830">{{PAGE_SUBTITLE}}</text>
+  </g>
+  <g id="practice-task" font-family="Hiragino Sans GB">
+    <rect x="64" y="243" width="788" height="121" rx="6" fill="#F1F8FE"/>
+    <text x="87" y="288" font-size="29" font-weight="700" fill="#003396" data-text-width="721">{{PRACTICE_GOAL}}</text>
+    <text x="87" y="335" font-size="32" fill="#262626" data-text-width="723">{{PRACTICE_INPUT}}</text>
+  </g>
+  <g id="practice-steps" font-family="Hiragino Sans GB">
+    <text x="66" y="428" font-size="24" font-weight="700" fill="#003396" data-text-width="48">01</text>
+    <text x="124" y="430" font-size="32" fill="#262626" data-text-width="715">{{PRACTICE_STEP_01}}</text>
+    <text x="66" y="486" font-size="24" font-weight="700" fill="#003396" data-text-width="48">02</text>
+    <text x="124" y="488" font-size="32" fill="#262626" data-text-width="715">{{PRACTICE_STEP_02}}</text>
+    <text x="66" y="544" font-size="24" font-weight="700" fill="#003396" data-text-width="48">03</text>
+    <text x="124" y="546" font-size="32" fill="#262626" data-text-width="715">{{PRACTICE_STEP_03}}</text>
+  </g>
+  <g id="practice-timer" font-family="Hiragino Sans GB">
+    <rect x="907" y="0" width="373" height="720" fill="#003396"/>
+    <line x1="907" y1="0" x2="907" y2="720" stroke="#C7A661" stroke-width="4"/>
+    <line x1="964" y1="221" x2="1221" y2="221" stroke="#FFFFFF" stroke-opacity="0.35"/>
+    <text x="967" y="278" font-size="24" font-weight="700" fill="#ECF6FE" data-text-width="253">练习时间</text>
+    <text x="964" y="463" font-size="46" font-weight="800" fill="#FFFFFF" data-text-width="272">{{TIME_BOX}}</text>
+    <rect x="964" y="520" width="54" height="4" fill="#C7A661"/>
+  </g>
+  <g id="practice-deliverable" font-family="Hiragino Sans GB">
+    <line x1="64" y1="602" x2="852" y2="602" stroke="#C7A661" stroke-width="2"/>
+    <text x="65" y="653" font-size="24" font-weight="700" fill="#003396" data-text-width="71">交付</text>
+    <text x="143" y="655" font-size="32" font-weight="700" fill="#262626" data-text-width="700">{{PRACTICE_EVIDENCE}}</text>
+  </g>
+</svg>

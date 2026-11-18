@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <g id="background">
+    <image href="chapter_background.png" x="0" y="0" width="1280" height="720" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <g id="chapter-index">
+    <text x="520" y="192" fill="#C7A661" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22" font-weight="700" letter-spacing="3">{{CHAPTER_EN}}</text>
+    <text x="520" y="239" fill="#ECF6FE" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="24">{{SECTION_LABEL}}</text>
+  </g>
+  <g id="chapter-title">
+    <text x="516" y="350" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="68" font-weight="800">{{CHAPTER_TITLE}}</text>
+    <line x1="520" y1="408" x2="1130" y2="408" stroke="#C7A661" stroke-width="1"/>
+    <text x="520" y="469" fill="#ECF6FE" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="30">{{CHAPTER_SUBTITLE}}</text>
+  </g>
+</svg>

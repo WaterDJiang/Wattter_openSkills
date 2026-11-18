@@ -5,6 +5,7 @@ summary: Company introductions, product launches, solution presentations, educat
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # smart_red - Smart Red-Orange Business Style Design Specification

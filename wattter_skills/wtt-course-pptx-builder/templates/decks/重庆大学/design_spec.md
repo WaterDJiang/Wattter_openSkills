@@ -5,6 +5,7 @@ summary: Academic defense, research reports, teaching presentations, scholarly e
 canvas_format: ppt169
 page_count: 5
 primary_color: "#006BB7"
+background_mode: legacy-pure-svg
 ---
 
 # Chongqing University (重庆大学) Template - Design Specification

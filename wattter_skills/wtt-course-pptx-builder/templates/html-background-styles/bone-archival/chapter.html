@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>bone-archival / chapter</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bone: #E2DCC9;
+    --ink: #0A0A0A;
+    --paper: #F4EFE0;
+    --sienna: #A06A3C;
+    --magenta: #C73B7A;
+    --orange: #EE7A2E;
+    --teal: #2D7E73;
+    --blue: #3F73B7;
+    --mustard: #D8A93B;
+    --olive: #6F7A2E;
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --text: {{text}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bone); color: var(--ink); }
+  .canvas { position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; background: var(--bone); }
+  .label {
+    position: absolute; right: 50px; top: 64px;
+    font-family: "Barlow Condensed", sans-serif; font-weight: 800;
+    font-size: 14px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink); opacity: .7; text-align: right;
+  }
+  /* 巨大 stencil 数字 */
+  .num-deco {
+    position: absolute; left: 50px; top: 120px;
+    font-family: "Stardos Stencil", serif; font-weight: 700;
+    font-size: 360px; line-height: .8; color: var(--orange);
+    opacity: .9;
+  }
+  .slide-meta {
+    position: absolute; left: 50px; right: 50px; bottom: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "Barlow Condensed", sans-serif; font-size: 12px;
+    letter-spacing: .14em; text-transform: uppercase; opacity: .7;
+  }
+  .slide-meta .dot { width: 6px; height: 6px; background: var(--ink); border-radius: 50%; display: inline-block; margin: 0 8px; transform: translateY(-1px); }
+  .logo { position: absolute; left: 50px; top: 64px; height: 22px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="label">Section ·<br>Direction</div>
+
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: chapter_num 460,140 800,580 -->
+  <!-- text-slot: chapter_name 820,220 1200,540 -->
+
+  <div class="slide-meta">
+    <span>SECTION DIVIDER</span>
+    <span>02 <span class="dot"></span> 10</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "run_id": "待填写",
+  "suite_version": "v1",
+  "case_id": "待填写",
+  "case_version": "v1",
+  "input_sha256": "待填写",
+  "rubric_sha256": "待填写",
+  "baseline": {
+    "skill_version": "待填写：最近历史版；首次创建时为 null",
+    "snapshot_manifest": "待填写",
+    "output": null,
+    "status": "not_run"
+  },
+  "candidate": {
+    "skill_version": "待填写：本次最新版",
+    "snapshot_manifest": "待填写",
+    "output": null,
+    "status": "not_run"
+  },
+  "runtime": {
+    "actual_model": "unknown",
+    "reasoning": "unknown",
+    "sampling": "unknown",
+    "tools_and_dependencies": "待填写",
+    "generation_steps_or_command": "待填写"
+  },
+  "sample_count_per_variant": 1,
+  "comparison_status": "not_run",
+  "sample_class": "observed",
+  "comparison_policy": "adjacent_two_versions",
+  "candidate_parent_version": "待填写：必须等于 baseline.skill_version；首次创建为 null"
+}

@@ -32,6 +32,7 @@ import webbrowser
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Optional
+from urllib.parse import quote
 
 from flask import Flask, jsonify, request, send_from_directory
 
@@ -202,6 +203,36 @@ def _inline_icons(content: str) -> tuple[str, list[dict]]:
             )
         new_content = new_content[:match.start()] + replacement + new_content[match.end():]
     return new_content, warnings
+
+
+def _rewrite_preview_asset_hrefs(root: ET.Element) -> None:
+    """Route SVG-local media through the preview server without touching disk.
+
+    SVGs commonly keep copied template assets next to the authored page in
+    ``svg_output/`` and reference them as ``brand.png``. Once the SVG markup is
+    injected into the editor page, the browser resolves that href from ``/``,
+    not from ``svg_output/``. Rewrite only safe same-directory relative refs;
+    project ``../images`` / ``../assets`` refs already have dedicated routes.
+    """
+    for elem in root.iter():
+        tag = elem.tag.split('}', 1)[-1]
+        if tag != 'image':
+            continue
+        for key in ('href', '{http://www.w3.org/1999/xlink}href'):
+            value = elem.get(key)
+            if not value:
+                continue
+            lowered = value.lower()
+            if (
+                lowered.startswith(('data:', 'http:', 'https:', 'file:', '#', '/'))
+                or value.startswith('../')
+            ):
+                continue
+            relative = value[2:] if value.startswith('./') else value
+            parts = Path(relative).parts
+            if not parts or any(part in ('', '.', '..') for part in parts):
+                continue
+            elem.set(key, f"/svg-output-assets/{quote(relative, safe='/')}")
 
 
 # ---------------------------------------------------------------------------
@@ -464,6 +495,18 @@ def create_app(
             return jsonify({'error': 'not found'}), 404
         return send_from_directory(str(assets_dir), filename)
 
+    @app.route('/svg-output-assets/<path:filename>')
+    def serve_svg_output_asset(filename: str):
+        """Serve media copied next to authored SVGs for browser preview."""
+        target = (svg_dir / filename).resolve()
+        try:
+            target.relative_to(svg_dir.resolve())
+        except ValueError:
+            return jsonify({'error': 'invalid path'}), 400
+        if not target.exists() or not target.is_file():
+            return jsonify({'error': 'not found'}), 404
+        return send_from_directory(str(svg_dir), filename)
+
     @app.route('/api/slides')
     def get_slides():
         svg_dir = app.config['SVG_DIR']
@@ -564,6 +607,7 @@ def create_app(
                     if '}' in tag:
                         tag = tag.split('}', 1)[1]
                     id_to_tag[eid] = tag
+            _rewrite_preview_asset_hrefs(root)
             content = ET.tostring(root, encoding='unicode', xml_declaration=False)
             content, warnings = _inline_icons(content)
             if not pending_edits:

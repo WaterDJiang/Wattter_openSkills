@@ -5,6 +5,7 @@ summary: Key project briefings, Five-Year Plan presentations, work summaries, in
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # Government Blue Style Template - Design Specification

@@ -5,6 +5,7 @@ summary: Government briefings, policy interpretation, work summaries, project in
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # Government Red Style Template - Design Specification

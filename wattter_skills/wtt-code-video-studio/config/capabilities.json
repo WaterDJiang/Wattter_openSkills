@@ -4160,6 +4160,114 @@
       "referenceCaseIds": []
     },
     {
+      "id": "geographic-explainer",
+      "name": "地理推演与空间叙事",
+      "aliases": [
+        "地理推演",
+        "空间叙事",
+        "历史战役",
+        "战役推演",
+        "军事地图",
+        "迁徙路线",
+        "贸易路线",
+        "疆域演变",
+        "交通演变",
+        "传播路径"
+      ],
+      "purposes": [
+        "knowledge",
+        "documentary",
+        "data",
+        "story"
+      ],
+      "goal": "解释事件在哪里发生、沿何路径演变，以及地形与位置如何影响结果",
+      "structure": "空间问题 → 地理总览与尺度 → 路径/事件按时序推进 → 关键节点与空间因果 → 结果和证据边界",
+      "needs": [
+        "地点/坐标/范围、时间与事件表；路线和控制区的事实/推断/虚构标识",
+        "底图/高程/影像/史料来源与许可；图例、字幕安全区和标签优先级"
+      ],
+      "matches": [
+        {
+          "styleId": "archive-dark",
+          "fit": "primary",
+          "why": "地形底图上的路线、区域状态和日期能解释行动顺序与地势影响",
+          "conditions": [
+            "真实底图/坐标与事件来源；示意疆域标明",
+            "Canvas叠加是逐片实现，不把简化路网当真实地形"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "河谷为何成为进军通道",
+            "keyShot": "总览锁定山脉与渡口，沿河谷显露行军箭头，控制区随事件变色"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "satellite-briefing",
+          "fit": "primary",
+          "why": "卫星俯视与多尺度定位适合迁徙、贸易和现代事件的空间证据",
+          "conditions": [
+            "影像许可/日期/经纬范围明确",
+            "历史路线不套现代卫星影像当同时代实录"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一条商路连接了什么",
+            "keyShot": "由区域总览推近山口，商品路线逐段点亮并标出补给节点"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "engraving",
+          "fit": "conditional",
+          "why": "纸面古地图与交叉排线适合历史路线和疆域演变",
+          "conditions": [
+            "先锁真实几何，再做排线/纸纹；不复用受保护古图",
+            "线型/图例清楚，历史边界与复原推断分开"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "三次改变方向的远征",
+            "keyShot": "同一地理底图上以不同线型展开三个阶段，停在渡河决策处"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "ink-wash",
+          "fit": "conditional",
+          "why": "水墨山河可把山岭、河道和迁徙动作连成有方向的叙事",
+          "conditions": [
+            "真实地理骨架与水墨美术分层",
+            "教学示意明确标识，墨色不遮挡路线与地名"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "沿着河流迁居的人们",
+            "keyShot": "山脊墨层建立地势，人群沿河迁移，关键渡口留下时间标记"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "hologram-hud",
+          "fit": "conditional",
+          "why": "有几何的三维沙盘可展示坡度、通道遮挡和多路行动",
+          "conditions": [
+            "真实高程需DEM和来源，示意体量不能冒称真实高程",
+            "按需Three.js/地图引擎适配，现有风格配方不是通用3D后端"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "山口两侧的选择",
+            "keyShot": "斜俯视抬起地形，两条路径沿坡面推进，切面解释距离和高差"
+          },
+          "evidenceSampleIds": []
+        }
+      ],
+      "referenceCaseIds": [
+        "austerlitz-code"
+      ]
+    },
+    {
       "id": "travel-postcard",
       "name": "城市文旅与地图明信片",
       "aliases": [
@@ -6196,7 +6304,8 @@
       "title": "五分钟历史战役程序化重建",
       "useCases": [
         "cultural-story",
-        "documentary"
+        "documentary",
+        "geographic-explainer"
       ],
       "outputKind": "video",
       "originalUrl": "https://github.com/WinterArc21/Battle-of-Austerlitz-Film",

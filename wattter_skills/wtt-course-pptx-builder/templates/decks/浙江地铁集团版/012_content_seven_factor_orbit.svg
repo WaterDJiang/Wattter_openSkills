@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="ggrad1" x1="507.1281" y1="-135.8846" x2="772.8719" y2="855.8846" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.6"/><stop offset="0.38" stop-color="#FEFFFF" stop-opacity="0.38"/><stop offset="0.62" stop-color="#ECF4FC" stop-opacity="0.17"/><stop offset="0.79" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient><radialGradient id="ggrad2" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1280 0 0 720 0 0)" data-pptx-path="circle" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.23" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient><linearGradient id="ggrad3" x1="640" y1="-382.5943" x2="640" y2="937.9119" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.49" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient><radialGradient id="ggrad4" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1138.2278 0 0 1138.2278 70.8861 -287.7537)" data-pptx-path="shape" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.34" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="1" stop-color="#B8D9FF" stop-opacity="0"/></radialGradient><radialGradient id="ggrad5" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(181.4173 0 0 37.7953 129.638 219.7859)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.03" stop-color="#067AFF"/><stop offset="0.98" stop-color="#00489B"/></radialGradient><filter id="fx1" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="15.33" flood-color="#00489B" flood-opacity="0.4"/></filter><radialGradient id="ggrad6" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(200.315 0 0 37.7953 144.5333 382.8607)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.03" stop-color="#067AFF"/><stop offset="0.98" stop-color="#00489B"/></radialGradient><filter id="fx2" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="15.33" flood-color="#00489B" flood-opacity="0.4"/></filter><radialGradient id="ggrad7" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(200.315 0 0 37.7953 253.7594 515.097)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.03" stop-color="#067AFF"/><stop offset="0.98" stop-color="#00489B"/></radialGradient><filter id="fx3" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="15.33" flood-color="#00489B" flood-opacity="0.4"/></filter><radialGradient id="ggrad8" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(200.315 0 0 37.7953 539.8425 587.9085)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.03" stop-color="#067AFF"/><stop offset="0.98" stop-color="#00489B"/></radialGradient><filter id="fx4" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="15.33" flood-color="#00489B" flood-opacity="0.4"/></filter><radialGradient id="ggrad9" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(257.0079 0 0 37.7953 817.8045 515.097)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.03" stop-color="#067AFF"/><stop offset="0.98" stop-color="#00489B"/></radialGradient><filter id="fx5" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="15.33" flood-color="#00489B" flood-opacity="0.4"/></filter><linearGradient id="mgrad1" x1="0.5" y1="0" x2="0.5" y2="1" data-pptx-scaled="1"><stop offset="0.14" stop-color="#00489B" stop-opacity="0.1"/><stop offset="1" stop-color="#00489B" stop-opacity="0.2"/></linearGradient><radialGradient id="ggrad10" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(52.0107 0 0 52.0107 746.754 471.2687)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0" stop-color="#067AFF"/><stop offset="1" stop-color="#00489B"/></radialGradient><filter id="fx6" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><radialGradient id="ggrad11" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(52.0107 0 0 52.0107 467.4271 473.1102)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0" stop-color="#067AFF"/><stop offset="1" stop-color="#00489B"/></radialGradient><filter id="fx7" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><radialGradient id="ggrad12" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(52.0107 0 0 52.0107 613.9946 507.9893)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0" stop-color="#067AFF"/><stop offset="1" stop-color="#00489B"/></radialGradient><filter id="fx8" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><radialGradient id="ggrad13" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(384.8151 0 0 384.8147 450.8317 61.8667)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0" stop-color="#067AFF" stop-opacity="0.1"/><stop offset="0.72" stop-color="#00489B" stop-opacity="0.1"/></radialGradient><filter id="fx9" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><linearGradient id="mgrad2" x1="0.5" y1="1" x2="0.5" y2="0" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#B8D9FF" stop-opacity="0"/><stop offset="0.71" stop-color="#00489B" stop-opacity="0.4"/></linearGradient><filter id="fx10" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><radialGradient id="ggrad14" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(181.4173 0 0 37.7953 929.4655 382.8607)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.03" stop-color="#067AFF"/><stop offset="0.98" stop-color="#00489B"/></radialGradient><filter id="fx11" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="15.33" flood-color="#00489B" flood-opacity="0.4"/></filter><radialGradient id="ggrad15" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(52.0107 0 0 52.0107 847.8467 370.1759)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0" stop-color="#067AFF"/><stop offset="1" stop-color="#00489B"/></radialGradient><filter id="fx12" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><radialGradient id="ggrad16" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(52.0107 0 0 52.0107 369.4709 370.1759)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0" stop-color="#067AFF"/><stop offset="1" stop-color="#00489B"/></radialGradient><filter id="fx13" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><radialGradient id="ggrad17" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(52.0107 0 0 52.0107 334.888 229.0212)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0" stop-color="#067AFF"/><stop offset="1" stop-color="#00489B"/></radialGradient><filter id="fx14" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><radialGradient id="ggrad18" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(181.4173 0 0 37.7953 967.5306 219.7859)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.03" stop-color="#067AFF"/><stop offset="0.98" stop-color="#00489B"/></radialGradient><filter id="fx15" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="16" stdDeviation="15.33" flood-color="#00489B" flood-opacity="0.4"/></filter><radialGradient id="ggrad19" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(52.0107 0 0 52.0107 884.8492 232.0806)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0" stop-color="#067AFF"/><stop offset="1" stop-color="#00489B"/></radialGradient><filter id="fx16" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><radialGradient id="ggrad20" cx="0" cy="0" fx="0" fy="0" r="1.4142" gradientUnits="userSpaceOnUse" gradientTransform="matrix(189.9885 0 0 189.9882 545.0058 159.2799)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0" stop-color="#067AFF"/><stop offset="1" stop-color="#00489B"/></radialGradient><filter id="fx17" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><linearGradient id="mgrad3" x1="0.5" y1="0" x2="0.5" y2="1" data-pptx-scaled="1"><stop offset="0" stop-color="#B8D9FF" stop-opacity="0"/><stop offset="0.74" stop-color="#00489B" stop-opacity="0.4"/></linearGradient><filter id="fx18" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#003674" flood-opacity="0.42"/></filter><linearGradient id="ggrad21" x1="58.7404" y1="53.8439" x2="53.6132" y2="82.922" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.05" stop-color="#73E6FE"/><stop offset="0.82" stop-color="#0082DC"/></linearGradient></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="layout-shape-5" data-name="图片 4">
+<svg x="-0.06" y="-0.03" width="1280" height="720" viewBox="0 0 0.79761 0.79761" preserveAspectRatio="none"><image href="wind_coast_background.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></svg>
+</g>
+<g id="layout-shape-6" data-name="矩形: 圆角 5">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad1)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="layout-shape-7" data-name="方能演亦1">
+<image href="metro_corridor_background.png" x="0" y="0" width="1280" height="720" preserveAspectRatio="none"/>
+</g>
+<g id="layout-shape-8" data-name="方能演亦2">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad2)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="layout-shape-51" data-name="图片 50">
+<svg x="-0.01" y="0" width="1280.01" height="720" viewBox="0 0.42795 1 0.42754" preserveAspectRatio="none"><image href="cloud_layer_portrait.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></svg>
+</g>
+<g id="layout-shape-50" data-name="图片 49">
+<image href="brand_lockup_header.png" x="993.29" y="48.92" width="242.98" height="38.93" preserveAspectRatio="none"/>
+</g>
+<g id="shape-2" data-name="矩形 1">
+<image href="industrial_workers_washout.png" x="0" y="0" width="1280" height="720" preserveAspectRatio="none"/>
+<rect x="0" y="0" width="1280" height="720" fill="none" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-196" data-name="圆: 空心 195">
+<path d="M 1300.25 277.66 A 660.25 660.25 0 1 1 -20.25 277.66 A 660.25 660.25 0 1 1 1300.25 277.66 Z M 1215.5 277.66 A 575.5 575.5 0 1 0 64.5 277.66 A 575.5 575.5 0 1 0 1215.5 277.66 Z" fill-rule="evenodd" data-pptx-prst="donut" fill="url(#ggrad3)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-197" data-name="椭圆 196">
+<ellipse cx="640" cy="281.36" rx="569.11" ry="569.11" fill="url(#ggrad4)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-102" data-name="矩形: 圆角 101">
+<rect x="129.64" y="219.79" width="181.42" height="37.8" rx="18.9" ry="18.9" fill="url(#ggrad5)" stroke="none" stroke-width="1" filter="url(#fx1)"/>
+<text x="220.35" y="245.22" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans B&quot;, sans-serif" font-size="18.67" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-176" data-name="文本框 175">
+<rect x="86.29" y="272.97" width="235.67" height="29.08" fill="none"/>
+<text x="95.89" y="291.37" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans R&quot;, sans-serif" font-size="16" fill="#000000"><tspan fill="#000000" font-size="16">输入文字</tspan></text>
+</g>
+<g id="shape-177" data-name="矩形: 圆角 176">
+<rect x="144.53" y="382.86" width="200.31" height="37.8" rx="18.9" ry="18.9" fill="url(#ggrad6)" stroke="none" stroke-width="1" filter="url(#fx2)"/>
+<text x="244.69" y="408.29" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans B&quot;, sans-serif" font-size="18.67" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-178" data-name="文本框 177">
+<rect x="81.23" y="421.57" width="278.83" height="29.08" fill="none"/>
+<text x="90.83" y="439.97" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans R&quot;, sans-serif" font-size="16" fill="#000000"><tspan fill="#000000" font-size="16">输入文字</tspan></text>
+</g>
+<g id="shape-179" data-name="矩形: 圆角 178">
+<rect x="253.76" y="515.1" width="200.31" height="37.8" rx="18.9" ry="18.9" fill="url(#ggrad7)" stroke="none" stroke-width="1" filter="url(#fx3)"/>
+<text x="353.92" y="540.53" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans B&quot;, sans-serif" font-size="18.67" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-180" data-name="文本框 179">
+<rect x="182.54" y="554.94" width="278.83" height="29.08" fill="none"/>
+<text x="192.14" y="573.34" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans R&quot;, sans-serif" font-size="16" fill="#000000"><tspan fill="#000000" font-size="16">输入文字</tspan></text>
+</g>
+<g id="shape-181" data-name="矩形: 圆角 180">
+<rect x="539.84" y="587.91" width="200.31" height="37.8" rx="18.9" ry="18.9" fill="url(#ggrad8)" stroke="none" stroke-width="1" filter="url(#fx4)"/>
+<text x="640" y="613.34" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans B&quot;, sans-serif" font-size="18.67" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-182" data-name="文本框 181">
+<rect x="541.7" y="633.34" width="196.59" height="29.08" fill="none"/>
+<text x="640" y="651.74" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans R&quot;, sans-serif" font-size="16" fill="#000000"><tspan fill="#000000" font-size="16">输入文字</tspan></text>
+</g>
+<g id="shape-183" data-name="矩形: 圆角 182">
+<rect x="817.8" y="515.1" width="257.01" height="37.8" rx="18.9" ry="18.9" fill="url(#ggrad9)" stroke="none" stroke-width="1" filter="url(#fx5)"/>
+<text x="946.31" y="540.53" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans B&quot;, sans-serif" font-size="18.67" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-184" data-name="文本框 183">
+<rect x="819.77" y="554.94" width="220.27" height="29.08" fill="none"/>
+<text x="1030.43" y="573.34" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans R&quot;, sans-serif" font-size="16" fill="#000000"><tspan fill="#000000" font-size="16">输入文字</tspan></text>
+</g>
+<g id="shape-193" data-name="弧形 192">
+<path d="M 670.04 -16.41 A 280.51 280.49 0 1 1 653.96 -17.46" stroke-width="1.667" stroke="url(#mgrad1)" stroke-dasharray="3 3" fill="none"/>
+</g>
+<g id="shape-84" data-name="椭圆 83">
+<ellipse cx="772.76" cy="497.27" rx="26.01" ry="26.01" fill="url(#ggrad10)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx6)"/>
+<text x="767.96" y="505.27" text-anchor="middle" xml:space="preserve" font-family="&quot;字制区喜脉体&quot;, sans-serif" font-size="32" fill="#FFFFFF" font-style="italic"><tspan fill="#FFFFFF" font-size="32" font-style="italic">5</tspan></text>
+</g>
+<g id="shape-117" data-name="椭圆 116">
+<ellipse cx="493.43" cy="499.12" rx="26.01" ry="26.01" fill="url(#ggrad11)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx7)"/>
+<text x="488.63" y="507.12" text-anchor="middle" xml:space="preserve" font-family="&quot;字制区喜脉体&quot;, sans-serif" font-size="32" fill="#FFFFFF" font-style="italic"><tspan fill="#FFFFFF" font-size="32" font-style="italic">3</tspan></text>
+</g>
+<g id="shape-93" data-name="椭圆 92">
+<ellipse cx="640" cy="533.99" rx="26.01" ry="26.01" fill="url(#ggrad12)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx8)"/>
+<text x="635.2" y="541.99" text-anchor="middle" xml:space="preserve" font-family="&quot;字制区喜脉体&quot;, sans-serif" font-size="32" fill="#FFFFFF" font-style="italic"><tspan fill="#FFFFFF" font-size="32" font-style="italic">4</tspan></text>
+</g>
+<g id="shape-137" data-name="六边形 5">
+<ellipse cx="643.24" cy="254.27" rx="192.41" ry="192.41" fill="url(#ggrad13)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx9)"/>
+</g>
+<g id="shape-61" data-name="六边形 5">
+<path d="M 480.52 356.95 A 192.41 192.41 0 0 1 534.63 95.45" fill="none" stroke-width="2.667" stroke-linecap="butt" stroke="url(#mgrad2)" stroke-linejoin="miter" filter="url(#fx10)"/>
+</g>
+<g id="shape-185" data-name="矩形: 圆角 184">
+<rect x="929.47" y="382.86" width="181.42" height="37.8" rx="18.9" ry="18.9" fill="url(#ggrad14)" stroke="none" stroke-width="1" filter="url(#fx11)"/>
+<text x="1020.17" y="408.29" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans B&quot;, sans-serif" font-size="18.67" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-186" data-name="文本框 185">
+<rect x="931.43" y="421.57" width="267.34" height="29.08" fill="none"/>
+<text x="1189.17" y="439.97" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans R&quot;, sans-serif" font-size="16" fill="#000000"><tspan fill="#000000" font-size="16">输入文字</tspan></text>
+</g>
+<g id="shape-78" data-name="椭圆 77">
+<ellipse cx="873.85" cy="396.18" rx="26.01" ry="26.01" fill="url(#ggrad15)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx12)"/>
+<text x="869.05" y="404.18" text-anchor="middle" xml:space="preserve" font-family="&quot;字制区喜脉体&quot;, sans-serif" font-size="32" fill="#FFFFFF" font-style="italic"><tspan fill="#FFFFFF" font-size="32" font-style="italic">6</tspan></text>
+</g>
+<g id="shape-133" data-name="椭圆 132">
+<ellipse cx="395.48" cy="396.18" rx="26.01" ry="26.01" fill="url(#ggrad16)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx13)"/>
+<text x="390.68" y="404.18" text-anchor="middle" xml:space="preserve" font-family="&quot;字制区喜脉体&quot;, sans-serif" font-size="32" fill="#FFFFFF" font-style="italic"><tspan fill="#FFFFFF" font-size="32" font-style="italic">2</tspan></text>
+</g>
+<g id="shape-63" data-name="椭圆 62">
+<ellipse cx="360.89" cy="255.03" rx="26.01" ry="26.01" fill="url(#ggrad17)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx14)"/>
+<text x="356.09" y="266.23" text-anchor="middle" xml:space="preserve" font-family="&quot;字制区喜脉体&quot;, sans-serif" font-size="32" fill="#FFFFFF" font-style="italic"><tspan fill="#FFFFFF" font-size="32" font-style="italic">1</tspan></text>
+</g>
+<g id="shape-187" data-name="矩形: 圆角 186">
+<rect x="967.53" y="219.79" width="181.42" height="37.8" rx="18.9" ry="18.9" fill="url(#ggrad18)" stroke="none" stroke-width="1" filter="url(#fx15)"/>
+<text x="1058.24" y="245.22" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans B&quot;, sans-serif" font-size="18.67" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-188" data-name="文本框 187">
+<rect x="969.49" y="257.35" width="229.28" height="29.08" fill="none"/>
+<text x="1189.17" y="275.75" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, &quot;OPPOSans R&quot;, sans-serif" font-size="16" fill="#000000"><tspan fill="#000000" font-size="16">输入文字</tspan></text>
+</g>
+<g id="shape-72" data-name="椭圆 71">
+<ellipse cx="910.85" cy="258.09" rx="26.01" ry="26.01" fill="url(#ggrad19)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx16)"/>
+<text x="906.05" y="266.09" text-anchor="middle" xml:space="preserve" font-family="&quot;字制区喜脉体&quot;, sans-serif" font-size="32" fill="#FFFFFF" font-style="italic"><tspan fill="#FFFFFF" font-size="32" font-style="italic">7</tspan></text>
+</g>
+<g id="shape-129" data-name="六边形 5">
+<ellipse cx="640" cy="254.27" rx="94.99" ry="94.99" fill="url(#ggrad20)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx17)"/>
+</g>
+<g id="shape-138" data-name="六边形 5">
+<path d="M 791.9 132.12 A 192.41 192.41 0 0 1 788.38 380.58" fill="none" stroke-width="2.667" stroke-linecap="butt" stroke="url(#mgrad3)" stroke-linejoin="miter" filter="url(#fx18)"/>
+</g>
+<g id="shape-3" data-name="文本框 2">
+<rect x="73.23" y="39.3" width="180.95" height="58.16" fill="none"/>
+<text x="82.83" y="78.1" text-anchor="start" xml:space="preserve" font-family="Arial, &quot;思源宋体&quot;, sans-serif" font-size="40" fill="#262626"><tspan fill="#262626" font-size="40">输入标题</tspan></text>
+</g>
+<g id="shape-4" data-name="等腰三角形 3" transform="rotate(270 56.18 68.38) translate(56.18 68.38) scale(1 -1) translate(-56.18 -68.38)">
+<polygon points="56.18,55.94 70.61,80.83 41.74,80.83" fill="url(#ggrad21)" stroke="none" stroke-width="1"/>
+</g></svg>

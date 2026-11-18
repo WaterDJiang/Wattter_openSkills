@@ -5,6 +5,7 @@ summary: 交易银行产品介绍、销售收款方案汇报、客户案例拆�
 canvas_format: ppt169
 page_count: 5
 primary_color: "#C8152D"
+background_mode: legacy-pure-svg
 ---
 
 # China Merchants Bank Transaction Banking - Design Specification

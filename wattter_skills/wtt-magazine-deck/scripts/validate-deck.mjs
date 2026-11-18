@@ -10,7 +10,7 @@
 */
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { basename, dirname, join, resolve } from 'node:path';
+import { basename, dirname, join, relative, resolve, sep } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // 兼容两种调用：scripts/ 在仓库根目录 或 在 skill 内
@@ -239,8 +239,48 @@ function checkStyleIsolation(slides, html, styleId, errors) {
   });
 }
 
+function checkMediaAssets(file, slides, errors, warnings) {
+  const deckDir = dirname(resolve(file));
+  const imagesDir = resolve(deckDir, 'images');
+  slides.forEach(s => {
+    for (const m of s.html.matchAll(/<img\b[^>]*\bsrc=(['"])(.*?)\1/gi)) {
+      const rawSrc = m[2].trim();
+      if (!rawSrc || /^(?:data|blob):/i.test(rawSrc)) continue;
+      if (/^https?:\/\//i.test(rawSrc)) {
+        addWarning(s.idx, `<img> uses remote source "${rawSrc}"; copy user media into images/ to keep the deck self-contained.`);
+        continue;
+      }
+
+      let cleanSrc;
+      try {
+        cleanSrc = decodeURIComponent(rawSrc.split(/[?#]/)[0]).replace(/^\.\//, '');
+      } catch {
+        addError(s.idx, `<img> has an invalid encoded source "${rawSrc}".`);
+        continue;
+      }
+      if (/^(?:\/|[A-Za-z]:[\\/])/.test(cleanSrc) || cleanSrc.startsWith('../')) {
+        addError(s.idx, `<img src="${rawSrc}"> must use a relative path inside images/.`);
+        continue;
+      }
+      if (!cleanSrc.startsWith('images/')) {
+        addWarning(s.idx, `<img src="${rawSrc}"> is outside images/; copy user media into the deck images/ directory.`);
+        continue;
+      }
+
+      const assetPath = resolve(deckDir, cleanSrc);
+      const relativeToImages = relative(imagesDir, assetPath);
+      if (relativeToImages.startsWith(`..${sep}`) || relativeToImages === '..' || assetPath === imagesDir) {
+        addError(s.idx, `<img src="${rawSrc}"> escapes the deck images/ directory.`);
+      } else if (!existsSync(assetPath)) {
+        addError(s.idx, `<img src="${rawSrc}"> points to a missing file.`);
+      }
+    }
+  });
+}
+
 checkStyleIsolation(slides, htmlStripped, styleId, errors);
 checkOutputDirectoryName(file, errors, warnings, allowLegacyDir, styleId, htmlStripped);
+checkMediaAssets(file, slides, errors, warnings);
 
 // 1. <title> 不含 [必填]
 if (/<title>[^<]*\[必填\]/.test(html)) {
@@ -313,8 +353,10 @@ if (!/id="theme-link"/.test(html)) {
 }
 const themeHref = html.match(/<link\b[^>]*id="theme-link"[^>]*href="([^"]+)"/)?.[1] || '';
 const bodyThemeList = html.match(/<body[^>]*\bdata-theme-list="([^"]+)"/)?.[1] || '';
-if (bodyThemeList && /theme\.css(?:\?|#|$)/.test(themeHref)) {
-  warnings.push('Global: data-theme-list is present but theme-link points to css/theme.css. T key stays locked for custom theme; use a concrete preset file like css/ikb-blue.css to enable cycling.');
+const themeFile = basename(themeHref.split(/[?#]/)[0]).replace(/\.css$/, '');
+const listedThemes = bodyThemeList.split(',').map(s => s.trim()).filter(Boolean);
+if (bodyThemeList && themeFile && !listedThemes.includes(themeFile)) {
+  warnings.push(`Global: theme-link points to non-listed theme file "${themeHref}". The T button is intentionally disabled for a custom theme; use a concrete preset file like css/ikb-blue.css to enable cycling.`);
 }
 
 // 11. 通用左右翻页按钮必须存在
@@ -503,14 +545,23 @@ function checkSurfaceContrastRules(slides, errors, warnings) {
     const sectionStyle = getStyleAttr(s.tag);
     checkTextAgainstSurface(s.idx, slideSurface, sectionStyle, 'slide section', errors);
 
-    for (const m of s.html.matchAll(/<([a-z0-9-]+)\b([^>]*)>/gi)) {
-      const tagName = m[1].toLowerCase();
+    const stack = [{ tag: 'section', surface: slideSurface }];
+    for (const m of s.html.matchAll(/<(\/)?([a-z0-9-]+)\b([^>]*)>/gi)) {
+      const tagName = m[2].toLowerCase();
+      if (m[1]) {
+        const index = stack.map(entry => entry.tag).lastIndexOf(tagName);
+        if (index > 0) stack.splice(index);
+        continue;
+      }
       if (tagName === 'section' || tagName === 'script' || tagName === 'style') continue;
-      const attrs = m[2] || '';
+      const attrs = m[3] || '';
       const style = attrs.match(/\bstyle="([^"]*)"/i)?.[1] || '';
       const cls = attrs.match(/\bclass="([^"]*)"/i)?.[1] || '';
       const explicitSurface = inferSurfaceFromAttrs(attrs, style, cls);
-      const surface = explicitSurface || slideSurface;
+      const surface = explicitSurface || stack[stack.length - 1].surface;
+      if (!/^(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(tagName) && !/\/$/.test(attrs.trim())) {
+        stack.push({ tag: tagName, surface });
+      }
 
       if (style) checkTextAgainstSurface(s.idx, surface, style, `<${tagName}>`, errors);
 
@@ -518,7 +569,7 @@ function checkSurfaceContrastRules(slides, errors, warnings) {
         /\b(?:b-ink|b-accent|hero-ink-col|ink-banner-full|card-ink|card-accent|accent-block|ink-block|grey-block|card-fill)\b/i.test(cls);
       const hasSurfaceMarker = /\b(?:surface-light|surface-dark|surface-accent|on-light|on-dark|on-accent)\b/i.test(cls) ||
         /\bdata-surface="(?:light|dark|accent)"/i.test(attrs);
-      if (hasLocalBackground && !hasSurfaceMarker && !/color\s*:/i.test(style)) {
+      if (hasLocalBackground && !hasSurfaceMarker && !/(?:^|;)\s*color\s*:/i.test(style)) {
         addWarning(s.idx, `local background on <${tagName}> has no surface marker. Add .on-dark/.on-light/.on-accent or data-surface so text tokens follow the local background.`);
       }
     }
@@ -527,6 +578,7 @@ function checkSurfaceContrastRules(slides, errors, warnings) {
 
 function inferSurfaceFromSlide(slide) {
   const theme = inferTheme(slide);
+  if (styleId === 'linear' && theme !== 'light' && theme !== 'accent') return 'dark';
   if (theme === 'dark' || theme === 'hero') return 'dark';
   if (theme === 'accent') return 'accent';
   return 'light';
@@ -548,8 +600,9 @@ function inferSurfaceFromAttrs(attrs, style, cls) {
 }
 
 function checkTextAgainstSurface(slideIdx, surface, style, context, errors) {
-  if (!surface || !/color\s*:/i.test(style)) return;
-  if ((surface === 'dark' || surface === 'accent') && isDarkTextColor(style)) {
+  if (!surface || !/(?:^|;)\s*color\s*:/i.test(style)) return;
+  // accent 可能是亮黄或深蓝，不能按“主题色 = 深底”猜测。
+  if (surface === 'dark' && isDarkTextColor(style)) {
     addError(slideIdx, `surface contrast conflict: ${context} uses dark text on ${surface} surface. Use .on-dark/.on-accent with var(--surface-text), or change text to var(--paper)/var(--accent-on).`);
   }
   if (surface === 'light' && isLightTextColor(style)) {
@@ -558,13 +611,13 @@ function checkTextAgainstSurface(slideIdx, surface, style, context, errors) {
 }
 
 function isDarkTextColor(style) {
-  return /color\s*:\s*var\(--(?:ink|text-on-light)\)/i.test(style) ||
-    /color\s*:\s*#(?:0[0-9a-f]{2,5}|1[0-9a-f]{2,5}|2[0-9a-f]{2,5}|333(?:333)?|000(?:000)?)\b/i.test(style);
+  return /(?:^|;)\s*color\s*:\s*var\(--(?:ink|text-on-light)\)/i.test(style) ||
+    /(?:^|;)\s*color\s*:\s*#(?:0[0-9a-f]{2,5}|1[0-9a-f]{2,5}|2[0-9a-f]{2,5}|333(?:333)?|000(?:000)?)\b/i.test(style);
 }
 
 function isLightTextColor(style) {
-  return /color\s*:\s*var\(--(?:paper|text-on-dark)\)/i.test(style) ||
-    /color\s*:\s*#(?:e[0-9a-f]{2,5}|f[0-9a-f]{2,5}|fff(?:fff)?|eee(?:eee)?)\b/i.test(style);
+  return /(?:^|;)\s*color\s*:\s*var\(--(?:paper|text-on-dark)\)/i.test(style) ||
+    /(?:^|;)\s*color\s*:\s*#(?:e[0-9a-f]{2,5}|f[0-9a-f]{2,5}|fff(?:fff)?|eee(?:eee)?)\b/i.test(style);
 }
 
 function checkOverflowRisk(slides, warnings) {

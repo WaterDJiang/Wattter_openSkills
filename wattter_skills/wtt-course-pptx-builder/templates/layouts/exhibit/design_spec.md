@@ -5,6 +5,7 @@ summary: Strategic planning, executive reports, investment analysis, board prese
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # Exhibit Style Template - Design Specification

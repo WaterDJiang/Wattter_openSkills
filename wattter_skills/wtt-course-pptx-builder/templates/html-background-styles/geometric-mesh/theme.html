@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>geometric-mesh / theme</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+  }
+  /* 顶部 primary 色块斜切（细） */
+  .top-block {
+    position: absolute; left: 0; top: 0; right: 0; height: 70px;
+    background: var(--primary);
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+  }
+  /* 底部 accent 色块斜切（细） */
+  .bottom-block {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 70px;
+    background: var(--accent);
+    clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
+  }
+  /* 左侧极淡网格点阵（不抢内容） */
+  .left-grid {
+    position: absolute; left: 0; top: 70px; width: 120px; bottom: 70px;
+    background-image: radial-gradient(circle, var(--primary) 1.5px, transparent 2.5px);
+    background-size: 24px 24px; opacity: 0.18;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="top-block"></div>
+  <div class="bottom-block"></div>
+  <div class="left-grid"></div>
+</div>
+</body>
+</html>

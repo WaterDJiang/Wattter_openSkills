@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <g id="bg-compare">
+    <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+    <rect x="640" y="210" width="640" height="510" fill="#F1F8FE"/>
+    <path d="M 0 686 C 286 652 566 662 820 720 L 0 720 Z" fill="#ECF6FE"/>
+  </g>
+
+  <g id="compare-header">
+    <rect x="58" y="40" width="6" height="30" fill="#C7A661"/>
+    <text x="80" y="65" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="24" font-weight="700">{{SECTION_LABEL}}</text>
+    <image href="logo_white.png" x="1061" y="22" width="187" height="51" preserveAspectRatio="xMidYMid meet"/>
+    <text x="70" y="142" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="52" font-weight="800">{{PAGE_TITLE}}</text>
+    <line x1="70" y1="176" x2="1210" y2="176" stroke="#E7E6E6" stroke-width="1"/>
+  </g>
+
+  <g id="compare-column-a">
+    <rect x="70" y="224" width="530" height="72" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <rect x="70" y="224" width="7" height="72" fill="#666666"/>
+    <text x="104" y="270" fill="#44546A" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="30" font-weight="700">{{COL_A_TITLE}}</text>
+
+    <rect x="70" y="318" width="530" height="94" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <text x="104" y="354" fill="#666666" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{COL_A_LABEL_01}}</text>
+    <text x="104" y="388" fill="#44546A" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22">{{COL_A_01}}</text>
+
+    <rect x="70" y="430" width="530" height="94" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <text x="104" y="466" fill="#666666" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{COL_A_LABEL_02}}</text>
+    <text x="104" y="500" fill="#44546A" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22">{{COL_A_02}}</text>
+
+    <rect x="70" y="542" width="530" height="94" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <text x="104" y="578" fill="#666666" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{COL_A_LABEL_03}}</text>
+    <text x="104" y="612" fill="#44546A" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22">{{COL_A_03}}</text>
+  </g>
+
+  <g id="compare-column-b">
+    <rect x="680" y="224" width="530" height="72" rx="6" fill="#003396"/>
+    <rect x="680" y="224" width="7" height="72" fill="#C7A661"/>
+    <text x="714" y="270" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="30" font-weight="700">{{COL_B_TITLE}}</text>
+
+    <rect x="680" y="318" width="530" height="94" rx="6" fill="#FFFFFF"/>
+    <text x="714" y="354" fill="#2E75FF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{COL_B_LABEL_01}}</text>
+    <text x="714" y="388" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22">{{COL_B_01}}</text>
+
+    <rect x="680" y="430" width="530" height="94" rx="6" fill="#FFFFFF"/>
+    <text x="714" y="466" fill="#2E75FF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{COL_B_LABEL_02}}</text>
+    <text x="714" y="500" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22">{{COL_B_02}}</text>
+
+    <rect x="680" y="542" width="530" height="94" rx="6" fill="#FFFFFF"/>
+    <text x="714" y="578" fill="#2E75FF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{COL_B_LABEL_03}}</text>
+    <text x="714" y="612" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22">{{COL_B_03}}</text>
+  </g>
+
+  <g id="compare-vs">
+    <circle cx="640" cy="260" r="28" fill="#C7A661"/>
+    <text x="640" y="269" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20" font-weight="700">VS</text>
+    <line x1="640" y1="300" x2="640" y2="644" stroke="#C7A661" stroke-width="2"/>
+  </g>
+</svg>

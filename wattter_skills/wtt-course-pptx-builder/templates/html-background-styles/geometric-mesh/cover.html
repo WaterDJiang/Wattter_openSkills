@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>geometric-mesh / cover</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+  }
+  /* 顶部 primary 大色块，左下斜切（几何分割） */
+  .top-block {
+    position: absolute; left: 0; top: 0; right: 0; height: 180px;
+    background: var(--primary);
+    clip-path: polygon(0 0, 100% 0, 100% 72%, 0 100%);
+  }
+  /* 顶部网格点阵 motif（叠在色块上） */
+  .top-grid {
+    position: absolute; left: 0; top: 0; right: 0; height: 180px;
+    background-image: radial-gradient(circle, var(--accent) 2px, transparent 3px);
+    background-size: 30px 30px; opacity: 0.55;
+    clip-path: polygon(0 0, 100% 0, 100% 72%, 0 100%);
+  }
+  /* 中部 chevron 装饰（title 与 author 之间的安全区） */
+  .chevron {
+    position: absolute; left: 80px; top: 478px; width: 150px; height: 26px;
+    background: var(--accent);
+    clip-path: polygon(0 0, 70% 0, 100% 50%, 70% 100%, 0 100%, 30% 50%);
+  }
+  /* 右中细竖条装饰 */
+  .v-rule {
+    position: absolute; right: 60px; top: 250px; width: 4px; height: 220px;
+    background: var(--border);
+  }
+  .bottom-bar { position: absolute; left: 0; bottom: 0; right: 0; height: 10px; background: var(--accent); }
+  .logo { position: absolute; left: 48px; top: 202px; height: 44px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="top-block"></div>
+  <div class="top-grid"></div>
+  <div class="chevron"></div>
+  <div class="v-rule"></div>
+  <div class="bottom-bar"></div>
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: title 80,280 1200,380 -->
+  <!-- text-slot: subtitle 80,400 1200,455 -->
+  <!-- text-slot: author 80,625 640,665 -->
+  <!-- text-slot: date 660,625 1200,665 -->
+</div>
+</body>
+</html>

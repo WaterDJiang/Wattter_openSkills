@@ -59,6 +59,9 @@ class ShapeNode:
     hidden: bool = False
     placeholder: PlaceholderInfo | None = None
     inherited_lst_styles: tuple[ET.Element, ...] = ()
+    # Child shapes with <a:grpFill/> inherit the nearest group's explicit
+    # solid/gradient/pattern fill. Keep that source available to the renderer.
+    inherited_group_fill: ET.Element | None = None
     # GROUP only: children, in z-order
     children: list["ShapeNode"] = field(default_factory=list)
 
@@ -163,6 +166,7 @@ _KIND_MAP = {
 def _walk_container(
     container: ET.Element,
     parent_group_xfrm: Xfrm | None,
+    parent_group_fill: ET.Element | None = None,
     placeholder_xfrms: dict[tuple[str | None, str | None], Xfrm] | None = None,
     placeholder_lst_styles: dict[
         tuple[str | None, str | None],
@@ -211,21 +215,47 @@ def _walk_container(
                 ph, placeholder_lst_styles,
             )
 
+        sp_pr = (
+            child.find("p:grpSpPr", NS)
+            if kind == GROUP
+            else child.find("p:spPr", NS)
+        )
+        inherits_group_fill = (
+            sp_pr is not None and sp_pr.find("a:grpFill", NS) is not None
+        )
+
         node = ShapeNode(
             kind=kind, xml=child, xfrm=xfrm,
             name=name, spid=spid, hidden=hidden, placeholder=ph,
             inherited_lst_styles=inherited_lst_styles,
+            inherited_group_fill=(parent_group_fill if inherits_group_fill else None),
         )
 
         if kind == GROUP:
+            group_fill = _group_fill_source(sp_pr, parent_group_fill)
             node.children = _walk_container(
-                child, xfrm,
+                child, xfrm, parent_group_fill=group_fill,
                 placeholder_xfrms=placeholder_xfrms,
                 placeholder_lst_styles=placeholder_lst_styles,
             )
 
         nodes.append(node)
     return nodes
+
+
+def _group_fill_source(
+    grp_sp_pr: ET.Element | None,
+    inherited_fill: ET.Element | None,
+) -> ET.Element | None:
+    """Return the fill source descendants should use for <a:grpFill/>."""
+    if grp_sp_pr is None:
+        return None
+    if grp_sp_pr.find("a:grpFill", NS) is not None:
+        return inherited_fill
+    for tag in ("noFill", "solidFill", "gradFill", "blipFill", "pattFill"):
+        if grp_sp_pr.find(f"a:{tag}", NS) is not None:
+            return grp_sp_pr
+    return None
 
 
 def _lookup_placeholder_xfrm(
@@ -382,6 +412,7 @@ def walk_sp_tree(
     )
     return _walk_container(
         sp_tree, parent_group_xfrm=None,
+        parent_group_fill=None,
         placeholder_xfrms=placeholder_xfrms or None,
         placeholder_lst_styles=placeholder_lst_styles or None,
     )

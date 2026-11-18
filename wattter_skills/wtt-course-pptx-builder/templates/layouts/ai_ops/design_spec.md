@@ -5,6 +5,7 @@ summary: Telecom AI operations architecture, IT system overviews, digital transf
 canvas_format: ppt169
 page_count: 6
 page_types: [cover, toc, chapter, content, ending, reference_style]
+background_mode: legacy-pure-svg
 ---
 
 # ai_ops - Enterprise Digital Intelligence Design Specification

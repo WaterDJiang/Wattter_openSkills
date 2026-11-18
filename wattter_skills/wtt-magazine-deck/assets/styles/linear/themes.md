@@ -11,6 +11,7 @@
    node <SKILL_ROOT>/scripts/make-custom-theme.mjs linear "#RRGGBB" "$DIR/css/theme.css" --name="brand-name"
    ```
    如果生成器尚未为 `linear` 做专属分支，优先选预设主题或复制本目录主题为一次性 deck theme。
+4. 一次性 `css/theme.css` 会禁用 T 按钮并提示已固定；要启用 T 键，必须复制全部预设主题并让 `#theme-link` 指向其中一个具体文件。
 
 ## 主题表
 

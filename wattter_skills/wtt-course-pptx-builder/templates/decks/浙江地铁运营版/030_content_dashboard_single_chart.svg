@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="ggrad1" x1="640" y1="0" x2="640" y2="720" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#EBF3FF"/><stop offset="0.54" stop-color="#CCE0FF" stop-opacity="0.38"/><stop offset="1" stop-color="#CCE0FF" stop-opacity="0.81"/></linearGradient><radialGradient id="ggrad2" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(244.9285 0 0 164.5248 74.0002 160.8006)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.15" stop-color="#00BEFF"/><stop offset="0.69" stop-color="#0165FF"/></radialGradient><filter id="fx1" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="6.67" stdDeviation="25.33" flood-color="#0165FF" flood-opacity="0.3"/></filter><radialGradient id="ggrad3" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(244.9285 0 0 164.5248 74.0002 339.8153)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.15" stop-color="#00BEFF"/><stop offset="0.69" stop-color="#0165FF"/></radialGradient><filter id="fx2" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="6.67" stdDeviation="25.33" flood-color="#0165FF" flood-opacity="0.3"/></filter><filter id="fx3" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="0" stdDeviation="13.33" flood-color="#000000" flood-opacity="0.07"/></filter><radialGradient id="ggrad4" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(244.9285 0 0 164.5248 74.0002 518.9369)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.15" stop-color="#00BEFF"/><stop offset="0.69" stop-color="#0165FF"/></radialGradient><filter id="fx4" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="6.67" stdDeviation="25.33" flood-color="#0165FF" flood-opacity="0.3"/></filter></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="master-shape-7" data-name="文本框 6">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-2" data-name="文本框 1">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-6" data-name="矩形: 圆角 5">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad1)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="layout-shape-9" data-name="图片 8">
+<image href="brand_lockup.png" x="865" y="48.74" width="375.77" height="50.15" preserveAspectRatio="none"/>
+</g>
+<g id="shape-24" data-name="矩形: 圆角 23">
+<rect x="74" y="160.8" width="244.93" height="164.52" rx="10.67" ry="10.67" fill="url(#ggrad2)" stroke="none" stroke-width="1" filter="url(#fx1)"/>
+</g>
+<g id="shape-28" data-name="组合 27">
+<g id="shape-11" data-name="文本框 10">
+<rect x="88.17" y="191.69" width="189" height="35.54" fill="none"/>
+<text x="97.77" y="214.62" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="21.33" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="21.33">XXXXX</tspan></text>
+</g>
+<g id="shape-14" data-name="文本框 13">
+<rect x="88.17" y="220.12" width="216.58" height="74.32" fill="none"/>
+<text x="97.77" y="270.25" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="53.33" fill="#FFFFFF" font-weight="bold"><tspan fill="#FFFFFF" font-size="53.33" font-weight="bold">1656</tspan><tspan fill="#FFFFFF" font-size="26.67" font-weight="bold">亿</tspan><tspan fill="#FFFFFF" font-size="26.67" font-weight="bold">GB</tspan></text>
+</g>
+</g>
+<g id="shape-25" data-name="矩形: 圆角 24">
+<rect x="74" y="339.82" width="244.93" height="164.52" rx="10.67" ry="10.67" fill="url(#ggrad3)" stroke="none" stroke-width="1" filter="url(#fx2)"/>
+</g>
+<g id="shape-26" data-name="文本框 25">
+<rect x="100.03" y="376.74" width="154.28" height="35.54" fill="none"/>
+<text x="109.63" y="399.67" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="21.33" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="21.33">XXXX</tspan></text>
+</g>
+<g id="shape-27" data-name="文本框 26">
+<rect x="100.03" y="405.17" width="163.88" height="74.32" fill="none"/>
+<text x="109.63" y="455.3" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="53.33" fill="#FFFFFF" font-weight="bold"><tspan fill="#FFFFFF" font-size="53.33" font-weight="bold">35.7</tspan><tspan fill="#FFFFFF" font-size="26.67" font-weight="bold">%</tspan></text>
+</g>
+<g id="shape-19" data-name="矩形: 圆角 18">
+<rect x="336.91" y="160.4" width="871.09" height="523.06" rx="9.45" ry="9.45" fill="#FFFFFF" stroke="none" stroke-width="1" filter="url(#fx3)"/>
+</g>
+<g id="shape-9" data-name="图表 8">
+<rect x="343.84" y="220.12" width="871.09" height="445.18" fill="none" stroke="#999999" stroke-dasharray="4 4"/><text x="779.38" y="442.7" text-anchor="middle" font-size="14" fill="#999999">[chart]</text>
+</g>
+<g id="shape-21" data-name="文本框 20">
+<rect x="391.93" y="190.53" width="463.07" height="48.47" fill="none"/>
+<text x="401.53" y="222.53" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="32" fill="#000000" font-weight="bold"><tspan fill="#000000" font-size="32" font-weight="bold">XXXXXX</tspan><tspan fill="#000000" font-size="32" font-weight="bold">（图表右键编辑数据）</tspan></text>
+</g>
+<g id="shape-10" data-name="文本框 9">
+<rect x="391.93" y="252.22" width="204" height="32.31" fill="none"/>
+<text x="401.53" y="272.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#404040" font-weight="bold"><tspan fill="#404040" font-size="18.67" font-weight="bold">单位：</tspan><tspan fill="#404040" font-size="18.67" font-weight="bold">XXXXXX</tspan></text>
+</g>
+<g id="shape-29" data-name="矩形: 圆角 28">
+<rect x="74" y="518.94" width="244.93" height="164.52" rx="10.67" ry="10.67" fill="url(#ggrad4)" stroke="none" stroke-width="1" filter="url(#fx4)"/>
+</g>
+<g id="shape-32" data-name="组合 31">
+<g id="shape-30" data-name="文本框 29">
+<rect x="104.26" y="549.83" width="131.01" height="35.54" fill="none"/>
+<text x="113.86" y="572.76" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="21.33" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="21.33">XXXXXX</tspan></text>
+</g>
+<g id="shape-31" data-name="文本框 30">
+<rect x="104.26" y="578.25" width="177.74" height="74.32" fill="none"/>
+<text x="113.86" y="628.39" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="53.33" fill="#FFFFFF" font-weight="bold"><tspan fill="#FFFFFF" font-size="53.33" font-weight="bold">345</tspan><tspan fill="#FFFFFF" font-size="26.67" font-weight="bold">万款</tspan></text>
+</g>
+</g>
+<g id="shape-2" data-name="标题 1">
+<rect x="71.41" y="48.74" width="533.19" height="58.16" fill="none"/>
+<text x="81.01" y="89.81" text-anchor="start" xml:space="preserve" font-family="&quot;Montserrat Black&quot;, &quot;HarmonyOS Sans SC Black&quot;, +mj-cs, sans-serif" font-size="42.67" fill="#000000"><tspan fill="#000000" font-size="42.67">本页内容标题</tspan></text>
+</g></svg>

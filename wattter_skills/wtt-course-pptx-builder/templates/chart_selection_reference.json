@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "catalog_read": {
+    "path": "templates/charts/charts_index.json",
+    "count": 71
+  },
+  "skin_policy": {
+    "mode": "structure_only",
+    "color_source": "spec_lock.colors",
+    "typography_source": "spec_lock.typography",
+    "effects_source": "spec_lock.visual_style"
+  },
+  "pages": [
+    {
+      "page": "P05",
+      "form": "bar_grouped",
+      "template": "grouped_bar_chart",
+      "path": "templates/charts/grouped_bar_chart.svg",
+      "summary_quote": "Pick for 2-4 series side-by-side across the same categories (e.g. YoY/QoQ). Skip if showing composition within each category (use stacked_bar_chart).",
+      "usage": "YoY revenue comparison by product line",
+      "compatible_shell": false,
+      "compatibility_note": ""
+    },
+    {
+      "page": "P08",
+      "form": null,
+      "template": null,
+      "status": "no-template-match",
+      "fallback": "custom layout",
+      "reason": "Explain why none of the 71 catalog structures fits this page."
+    }
+  ],
+  "runners_up": [
+    {
+      "template": "bar_chart",
+      "rejected_for": "P05",
+      "reason": "Single-series structure cannot express the required side-by-side comparison."
+    },
+    {
+      "template": "stacked_bar_chart",
+      "rejected_for": "P05",
+      "reason": "The page compares independent series rather than composition within each category."
+    },
+    {
+      "template": "line_chart",
+      "rejected_for": "P05",
+      "reason": "The primary task is category comparison, not a continuous time trend."
+    }
+  ]
+}

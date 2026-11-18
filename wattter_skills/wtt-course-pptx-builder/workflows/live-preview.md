@@ -1,23 +1,22 @@
 ---
-description: 在浏览器 SVG 编辑器未运行时启动它，并在 Step 7 导出后应用用户提交的批注
+description: 按用户的明确请求打开浏览器 SVG 编辑器，或在 Step 7 导出后应用用户提交的批注
 ---
 
 # 实时预览工作流
 
-> **目的**：(1) 在当前没有预览服务运行时启动/重开浏览器 SVG 编辑器；(2) 在 Step 7 导出完成后应用用户提交的批注。
->
-> **不在范围**：执行器强制要求的自动启动——那部分在 [`SKILL.md`](../SKILL.md) Step 6 中。已经运行的预览不要重启。
+> 独立工作流。按请求打开浏览器 SVG 编辑器，或在 Step 7 导出完成后应用用户提交的批注。
 
 ## 何时运行
 
-- **启动（Step 1）** —— 预览服务当前未运行，且用户希望查看 deck 或点击元素。典型场景：在新聊天中导出后再次进入；或用户之前点击了 **Exit preview**，现在希望恢复。
+- **启动（Step 1）** —— 用户明确要求用网页预览 SVG 或在浏览器编辑，且本项目的预览服务当前未运行。
 - **应用批注（Step 2）** —— Step 7 已产出至少一份 PPTX，且用户给出"应用批注"的信号。触发条件包括：
   - 引用浏览器提示（`Changes saved to svg_output...` / `修改已保存到 svg_output...`）
   - 说 `apply my annotations` / `apply my edits` / `应用注解` / `开始应用` / 等价表达
 
 ## 何时不运行
 
-- 预览服务已在运行 → 直接把 URL 给用户即可，不要重启。
+- 用户只说“看效果”或要求给样张 → 提供页面渲染图或 PPTX 文件。
+- 用户明确要求打开网页且预览服务已在运行 → 直接把 URL 给用户。
 - 用户给出了精确的聊天编辑指令（如"把第 3 页标题改成 X"）→ 直接编辑 SVG。
 - 用户希望整体重新生成 → 使用主流水线。
 - 本项目从未跑过 Step 7 → 此时无法应用批注，请先完成主流水线。
@@ -31,8 +30,6 @@ description: 在浏览器 SVG 编辑器未运行时启动它，并在 Step 7 导
 ```bash
 python3 ${SKILL_DIR}/scripts/svg_editor/server.py <project_path>
 ```
-
-（普通模式——没有 `--live`。`--live` 标志仅供 Step 6 的自动启动使用。）
 
 服务监听 `127.0.0.1:5050`，在本地桌面打开浏览器，直接编辑 `<project_path>/svg_output/`。当它打印出 `SVG Editor running at http://localhost:5050` 后，用用户的语言发一条简短消息告知：
 
@@ -70,7 +67,7 @@ python3 ${SKILL_DIR}/scripts/svg_editor/server.py <project_path>
 
 ---
 
-## 备注（编辑器不变量——在 SKILL.md Step 6 中被引用）
+## 编辑器行为
 
 - **UI**：中英双语；根据 `navigator.language` 自动检测，结果保存在 `localStorage`，通过右侧面板的 **中 / EN** 按钮切换。幻灯片导航：中间面板顶部有首页/上一张/下一张/末页按钮，外加 `←` / `→` / `Home` / `End`（在批注文本框内输入时会被屏蔽）。
 - **按钮**：`Add annotation` 把批注文本分阶段存入内存；`Apply changes` 把分阶段的直接编辑与批注标记写入磁盘，并保持服务继续运行；**Exit preview** 是唯一会停止 Flask 的 UI 操作。
@@ -86,7 +83,7 @@ python3 ${SKILL_DIR}/scripts/svg_editor/server.py <project_path>
 - **闲置超时**：普通模式 `900s`，`--live` 模式 `7200s`；可用 `--timeout <seconds>` 覆盖（`0` 表示禁用）。
 - **每项目单实例**：`<project_path>/.live_preview.lock` 记录运行中的 pid + port。同一个项目第二次启动会被拒绝并打印现有 URL；进程已死的过期锁在下次启动时被覆盖。仅当进程已不存在但锁仍在时手动删除（极少见——`kill -9` 是常见原因）。
 - **临时 id**：编辑器运行期间每个元素会获得一个临时 `_edit_N` id。保存时仅带批注的元素保留 id；未批注的 `_edit_N` id 在回写前会被剥掉。
-- **浏览器预览**：服务端会把 `<use data-icon>` 占位符就地内联、并提供 `images/*` 服务，让 SVG 正确渲染；磁盘上的 SVG 不会被这次预览修改。
+- **浏览器预览**：服务端会把 `<use data-icon>` 占位符就地内联，提供 `images/*`、`assets/*` 服务，并把 `svg_output/` 同目录媒体的安全相对路径只在 API 响应中重写到 `/svg-output-assets/*`；磁盘上的 SVG 不会被这次预览修改。
 
 ---
 
@@ -96,8 +93,6 @@ python3 ${SKILL_DIR}/scripts/svg_editor/server.py <project_path>
 
 ```bash
 python3 ${SKILL_DIR}/scripts/svg_editor/server.py <project_path> --no-browser
-# 或用于 Step 6 在远程主机上的自动启动：
-python3 ${SKILL_DIR}/scripts/svg_editor/server.py <project_path> --live --no-browser
 ```
 
 - **VS Code / Cursor Remote-SSH**：打开 **PORTS** 面板（`Ctrl+Shift+P` → `Ports: Focus on Ports View`），点击 **Forward a Port**，输入 `5050`。工作区会自动记住。

@@ -19,7 +19,7 @@ description: 多平台实时热点聚合与分析工具。支持从知乎、微�
 ### 1. 环境初始化
 在使用前，请确保已安装必要的依赖：
 ```bash
-pip install -r skills/wtt-trend-radar/requirements.txt
+pip install -r skills/trend-radar/requirements.txt
 playwright install chromium
 ```
 
@@ -32,9 +32,9 @@ playwright install chromium
 
 ### 3. 脚本运行
 AI 会根据需求动态生成调用指令。
-- **基本用法**：`python3 skills/wtt-trend-radar/scripts/collector.py --keywords "关键词1, 关键词2"`
-- **指定输出路径**：`python3 skills/wtt-trend-radar/scripts/collector.py --keywords "AI" --output "./my_reports/ai_trends.md"`
-- **全网热搜**：`python3 skills/wtt-trend-radar/scripts/collector.py --keywords ""`
+- **基本用法**：`python3 skills/trend-radar/scripts/collector.py --keywords "关键词1, 关键词2"`
+- **指定输出路径**：`python3 skills/trend-radar/scripts/collector.py --keywords "AI" --output "./my_reports/ai_trends.md"`
+- **全网热搜**：`python3 skills/trend-radar/scripts/collector.py --keywords ""`
 
 ### 4. 目录结构
 - `scripts/`: 核心采集逻辑。

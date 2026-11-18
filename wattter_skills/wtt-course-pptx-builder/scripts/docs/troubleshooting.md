@@ -15,11 +15,7 @@ python3 scripts/project_manager.py validate <project_path>
 
 1. Check the file path and filename.
 2. Confirm naming conventions are consistent.
-3. Preview via a local server if browser file loading is inconsistent:
-
-```bash
-python3 -m http.server --directory <svg_output_path> 8000
-```
+3. If the user requested browser preview and images fail to load, use the [SVG editor workflow](../../workflows/live-preview.md) to resolve project-relative assets.
 
 ## Speaker Notes Do Not Split
 

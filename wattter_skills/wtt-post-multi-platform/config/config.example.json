@@ -1,0 +1,31 @@
+{
+  "wechat": {
+    "appid": "YOUR_APPID_HERE",
+    "appsecret": "YOUR_APPSECRET_HERE",
+    "thumb_media_id": ""
+  },
+  "zhihu": {
+    "user_data_dir": "~/.auto-poster/browser_data/zhihu",
+    "cdp_url": ""
+  },
+  "weibo": {
+    "cookie_file": "",
+    "draft_mode": true
+  },
+  "x": {
+    "api_key": "",
+    "cookie_file": ""
+  },
+  "xiaohongshu": {
+    "cookie_file": "",
+    "account_id": ""
+  },
+  "douyin": {
+    "cookie_file": "",
+    "open_platform_key": ""
+  },
+  "bilibili": {
+    "cookie_file": "",
+    "csrf": ""
+  }
+}

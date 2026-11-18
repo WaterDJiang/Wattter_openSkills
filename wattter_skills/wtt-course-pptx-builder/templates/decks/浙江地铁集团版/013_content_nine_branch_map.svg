@@ -1,0 +1,274 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="ggrad1" x1="507.1281" y1="-135.8846" x2="772.8719" y2="855.8846" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.6"/><stop offset="0.38" stop-color="#FEFFFF" stop-opacity="0.38"/><stop offset="0.62" stop-color="#ECF4FC" stop-opacity="0.17"/><stop offset="0.79" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient><radialGradient id="ggrad2" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1280 0 0 720 0 0)" data-pptx-path="circle" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.23" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient><linearGradient id="ggrad3" x1="846.0514" y1="418.6929" x2="942.7697" y2="515.4111" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#F2F2F2"/><stop offset="0.84" stop-color="#D9D9D9"/></linearGradient><linearGradient id="ggrad4" x1="973.2567" y1="418.6929" x2="1069.9749" y2="515.4111" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#F2F2F2"/><stop offset="0.84" stop-color="#D9D9D9"/></linearGradient><linearGradient id="ggrad5" x1="1100.4622" y1="418.6929" x2="1197.1804" y2="515.4111" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#F2F2F2"/><stop offset="0.84" stop-color="#D9D9D9"/></linearGradient><linearGradient id="ggrad6" x1="718.8461" y1="418.6929" x2="815.5643" y2="515.4111" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#F2F2F2"/><stop offset="0.84" stop-color="#D9D9D9"/></linearGradient><linearGradient id="ggrad7" x1="591.6408" y1="418.6929" x2="688.3591" y2="515.4111" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#F2F2F2"/><stop offset="0.84" stop-color="#D9D9D9"/></linearGradient><linearGradient id="ggrad8" x1="464.4355" y1="418.6929" x2="561.1537" y2="515.4111" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#F2F2F2"/><stop offset="0.84" stop-color="#D9D9D9"/></linearGradient><linearGradient id="ggrad9" x1="337.2302" y1="418.6929" x2="433.9485" y2="515.4111" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#F2F2F2"/><stop offset="0.84" stop-color="#D9D9D9"/></linearGradient><linearGradient id="ggrad10" x1="210.0249" y1="418.6929" x2="306.7431" y2="515.4111" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#F2F2F2"/><stop offset="0.84" stop-color="#D9D9D9"/></linearGradient><linearGradient id="ggrad11" x1="82.8196" y1="418.6929" x2="179.5378" y2="515.4111" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#F2F2F2"/><stop offset="0.84" stop-color="#D9D9D9"/></linearGradient><marker id="marrow1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth"><circle cx="5" cy="5" r="4" fill="#00489B"/></marker><linearGradient id="ggrad12" x1="476" y1="177.9354" x2="804" y2="177.9354" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#003D84"/><stop offset="0.8" stop-color="#0050AD"/></linearGradient><linearGradient id="ggrad13" x1="0" y1="651.5444" x2="1280" y2="651.5444" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.12" stop-color="#003D84"/><stop offset="0.8" stop-color="#0050AD"/></linearGradient><linearGradient id="ggrad14" x1="58.7404" y1="53.8439" x2="53.6132" y2="82.922" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.05" stop-color="#73E6FE"/><stop offset="0.82" stop-color="#0082DC"/></linearGradient></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="layout-shape-5" data-name="图片 4">
+<svg x="-0.06" y="-0.03" width="1280" height="720" viewBox="0 0 0.79761 0.79761" preserveAspectRatio="none"><image href="wind_coast_background.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></svg>
+</g>
+<g id="layout-shape-6" data-name="矩形: 圆角 5">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad1)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="layout-shape-7" data-name="方能演亦1">
+<image href="metro_corridor_background.png" x="0" y="0" width="1280" height="720" preserveAspectRatio="none"/>
+</g>
+<g id="layout-shape-8" data-name="方能演亦2">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad2)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="layout-shape-51" data-name="图片 50">
+<svg x="-0.01" y="0" width="1280.01" height="720" viewBox="0 0.42795 1 0.42754" preserveAspectRatio="none"><image href="cloud_layer_portrait.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></svg>
+</g>
+<g id="layout-shape-50" data-name="图片 49">
+<image href="brand_lockup_header.png" x="993.29" y="48.92" width="242.98" height="38.93" preserveAspectRatio="none"/>
+</g>
+<g id="shape-6" data-name="图片 5">
+<image href="corridor_light_background.png" x="0" y="0" width="1280" height="720" preserveAspectRatio="none"/>
+</g>
+<g id="shape-2160" data-name="矩形: 圆角 2159">
+<rect x="836.23" y="428.51" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="url(#ggrad3)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2156" data-name="矩形: 圆角 2155">
+<rect x="963.44" y="428.51" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="url(#ggrad4)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2151" data-name="矩形: 圆角 2150">
+<rect x="1090.64" y="428.51" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="url(#ggrad5)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2147" data-name="矩形: 圆角 2146">
+<rect x="709.03" y="428.51" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="url(#ggrad6)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2143" data-name="矩形: 圆角 2142">
+<rect x="581.82" y="428.51" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="url(#ggrad7)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2139" data-name="矩形: 圆角 2138">
+<rect x="454.62" y="428.51" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="url(#ggrad8)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2135" data-name="矩形: 圆角 2134">
+<rect x="327.41" y="428.51" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="url(#ggrad9)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2131" data-name="矩形: 圆角 2130">
+<rect x="200.21" y="428.51" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="url(#ggrad10)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2127" data-name="矩形: 圆角 2126">
+<rect x="73" y="428.51" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="url(#ggrad11)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-97" data-name="左大括号 96" transform="rotate(90 640 278.7)">
+<rect x="620.61" y="-230.63" width="38.78" height="1018.67" stroke-width="1" fill="#00489B" stroke="#00489B"/>
+</g>
+<g id="shape-2083" data-name="左大括号 2082" transform="rotate(90 640 278.7)">
+<rect x="620.61" y="-101.91" width="38.78" height="761.22" stroke-width="1" fill="#00489B" stroke="#00489B"/>
+</g>
+<g id="shape-2091" data-name="左大括号 2090" transform="rotate(90 640 278.7)">
+<rect x="620.61" y="24.04" width="38.78" height="509.33" stroke-width="1" fill="#00489B" stroke="#00489B"/>
+</g>
+<g id="shape-2093" data-name="左大括号 2092" transform="rotate(90 640.1 278.7)">
+<rect x="620.72" y="151.14" width="38.78" height="255.13" stroke-width="1" fill="#00489B" stroke="#00489B"/>
+</g>
+<g id="shape-2070" data-name="直接连接符 2069" transform="translate(640 263.29) scale(1 -1) translate(-640 -263.29)">
+<line x1="640" y1="229.91" x2="640" y2="296.67" stroke-width="1" marker-end="url(#marrow1)" fill="#00489B" stroke="#00489B"/>
+</g>
+<g id="shape-117" data-name="矩形: 圆角 116">
+<rect x="836.23" y="305.05" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="#B8D9FF" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2096" data-name="椭圆 2095">
+<ellipse cx="894.41" cy="300.48" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#00489B"/>
+</g>
+<g id="shape-98" data-name="矩形: 圆角 97">
+<rect x="963.44" y="305.05" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="#B8D9FF" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2097" data-name="椭圆 2096">
+<ellipse cx="1021.62" cy="300.48" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#00489B"/>
+</g>
+<g id="shape-112" data-name="矩形: 圆角 111">
+<rect x="1090.64" y="305.05" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="#B8D9FF" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2098" data-name="椭圆 2097">
+<ellipse cx="1148.82" cy="300.48" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#00489B"/>
+</g>
+<g id="shape-109" data-name="矩形: 圆角 108">
+<rect x="709.03" y="305.05" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="#B8D9FF" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2099" data-name="椭圆 2098">
+<ellipse cx="767.21" cy="300.48" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#00489B"/>
+</g>
+<g id="shape-118" data-name="矩形: 圆角 117">
+<rect x="581.82" y="305.05" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="#B8D9FF" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2102" data-name="椭圆 2101">
+<ellipse cx="640" cy="300.48" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#00489B"/>
+</g>
+<g id="shape-110" data-name="矩形: 圆角 109">
+<rect x="454.62" y="305.05" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="#B8D9FF" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2103" data-name="椭圆 2102">
+<ellipse cx="512.79" cy="300.48" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#00489B"/>
+</g>
+<g id="shape-119" data-name="矩形: 圆角 118">
+<rect x="327.41" y="305.05" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="#B8D9FF" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2104" data-name="椭圆 2103">
+<ellipse cx="385.59" cy="300.48" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#00489B"/>
+</g>
+<g id="shape-111" data-name="矩形: 圆角 110">
+<rect x="200.21" y="305.05" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="#B8D9FF" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2105" data-name="椭圆 2104">
+<ellipse cx="258.38" cy="300.48" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#00489B"/>
+</g>
+<g id="shape-120" data-name="矩形: 圆角 119">
+<rect x="73" y="305.05" width="116.36" height="77.08" rx="38.54" ry="38.54" fill="#B8D9FF" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2060" data-name="文本框 2059">
+<rect x="83.79" y="448.34" width="94.78" height="32.31" fill="none"/>
+<text x="131.18" y="469.01" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#000000"><tspan fill="#000000" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-2106" data-name="椭圆 2105">
+<ellipse cx="131.18" cy="300.48" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#00489B"/>
+</g>
+<g id="shape-2184" data-name="椭圆 2183">
+<ellipse cx="894.41" cy="421.46" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2185" data-name="椭圆 2184">
+<ellipse cx="1021.62" cy="421.46" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2186" data-name="椭圆 2185">
+<ellipse cx="1148.82" cy="421.46" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2187" data-name="椭圆 2186">
+<ellipse cx="767.21" cy="421.46" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2188" data-name="椭圆 2187">
+<ellipse cx="640" cy="421.46" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2189" data-name="椭圆 2188">
+<ellipse cx="512.79" cy="421.46" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2190" data-name="椭圆 2189">
+<ellipse cx="385.59" cy="421.46" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2191" data-name="椭圆 2190">
+<ellipse cx="258.38" cy="421.46" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2192" data-name="椭圆 2191">
+<ellipse cx="131.18" cy="421.46" rx="3.36" ry="3.34" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2193" data-name="直接连接符 2192">
+<line x1="1148.82" y1="385.26" x2="1148.82" y2="418.11" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2194" data-name="直接连接符 2193">
+<line x1="1021.62" y1="385.26" x2="1021.62" y2="418.11" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2195" data-name="直接连接符 2194">
+<line x1="894.41" y1="385.26" x2="894.41" y2="418.11" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2196" data-name="直接连接符 2195">
+<line x1="767.21" y1="385.26" x2="767.21" y2="418.11" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2197" data-name="直接连接符 2196">
+<line x1="640" y1="385.26" x2="640" y2="418.11" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2198" data-name="直接连接符 2197">
+<line x1="512.79" y1="385.26" x2="512.79" y2="418.11" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2199" data-name="直接连接符 2198">
+<line x1="385.59" y1="385.26" x2="385.59" y2="418.11" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2200" data-name="直接连接符 2199">
+<line x1="258.38" y1="385.26" x2="258.38" y2="418.11" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2201" data-name="直接连接符 2200">
+<line x1="131.18" y1="385.26" x2="131.18" y2="418.11" fill="none" stroke-width="1" stroke="#808080"/>
+</g>
+<g id="shape-2249" data-name="矩形: 圆角 2248">
+<rect x="476" y="131.62" width="328" height="92.63" rx="46.32" ry="46.32" fill="url(#ggrad12)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2251" data-name="文本框 2250">
+<rect x="543.57" y="147.83" width="192.86" height="54.93" fill="none"/>
+<text x="640" y="184.37" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="37.33" fill="#FFFFFF" font-weight="bold"><tspan fill="#FFFFFF" font-size="37.33" font-weight="bold">输入文字</tspan></text>
+</g>
+<g id="shape-27" data-name="文本框 26">
+<rect x="101.29" y="314.51" width="59.78" height="58.16" fill="none"/>
+<text x="131.18" y="336.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">输入</tspan></text>
+<text x="131.18" y="356.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">文字</tspan></text>
+</g>
+<g id="shape-29" data-name="文本框 28">
+<rect x="228.5" y="314.51" width="59.78" height="58.16" fill="none"/>
+<text x="258.38" y="336.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">输入</tspan></text>
+<text x="258.38" y="356.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">文字</tspan></text>
+</g>
+<g id="shape-31" data-name="文本框 30">
+<rect x="355.7" y="314.51" width="59.78" height="58.16" fill="none"/>
+<text x="385.59" y="336.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">输入</tspan></text>
+<text x="385.59" y="356.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">文字</tspan></text>
+</g>
+<g id="shape-40" data-name="文本框 39">
+<rect x="482.91" y="314.51" width="59.78" height="58.16" fill="none"/>
+<text x="512.79" y="336.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">输入</tspan></text>
+<text x="512.79" y="356.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">文字</tspan></text>
+</g>
+<g id="shape-42" data-name="文本框 41">
+<rect x="610.11" y="314.51" width="59.78" height="58.16" fill="none"/>
+<text x="640" y="336.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">输入</tspan></text>
+<text x="640" y="356.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">文字</tspan></text>
+</g>
+<g id="shape-44" data-name="文本框 43">
+<rect x="737.32" y="314.51" width="59.78" height="58.16" fill="none"/>
+<text x="767.21" y="336.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">输入</tspan></text>
+<text x="767.21" y="356.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">文字</tspan></text>
+</g>
+<g id="shape-46" data-name="文本框 45">
+<rect x="864.52" y="314.51" width="59.78" height="58.16" fill="none"/>
+<text x="894.41" y="336.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">输入</tspan></text>
+<text x="894.41" y="356.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">文字</tspan></text>
+</g>
+<g id="shape-48" data-name="文本框 47">
+<rect x="991.73" y="314.51" width="59.78" height="58.16" fill="none"/>
+<text x="1021.62" y="336.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">输入</tspan></text>
+<text x="1021.62" y="356.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">文字</tspan></text>
+</g>
+<g id="shape-50" data-name="文本框 49">
+<rect x="1118.93" y="314.51" width="59.78" height="58.16" fill="none"/>
+<text x="1148.82" y="336.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">输入</tspan></text>
+<text x="1148.82" y="356.31" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="20" fill="#081891" font-weight="bold"><tspan fill="#081891" font-size="20" font-weight="bold">文字</tspan></text>
+</g>
+<g id="shape-4" data-name="矩形: 圆角 3">
+<rect x="0" y="583.09" width="1280" height="136.91" rx="0" ry="0" fill="url(#ggrad13)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2" data-name="文本框 1">
+<rect x="73.23" y="39.3" width="180.95" height="58.16" fill="none"/>
+<text x="82.83" y="78.1" text-anchor="start" xml:space="preserve" font-family="Arial, &quot;思源宋体&quot;, sans-serif" font-size="40" fill="#262626"><tspan fill="#262626" font-size="40">输入标题</tspan></text>
+</g>
+<g id="shape-2240" data-name="等腰三角形 2239" transform="rotate(270 56.18 68.38) translate(56.18 68.38) scale(1 -1) translate(-56.18 -68.38)">
+<polygon points="56.18,55.94 70.61,80.83 41.74,80.83" fill="url(#ggrad14)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-2241" data-name="文本框 2240">
+<rect x="210.99" y="448.34" width="94.78" height="32.31" fill="none"/>
+<text x="258.38" y="469.01" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#000000"><tspan fill="#000000" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-2242" data-name="文本框 2241">
+<rect x="338.2" y="448.34" width="94.78" height="32.31" fill="none"/>
+<text x="385.59" y="469.01" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#000000"><tspan fill="#000000" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-2243" data-name="文本框 2242">
+<rect x="465.4" y="448.34" width="94.78" height="32.31" fill="none"/>
+<text x="512.79" y="469.01" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#000000"><tspan fill="#000000" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-2244" data-name="文本框 2243">
+<rect x="592.61" y="448.34" width="94.78" height="32.31" fill="none"/>
+<text x="640" y="469.01" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#000000"><tspan fill="#000000" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-2245" data-name="文本框 2244">
+<rect x="719.81" y="448.34" width="94.78" height="32.31" fill="none"/>
+<text x="767.21" y="469.01" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#000000"><tspan fill="#000000" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-2247" data-name="文本框 2246">
+<rect x="847.02" y="448.34" width="94.78" height="32.31" fill="none"/>
+<text x="894.41" y="469.01" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#000000"><tspan fill="#000000" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-2256" data-name="文本框 2255">
+<rect x="974.22" y="448.34" width="94.78" height="32.31" fill="none"/>
+<text x="1021.62" y="469.01" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#000000"><tspan fill="#000000" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-2257" data-name="文本框 2256">
+<rect x="1101.43" y="448.34" width="94.78" height="32.31" fill="none"/>
+<text x="1148.82" y="469.01" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#000000"><tspan fill="#000000" font-size="18.67">输入文字</tspan></text>
+</g>
+<g id="shape-2262" data-name="文本框 2261">
+<rect x="512.94" y="624.08" width="254.12" height="54.93" fill="none"/>
+<text x="640" y="660.61" text-anchor="middle" xml:space="preserve" font-family="Arial, &quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="37.33" fill="#FFFFFF" font-weight="bold"><tspan fill="#FFFFFF" font-size="37.33" font-weight="bold">输入文字</tspan></text>
+</g></svg>

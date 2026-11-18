@@ -374,6 +374,7 @@ def _border_line(
         palette,
         id_prefix=id_prefix,
         id_seq=id_seq,
+        bounds=(min(x1, x2), min(y1, y2), abs(x2 - x1), abs(y2 - y1)),
     )
     defs.extend(stroke.defs)
     attrs = stroke.attrs

@@ -26,7 +26,7 @@ description: 八项确认与图像/执行器之间的可选规范精修循环。
 
 ## Step 1：产出完整规范
 
-完全按照 SKILL.md Step 4 规范跑默认策略师输出：写入 `design_spec.md`（§I–XI）与 `spec_lock.md`。阅读相关 `sources/` 文件，让内容大纲（`§IX`）承载真实事实而不是骨架要点。这里没有特殊处理——这就是普通规范，只是产出的同时已知用户即将审阅它。
+完全按照 SKILL.md Step 4 规范跑默认策略师输出：写入 `design_spec.md`（§I–XI）、`spec_lock.md` 与 `chart_selection.json`。阅读相关 `sources/` 文件，让内容大纲（`§IX`）承载真实事实而不是骨架要点。这里没有特殊处理——这就是普通规范，只是产出的同时已知用户即将审阅它。
 
 ---
 
@@ -47,12 +47,12 @@ description: 八项确认与图像/执行器之间的可选规范精修循环。
 
 这些角度与已锁定的 `mode`、visual style 和 §6.1 已经塑造的内容有所重叠——把它们当作讨论切入点，用于浮现值得讨论的东西，而不是另起一轮重做。
 
-**每次修改都要让两个文件保持同步。** 用户批准的任何修订都必须同时落到 `design_spec.md` 和 `spec_lock.md`；出现分歧时以 `spec_lock.md` 为准（见 [`strategist.md`](../references/strategist.md) §6.2）。迭代多少轮都行——只有当用户明确批准规范时循环才结束。
+**每次修改都要让三个文件保持同步。** 用户批准的任何涉及可视化结构、配色、字体、版式或页面映射的修订，都必须同步落到 `design_spec.md`、`spec_lock.md` 和 `chart_selection.json`；出现分歧时以 `spec_lock.md` 为准（见 [`strategist.md`](../references/strategist.md) §6.2）。每轮修改后运行 `python3 ${SKILL_DIR}/scripts/validate_chart_mappings.py <project_path>`。迭代多少轮都行——只有当用户明确批准规范时循环才结束。
 
 ---
 
 ## Step 3：交回
 
-用户批准后，`design_spec.md` 与 `spec_lock.md` 同步反映最终修订状态。回到 SKILL.md 正常推进：Step 5（图像获取，若有任意 `ai` / `web` 行）或 Step 6（执行器）。
+用户批准后，`design_spec.md`、`spec_lock.md` 与 `chart_selection.json` 同步反映最终修订状态并通过 chart 映射校验。回到 SKILL.md 正常推进：Step 5（图像获取，若有任意 `ai` / `web` 行）或 Step 6（执行器）。
 
 > 注意：本工作流不复制策略师内容。它只在规范产出与流水线其余部分之间插入一个"审阅与修订"的检查点。`strategist.md` / SKILL.md 仍是规范如何撰写的权威依据。

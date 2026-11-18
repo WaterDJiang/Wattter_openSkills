@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <g id="title" font-family="Hiragino Sans GB">
+    <rect x="64" y="49" width="30" height="4" fill="#C7A661"/>
+    <text x="106" y="59" font-size="22" font-weight="700" fill="#003396" data-text-width="370">{{SECTION_LABEL}}</text>
+    <text x="62" y="145" font-size="55" font-weight="800" fill="#262626" data-text-width="1150">{{PAGE_TITLE}}</text>
+    <text x="65" y="199" font-size="32" fill="#44546A" data-text-width="1120">{{PAGE_SUBTITLE}}</text>
+  </g>
+  <g id="demo-screen-frame" font-family="Hiragino Sans GB">
+    <rect x="64" y="235" width="786" height="400" rx="9" fill="#F1F8FE"/>
+    <path d="M 64 245 Q 64 235 74 235 H 840 Q 850 235 850 245 V 292 H 64 Z" fill="#003396"/>
+    <circle cx="90" cy="264" r="5" fill="#C7A661"/>
+    <circle cx="108" cy="264" r="5" fill="#FFFFFF" fill-opacity="0.55"/>
+    <circle cx="126" cy="264" r="5" fill="#FFFFFF" fill-opacity="0.55"/>
+    <text x="149" y="273" font-size="23" font-weight="700" fill="#FFFFFF" data-text-width="320">提示词示范</text>
+    <text x="826" y="273" text-anchor="end" font-size="21" fill="#ECF6FE" data-text-width="190">{{EXAMPLE_LABEL}}</text>
+    <text x="92" y="346" font-size="24" font-weight="700" fill="#003396" data-text-width="129">01  背景</text>
+    <text x="224" y="347" font-size="32" fill="#262626" data-text-width="602">{{CONTEXT_TEXT}}</text>
+    <line x1="92" y1="370" x2="821" y2="370" stroke="#E7E6E6" stroke-width="2"/>
+    <text x="92" y="423" font-size="24" font-weight="700" fill="#003396" data-text-width="129">02  角色</text>
+    <text x="224" y="424" font-size="32" fill="#262626" data-text-width="602">{{ROLE_TEXT}}</text>
+    <line x1="92" y1="447" x2="821" y2="447" stroke="#E7E6E6" stroke-width="2"/>
+    <text x="92" y="501" font-size="24" font-weight="700" fill="#003396" data-text-width="129">03  任务</text>
+    <text x="224" y="502" font-size="32" fill="#262626" data-text-width="602">{{TASK_TEXT}}</text>
+    <line x1="92" y1="524" x2="821" y2="524" stroke="#E7E6E6" stroke-width="2"/>
+    <text x="92" y="578" font-size="24" font-weight="700" fill="#003396" data-text-width="129">04  格式</text>
+    <text x="224" y="579" font-size="32" fill="#262626" data-text-width="602">{{FORMAT_TEXT}}</text>
+  </g>
+  <g id="demo-zoom" font-family="Hiragino Sans GB">
+    <path d="M 850 337 H 872 V 493 H 850 M 872 415 H 906" fill="none" stroke="#C7A661" stroke-width="3"/>
+    <circle cx="851" cy="337" r="5" fill="#C7A661"/>
+    <circle cx="851" cy="493" r="5" fill="#C7A661"/>
+    <rect x="906" y="325" width="310" height="239" rx="8" fill="#003396"/>
+    <rect x="933" y="354" width="32" height="4" fill="#C7A661"/>
+    <text x="933" y="396" font-size="23" font-weight="700" fill="#ECF6FE" data-text-width="254">{{FOCUS_LABEL}}</text>
+    <text x="932" y="458" font-size="36" font-weight="800" fill="#FFFFFF" data-text-width="266">{{FOCUS_01}}</text>
+    <text x="932" y="521" font-size="36" font-weight="800" fill="#FFFFFF" data-text-width="266">{{FOCUS_02}}</text>
+  </g>
+</svg>

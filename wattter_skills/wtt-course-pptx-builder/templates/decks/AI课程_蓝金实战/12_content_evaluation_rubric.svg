@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <path d="M 900 720 C 1030 680 1160 672 1280 694 L 1280 720 Z" fill="#ECF6FE"/>
+  <rect x="58" y="40" width="6" height="30" fill="#C7A661"/>
+  <text x="80" y="65" fill="#003396" font-family="STKaiti, KaiTi" font-size="24" font-weight="700">{{SECTION_LABEL}}</text>
+  <text x="70" y="142" fill="#262626" font-family="STKaiti, KaiTi" font-size="52" font-weight="800">{{PAGE_TITLE}}</text>
+  <text x="70" y="180" fill="#666666" font-family="STKaiti, KaiTi" font-size="22">{{PAGE_SUBTITLE}}</text>
+  <line x1="70" y1="204" x2="1210" y2="204" stroke="#E7E6E6" stroke-width="1"/>
+
+  <g id="rubric-header">
+    <rect x="70" y="238" width="1140" height="62" rx="6" fill="#003396"/>
+    <text x="104" y="278" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">评价维度</text>
+    <text x="354" y="278" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">达标表现</text>
+    <text x="838" y="278" fill="#C7A661" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">未达标时怎么改</text>
+  </g>
+  <g id="rubric-row-1">
+    <rect x="70" y="310" width="1140" height="76" rx="4" fill="#F1F8FE"/>
+    <circle cx="105" cy="348" r="15" fill="#2E75FF"/>
+    <text x="105" y="355" text-anchor="middle" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="18" font-weight="700">1</text>
+    <text x="138" y="356" fill="#003396" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">{{CRITERION_01}}</text>
+    <text x="354" y="356" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{PASS_01}}</text>
+    <text x="838" y="356" fill="#44546A" font-family="STKaiti, KaiTi" font-size="21">{{REVISE_01}}</text>
+  </g>
+  <g id="rubric-row-2">
+    <rect x="70" y="392" width="1140" height="76" rx="4" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <circle cx="105" cy="430" r="15" fill="#1F90E0"/>
+    <text x="105" y="437" text-anchor="middle" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="18" font-weight="700">2</text>
+    <text x="138" y="438" fill="#003396" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">{{CRITERION_02}}</text>
+    <text x="354" y="438" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{PASS_02}}</text>
+    <text x="838" y="438" fill="#44546A" font-family="STKaiti, KaiTi" font-size="21">{{REVISE_02}}</text>
+  </g>
+  <g id="rubric-row-3">
+    <rect x="70" y="474" width="1140" height="76" rx="4" fill="#F1F8FE"/>
+    <circle cx="105" cy="512" r="15" fill="#2E75FF"/>
+    <text x="105" y="519" text-anchor="middle" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="18" font-weight="700">3</text>
+    <text x="138" y="520" fill="#003396" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">{{CRITERION_03}}</text>
+    <text x="354" y="520" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{PASS_03}}</text>
+    <text x="838" y="520" fill="#44546A" font-family="STKaiti, KaiTi" font-size="21">{{REVISE_03}}</text>
+  </g>
+  <g id="rubric-row-4">
+    <rect x="70" y="556" width="1140" height="76" rx="4" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <circle cx="105" cy="594" r="15" fill="#003396"/>
+    <text x="105" y="601" text-anchor="middle" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="18" font-weight="700">4</text>
+    <text x="138" y="602" fill="#003396" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">{{CRITERION_04}}</text>
+    <text x="354" y="602" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{PASS_04}}</text>
+    <text x="838" y="602" fill="#44546A" font-family="STKaiti, KaiTi" font-size="21">{{REVISE_04}}</text>
+  </g>
+  <text x="70" y="679" fill="#44546A" font-family="STKaiti, KaiTi" font-size="20">{{RUBRIC_DECISION}}</text>
+</svg>

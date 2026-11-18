@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>gradient-panel / ending</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+  }
+  .panel-left {
+    position: absolute; left: 0; top: 0; width: 60px; height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--accent));
+  }
+  /* thanks 上方装饰短线 */
+  .center-rule {
+    position: absolute; left: 80px; top: 230px; width: 120px; height: 6px;
+    background: var(--accent); border-radius: 3px;
+  }
+  /* 底部 primary→accent 渐变带（contact 下方，不遮挡） */
+  .bottom-band {
+    position: absolute; left: 60px; right: 0; bottom: 0; height: 60px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-top-left-radius: 60px; opacity: 0.95;
+  }
+  .logo { position: absolute; left: 96px; top: 48px; height: 40px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="panel-left"></div>
+  <div class="center-rule"></div>
+  <div class="bottom-band"></div>
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: thanks 80,290 1200,400 -->
+  <!-- text-slot: contact 80,560 1200,650 -->
+</div>
+</body>
+</html>

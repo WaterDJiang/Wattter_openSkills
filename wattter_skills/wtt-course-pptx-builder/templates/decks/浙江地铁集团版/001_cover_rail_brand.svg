@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="ggrad1" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#0069E2" stop-opacity="0.16"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad2" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1"><stop offset="0" stop-color="#2A8DFF"/><stop offset="1" stop-color="#00489B"/></linearGradient><linearGradient id="ggrad3" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.15" stop-color="#FBC641"/><stop offset="0.75" stop-color="#FEEEC6"/></linearGradient><linearGradient id="ggrad4" x1="1184.234" y1="-108.1981" x2="1185.9228" y2="-103.5581" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad5" x1="1192.578" y1="-108.1981" x2="1194.2668" y2="-103.5581" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad6" x1="1200.9219" y1="-108.1981" x2="1202.6108" y2="-103.5581" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad7" x1="1184.234" y1="-99.2112" x2="1185.9228" y2="-94.5712" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad8" x1="1192.578" y1="-99.2112" x2="1194.2668" y2="-94.5712" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad9" x1="1200.9219" y1="-99.2112" x2="1202.6108" y2="-94.5712" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad10" x1="1184.234" y1="-90.2243" x2="1185.9228" y2="-85.5843" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad11" x1="1192.578" y1="-90.2243" x2="1194.2668" y2="-85.5843" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad12" x1="1200.9219" y1="-90.2243" x2="1202.6108" y2="-85.5843" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad13" x1="1184.234" y1="-81.2373" x2="1185.9228" y2="-76.5973" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad14" x1="1192.578" y1="-81.2373" x2="1194.2668" y2="-76.5973" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad15" x1="1200.9219" y1="-81.2373" x2="1202.6108" y2="-76.5973" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad16" x1="1184.234" y1="-72.2504" x2="1185.9228" y2="-67.6104" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad17" x1="1192.578" y1="-72.2504" x2="1194.2668" y2="-67.6104" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><linearGradient id="ggrad18" x1="1200.9219" y1="-72.2504" x2="1202.6108" y2="-67.6104" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00489B" stop-opacity="0.75"/><stop offset="1" stop-color="#00489B" stop-opacity="0"/></linearGradient><radialGradient id="txtgrad19" cx="1" cy="1" fx="1" fy="1" r="1.4142" data-pptx-path="circle" data-pptx-fill-to-rect="1 1 0 0" data-pptx-tile-rect="0 0 0 0"><stop offset="0.03" stop-color="#00418B"/><stop offset="1" stop-color="#0058BE"/></radialGradient></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="shape-2248" data-name="图片 2247">
+<image href="cover_industrial_blur.png" x="0" y="0" width="1080" height="683.91" preserveAspectRatio="none"/>
+</g>
+<g id="shape-2195" data-name="矩形: 圆角 2194">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad1)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2228" data-name="任意多边形: 形状 2227">
+<path d="M 733.49 4 L 1011.15 0.43 L 1011.15 0 L 1247.89 0 L 1247.89 720 L 648 720 C 833.61 451.33 805.41 230.67 733.49 4 Z" fill="url(#ggrad2)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-2251" data-name="组合 2250">
+<g id="shape-2249" data-name="图片 2248" transform="translate(663.93 240.7) scale(-1 1) translate(-663.93 -240.7)">
+<image href="cover_cloud_overlay_b.png" x="524.19" y="141.17" width="279.48" height="199.07" preserveAspectRatio="none"/>
+</g>
+<g id="shape-2250" data-name="图片 2249">
+<image href="cover_cloud_overlay_a.png" x="-75.2" y="68.32" width="587.31" height="347" preserveAspectRatio="none"/>
+</g>
+</g>
+<g id="shape-2225" data-name="任意多边形: 形状 2224">
+<path d="M 672.88 -1.52 L 1030.56 0.43 L 1030.56 0 L 1262.61 0 L 1262.61 720 L 740.13 723.05 C 748.86 694.6 760.65 561.01 769.38 532.56 C 800.88 329.13 816.56 208.48 672.88 -1.52 Z" fill="url(#ggrad3)" stroke-width="0.667" stroke="#FFFFFF" stroke-opacity="0.4"/>
+</g>
+<g id="shape-10" data-name="图片 9">
+<image href="brand_lockup_cover.png" x="83.31" y="66.34" width="280.93" height="45.01" preserveAspectRatio="none"/>
+</g>
+<g id="shape-2219" data-name="任意多边形: 形状 2218">
+<path d="M 691.79 -4.57 L 1047.95 -4.14 L 1047.95 -4.57 L 1280 -4.57 L 1280 720 L 692 720 L 718.2 634.12 C 780.18 429.4 835.48 206.76 691.79 -4.57 Z" fill="#00489B" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-29" data-name="组合 28" transform="rotate(270 1193.42 -87.9)">
+<g id="shape-5" data-name="椭圆 4">
+<ellipse cx="1185.08" cy="-105.88" rx="1.93" ry="1.93" fill="url(#ggrad4)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-9" data-name="椭圆 8">
+<ellipse cx="1193.42" cy="-105.88" rx="1.93" ry="1.93" fill="url(#ggrad5)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-11" data-name="椭圆 10">
+<ellipse cx="1201.77" cy="-105.88" rx="1.93" ry="1.93" fill="url(#ggrad6)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-13" data-name="椭圆 12">
+<ellipse cx="1185.08" cy="-96.89" rx="1.93" ry="1.93" fill="url(#ggrad7)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-14" data-name="椭圆 13">
+<ellipse cx="1193.42" cy="-96.89" rx="1.93" ry="1.93" fill="url(#ggrad8)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-15" data-name="椭圆 14">
+<ellipse cx="1201.77" cy="-96.89" rx="1.93" ry="1.93" fill="url(#ggrad9)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-17" data-name="椭圆 16">
+<ellipse cx="1185.08" cy="-87.9" rx="1.93" ry="1.93" fill="url(#ggrad10)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-18" data-name="椭圆 17">
+<ellipse cx="1193.42" cy="-87.9" rx="1.93" ry="1.93" fill="url(#ggrad11)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-19" data-name="椭圆 18">
+<ellipse cx="1201.77" cy="-87.9" rx="1.93" ry="1.93" fill="url(#ggrad12)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-21" data-name="椭圆 20">
+<ellipse cx="1185.08" cy="-78.92" rx="1.93" ry="1.93" fill="url(#ggrad13)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-22" data-name="椭圆 21">
+<ellipse cx="1193.42" cy="-78.92" rx="1.93" ry="1.93" fill="url(#ggrad14)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-23" data-name="椭圆 22">
+<ellipse cx="1201.77" cy="-78.92" rx="1.93" ry="1.93" fill="url(#ggrad15)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-25" data-name="椭圆 24">
+<ellipse cx="1185.08" cy="-69.93" rx="1.93" ry="1.93" fill="url(#ggrad16)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-26" data-name="椭圆 25">
+<ellipse cx="1193.42" cy="-69.93" rx="1.93" ry="1.93" fill="url(#ggrad17)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-27" data-name="椭圆 26">
+<ellipse cx="1201.77" cy="-69.93" rx="1.93" ry="1.93" fill="url(#ggrad18)" stroke="none" stroke-width="1"/>
+</g>
+</g>
+<g id="shape-2241" data-name="图片 2240">
+<svg x="364.23" y="187.96" width="915.77" height="532.04" viewBox="0 0 0.92582 0.78954" preserveAspectRatio="none"><image href="elevated_train_cutout.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></svg>
+</g>
+<g id="shape-2245" data-name="矩形 2244">
+<image href="rail_emblem_watermark.png" x="746.69" y="-33.04" width="623.22" height="547.08" preserveAspectRatio="none"/>
+<rect x="746.69" y="-33.04" width="623.22" height="547.08" fill="none" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-2252" data-name="文本框 2251">
+<rect x="107.04" y="179.67" width="395.02" height="87.24" fill="none"/>
+<text x="116.64" y="238.87" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, sans-serif" font-size="64" fill="url(#txtgrad19)" font-weight="bold" letter-spacing="-2"><tspan fill="url(#txtgrad19)" font-size="64" font-weight="bold" letter-spacing="-2">此处输入标题</tspan></text>
+</g>
+<g id="shape-2259" data-name="方能演亦13" transform="rotate(340.02 567 95.17)">
+<image href="white_dove_left.png" x="536.11" y="58.26" width="61.77" height="73.81" preserveAspectRatio="none"/>
+</g>
+<g id="shape-2260" data-name="方能演亦14" transform="rotate(349.06 478.23 71.8) translate(478.23 71.8) scale(-1 1) translate(-478.23 -71.8)">
+<image href="white_dove_right.png" x="444.35" y="42.38" width="67.75" height="58.83" preserveAspectRatio="none"/>
+</g>
+<g id="shape-2262" data-name="图片 2261">
+<image href="white_dove_hero.png" x="41.99" y="179.67" width="54.9" height="71.48" preserveAspectRatio="none"/>
+</g></svg>

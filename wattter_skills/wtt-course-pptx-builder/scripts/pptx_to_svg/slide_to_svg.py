@@ -406,12 +406,22 @@ def _build_geometry_xml(node: ShapeNode, sp_pr: ET.Element | None,
     style_defaults = _resolve_shape_style_defaults(node, ctx)
 
     # Fill / stroke / effect
-    fill = resolve_fill(sp_pr, ctx.palette,
-                        id_prefix="g", id_seq=ctx.grad_seq)
+    fill_source = (
+        node.inherited_group_fill
+        if sp_pr is not None
+        and sp_pr.find("a:grpFill", NS) is not None
+        and node.inherited_group_fill is not None
+        else sp_pr
+    )
+    fill = resolve_fill(fill_source, ctx.palette,
+                        id_prefix="g", id_seq=ctx.grad_seq,
+                        bounds=(node.xfrm.x, node.xfrm.y,
+                                node.xfrm.w, node.xfrm.h))
     stroke = resolve_stroke(
         sp_pr, ctx.palette,
         id_prefix="m", id_seq=ctx.marker_seq,
         style_stroke_default=style_defaults.get("stroke"),
+        bounds=(node.xfrm.x, node.xfrm.y, node.xfrm.w, node.xfrm.h),
     )
     filter_id, effect_defs = convert_effects(sp_pr, ctx.palette,
                                              id_prefix="fx",
@@ -426,6 +436,8 @@ def _build_geometry_xml(node: ShapeNode, sp_pr: ET.Element | None,
         attrs.setdefault(key, value)
     if filter_id is not None:
         attrs["filter"] = f"url(#{filter_id})"
+    if geom.force_no_fill:
+        attrs["fill"] = "none"
 
     # Default fill / stroke when not specified by spPr (matches PowerPoint
     # behavior: a:noFill on shape-level fill if there's a txBody, else any
@@ -724,6 +736,7 @@ def _emit_background(slide: SlideRef, ctx: AssemblyContext,
             bg_pr, ctx.palette,
             id_prefix="bg", id_seq=ctx.grad_seq,
             placeholder_hex=placeholder_hex,
+            bounds=(0.0, 0.0, w, h),
         )
         ctx.defs.extend(fill.defs)
         if not fill.attrs:
@@ -768,6 +781,7 @@ def _emit_part_background(slide: SlideRef, ctx: AssemblyContext,
         bg_pr, ctx.palette,
         id_prefix="bg", id_seq=ctx.grad_seq,
         placeholder_hex=placeholder_hex,
+        bounds=(0.0, 0.0, w, h),
     )
     ctx.defs.extend(fill.defs)
     if not fill.attrs:

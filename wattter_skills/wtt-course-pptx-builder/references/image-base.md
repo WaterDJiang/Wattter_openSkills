@@ -8,7 +8,7 @@ Shared baseline for both acquisition paths. Path-specific behavior lives in the 
 
 ## 1. Trigger Condition
 
-Active when at least one resource list row has `Acquire Via: ai` or `Acquire Via: web`. Rows with `user` / `formula` / `placeholder` are skipped.
+Active when at least one resource list row has `Acquire Via: ai` or `Acquire Via: web`. Rows with `user` / `formula` / `html` / `placeholder` are skipped — `html` rows (HTML background PNGs) are rendered by `html_render.py` in Strategist Step 4 §6.2 step 5, NOT by this phase; see [`svg-image-embedding.md`](svg-image-embedding.md) §Rendered-HTML.
 
 | Mode | Trigger |
 |---|---|
@@ -39,11 +39,14 @@ For each row with `Status: Pending`:
 |---|---|---|---|
 | `ai` | [`image-generator.md`](./image-generator.md) | `image_gen.py` | `Generated` |
 | `web` | [`image-searcher.md`](./image-searcher.md) | `image_search.py` | `Sourced` |
+| `html` | — | (`html_render.py`, Strategist Step 4) | (already `Rendered-HTML`) |
 | `user` | — | — | (already `Existing`) |
 | `formula` | — | — | (already `Rendered`) |
 | `placeholder` | — | — | (already `Placeholder`) |
 
 > Lazy load: an all-`web` deck never reads `image-generator.md`, and vice versa.
+
+> **`ai` row fallback chain**: `image_gen.py` resolves `IMAGE_BACKEND` as an ordered, comma-separated chain (e.g. `jimeng,minimax,zhipu,pexels`) and tries each entry per item — first success wins. A trailing web-source entry (pexels/pixabay/openverse/wikimedia) is resolved by shelling out to `image_search.py`, so an `ai` row may ultimately be **sourced from the web**; in that case the item's terminal status stays `Generated`, `backend_used` records the web provider, and attribution lands in `image_sources.json`. Only when the whole chain fails does the row become `Failed`/`Needs-Manual`. See [`image-generator.md`](./image-generator.md) §Within-Path-A fallback chain.
 
 ---
 

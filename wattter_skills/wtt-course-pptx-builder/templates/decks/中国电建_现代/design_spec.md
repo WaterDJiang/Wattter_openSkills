@@ -5,6 +5,7 @@ summary: Major engineering reports, international market promotion, technology a
 canvas_format: ppt169
 page_count: 5
 primary_color: "#00418D"
+background_mode: legacy-pure-svg
 ---
 
 # POWERCHINA (中国电建) Modern Template v2 - Design Specification

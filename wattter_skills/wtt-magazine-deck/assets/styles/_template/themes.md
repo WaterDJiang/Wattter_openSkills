@@ -5,7 +5,7 @@
 ## 使用方法
 
 1. 预设主题：复制全部主题 CSS 到 deck 的 `css/`，并让 `theme-link` 指向具体主题文件，例如 `css/default.css`。
-2. 明确品牌/主题色：使用 `scripts/make-custom-theme.mjs` 或新风格自己的生成脚本输出 deck 专属 `css/theme.css`；此时 T 键应锁定，避免覆盖品牌色。
+2. 明确品牌/主题色：使用 `scripts/make-custom-theme.mjs` 或新风格自己的生成脚本输出 deck 专属 `css/theme.css`；此时 T 按钮应禁用并提示已固定，避免覆盖品牌色。
 3. 不要在 HTML 里散写 hex；所有颜色通过 CSS 变量进入 `style.css` 和组件。
 
 ## 必需变量

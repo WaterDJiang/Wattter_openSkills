@@ -19,6 +19,22 @@ Backend selection (`IMAGE_BACKEND` in `.env` or the current process environment)
   IMAGE_BACKEND=fal         -> fal.ai backend
   IMAGE_BACKEND=replicate   -> Replicate backend
   IMAGE_BACKEND=openrouter  -> OpenRouter backend
+  IMAGE_BACKEND=jimeng      -> Jimeng (即梦) via the wtt-jimeng-api skill
+
+Sequential fallback chain — `IMAGE_BACKEND` accepts a comma-separated ordered
+list. Each `ai` item is tried against every entry in order; the first success
+wins, and only when the whole chain fails is the item marked `Failed`:
+  IMAGE_BACKEND=jimeng,minimax,zhipu,pexels
+
+A single value (e.g. `IMAGE_BACKEND=zhipu`) is a length-1 chain and behaves
+exactly like the legacy single-backend mode (backward compatible).
+
+Web sources as chain tail — the chain may end with a web-search provider from
+`image_search.py`'s PROVIDER_REGISTRY (pexels / pixabay / openverse / wikimedia).
+When all generation backends fail for an item, the web source shells out to
+`image_search.py --provider <name>` as a last resort; the sourced file lands at
+`images/<filename>` and its attribution is written to `image_sources.json`.
+`IMAGE_BACKEND_CHAIN` is an alias for `IMAGE_BACKEND`.
 
 Configuration source (process env wins, `.env` is the fallback layer):
   1. Current process environment variables
@@ -29,13 +45,15 @@ Configuration source (process env wins, `.env` is the fallback layer):
      - `~/.ppt-master/.env` (user-level config)
 
 Supported keys:
-  IMAGE_BACKEND    (required) backend name
+  IMAGE_BACKEND    (required) backend name, or comma-separated chain
 
   Provider-specific keys are used for credentials and overrides, for example:
     GEMINI_API_KEY / GEMINI_MODEL / GEMINI_BASE_URL
     OPENAI_API_KEY / OPENAI_MODEL / OPENAI_BASE_URL
     QWEN_API_KEY / QWEN_MODEL / QWEN_BASE_URL
     ZHIPU_API_KEY / ZHIPU_MODEL / ZHIPU_BASE_URL
+    JIMENG_SESSION_ID / JIMENG_TIMEOUT / JIMENG_API_SCRIPT
+    PEXELS_API_KEY (for the pexels web-source tail)
 
 Usage:
   python3 image_gen.py "prompt" --aspect_ratio 16:9 --image_size 1K -o images/
@@ -48,9 +66,11 @@ import json
 import os
 import sys
 import argparse
+import subprocess
 import tempfile
 import threading
 import time
+from collections import namedtuple
 from pathlib import Path
 
 from config import load_prefixed_env_file, resolve_env_path
@@ -75,6 +95,9 @@ IMAGE_ENV_PREFIXES = (
     "FAL_",
     "REPLICATE_",
     "OPENROUTER_",
+    "JIMENG_",
+    "PEXELS_",
+    "PIXABAY_",
 )
 DEPRECATED_IMAGE_KEYS = {
     "IMAGE_API_KEY",
@@ -202,10 +225,27 @@ BACKEND_REGISTRY = {
         "default_model": "google/gemini-3.1-flash-image-preview",
         "key_hint": "OPENROUTER_API_KEY",
     },
+    "jimeng": {
+        "module": "backend_jimeng",
+        "tier": "experimental",
+        "label": "Jimeng (即梦, via wtt-jimeng-api skill)",
+        "default_model": "jimeng-5.0",
+        "key_hint": "JIMENG_SESSION_ID",
+        "aliases": ["即梦"],
+    },
 }
 
 TIER_ORDER = {"core": 0, "extended": 1, "experimental": 2}
 SUPPORTED_BACKENDS = tuple(sorted(BACKEND_REGISTRY))
+
+# Web-search providers from image_search.py's PROVIDER_REGISTRY, accepted as
+# chain entries (typically the tail). Keep in sync with image_search.py.
+WEB_SOURCE_PROVIDERS = ("pexels", "pixabay", "openverse", "wikimedia")
+
+# A single link in the acquisition chain.
+#   kind="generation" -> module is a loaded backend with generate()
+#   kind="web"        -> module is None; resolved by shelling out to image_search.py
+ChainEntry = namedtuple("ChainEntry", ["kind", "name", "module"])
 
 
 def _load_image_env_file() -> None:
@@ -302,23 +342,22 @@ def _print_backend_list() -> None:
     print(f"Config fallback file: {ENV_PATH}")
 
 
-def _resolve_backend() -> tuple[object, str]:
-    """
-    Determine which backend to use from explicit configuration.
+class ChainExhausted(RuntimeError):
+    """Raised when every entry in the acquisition chain has failed for one item.
 
-    Returns:
-        A backend module with a generate() function.
+    Carries the per-entry errors and whether every failure was a rate-limit
+    (in which case the caller requeues instead of marking the item Failed).
     """
-    backend_name = os.environ.get("IMAGE_BACKEND", "").strip().lower()
-    if backend_name:
-        canonical = BACKEND_ALIASES.get(backend_name)
-        if not canonical:
-            supported = ", ".join(SUPPORTED_BACKENDS)
-            print(f"Error: Unknown IMAGE_BACKEND='{backend_name}'. Supported: {supported}")
-            sys.exit(1)
-        return _load_backend(canonical)
 
-    supported = ", ".join(SUPPORTED_BACKENDS)
+    def __init__(self, errors: list[tuple[str, Exception]], all_rate_limited: bool):
+        self.errors = errors
+        self.all_rate_limited = all_rate_limited
+        detail = "; ".join(f"{name}: {type(exc).__name__}: {exc}" for name, exc in errors)
+        super().__init__(f"All {len(errors)} chain entry(ies) failed — {detail}")
+
+
+def _print_no_backend_error() -> None:
+    supported = ", ".join(sorted(set(BACKEND_REGISTRY) | set(WEB_SOURCE_PROVIDERS)))
     print(
         "Error: No image backend configured for Path A (image_gen.py).\n"
         "\n"
@@ -331,13 +370,133 @@ def _resolve_backend() -> tuple[object, str]:
         f"  1. Current process environment\n"
         f"  2. {ENV_PATH}\n"
         "\n"
-        f"Supported backends: {supported}\n"
+        "IMAGE_BACKEND accepts a single name or a comma-separated fallback chain\n"
+        "(first success wins; e.g. jimeng,minimax,zhipu,pexels).\n"
+        "\n"
+        f"Supported: {supported}\n"
         "\n"
         "Example:\n"
         "  IMAGE_BACKEND=openai\n"
         "  OPENAI_API_KEY=sk-xxx\n"
     )
-    sys.exit(1)
+
+
+def _resolve_backend_chain() -> list[ChainEntry]:
+    """
+    Resolve the ordered acquisition chain from explicit configuration.
+
+    `IMAGE_BACKEND` (or its alias `IMAGE_BACKEND_CHAIN`) accepts a single name
+    or a comma-separated ordered list. Each entry is resolved against
+    `BACKEND_REGISTRY` (generation backends) first, then `WEB_SOURCE_PROVIDERS`
+    (web-search providers shelled out to image_search.py).
+
+    Returns:
+        A non-empty list of ChainEntry. A single-value config yields a
+        length-1 chain (backward compatible with legacy single-backend mode).
+    """
+    raw = (os.environ.get("IMAGE_BACKEND_CHAIN") or os.environ.get("IMAGE_BACKEND", "")).strip()
+    if not raw:
+        _print_no_backend_error()
+        sys.exit(1)
+
+    names = [n.strip().lower() for n in raw.split(",") if n.strip()]
+    if not names:
+        _print_no_backend_error()
+        sys.exit(1)
+
+    chain: list[ChainEntry] = []
+    for name in names:
+        canonical = BACKEND_ALIASES.get(name)
+        if canonical:
+            module, _ = _load_backend(canonical)
+            chain.append(ChainEntry("generation", canonical, module))
+        elif name in WEB_SOURCE_PROVIDERS:
+            chain.append(ChainEntry("web", name, None))
+        else:
+            all_names = ", ".join(sorted(set(BACKEND_REGISTRY) | set(WEB_SOURCE_PROVIDERS)))
+            print(f"Error: Unknown backend/source '{name}'. Supported: {all_names}")
+            sys.exit(1)
+    return chain
+
+
+def _image_search_script_path() -> str:
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "image_search.py")
+
+
+def _web_source_fallback(provider: str, item: dict, output_dir: str) -> str:
+    """Last-resort web search via image_search.py. Returns the saved file path.
+
+    Shells out to `image_search.py <query> --provider <name> --filename <fname>
+    --output <dir>`. image_search.py handles quality validation and writes the
+    attribution record to <output_dir>/image_sources.json (single source of
+    truth for credits). Raises RuntimeError on any failure so the chain caller
+    can record it and move on.
+    """
+    script = _image_search_script_path()
+    if not os.path.isfile(script):
+        raise RuntimeError(f"image_search.py not found at {script}")
+    filename = item.get("filename")
+    if not filename:
+        raise RuntimeError(
+            f"web source '{provider}' needs a filename; skipped (no --filename)"
+        )
+    cmd = [
+        sys.executable, script, item["prompt"],
+        "--provider", provider,
+        "--filename", filename,
+        "--output", output_dir,
+    ]
+    try:
+        proc = subprocess.run(cmd, timeout=180, check=False, capture_output=True, text=True)
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(f"web source '{provider}' timed out after 180s")
+    if proc.returncode != 0:
+        tail = (proc.stderr or proc.stdout or "").strip()[-400:]
+        raise RuntimeError(f"web source '{provider}' exited {proc.returncode}: {tail}")
+    path = os.path.join(output_dir, filename)
+    if not os.path.isfile(path):
+        raise RuntimeError(f"web source '{provider}' did not produce {path}")
+    return path
+
+
+def _generate_with_chain(chain: list[ChainEntry], item: dict,
+                         output_dir: str, image_size: str,
+                         model: str | None) -> tuple[str | None, str | None, Exception | None]:
+    """Try every chain entry in order; return (saved_path, backend_used, exc).
+
+    First success wins. On total failure, `exc` is a ChainExhausted carrying
+    per-entry errors and an `all_rate_limited` flag (true iff every entry
+    failed with a rate-limit error) so the caller can requeue vs. mark Failed.
+    """
+    from image_backends.backend_common import is_rate_limit_error
+
+    fname_raw = item.get("filename")
+    fname_stem = Path(fname_raw).stem if fname_raw else None
+    errors: list[tuple[str, Exception]] = []
+    all_rate_limited = True
+
+    for entry in chain:
+        try:
+            if entry.kind == "generation":
+                saved = entry.module.generate(
+                    prompt=item["prompt"],
+                    aspect_ratio=item["aspect_ratio"],
+                    image_size=item.get("image_size", image_size),
+                    output_dir=output_dir,
+                    filename=fname_stem,
+                    model=item.get("model", model),
+                )
+            else:
+                saved = _web_source_fallback(entry.name, item, output_dir)
+            return saved, entry.name, None
+        except Exception as exc:  # noqa: BLE001 — backends raise arbitrary types
+            errors.append((entry.name, exc))
+            if not is_rate_limit_error(exc):
+                all_rate_limited = False
+            print(f"    [{entry.name}] failed: {exc}")
+            continue
+
+    return None, None, ChainExhausted(errors, all_rate_limited)
 
 
 DEFAULT_MANIFEST_CONCURRENCY = 3
@@ -425,27 +584,27 @@ def save_manifest(path: str, data: dict) -> None:
         raise
 
 
-def _run_manifest(manifest: dict, manifest_path: str, backend_module, *,
+def _run_manifest(manifest: dict, manifest_path: str, chain: list[ChainEntry], *,
                   initial_concurrency: int,
                   image_size: str,
                   output_dir: str,
                   model: str | None) -> tuple[int, int, int]:
-    """Run Pending/Failed items through the backend with adaptive concurrency.
+    """Run Pending/Failed items through the acquisition chain with adaptive concurrency.
 
     Strategy:
       - Start at `initial_concurrency` workers per batch.
-      - On any rate-limit error in a batch, halve concurrency (min 1) and
-        requeue the rate-limited items.
-      - Per-item failures are recorded as `status: Failed` + `last_error`
-        and not retried within this run.
+      - Each item is tried against every chain entry in order; first success
+        wins. On any rate-limit error across the whole chain in a batch,
+        halve concurrency (min 1) and requeue the rate-limited items.
+      - Per-item total-chain failures are recorded as `status: Failed` +
+        `last_error` and not retried within this run. The resolving backend
+        is recorded as `backend_used` for audit.
       - Status is written back to the manifest file after each completion;
         a Ctrl-C in the middle still preserves done items.
       - `Needs-Manual` items are skipped (user processes them externally).
 
     Returns (ok_count, failed_count, skipped_count).
     """
-    from image_backends.backend_common import is_rate_limit_error
-
     items = manifest["items"]
     pending_idx = [
         i for i, it in enumerate(items) if it["status"] in RETRYABLE_STATUSES
@@ -473,18 +632,10 @@ def _run_manifest(manifest: dict, manifest_path: str, backend_module, *,
 
     def _one(idx: int):
         item = items[idx]
-        try:
-            saved_path = backend_module.generate(
-                prompt=item["prompt"],
-                aspect_ratio=item["aspect_ratio"],
-                image_size=item.get("image_size", image_size),
-                output_dir=output_dir,
-                filename=Path(item["filename"]).stem,
-                model=item.get("model", model),
-            )
-            return idx, saved_path, None
-        except Exception as exc:  # noqa: BLE001 — backend raises arbitrary types
-            return idx, None, exc
+        saved_path, backend_used, exc = _generate_with_chain(
+            chain, item, output_dir, image_size, model
+        )
+        return idx, saved_path, backend_used, exc
 
     while queue:
         batch_size = min(current, len(queue))
@@ -500,18 +651,20 @@ def _run_manifest(manifest: dict, manifest_path: str, backend_module, *,
         with concurrent.futures.ThreadPoolExecutor(max_workers=batch_size) as ex:
             futures = [ex.submit(_one, i) for i in batch_idx]
             for fut in concurrent.futures.as_completed(futures):
-                idx, saved_path, exc = fut.result()
+                idx, saved_path, backend_used, exc = fut.result()
                 item = items[idx]
                 with state_lock:
                     if exc is None:
                         item["status"] = STATUS_GENERATED
+                        if backend_used:
+                            item["backend_used"] = backend_used
                         item.pop("last_error", None)
                         ok_count += 1
-                        print(f"  [OK]   {item['filename']}")
-                    elif is_rate_limit_error(exc):
+                        print(f"  [OK]   {item['filename']} (via {backend_used})")
+                    elif getattr(exc, "all_rate_limited", False):
                         rate_limited = True
                         queue.append(idx)
-                        print(f"  [RATE] {item['filename']} — requeued")
+                        print(f"  [RATE] {item['filename']} — requeued (all chain entries rate-limited)")
                     else:
                         item["status"] = STATUS_FAILED
                         item["last_error"] = str(exc)[:500]
@@ -712,12 +865,12 @@ def main() -> None:
         print(f"Error: {e}")
         sys.exit(1)
 
-    # CLI --backend overrides the value loaded from .env
+    # CLI --backend overrides the value loaded from .env (accepts comma-separated chain)
     if args.backend:
         os.environ["IMAGE_BACKEND"] = args.backend
 
-    backend, backend_name = _resolve_backend()
-    print(f"Using backend: {backend_name}\n")
+    chain = _resolve_backend_chain()
+    print(f"Using backend chain: {' -> '.join(e.name for e in chain)}\n")
 
     if args.manifest:
         if not os.path.isfile(args.manifest):
@@ -732,7 +885,7 @@ def main() -> None:
         concurrency = _resolve_concurrency(args.concurrency)
         try:
             _, failed, _ = _run_manifest(
-                manifest, args.manifest, backend,
+                manifest, args.manifest, chain,
                 initial_concurrency=concurrency,
                 image_size=args.image_size,
                 output_dir=args.output or str(Path(args.manifest).parent),
@@ -745,21 +898,23 @@ def main() -> None:
         print(f"Rendered Markdown sidecar: {md_path}")
         sys.exit(1 if failed else 0)
 
+    item = {
+        "prompt": args.prompt,
+        "aspect_ratio": args.aspect_ratio,
+        "filename": args.filename,
+    }
     try:
-        backend.generate(
-            prompt=args.prompt,
-            aspect_ratio=args.aspect_ratio,
+        saved_path, backend_used, exc = _generate_with_chain(
+            chain, item,
+            output_dir=args.output or ".",
             image_size=args.image_size,
-            output_dir=args.output,
-            filename=args.filename,
             model=args.model,
         )
-    except (ValueError, FileNotFoundError) as e:
-        print(f"Error: {e}")
-        sys.exit(1)
-    except RuntimeError as e:
-        print(f"Error: {e}")
-        sys.exit(1)
+        if exc is not None:
+            print(f"Error: {exc}")
+            sys.exit(1)
+        if saved_path:
+            print(f"Saved: {saved_path} (via {backend_used})")
     except KeyboardInterrupt:
         print("\n\nInterrupted by user.")
         sys.exit(130)

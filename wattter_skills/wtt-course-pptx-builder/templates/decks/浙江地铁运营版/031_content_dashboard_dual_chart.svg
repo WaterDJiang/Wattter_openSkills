@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="ggrad1" x1="640" y1="0" x2="640" y2="720" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#EBF3FF"/><stop offset="0.54" stop-color="#CCE0FF" stop-opacity="0.38"/><stop offset="1" stop-color="#CCE0FF" stop-opacity="0.81"/></linearGradient><filter id="fx1" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="0" stdDeviation="13.33" flood-color="#000000" flood-opacity="0.07"/></filter><linearGradient id="txtgrad2" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="0"><stop offset="0.01" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><radialGradient id="ggrad3" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(267.4392 0 0 182.4759 73 149.379)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.15" stop-color="#00BEFF"/><stop offset="0.69" stop-color="#0165FF"/></radialGradient><filter id="fx2" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="24" stdDeviation="25.33" flood-color="#0165FF" flood-opacity="0.3"/></filter><filter id="fx3" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="0" stdDeviation="13.33" flood-color="#000000" flood-opacity="0.07"/></filter><filter id="fx4" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="0" stdDeviation="13.33" flood-color="#000000" flood-opacity="0.07"/></filter><filter id="fx5" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="0" stdDeviation="13.33" flood-color="#000000" flood-opacity="0.07"/></filter><linearGradient id="txtgrad4" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.3" stop-color="#00BEFF"/><stop offset="0.78" stop-color="#0165FF"/></linearGradient><linearGradient id="txtgrad5" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.3" stop-color="#00BEFF"/><stop offset="0.78" stop-color="#0165FF"/></linearGradient><linearGradient id="txtgrad6" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.3" stop-color="#00BEFF"/><stop offset="0.78" stop-color="#0165FF"/></linearGradient><linearGradient id="txtgrad7" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.3" stop-color="#00BEFF"/><stop offset="0.78" stop-color="#0165FF"/></linearGradient><radialGradient id="ggrad8" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(20.3879 0 0 14.8185 832.7608 201.2967)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.15" stop-color="#00BEFF"/><stop offset="0.69" stop-color="#0165FF"/></radialGradient><linearGradient id="txtgrad9" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.3" stop-color="#00BEFF"/><stop offset="0.78" stop-color="#0165FF"/></linearGradient><linearGradient id="txtgrad10" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.3" stop-color="#00BEFF"/><stop offset="0.78" stop-color="#0165FF"/></linearGradient><radialGradient id="ggrad11" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(13.0731 0 0 13.5383 196.7144 431.937)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.15" stop-color="#00BEFF"/><stop offset="0.69" stop-color="#0165FF"/></radialGradient><filter id="fx6" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="24" stdDeviation="25.33" flood-color="#0165FF" flood-opacity="0.3"/></filter><linearGradient id="mgrad1" x1="354.1378" y1="438.7061" x2="391.4463" y2="438.7061" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><radialGradient id="ggrad12" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(11.9996 0 0 11.9996 368.638 432.7064)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.07" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></radialGradient><filter id="fx7" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="2.67" stdDeviation="10" flood-color="#003280" flood-opacity="0.32"/></filter><linearGradient id="ggrad13" x1="109.0013" y1="158.7934" x2="152.195" y2="233.6071" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#CCE0FF"/></linearGradient><filter id="fx8" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="6.67" dy="11.55" stdDeviation="10.67" flood-color="#003280" flood-opacity="0.4"/></filter><linearGradient id="ggrad14" x1="131.2029" y1="191.6323" x2="144.1972" y2="214.1391" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><linearGradient id="ggrad15" x1="119.7205" y1="176.6901" x2="137.3821" y2="207.2808" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><linearGradient id="ggrad16" x1="125.7486" y1="185.3487" x2="131.3502" y2="195.051" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><linearGradient id="ggrad17" x1="124.4549" y1="182.0013" x2="129.1993" y2="190.2189" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><linearGradient id="ggrad18" x1="121.2954" y1="191.9958" x2="123.9358" y2="196.5691" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><linearGradient id="ggrad19" x1="137.5792" y1="185.3665" x2="138.4454" y2="186.8666" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><linearGradient id="ggrad20" x1="130.3492" y1="194.9476" x2="131.2156" y2="196.4481" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><filter id="fx9" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="0" stdDeviation="13.33" flood-color="#000000" flood-opacity="0.07"/></filter><linearGradient id="txtgrad21" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="0"><stop offset="0.01" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><radialGradient id="ggrad22" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(13.0731 0 0 13.5383 774.4217 431.937)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.15" stop-color="#00BEFF"/><stop offset="0.69" stop-color="#0165FF"/></radialGradient><filter id="fx10" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="24" stdDeviation="25.33" flood-color="#0165FF" flood-opacity="0.3"/></filter><linearGradient id="mgrad2" x1="931.8451" y1="438.7061" x2="969.1536" y2="438.7061" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><radialGradient id="ggrad23" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(11.9996 0 0 11.9996 946.3453 432.7064)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.07" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></radialGradient><filter id="fx11" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="2.67" stdDeviation="10" flood-color="#003280" flood-opacity="0.32"/></filter></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="master-shape-7" data-name="文本框 6">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-2" data-name="文本框 1">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-6" data-name="矩形: 圆角 5">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad1)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="layout-shape-9" data-name="图片 8">
+<image href="brand_lockup.png" x="865" y="48.74" width="375.77" height="50.15" preserveAspectRatio="none"/>
+</g>
+<g id="shape-31" data-name="矩形: 圆角 30">
+<rect x="73" y="352.96" width="556.29" height="333.2" rx="9.46" ry="9.46" fill="#FFFFFF" stroke="none" stroke-width="1" filter="url(#fx1)"/>
+</g>
+<g id="shape-3" data-name="图表 2">
+<rect x="73" y="405.96" width="556.29" height="270.15" fill="none" stroke="#999999" stroke-dasharray="4 4"/><text x="351.15" y="541.04" text-anchor="middle" font-size="14" fill="#999999">[chart]</text>
+</g>
+<g id="shape-8" data-name="文本框 7">
+<rect x="181.88" y="372.06" width="338.52" height="35.54" fill="none"/>
+<text x="351.15" y="394.99" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, &quot;微软雅黑&quot;, sans-serif" font-size="21.33" fill="url(#txtgrad2)" font-weight="bold"><tspan fill="url(#txtgrad2)" font-size="21.33" font-weight="bold">XXXXXXXXXXXXX</tspan></text>
+</g>
+<g id="shape-9" data-name="矩形: 圆角 8">
+<rect x="73" y="149.38" width="267.44" height="182.48" rx="9.46" ry="9.46" fill="url(#ggrad3)" stroke="none" stroke-width="1" filter="url(#fx2)"/>
+</g>
+<g id="shape-14" data-name="矩形: 圆角 13">
+<rect x="361.85" y="149.38" width="267.44" height="182.48" rx="9.46" ry="9.46" fill="#FFFFFF" stroke="none" stroke-width="1" filter="url(#fx3)"/>
+</g>
+<g id="shape-15" data-name="矩形: 圆角 14">
+<rect x="650.71" y="149.38" width="267.44" height="182.48" rx="9.46" ry="9.46" fill="#FFFFFF" stroke="none" stroke-width="1" filter="url(#fx4)"/>
+</g>
+<g id="shape-17" data-name="矩形: 圆角 16">
+<rect x="939.56" y="149.38" width="267.44" height="182.48" rx="9.46" ry="9.46" fill="#FFFFFF" stroke="none" stroke-width="1" filter="url(#fx5)"/>
+</g>
+<g id="shape-19" data-name="文本框 18">
+<rect x="429.62" y="254.38" width="131.91" height="35.54" fill="none"/>
+<text x="495.57" y="277.31" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="21.33" fill="#000000"><tspan fill="#000000" font-size="21.33">XXX</tspan></text>
+</g>
+<g id="shape-20" data-name="文本框 19">
+<rect x="414.95" y="175.86" width="161.24" height="80.78" fill="none"/>
+<text x="495.57" y="230.53" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="58.67" fill="url(#txtgrad4)" font-weight="bold"><tspan fill="url(#txtgrad4)" font-size="58.67" font-weight="bold">8</tspan><tspan fill="url(#txtgrad5)" font-size="29.33" font-weight="bold">宗</tspan></text>
+</g>
+<g id="shape-26" data-name="文本框 25">
+<rect x="693.79" y="254.38" width="181.28" height="35.54" fill="none"/>
+<text x="784.43" y="277.31" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="21.33" fill="#000000"><tspan fill="#000000" font-size="21.33">XXX</tspan></text>
+</g>
+<g id="shape-27" data-name="文本框 26">
+<rect x="703.81" y="175.86" width="161.24" height="80.78" fill="none"/>
+<text x="784.43" y="230.53" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="58.67" fill="url(#txtgrad6)" font-weight="bold"><tspan fill="url(#txtgrad6)" font-size="58.67" font-weight="bold">15</tspan><tspan fill="url(#txtgrad7)" font-size="29.33" font-weight="bold">宗</tspan></text>
+</g>
+<g id="shape-28" data-name="箭头: 下 27" transform="translate(842.95 208.71) scale(1 -1) translate(-842.95 -208.71)">
+<polygon points="837.86,201.3 837.86,206.66 832.76,206.66 842.95,216.12 853.15,206.66 848.05,206.66 848.05,201.3" fill="url(#ggrad8)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-29" data-name="文本框 28">
+<rect x="982.64" y="254.38" width="181.28" height="35.54" fill="none"/>
+<text x="1073.28" y="277.31" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="21.33" fill="#000000"><tspan fill="#000000" font-size="21.33">XXXX</tspan></text>
+</g>
+<g id="shape-30" data-name="文本框 29">
+<rect x="992.66" y="175.86" width="161.24" height="80.78" fill="none"/>
+<text x="1073.28" y="230.53" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="58.67" fill="url(#txtgrad9)" font-weight="bold"><tspan fill="url(#txtgrad9)" font-size="58.67" font-weight="bold">25</tspan><tspan fill="url(#txtgrad10)" font-size="29.33" font-weight="bold">宗</tspan></text>
+</g>
+<g id="shape-32" data-name="文本框 31">
+<rect x="93.98" y="235.66" width="222.02" height="41.86" fill="none"/>
+<text x="103.58" y="260.86" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF" font-weight="bold"><tspan fill="#FFFFFF" font-size="24" font-weight="bold">XXXX</tspan></text>
+</g>
+<g id="shape-61" data-name="组合 60">
+<g id="shape-34" data-name="矩形: 圆角 33">
+<rect x="196.71" y="431.94" width="13.07" height="13.54" rx="0" ry="0" fill="url(#ggrad11)" stroke="none" stroke-width="1" filter="url(#fx6)"/>
+</g>
+<g id="shape-38" data-name="文本框 37">
+<rect x="209.79" y="425.38" width="110.92" height="26.66" fill="none"/>
+<text x="219.39" y="442.08" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="14" fill="#404040"><tspan fill="#404040" font-size="14">XXXXX</tspan></text>
+</g>
+<g id="shape-39" data-name="文本框 38">
+<rect x="394.66" y="425.38" width="110.92" height="26.66" fill="none"/>
+<text x="404.26" y="442.08" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="14" fill="#404040"><tspan fill="#404040" font-size="14">XXXX</tspan></text>
+</g>
+<g id="shape-41" data-name="直接连接符 40">
+<line x1="354.14" y1="438.71" x2="391.45" y2="438.71" stroke-width="3.333" stroke-linecap="round" stroke="url(#mgrad1)" fill="#0165FF"/>
+</g>
+<g id="shape-42" data-name="椭圆 41">
+<ellipse cx="374.64" cy="438.71" rx="6" ry="6" fill="url(#ggrad12)" stroke-width="1.333" stroke="#FFFFFF" filter="url(#fx7)"/>
+</g>
+</g>
+<g id="shape-47" data-name="椭圆 46">
+<ellipse cx="130.6" cy="196.2" rx="31.62" ry="31.62" fill="url(#ggrad13)" stroke="none" stroke-width="1" filter="url(#fx8)"/>
+</g>
+<g id="shape-48" data-name="图形 45">
+<g id="shape-50" data-name="任意多边形: 形状 49">
+<path d="M 146.96 201.37 C 146.79 201.99 146.51 202.52 145.92 202.82 C 145.68 202.95 145.41 203.02 145.13 203.13 C 145.3 203.65 145.32 204.18 145.08 204.69 C 144.69 205.5 144.03 205.89 143.14 205.9 C 141.91 205.9 140.69 205.9 139.41 205.9 C 139.49 206.08 139.57 206.24 139.64 206.4 C 139.95 207.17 140.37 207.92 140.57 208.73 C 140.9 210.1 140.43 211.31 139.47 212.31 C 139.15 212.65 138.76 212.6 138.42 212.21 C 137.75 211.41 137.09 210.61 136.43 209.8 C 135.29 208.43 134.15 207.05 133.01 205.67 C 132.97 205.63 132.94 205.6 132.95 205.61 C 132.61 205.66 132.31 205.74 132.02 205.74 C 131.12 205.76 130.23 205.75 129.33 205.75 C 128.64 205.75 128.43 205.53 128.43 204.86 C 128.43 201.28 128.43 197.69 128.43 194.11 C 128.43 193.45 128.64 193.24 129.32 193.24 C 130.26 193.24 131.21 193.25 132.16 193.23 C 132.6 193.23 132.94 193.34 133.04 193.81 C 133.08 193.81 133.11 193.82 133.12 193.81 C 133.9 193.39 134.74 193.37 135.6 193.38 C 138.1 193.4 140.61 193.39 143.11 193.39 C 144.18 193.39 144.98 193.98 145.19 194.96 C 145.27 195.34 145.2 195.76 145.2 196.2 C 145.18 196.19 145.22 196.22 145.27 196.23 C 146.14 196.41 146.68 196.93 146.91 197.77 C 146.93 197.83 146.95 197.87 146.97 197.92 C 146.97 198.13 146.97 198.35 146.97 198.56 C 146.81 198.89 146.65 199.22 146.5 199.55 C 146.47 199.61 146.47 199.69 146.5 199.74 C 146.65 200.07 146.81 200.4 146.97 200.73 C 146.96 200.94 146.96 201.16 146.96 201.37 Z M 138.97 210.88 C 139.03 210.77 139.07 210.72 139.1 210.66 C 139.5 209.83 139.46 209 139.06 208.18 C 138.65 207.32 138.23 206.46 137.83 205.59 C 137.6 205.08 137.88 204.64 138.45 204.62 C 138.53 204.62 138.62 204.62 138.7 204.62 C 140.16 204.62 141.62 204.62 143.08 204.62 C 143.62 204.62 143.96 204.33 143.96 203.86 C 143.96 203.41 143.64 203.1 143.13 203.09 C 142.33 203.08 141.53 203.1 140.73 203.09 C 140.23 203.08 139.93 202.72 140.05 202.28 C 140.12 201.98 140.38 201.82 140.79 201.82 C 142.14 201.82 143.48 201.82 144.82 201.81 C 145.33 201.81 145.67 201.49 145.67 201.05 C 145.67 200.6 145.33 200.29 144.82 200.28 C 144.49 200.27 144.16 200.28 143.83 200.28 C 142.81 200.28 141.79 200.29 140.76 200.28 C 140.23 200.28 139.93 199.93 140.04 199.47 C 140.12 199.17 140.37 199.01 140.78 199.01 C 142.13 199.01 143.47 199.01 144.81 199 C 145.32 199 145.66 198.68 145.66 198.24 C 145.67 197.8 145.33 197.49 144.82 197.47 C 144.53 197.47 144.24 197.47 143.96 197.47 C 142.9 197.47 141.83 197.48 140.76 197.47 C 140.3 197.47 140.03 197.24 140.01 196.86 C 140 196.46 140.28 196.2 140.75 196.2 C 141.54 196.19 142.32 196.2 143.11 196.19 C 143.69 196.19 144.05 195.76 143.93 195.24 C 143.84 194.87 143.53 194.67 143.04 194.67 C 140.56 194.67 138.08 194.69 135.59 194.65 C 134.78 194.64 134.01 194.75 133.28 195.1 C 133.07 195.2 133 195.29 133 195.51 C 133.01 198.13 133.01 200.75 133 203.36 C 133 203.6 133.06 203.78 133.21 203.96 C 134.56 205.57 135.89 207.19 137.23 208.8 C 137.82 209.49 138.38 210.16 138.97 210.88 Z M 131.72 204.45 C 131.72 201.13 131.72 197.83 131.72 194.54 C 131.04 194.54 130.38 194.54 129.72 194.54 C 129.72 197.85 129.72 201.14 129.72 204.45 C 130.39 204.45 131.04 204.45 131.72 204.45 Z" fill="url(#ggrad14)" stroke-width="0.667" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-51" data-name="任意多边形: 形状 50">
+<path d="M 138.58 179.86 C 138.94 179.96 139.31 180.03 139.65 180.15 C 141.58 180.85 142.84 182.58 142.86 184.63 C 142.89 186.45 142.87 188.27 142.87 190.09 C 142.87 190.54 142.59 190.84 142.21 190.83 C 141.84 190.82 141.59 190.53 141.59 190.09 C 141.58 188.35 141.59 186.6 141.59 184.86 C 141.59 182.67 140.06 181.14 137.88 181.14 C 131.65 181.14 125.43 181.14 119.2 181.14 C 117.04 181.14 115.5 182.67 115.5 184.83 C 115.5 188.42 115.5 192 115.5 195.59 C 115.5 197.73 117.05 199.26 119.19 199.27 C 119.4 199.27 119.62 199.26 119.83 199.27 C 120.29 199.28 120.54 199.52 120.54 199.98 C 120.55 200.6 120.55 201.22 120.55 201.91 C 120.66 201.81 120.73 201.75 120.8 201.68 C 121.5 200.99 122.2 200.3 122.88 199.6 C 123.11 199.36 123.37 199.25 123.7 199.26 C 124.47 199.27 125.24 199.26 126.01 199.26 C 126.49 199.26 126.77 199.49 126.78 199.89 C 126.79 200.29 126.51 200.53 126.01 200.54 C 125.35 200.54 124.69 200.53 124.03 200.55 C 123.87 200.55 123.69 200.62 123.59 200.73 C 122.57 201.72 121.58 202.72 120.57 203.72 C 120.5 203.8 120.42 203.87 120.34 203.94 C 120.14 204.11 119.91 204.16 119.65 204.05 C 119.39 203.93 119.28 203.72 119.28 203.44 C 119.28 202.6 119.28 201.76 119.28 200.92 C 119.28 200.8 119.28 200.69 119.28 200.63 C 118.64 200.5 118.01 200.44 117.44 200.24 C 115.66 199.58 114.61 198.28 114.28 196.4 C 114.27 196.36 114.25 196.31 114.23 196.26 C 114.23 192.22 114.23 188.17 114.23 184.13 C 114.25 184.09 114.27 184.04 114.28 183.99 C 114.62 182.08 115.71 180.78 117.53 180.12 C 117.84 180 118.18 179.95 118.51 179.86 C 125.2 179.86 131.89 179.86 138.58 179.86 Z" fill="url(#ggrad15)" stroke-width="0.667" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-54" data-name="任意多边形: 形状 53">
+<path d="M 128.54 189.56 C 131.57 189.56 134.6 189.56 137.62 189.56 C 137.69 189.56 137.75 189.56 137.82 189.56 C 138.34 189.57 138.65 189.8 138.65 190.2 C 138.65 190.6 138.34 190.84 137.82 190.84 C 131.64 190.84 125.46 190.84 119.28 190.84 C 119.14 190.84 119 190.83 118.87 190.79 C 118.6 190.7 118.45 190.48 118.45 190.2 C 118.45 189.93 118.59 189.71 118.86 189.62 C 119.01 189.58 119.18 189.57 119.34 189.57 C 122.41 189.56 125.48 189.56 128.54 189.56 Z" fill="url(#ggrad16)" stroke-width="0.667" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-55" data-name="任意多边形: 形状 54">
+<path d="M 126.85 185.48 C 129.35 185.48 131.86 185.48 134.36 185.48 C 134.51 185.48 134.67 185.49 134.8 185.53 C 135.07 185.62 135.21 185.83 135.21 186.11 C 135.21 186.4 135.07 186.6 134.8 186.69 C 134.66 186.74 134.51 186.75 134.36 186.75 C 129.34 186.75 124.32 186.75 119.3 186.75 C 119.21 186.75 119.11 186.75 119.02 186.74 C 118.68 186.68 118.44 186.42 118.44 186.11 C 118.44 185.79 118.68 185.53 119.02 185.48 C 119.13 185.47 119.25 185.47 119.37 185.47 C 121.86 185.48 124.36 185.48 126.85 185.48 Z" fill="url(#ggrad17)" stroke-width="0.667" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-56" data-name="任意多边形: 形状 55">
+<path d="M 122.63 194.92 C 121.5 194.92 120.37 194.93 119.24 194.91 C 119.05 194.91 118.83 194.86 118.68 194.75 C 118.29 194.46 118.41 193.86 118.87 193.7 C 118.99 193.65 119.12 193.64 119.25 193.64 C 121.49 193.64 123.75 193.64 125.99 193.64 C 126.41 193.64 126.67 193.8 126.76 194.09 C 126.88 194.54 126.58 194.92 126.06 194.92 C 124.91 194.93 123.77 194.92 122.63 194.92 Z" fill="url(#ggrad18)" stroke-width="0.667" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-57" data-name="任意多边形: 形状 56">
+<path d="M 138.65 186.11 C 138.65 186.44 138.35 186.74 138.02 186.75 C 137.69 186.76 137.38 186.46 137.38 186.13 C 137.37 185.79 137.67 185.49 138 185.48 C 138.33 185.48 138.64 185.78 138.65 186.11 Z" fill="url(#ggrad19)" stroke-width="0.667" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-60" data-name="任意多边形: 形状 59">
+<path d="M 130.8 196.33 C 130.46 196.34 130.16 196.07 130.15 195.73 C 130.13 195.38 130.44 195.06 130.78 195.06 C 131.11 195.06 131.41 195.36 131.42 195.69 C 131.42 196.03 131.14 196.32 130.8 196.33 Z" fill="url(#ggrad20)" stroke-width="0.667" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+</g>
+<g id="shape-62" data-name="矩形: 圆角 61">
+<rect x="650.71" y="352.96" width="556.29" height="333.2" rx="9.46" ry="9.46" fill="#FFFFFF" stroke="none" stroke-width="1" filter="url(#fx9)"/>
+</g>
+<g id="shape-63" data-name="图表 62">
+<rect x="650.71" y="405.96" width="556.29" height="270.15" fill="none" stroke="#999999" stroke-dasharray="4 4"/><text x="928.85" y="541.04" text-anchor="middle" font-size="14" fill="#999999">[chart]</text>
+</g>
+<g id="shape-64" data-name="文本框 63">
+<rect x="759.59" y="372.06" width="338.52" height="35.54" fill="none"/>
+<text x="928.85" y="394.99" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, &quot;微软雅黑&quot;, sans-serif" font-size="21.33" fill="url(#txtgrad21)" font-weight="bold"><tspan fill="url(#txtgrad21)" font-size="21.33" font-weight="bold">XXXXXXXXXXX</tspan></text>
+</g>
+<g id="shape-65" data-name="组合 64">
+<g id="shape-66" data-name="矩形: 圆角 65">
+<rect x="774.42" y="431.94" width="13.07" height="13.54" rx="0" ry="0" fill="url(#ggrad22)" stroke="none" stroke-width="1" filter="url(#fx10)"/>
+</g>
+<g id="shape-67" data-name="文本框 66">
+<rect x="787.49" y="425.38" width="110.92" height="26.66" fill="none"/>
+<text x="797.09" y="442.08" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="14" fill="#404040"><tspan fill="#404040" font-size="14">XXXXXXX</tspan></text>
+</g>
+<g id="shape-68" data-name="文本框 67">
+<rect x="972.37" y="425.38" width="110.92" height="26.66" fill="none"/>
+<text x="981.97" y="442.08" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="14" fill="#404040"><tspan fill="#404040" font-size="14">XXX</tspan></text>
+</g>
+<g id="shape-69" data-name="直接连接符 68">
+<line x1="931.85" y1="438.71" x2="969.15" y2="438.71" stroke-width="3.333" stroke-linecap="round" stroke="url(#mgrad2)" fill="#0165FF"/>
+</g>
+<g id="shape-70" data-name="椭圆 69">
+<ellipse cx="952.35" cy="438.71" rx="6" ry="6" fill="url(#ggrad23)" stroke-width="1.333" stroke="#FFFFFF" filter="url(#fx11)"/>
+</g>
+</g>
+<g id="shape-2" data-name="标题 1">
+<rect x="71.41" y="48.74" width="533.19" height="58.16" fill="none"/>
+<text x="81.01" y="89.81" text-anchor="start" xml:space="preserve" font-family="&quot;Montserrat Black&quot;, &quot;HarmonyOS Sans SC Black&quot;, +mj-cs, sans-serif" font-size="42.67" fill="#000000"><tspan fill="#000000" font-size="42.67">本页内容标题</tspan></text>
+</g></svg>

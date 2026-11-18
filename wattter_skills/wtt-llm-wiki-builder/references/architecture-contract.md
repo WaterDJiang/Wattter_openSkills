@@ -29,6 +29,7 @@ ls -la {目标目录}
 - 该目录定位（案例库 / 模型库 / 课程编译 / 综合）
 - 输出形态约定（kp / case / model / concept 哪个是主产）
 - frontmatter 字段约定（是否有该目录额外要求的字段，如 `feishu_id`、`reviewer`）
+- 时效约定（是否有 `knowledge_date` / `superseded_by`；没有 → 存量库建议回填，见 `references/knowledge-freshness.md` 第 7 节）
 - 命名规范（文件名、子目录名）
 - 合并策略（覆盖 / 追加 / 拒绝）
 - 与本 skill 默认范式冲突的部分（必须遵循目录 schema，不擅改）
@@ -139,8 +140,13 @@ ls -la {目标目录}
 - 索引：`wiki/indexes/{index,log}.md`
 
 ## frontmatter 必需字段
-kp_name / module / knowledge_domain / knowledge_type / tags / source_marking
-可选：source_files / last_compiled / upgraded_at
+kp_name / module / knowledge_domain / knowledge_type / tags / source_marking / knowledge_date
+可选：source_files / last_compiled / upgraded_at / superseded_by
+
+## 知识时效
+- knowledge_date = 知识发生时间（来源资料的时间），必填；last_compiled 只记编辑时间
+- 新知识 vs 旧知识同体系时做碰撞判定：互补合并 / 取代（旧卡标 superseded_by + 新卡演进史回链）/ 并存（边界对比关联）；拿不准列候选问用户，不擅自标
+- 检索输出带「知识时间」「状态」两列，最新标 ✅，旧版标 ⚠️ 已被 [[X]] 深化但保留展示
 
 ## 命名
 - 模块：`{两位序号}-{模块简称}`
@@ -153,7 +159,7 @@ kp_name / module / knowledge_domain / knowledge_type / tags / source_marking
 - 跨课程同义 → 抽到 wiki/concepts/
 
 ## 编译器
-本目录使用 wtt-course-knowledge-distillation 编译。
+本目录由 wtt-llm-wiki-builder 维护（Compile 模式）。
 ```
 
 #### 3.3.2 案例库语境 CLAUDE.md 草案
@@ -169,11 +175,14 @@ kp_name / module / knowledge_domain / knowledge_type / tags / source_marking
 - 共享：`wiki/concepts/`、`wiki/materials/`
 
 ## frontmatter 必需字段
-case_name / industry / scenario / outcome / source_marking
-可选：feishu_id / reviewer / source_files
+case_name / industry / scenario / outcome / source_marking / knowledge_date
+可选：feishu_id / reviewer / source_files / superseded_by
+
+## 知识时效
+knowledge_date 必填（案例发生时间）；新旧碰撞判定与检索时效呈现规则同课程语境草案。
 
 ## 编译器
-本目录使用 wtt-course-knowledge-distillation 编译（案例语境）。
+本目录由 wtt-llm-wiki-builder 维护（Compile 模式，案例语境）。
 ```
 
 #### 3.3.3 模型库语境 CLAUDE.md 草案
@@ -189,10 +198,14 @@ case_name / industry / scenario / outcome / source_marking
 - 共享：`wiki/concepts/`、`wiki/materials/`
 
 ## frontmatter 必需字段
-model_name / knowledge_domain / origin / source_marking
+model_name / knowledge_domain / origin / source_marking / knowledge_date
+可选：superseded_by
+
+## 知识时效
+模型库是新旧碰撞的高发区：新模型深化/取代旧模型时，旧卡标 superseded_by + 新卡「演进史」回链写差异；拿不准列候选问用户，不擅自标。
 
 ## 编译器
-本目录使用 wtt-course-knowledge-distillation 编译（模型语境）。
+本目录由 wtt-llm-wiki-builder 维护（Compile 模式，模型语境）。
 ```
 
 ### 3.4 CLAUDE.md 与本次语境冲突

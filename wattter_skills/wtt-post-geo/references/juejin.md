@@ -33,6 +33,7 @@ execution:
 适配要求：
 
 - 标题与正文分离，剥掉重复 H1。
+- 写作语气与链接方式遵循 [content-style.md](content-style.md) 的去营销化清单（禁绝对化卖货词/标题党、链接自然化、移除硬 CTA；通用，不在此重复）。
 - 保留 Markdown 标题、列表、引用、代码块、表格和普通链接。
 - 删除 CSDN 编辑器 UI、隐藏代码按钮、iframe、视频占位和不可复用脚本。
 - 分类和标签是平台专属字段。账号中不存在的分类/标签不得猜测或自动创建。
@@ -52,6 +53,11 @@ execution:
 5. 验证通过后设置 `created_verified`，报告 `已创建草稿`。
 
 adapter 明确失败且草稿列表确认没有同标题新草稿时，才设置 `confirmed_not_created` 并进入回退。
+
+### 插件参照补充（GEO action）
+
+- 分类/标签必须在创建前解析为真实 ID：`GET /tag_api/v1/query_category_briefs` 按 `category_name` 找分类，`POST /tag_api/v1/query_tag_list` JSON `{key_word, cursor:'0', limit:20}` 逐个找标签（最多 3 个）。分类缺失或零标签匹配时停止，禁止伪造 ID 或传空必填项。默认分类「人工智能」。
+- 图片上传端点（未来图片能力备忘）：走 ByteDance ImageX 流水线——`GET /imagex/v2/gen_token?aid=2608` 拿 STS，`GET imagex.bytedanceapi.com/?Action=ApplyImageUpload&ServiceId=73owjymdk6`（AWS4 签名）拿 `StoreUri/Auth`，`PUT <UploadHost>/<StoreUri>` + `Content-CRC32`，再 `Action=CommitImageUpload` + `get_img_url`。当前 adapter 仍是 `images:false`。
 
 ### 回退：OpenCLI 浏览器编辑器
 

@@ -4,9 +4,9 @@ This directory contains the standardized SVG visualization templates used by PPT
 
 ## Source of truth
 
-[`charts_index.json`](./charts_index.json) is the single source of truth for the library: total count + one selection-rule `summary` per template (format: `"Pick for X. Skip if Y (use other_key)."`). Both human readers and AI roles read it in full — there is no category/keyword sub-index. Selection is done by semantic match against the summary list in one pass.
+[`charts_index.json`](./charts_index.json) is the single source of truth for inventory and human-readable selection summaries. Runtime selection first queries `content_forms.json.chart_tags`; the model receives only compact candidates instead of reading all 71 entries.
 
-To browse the library, open `charts_index.json` and scan the `charts` block top-to-bottom; each entry's `summary` answers "when do I pick this, when do I skip" directly.
+Every indexed SVG receives a runtime `variant_profile` from explicit tags or deterministic filename inference. When multiple charts serve the same form and slot count, `variant_selection.py` rotates only inside the semantic-equivalence pool using an outline-hash seed. Explicit composition topology/emphasis wins; mirror and unique-candidate paths remain stable.
 
 ## Style rules
 

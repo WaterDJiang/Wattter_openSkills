@@ -599,7 +599,7 @@ def init(root):
     shutil.copytree(base / 'assets/starter', root, dirs_exist_ok=True)
     target = root / 'tools'
     target.mkdir()
-    for name in ('pipeline.py', 'render.cjs', 'voice.py', 'speech.py', 'asset_review.py', 'footage.py', 'preview_review.py'):
+    for name in ('pipeline.py', 'render.cjs', 'voice.py', 'speech.py', 'asset_review.py', 'footage.py', 'preview_review.py', 'audio_revision.py'):
         shutil.copy2(base / 'scripts' / name, target / name)
     (root / 'config').mkdir()
     for name in ('model-catalog.json', 'voice.example.json'):
@@ -607,12 +607,17 @@ def init(root):
     shutil.copy2(base / 'requirements-voice.txt', root / 'requirements-voice.txt')
     voice_doc = (base / 'references/voice.md').read_text(encoding='utf-8')
     voice_doc = voice_doc.replace('(../config/', '(config/')
+    voice_doc = voice_doc.replace('(audio-revision.md)', '(AUDIO-REVISION.md)')
     for title, link in (('兼容说明', 'migration.md#多人配音迁移'),
                         ('制作契约', 'production.md#角色与逐句话轮'),
                         ('制作流程', 'production.md#常用命令')):
         voice_doc = voice_doc.replace(f'[{title}]({link})',
                                       f'{title}（Skill references/{link.split("#")[0]}）')
     (root / 'VOICE.md').write_text(voice_doc, encoding='utf-8')
+    (root / 'AUDIO-REVISION.md').write_text(
+        (base / 'references/audio-revision.md').read_text(encoding='utf-8')
+        .replace('(material-review.md)', '(ASSETS.md)').replace('(voice.md)', '(VOICE.md)')
+        .replace('(preview-review.md)', '(PREVIEW.md)'), encoding='utf-8')
     (root / 'ASSETS.md').write_text((base / 'references/material-review.md').read_text().replace('(footage.md)', '(FOOTAGE.md)').replace('(preview-review.md)', '(PREVIEW.md)'), encoding='utf-8')
     (root / 'FOOTAGE.md').write_text((base / 'references/footage.md').read_text().replace('(material-review.md)', '(ASSETS.md)'), encoding='utf-8')
     shutil.copy2(base / 'assets/project-docs/QUALITY.md', root / 'QUALITY.md')

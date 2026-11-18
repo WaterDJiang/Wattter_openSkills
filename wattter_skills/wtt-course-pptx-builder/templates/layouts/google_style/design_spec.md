@@ -5,6 +5,7 @@ summary: Annual work reports, technical sharing, project showcases, data-driven 
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # Google Style Template - Design Specification

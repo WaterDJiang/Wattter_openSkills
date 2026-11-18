@@ -11,7 +11,7 @@
     "buildOrder": [
       "1. cp core → base.css（cat tokens slide typography layout components image chrome nav responsive）",
       "2. cp <style>/style.css → css/style.css（注入字体/尺寸/圆角变量值）",
-      "3. cp <style>/themes/*.css → css/；预设主题让 theme-link 指向 css/<theme>.css，自定义主题才生成 css/theme.css 并锁定 T 键",
+      "3. cp <style>/themes/*.css → css/；预设主题让 theme-link 指向 css/<theme>.css，自定义主题才生成 css/theme.css 并禁用 T 按钮",
       "4. （swiss）cp <style>/components/*.css → css/swiss/（专属组件）",
       "5. cp motions/animations.css（微动/沉浸）+ motions/subtle.js|cinematic.js → js/motion.js",
       "6. cp webgl/<shader>.js → js/webgl.js（按风格 webgl 字段）",

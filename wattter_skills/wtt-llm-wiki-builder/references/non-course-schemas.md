@@ -15,11 +15,14 @@ industry: "{行业，如 SaaS/电商/教育/制造}"
 scenario: "{场景一句话，如 '冷启动 0-1 用户'}"
 outcome: "{结果一句话，如 '6 个月 MAU 10w'}"
 knowledge_domain: "{所属领域}"
+knowledge_date: "{YYYY-MM-DD，案例发生时间，必填}"
 tags: [{补充标签}]
 source_marking: "{已提取/AI补全}"
 # 可选
 source_files: []
 last_compiled: ""
+knowledge_date_basis: ""   # 仅近似推断时填 approximate
+superseded_by: ""          # 被新案例取代时填（用户确认后）
 feishu_id: ""              # 飞书来源时填
 reviewer: ""               # 审稿人
 ---
@@ -72,11 +75,14 @@ model_name: "{模型名}"
 knowledge_domain: "{领域}"
 knowledge_type: "框架/模型/原则"
 origin: "{出处，如 '麦肯锡《金字塔原理》'}"
+knowledge_date: "{YYYY-MM-DD，模型提出/来源资料时间，必填}"
 tags: [{补充标签}]
 source_marking: "{已提取/AI补全}"
 # 可选
 source_files: []
 last_compiled: ""
+knowledge_date_basis: ""   # 仅近似推断时填 approximate
+superseded_by: ""          # 被新模型取代/深化时填（用户确认后）
 ---
 ```
 
@@ -104,6 +110,12 @@ last_compiled: ""
 ## 实例
 {1-3 个具体应用，链接到 wiki/cases/}
 
+## 演进史（如有）
+{本模型深化/取代了哪些旧模型，差异是什么；被取代的旧模型用 superseded_by 反向指过来}
+| 时间 | 卡片 | 关系 |
+|:---|:---|:---|
+| {knowledge_date} | [[旧模型名]] | 本模型深化了其 {哪个部分} |
+
 ## 关联
 | 关系 | 关联 |
 |:---|:---|
@@ -128,6 +140,7 @@ knowledge_type: "概念/原则"
 appears_in:                # 关键字段：跨课程引用回溯
   - "wiki/kps/课程A-knowledge-points/01-xx/某kp.md"
   - "wiki/kps/课程B-knowledge-points/02-yy/某kp.md"
+knowledge_date: "{YYYY-MM-DD，最早来源资料时间，必填}"
 source_marking: "{已提取/AI补全}"
 ---
 ```
@@ -224,8 +237,10 @@ tags: [...]
 - `knowledge_type`
 - `tags`
 - `source_marking`
+- `knowledge_date`（知识发生时间，知识卡片必填；note 卡由 `date` 承担）
 - `source_files`（可选）
 - `last_compiled`（可选）
+- `superseded_by`（可选，被取代标记）
 
 **这些字段是语境特化的**：
 

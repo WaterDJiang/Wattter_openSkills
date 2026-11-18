@@ -15,6 +15,8 @@ from .pptx_builder import create_pptx_with_native_svg
 from .pptx_narration import NARRATION_EXTENSIONS, find_narration_files, probe_audio_duration
 from .pptx_slide_xml import TRANSITIONS
 from .animation_config import load_animation_config, validate_animation_config
+from validate_pptx_editability import analyze_pptx, write_report
+from course_delivery import check_split_notes, check_pptx_notes, load_pages
 
 try:
     from pptx_animations import ANIMATIONS as _ANIMATIONS
@@ -74,8 +76,8 @@ def main() -> None:
         epilog=f'''
 Examples:
     %(prog)s examples/ppt169_demo -s final               # Default: native pptx -> exports/, svg_output -> backup/<ts>/
-    %(prog)s examples/ppt169_demo --svg-snapshot         # Also emit SVG-rendered snapshot pptx alongside native in exports/
-    %(prog)s examples/ppt169_demo --only legacy          # Only SVG image version (skips native)
+    %(prog)s examples/ppt169_demo --svg-snapshot         # Also emit a non-editable visual preview
+    %(prog)s examples/ppt169_demo --only legacy          # Only non-editable visual preview (skips native)
     %(prog)s examples/ppt169_demo -o out.pptx            # Explicit path (no backup/)
 
     # Disable transition / change transition effect
@@ -133,6 +135,8 @@ Recorded narration:
     - Use only when you do not need a complete recorded-timings export
 ''',
     )
+    parser.add_argument('--course-draft', action='store_true',
+                        help='Explicit legacy course migration draft; filename must contain _draft')
 
     parser.add_argument('project_path', type=str, help='Project directory path')
     parser.add_argument('-o', '--output', type=str, default=None, help='Output file path')
@@ -168,8 +172,8 @@ Recorded narration:
                              '(<output>.trace.json). Records per-slide SVG element '
                              'conversion decisions for debugging.')
     parser.add_argument('--svg-snapshot', action='store_true', default=False,
-                        help='Also emit the SVG-rendered snapshot pptx alongside the native pptx in exports/ '
-                             '(named <project>_<ts>_svg.pptx). Off by default — the native pptx is the '
+                        help='Also emit the non-editable SVG-rendered preview alongside the native pptx in exports/ '
+                             '(named <project>_<ts>_preview_noneditable.pptx). Off by default — the native pptx is the '
                              'canonical output; live preview already provides the SVG visual reference. '
                              'Note: the svg_output/ source snapshot is always written to backup/<ts>/ '
                              'regardless of this flag.')
@@ -307,7 +311,9 @@ Recorded narration:
         native_path = output_base
         if gen_legacy:
             stem = output_base.stem
-            legacy_path = output_base.parent / f"{stem}_svg{output_base.suffix}"
+            legacy_path = output_base.parent / (
+                f"{stem}_preview_noneditable{output_base.suffix}"
+            )
     else:
         exports_dir = project_path / "exports"
         exports_dir.mkdir(parents=True, exist_ok=True)
@@ -318,7 +324,9 @@ Recorded narration:
         # exports/ rather than nested inside backup/.
         backup_dir = project_path / "backup" / timestamp
         if gen_legacy:
-            legacy_path = exports_dir / f"{project_name}_{timestamp}_svg.pptx"
+            legacy_path = exports_dir / (
+                f"{project_name}_{timestamp}_preview_noneditable.pptx"
+            )
 
     native_path.parent.mkdir(parents=True, exist_ok=True)
     if legacy_path is not None:
@@ -330,6 +338,31 @@ Recorded narration:
     notes: dict[str, str] = {}
     if enable_notes:
         notes = find_notes_files(project_path, ref_files)
+
+    try:
+        note_errors = check_split_notes(project_path, ref_files, notes, enable_notes)
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        note_errors = [str(exc)]
+    if note_errors:
+        for error in note_errors:
+            print(f"Error: notes preflight: {error}", file=sys.stderr)
+        sys.exit(1)
+
+    bundle, _ = load_pages(project_path)
+    realization = project_path / 'page_realization.json'
+    if bundle is not None:
+        if args.course_draft and '_draft' not in native_path.stem:
+            parser.error('--course-draft requires an output filename containing _draft')
+        if not realization.exists() and not args.course_draft:
+            parser.error('course structure plan missing: page_realization.json; legacy migration requires --course-draft')
+    if realization.exists():
+        from validate_page_realization import validate as validate_realization
+        try:
+            result = validate_realization(project_path)
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            parser.error('course structure preflight: ' + str(exc))
+        if not result['ok']:
+            parser.error('course structure preflight: ' + '; '.join(result['errors']))
 
     narration_audio: dict[str, Path] = {}
     narration_audio_dir_arg = args.recorded_narration or args.narration_audio_dir
@@ -549,6 +582,38 @@ Recorded narration:
             ),
             **shared_kwargs,
         )
+        if ok:
+            for error in check_pptx_notes(project_path, native_path, ref_files, notes):
+                print(f"Error: embedded notes check: {error}", file=sys.stderr)
+                ok = False
+            if realization.exists():
+                result = validate_realization(project_path, native_path)
+                path = native_path.with_name(native_path.name + '.realization.json')
+                path.write_text(json.dumps(result, ensure_ascii=False, indent=2))
+                if not result['ok']:
+                    for error in result['errors']:
+                        print(f"Error: native course structure: {error}", file=sys.stderr)
+                    ok = False
+            report = analyze_pptx(native_path)
+            report_path = native_path.with_name(
+                native_path.name + '.editability.json'
+            )
+            write_report(report, report_path)
+            totals = report['totals']
+            if verbose:
+                print(
+                    "  Editable output check: "
+                    f"{totals['editable_leaf_objects']} native objects, "
+                    f"{totals['text_shapes']} text shapes, "
+                    f"{len(report['picture_only_pages'])} picture-only pages"
+                )
+                print(f"  Editability report: {report_path}")
+            for warning in report['warnings']:
+                print(f"  [warn] {warning}")
+            if not report['ok']:
+                for error in report['errors']:
+                    print(f"Error: native PPTX editability check failed: {error}", file=sys.stderr)
+                ok = False
         success = success and ok
 
     # --- SVG image reference version ---
@@ -557,11 +622,12 @@ Recorded narration:
             if gen_native:
                 print()
                 print("-" * 50)
-            print("PPT Master - SVG to PPTX Tool (SVG Reference)")
+            print("PPT Master - SVG to PPTX Tool (NON-EDITABLE PREVIEW)")
             print("=" * 50)
             print(f"  Project path: {project_path}")
             print(f"  SVG directory: {legacy_source_dir}")
             print(f"  Output file: {legacy_path}")
+            print("  WARNING: this preview stores each slide as an image and is not the editable deliverable.")
             print()
 
         ok = create_pptx_with_native_svg(

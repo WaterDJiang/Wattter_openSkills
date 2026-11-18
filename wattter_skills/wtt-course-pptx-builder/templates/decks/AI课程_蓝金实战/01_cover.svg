@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <g id="background">
+    <image href="cover_background.png" x="0" y="0" width="1280" height="720" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <g id="cover-title">
+    <rect x="72" y="148" width="5" height="47" fill="#C7A661"/>
+    <text x="92" y="179" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="24" font-weight="700">{{KICKER}}</text>
+    <text x="72" y="303" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="74" font-weight="800">{{TITLE}}</text>
+    <text x="76" y="405" fill="#44546A" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="32">{{SUBTITLE}}</text>
+    <line x1="76" y1="450" x2="542" y2="450" stroke="#C7A661" stroke-width="1"/>
+    <text x="76" y="492" fill="#44546A" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20" letter-spacing="2">AI COURSE · LEARN BY DOING</text>
+  </g>
+</svg>

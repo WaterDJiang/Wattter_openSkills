@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="brand-header" data-name="中国移动内容页标题">
+    <image href="china_mobile_logo.png" x="959.38" y="-21.00" width="292.82" height="164.71" preserveAspectRatio="none"/>
+    <text x="72" y="104" font-family="Microsoft YaHei,Arial,sans-serif" font-size="36" font-weight="bold" fill="#0070C0">项目排期</text>
+    <rect x="72" y="122" width="84" height="5" rx="2.5" fill="#0FA4FE"/>
+  </g>
+  <g id="gantt-grid" data-name="六个月六任务排期网格">
+    <rect x="72" y="160" width="1136" height="490" rx="20" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.27" stroke-width="2"/>
+    <path d="M92 160 H1188 Q1208 160 1208 180 V230 H72 V180 Q72 160 92 160 Z" fill="#0070C0" fill-opacity="0.09"/>
+    <rect x="73" y="300" width="1134" height="70" fill="#0070C0" fill-opacity="0.035"/>
+    <rect x="73" y="440" width="1134" height="70" fill="#0070C0" fill-opacity="0.035"/>
+    <rect x="73" y="580" width="1134" height="69" fill="#0070C0" fill-opacity="0.035"/>
+    <line x1="290" y1="160" x2="290" y2="650" stroke="#0070C0" stroke-opacity="0.23" stroke-width="2"/>
+    <line x1="440" y1="160" x2="440" y2="650" stroke="#0070C0" stroke-opacity="0.14"/>
+    <line x1="590" y1="160" x2="590" y2="650" stroke="#0070C0" stroke-opacity="0.14"/>
+    <line x1="740" y1="160" x2="740" y2="650" stroke="#0070C0" stroke-opacity="0.14"/>
+    <line x1="890" y1="160" x2="890" y2="650" stroke="#0070C0" stroke-opacity="0.14"/>
+    <line x1="1040" y1="160" x2="1040" y2="650" stroke="#0070C0" stroke-opacity="0.14"/>
+    <line x1="72" y1="230" x2="1208" y2="230" stroke="#0070C0" stroke-opacity="0.23" stroke-width="2"/>
+    <line x1="72" y1="300" x2="1208" y2="300" stroke="#0070C0" stroke-opacity="0.13"/>
+    <line x1="72" y1="370" x2="1208" y2="370" stroke="#0070C0" stroke-opacity="0.13"/>
+    <line x1="72" y1="440" x2="1208" y2="440" stroke="#0070C0" stroke-opacity="0.13"/>
+    <line x1="72" y1="510" x2="1208" y2="510" stroke="#0070C0" stroke-opacity="0.13"/>
+    <line x1="72" y1="580" x2="1208" y2="580" stroke="#0070C0" stroke-opacity="0.13"/>
+    <text x="103" y="205" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" font-weight="bold" fill="#0070C0">任务</text>
+    <text x="365" y="205" text-anchor="middle" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" font-weight="bold" fill="#0070C0">1月</text>
+    <text x="515" y="205" text-anchor="middle" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" font-weight="bold" fill="#0070C0">2月</text>
+    <text x="665" y="205" text-anchor="middle" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" font-weight="bold" fill="#0070C0">3月</text>
+    <text x="815" y="205" text-anchor="middle" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" font-weight="bold" fill="#0070C0">4月</text>
+    <text x="965" y="205" text-anchor="middle" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" font-weight="bold" fill="#0070C0">5月</text>
+    <text x="1115" y="205" text-anchor="middle" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" font-weight="bold" fill="#0070C0">6月</text>
+  </g>
+  <g id="gantt-task-one" data-name="任务一">
+    <text x="103" y="272" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#203864">任务一</text>
+    <rect x="312" y="249" width="180" height="32" rx="16" fill="#0070C0"/>
+    <text x="329" y="271" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#FFFFFF">1—2月</text>
+    <text x="506" y="271" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">30天</text>
+  </g>
+  <g id="gantt-task-two" data-name="任务二">
+    <text x="103" y="342" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#203864">任务二</text>
+    <rect x="462" y="319" width="240" height="32" rx="16" fill="#0070C0" fill-opacity="0.92"/>
+    <text x="479" y="341" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#FFFFFF">2—3月</text>
+    <text x="716" y="341" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">45天</text>
+  </g>
+  <g id="gantt-task-three" data-name="任务三">
+    <text x="103" y="412" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#203864">任务三</text>
+    <rect x="612" y="389" width="300" height="32" rx="16" fill="#0070C0" fill-opacity="0.85"/>
+    <text x="629" y="411" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#FFFFFF">3—4月</text>
+    <text x="926" y="411" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">60天</text>
+  </g>
+  <g id="gantt-task-four" data-name="任务四">
+    <text x="103" y="482" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#203864">任务四</text>
+    <rect x="312" y="459" width="450" height="32" rx="16" fill="#0FA4FE"/>
+    <text x="329" y="481" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#FFFFFF">1—4月</text>
+    <text x="776" y="481" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">90天</text>
+  </g>
+  <g id="gantt-task-five" data-name="任务五">
+    <text x="103" y="552" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#203864">任务五</text>
+    <rect x="762" y="529" width="320" height="32" rx="16" fill="#0070C0" fill-opacity="0.82"/>
+    <text x="779" y="551" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#FFFFFF">4—6月</text>
+    <text x="1096" y="551" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">70天</text>
+  </g>
+  <g id="gantt-task-six" data-name="任务六">
+    <text x="103" y="622" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#203864">任务六</text>
+    <rect x="912" y="599" width="180" height="32" rx="16" fill="#0FA4FE"/>
+    <text x="929" y="621" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#FFFFFF">5—6月</text>
+    <text x="1106" y="621" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">30天</text>
+  </g>
+</svg>

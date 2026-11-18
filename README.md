@@ -5,7 +5,7 @@
 ## 可用技能
 
 ### 内容发布与自动化
-- **wtt-auto-poster**：自动化内容发布助手。支持将 Markdown 文章自动发布到知乎和微信公众号，具备 Mac 风格代码块渲染、图片自动上传和自定义样式功能。
+- **wtt-post-multi-platform**：多平台内容发布助手。用同一入口统一封装微信公众号 API 发布与知乎浏览器自动发布，各平台保留独立实现、配置与资源目录；需要把 Markdown 发布到不同内容平台时调用。
 - **wtt-post-geo**：多平台 GEO 内容发布助手。通过“官方 API → 浏览器登录态 adapter → OpenCLI UI”分层路由，把同一份内容发布或创建草稿到微信公众号、微博、知乎专栏、CSDN、掘金、百家号、博客园、小红书、Twitter/X；统一处理平台格式、GEO 链接、媒体素材、防重复回退、状态校验与最终链接回报。微博默认生成并发布摘要短帖，只有用户明确要求时才走长文。
 
 ### 内容创作与 SEO
@@ -21,7 +21,7 @@
 ### 演示文稿与视觉表达
 - **wtt-magazine-deck**：杂志风网页演示生成工具。支持生成自包含横向翻页 HTML deck，覆盖 editorial 与 swiss 两种风格，适用于分享、发布会、报告和作品展示。
 - **wtt-course-pptx-builder**：课程 PPT 构建器。支持将 PDF、DOCX、URL、Markdown 等源文档转换为高质量 SVG 页面并导出为 PPTX，覆盖模板套用、AI 生图、图像搜索、实时预览、图表校准、动画定制和旁白生成等完整流程。
-- **wtt-nine-comic-imagegen**：多风格漫画与信息图提示词生成器。支持 9 号漫画恶搞科普、手绘信息图、四格漫画、线条人插画、生活感人像五种风格，默认输出中文提示词，可直接用于 ChatGPT / 即梦 / Midjourney 等图片生成平台。
+- **wtt-nine-image**：多风格图片提示词与封面制作。支持 9 号漫画恶搞科普、手绘信息图、四格漫画、克莱因蓝线条人、生活感人像五种提示词风格，外加「封面」类别——按内容自动选四种封面风格实际生成候选图；默认中文提示词，可直接用于 ChatGPT / 即梦 / Midjourney 等图片生成平台，封面真实排字附 OFL 授权手写字体。
 - **wtt-code-video-studio**：代码视频工作室。把想法、文章或剧本制作成前端代码动画与 MP4；按内容推荐五个方向，先展示四帧拼图给用户确认，再完整渲染并按实际配音校时交付。覆盖概念解释（文字/静态图解/交互 HTML）、个人宣传、产品教程、纪实、数据与地图明信片，支持默认个人音色、角色固定声线、逐句表演指令与素材版本审阅；随 Skill 附手绘电影式角色动画原创源码模板（V2 工艺：形体笔触、暗前亮远、接地步态、道具绑定），并内置主题用法与风格映射、外部案例研究库（research-only）与风格保真对照。
 - **wtt-fin-chart**：财务图表生成器。将财务数据、经营指标、财报表格（CSV/Excel/PDF）转化为带洞察的 HTML 财务图表、仪表盘与经营分析页，同步输出长截图 PNG 备份，适用于董事会/投资人汇报与投研分析。
 
@@ -63,8 +63,8 @@
 # 1. 添加市场
 /plugin marketplace add WaterDJiang/Wattter_openSkills
 
-# 2. 按需安装单个技能，如 auto-poster
-/plugin install wtt-auto-poster-skills@wattter-skills
+# 2. 按需安装单个技能，如 post-multi-platform
+/plugin install wtt-post-multi-platform-skills@wattter-skills
 ```
 
 插件名与 marketplace.json 的 `plugins[].name` 一致，格式为 `wtt-<技能名>-skills`。
@@ -75,7 +75,7 @@ Codex CLI 原生支持 Agent Skills 开放标准，把技能目录放入其技�
 ```bash
 git clone https://github.com/WaterDJiang/Wattter_openSkills.git
 mkdir -p ~/.codex/skills
-cp -r Wattter_openSkills/wattter_skills/wtt-auto-poster ~/.codex/skills/
+cp -r Wattter_openSkills/wattter_skills/wtt-post-multi-platform ~/.codex/skills/
 ```
 
 ### 方式三：openskills（跨 Agent 通用）

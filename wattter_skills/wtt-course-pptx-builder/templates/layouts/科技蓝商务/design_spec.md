@@ -5,6 +5,7 @@ summary: Corporate reports, product launches, proposals, process standards, trai
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # Tech Blue Business (科技蓝商务) - Universal Business Style Design Specification

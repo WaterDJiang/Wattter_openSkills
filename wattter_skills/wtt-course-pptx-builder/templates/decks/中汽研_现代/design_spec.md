@@ -5,6 +5,7 @@ summary: Forward-looking technology showcases, strategic releases, high-end busi
 canvas_format: ppt169
 page_count: 5
 primary_color: "#001529"
+background_mode: legacy-pure-svg
 ---
 
 # CATARC (中汽研) Modern Template - Design Specification (v3.0 Future Tech)

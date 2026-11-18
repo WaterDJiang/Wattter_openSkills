@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>gradient-panel / theme</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+  }
+  /* 顶部 primary 细色带 */
+  .top-bar { position: absolute; left: 0; top: 0; right: 0; height: 6px; background: var(--primary); }
+  /* 底部 accent 细色带 */
+  .bottom-bar { position: absolute; left: 0; bottom: 0; right: 0; height: 6px; background: var(--accent); }
+  /* 左侧极淡 primary 面板（不抢内容） */
+  .panel-left {
+    position: absolute; left: 0; top: 6px; width: 12px; bottom: 6px;
+    background: var(--primary); opacity: 0.18;
+  }
+  /* 右上角描边方块装饰 */
+  .corner-mark {
+    position: absolute; right: 40px; top: 40px; width: 56px; height: 56px;
+    border: 3px solid var(--border); border-radius: 12px; opacity: 0.55;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="top-bar"></div>
+  <div class="bottom-bar"></div>
+  <div class="panel-left"></div>
+  <div class="corner-mark"></div>
+</div>
+</body>
+</html>

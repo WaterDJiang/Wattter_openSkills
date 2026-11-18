@@ -2,6 +2,8 @@
 
 Teaching-led exposition. Decompose a concept into ordered, digestible parts and build understanding step by step. For training, tutorials, explainers, onboarding, science / knowledge sharing.
 
+有教学分镜时继承原定教学顺序、深度、示范和活动，不重新套本模式叙事。操作页显示可用输入、操作/结果和检查点；题面与答案按分镜分时展示。允许同一演示连续使用稳定版式，页面变化由教学动作决定。细节见 [教学分镜扩展](../teaching-contract.md)。
+
 ---
 
 ## 1. Narrative skeleton

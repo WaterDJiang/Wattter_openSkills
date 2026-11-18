@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>geometric-mesh / chapter</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+  }
+  /* 顶部 primary 色块，左下斜切（矮，避开 chapter_num 区） */
+  .top-block {
+    position: absolute; left: 0; top: 0; right: 0; height: 110px;
+    background: var(--primary);
+    clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
+  }
+  .top-grid {
+    position: absolute; left: 0; top: 0; right: 0; height: 110px;
+    background-image: radial-gradient(circle, var(--accent) 2px, transparent 3px);
+    background-size: 30px 30px; opacity: 0.5;
+    clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
+  }
+  /* chapter_num 左侧大色条衬托 */
+  .num-accent {
+    position: absolute; left: 0; top: 195px; width: 12px; height: 190px;
+    background: var(--accent);
+  }
+  /* 右下 chevron 装饰（chapter_name 下方安全区） */
+  .chevron {
+    position: absolute; right: 80px; top: 520px; width: 150px; height: 26px;
+    background: var(--primary);
+    clip-path: polygon(0 0, 70% 0, 100% 50%, 70% 100%, 0 100%, 30% 50%);
+    opacity: 0.85;
+  }
+  .logo { position: absolute; left: 48px; top: 36px; height: 38px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="top-block"></div>
+  <div class="top-grid"></div>
+  <div class="num-accent"></div>
+  <div class="chevron"></div>
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: chapter_num 80,200 460,380 -->
+  <!-- text-slot: chapter_name 80,420 1200,490 -->
+</div>
+</body>
+</html>

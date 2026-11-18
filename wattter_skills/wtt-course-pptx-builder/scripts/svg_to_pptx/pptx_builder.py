@@ -555,6 +555,14 @@ def create_pptx_with_native_svg(
         for _ in svg_files:
             prs.slides.add_slide(blank_layout)
 
+        notes_master_target = None
+        if enable_notes and any(
+            markdown_to_plain_text((notes or {}).get(path.stem, ''))
+            for path in svg_files
+        ):
+            notes_master = prs.part.notes_master_part
+            notes_master_target = posixpath.relpath(str(notes_master.partname), '/ppt/notesSlides')
+
         base_pptx = temp_dir / 'base.pptx'
         prs.save(str(base_pptx))
 
@@ -804,7 +812,7 @@ def create_pptx_with_native_svg(
                         notes_rels_dir = notes_slides_dir / '_rels'
                         notes_rels_dir.mkdir(exist_ok=True)
                         notes_rels_path = notes_rels_dir / f'notesSlide{slide_num}.xml.rels'
-                        notes_rels_xml = create_notes_slide_rels_xml(slide_num)
+                        notes_rels_xml = create_notes_slide_rels_xml(slide_num, notes_master_target)
                         with open(notes_rels_path, 'w', encoding='utf-8') as f:
                             f.write(notes_rels_xml)
 

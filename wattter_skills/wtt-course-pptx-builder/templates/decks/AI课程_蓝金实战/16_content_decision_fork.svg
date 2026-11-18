@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  <g id="title" font-family="Hiragino Sans GB">
+    <rect x="64" y="49" width="30" height="4" fill="#C7A661"/>
+    <text x="106" y="59" font-size="22" font-weight="700" fill="#003396" data-text-width="460">{{SECTION_LABEL}}</text>
+    <text x="62" y="145" font-size="55" font-weight="800" fill="#262626" data-text-width="1150">{{PAGE_TITLE}}</text>
+    <text x="65" y="200" font-size="32" fill="#44546A" data-text-width="1140">{{PAGE_SUBTITLE}}</text>
+  </g>
+  <g id="starting-question" font-family="Hiragino Sans GB">
+    <rect x="64" y="317" width="365" height="174" rx="8" fill="#003396"/>
+    <rect x="92" y="347" width="34" height="4" fill="#C7A661"/>
+    <text x="93" y="389" font-size="23" font-weight="700" fill="#ECF6FE" data-text-width="310">{{DECISION_LABEL}}</text>
+    <text x="92" y="451" font-size="43" font-weight="800" fill="#FFFFFF" data-text-width="310">{{DECISION}}</text>
+  </g>
+  <g id="question-routing" fill="none" stroke-width="3">
+    <path d="M 429 405 H 495 V 319 H 566 M 554 308 L 567 319 L 554 330" stroke="#003396"/>
+    <path d="M 495 405 V 490 H 566 M 554 479 L 567 490 L 554 501" stroke="#C7A661"/>
+    <circle cx="495" cy="405" r="6" fill="#003396" stroke="#FFFFFF" stroke-width="2"/>
+  </g>
+  <g id="question-routes" font-family="Hiragino Sans GB">
+    <rect x="592" y="251" width="624" height="141" rx="7" fill="#F1F8FE"/>
+    <text x="620" y="295" font-size="24" font-weight="700" fill="#003396" data-text-width="520">{{CONDITION_01}}</text>
+    <text x="620" y="354" font-size="37" font-weight="800" fill="#262626" data-text-width="563">{{ROUTE_01}}</text>
+    <rect x="592" y="422" width="624" height="141" rx="7" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="2"/>
+    <text x="620" y="466" font-size="24" font-weight="700" fill="#003396" data-text-width="520">{{CONDITION_02}}</text>
+    <text x="620" y="525" font-size="37" font-weight="800" fill="#262626" data-text-width="563">{{ROUTE_02}}</text>
+  </g>
+  <line x1="64" y1="647" x2="1216" y2="647" stroke="#E7E6E6"/>
+</svg>

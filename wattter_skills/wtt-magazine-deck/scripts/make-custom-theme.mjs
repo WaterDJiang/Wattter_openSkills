@@ -19,7 +19,7 @@ if (!styleId || !colorArg || !outFile || !['swiss', 'editorial', 'linear'].inclu
 const hex = normalizeHex(colorArg);
 const rgb = hexToRgb(hex);
 const hsl = rgbToHsl(rgb);
-const accentOn = contrastRatio(rgb, [255, 255, 255]) >= 4.5 ? '#ffffff' : '#0a0a0a';
+const accentOn = contrastRatio(rgb, [255, 255, 255]) >= contrastRatio(rgb, [0, 0, 0]) ? '#ffffff' : '#000000';
 const accent2 = toHex(hslToRgb({ h: hsl.h, s: clamp(hsl.s * 0.86, 0.28, 0.92), l: accentOn === '#ffffff' ? clamp(hsl.l + 0.22, 0.38, 0.78) : clamp(hsl.l - 0.16, 0.22, 0.54) }));
 const bright = toHex(hslToRgb({ h: hsl.h, s: clamp(hsl.s * 0.9, 0.32, 0.96), l: clamp(hsl.l + 0.28, 0.48, 0.82) }));
 

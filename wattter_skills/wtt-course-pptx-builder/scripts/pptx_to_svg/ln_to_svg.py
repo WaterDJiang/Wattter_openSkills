@@ -14,6 +14,7 @@ from xml.etree import ElementTree as ET
 
 from .color_resolver import ColorPalette, find_color_elem, resolve_color
 from .emu_units import NS, emu_to_px, fmt_num
+from .fill_to_svg import resolve_fill
 
 
 @dataclass
@@ -54,6 +55,7 @@ def resolve_stroke(
     id_prefix: str = "m",
     id_seq: list[int] | None = None,
     style_stroke_default: str | None = None,
+    bounds: tuple[float, float, float, float] | None = None,
 ) -> StrokeResult:
     """Resolve <a:ln> child of <p:spPr>.
 
@@ -102,17 +104,16 @@ def resolve_stroke(
         else:
             grad = ln.find("a:gradFill", NS)
             if grad is not None:
-                # Approximate gradient stroke as the first stop color (SVG
-                # supports gradient strokes via fill="url()" but it adds a lot
-                # of plumbing; first-stop is good enough for v1).
-                first_gs = grad.find("a:gsLst/a:gs", NS)
-                if first_gs is not None:
-                    color_elem = find_color_elem(first_gs)
-                    hex_, alpha = resolve_color(color_elem, palette)
-                    if hex_:
-                        attrs["stroke"] = hex_
-                        if alpha < 1.0:
-                            attrs["stroke-opacity"] = fmt_num(alpha, 4)
+                grad_fill = resolve_fill(
+                    grad,
+                    palette,
+                    id_prefix=id_prefix,
+                    id_seq=id_seq,
+                    bounds=bounds,
+                )
+                if grad_fill.attrs.get("fill"):
+                    attrs["stroke"] = grad_fill.attrs["fill"]
+                    defs.extend(grad_fill.defs)
 
     # Dash pattern
     prst_dash = ln.find("a:prstDash", NS)

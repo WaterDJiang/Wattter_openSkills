@@ -5,6 +5,7 @@ summary: Strategic consulting, executive briefings, investment analysis, busines
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # McKinsey Style Template - Design Specification

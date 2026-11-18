@@ -28,13 +28,7 @@
     bc.onmessage = function(e) {
       var d = e.data;
       if (d.type === 'go') go(d.idx, true);
-      if (d.type === 'theme' && window.__cycleTheme) {
-        var link = document.getElementById('theme-link');
-        if (link) {
-          var basePath = link.getAttribute('href').replace(/[^/]+\.css$/, '');
-          link.href = basePath + d.name + '.css';
-        }
-      }
+      if (d.type === 'theme') applyThemeByName(d.name, true);
     };
   } catch(e){}
 
@@ -43,13 +37,7 @@
     window.addEventListener('message', function(e){
       if (e.data === 'preview-goto') go(parseInt(e.data.idx, 10), true);
       if (e.data && e.data.type === 'preview-goto') go(e.data.idx, true);
-      if (e.data && e.data.type === 'preview-theme' && window.__cycleTheme) {
-        var link = document.getElementById('theme-link');
-        if (link) {
-          var basePath = link.getAttribute('href').replace(/[^/]+\.css$/, '');
-          link.href = basePath + e.data.name + '.css';
-        }
-      }
+      if (e.data && e.data.type === 'preview-theme') applyThemeByName(e.data.name, true);
     });
     window.parent.postMessage('preview-ready', '*');
   }
@@ -101,6 +89,7 @@
       theme.type = 'button';
       theme.setAttribute('aria-label', '切换主题');
       theme.setAttribute('title', '切换主题 (T)');
+      theme.setAttribute('aria-keyshortcuts', 'T');
       theme.textContent = 'T';
       tools.appendChild(theme);
     }
@@ -126,39 +115,118 @@
 
   var THEMES = readThemeList();
   var themeIdx = 0;
+  var themeWarningShown = false;
+
+  function themeFileName(href) {
+    var cleanHref = (href || '').split(/[?#]/)[0];
+    return cleanHref.slice(cleanHref.lastIndexOf('/') + 1);
+  }
+
+  function isCustomThemeHref(href) {
+    var file = themeFileName(href).replace(/\.css$/, '');
+    return !!file && THEMES.indexOf(file) === -1;
+  }
+
+  function themeBasePath(href) {
+    return (href || '').replace(/[^/]+\.css(?:[?#].*)?$/, '');
+  }
+
+  function updateThemeControl() {
+    if (!btnTheme) return;
+    var link = document.getElementById('theme-link');
+    var customTheme = link && isCustomThemeHref(link.getAttribute('href'));
+    var disabled = THEMES.length < 2 || customTheme;
+    btnTheme.disabled = disabled;
+    btnTheme.setAttribute('aria-keyshortcuts', 'T');
+    if (customTheme) {
+      btnTheme.setAttribute('aria-label', '自定义品牌主题已固定');
+      btnTheme.setAttribute('title', '自定义品牌主题已固定');
+    } else if (THEMES.length < 2) {
+      btnTheme.setAttribute('aria-label', '没有可切换的主题');
+      btnTheme.setAttribute('title', '没有可切换的主题');
+    } else {
+      btnTheme.setAttribute('aria-label', '切换主题');
+      btnTheme.setAttribute('title', '切换主题 (T)');
+      btnTheme.removeAttribute('aria-disabled');
+      return;
+    }
+    btnTheme.setAttribute('aria-disabled', 'true');
+  }
 
   function detectCurrentTheme() {
     var link = document.getElementById('theme-link');
     if (!link) return 0;
+    var file = themeFileName(link.getAttribute('href')).replace(/\.css$/, '');
+    var detected = THEMES.indexOf(file);
+    return detected >= 0 ? detected : 0;
+  }
+
+  function warnThemeLocked() {
+    if (themeWarningShown) return;
+    themeWarningShown = true;
+    console.warn('[wtt-magazine-deck] Theme switching is disabled for a custom or non-listed theme file. Copy preset theme files and point #theme-link at a preset file to enable T.');
+  }
+
+  function applyThemeByName(name, fromRemote) {
+    var link = document.getElementById('theme-link');
+    var nextIdx = THEMES.indexOf(name);
+    if (!link || nextIdx < 0) return false;
     var href = link.getAttribute('href') || '';
-    for (var i = 0; i < THEMES.length; i++) {
-      if (href.indexOf(THEMES[i]) !== -1) return i;
+    if (isCustomThemeHref(href)) {
+      updateThemeControl();
+      warnThemeLocked();
+      return false;
     }
-    return 0;
+
+    var previousHref = href;
+    var previousIdx = detectCurrentTheme();
+    var nextHref = themeBasePath(href) + name + '.css';
+    themeIdx = nextIdx;
+    if (nextHref === href) {
+      updateThemeControl();
+      return true;
+    }
+
+    link.onload = function(){
+      if (window.__refreshThemeColors) window.__refreshThemeColors();
+      updateThemeControl();
+    };
+    link.onerror = function(){
+      link.onload = null;
+      link.onerror = null;
+      link.href = previousHref;
+      themeIdx = previousIdx;
+      updateThemeControl();
+      console.error('[wtt-magazine-deck] Theme file failed to load: ' + nextHref);
+    };
+    link.href = nextHref;
+    setTimeout(function(){ if (window.__refreshThemeColors) window.__refreshThemeColors(); }, 120);
+    updateThemeControl();
+    if (!fromRemote && window.__bc) window.__bc.postMessage({ type: 'theme', name: name });
+    return true;
   }
 
   window.__cycleTheme = function() {
     var link = document.getElementById('theme-link');
-    if (!link || !THEMES.length) return;
-    themeIdx = (themeIdx + 1) % THEMES.length;
-    var href = link.getAttribute('href') || '';
-    if (/theme\.css(?:\?|#|$)/.test(href) && !THEMES.some(function(t){ return href.indexOf(t + '.css') !== -1; })) {
-      console.warn('[wtt-magazine-deck] T theme switch skipped: current css/theme.css is a custom one-off theme. Copy preset theme files and set href to a preset name to enable cycling.');
-      return;
+    if (!link || THEMES.length < 2) {
+      updateThemeControl();
+      return false;
     }
-    var basePath = href.replace(/[^/]+\.css(?:\?.*)?$/, '');
-    link.onload = function(){ if (window.__refreshThemeColors) window.__refreshThemeColors(); };
-    link.href = basePath + THEMES[themeIdx] + '.css';
-    setTimeout(function(){ if (window.__refreshThemeColors) window.__refreshThemeColors(); }, 120);
-    if (window.__bc) window.__bc.postMessage({ type: 'theme', name: THEMES[themeIdx] });
+    if (isCustomThemeHref(link.getAttribute('href'))) {
+      updateThemeControl();
+      warnThemeLocked();
+      return false;
+    }
+    themeIdx = detectCurrentTheme();
+    return applyThemeByName(THEMES[(themeIdx + 1) % THEMES.length], false);
   };
   themeIdx = detectCurrentTheme();
   if (btnTheme) {
     btnTheme.onclick = function(){
       if (window.__cycleTheme) window.__cycleTheme();
     };
-    if (!THEMES.length) btnTheme.disabled = true;
   }
+  updateThemeControl();
 
   /* 核心导航 */
   function go(n, fromRemote) {
@@ -244,7 +312,12 @@
   }
 
   /* 键盘 */
+  function isEditableTarget(target) {
+    return !!(target && target.closest && target.closest('input, textarea, select, [contenteditable="true"]'));
+  }
+
   addEventListener('keydown', function(e){
+    if (isEditableTarget(e.target)) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ' || e.key === 'ArrowDown') { e.preventDefault(); go(idx + 1); }
     if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'ArrowUp') { e.preventDefault(); go(idx - 1); }
     if (e.key === 'Enter') { e.preventDefault(); go(idx + 1); }
@@ -260,7 +333,8 @@
       var ov = document.getElementById('overview');
       if (ov) ov.classList.toggle('open');
     }
-    if (e.key === 't' || e.key === 'T') {
+    if ((e.code === 'KeyT' || e.key === 't' || e.key === 'T') && !e.repeat) {
+      e.preventDefault();
       if (window.__cycleTheme) window.__cycleTheme();
     }
     if (e.key === 'a' || e.key === 'A') {

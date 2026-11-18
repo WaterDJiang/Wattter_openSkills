@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>editorial-rule / cover</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: var(--bg);
+  }
+  /* 顶部 primary 色带 */
+  .top-band { position: absolute; left: 0; top: 0; right: 0; height: 14px; background: var(--primary); }
+  /* title 上方 accent 发丝强调线 */
+  .accent-rule {
+    position: absolute; left: 80px; top: 248px; width: 96px; height: 4px;
+    background: var(--accent);
+  }
+  /* 页脚上方 border 发丝线（分隔主标题区与 author/date） */
+  .footer-rule {
+    position: absolute; left: 80px; right: 80px; bottom: 105px; height: 1px;
+    background: var(--border);
+  }
+  .logo { position: absolute; right: 80px; top: 56px; height: 40px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="top-band"></div>
+  <div class="accent-rule"></div>
+  <div class="footer-rule"></div>
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: title 80,280 1200,380 -->
+  <!-- text-slot: subtitle 80,400 1200,455 -->
+  <!-- text-slot: author 80,625 640,665 -->
+  <!-- text-slot: date 660,625 1200,665 -->
+</div>
+</body>
+</html>

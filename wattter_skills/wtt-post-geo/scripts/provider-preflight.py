@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "adapters" / "manifest.json"
 PLATFORMS = (
     "weixin", "weibo", "zhihu", "csdn", "juejin", "baijiahao",
-    "cnblogs", "xiaohongshu", "twitter",
+    "cnblogs", "xiaohongshu", "twitter", "toutiao", "jianshu", "infoq",
 )
 
 BUILTIN_COMMANDS = {

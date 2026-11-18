@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <path d="M 0 682 C 320 648 650 662 980 720 L 0 720 Z" fill="#ECF6FE"/>
+  <rect x="58" y="40" width="6" height="30" fill="#C7A661"/>
+  <text x="80" y="65" fill="#003396" font-family="STKaiti, KaiTi" font-size="24" font-weight="700">{{SECTION_LABEL}}</text>
+  <text x="70" y="142" fill="#262626" font-family="STKaiti, KaiTi" font-size="52" font-weight="800">{{PAGE_TITLE}}</text>
+  <text x="70" y="180" fill="#666666" font-family="STKaiti, KaiTi" font-size="22">{{PAGE_SUBTITLE}}</text>
+  <line x1="70" y1="204" x2="1210" y2="204" stroke="#E7E6E6" stroke-width="1"/>
+
+  <g id="transfer-heading">
+    <text x="116" y="255" fill="#003396" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">时间</text>
+    <text x="356" y="255" fill="#003396" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">工作场景里的行动</text>
+    <text x="868" y="255" fill="#003396" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">留下的证据</text>
+    <line x1="70" y1="274" x2="1210" y2="274" stroke="#C7A661" stroke-width="3"/>
+  </g>
+
+  <line x1="170" y1="306" x2="170" y2="570" stroke="#C7A661" stroke-width="3"/>
+  <g id="transfer-stage-1">
+    <rect x="70" y="300" width="1140" height="92" rx="6" fill="#F1F8FE"/>
+    <circle cx="170" cy="346" r="24" fill="#2E75FF"/>
+    <text x="170" y="354" text-anchor="middle" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="20" font-weight="800">01</text>
+    <text x="218" y="354" fill="#2E75FF" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">{{TIME_1}}</text>
+    <text x="356" y="354" fill="#262626" font-family="STKaiti, KaiTi" font-size="22">{{ACTION_1}}</text>
+    <text x="868" y="354" fill="#44546A" font-family="STKaiti, KaiTi" font-size="21">{{PROOF_1}}</text>
+  </g>
+
+  <g id="transfer-stage-2">
+    <rect x="70" y="405" width="1140" height="92" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <circle cx="170" cy="451" r="24" fill="#1F90E0"/>
+    <text x="170" y="459" text-anchor="middle" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="20" font-weight="800">02</text>
+    <text x="218" y="459" fill="#1F90E0" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">{{TIME_2}}</text>
+    <text x="356" y="459" fill="#262626" font-family="STKaiti, KaiTi" font-size="22">{{ACTION_2}}</text>
+    <text x="868" y="459" fill="#44546A" font-family="STKaiti, KaiTi" font-size="21">{{PROOF_2}}</text>
+  </g>
+
+  <g id="transfer-stage-3">
+    <rect x="70" y="510" width="1140" height="92" rx="6" fill="#003396"/>
+    <circle cx="170" cy="556" r="24" fill="#C7A661"/>
+    <text x="170" y="564" text-anchor="middle" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="20" font-weight="800">03</text>
+    <text x="218" y="564" fill="#C7A661" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">{{TIME_3}}</text>
+    <text x="356" y="564" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="22">{{ACTION_3}}</text>
+    <text x="868" y="564" fill="#ECF6FE" font-family="STKaiti, KaiTi" font-size="21">{{PROOF_3}}</text>
+  </g>
+  <rect x="70" y="628" width="1140" height="52" rx="6" fill="#F1F8FE"/>
+  <text x="104" y="662" fill="#003396" font-family="STKaiti, KaiTi" font-size="21" font-weight="700">复盘判断</text>
+  <text x="246" y="662" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{TRANSFER_DECISION}}</text>
+</svg>

@@ -30,6 +30,10 @@ official_api
   -> manual_confirm
 ```
 
+公众号固定在 `official_api` 与 `opencli_ui` 之间多一层 `opencli_login_adapter (weixin/article-draft)`：官方 API（appid/appsecret/IP 白名单）缺配置、但浏览器已登录 `mp.weixin.qq.com` 时，走 Cookie adapter 创建图文草稿，再回退 OpenCLI 内置 `weixin/create-draft` 与浏览器富文本路径。
+
+今日头条号、简书、InfoQ 三个平台**没有可用的全文 HTTP 写入 API**（简书/InfoQ 只有创建容器的 HTTP 端点，正文仍需编辑器；头条号纯编辑器 DOM）。按本路由原则，它们正确地以 `opencli_ui` 为首选——没有 API 就该落到 CLI/编辑器层，不要为它们凭空构造 provider。
+
 微博必须先按 payload 变体裁剪候选 provider：`short_post` 默认只使用 `weibo/publish -> opencli_ui -> manual_confirm`；只有显式 `longform` 才使用 `weibo/article-draft -> opencli_ui_longform -> manual_confirm`。预检通过 `--weibo-variant short_post|longform` 接收这个决策，禁止仅因长文 adapter 已安装就优先选择它。
 
 平台 reference 可以删掉不适用的 provider，但每个自动 provider 必须写明：

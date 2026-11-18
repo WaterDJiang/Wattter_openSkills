@@ -1,0 +1,16 @@
+{
+  "variants": [
+    {"file": "cover_background.png", "role": "cover", "subject": "手绘电脑与任务资料", "text_area": "left_light", "keywords": [], "fallback": true},
+    {"file": "chapter_background.png", "role": "chapter", "subject": "手绘翻开的笔记本", "text_area": "right_dark", "keywords": [], "fallback": true},
+    {"file": "ending_background.png", "role": "ending", "subject": "手绘完成清单与笔记本", "text_area": "left_light", "keywords": [], "fallback": true},
+    {"file": "finance_cover_background.png", "role": "cover", "subject": "月结账表与账册", "text_area": "left_light", "keywords": ["财税", "代理记账", "代账", "月结", "账务"]},
+    {"file": "chapter_inbox_background.png", "role": "chapter", "subject": "手机与资料收件盘", "text_area": "right_dark", "keywords": ["客户到件", "人在外面", "收到了什么", "资料已到", "远程收件", "资料接收", "收件"]},
+    {"file": "chapter_prompt_background.png", "role": "chapter", "subject": "对话卡片", "text_area": "right_dark", "keywords": ["只发一句", "补错什么", "交代清楚", "提示词", "prompt", "任务指令"]},
+    {"file": "chapter_verification_background.png", "role": "chapter", "subject": "数据表与放大镜", "text_area": "right_dark", "keywords": ["流水要追问", "转账", "到账", "业务资料索引", "核对", "校验", "核查"]},
+    {"file": "break_hourglass_background.png", "role": "break", "subject": "沙漏与笔记本", "text_area": "left_light", "keywords": [], "fallback": true},
+    {"file": "chapter_report_background.png", "role": "chapter", "subject": "手绘汇报图表板", "text_area": "right_dark", "keywords": ["同一份底稿", "待核底稿", "主管简报", "汇报", "交付", "报告", "简报"]},
+    {"file": "chapter_documents_background.png", "role": "chapter", "subject": "文件夹与补传资料", "text_area": "right_dark", "keywords": ["下午补传", "客户补传了", "哪几笔变了", "补回一笔资料", "版本更新", "资料补传", "文件整理"]},
+    {"file": "chapter_schedule_background.png", "role": "chapter", "subject": "时钟与收件盘", "text_area": "right_dark", "keywords": ["定时", "什么时候检查", "检查补件", "每天检查", "到了时间", "调度", "自动化"]},
+    {"file": "ending_checklist_background.png", "role": "ending", "subject": "行动核对清单", "text_area": "left_light", "keywords": ["回岗", "行动清单", "核对清单", "课后行动", "迁移计划"]}
+  ]
+}

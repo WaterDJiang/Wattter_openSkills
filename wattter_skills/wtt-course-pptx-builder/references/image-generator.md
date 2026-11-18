@@ -413,7 +413,7 @@ C (AI-generated) supports three implementation modes sharing one `image_prompts.
 
 | Trigger | Mode | Mechanism |
 |---|---|---|
-| **Default** — `IMAGE_BACKEND` configured | **Path A**: `image_gen.py --manifest` | One command runs the whole manifest with concurrency; status writes back per item |
+| **Default** — `IMAGE_BACKEND` configured | **Path A**: `image_gen.py --manifest` | One command runs the whole manifest with concurrency; status writes back per item. `IMAGE_BACKEND` accepts a comma-separated **fallback chain** — each item is tried against every entry in order, first success wins; the chain may end with a web-source provider (pexels/pixabay/openverse/wikimedia) that shells out to `image_search.py` as a last resort |
 | `IMAGE_BACKEND` not configured (or Path A fails) AND host has a native image tool | **Path B**: Host-native tool | Agent invokes the host's image capability; outputs land at `project/images/<filename>` |
 | **Both Path A and Path B fail/unavailable** | **Offline Manual Mode** | Manifest stays on disk; user generates externally from `items[].prompt` and places files at `project/images/<filename>` |
 
@@ -428,6 +428,16 @@ C (AI-generated) supports three implementation modes sharing one `image_prompts.
 **Hard rule**: Step 4 is execution, not re-decision. Never present an interactive choice between paths here — image strategy was locked in Strategist Step 4 h item.
 
 > All three modes share one output contract: file at `project/images/<filename>`. Step 6 SVG references are mode-agnostic.
+
+#### Within-Path-A fallback chain / Path A 内部回退链
+
+`IMAGE_BACKEND` (or its alias `IMAGE_BACKEND_CHAIN`) accepts a single name or a comma-separated ordered list, e.g. `jimeng,minimax,zhipu,pexels`. Per item:
+
+1. Each **generation** entry (gemini/openai/zhipu/minimax/jimeng/...) is tried in order. Each backend already retries internally; the chain is the cross-backend fallback layer.
+2. If all generation entries fail, a trailing **web-source** entry (pexels/pixabay/openverse/wikimedia) shells out to `image_search.py --provider <name>` to source a web image as a last resort. Attribution is written to `image_sources.json` (single source of truth for credits); the manifest item records `backend_used` and terminal status `Generated`.
+3. Only when the whole chain fails is the item marked `Failed` (or requeued if every entry hit a rate limit).
+
+A single value (e.g. `IMAGE_BACKEND=zhipu`) is a length-1 chain and behaves exactly like the legacy single-backend mode. The `jimeng` backend shells out to the sibling `wtt-jimeng-api` skill's CLI (auto-starts its Docker backend if down, fail-fast so the chain moves on quickly); it needs `JIMENG_SESSION_ID` or `session_id` in `wtt-jimeng-api/config.json`.
 
 ### Path A — `image_gen.py --manifest` (Default)
 

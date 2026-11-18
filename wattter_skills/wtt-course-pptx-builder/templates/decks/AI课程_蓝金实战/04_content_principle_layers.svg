@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <path d="M 0 674 C 300 650 620 660 930 720 L 0 720 Z" fill="#ECF6FE"/>
+  <rect x="58" y="40" width="6" height="30" fill="#C7A661"/>
+  <text x="80" y="65" fill="#003396" font-family="STKaiti, KaiTi" font-size="24" font-weight="700">{{SECTION_LABEL}}</text>
+  <text x="70" y="142" fill="#262626" font-family="STKaiti, KaiTi" font-size="52" font-weight="800">{{PAGE_TITLE}}</text>
+  <text x="70" y="180" fill="#666666" font-family="STKaiti, KaiTi" font-size="22">{{PAGE_SUBTITLE}}</text>
+  <line x1="70" y1="204" x2="1210" y2="204" stroke="#E7E6E6" stroke-width="1"/>
+
+  <g id="principle-layer-1">
+    <rect x="70" y="238" width="824" height="116" rx="6" fill="#F1F8FE"/>
+    <rect x="70" y="238" width="9" height="116" fill="#2E75FF"/>
+    <text x="108" y="286" fill="#2E75FF" font-family="STKaiti, KaiTi" font-size="22" font-weight="800">01</text>
+    <text x="174" y="287" fill="#262626" font-family="STKaiti, KaiTi" font-size="28" font-weight="700">{{LAYER_01_TITLE}}</text>
+    <text x="174" y="325" fill="#666666" font-family="STKaiti, KaiTi" font-size="21">{{LAYER_01_DESC}}</text>
+  </g>
+  <g id="principle-layer-2">
+    <rect x="70" y="370" width="824" height="116" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <rect x="70" y="370" width="9" height="116" fill="#1F90E0"/>
+    <text x="108" y="418" fill="#1F90E0" font-family="STKaiti, KaiTi" font-size="22" font-weight="800">02</text>
+    <text x="174" y="419" fill="#262626" font-family="STKaiti, KaiTi" font-size="28" font-weight="700">{{LAYER_02_TITLE}}</text>
+    <text x="174" y="457" fill="#666666" font-family="STKaiti, KaiTi" font-size="21">{{LAYER_02_DESC}}</text>
+  </g>
+  <g id="principle-layer-3">
+    <rect x="70" y="502" width="824" height="116" rx="6" fill="#F1F8FE"/>
+    <rect x="70" y="502" width="9" height="116" fill="#003396"/>
+    <text x="108" y="550" fill="#003396" font-family="STKaiti, KaiTi" font-size="22" font-weight="800">03</text>
+    <text x="174" y="551" fill="#262626" font-family="STKaiti, KaiTi" font-size="28" font-weight="700">{{LAYER_03_TITLE}}</text>
+    <text x="174" y="589" fill="#666666" font-family="STKaiti, KaiTi" font-size="21">{{LAYER_03_DESC}}</text>
+  </g>
+
+  <path d="M 910 296 L 938 296 L 938 558 L 910 558" fill="none" stroke="#C7A661" stroke-width="3"/>
+  <path d="M 938 427 L 966 427" fill="none" stroke="#C7A661" stroke-width="3"/>
+  <g id="principle-takeaway">
+    <rect x="970" y="298" width="240" height="258" rx="6" fill="#003396"/>
+    <text x="995" y="346" fill="#C7A661" font-family="STKaiti, KaiTi" font-size="21" font-weight="700">核心判断</text>
+    <line x1="995" y1="364" x2="1178" y2="364" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="995" y="422" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="24" font-weight="700">{{KEY_INSIGHT}}</text>
+    <text x="995" y="496" fill="#ECF6FE" font-family="STKaiti, KaiTi" font-size="18">{{KEY_BOUNDARY}}</text>
+  </g>
+</svg>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>cream-confident / cover</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #EFE9D9;
+    --cream-2: #E4DCC4;
+    --green: #1F8A4C;
+    --pink: #F06CA8;
+    --orange: #E85A1F;
+    --yellow: #F5C518;
+    --ink: #0F0F0F;
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --text: {{text}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--cream); font-family: "Space Grotesk", system-ui, sans-serif; color: var(--ink); }
+  .canvas { position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; background: var(--cream); }
+  /* 顶部条：黑字 + 边框药丸 */
+  .topbar {
+    position: absolute; left: 50px; right: 50px; top: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  }
+  .pill { border: 2px solid var(--ink); padding: 4px 12px; border-radius: 999px; }
+  /* 右侧绿色海报 panel + 黑边 + 偏移阴影（neobrutalism 签名） */
+  .poster {
+    position: absolute; right: 50px; top: 90px; bottom: 90px; width: 410px;
+    background: var(--green); border: 4px solid var(--ink);
+    box-shadow: 14px 14px 0 var(--ink);
+  }
+  /* 粉色开关 + 黄色圆 + 橙色偏移阴影 */
+  .switch {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 220px; height: 220px;
+    background: var(--pink); border: 4px solid var(--ink);
+    box-shadow: 16px 16px 0 var(--orange);
+  }
+  .switch .lever {
+    position: absolute; top: 36px; left: 36px; width: 140px; height: 100px;
+    background: #FBD0E3; border: 4px solid var(--ink); transform: skewY(-8deg);
+  }
+  .switch .lever::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -22px; height: 22px;
+    background: var(--pink); border: 4px solid var(--ink); border-top: 0;
+  }
+  .switch .circ {
+    position: absolute; bottom: -28px; right: -28px; width: 80px; height: 80px;
+    background: var(--yellow); border: 4px solid var(--ink); border-radius: 50%;
+  }
+  /* 底部 slide-meta：黑字 + 圆点分隔 */
+  .slide-meta {
+    position: absolute; left: 50px; right: 50px; bottom: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .slide-meta .dot { width: 6px; height: 6px; background: var(--ink); border-radius: 50%; display: inline-block; margin: 0 8px; transform: translateY(-1px); }
+  .logo { position: absolute; left: 50px; top: 56px; height: 22px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="topbar">
+    <span>CREAM · CONFIDENT EDITION</span>
+    <span class="pill">COVER</span>
+  </div>
+
+  <div class="poster">
+    <div class="switch">
+      <div class="lever"></div>
+      <div class="circ"></div>
+    </div>
+  </div>
+
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: title 50,200 770,500 -->
+  <!-- text-slot: subtitle 50,520 770,580 -->
+  <!-- text-slot: author 50,640 380,680 -->
+  <!-- text-slot: date 410,640 770,680 -->
+
+  <div class="slide-meta">
+    <span>COVER · TITLE</span>
+    <span>01 <span class="dot"></span> 10</span>
+  </div>
+</div>
+</body>
+</html>

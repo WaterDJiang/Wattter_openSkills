@@ -6,17 +6,17 @@
   },
   "metadata": {
     "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, course PPTX building, wiki building, project harness generation, resume screening, multi-platform OpenCLI publishing, SEO/GEO content writing, multi-style comic/infographic prompt generation, and a four-skill video creation pipeline (screenwriting, directing, production prompt cards, and FFmpeg editing).",
-    "version": "2.7.0",
+    "version": "2.8.0",
     "license": "CC BY-NC-SA 4.0"
   },
   "plugins": [
     {
-      "name": "wtt-auto-poster-skills",
-      "description": "Automated content publishing to Zhihu and WeChat Official Account with Mac-style code blocks and smart image handling.",
+      "name": "wtt-post-multi-platform-skills",
+      "description": "Multi-platform publishing assistant that wraps WeChat Official Account API publishing and Zhihu browser automation behind one entry, with independent implementation, config, and assets per platform.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [
-        "wtt-auto-poster"
+        "wtt-post-multi-platform"
       ],
       "version": "0.1.0",
       "author": {
@@ -165,12 +165,12 @@
       }
     },
     {
-      "name": "wtt-nine-comic-imagegen-skills",
-      "description": "Multi-style comic and infographic image-prompt generation across five styles (nine-comic parody explainer, cartoon infographic, four-panel cute comic, Klein-blue line figure, vibe lifestyle portrait) with Chinese-first prompts for ChatGPT, Jimeng, and Midjourney.",
+      "name": "wtt-nine-image-skills",
+      "description": "Multi-style image-prompt and cover generator (Chinese-first) across nine-comic parody explainer, handdrawn infographic, four-panel comic, Klein-blue line figure, and vibe lifestyle portrait styles, plus a cover category that renders candidate covers when image generation is available.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [
-        "wtt-nine-comic-imagegen"
+        "wtt-nine-image"
       ],
       "version": "0.1.0",
       "author": {

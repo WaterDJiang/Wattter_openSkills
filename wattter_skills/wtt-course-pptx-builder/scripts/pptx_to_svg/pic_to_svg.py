@@ -235,6 +235,18 @@ def _parse_src_rect(elem: ET.Element | None) -> tuple[float, float, float, float
     return vb_x, vb_y, vb_w, vb_h
 
 
+def _blip_opacity(blip: ET.Element) -> float | None:
+    """Resolve DrawingML's fixed alpha modulation for an image."""
+    alpha_mod = blip.find("a:alphaModFix", NS)
+    if alpha_mod is None:
+        return None
+    try:
+        amount = float(alpha_mod.attrib.get("amt", "100000")) / 100000.0
+    except (TypeError, ValueError):
+        return None
+    return min(max(amount, 0.0), 1.0)
+
+
 def _apply_blip_image_effects(
     filename: str,
     img_bytes: bytes,
@@ -246,12 +258,11 @@ def _apply_blip_image_effects(
     downstream native PPTX converter cannot reliably map back to DrawingML.
     """
     lum = blip.find("a:lum", NS)
-    if lum is None:
-        return filename, img_bytes
-
-    bright = _signed_pct_attr(lum, "bright")
-    contrast = _signed_pct_attr(lum, "contrast")
-    if bright is None and contrast is None:
+    bright = _signed_pct_attr(lum, "bright") if lum is not None else None
+    contrast = _signed_pct_attr(lum, "contrast") if lum is not None else None
+    opacity = _blip_opacity(blip)
+    apply_alpha = opacity is not None and opacity < 1.0
+    if bright is None and contrast is None and not apply_alpha:
         return filename, img_bytes
     if Image is None or ImageEnhance is None:
         return filename, img_bytes
@@ -265,12 +276,18 @@ def _apply_blip_image_effects(
             image = ImageEnhance.Brightness(image).enhance(max(0.0, 1.0 + bright))
         if contrast is not None:
             image = ImageEnhance.Contrast(image).enhance(max(0.0, 1.0 + contrast))
+        if apply_alpha:
+            image = image.convert("RGBA")
+            alpha = image.getchannel("A").point(
+                lambda value: round(value * opacity),
+            )
+            image.putalpha(alpha)
 
         out = io.BytesIO()
-        save_format = output_format or "PNG"
+        save_format = "PNG" if apply_alpha else (output_format or "PNG")
         save_kwargs = {"quality": 95} if save_format.upper() in {"JPEG", "JPG"} else {}
         image.save(out, format=save_format, **save_kwargs)
-        effect_key = f"lum-{bright}-{contrast}".encode("ascii")
+        effect_key = f"lum-{bright}-{contrast}-alpha-{opacity}".encode("ascii")
         digest = hashlib.sha1(effect_key).hexdigest()[:8]
         return _effect_filename(filename, digest, save_format), out.getvalue()
     except Exception:
@@ -305,7 +322,9 @@ def _effect_filename(filename: str, digest: str, image_format: str) -> str:
     if not sep:
         ext = (image_format or "png").lower()
         stem = filename
-    if ext.lower() == "jpg":
+    if image_format.upper() == "PNG":
+        ext = "png"
+    elif ext.lower() == "jpg":
         ext = "jpeg"
     return f"{stem}_fx_{digest}.{ext}"
 

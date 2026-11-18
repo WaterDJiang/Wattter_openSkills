@@ -2,9 +2,9 @@
 
 **Deck = full-PPT replica.** Each deck reverse-engineers a specific organization's branded presentation and bundles its **identity + structure + middle** segments into one atomic asset. Use a deck when you want the complete look of a particular institution (color, typography, logo, page structure, voice) preserved as a whole.
 
-Single source of truth for what decks exist: [`decks_index.json`](./decks_index.json) (`deck_id → { kind, path, summary, canvas_format, page_count, primary_color }`). This README explains the kind; it does **not** enumerate decks.
+Single source of truth for what decks exist: [`decks_index.json`](./decks_index.json) (`deck_id → { kind, path, summary, canvas_format, page_count, primary_color, template_capabilities }`). This README explains the kind; it does **not** enumerate decks.
 
-Full data model: [`docs/zh/templates-architecture.md`](../../../../docs/zh/templates-architecture.md).
+Full data model: the `kind` frontmatter field and per-kind schema are described in each kind's README ([`brands/`](../brands/) / [`layouts/`](../layouts/) / this file); consuming rules live in [`../../references/strategist.md`](../../references/strategist.md) Step 3.
 
 ---
 
@@ -13,6 +13,10 @@ Full data model: [`docs/zh/templates-architecture.md`](../../../../docs/zh/templ
 Deck selection happens via the **three-flow gate at SKILL.md Step 1** (flow 1 = library template). The main workflow defaults to flow 3 (free build). A deck is used when the user picks it from the `decks_index.json` menu at Step 3 flow 1, or gives an explicit directory path (e.g. `${SKILL_DIR}/templates/decks/招商银行/`) as a flow 1 shortcut. Bare names do not auto-select. See [`SKILL.md`](../../SKILL.md) Step 1 / Step 3.
 
 `decks_index.json` is a **discovery aid** — it populates the flow 1 menu and lets the AI answer "what decks exist?" by listing ids and paths. Listing alone never advances the pipeline.
+
+包内每个 SVG 都由 `page_catalog.json` 进入统一候选系统。目录可显式声明 `selection.variant_profile.{topology,emphasis,visual_weight}`；缺失时 `variant_selection.py` 从结构名、content form 与关键词确定性推导。相同内容形态的多个页面只在语义等价池内受控轮换，不跨 Deck。
+
+一个 Deck 可以同时收录源稿镜像页和新增的品牌适配组件页。镜像页用 `source_slide` 标记原 PPTX 页码；适配页不填写 `source_slide`，而用 `provenance: {kind: adapted_component, source_template: ..., source_reference: ...}` 记录所参考的结构。适配页可填写页级 `render_mode: brand_shell`，覆盖整包的默认 `replication_mode: mirror`；绑定时保留该页的品牌壳并按内容重排。这样不会把适配页误认为源文件中的幻灯片。
 
 ---
 
@@ -61,7 +65,7 @@ When the user selects a deck **together with** a brand or layout in flow 1, iden
 3. Validate: `python3 ${SKILL_DIR}/scripts/svg_quality_checker.py templates/decks/<id> --template-mode --format ppt169`
 4. Register: `python3 ${SKILL_DIR}/scripts/register_template.py <id> --kind deck`
 
-The register step updates [`decks_index.json`](./decks_index.json) — the single source of truth for deck discovery.
+The register step deterministically writes `template_capabilities.json`, validates it against the SVG roster, then updates [`decks_index.json`](./decks_index.json). The sidecar describes each page's raster/vector composition, text capacity and shared assets; template names never drive runtime branching.
 
 ---
 
@@ -69,4 +73,4 @@ The register step updates [`decks_index.json`](./decks_index.json) — the singl
 
 - [`templates/layouts/`](../layouts/) — structure-only templates without identity
 - [`templates/brands/`](../brands/) — identity-only presets without page rosters
-- [`docs/zh/templates-architecture.md`](../../../../docs/zh/templates-architecture.md) — three-class data model + fusion rules
+- [`references/strategist.md`](../../references/strategist.md) Step 3 — three-kind dispatch + multi-select fusion rules

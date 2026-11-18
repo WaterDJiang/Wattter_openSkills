@@ -5,6 +5,7 @@ summary: Engineering project reports, technical proposal presentations, business
 canvas_format: ppt169
 page_count: 5
 primary_color: "#00418D"
+background_mode: legacy-pure-svg
 ---
 
 # POWERCHINA (中国电建) Standard Template - Design Specification

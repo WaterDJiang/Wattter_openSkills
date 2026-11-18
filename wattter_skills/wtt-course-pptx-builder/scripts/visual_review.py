@@ -257,7 +257,7 @@ def main() -> int:
         _safe_print(str(e))
         _safe_print(
             'start it with:\n'
-            f'    python3 ${SKILL_DIR}/scripts/svg_editor/server.py {project_path}'
+            f'    python3 ${{SKILL_DIR}}/scripts/svg_editor/server.py {project_path} --no-browser'
         )
         return 2
 

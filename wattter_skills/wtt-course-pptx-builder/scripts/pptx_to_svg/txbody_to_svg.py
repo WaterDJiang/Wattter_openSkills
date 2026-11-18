@@ -7,8 +7,8 @@ Strategy (v1):
   Multiple <a:r> runs in one paragraph become <tspan>s sharing the text
   element's x.
 - Vertical layout: y of first paragraph is determined by anchor (t/ctr/b)
-  and tIns/bIns. Subsequent paragraphs stack downward with line height
-  derived from the largest font in the paragraph * 1.2 (default leading).
+  and tIns/bIns. DrawingML percentage line spacing scales the font's natural
+  1.2-leading line box; subsequent paragraphs advance by that line box.
 - Horizontal layout: text-anchor follows pPr@algn. x is computed from the
   text frame plus lIns/rIns and the alignment.
 - No automatic word wrap (PPT's wrap is layout-time; v1 trusts the existing
@@ -41,7 +41,8 @@ DEFAULT_INSETS_EMU = {"l": 91440, "t": 45720, "r": 91440, "b": 45720}
 
 # Default font size = 1800 (= 18 pt = 24 px). Spec is actually 1800 (18pt).
 DEFAULT_FONT_SIZE_PX = 24.0
-DEFAULT_LINE_HEIGHT_RATIO = 1.2  # leading multiplier
+DEFAULT_LINE_HEIGHT_RATIO = 1.0  # DrawingML 100% line spacing
+NATURAL_LINE_HEIGHT_RATIO = 1.2  # font-size -> nominal line box
 DEFAULT_FILL_HEX = "#000000"
 
 
@@ -147,7 +148,12 @@ def convert_txbody(
         _paragraph_height_from_lines(p, lines)
         for p, lines in zip(paragraphs, para_lines)
     ]
-    total_h = sum(para_heights)
+    # Vertical anchoring must reserve the same paragraph spacing that the
+    # emission loop applies, or later paragraphs can be clipped at the bottom.
+    total_h = sum(
+        height + para.space_before_px + para.space_after_px
+        for para, height in zip(paragraphs, para_heights)
+    )
     if anchor == "ctr":
         cursor_y = inner_y + max(0.0, (inner_h - total_h) / 2.0)
     elif anchor == "b":
@@ -972,7 +978,7 @@ def _paragraph_height_from_lines(p: TextParagraph,
                                  lines: list[list[TextRun]]) -> float:
     """Total px height after wrapping. Each line uses its own max font size."""
     if not lines:
-        return DEFAULT_FONT_SIZE_PX * p.line_height_ratio
+        return DEFAULT_FONT_SIZE_PX * NATURAL_LINE_HEIGHT_RATIO * p.line_height_ratio
     height = 0.0
     for line in lines:
         height += _line_height(p, line)
@@ -981,7 +987,7 @@ def _paragraph_height_from_lines(p: TextParagraph,
 
 def _line_height(p: TextParagraph, line: list[TextRun]) -> float:
     max_font = max((r.font_size_px for r in line), default=DEFAULT_FONT_SIZE_PX)
-    return max_font * p.line_height_ratio
+    return max_font * NATURAL_LINE_HEIGHT_RATIO * p.line_height_ratio
 
 
 def _clip_lines_to_bottom(
@@ -1016,7 +1022,7 @@ def _paragraph_height(p: TextParagraph) -> float:
         max_font = max(max_font, r.font_size_px)
     if max_font == 0.0:
         max_font = DEFAULT_FONT_SIZE_PX
-    return lines * max_font * p.line_height_ratio
+    return lines * max_font * NATURAL_LINE_HEIGHT_RATIO * p.line_height_ratio
 
 
 def _emit_paragraph(
@@ -1050,7 +1056,13 @@ def _emit_paragraph(
     first_line = lines[first_line_idx]
     first_run = first_line[0] if first_line else None
     first_font = first_run.font_size_px if first_run else DEFAULT_FONT_SIZE_PX
-    first_baseline = top_y + 0.85 * first_font
+    # PowerPoint places a 100%-spaced first baseline one font-size below the
+    # line-box top. Percentage spacing changes that offset by the same amount
+    # as the nominal (1.2em) line advance. Using a fixed 0.85em moved the
+    # source deck's 150%-spaced titles upward by 0.75em.
+    first_baseline = top_y + first_font * (
+        1.0 + (para.line_height_ratio - 1.0) * NATURAL_LINE_HEIGHT_RATIO
+    )
 
     spans: list[str] = []
     for line_idx, line in enumerate(lines):
@@ -1058,17 +1070,16 @@ def _emit_paragraph(
             # Blank line (e.g. consecutive a:br): still advance baseline
             spans.append(
                 f'<tspan x="{fmt_num(anchor_x)}" '
-                f'dy="{fmt_num(first_font * para.line_height_ratio)}"></tspan>'
+                f'dy="{fmt_num(_line_height(para, line))}"></tspan>'
             )
             continue
-        line_font = max(r.font_size_px for r in line)
         for run_idx, run in enumerate(line):
             attrs = _run_tspan_attrs(run)
             if run_idx == 0 and line_idx > 0:
                 # Start-of-line tspan: position via x + dy
                 spans.append(
                     f'<tspan x="{fmt_num(anchor_x)}" '
-                    f'dy="{fmt_num(line_font * para.line_height_ratio)}"'
+                    f'dy="{fmt_num(_line_height(para, line))}"'
                     f'{attrs}>{_xml_escape(run.text)}</tspan>'
                 )
             else:

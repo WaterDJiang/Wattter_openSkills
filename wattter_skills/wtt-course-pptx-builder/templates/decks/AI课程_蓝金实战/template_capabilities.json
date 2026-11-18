@@ -1,0 +1,597 @@
+{
+  "schema_version": 3,
+  "template_id": "AI课程_蓝金实战",
+  "kind": "decks",
+  "replication_mode": "standard",
+  "page_count": 18,
+  "shared_assets": [
+    "chapter_background.png",
+    "cover_background.png",
+    "ending_background.png"
+  ],
+  "default_background_assets": [
+    "chapter_background.png",
+    "cover_background.png",
+    "ending_background.png"
+  ],
+  "asset_roles": {
+    "identity": [],
+    "background": [
+      "chapter_background.png",
+      "cover_background.png",
+      "ending_background.png"
+    ],
+    "chrome": [],
+    "illustration": []
+  },
+  "shell_contract": {
+    "required_roles": [
+      "background"
+    ],
+    "forbid_unlocked_full_bleed": true
+  },
+  "pages": {
+    "01_cover": {
+      "file": "01_cover.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 2,
+      "text_elements": 4,
+      "text_runs": 4,
+      "source_text_chars": 57,
+      "max_text_chars": 26,
+      "image_refs": [
+        "cover_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cover_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "cover_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.857143,
+        "top_level_groups": 2,
+        "semantic_content_groups": 1,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "cover_background.png"
+      ],
+      "shared_asset_roles": {
+        "background": [
+          "cover_background.png"
+        ]
+      }
+    },
+    "02_toc": {
+      "file": "02_toc.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 14,
+      "text_elements": 15,
+      "text_runs": 15,
+      "source_text_chars": 226,
+      "max_text_chars": 17,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 7,
+        "semantic_content_groups": 4,
+        "chrome_groups": 3,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "03_chapter": {
+      "file": "03_chapter.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 1,
+      "text_elements": 4,
+      "text_runs": 4,
+      "source_text_chars": 68,
+      "max_text_chars": 20,
+      "image_refs": [
+        "chapter_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "chapter_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "chapter_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.833333,
+        "top_level_groups": 3,
+        "semantic_content_groups": 2,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "chapter_background.png"
+      ],
+      "shared_asset_roles": {
+        "background": [
+          "chapter_background.png"
+        ]
+      }
+    },
+    "04_content_principle_layers": {
+      "file": "04_content_principle_layers.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 14,
+      "text_elements": 15,
+      "text_runs": 15,
+      "source_text_chars": 194,
+      "max_text_chars": 18,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 4,
+        "semantic_content_groups": 4,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "05_content_ai_mechanism": {
+      "file": "05_content_ai_mechanism.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 20,
+      "text_elements": 16,
+      "text_runs": 16,
+      "source_text_chars": 229,
+      "max_text_chars": 17,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 4,
+        "semantic_content_groups": 4,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "06_content_ai_workflow": {
+      "file": "06_content_ai_workflow.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 18,
+      "text_elements": 15,
+      "text_runs": 15,
+      "source_text_chars": 144,
+      "max_text_chars": 17,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 7,
+        "semantic_content_groups": 5,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "07_content_prompt_anatomy": {
+      "file": "07_content_prompt_anatomy.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 16,
+      "text_elements": 20,
+      "text_runs": 20,
+      "source_text_chars": 218,
+      "max_text_chars": 19,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 2,
+        "semantic_content_groups": 2,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "08_content_demo_walkthrough": {
+      "file": "08_content_demo_walkthrough.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 24,
+      "text_elements": 18,
+      "text_runs": 18,
+      "source_text_chars": 209,
+      "max_text_chars": 19,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 2,
+        "semantic_content_groups": 2,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "09_content_practice_brief": {
+      "file": "09_content_practice_brief.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 8,
+      "text_elements": 15,
+      "text_runs": 15,
+      "source_text_chars": 188,
+      "max_text_chars": 21,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 5,
+        "semantic_content_groups": 5,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "10_content_practice_canvas": {
+      "file": "10_content_practice_canvas.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 16,
+      "text_elements": 16,
+      "text_runs": 16,
+      "source_text_chars": 248,
+      "max_text_chars": 18,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 4,
+        "semantic_content_groups": 4,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "11_content_before_after": {
+      "file": "11_content_before_after.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 17,
+      "text_elements": 17,
+      "text_runs": 17,
+      "source_text_chars": 243,
+      "max_text_chars": 18,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 5,
+        "semantic_content_groups": 3,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "12_content_evaluation_rubric": {
+      "file": "12_content_evaluation_rubric.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 13,
+      "text_elements": 23,
+      "text_runs": 23,
+      "source_text_chars": 246,
+      "max_text_chars": 19,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 5,
+        "semantic_content_groups": 4,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "13_content_debug_loop": {
+      "file": "13_content_debug_loop.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 20,
+      "text_elements": 15,
+      "text_runs": 15,
+      "source_text_chars": 219,
+      "max_text_chars": 19,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 2,
+        "semantic_content_groups": 2,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "14_content_transfer_plan": {
+      "file": "14_content_transfer_plan.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 13,
+      "text_elements": 20,
+      "text_runs": 20,
+      "source_text_chars": 193,
+      "max_text_chars": 21,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 4,
+        "semantic_content_groups": 4,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "15_ending": {
+      "file": "15_ending.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 2,
+      "text_elements": 3,
+      "text_runs": 3,
+      "source_text_chars": 40,
+      "max_text_chars": 18,
+      "image_refs": [
+        "ending_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "ending_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "ending_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.833333,
+        "top_level_groups": 2,
+        "semantic_content_groups": 1,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "ending_background.png"
+      ],
+      "shared_asset_roles": {
+        "background": [
+          "ending_background.png"
+        ]
+      }
+    },
+    "16_content_decision_fork": {
+      "file": "16_content_decision_fork.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 10,
+      "text_elements": 9,
+      "text_runs": 9,
+      "source_text_chars": 134,
+      "max_text_chars": 18,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 4,
+        "semantic_content_groups": 4,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "17_content_prompt_four_fields": {
+      "file": "17_content_prompt_four_fields.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 15,
+      "text_elements": 16,
+      "text_runs": 16,
+      "source_text_chars": 190,
+      "max_text_chars": 17,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 3,
+        "semantic_content_groups": 3,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "18_content_clarifying_dialogue": {
+      "file": "18_content_clarifying_dialogue.svg",
+      "composition_mode": "vector_dominant",
+      "image_elements": 0,
+      "vector_elements": 7,
+      "text_elements": 14,
+      "text_runs": 14,
+      "source_text_chars": 171,
+      "max_text_chars": 17,
+      "image_refs": [],
+      "full_bleed_image_refs": [],
+      "image_assets": [],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "fully_editable",
+        "native_shape_ready": true,
+        "editable_object_ratio": 1.0,
+        "top_level_groups": 5,
+        "semantic_content_groups": 5,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "themed_rebuild",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    }
+  },
+  "generated_by": "scripts/template_capabilities.py"
+}

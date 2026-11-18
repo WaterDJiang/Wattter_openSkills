@@ -80,13 +80,13 @@
 .slide.accent .t-body,
 .slide.accent .t-body-sm,
 .slide.accent .t-body-emp,
-.slide.accent .t-h-prod{color:var(--accent-on)}
+.slide.accent .t-h-prod{color:var(--surface-text)}
 .slide.accent .t-meta,
 .slide.accent .t-cat,
 .slide.accent .t-helper,
 .slide.accent .meta,
 .slide.accent .meta-row,
-.slide.accent .kicker{color:color-mix(in srgb,var(--accent-on) 72%,transparent)}
+.slide.accent .kicker{color:var(--surface-text)}
 .slide.dark .h-hero,
 .slide.dark .h-hero-zh,
 .slide.dark .h-xl,
@@ -96,20 +96,20 @@
 .slide.dark h1,
 .slide.dark h2,
 .slide.dark h3,
-.slide.dark h4{color:var(--paper)}
+.slide.dark h4{color:var(--surface-text)}
 .slide.dark .lead,
 .slide.dark .body,
-.slide.dark .body-sm{color:rgba(255,255,255,.82)}
+.slide.dark .body-sm{color:var(--surface-text)}
 .slide.dark .t-meta,
 .slide.dark .t-cat,
 .slide.dark .t-helper,
 .slide.dark .meta,
 .slide.dark .meta-row,
-.slide.dark .kicker{color:rgba(255,255,255,.62)}
+.slide.dark .kicker{color:var(--surface-text)}
 .slide.dark .t-body,
 .slide.dark .t-body-sm,
 .slide.dark .t-body-emp,
-.slide.dark .t-h-prod{color:var(--paper)}
+.slide.dark .t-h-prod{color:var(--surface-text)}
 .slide.dark .stat-card.thin,
 .slide.dark .pipeline-section,
 .slide.dark .step,
@@ -121,11 +121,11 @@
 .slide.light [style*="color:var(--paper)"],
 .slide.light [style*="color: var(--paper)"],
 .slide.grey [style*="color:var(--paper)"],
-.slide.grey [style*="color: var(--paper)"]{color:var(--ink)!important}
+.slide.grey [style*="color: var(--paper)"]{color:var(--surface-text)!important}
 .slide.dark [style*="color:var(--ink)"],
-.slide.dark [style*="color: var(--ink)"]{color:var(--paper)!important}
+.slide.dark [style*="color: var(--ink)"]{color:var(--surface-text)!important}
 .slide.accent [style*="color:var(--ink)"],
-.slide.accent [style*="color: var(--ink)"]{color:var(--accent-on)!important}
+.slide.accent [style*="color: var(--ink)"]{color:var(--surface-text)!important}
 
 /* ============ swiss 专属：大字号双约束 ============
    swiss-layout-lock 要求大字号 font-size:min(Xvw, Yvh)，Y ≥ X × 1.6

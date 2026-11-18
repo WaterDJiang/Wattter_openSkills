@@ -199,6 +199,17 @@ def doctor(project=None, explicit=None):
             issues.append('尚未发现 voice.local.json；公开 voice.example.json 只是模板，不代表已安装模型或个人音色。')
             return result
         result['config'] = str(path)
+        environment = path.parent / '.venv'
+        interpreter = environment / 'bin/python'
+        result['runtime'] = {'environment': str(environment),
+                             'present': interpreter.is_file(),
+                             'status': 'adjacent' if interpreter.is_file() else 'current-python-unverified'}
+        if environment.is_symlink() and not environment.exists():
+            result['runtime']['status'] = 'broken-symlink'
+            issues.append('声音环境 .venv 是失效软链；先查原目标并备份软链，再在稳定私有目录恢复环境，不直接覆盖或降为系统声音。')
+        elif environment.exists() and not interpreter.is_file():
+            result['runtime']['status'] = 'incomplete'
+            issues.append('声音环境 .venv 存在但缺少 bin/python；保留旧环境，核对后恢复依赖。')
         data = read(path)
         if not isinstance(data, dict) or data.get('schema') != 'code-animation-voice/v1':
             raise ValueError('声音配置 schema 应为 code-animation-voice/v1')

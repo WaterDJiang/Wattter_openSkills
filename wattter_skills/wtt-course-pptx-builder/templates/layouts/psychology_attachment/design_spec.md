@@ -5,6 +5,7 @@ summary: Psychotherapy training, academic lectures, counseling case analysis, pr
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # Psychology Healing Template (Psychology Attachment Style) - Design Specification

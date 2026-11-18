@@ -19,7 +19,7 @@ description: 基于配置驱动的通用信息收集助手。支持多数据源�
 ### 1. 环境准备
 
 ```bash
-cd skills/wtt-info-collector
+cd skills/info-collector
 pip install -r requirements.txt
 playwright install chromium
 ```

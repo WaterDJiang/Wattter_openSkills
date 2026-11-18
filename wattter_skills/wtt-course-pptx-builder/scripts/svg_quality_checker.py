@@ -33,6 +33,11 @@ except ImportError:
     _parse_spec_lock = None  # spec_lock drift check will be skipped
 
 try:
+    from template_page_catalog import validate_catalog as _validate_page_catalog
+except ImportError:
+    _validate_page_catalog = None
+
+try:
     from svg_to_pptx.animation_config import (
         load_animation_config as _load_animation_config,
         validate_animation_config as _validate_animation_config,
@@ -192,8 +197,17 @@ class SVGQualityChecker:
         "04_ending": (),  # ending pages legitimately use varied vocabularies
     }
 
-    def __init__(self, *, template_mode: bool = False):
+    def __init__(
+        self,
+        *,
+        template_mode: bool = False,
+        mirror_mode: bool = False,
+        summary_only: bool = False,
+    ):
         self.template_mode = template_mode
+        self.mirror_mode = mirror_mode
+        self.preserve_template_structure = template_mode or mirror_mode
+        self.summary_only = summary_only
         self.results = []
         self.summary = {
             'total': 0,
@@ -212,6 +226,8 @@ class SVGQualityChecker:
         }
         self._lock_seen = False  # True once we locate at least one spec_lock.md
         self._source_manifest_cache: Dict[Path, Dict] = {}
+        # HTML background manifest cache (layered architecture: text_slots + per-template status)
+        self._html_bg_cache: Dict[Path, Dict] = {}
         # Template-mode aggregation (populated by check_directory when
         # template_mode=True). Each entry is (severity, kind, message) where
         # severity is 'error' or 'warning'. Printed in print_summary.
@@ -285,13 +301,26 @@ class SVGQualityChecker:
                 # 8. Check spec_lock drift (colors / font-family / font-size).
                 #    Templates do not ship a spec_lock.md, so skip in template
                 #    mode to avoid noise.
-                if not self.template_mode:
+                if not self.preserve_template_structure:
                     self._check_spec_lock_drift(content, svg_path, result)
 
                 # 9. Check web-sourced image attribution. Templates don't carry
                 #    image_sources.json; skip in template mode.
-                if not self.template_mode:
+                if not self.preserve_template_structure:
                     self._check_sourced_image_attribution(content, svg_path, result)
+
+                # 10. Check layered background (HTML-PNG <image> as first child).
+                if not self.preserve_template_structure:
+                    self._check_html_background_layer(content, svg_path, result)
+
+                # 11. Check text-slot occupancy on cover/ending/chapter pages.
+                if not self.preserve_template_structure:
+                    self._check_text_slot_occupancy(content, svg_path, result)
+
+                # 12. Flag possible marketing CTA phrases for teaching-context review.
+                #     Applies in both project and template mode — templates must
+                #     not ship operational copy either.
+                self._check_operational_copy(content, svg_path, result)
 
             # Determine pass/fail
             result['passed'] = len(result['errors']) == 0
@@ -714,6 +743,16 @@ class SVGQualityChecker:
                 return data
         return None
 
+    @staticmethod
+    def _chart_page_key(svg_path: Path, lock: Dict) -> str | None:
+        """Return the PNN key when this SVG is mapped through page_charts."""
+        match = re.match(r'^(?:P)?(\d{1,3})(?:[_-]|$)', svg_path.stem, re.IGNORECASE)
+        if not match:
+            return None
+        page_number = int(match.group(1))
+        page_key = f"P{page_number:02d}"
+        return page_key if page_key in lock.get('page_charts', {}) else None
+
     def _check_spec_lock_drift(self, content: str, svg_path: Path, result: Dict):
         """Detect values used in the SVG that fall outside spec_lock.md.
 
@@ -813,11 +852,30 @@ class SVGQualityChecker:
         for v in size_drifts:
             self._drift_summary['sizes'][v].add(fname)
 
-        # Per-file warning (one condensed line; details live in summary)
+        # Chart-library pages use external SVG structure but MUST NOT inherit
+        # that SVG's visual skin. Make color/font drift a hard error for these
+        # pages so a default chart palette cannot silently ship.
+        chart_page = self._chart_page_key(svg_path, lock)
+        if chart_page and color_drifts:
+            result['errors'].append(
+                f"chart skin drift on {chart_page}: colors "
+                f"{', '.join(sorted(color_drifts))} are not in spec_lock.colors — "
+                "chart SVGs supply structure only; re-map every fill/stroke/stop-color "
+                "to the selected deck/template palette"
+            )
+        if chart_page and font_drifts:
+            result['errors'].append(
+                f"chart skin drift on {chart_page}: font-family values "
+                f"{', '.join(sorted(font_drifts))} are not in spec_lock.typography — "
+                "re-map all chart labels/legends/annotations to the selected deck typography"
+            )
+
+        # Per-file warning (one condensed line; details live in summary).
+        # Color/font drift on chart pages is already a hard error above.
         parts = []
-        if color_drifts:
+        if color_drifts and not chart_page:
             parts.append(f"{len(color_drifts)} color(s)")
-        if font_drifts:
+        if font_drifts and not chart_page:
             parts.append(f"{len(font_drifts)} font-family value(s)")
         if size_drifts:
             parts.append(f"{len(size_drifts)} font-size value(s)")
@@ -891,6 +949,219 @@ class SVGQualityChecker:
                     f"references/image-searcher.md §7."
                 )
 
+    def _page_index(self, svg_path: Path):
+        """Derive P<NN> from the SVG filename (e.g. '01_cover.svg' -> 'P01')."""
+        m = re.match(r'^(\d{2})', svg_path.stem)
+        return f"P{m.group(1)}" if m else None
+
+    def _get_html_background_manifest(self, svg_path: Path):
+        """Locate and parse images/html_background_manifest.json. Returns dict or None.
+
+        The manifest lives at <project>/images/html_background_manifest.json;
+        SVGs live at <project>/svg_output/, so look two levels up.
+        """
+        candidate = svg_path.parent.parent / 'images' / 'html_background_manifest.json'
+        if candidate in self._html_bg_cache:
+            return self._html_bg_cache[candidate]
+        data = None
+        if candidate.exists():
+            try:
+                data = json.loads(candidate.read_text(encoding='utf-8'))
+            except Exception:
+                data = None
+        self._html_bg_cache[candidate] = data
+        return data
+
+    def _check_html_background_layer(self, content: str, svg_path: Path, result: Dict):
+        """For explicitly HTML-bound pages, require the HTML-PNG background
+        <image> (or <rect> when Fallback-Solid). See shared-standards.md §4.
+        """
+        lock = self._get_spec_lock(svg_path)
+        if lock is None:
+            return
+        html_bgs = lock.get('html_backgrounds') or {}
+        page = self._page_index(svg_path)
+        if page is None:
+            return
+        template = html_bgs.get(page)
+        if template is None:
+            return  # Native Deck/Free Route pages have no HTML-layer contract.
+
+        try:
+            root = ET.fromstring(content)
+        except ET.ParseError:
+            return  # XML errors already reported by _check_xml_well_formed
+
+        first_elem = None
+        for child in root:
+            if child.tag is ET.Comment or child.tag is ET.ProcessingInstruction:
+                continue
+            t = child.tag
+            if isinstance(t, str) and t.endswith('defs'):
+                continue  # <defs> is the definition block, not a visual layer
+            first_elem = child
+            break
+        if first_elem is None:
+            result['errors'].append(
+                f"{page}: layered architecture requires a background layer as the first child of <svg>, but the <svg> has no element children")
+            return
+
+        tag = first_elem.tag
+        if isinstance(tag, str) and '}' in tag:
+            tag = tag.split('}', 1)[1]
+
+        # An explicit HTML binding may have degraded to a solid native rect.
+        is_fallback = False
+        if template is not None:
+            manifest = self._get_html_background_manifest(svg_path)
+            if manifest:
+                for item in manifest.get('items', []):
+                    if item.get('template') == template and item.get('status') == 'Fallback-Solid':
+                        is_fallback = True
+                        break
+
+        def _has_child(elem, name):
+            for c in elem:
+                t = c.tag
+                if isinstance(t, str) and t.endswith(name):
+                    return True
+            return False
+
+        if is_fallback:
+            if tag == 'rect' or (tag == 'g' and (
+                    'bg' in (first_elem.get('id', '') or '').lower()
+                    or _has_child(first_elem, 'rect'))):
+                return
+            result['warnings'].append(
+                f"{page}: background is Fallback-Solid but the first child is <{tag}> — expected a full-canvas <rect>")
+            return
+
+        if tag == 'image':
+            return
+        if tag == 'g' and ('bg' in (first_elem.get('id', '') or '').lower()
+                           or _has_child(first_elem, 'image')):
+            return
+        result['errors'].append(
+            f"{page}: explicit HTML background binding requires a full-bleed background <image> as the first child of <svg> (HTML-PNG, wrapped in <g id=\"bg-...\">), but found <{tag}> — see shared-standards.md §4")
+
+    def _check_text_slot_occupancy(self, content: str, svg_path: Path, result: Dict):
+        """For cover/ending/chapter pages, each declared text-slot must have a <text>
+        whose anchor falls inside the slot rectangle. See executor-base.md §3.3.
+        """
+        page = self._page_index(svg_path)
+        if page is None:
+            return
+        lock = self._get_spec_lock(svg_path)
+        if lock is None:
+            return
+        html_bgs = lock.get('html_backgrounds') or {}
+        template = html_bgs.get(page)
+        if template is None or template == 'theme':
+            return  # theme pages have no text-slots
+        manifest = self._get_html_background_manifest(svg_path)
+        if manifest is None:
+            return
+        text_slots = None
+        for item in manifest.get('items', []):
+            if item.get('template') == template:
+                text_slots = item.get('text_slots')
+                break
+        if not text_slots:
+            return
+
+        try:
+            root = ET.fromstring(content)
+        except ET.ParseError:
+            return
+
+        text_elems = []  # (x, y, font_size, anchor, weight, text)
+        for elem in root.iter():
+            t = elem.tag
+            if isinstance(t, str) and t.endswith('text'):
+                xs, ys = elem.get('x'), elem.get('y')
+                if xs is None or ys is None:
+                    continue
+                try:
+                    x, y = float(xs), float(ys)
+                except ValueError:
+                    continue
+                fs = self._parse_font_size(elem.get('font-size'))
+                anchor = elem.get('text-anchor') or 'start'
+                weight = (elem.get('font-weight') or '').strip().lower()
+                # text content: direct text + tspan children
+                parts = [elem.text or '']
+                for child in elem:
+                    if isinstance(child.tag, str) and child.tag.endswith('tspan'):
+                        parts.append(child.text or '')
+                text = ''.join(parts).strip()
+                text_elems.append((x, y, fs, anchor, weight, text))
+
+        for slot_name, coords in text_slots.items():
+            try:
+                x1, y1, x2, y2 = (float(c) for c in coords)
+            except (TypeError, ValueError):
+                continue
+            slot_w = x2 - x1
+            # Occupancy: at least one <text> anchored inside the slot rectangle.
+            occupants = [te for te in text_elems if x1 <= te[0] <= x2 and y1 <= te[1] <= y2]
+            if not occupants:
+                result['errors'].append(
+                    f"{page}: text-slot `{slot_name}` ({int(x1)},{int(y1)} {int(x2)},{int(y2)}) has no <text> anchored inside its rectangle — see executor-base.md §3.3")
+                continue
+            # Overflow: warn when a slotted <text>'s estimated rendered width
+            # exceeds the slot width by more than 15% (the Executor should shrink
+            # font-size or wrap with <tspan dy> per executor-base.md §3.3).
+            # Conservative width estimate: CJK ≈ 1.0em, Latin ≈ 0.55em; bold ×1.05.
+            for (x, y, fs, anchor, weight, text) in occupants:
+                if not text or fs is None or slot_w <= 0:
+                    continue
+                est_w = self._estimate_text_width(text, fs, weight)
+                if est_w <= slot_w * 1.15:
+                    continue
+                if anchor == 'middle':
+                    overhang = (est_w / 2) - slot_w / 2
+                elif anchor == 'end':
+                    overhang = est_w - (x - x1)
+                else:  # start
+                    overhang = (x + est_w) - x2
+                if overhang > slot_w * 0.15:
+                    result['warnings'].append(
+                        f"{page}: text-slot `{slot_name}` text \"{text[:24]}{'…' if len(text) > 24 else ''}\" "
+                        f"est. width {int(est_w)}px exceeds slot width {int(slot_w)}px "
+                        f"(anchor={anchor}) — shrink font-size or wrap with <tspan dy> (executor-base.md §3.3)")
+
+    @staticmethod
+    def _parse_font_size(value):
+        """Parse a font-size attribute to px float, or None if absent/unparseable."""
+        if not value:
+            return None
+        v = value.strip().lower()
+        if v.endswith('px'):
+            v = v[:-2].strip()
+        try:
+            return float(v)
+        except ValueError:
+            return None
+
+    @staticmethod
+    def _estimate_text_width(text: str, font_size: float, weight: str) -> float:
+        """Conservative (over-)estimate of rendered text width in px.
+        CJK / full-width ≈ 1.0em; Latin / half-width ≈ 0.55em; bold ×1.05.
+        Deliberately over-estimates so only genuine overflows flag."""
+        bold_factor = 1.05 if weight in ('bold', '700', '800', '900') else 1.0
+        width_em = 0.0
+        for ch in text:
+            # CJK Unicode ranges + full-width punctuation
+            o = ord(ch)
+            if (0x2E80 <= o <= 0x9FFF) or (0xAC00 <= o <= 0xD7AF) or \
+               (0xF900 <= o <= 0xFAFF) or (0xFF00 <= o <= 0xFFEF) or o == 0x3000:
+                width_em += 1.0
+            elif ch == ' ':
+                width_em += 0.28
+            else:
+                width_em += 0.55
+        return width_em * font_size * bold_factor
+
     @staticmethod
     def _normalize_size(value: str) -> str:
         """Normalize a font-size value for comparison: lowercase, strip spaces,
@@ -920,8 +1191,61 @@ class SVGQualityChecker:
             return 'foreignObject'
         elif 'font' in error_msg.lower():
             return 'Font issues'
+        elif '疑似运营引导文案' in error_msg:
+            return 'Operational copy'
         else:
             return 'Other'
+
+    # Possible CTA phrases; required teaching operations are allowed.
+    # Each entry: (label, compiled regex). Regexes target *instructional*
+    # phrasing (请/立即/扫码/进群…) so that legitimate topic mentions
+    # (e.g. a marketing course discussing "转发率" as a metric) don't trip.
+    _OPERATIONAL_PATTERNS = [
+        ('扫码/二维码', re.compile(r'(扫码|扫一扫|扫描二维码|长按识别|长按关注|长按保存|长按抢|长按领取|长按加|长按进群|长按看|长按咨询|二维码)')),
+        ('进群/加微信', re.compile(r'(进群|入群|加群|加我微信|加微信|加客服|加企微|加小助|发到群|发到微信群|发送到群|发送到微信群|转发到群|分享到群|分享到微信群|拉你进群|拉进群|进微信群|进交流群|进学习群|进福利群|进群交流|进群学习|进群领取|进群领福利)')),
+        ('关注/订阅', re.compile(r'(关注公众号|关注我们|关注账号|点个关注|点击关注|扫码关注|关注领取|关注后|关注即可|关注免费|关注领|关注送|关注视频号|关注抖音|关注小红书|关注微博|订阅公众号)')),
+        ('转发/分享/朋友圈', re.compile(r'(请转发|请分享|转发到|转发朋友圈|分享到朋友圈|发朋友圈|转给朋友|转发给|分享给朋友|转发有礼|分享有礼|转发领|分享领|朋友圈集赞|集赞|转发截图|晒朋友圈)')),
+        ('报名/咨询/联系', re.compile(r'(立即报名|马上报名|点击报名|扫码报名|报名咨询|报名电话|咨询电话|联系我们|联系客服|客服微信|客服电话|咨询热线|报名热线|扫码咨询|咨询客服|联系助教|联系班主任|联系顾问|扫码加我|加我咨询|加我了解|加我领|加我报名)')),
+        ('领取/福利/优惠', re.compile(r'(领取福利|免费领取|扫码领取|限时领取|领取优惠|优惠券|优惠码|福利码|免费送|免费领|0元领|免费课|赠课|领取资料|领取课件|领取模板|领取清单|领取工具)')),
+        ('点击链接/访问', re.compile(r'(点击链接|访问链接|点击访问|登录网址|访问网址|点击参与|马上参与|立即参与|点击进入|点击查看|点击了解|点击下载|扫码下载|立即下载|点击获取|点击领取|点击免费|立即体验|马上体验|点开链接|打开链接|复制链接|戳链接|猛戳)')),
+        ('互动/点赞', re.compile(r'(点赞关注|点赞转发|点赞收藏|留言互动|评论区留言|评论留言|弹幕互动|双击点赞|一键三连|三连|关注点赞|关注\+点赞|评论\+点赞)')),
+    ]
+
+    def _check_operational_copy(self, content: str, svg_path: Path, result: Dict):
+        """Flag possible marketing CTA phrases for semantic review.
+
+        Marketing conversion belongs in speaker notes or the instructor
+        manual. Required teaching actions and material access stay visible.  This check surfaces
+        suspicious instructional phrasing as a WARNING (not error): false
+        positives include necessary material access, tool operations, peer
+        feedback, and courses discussing these verbs as a topic (e.g. a growth-marketing module), so the executor
+        reviews each hit rather than the pipeline hard-failing.
+        """
+        # Extract visible text: content between > and <, stripped of tags.
+        # Skip {{PLACEHOLDERS}} — they are template slots, not final copy.
+        visible_text = re.sub(r'<[^>]+>', '\n', content)
+        # Drop template placeholders so unfilled slots don't trigger.
+        visible_text = re.sub(r'\{\{[^}]*\}\}', '', visible_text)
+
+        hits = []
+        seen = set()
+        for label, pattern in self._OPERATIONAL_PATTERNS:
+            for m in pattern.finditer(visible_text):
+                start = max(0, m.start() - 12)
+                end = min(len(visible_text), m.end() + 12)
+                snippet = visible_text[start:end].replace('\n', ' ').strip()
+                key = (label, m.group(0))
+                if key in seen:
+                    continue
+                seen.add(key)
+                hits.append((label, m.group(0), snippet))
+
+        for label, matched, snippet in hits:
+            result['warnings'].append(
+                f"疑似运营引导文案 [{label}]: “{matched}” — 请按教学目的复核；"
+                f"必要材料入口、工具操作、作业提交、同伴分享或主题讨论保留，营销转化移至讲者备注。"
+                f"上下文: …{snippet}…"
+            )
 
     def check_directory(self, directory: str, expected_format: str = None) -> List[Dict]:
         """
@@ -1056,6 +1380,33 @@ class SVGQualityChecker:
                 'error',
                 'spec_missing',
                 f"{spec_path.name} not found — required for every library template",
+            ))
+
+        catalog_path = dir_path / 'page_catalog.json'
+        if catalog_path.exists():
+            if _validate_page_catalog is None:
+                self._template_issues.append((
+                    'error',
+                    'catalog_validator_missing',
+                    "could not import template_page_catalog.py",
+                ))
+            else:
+                for error in _validate_page_catalog(dir_path):
+                    self._template_issues.append((
+                        'error',
+                        'catalog_invalid',
+                        error,
+                    ))
+        elif re.search(
+            r"^replication_mode:\s*mirror\s*$",
+            spec_text,
+            re.MULTILINE | re.IGNORECASE,
+        ):
+            self._template_issues.append((
+                'warning',
+                'catalog_missing',
+                "mirror template has no page_catalog.json; semantic selection falls back "
+                "to design_spec.md Page Roster",
             ))
 
         # Per-file placeholder coverage. Variants reuse the parent type's set
@@ -1237,6 +1588,23 @@ class SVGQualityChecker:
         else:
             icon = "[ERROR]"
             status = "Failed"
+
+        # Summary-only mode: one compact line per file. Errors are still
+        # printed in full (rare + blocking — the user needs the message to
+        # fix it without re-running); warnings collapse to a count.
+        if self.summary_only:
+            n_err = len(result['errors'])
+            n_warn = len(result['warnings'])
+            counts = []
+            if n_err:
+                counts.append(f"{n_err} error(s)")
+            if n_warn:
+                counts.append(f"{n_warn} warning(s)")
+            tail = f" — {' '.join(counts)}" if counts else ""
+            print(f"{icon} {result['file']}{tail}")
+            for error in result['errors']:
+                print(f"   [ERROR] {error}")
+            return
 
         print(f"{icon} {result['file']} - {status}")
 
@@ -1447,7 +1815,14 @@ def print_usage() -> None:
     print("  --template-mode               Validate a templates/{layouts,decks}/<id> directory:")
     print("                                  glob *.svg directly, skip spec_lock checks,")
     print("                                  enforce roster ↔ design_spec.md Page Roster consistency,")
+    print("                                  validate page_catalog.json when present,")
     print("                                  and emit advisory placeholder-convention warnings.")
+    print("  --mirror-mode                 Validate a mirror project without asking canonical")
+    print("                                  template SVGs to adopt generic project-layer rules;")
+    print("                                  use together with validate_mirror_fidelity.py.")
+    print("  --summary-only                One line per file (icon + counts); suppress per-warning")
+    print("                                  detail. Errors still print in full. Use during bulk Step 6")
+    print("                                  generation; drop the flag on a single failing file for detail.")
 
 
 def main() -> None:
@@ -1466,7 +1841,16 @@ def main() -> None:
         sys.exit(1)
 
     template_mode = '--template-mode' in sys.argv
-    checker = SVGQualityChecker(template_mode=template_mode)
+    mirror_mode = '--mirror-mode' in sys.argv
+    if template_mode and mirror_mode:
+        print("[ERROR] --template-mode and --mirror-mode are mutually exclusive")
+        sys.exit(1)
+    summary_only = '--summary-only' in sys.argv
+    checker = SVGQualityChecker(
+        template_mode=template_mode,
+        mirror_mode=mirror_mode,
+        summary_only=summary_only,
+    )
 
     # Parse arguments
     target = sys.argv[1]

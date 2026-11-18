@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <g id="bg-service-swimlanes">
+    <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+    <path d="M 0 670 C 330 634 642 650 940 720 L 0 720 Z" fill="#ECF6FE"/>
+    <path d="M 1010 0 C 1120 42 1208 88 1280 148 L 1280 0 Z" fill="#F1F8FE"/>
+  </g>
+
+  <g id="service-header">
+    <rect x="58" y="40" width="6" height="30" fill="#C7A661"/>
+    <text x="80" y="65" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="24" font-weight="700">{{SECTION_LABEL}}</text>
+    <image href="logo_white.png" x="1061" y="22" width="187" height="51" preserveAspectRatio="xMidYMid meet"/>
+    <text x="70" y="132" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="50" font-weight="800">{{PAGE_TITLE}}</text>
+    <text x="70" y="166" fill="#666666" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22">{{PAGE_SUBTITLE}}</text>
+  </g>
+
+  <g id="lane-labels">
+    <rect x="70" y="205" width="118" height="288" fill="#003396"/>
+    <text x="129" y="356" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="30" font-weight="800">{{STEP_01_TITLE}}</text>
+    <rect x="70" y="518" width="118" height="54" fill="#2E75FF"/>
+    <text x="129" y="553" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="26" font-weight="800">{{STEP_02_TITLE}}</text>
+    <rect x="70" y="590" width="118" height="74" fill="#003396"/>
+    <text x="129" y="636" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="26" font-weight="800">{{STEP_03_TITLE}}</text>
+  </g>
+
+  <g id="training-topic">
+    <path d="M 330 194 L 890 194 L 906 222 L 314 222 Z" fill="#003396"/>
+    <text x="610" y="215" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="24" font-weight="700">{{CARD_01_TITLE}}</text>
+  </g>
+
+  <g id="lane-a">
+    <text x="235" y="246" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22" font-weight="700">{{STEP_01_NUM}}</text>
+    <line x1="278" y1="206" x2="278" y2="286" stroke="#C7A661" stroke-width="3"/>
+    <rect x="322" y="236" width="164" height="34" fill="#2E75FF"/>
+    <rect x="508" y="236" width="164" height="34" fill="#2E75FF"/>
+    <rect x="694" y="236" width="164" height="34" fill="#2E75FF"/>
+    <rect x="880" y="236" width="164" height="34" fill="#2E75FF"/>
+    <text x="404" y="259" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="19" font-weight="700">{{CARD_01_NUM}}</text>
+    <text x="590" y="259" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="19" font-weight="700">{{CARD_02_NUM}}</text>
+    <text x="776" y="259" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="19" font-weight="700">{{CARD_03_NUM}}</text>
+    <text x="962" y="259" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="19" font-weight="700">{{CARD_04_NUM}}</text>
+    <rect x="320" y="270" width="724" height="62" fill="#F1F8FE" stroke="#E7E6E6"/>
+    <text x="350" y="306" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20">{{CARD_01_META}}</text>
+    <text x="536" y="306" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20">{{CARD_02_META}}</text>
+    <text x="722" y="306" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20">{{CARD_03_META}}</text>
+    <text x="908" y="306" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20">{{CARD_04_META}}</text>
+  </g>
+
+  <g id="lane-b">
+    <text x="235" y="382" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22" font-weight="700">{{STEP_02_NUM}}</text>
+    <line x1="278" y1="336" x2="278" y2="434" stroke="#C7A661" stroke-width="3"/>
+    <rect x="320" y="354" width="724" height="94" rx="4" fill="#FFFFFF" stroke="#2E75FF"/>
+    <circle cx="410" cy="386" r="22" fill="#ECF6FE"/>
+    <circle cx="550" cy="386" r="22" fill="#ECF6FE"/>
+    <circle cx="690" cy="386" r="22" fill="#ECF6FE"/>
+    <circle cx="830" cy="386" r="22" fill="#ECF6FE"/>
+    <circle cx="970" cy="386" r="22" fill="#ECF6FE"/>
+    <text x="410" y="393" text-anchor="middle" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{BULLET_01_NUM}}</text>
+    <text x="550" y="393" text-anchor="middle" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{BULLET_02_NUM}}</text>
+    <text x="690" y="393" text-anchor="middle" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{BULLET_03_NUM}}</text>
+    <text x="830" y="393" text-anchor="middle" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{BULLET_04_NUM}}</text>
+    <text x="970" y="393" text-anchor="middle" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18" font-weight="700">{{BULLET_05_NUM}}</text>
+    <text x="376" y="430" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20" font-weight="700">{{BULLET_01_TITLE}}</text>
+    <text x="516" y="430" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20" font-weight="700">{{BULLET_02_TITLE}}</text>
+    <text x="656" y="430" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20" font-weight="700">{{BULLET_03_TITLE}}</text>
+    <text x="796" y="430" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20" font-weight="700">{{BULLET_04_TITLE}}</text>
+    <text x="936" y="430" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20" font-weight="700">{{BULLET_05_TITLE}}</text>
+  </g>
+
+  <g id="lane-c">
+    <text x="235" y="495" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22" font-weight="700">{{STEP_03_NUM}}</text>
+    <line x1="278" y1="458" x2="278" y2="506" stroke="#C7A661" stroke-width="3"/>
+    <rect x="320" y="470" width="724" height="54" rx="4" fill="#F1F8FE" stroke="#E7E6E6"/>
+    <text x="360" y="504" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="21">{{STEP_03_DESC}}</text>
+    <text x="702" y="504" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="21" font-weight="700">→ {{CARD_04_OUTCOME}}</text>
+  </g>
+
+  <g id="right-readiness">
+    <rect x="1080" y="205" width="130" height="319" fill="#FFFFFF" stroke="#003396" stroke-width="2"/>
+    <path d="M 1096 195 L 1194 195 L 1210 224 L 1080 224 Z" fill="#003396"/>
+    <text x="1145" y="216" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="20" font-weight="700">{{COL_B_TITLE}}</text>
+    <text x="1102" y="274" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="19" font-weight="700">{{COL_B_LABEL_01}}</text>
+    <text x="1102" y="306" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18">{{COL_B_01}}</text>
+    <line x1="1110" y1="342" x2="1180" y2="342" stroke="#C7A661" stroke-width="2"/>
+    <text x="1102" y="384" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="19" font-weight="700">{{COL_B_LABEL_02}}</text>
+    <text x="1102" y="416" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="18">{{COL_B_02}}</text>
+    <line x1="1110" y1="452" x2="1180" y2="452" stroke="#C7A661" stroke-width="2"/>
+    <text x="1102" y="494" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="19" font-weight="700">{{COL_B_LABEL_03}}</text>
+  </g>
+
+  <g id="operation-timeline">
+    <rect x="204" y="548" width="1006" height="116" rx="4" fill="none" stroke="#2E75FF" stroke-width="1" stroke-dasharray="5,4"/>
+    <path d="M 236 586 L 400 586 L 422 610 L 400 634 L 236 634 Z" fill="#2E75FF"/>
+    <path d="M 430 586 L 594 586 L 616 610 L 594 634 L 430 634 Z" fill="#003396"/>
+    <path d="M 624 586 L 788 586 L 810 610 L 788 634 L 624 634 Z" fill="#2E75FF"/>
+    <path d="M 818 586 L 982 586 L 1004 610 L 982 634 L 818 634 Z" fill="#003396"/>
+    <path d="M 1012 586 L 1176 586 L 1198 610 L 1176 634 L 1012 634 Z" fill="#C7A661"/>
+    <text x="329" y="617" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="21" font-weight="700">{{STAT_01_LABEL}}</text>
+    <text x="523" y="617" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="21" font-weight="700">{{STAT_02_LABEL}}</text>
+    <text x="717" y="617" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="21" font-weight="700">{{STAT_03_LABEL}}</text>
+    <text x="911" y="617" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="21" font-weight="700">{{STAT_01_NUM}}</text>
+    <text x="1105" y="617" text-anchor="middle" fill="#FFFFFF" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="21" font-weight="700">{{STAT_02_NUM}}</text>
+  </g>
+</svg>

@@ -3,11 +3,14 @@ kp_name: "{知识点名称}"
 module: "{所属模块名称}"
 knowledge_domain: "{领域标签，如 AI/营销/管理/工具使用/银行}"
 knowledge_type: "{知识类型，如 框架/流程/原则/方法/工具/模型/概念}"
+knowledge_date: "{YYYY-MM-DD，知识发生时间=来源资料的时间，必填}"
 tags: [{补充标签，如 行业-specific、受众-specific、难度等}]
 source_marking: "{已提取 或 AI补全}"
 # 以下字段可选——增量编译/合并模式时由编译器维护
 source_files: []                   # raw/ 下的来源路径，便于回溯
-last_compiled: ""                  # YYYY-MM-DD，本次编译日期
+last_compiled: ""                  # YYYY-MM-DD，本次编译日期（编辑时间）
+knowledge_date_basis: ""           # 仅近似推断回填时填 approximate
+superseded_by: ""                  # 本知识点被新知识取代/深化时填（用户确认后），如 "[[新知识点名]]"
 upgraded_at: ""                    # 仅当 source_marking 从 AI补全 升级为 已提取 时填
 ---
 
@@ -43,3 +46,13 @@ upgraded_at: ""                    # 仅当 source_marking 从 AI补全 升级�
 | **跨域类比** | {其他领域的类似模型？无则删除此行} |
 
 > 仅列出有关联的项，无关联则删除整个表格。
+
+## 演进史（如有）
+
+{本知识点深化/取代了哪些旧知识，或被哪些新知识深化——取代关系由编译器在新旧碰撞判定后经用户确认写入，旧卡标 superseded_by，本卡回链写差异}
+
+| 时间 | 卡片 | 关系 |
+|:---|:---|:---|
+| {knowledge_date} | [[{卡片名}]] | {深化了其{哪个部分} / 被其取代 / 并存，边界差异：{...}} |
+
+> 无演进关系则删除整个段落。

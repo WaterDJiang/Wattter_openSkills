@@ -28,7 +28,8 @@ GEO 文章的最终输出必须使用本模板。`geo-content-generation.md` 负
 title: "[平台标题，建议 18-36 字]"
 date: YYYY-MM-DD
 output_mode: platform_article
-target_platform: zhihu
+content_purpose: editorial
+target_platform: "[juejin / csdn / xiaohongshu / baijiahao]"
 geo_topic: "[主题]"
 brand_entity: "[品牌或站点，可留空]"
 ai_engines:
@@ -80,7 +81,7 @@ summary: "[80-120 字摘要]"
 
 ## 最后
 
-[收束到品牌、方法或行动建议。]
+[收束到方法或读者可自行执行的下一步；品牌引导仅在 promotional 模式出现。]
 
 [可选来源归因 / 标签]
 ```
@@ -94,6 +95,7 @@ summary: "[80-120 字摘要]"
 title: "[SEO/GEO 标题]"
 icon: search
 date: YYYY-MM-DD
+content_purpose: editorial
 category:
   - AI 搜索
   - GEO
@@ -124,7 +126,7 @@ geo:
     name: "[品牌/产品/站点，可留空]"
     type: Organization
   source_attribution:
-    - "GEO Wiki"
+    - "公开 GEO 资料"
 sticky: false
 star: true
 ---
@@ -212,6 +214,8 @@ audience:
 - 不使用 `seo-output.md` 的通用 SEO Frontmatter。
 - 不加载任何 profile，除非用户明确提到对应品牌、行业或平台。
 - 即使加载 profile，也要保留 GEO 的独立输出字段。
+- 默认 `content_purpose: editorial`；用户显式要求转化型内容才写 `promotional`。
+- 红线词命中即改写，默认无品牌 CTA；平台专规见 `references/non-marketing-guardrails.md`。
 - 不使用命理赛道的 M1/M2/M3/M4 标题公式，除非用户明确要求“命理赛道流量放大”。
 - 标题必须能表达 AI 搜索 / GEO / 引用 / 提及 / 可引用性 / 平台差异中的一个具体意图。
 - 正文必须区分引用、提及、链接。

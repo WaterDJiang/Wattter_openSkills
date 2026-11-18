@@ -35,6 +35,7 @@ execution:
 适配要求：
 
 - 标题与正文分离，剥掉同名 H1。
+- 写作语气与链接方式遵循 [content-style.md](content-style.md) 的去营销化清单（禁绝对化卖货词/标题党、链接自然化、移除硬 CTA；通用，不在此重复）。
 - 保留 Markdown 层级、代码块、表格、引用和链接；删除 CSDN 编辑器控件、iframe、注释和不可复用脚本。
 - `display_on_home_page`、首页候选、站点分类、团队、可见性和评论设置属于平台专属选项，不自动开启。
 - 本地图片必须转存到博客园图床或由用户在编辑器中上传；正文不能保留本地绝对路径、`file://` 或临时目录。
@@ -53,6 +54,12 @@ execution:
 5. 验证通过后设置 `created_verified`。
 
 草稿已存在但图片或格式异常时，修复原草稿，不创建第二份。
+
+### 插件参照补充（GEO action）
+
+- 草稿创建：`POST https://i.cnblogs.com/api/posts` JSON（`postType:2, title, postBody(markdown), isPublished:false, isDraft:true, isMarkdown:true, description(摘要), tags, ...`），头带 `x-xsrf-token`；XSRF token 从 `XSRF-TOKEN` cookie 解析（`GET /posts/edit` 预热后读 cookie）。draft id = `result.id`。
+- 图片上传端点（未来图片能力备忘）：`POST https://upload.cnblogs.com/imageuploader/CorsUpload` FormData（`imageFile, host=www.cnblogs.com, uploadType=Paste`）+ `x-xsrf-token` 头 → `result.message||data||url`。当前 adapter 仍是 `images:false`。
+- 平台返回「相同标题的博文已存在」应转为重复状态（duplicate），不误判为登录失败。
 
 ### 回退：OpenCLI 浏览器编辑器
 

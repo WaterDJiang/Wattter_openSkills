@@ -14,7 +14,7 @@
    cp <SKILL_ROOT>/assets/styles/editorial/themes/*.css 项目/XXX/deck/css/
    ```
 3. 自定义品牌/主题色：用 `scripts/make-custom-theme.mjs` 生成 deck 专属 `css/theme.css`，不要把 hex 散写进 HTML。
-4. `index.html` 中的 `<link id="theme-link">` 会自动加载。预设主题用 `css/ink-classic.css` 这类具体文件，T 键可在静态/微动/沉浸模式下切换当前风格内的 5 套预设主题；自定义 `css/theme.css` 会锁定 T，避免覆盖用户品牌色。
+4. `index.html` 中的 `<link id="theme-link">` 会自动加载。预设主题用 `css/ink-classic.css` 这类具体文件，T 键可在静态/微动/沉浸模式下切换当前风格内的 5 套预设主题；自定义 `css/theme.css` 会禁用 T 按钮并提示已固定，避免覆盖用户品牌色。
 
 ### 主题文件对应
 

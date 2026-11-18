@@ -1,0 +1,3489 @@
+{
+  "_doc": "内容形态 → 模板匹配字典。forms = 封闭词表定义（字典 key）；chart_tags = chart_id → 形态映射。dimensions 可用 min_items/max_items、requires_data、requires_cue_any 排除显然不合适的 chart 候选。被 match_content_forms.py / validate_chart_mappings.py / Strategist 共享读取。新增形态或新 chart 只改本文件。",
+  "version": 1,
+  "dimensions": {
+    "relationship": [
+      "parallel",
+      "sequence",
+      "orthogonal",
+      "hierarchy",
+      "cycle",
+      "radial",
+      "special"
+    ],
+    "has_data": [
+      true,
+      false
+    ]
+  },
+  "forms": {
+    "points_2": {
+      "relationship": "parallel",
+      "count": 2,
+      "has_data": false,
+      "slots": 2,
+      "when": "2 个平级并列要点",
+      "not_when": "双栏多维对比（compare_2col）；利弊（pros_cons）"
+    },
+    "points_3": {
+      "relationship": "parallel",
+      "count": 3,
+      "has_data": false,
+      "slots": 3,
+      "when": "3 个平级并列要点",
+      "not_when": "3 步递进（flow_linear）"
+    },
+    "points_4": {
+      "relationship": "parallel",
+      "count": 4,
+      "has_data": false,
+      "slots": 4,
+      "when": "4 个平级并列要点",
+      "not_when": "4 步递进（flow_linear）；2×2 正交（matrix_2x2）"
+    },
+    "points_5": {
+      "relationship": "parallel",
+      "count": 5,
+      "has_data": false,
+      "slots": 5,
+      "when": "5 个平级并列要点",
+      "not_when": "5 步递进（flow_linear）"
+    },
+    "points_6": {
+      "relationship": "parallel",
+      "count": 6,
+      "has_data": false,
+      "slots": 6,
+      "when": "6 个平级并列要点",
+      "not_when": "循环 6 段（flow_cycle）"
+    },
+    "compare_2col": {
+      "relationship": "parallel",
+      "count": 2,
+      "has_data": false,
+      "slots": 2,
+      "when": "两个对象/方案多维度对比（传统 vs AI、A vs B）",
+      "not_when": "多维正交分类（matrix_2x2）；单纯 2 要点（points_2）"
+    },
+    "compare_table": {
+      "relationship": "parallel",
+      "has_data": false,
+      "when": "多对象按多维度逐行对比的表格",
+      "not_when": "双栏叙事对比（compare_2col）"
+    },
+    "pros_cons": {
+      "relationship": "parallel",
+      "count": 2,
+      "has_data": false,
+      "slots": 2,
+      "when": "利/弊、优/劣两栏对照",
+      "not_when": "中性双栏对比（compare_2col）"
+    },
+    "kpi_metrics": {
+      "relationship": "parallel",
+      "has_data": true,
+      "when": "多个关键指标数字卡（如 60%/40%/3x）",
+      "not_when": "单一大数字（gauge）"
+    },
+    "flow_linear": {
+      "relationship": "sequence",
+      "has_data": false,
+      "when": "线性递进步骤（识别→拆解→生成→验证）",
+      "not_when": "循环（flow_cycle）；分支决策"
+    },
+    "flow_cycle": {
+      "relationship": "cycle",
+      "has_data": false,
+      "when": "闭环循环步骤（PDCA、飞轮）",
+      "not_when": "线性（flow_linear）"
+    },
+    "timeline": {
+      "relationship": "sequence",
+      "has_data": false,
+      "when": "时间轴/路线图/旅程的先后节点",
+      "not_when": "无时序的并列（points_N）"
+    },
+    "steps_ascending": {
+      "relationship": "sequence",
+      "has_data": false,
+      "when": "逐级上升的台阶/阶梯递进",
+      "not_when": "平级流程（flow_linear）"
+    },
+    "matrix_2x2": {
+      "relationship": "orthogonal",
+      "count": 4,
+      "has_data": false,
+      "slots": 4,
+      "when": "两独立维度交叉分类（重要/紧急、成本/收益）",
+      "not_when": "四项平级（points_4）"
+    },
+    "quadrant_data": {
+      "relationship": "orthogonal",
+      "has_data": true,
+      "when": "两数值维度散点分象限",
+      "not_when": "纯文本四象限（matrix_2x2）"
+    },
+    "pyramid": {
+      "relationship": "hierarchy",
+      "has_data": false,
+      "when": "层级递进的金字塔/马斯洛式分层",
+      "not_when": "平级要点（points_N）"
+    },
+    "tree": {
+      "relationship": "hierarchy",
+      "has_data": false,
+      "when": "树状/组织/脑图式的层级展开",
+      "not_when": "线性流程（flow_linear）"
+    },
+    "treemap_proportion": {
+      "relationship": "hierarchy",
+      "has_data": true,
+      "when": "按占比切分的层级矩形",
+      "not_when": "纯结构树（tree）"
+    },
+    "hub_spoke": {
+      "relationship": "radial",
+      "has_data": false,
+      "when": "中心辐射/一轮多瓣（一核心 N 分支）",
+      "not_when": "并列卡（points_N）；循环（flow_cycle）"
+    },
+    "venn": {
+      "relationship": "special",
+      "has_data": false,
+      "when": "集合交并关系（2-3 圈韦恩）",
+      "not_when": "普通对比（compare_2col）"
+    },
+    "fishbone": {
+      "relationship": "special",
+      "has_data": false,
+      "when": "因果鱼骨图（结果 + 多类原因）",
+      "not_when": "并列原因（points_N）"
+    },
+    "architecture": {
+      "relationship": "special",
+      "has_data": false,
+      "when": "系统架构/模块组成/客户端-服务端拓扑",
+      "not_when": "业务流程（flow_linear）"
+    },
+    "agenda": {
+      "relationship": "special",
+      "has_data": false,
+      "when": "议程/目录清单",
+      "not_when": "并列要点（points_N）"
+    },
+    "team": {
+      "relationship": "special",
+      "has_data": false,
+      "when": "团队/角色花名册",
+      "not_when": "并列要点（points_N）"
+    },
+    "table": {
+      "relationship": "special",
+      "has_data": false,
+      "when": "通用信息/咨询/特征/财务表格",
+      "not_when": "对比表（compare_table）"
+    },
+    "gantt": {
+      "relationship": "sequence",
+      "has_data": true,
+      "when": "项目排期甘特/进度表",
+      "not_when": "无时间维度的表格（table）"
+    },
+    "bar": {
+      "relationship": "sequence",
+      "has_data": true,
+      "when": "单系列数值排序对比（柱状）",
+      "not_when": "多系列分组（bar_grouped）；构成（composition_pie）"
+    },
+    "bar_grouped": {
+      "relationship": "sequence",
+      "has_data": true,
+      "when": "2-4 系列同维度并排对比（YoY/QoQ）",
+      "not_when": "单系列（bar）；构成（bar_stacked）"
+    },
+    "bar_stacked": {
+      "relationship": "sequence",
+      "has_data": true,
+      "when": "每类内部构成堆叠",
+      "not_when": "独立系列并排（bar_grouped）"
+    },
+    "trend_line": {
+      "relationship": "sequence",
+      "has_data": true,
+      "when": "数值随时间/序号变化趋势",
+      "not_when": "纯结构无数据（flow_linear/timeline）"
+    },
+    "trend_area": {
+      "relationship": "sequence",
+      "has_data": true,
+      "when": "强调累积体量的趋势",
+      "not_when": "纯方向无体量（trend_line）"
+    },
+    "composition_pie": {
+      "relationship": "special",
+      "has_data": true,
+      "when": "整体构成占比（饼/环）",
+      "not_when": "趋势（trend_line）；对比（bar）"
+    },
+    "correlation_scatter": {
+      "relationship": "orthogonal",
+      "has_data": true,
+      "when": "两变量相关散点",
+      "not_when": "分象限（quadrant_data）"
+    },
+    "radar": {
+      "relationship": "special",
+      "has_data": true,
+      "when": "多维度均衡雷达",
+      "not_when": "2 维（quadrant_data）"
+    },
+    "gauge": {
+      "relationship": "special",
+      "has_data": true,
+      "when": "单值仪表/进度",
+      "not_when": "多指标（kpi_metrics）"
+    },
+    "heatmap": {
+      "relationship": "orthogonal",
+      "has_data": true,
+      "when": "两维度密度热力",
+      "not_when": "散点（correlation_scatter）"
+    },
+    "distribution_box": {
+      "relationship": "special",
+      "has_data": true,
+      "when": "分布箱线",
+      "not_when": "单值（gauge）"
+    },
+    "waterfall": {
+      "relationship": "sequence",
+      "has_data": true,
+      "when": "bridge/瀑布拆解（初值→增减→终值）",
+      "not_when": "并排柱（bar_grouped）"
+    },
+    "pareto": {
+      "relationship": "special",
+      "has_data": true,
+      "when": "帕累托 80/20（柱+累计线）",
+      "not_when": "纯柱（bar）"
+    },
+    "delta_dumbbell": {
+      "relationship": "special",
+      "has_data": true,
+      "when": "两点变化量哑铃",
+      "not_when": "并排柱（bar_grouped）"
+    },
+    "funnel": {
+      "relationship": "sequence",
+      "has_data": true,
+      "when": "转化漏斗逐层收窄",
+      "not_when": "金字塔层级（pyramid）"
+    },
+    "sankey": {
+      "relationship": "sequence",
+      "has_data": true,
+      "when": "带流量宽度的分支流向",
+      "not_when": "纯流程（flow_linear）"
+    }
+  },
+  "chart_tags": {
+    "agenda_list": {
+      "content_forms": [
+        "agenda"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "arc_anchored_list": {
+      "content_forms": [
+        "points_4",
+        "points_5"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      }
+    },
+    "area_chart": {
+      "content_forms": [
+        "trend_area"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "bar_chart": {
+      "content_forms": [
+        "bar"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "basic_table": {
+      "content_forms": [
+        "table"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "box_plot_chart": {
+      "content_forms": [
+        "distribution_box"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": true
+      }
+    },
+    "bubble_chart": {
+      "content_forms": [
+        "correlation_scatter"
+      ],
+      "dimensions": {
+        "relationship": "orthogonal",
+        "has_data": true
+      }
+    },
+    "bullet_chart": {
+      "content_forms": [
+        "gauge"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": true
+      }
+    },
+    "butterfly_chart": {
+      "content_forms": [
+        "bar_grouped"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": true,
+        "requires_data": true,
+        "min_items": 2,
+        "max_items": 2,
+        "requires_cue_any": ["镜像", "对称", "共同轴", "左右相向", "人口金字塔"]
+      }
+    },
+    "chevron_chain_with_tail": {
+      "content_forms": [
+        "flow_linear",
+        "steps_ascending"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false,
+        "min_items": 4,
+        "max_items": 6,
+        "requires_cue_any": ["汇总", "综合结果", "总结果", "最终产物", "价值链"]
+      }
+    },
+    "chevron_process": {
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false,
+        "min_items": 3,
+        "max_items": 6
+      }
+    },
+    "circular_stages": {
+      "content_forms": [
+        "flow_cycle"
+      ],
+      "dimensions": {
+        "relationship": "cycle",
+        "has_data": false
+      }
+    },
+    "client_server_flow": {
+      "content_forms": [
+        "architecture"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "comparison_columns": {
+      "content_forms": [
+        "compare_2col"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      }
+    },
+    "comparison_table": {
+      "content_forms": [
+        "compare_table",
+        "compare_2col"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      }
+    },
+    "concentric_circles": {
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      }
+    },
+    "consulting_table": {
+      "content_forms": [
+        "table",
+        "compare_table"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "donut_chart": {
+      "content_forms": [
+        "composition_pie"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": true
+      }
+    },
+    "dual_axis_line_chart": {
+      "content_forms": [
+        "trend_line"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "dumbbell_chart": {
+      "content_forms": [
+        "delta_dumbbell"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": true
+      }
+    },
+    "feature_matrix_table": {
+      "content_forms": [
+        "table",
+        "compare_table"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "financial_statement_table": {
+      "content_forms": [
+        "table"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "fishbone_diagram": {
+      "content_forms": [
+        "fishbone"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "funnel_chart": {
+      "content_forms": [
+        "funnel"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "gantt_chart": {
+      "content_forms": [
+        "gantt"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "gauge_chart": {
+      "content_forms": [
+        "gauge"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": true
+      }
+    },
+    "grouped_bar_chart": {
+      "content_forms": [
+        "bar_grouped"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "harvey_balls_table": {
+      "content_forms": [
+        "table",
+        "compare_table"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "heatmap_chart": {
+      "content_forms": [
+        "heatmap"
+      ],
+      "dimensions": {
+        "relationship": "orthogonal",
+        "has_data": true
+      }
+    },
+    "horizontal_bar_chart": {
+      "content_forms": [
+        "bar"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "hub_inward_arrows": {
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      }
+    },
+    "hub_spoke": {
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      }
+    },
+    "icon_grid": {
+      "content_forms": [
+        "points_2",
+        "points_3",
+        "points_4",
+        "points_5",
+        "points_6"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      }
+    },
+    "isometric_stairs": {
+      "content_forms": [
+        "steps_ascending"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      }
+    },
+    "journey_map": {
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      }
+    },
+    "kpi_cards": {
+      "content_forms": [
+        "kpi_metrics"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": true
+      }
+    },
+    "labeled_card": {
+      "content_forms": [
+        "points_2",
+        "points_3",
+        "points_4"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      }
+    },
+    "layered_architecture": {
+      "content_forms": [
+        "architecture"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "line_chart": {
+      "content_forms": [
+        "trend_line"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "matrix_2x2": {
+      "content_forms": [
+        "matrix_2x2"
+      ],
+      "dimensions": {
+        "relationship": "orthogonal",
+        "has_data": false
+      }
+    },
+    "mind_map": {
+      "content_forms": [
+        "tree"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": false
+      }
+    },
+    "module_composition": {
+      "content_forms": [
+        "architecture"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "numbered_steps": {
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false,
+        "min_items": 3,
+        "max_items": 6
+      }
+    },
+    "pareto_chart": {
+      "content_forms": [
+        "pareto"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": true
+      }
+    },
+    "pie_chart": {
+      "content_forms": [
+        "composition_pie"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": true
+      }
+    },
+    "pipeline_with_stages": {
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false,
+        "min_items": 3,
+        "max_items": 5,
+        "requires_cue_any": ["产物", "交付物", "输出", "成果"]
+      }
+    },
+    "process_flow": {
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false,
+        "min_items": 3,
+        "max_items": 8
+      }
+    },
+    "progress_bar_chart": {
+      "content_forms": [
+        "gauge"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": true
+      }
+    },
+    "project_schedule_table": {
+      "content_forms": [
+        "gantt"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "pros_cons_chart": {
+      "content_forms": [
+        "pros_cons"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      }
+    },
+    "pyramid_chart": {
+      "content_forms": [
+        "pyramid"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": false
+      }
+    },
+    "pyramid_isometric": {
+      "content_forms": [
+        "pyramid"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": false
+      }
+    },
+    "quadrant_bubble_scatter": {
+      "content_forms": [
+        "quadrant_data"
+      ],
+      "dimensions": {
+        "relationship": "orthogonal",
+        "has_data": true
+      }
+    },
+    "quadrant_text_bullets": {
+      "content_forms": [
+        "matrix_2x2"
+      ],
+      "dimensions": {
+        "relationship": "orthogonal",
+        "has_data": false
+      }
+    },
+    "radar_chart": {
+      "content_forms": [
+        "radar"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": true
+      }
+    },
+    "roadmap_vertical": {
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      }
+    },
+    "sankey_chart": {
+      "content_forms": [
+        "sankey"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "scatter_chart": {
+      "content_forms": [
+        "correlation_scatter"
+      ],
+      "dimensions": {
+        "relationship": "orthogonal",
+        "has_data": true
+      }
+    },
+    "segmented_wheel": {
+      "content_forms": [
+        "flow_cycle",
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "cycle",
+        "has_data": false
+      }
+    },
+    "snake_flow": {
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false,
+        "min_items": 6,
+        "max_items": 10
+      }
+    },
+    "stacked_area_chart": {
+      "content_forms": [
+        "trend_area"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "stacked_bar_chart": {
+      "content_forms": [
+        "bar_stacked"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "team_roster": {
+      "content_forms": [
+        "team"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "timeline": {
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      }
+    },
+    "top_down_tree": {
+      "content_forms": [
+        "tree"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": false
+      }
+    },
+    "treemap_chart": {
+      "content_forms": [
+        "treemap_proportion"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": true
+      }
+    },
+    "venn_diagram": {
+      "content_forms": [
+        "venn"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    },
+    "vertical_list": {
+      "content_forms": [
+        "points_3",
+        "points_4",
+        "points_5"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      }
+    },
+    "vertical_pillars": {
+      "content_forms": [
+        "points_3",
+        "points_4",
+        "points_5"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      }
+    },
+    "waterfall_chart": {
+      "content_forms": [
+        "waterfall"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": true
+      }
+    },
+    "word_cloud": {
+      "content_forms": [
+        "agenda"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      }
+    }
+  },
+  "page_variant_tags": {
+    "layouts/academic_defense/01_cover": {
+      "kind": "layouts",
+      "package": "academic_defense",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/academic_defense/02_chapter": {
+      "kind": "layouts",
+      "package": "academic_defense",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/academic_defense/02_toc": {
+      "kind": "layouts",
+      "package": "academic_defense",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/academic_defense/03_content": {
+      "kind": "layouts",
+      "package": "academic_defense",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/academic_defense/04_ending": {
+      "kind": "layouts",
+      "package": "academic_defense",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/ai_ops/01_cover": {
+      "kind": "layouts",
+      "package": "ai_ops",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/ai_ops/02_chapter": {
+      "kind": "layouts",
+      "package": "ai_ops",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/ai_ops/02_toc": {
+      "kind": "layouts",
+      "package": "ai_ops",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/ai_ops/03_content": {
+      "kind": "layouts",
+      "package": "ai_ops",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/ai_ops/04_ending": {
+      "kind": "layouts",
+      "package": "ai_ops",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/china_telecom_template/01_cover": {
+      "kind": "layouts",
+      "package": "china_telecom_template",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/china_telecom_template/02_chapter": {
+      "kind": "layouts",
+      "package": "china_telecom_template",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/china_telecom_template/02_toc": {
+      "kind": "layouts",
+      "package": "china_telecom_template",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/china_telecom_template/03_content": {
+      "kind": "layouts",
+      "package": "china_telecom_template",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/china_telecom_template/04_ending": {
+      "kind": "layouts",
+      "package": "china_telecom_template",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/exhibit/01_cover": {
+      "kind": "layouts",
+      "package": "exhibit",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/exhibit/02_chapter": {
+      "kind": "layouts",
+      "package": "exhibit",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/exhibit/02_toc": {
+      "kind": "layouts",
+      "package": "exhibit",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/exhibit/03_content": {
+      "kind": "layouts",
+      "package": "exhibit",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/exhibit/04_ending": {
+      "kind": "layouts",
+      "package": "exhibit",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/google_style/01_cover": {
+      "kind": "layouts",
+      "package": "google_style",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/google_style/02_chapter": {
+      "kind": "layouts",
+      "package": "google_style",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/google_style/02_toc": {
+      "kind": "layouts",
+      "package": "google_style",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/google_style/03_content": {
+      "kind": "layouts",
+      "package": "google_style",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/google_style/04_ending": {
+      "kind": "layouts",
+      "package": "google_style",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/government_blue/01_cover": {
+      "kind": "layouts",
+      "package": "government_blue",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/government_blue/02_chapter": {
+      "kind": "layouts",
+      "package": "government_blue",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/government_blue/02_toc": {
+      "kind": "layouts",
+      "package": "government_blue",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/government_blue/03_content": {
+      "kind": "layouts",
+      "package": "government_blue",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/government_blue/04_ending": {
+      "kind": "layouts",
+      "package": "government_blue",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/government_red/01_cover": {
+      "kind": "layouts",
+      "package": "government_red",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/government_red/02_chapter": {
+      "kind": "layouts",
+      "package": "government_red",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/government_red/02_toc": {
+      "kind": "layouts",
+      "package": "government_red",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/government_red/03_content": {
+      "kind": "layouts",
+      "package": "government_red",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/government_red/04_ending": {
+      "kind": "layouts",
+      "package": "government_red",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/mckinsey/01_cover": {
+      "kind": "layouts",
+      "package": "mckinsey",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/mckinsey/02_chapter": {
+      "kind": "layouts",
+      "package": "mckinsey",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/mckinsey/02_toc": {
+      "kind": "layouts",
+      "package": "mckinsey",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/mckinsey/03_content": {
+      "kind": "layouts",
+      "package": "mckinsey",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/mckinsey/04_ending": {
+      "kind": "layouts",
+      "package": "mckinsey",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/medical_university/01_cover": {
+      "kind": "layouts",
+      "package": "medical_university",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/medical_university/02_chapter": {
+      "kind": "layouts",
+      "package": "medical_university",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/medical_university/02_toc": {
+      "kind": "layouts",
+      "package": "medical_university",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/medical_university/03_content": {
+      "kind": "layouts",
+      "package": "medical_university",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/medical_university/04_ending": {
+      "kind": "layouts",
+      "package": "medical_university",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/pixel_retro/01_cover": {
+      "kind": "layouts",
+      "package": "pixel_retro",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/pixel_retro/02_chapter": {
+      "kind": "layouts",
+      "package": "pixel_retro",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/pixel_retro/02_toc": {
+      "kind": "layouts",
+      "package": "pixel_retro",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/pixel_retro/03_content": {
+      "kind": "layouts",
+      "package": "pixel_retro",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/pixel_retro/04_ending": {
+      "kind": "layouts",
+      "package": "pixel_retro",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/psychology_attachment/01_cover": {
+      "kind": "layouts",
+      "package": "psychology_attachment",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/psychology_attachment/02_chapter": {
+      "kind": "layouts",
+      "package": "psychology_attachment",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/psychology_attachment/02_toc": {
+      "kind": "layouts",
+      "package": "psychology_attachment",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/psychology_attachment/03_content": {
+      "kind": "layouts",
+      "package": "psychology_attachment",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/psychology_attachment/04_ending": {
+      "kind": "layouts",
+      "package": "psychology_attachment",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/smart_red/01_cover": {
+      "kind": "layouts",
+      "package": "smart_red",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/smart_red/02_chapter": {
+      "kind": "layouts",
+      "package": "smart_red",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/smart_red/02_toc": {
+      "kind": "layouts",
+      "package": "smart_red",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/smart_red/03_content": {
+      "kind": "layouts",
+      "package": "smart_red",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/smart_red/04_ending": {
+      "kind": "layouts",
+      "package": "smart_red",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/科技蓝商务/01_cover": {
+      "kind": "layouts",
+      "package": "科技蓝商务",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/科技蓝商务/02_chapter": {
+      "kind": "layouts",
+      "package": "科技蓝商务",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/科技蓝商务/02_toc": {
+      "kind": "layouts",
+      "package": "科技蓝商务",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "layouts/科技蓝商务/03_content": {
+      "kind": "layouts",
+      "package": "科技蓝商务",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "layouts/科技蓝商务/04_ending": {
+      "kind": "layouts",
+      "package": "科技蓝商务",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电信/01_cover": {
+      "kind": "decks",
+      "package": "中国电信",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电信/02_chapter": {
+      "kind": "decks",
+      "package": "中国电信",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电信/02_toc": {
+      "kind": "decks",
+      "package": "中国电信",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电信/03_content": {
+      "kind": "decks",
+      "package": "中国电信",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/中国电信/04_ending": {
+      "kind": "decks",
+      "package": "中国电信",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电建_常规/01_cover": {
+      "kind": "decks",
+      "package": "中国电建_常规",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电建_常规/02_chapter": {
+      "kind": "decks",
+      "package": "中国电建_常规",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电建_常规/02_toc": {
+      "kind": "decks",
+      "package": "中国电建_常规",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电建_常规/03_content": {
+      "kind": "decks",
+      "package": "中国电建_常规",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/中国电建_常规/04_ending": {
+      "kind": "decks",
+      "package": "中国电建_常规",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电建_现代/01_cover": {
+      "kind": "decks",
+      "package": "中国电建_现代",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电建_现代/02_chapter": {
+      "kind": "decks",
+      "package": "中国电建_现代",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电建_现代/02_toc": {
+      "kind": "decks",
+      "package": "中国电建_现代",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国电建_现代/03_content": {
+      "kind": "decks",
+      "package": "中国电建_现代",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/中国电建_现代/04_ending": {
+      "kind": "decks",
+      "package": "中国电建_现代",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中国移动/005_content_dual_checklist_cards": {
+      "kind": "decks",
+      "package": "中国移动",
+      "file": "005_content_dual_checklist_cards",
+      "page_type": "content",
+      "content_forms": ["compare_2col"],
+      "dimensions": {"relationship": "parallel", "has_data": false},
+      "confidence": "high"
+    },
+    "decks/中国移动/006_content_three_step_chain": {
+      "kind": "decks",
+      "package": "中国移动",
+      "file": "006_content_three_step_chain",
+      "page_type": "content",
+      "content_forms": ["flow_linear"],
+      "dimensions": {"relationship": "sequence", "has_data": false},
+      "confidence": "high"
+    },
+    "decks/中国移动/007_content_wave_timeline_5": {
+      "kind": "decks",
+      "package": "中国移动",
+      "file": "007_content_wave_timeline_5",
+      "page_type": "content",
+      "content_forms": ["timeline"],
+      "dimensions": {"relationship": "sequence", "has_data": false},
+      "confidence": "high"
+    },
+    "decks/中国移动/008_content_data_table_4_col": {
+      "kind": "decks",
+      "package": "中国移动",
+      "file": "008_content_data_table_4_col",
+      "page_type": "content",
+      "content_forms": ["table"],
+      "dimensions": {"relationship": "special", "has_data": false},
+      "confidence": "high"
+    },
+    "decks/中国移动/009_content_kpi_cards_3_plus_5": {
+      "kind": "decks",
+      "package": "中国移动",
+      "file": "009_content_kpi_cards_3_plus_5",
+      "page_type": "content",
+      "content_forms": ["kpi_metrics"],
+      "dimensions": {"relationship": "parallel", "has_data": true},
+      "confidence": "high"
+    },
+    "decks/中国移动/010_content_gantt_schedule_6": {
+      "kind": "decks",
+      "package": "中国移动",
+      "file": "010_content_gantt_schedule_6",
+      "page_type": "content",
+      "content_forms": ["timeline"],
+      "dimensions": {"relationship": "sequence", "has_data": false},
+      "confidence": "high"
+    },
+    "decks/中汽研_商务/01_cover": {
+      "kind": "decks",
+      "package": "中汽研_商务",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_商务/02_chapter": {
+      "kind": "decks",
+      "package": "中汽研_商务",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_商务/02_toc": {
+      "kind": "decks",
+      "package": "中汽研_商务",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_商务/03_content": {
+      "kind": "decks",
+      "package": "中汽研_商务",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/中汽研_商务/04_ending": {
+      "kind": "decks",
+      "package": "中汽研_商务",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_常规/01_cover": {
+      "kind": "decks",
+      "package": "中汽研_常规",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_常规/02_chapter": {
+      "kind": "decks",
+      "package": "中汽研_常规",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_常规/02_toc": {
+      "kind": "decks",
+      "package": "中汽研_常规",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_常规/03_content": {
+      "kind": "decks",
+      "package": "中汽研_常规",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/中汽研_常规/04_ending": {
+      "kind": "decks",
+      "package": "中汽研_常规",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_现代/01_cover": {
+      "kind": "decks",
+      "package": "中汽研_现代",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_现代/02_chapter": {
+      "kind": "decks",
+      "package": "中汽研_现代",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_现代/02_toc": {
+      "kind": "decks",
+      "package": "中汽研_现代",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/中汽研_现代/03_content": {
+      "kind": "decks",
+      "package": "中汽研_现代",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/中汽研_现代/04_ending": {
+      "kind": "decks",
+      "package": "中汽研_现代",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/01_cover": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/02_toc": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/03_chapter": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "03_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/04_content_principle_layers": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "04_content_principle_layers",
+      "page_type": "content",
+      "content_forms": [
+        "architecture"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/05_content_ai_mechanism": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "05_content_ai_mechanism",
+      "page_type": "content",
+      "content_forms": [
+        "architecture"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/06_content_ai_workflow": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "06_content_ai_workflow",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/07_content_prompt_anatomy": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "07_content_prompt_anatomy",
+      "page_type": "content",
+      "content_forms": [
+        "points_5"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/08_content_demo_walkthrough": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "08_content_demo_walkthrough",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/09_content_practice_brief": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "09_content_practice_brief",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/10_content_practice_canvas": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "10_content_practice_canvas",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/11_content_before_after": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "11_content_before_after",
+      "page_type": "content",
+      "content_forms": [
+        "compare_2col"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/12_content_evaluation_rubric": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "12_content_evaluation_rubric",
+      "page_type": "content",
+      "content_forms": [
+        "table"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/13_content_debug_loop": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "13_content_debug_loop",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/14_content_transfer_plan": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "14_content_transfer_plan",
+      "page_type": "content",
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/15_ending": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "15_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/16_content_decision_fork": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "16_content_decision_fork",
+      "page_type": "content",
+      "content_forms": [
+        "tree"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/17_content_prompt_four_fields": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "17_content_prompt_four_fields",
+      "page_type": "content",
+      "content_forms": [
+        "points_4"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/AI课程_蓝金实战/18_content_clarifying_dialogue": {
+      "kind": "decks",
+      "package": "AI课程_蓝金实战",
+      "file": "18_content_clarifying_dialogue",
+      "page_type": "content",
+      "content_forms": [
+        "points_3"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/01_cover": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/02_toc": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/03_chapter": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "03_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/03b_chapter_modern": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "03b_chapter_modern",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04_content": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/平安知鸟/04b_content_flow": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04b_content_flow",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04c_content_bullets": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04c_content_bullets",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/平安知鸟/04d_content_compare": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04d_content_compare",
+      "page_type": "content",
+      "content_forms": [
+        "compare_2col"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04e_content_stats": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04e_content_stats",
+      "page_type": "content",
+      "content_forms": [
+        "kpi_metrics"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": true
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04f_content_compare_orbit": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04f_content_compare_orbit",
+      "page_type": "content",
+      "content_forms": [
+        "compare_2col"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04g_content_points_radial": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04g_content_points_radial",
+      "page_type": "content",
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04h_content_points_cards": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04h_content_points_cards",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/平安知鸟/04i_content_project_roadmap": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04i_content_project_roadmap",
+      "page_type": "content",
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04j_content_service_swimlanes": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04j_content_service_swimlanes",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04k_content_agenda_matrix": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04k_content_agenda_matrix",
+      "page_type": "content",
+      "content_forms": [
+        "matrix_2x2"
+      ],
+      "dimensions": {
+        "relationship": "orthogonal",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04l_content_mentor_three_cards": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04l_content_mentor_three_cards",
+      "page_type": "content",
+      "content_forms": [
+        "team"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04m_content_operation_loop": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04m_content_operation_loop",
+      "page_type": "content",
+      "content_forms": [
+        "flow_cycle"
+      ],
+      "dimensions": {
+        "relationship": "cycle",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/04n_content_feature_orbit_icons": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "04n_content_feature_orbit_icons",
+      "page_type": "content",
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/平安知鸟/05_ending": {
+      "kind": "decks",
+      "package": "平安知鸟",
+      "file": "05_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/招商银行/01_cover": {
+      "kind": "decks",
+      "package": "招商银行",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/招商银行/02_chapter": {
+      "kind": "decks",
+      "package": "招商银行",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/招商银行/02_toc": {
+      "kind": "decks",
+      "package": "招商银行",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/招商银行/03_content": {
+      "kind": "decks",
+      "package": "招商银行",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/招商银行/04_ending": {
+      "kind": "decks",
+      "package": "招商银行",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/001_cover_rail_hero": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "001_cover_rail_hero",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/002_toc_six_chapters": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "002_toc_six_chapters",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/003_chapter_train_fullbleed": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "003_chapter_train_fullbleed",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/004_content_text_canvas": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "004_content_text_canvas",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/浙江地铁运营版/005_content_photo_gallery_3": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "005_content_photo_gallery_3",
+      "page_type": "content",
+      "content_forms": [
+        "points_3"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁运营版/006_content_team_image_text": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "006_content_team_image_text",
+      "page_type": "content",
+      "content_forms": [
+        "team"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/007_content_dual_checklist_cards": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "007_content_dual_checklist_cards",
+      "page_type": "content",
+      "content_forms": [
+        "compare_2col"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/008_content_dual_stage_track": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "008_content_dual_stage_track",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁运营版/009_content_vs_comparison": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "009_content_vs_comparison",
+      "page_type": "content",
+      "content_forms": [
+        "compare_2col"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/010_content_three_stage_columns": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "010_content_three_stage_columns",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁运营版/011_content_three_step_chain": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "011_content_three_step_chain",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁运营版/012_content_hub_spoke_3": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "012_content_hub_spoke_3",
+      "page_type": "content",
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/013_content_hub_spoke_4_hex": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "013_content_hub_spoke_4_hex",
+      "page_type": "content",
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/014_content_four_layer_stack": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "014_content_four_layer_stack",
+      "page_type": "content",
+      "content_forms": [
+        "pyramid"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁运营版/015_content_radial_segments_5": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "015_content_radial_segments_5",
+      "page_type": "content",
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/016_content_half_circle_ecosystem_5": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "016_content_half_circle_ecosystem_5",
+      "page_type": "content",
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/017_content_wave_timeline_5": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "017_content_wave_timeline_5",
+      "page_type": "content",
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/018_content_rising_milestones_4": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "018_content_rising_milestones_4",
+      "page_type": "content",
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/019_content_double_track_workflow": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "019_content_double_track_workflow",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/020_content_growth_wave_milestones_6": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "020_content_growth_wave_milestones_6",
+      "page_type": "content",
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/021_content_calendar_schedule_4": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "021_content_calendar_schedule_4",
+      "page_type": "content",
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/022_content_gantt_timeline_6": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "022_content_gantt_timeline_6",
+      "page_type": "content",
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/023_content_org_chart_three_branch": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "023_content_org_chart_three_branch",
+      "page_type": "content",
+      "content_forms": [
+        "tree"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/024_content_hierarchy_tree_3x6": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "024_content_hierarchy_tree_3x6",
+      "page_type": "content",
+      "content_forms": [
+        "tree"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/025_content_module_matrix_5_plus_2": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "025_content_module_matrix_5_plus_2",
+      "page_type": "content",
+      "content_forms": [
+        "architecture"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/026_content_center_workflow_side_support": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "026_content_center_workflow_side_support",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/027_content_data_table_4_col": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "027_content_data_table_4_col",
+      "page_type": "content",
+      "content_forms": [
+        "table"
+      ],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/028_content_gauge_dashboard_4": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "028_content_gauge_dashboard_4",
+      "page_type": "content",
+      "content_forms": [
+        "kpi_metrics"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": true
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/029_content_kpi_cards_3_plus_5": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "029_content_kpi_cards_3_plus_5",
+      "page_type": "content",
+      "content_forms": [
+        "kpi_metrics"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": true
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/030_content_dashboard_single_chart": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "030_content_dashboard_single_chart",
+      "page_type": "content",
+      "content_forms": [
+        "kpi_metrics"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": true
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/031_content_dashboard_dual_chart": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "031_content_dashboard_dual_chart",
+      "page_type": "content",
+      "content_forms": [
+        "kpi_metrics"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": true
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/032_chapter_minimal_title": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "032_chapter_minimal_title",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁运营版/033_content_blank_brand_canvas": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "033_content_blank_brand_canvas",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/浙江地铁运营版/034_ending_train_thanks": {
+      "kind": "decks",
+      "package": "浙江地铁运营版",
+      "file": "034_ending_train_thanks",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/001_cover_rail_brand": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "001_cover_rail_brand",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/002_toc_image_cards": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "002_toc_image_cards",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/003_content_dual_circle_compare": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "003_content_dual_circle_compare",
+      "page_type": "content",
+      "content_forms": [
+        "compare_2col"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/004_content_six_items_two_groups": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "004_content_six_items_two_groups",
+      "page_type": "content",
+      "content_forms": [
+        "points_6"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁集团版/005_content_three_scene_cards": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "005_content_three_scene_cards",
+      "page_type": "content",
+      "content_forms": [
+        "points_3"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁集团版/006_content_split_overview_panel": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "006_content_split_overview_panel",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/浙江地铁集团版/007_content_four_dimension_orbit": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "007_content_four_dimension_orbit",
+      "page_type": "content",
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/008_chapter_four_module_preview": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "008_chapter_four_module_preview",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/009_content_five_point_radial": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "009_content_five_point_radial",
+      "page_type": "content",
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/010_content_photo_gallery": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "010_content_photo_gallery",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁集团版/011_content_six_module_grid": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "011_content_six_module_grid",
+      "page_type": "content",
+      "content_forms": [
+        "points_6"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁集团版/012_content_seven_factor_orbit": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "012_content_seven_factor_orbit",
+      "page_type": "content",
+      "content_forms": [
+        "hub_spoke"
+      ],
+      "dimensions": {
+        "relationship": "radial",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/013_content_nine_branch_map": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "013_content_nine_branch_map",
+      "page_type": "content",
+      "content_forms": [
+        "tree"
+      ],
+      "dimensions": {
+        "relationship": "hierarchy",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/014_content_five_stage_swimlane": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "014_content_five_stage_swimlane",
+      "page_type": "content",
+      "content_forms": [
+        "flow_linear"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/015_content_yearly_milestone_timeline": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "015_content_yearly_milestone_timeline",
+      "page_type": "content",
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/016_content_half_year_schedule_matrix": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "016_content_half_year_schedule_matrix",
+      "page_type": "content",
+      "content_forms": [
+        "timeline"
+      ],
+      "dimensions": {
+        "relationship": "sequence",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/浙江地铁集团版/017_content_four_award_wall": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "017_content_four_award_wall",
+      "page_type": "content",
+      "content_forms": [
+        "points_4"
+      ],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁集团版/018_content_honor_list_summary": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "018_content_honor_list_summary",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "medium"
+    },
+    "decks/浙江地铁集团版/019_ending_flower_train_thanks": {
+      "kind": "decks",
+      "package": "浙江地铁集团版",
+      "file": "019_ending_flower_train_thanks",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/重庆大学/01_cover": {
+      "kind": "decks",
+      "package": "重庆大学",
+      "file": "01_cover",
+      "page_type": "cover",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/重庆大学/02_chapter": {
+      "kind": "decks",
+      "package": "重庆大学",
+      "file": "02_chapter",
+      "page_type": "chapter",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/重庆大学/02_toc": {
+      "kind": "decks",
+      "package": "重庆大学",
+      "file": "02_toc",
+      "page_type": "toc",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    },
+    "decks/重庆大学/03_content": {
+      "kind": "decks",
+      "package": "重庆大学",
+      "file": "03_content",
+      "page_type": "content",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "parallel",
+        "has_data": false
+      },
+      "confidence": "low"
+    },
+    "decks/重庆大学/04_ending": {
+      "kind": "decks",
+      "package": "重庆大学",
+      "file": "04_ending",
+      "page_type": "ending",
+      "content_forms": [],
+      "dimensions": {
+        "relationship": "special",
+        "has_data": false
+      },
+      "confidence": "high"
+    }
+  }
+}

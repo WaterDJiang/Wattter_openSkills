@@ -29,6 +29,7 @@ INHERITABLE_ATTRS = [
 
 # Known East Asian fonts
 EA_FONTS = {
+    'Arial Unicode MS',
     'PingFang SC', 'PingFang TC', 'PingFang HK',
     'Microsoft YaHei', 'Microsoft JhengHei',
     'SimSun', 'SimHei', 'FangSong', 'KaiTi', 'STKaiti',
@@ -59,6 +60,12 @@ EA_FONTS = {
     # Korean
     'Malgun Gothic', 'Gulim', 'Dotum', 'Batang',
     'Noto Sans KR', 'Noto Serif KR',
+}
+DUAL_SCRIPT_FONTS = {
+    # These fonts are intentionally valid for both Latin and East Asian runs.
+    # Keeping both DrawingML typefaces aligned avoids a missing CJK fallback
+    # when a viewer does not have Microsoft YaHei installed.
+    'Arial Unicode MS',
 }
 SYSTEM_FONTS = {'system-ui', '-apple-system', 'BlinkMacSystemFont'}
 
@@ -414,7 +421,10 @@ def parse_font_family(font_family_str: str) -> dict[str, str]:
             continue
 
         win_font = FONT_FALLBACK_WIN.get(font, font)
-        if font in EA_FONTS:
+        if font in DUAL_SCRIPT_FONTS:
+            latin_font = latin_font or win_font
+            ea_font = ea_font or win_font
+        elif font in EA_FONTS:
             ea_font = ea_font or win_font
         else:
             latin_font = latin_font or win_font
@@ -445,7 +455,7 @@ def estimate_text_width(text: str, font_size: float, font_weight: str = '400') -
     """Estimate text width in SVG pixels."""
     width = 0.0
     for ch in text:
-        if is_cjk_char(ch):
+        if is_cjk_char(ch) or ch in ('—', '―') or 0x2460 <= ord(ch) <= 0x24FF:
             width += font_size
         elif ch == ' ':
             width += font_size * 0.3
@@ -453,6 +463,11 @@ def estimate_text_width(text: str, font_size: float, font_weight: str = '400') -
             width += font_size * 0.75
         elif ch in 'iIlj!|':
             width += font_size * 0.3
+        elif 'A' <= ch <= 'Z':
+            # Uppercase letters such as X are wider than the lowercase-sized
+            # fallback below.  A too-tight frame wraps even with wrap="none"
+            # in LibreOffice (and changes the intended SVG line layout).
+            width += font_size * 0.7
         elif ch.isdigit():
             # digits are tabular (uniform ~0.55em) in most UI fonts, including
             # '1' — classing it with 'il|' under-sizes the box and makes

@@ -1,6 +1,6 @@
 ---
 name: wtt-seo-geo-writer
-description: 将输入内容转化为 SEO 或 GEO 优化的 Markdown 文章。主路径只有两条：SEO 内容生成与 GEO/AI 搜索内容生成；9day.tech、北斗九号、命理等垂类内容作为可选 profiles，仅在用户明确提及时加载，不污染通用 SEO/GEO 框架。
+description: 将输入内容转化为 SEO 或 GEO 优化的 Markdown 文章。主路径只有两条：SEO 内容生成与 GEO/AI 搜索内容生成；垂类品牌、行业语气等作为可选 profiles，仅在用户明确提及时加载，不污染通用 SEO/GEO 框架。
 ---
 
 # SEO / GEO 内容撰稿人
@@ -32,14 +32,12 @@ description: 将输入内容转化为 SEO 或 GEO 优化的 Markdown 文章。�
 按任务深度追加读取：
 - 长文、课程、白皮书、审计清单、方法论解释：`references/geo-core-knowledge.md`
 - GEO 友好网站、专题页、知识库、栏目、llms.txt、sitemap、Schema 或前端结构：`references/geo-web-build-patterns.md`
-- 需要来源追溯或归因：`references/geo-wiki-source-index.md`
 
 ## 可选 Profiles
 
 Profiles 不是主路径，不能替代 SEO/GEO 输出模板。只有用户明确提到对应品牌、站点、行业或发布目标时才读取。
 
-- `profiles/9day-tech.md`：用户提到 `9day.tech`、北斗九号、北斗九号日历，或明确要求写给该站点/品牌时加载。
-- `profiles/bazi-traffic.md`：用户明确要求命理、八字、流年、合婚、风水、生肖等内容，并且目标是知乎、公众号、小红书等流量平台时加载。
+- `profiles/`：垂类品牌、站点或行业流量平台配置。本仓库默认不附带具体品牌 profile；用户明确提到对应品牌或行业且提供了配置时按需加载。
 
 加载 profile 后，只允许它补充：
 - 品牌实体、语气、CTA、标签、关键词包。
@@ -50,15 +48,17 @@ Profile 不允许覆盖：
 - SEO/GEO 路径选择。
 - `seo-output.md` 或 `geo-output.md` 的最终交付结构。
 - GEO 的引用/提及/链接边界和技术边界。
+- 非营销护栏（`references/non-marketing-guardrails.md`）的红线词与默认 editorial 模式。
 
 ## 工作流程
 
 1. 识别用户目标、发布平台、是否批量生成、是否明确提到 profile。
 2. 在 SEO / GEO 两条主路径中选一条；不要混用输出模板。
 3. 读取该路径的内容策略模板和输出模板。
-4. 如果用户明确提到 profile，再读取对应 `profiles/` 文件并叠加个性化约束。
-5. 应用真实叙事原则：用具体场景开场，用人话解释机制，用可执行动作收束。
-6. 生成纯 Markdown 内容，并写入本地文件。
+4. **默认应用非营销护栏**：读取 `references/non-marketing-guardrails.md`；默认 `content_purpose: editorial`，只有用户显式要求转化型/带 CTA 内容时才切 `promotional`。这一步优先于任何 profile。
+5. 如果用户明确提到 profile，再读取对应 `profiles/` 文件并叠加个性化约束。
+6. 应用真实叙事原则：用具体场景开场，用人话解释机制，用可执行动作收束。
+7. 生成纯 Markdown 内容，并写入本地文件。
 
 ## 批量输出规则
 

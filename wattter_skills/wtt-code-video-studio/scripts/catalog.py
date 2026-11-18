@@ -8,6 +8,81 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+def validate_frontend_libraries(data):
+    if data.get('schema') != 'code-video-frontend-libraries/v1':
+        raise ValueError('前端库目录schema错误')
+    import datetime
+    try:
+        datetime.date.fromisoformat(data['checkedOn'])
+    except (KeyError, TypeError, ValueError):
+        raise ValueError('前端库缺少核实日期') from None
+    ids = set()
+    for row in data.get('libraries', []):
+        if not row.get('id') or row['id'] in ids:
+            raise ValueError('前端库ID缺失或重复')
+        ids.add(row['id'])
+        for key in ('name', 'role', 'needs', 'limits', 'frameAdapter'):
+            if not isinstance(row.get(key), str) or not row[key].strip():
+                raise ValueError('前端库缺少'+key)
+        for key in ('capabilities', 'aliases', 'sourceUrls'):
+            if not isinstance(row.get(key), list) or not row[key] or not all(isinstance(x,str) and x.strip() for x in row[key]):
+                raise ValueError('前端库缺少'+key)
+        if not all(x.startswith('https://') for x in row['sourceUrls']):
+            raise ValueError('前端库必须记录官方HTTPS来源')
+        if row.get('verification') != 'research-only' or row.get('pinnedVersion') is not None:
+            raise ValueError('研究目录不能冒充已实装或已锁定版本')
+    routes = set()
+    for route in data.get('routes', []):
+        if not route.get('id') or route['id'] in routes:
+            raise ValueError('路线ID缺失或重复')
+        routes.add(route['id'])
+        for key in ('name', 'when', 'inputs', 'notFor'):
+            if not isinstance(route.get(key), str) or not route[key].strip():
+                raise ValueError('路线缺少'+key)
+        groups = [route.get(k) for k in ('primaryIds','optionalIds','alternativeIds')]
+        if any(not isinstance(g,list) for g in groups) or not groups[0]:
+            raise ValueError('路线缺少主选/可选/替代库列表')
+        members = [x for g in groups for x in g]
+        if len(set(members)) != len(members) or not set(members) <= ids:
+            raise ValueError('路线引用未知或重复库')
+    if not ids or not routes:
+        raise ValueError('前端库与路线不能为空')
+
+
+def frontend_libraries(root):
+    data = json.loads((root/'config/frontend-libraries.json').read_text())
+    validate_frontend_libraries(data)
+    return data
+
+
+def select_libraries(data, query='', route=None):
+    validate_frontend_libraries(data)
+    chosen = next((r for r in data['routes'] if r['id']==route), None) if route else None
+    if route and chosen is None:
+        raise ValueError('未知技术路线：'+route)
+    roles = {x:role for role,key in [('primary','primaryIds'),('optional','optionalIds'),('alternative','alternativeIds')]
+             for x in (chosen[key] if chosen else [])}
+    return [dict(row, routeRole=roles[row['id']]) if chosen else dict(row)
+            for row in data['libraries']
+            if (not chosen or row['id'] in roles)
+            and query.casefold() in json.dumps(row,ensure_ascii=False).casefold()]
+
+
+def frontend_library_document(data):
+    validate_frontend_libraries(data)
+    lines = ['# 前端代码库与地理路线', '', '由config/frontend-libraries.json生成；修改元数据后运行catalog.py build。', '',
+             f"官方功能核实日期：{data['checkedOn']}。{data['scope']}。{data['adoption']}。", '',
+             '图片生成/二维/三维的决策与接入步骤见[地理叙事](geographic-storytelling.md)；旧画法状态见[画法适配](visual-recipes.md)。', '',
+             '## 内容对应路线', '', '| route | 内容与选择 | 主选 | 可选 | 替代 | 输入与不适用 |', '|---|---|---|---|---|---|']
+    for r in data['routes']:
+        lines.append(f"| `{r['id']}` | {r['name']}：{r['when']} | {', '.join(r['primaryIds'])} | {', '.join(r['optionalIds']) or '无'} | {', '.join(r['alternativeIds']) or '无'} | {r['inputs']}；不适用：{r['notFor']} |")
+    lines += ['', '主选/可选/替代不是整套必须安装；确定路线后只准备本片必需库。下列均为research-only，未完成新的后端渲染验证。', '']
+    for r in data['libraries']:
+        lines += [f"## {r['name']}（{r['id']}）", '', f"职责：{r['role']}。能力：{'；'.join(r['capabilities'])}。", '',
+                  f"输入：{r['needs']}。边界：{r['limits']}。", '', f"接入帧契约：{r['frameAdapter']}。", '',
+                  '官方来源：'+'、'.join(f'[文档{i+1}]({url})' for i,url in enumerate(r['sourceUrls'])), '']
+    return '\n'.join(lines)
+
 def validate_use_cases(data):
     """Editorial mappings must not invent rendered evidence."""
     if 'useCases' not in data:
@@ -379,18 +454,35 @@ def documents(root):
         result['assets/gallery/styles.html']=stylepage
     if data.get('referenceCases'):
         result['references/production-cases.md']=reference_case_document(data)
+    library_path = root/'config/frontend-libraries.json'
+    if library_path.is_file():
+        result['references/frontend-libraries.md'] = frontend_library_document(frontend_libraries(root))
     return result
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('command',choices=['build','check','list','show','use-cases','cases'])
+    p.add_argument('command',choices=['build','check','list','show','use-cases','cases','libraries'])
     p.add_argument('style_id',nargs='?',help='show命令的风格ID')
     p.add_argument('--root',type=Path,default=ROOT)
     p.add_argument('--purpose');p.add_argument('--query',default='');p.add_argument('--use-case')
+    p.add_argument('--route',help='libraries的技术路线ID；名称与输入要求见references/frontend-libraries.md')
     p.add_argument('--view',choices=['full','summary'],default='full',help='summary仅返回发现所需字段；默认完整JSON保持兼容')
     p.add_argument('--limit',type=int,help='显式分页，不是推荐前N项')
     p.add_argument('--offset',type=int,help='显式分页起点，源目录顺序不是推荐排名')
     a=p.parse_args()
+    if a.route and a.command != 'libraries':
+        p.error('--route仅用于libraries')
+    if a.command == 'libraries':
+        if a.style_id or a.purpose or a.use_case:
+            p.error('libraries使用--query/--route，不接受风格ID或用途筛选')
+        try:
+            rows = select_libraries(frontend_libraries(a.root), a.query, a.route)
+            if a.view == 'summary':
+                rows = [{k:r[k] for k in ('id','name','role','capabilities','verification','routeRole') if k in r} for r in rows]
+            rows = discovery_rows(rows, 'libraries', 'full', a.limit, a.offset)
+        except (ValueError, OSError) as error:
+            p.error(str(error))
+        print(json.dumps(rows,ensure_ascii=False,indent=2));return
     if a.command != 'show' and a.style_id:
         p.error('只有show命令接受风格ID')
     if a.command == 'show' and (not a.style_id or a.purpose or a.query or a.limit is not None or a.offset is not None):

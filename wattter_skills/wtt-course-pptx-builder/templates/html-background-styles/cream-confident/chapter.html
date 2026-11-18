@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>cream-confident / chapter</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #EFE9D9;
+    --cream-2: #E4DCC4;
+    --green: #1F8A4C;
+    --pink: #F06CA8;
+    --orange: #E85A1F;
+    --yellow: #F5C518;
+    --ink: #0F0F0F;
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --text: {{text}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--cream); color: var(--ink); }
+  .canvas { position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; background: var(--cream); }
+  .topbar {
+    position: absolute; left: 50px; right: 50px; top: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  }
+  .pill { border: 2px solid var(--ink); padding: 4px 12px; border-radius: 999px; }
+  /* kicker 标签 */
+  .kicker {
+    position: absolute; left: 50px; top: 180px;
+    font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: .14em; text-transform: uppercase;
+    background: var(--ink); color: var(--cream); padding: 6px 12px; display: inline-block;
+  }
+  /* 底部粉色 marker + 橙色偏移 */
+  .marker {
+    position: absolute; left: 50px; bottom: 100px;
+    width: 320px; height: 80px; background: var(--pink); border: 4px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Archivo Black", sans-serif; font-size: 24px;
+  }
+  .marker::after {
+    content: ""; position: absolute; right: -16px; bottom: -16px; width: 100%; height: 100%;
+    background: var(--orange); border: 4px solid var(--ink); z-index: -1;
+  }
+  /* 右侧绿色 ix 方块 + 黄色内圆 */
+  .ix {
+    position: absolute; right: 80px; top: 200px;
+    width: 200px; height: 200px; background: var(--green); border: 4px solid var(--ink);
+  }
+  .ix .circ {
+    position: absolute; left: 50%; top: 50%; width: 110px; height: 110px;
+    background: var(--yellow); border: 4px solid var(--ink); border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .slide-meta {
+    position: absolute; left: 50px; right: 50px; bottom: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .slide-meta .dot { width: 6px; height: 6px; background: var(--ink); border-radius: 50%; display: inline-block; margin: 0 8px; transform: translateY(-1px); }
+  .logo { position: absolute; left: 50px; top: 56px; height: 22px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="topbar">
+    <span>CREAM · CONFIDENT EDITION</span>
+    <span class="pill">SECTION</span>
+  </div>
+
+  <div class="kicker">Chapter</div>
+  <div class="ix"><div class="circ"></div></div>
+
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: chapter_num 50,260 700,460 -->
+  <!-- text-slot: chapter_name 50,500 800,560 -->
+
+  <div class="marker">CHAPTER</div>
+  <div class="slide-meta">
+    <span>SECTION · INTRO</span>
+    <span>02 <span class="dot"></span> 10</span>
+  </div>
+</div>
+</body>
+</html>

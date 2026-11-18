@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <rect x="0" y="650" width="1280" height="70" fill="#ECF6FE"/>
+  <rect x="58" y="40" width="6" height="30" fill="#C7A661"/>
+  <text x="80" y="65" fill="#003396" font-family="STKaiti, KaiTi" font-size="24" font-weight="700">{{SECTION_LABEL}}</text>
+  <text x="70" y="142" fill="#262626" font-family="STKaiti, KaiTi" font-size="52" font-weight="800">{{PAGE_TITLE}}</text>
+  <text x="70" y="180" fill="#666666" font-family="STKaiti, KaiTi" font-size="22">{{PAGE_SUBTITLE}}</text>
+  <line x1="70" y1="204" x2="1210" y2="204" stroke="#E7E6E6" stroke-width="1"/>
+
+  <g id="debug-example">
+    <rect x="70" y="238" width="462" height="350" rx="6" fill="#F1F8FE"/>
+    <rect x="70" y="238" width="462" height="8" fill="#C7A661"/>
+    <text x="100" y="291" fill="#003396" font-family="STKaiti, KaiTi" font-size="28" font-weight="700">待修正的输出</text>
+    <text x="100" y="338" fill="#44546A" font-family="STKaiti, KaiTi" font-size="22">{{FAILURE_CONTEXT}}</text>
+    <rect x="100" y="370" width="402" height="128" rx="4" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <text x="120" y="418" fill="#262626" font-family="STKaiti, KaiTi" font-size="23">{{FAILURE_LINE_01}}</text>
+    <text x="120" y="461" fill="#262626" font-family="STKaiti, KaiTi" font-size="23">{{FAILURE_LINE_02}}</text>
+    <line x1="100" y1="525" x2="502" y2="525" stroke="#C7A661" stroke-width="2"/>
+    <text x="100" y="559" fill="#003396" font-family="STKaiti, KaiTi" font-size="20">{{FAILURE_SIGNAL}}</text>
+  </g>
+
+  <path d="M 545 414 L 583 414" fill="none" stroke="#C7A661" stroke-width="3"/>
+  <path d="M 574 403 L 588 414 L 574 425" fill="none" stroke="#C7A661" stroke-width="3"/>
+  <g id="debug-cycle">
+    <rect x="602" y="238" width="608" height="100" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <rect x="602" y="238" width="9" height="100" fill="#2E75FF"/>
+    <text x="638" y="280" fill="#2E75FF" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">01 定位原因</text>
+    <text x="638" y="316" fill="#262626" font-family="STKaiti, KaiTi" font-size="22">{{ROOT_CAUSE}}</text>
+
+    <path d="M 906 342 L 906 358" fill="none" stroke="#C7A661" stroke-width="3"/>
+    <path d="M 897 352 L 906 365 L 915 352" fill="none" stroke="#C7A661" stroke-width="3"/>
+    <rect x="602" y="368" width="608" height="100" rx="6" fill="#F1F8FE"/>
+    <rect x="602" y="368" width="9" height="100" fill="#1F90E0"/>
+    <text x="638" y="410" fill="#1F90E0" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">02 改写指令</text>
+    <text x="638" y="446" fill="#262626" font-family="STKaiti, KaiTi" font-size="22">{{PROMPT_REVISION}}</text>
+
+    <path d="M 906 472 L 906 488" fill="none" stroke="#C7A661" stroke-width="3"/>
+    <path d="M 897 482 L 906 495 L 915 482" fill="none" stroke="#C7A661" stroke-width="3"/>
+    <rect x="602" y="498" width="608" height="100" rx="6" fill="#003396"/>
+    <rect x="602" y="498" width="9" height="100" fill="#C7A661"/>
+    <text x="638" y="540" fill="#C7A661" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">03 验证变化</text>
+    <text x="638" y="576" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="22">{{RECHECK_RESULT}}</text>
+  </g>
+  <text x="70" y="687" fill="#44546A" font-family="STKaiti, KaiTi" font-size="20">{{DEBUG_TAKEAWAY}}</text>
+</svg>

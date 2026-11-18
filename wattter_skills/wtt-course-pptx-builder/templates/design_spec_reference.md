@@ -68,6 +68,14 @@
 
 > Strategist: lock these once per deck in h.5; every AI image inherits them. Cross-check the rendering × palette compatibility matrix in `image-palettes/_index.md` — avoid `✗` combinations (matrix only covers presets; when either dimension is `custom`, Strategist owns the compatibility judgment). Leave the section out entirely if §VIII has no `ai` rows. Omit the `Behavior` rows whenever the corresponding dimension is a preset name.
 
+### HTML Background Strategy (layered architecture)
+
+- **HTML Background Style**: [one of the styles in `templates/html-background-styles/_index.md` (e.g. `gradient-panel`), or `custom`]
+- **Theme Palette**: [one of the palettes in `references/theme-palettes/_index.md` (e.g. `navy-trust`), or `custom` — the HEX seed for the HTML background + SVG text layers; also recorded in `spec_lock.colors.theme_palette`]
+- **Structural-page background source**: [`html` (default — gradient/panel, with text-slot contract) or `ai` (photographic full-bleed cover, text placed per `hero_page`, no text-slot)]
+
+> Strategist: lock style + palette in §e/§h. Content pages always use the HTML `theme` background. Structural pages (cover/ending/chapter) may use `html` (HTML background template) OR `ai` (AI full-bleed photo) — record the per-page choice in §VIII `Acquire Via`; `html` pages appear in `spec_lock.html_backgrounds`, `ai` pages do not. The palette's HEX seeds the §Color Scheme table above (unless a brand overrides identity roles); HTML templates consume them via `images/html_background_manifest.json` `variables`.
+
 ### Gradient Scheme (if needed, using SVG syntax)
 
 ```xml
@@ -225,13 +233,15 @@ Two views on the same font decisions — fill both, keep them consistent:
 
 ## VII. Visualization Reference List (if needed)
 
-> When pages map to a chart-library template (data charts OR structural patterns — team rosters, agendas, frameworks, etc.), Strategist lists them here for Executor reference. Single combined table — `summary-quote` column is the anti-fabrication audit, `path` + `usage` columns serve Executor lookup.
+> When pages map to a chart-library template (data charts OR structural patterns — team rosters, agendas, comparisons, point diagrams, processes, frameworks, etc.), Strategist lists them here for Executor reference. Single combined table — `summary-quote` is the anti-fabrication audit, `path` + `usage` serve Executor lookup.
+>
+> **Structure-only rule**: chart-library SVGs supply geometry, relationship logic, label/legend placement, and series encoding only. Their colors, fonts, gradients, shadows, and effects are placeholders. `spec_lock.colors`, `spec_lock.typography`, and `spec_lock.visual_style`—already derived from the selected template/deck/brand—are the only skin source.
 
 Catalog read: 71 templates
 
-| Page | Template | Path | Summary-quote (verbatim from `charts_index.json`) | Usage |
-| ---- | -------- | ---- | ------------------------------------------------- | ----- |
-| P05 | grouped_bar_chart | `templates/charts/grouped_bar_chart.svg` | "Pick for 2-4 series side-by-side across the same categories (e.g. YoY/QoQ). Skip if showing composition within each category (use stacked_bar_chart)." | YoY revenue comparison by product line |
+| Page | Template | Path | Summary-quote (verbatim from `charts_index.json`) | Usage | Skin source |
+| ---- | -------- | ---- | ------------------------------------------------- | ----- | ----------- |
+| P05 | grouped_bar_chart | `templates/charts/grouped_bar_chart.svg` | "Pick for 2-4 series side-by-side across the same categories (e.g. YoY/QoQ). Skip if showing composition within each category (use stacked_bar_chart)." | YoY revenue comparison by product line | `spec_lock.colors + typography + visual_style` |
 
 **Runners-up considered** (3 entries minimum, drawn from real second-best matches in this deck):
 
@@ -240,6 +250,8 @@ Catalog read: 71 templates
 - `<key_C>` | rejected for P##: `<reason>`
 
 > **Audit rule**: `Summary-quote` must be copy-pasted verbatim — paraphrasing breaks the audit. Every template name listed must `grep` cleanly inside `charts_index.json` (so misspellings/inventions fail). If fewer than 3 viz pages exist, list what exists and note "fewer than 3 viz pages"; runners-up still required for each page that does exist.
+>
+> Mirror these decisions into `<project_path>/chart_selection.json` using `templates/chart_selection_reference.json`, then run `scripts/validate_chart_mappings.py`. `page_charts` and the JSON selections must agree exactly.
 
 ---
 
@@ -247,6 +259,7 @@ Catalog read: 71 templates
 
 | Filename | Dimensions | Ratio | Purpose | Type | Layout pattern | Acquire Via | Status | Reference | text_policy | page_role |
 | -------- | --------- | ----- | ------- | ---- | -------------- | ----------- | ------ | --------- | ----------- | --------- |
+| bg_cover.png | 2560x1440 | [ratio] | Cover HTML background — visual frame, SVG title overlays via text-slots | Background | #1 full-bleed background with floating title | html | Rendered-HTML | HTML cover template (gradient-panel); bakes NO text | none | hero_page |
 | cover_bg.png | {canvas_info['dimensions']} | [ratio] | Atmospheric cover backdrop — SVG title overlays the calm region | Background | #1 full-bleed background with floating title + #29 two-stop scrim | ai | Pending | [subject + intent + composition, no style/HEX] | none | hero_page |
 | comparison_p07.png | {canvas_info['dimensions']} | [ratio] | Three-panel approach comparison — panel labels stay inside the image | Diagram | #44 background image + native network/architecture diagram | ai | Pending | Three side-by-side schematic motifs comparing approach A / B / C, panel labels rendered inside each motif | embedded | local |
 | formula_001.png | [actual dimensions from formula manifest / image_analysis] | [ratio] | Block equation on P03 | Latex Formula | formula-block | formula | Rendered | `E = mc^2` — energy-mass equation | | |
@@ -264,8 +277,10 @@ Catalog read: 71 templates
 
 **Status**:
 
-- **Pending** — needs AI generation or web sourcing
+- **Pending** — needs AI generation / web sourcing / HTML render
 - **Rendered** — deterministic formula asset already exists under `images/`
+- **Rendered-HTML** — HTML background PNG already exists under `images/` (Acquire Via: html)
+- **Fallback-Solid** — HTML render unavailable; solid-color PNG fallback (Executor uses `<rect>` background)
 - **Existing** — user-supplied, place in `images/`
 - **Placeholder** — not yet processed, use dashed border in SVG
 
@@ -273,6 +288,7 @@ Catalog read: 71 templates
 
 - `ai` — Step 5 Image_Generator
 - `web` — Step 5 Image_Searcher
+- `html` — rendered by `html_render.py` (Step 5); HTML background PNG, full-bleed `<image>` first child, bakes NO text
 - `formula` — already rendered by `latex_render.py` before this spec was written
 - `user` — user-supplied
 - `placeholder` — intentionally deferred
@@ -335,7 +351,7 @@ One speaker note file per page, saved to `notes/`:
 ### SVG Generation Must Follow:
 
 1. viewBox: `{canvas_info['viewbox']}`
-2. Background uses `<rect>` elements
+2. Background is a **full-bleed HTML-PNG `<image>`** (first child of `<svg>`, layered architecture — see shared-standards.md §4); a bare `<rect>` is only the `--fallback-solid` emergency background
 3. Text wrapping uses `<tspan>` (`<foreignObject>` FORBIDDEN)
 4. Transparency uses `fill-opacity` / `stroke-opacity`; `rgba()` FORBIDDEN
 5. FORBIDDEN: `mask`, `<style>`, `class`, `foreignObject`

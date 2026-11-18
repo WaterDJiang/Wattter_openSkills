@@ -2,9 +2,9 @@
 
 **Layout = structure-only template.** Captures canvas, page structure, page types, and SVG roster — but **no identity segment** (color / typography / logo / voice / icon style). Layered identity comes from `templates/brands/` or is decided per-deck in Strategist's Eight Confirmations. For full-identity replicas of specific PPTs, see [`templates/decks/`](../decks/) instead.
 
-Single source of truth for what layouts exist: [`layouts_index.json`](./layouts_index.json) (`layout_id → { kind, path, summary, canvas_format, page_count, page_types }`). This README explains the kind; it does **not** enumerate layouts.
+Single source of truth for what layouts exist: [`layouts_index.json`](./layouts_index.json) (`layout_id → { kind, path, summary, canvas_format, page_count, page_types, template_capabilities }`). This README explains the kind; it does **not** enumerate layouts.
 
-Full data model: [`docs/zh/templates-architecture.md`](../../../../docs/zh/templates-architecture.md).
+Full data model: the `kind` frontmatter field and per-kind schema are described in each kind's README ([`brands/`](../brands/) / this file / [`decks/`](../decks/)); consuming rules live in [`../../references/strategist.md`](../../references/strategist.md) Step 3.
 
 ---
 
@@ -13,6 +13,8 @@ Full data model: [`docs/zh/templates-architecture.md`](../../../../docs/zh/templ
 Layout selection happens via the **three-flow gate at SKILL.md Step 1** (flow 1 = library template). The main workflow defaults to flow 3 (free build). A layout is used when the user picks it from the `layouts_index.json` menu at Step 3 flow 1, or gives an explicit directory path (e.g. `${SKILL_DIR}/templates/layouts/academic_defense/`) as a flow 1 shortcut. Bare names do not auto-select. See [`SKILL.md`](../../SKILL.md) Step 1 / Step 3.
 
 `layouts_index.json` is a **discovery aid** — it populates the flow 1 menu and lets the AI answer "what layouts exist?" by listing ids and paths. Listing alone never advances the pipeline.
+
+每个 SVG 都由 `page_catalog.json` 进入统一候选系统。目录可显式声明 `selection.variant_profile.{topology,emphasis,visual_weight}`；缺失时 `variant_selection.py` 自动推导。同形态多变体采用可复现受控轮换，明确的 composition topology/emphasis 始终优先。
 
 ---
 
@@ -48,6 +50,7 @@ Layouts may include additional supporting sections (Layout Patterns, Spacing Gui
 | Filename | Required | Purpose |
 |----------|----------|---------|
 | `design_spec.md` | Yes | Layout schema spec (frontmatter + structure sections) |
+| `template_capabilities.json` | Yes | Deterministic per-page editability, text capacity and shared-asset sidecar |
 | `01_cover.svg` | Yes | Cover page |
 | `02_toc.svg` | Optional | Table of contents |
 | `02_chapter.svg` | Yes | Chapter page |
@@ -71,7 +74,7 @@ Templates use `{{PLACEHOLDER}}` to mark replaceable content. New layouts should 
 3. Validate: `python3 ${SKILL_DIR}/scripts/svg_quality_checker.py templates/layouts/<id> --template-mode --format ppt169`
 4. Register: `python3 ${SKILL_DIR}/scripts/register_template.py <id> --kind layout`
 
-The register step updates [`layouts_index.json`](./layouts_index.json) — the single source of truth for layout discovery.
+The register step generates/validates `template_capabilities.json` before updating [`layouts_index.json`](./layouts_index.json). Consumers branch on capability data, never on a specific template id.
 
 ---
 

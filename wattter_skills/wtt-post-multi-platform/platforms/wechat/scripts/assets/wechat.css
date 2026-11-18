@@ -1,0 +1,187 @@
+:root {
+  --md-primary-color: #1E40AF;
+  --md-font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+  --md-font-size: 16px;
+  --foreground: 0, 0%, 3.9%;
+  --blockquote-background: #f7f7f7;
+}
+
+#output {
+  font-family: var(--md-font-family);
+  font-size: var(--md-font-size);
+  line-height: 1.75;
+  color: hsl(var(--foreground));
+  text-align: left;
+}
+
+#output h1 {
+  display: table;
+  padding: 0 1em;
+  border-bottom: 2px solid var(--md-primary-color);
+  margin: 2em auto 1em;
+  color: hsl(var(--foreground));
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+#output h2 {
+  display: table;
+  padding: 0 0.2em;
+  margin: 1.5em auto;
+  color: #fff;
+  background: var(--md-primary-color);
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 4px;
+}
+
+#output h3 {
+  padding-left: 8px;
+  border-left: 3px solid var(--md-primary-color);
+  margin: 1.5em 8px 0.75em 0;
+  color: hsl(var(--foreground));
+  font-size: 1.05em;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+#output h4 {
+  margin: 1.5em 8px 0.5em;
+  color: var(--md-primary-color);
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#output p {
+  margin: 1em 0;
+  letter-spacing: 0.05em;
+  color: hsl(var(--foreground));
+  text-align: justify;
+  line-height: 1.8;
+}
+
+#output blockquote {
+  font-style: normal;
+  padding: 1em;
+  border-left: 4px solid var(--md-primary-color);
+  border-radius: 6px;
+  color: hsl(var(--foreground));
+  background: var(--blockquote-background);
+  margin: 1em 0;
+}
+
+#output blockquote p {
+  margin: 0;
+}
+
+#output ul, #output ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+
+#output li {
+  margin-bottom: 0.5em;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+#output code {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+  padding: 2px 4px;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+#output pre {
+  position: relative;
+  display: block;
+  padding: 1em;
+  margin: 1em 0;
+  font-size: 0.9em;
+  line-height: 1.4;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #abb2bf;
+  background-color: #282c34;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+#output pre.code__pre {
+  padding-top: 3em;
+}
+
+#output pre .mac-sign {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  background: #3a3a3a;
+  padding: 8px 12px;
+  border-radius: 6px 6px 0 0;
+}
+
+#output pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+#output img {
+  display: block;
+  margin: 1em auto;
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#output table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 1em;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+#output table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+#output table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+#output table th,
+#output table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+#output table th {
+  font-weight: 600;
+}
+
+#output hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 2em 0;
+}
+
+#output a {
+  color: var(--md-primary-color);
+  text-decoration: none;
+}
+
+#output a:hover {
+  text-decoration: underline;
+}

@@ -274,6 +274,7 @@ template 组装
   □ 每页主体能归入 title-block / figure-frame / metric-block / comparison-block / sequence-block / evidence-strip 中至少一种
 
 排版
+  □ 已按 references/contrast.md 逐页、逐主题运行浏览器 audit-contrast.js，failures 为 0，review 已逐项复核；未把静态校验当成颜色验收
   □ 所有大标题没有 1 字 1 行的换行
   □ 所有局部底色都已声明 surface：深色/底部压暗/图片文字区用 `.on-dark` 或 `data-surface="dark"`，浅色卡片用 `.on-light`，主题色块用 `.on-accent`
   □ 图片、渐变、深色底部上的文字使用 `.readable-zone.on-dark` / `.readable-zone.on-light` 或等价 surface 容器，未出现深字深底、浅字浅底
@@ -302,7 +303,7 @@ template 组装
   □ 底部圆点数量与总页数匹配
   □ chrome 里的页码和实际页号一致
   □ F 键全屏可用
-  □ T 键和右上角 T 按钮都能切换当前风格内的预设主题；如使用自定义 `css/theme.css`，T 切换应保持锁定
+  □ T 键和右上角 T 按钮都能切换当前风格内的预设主题；如使用自定义 `css/theme.css`，T 按钮应禁用并提示已固定
   □ 所有页面已加载 `js/fit.js`，没有 `内容过密` 标记；长标题使用 `.fit-safe-text` 或拆页
   □ 沉浸模式：N 键 Notes 抽屉、O 键 Overview
   □ 沉浸模式：A 键动画循环

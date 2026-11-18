@@ -5,6 +5,7 @@ summary: Product certification display, evaluation presentations, technology pro
 canvas_format: ppt169
 page_count: 5
 primary_color: "#004098"
+background_mode: legacy-pure-svg
 ---
 
 # CATARC (中汽研) Standard Template - Design Specification

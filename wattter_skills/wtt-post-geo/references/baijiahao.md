@@ -33,6 +33,7 @@ execution:
 适配要求：
 
 - 标题与正文分离，删除重复 H1。
+- 写作语气与链接方式遵循 [content-style.md](content-style.md) 的去营销化清单（禁绝对化卖货词/标题党、链接自然化、移除硬 CTA；通用，不在此重复）。
 - HTML 必须移除脚本、iframe、CSDN 编辑器控件、懒加载占位和无效 SVG。
 - 表格、引用、公式和代码块按百家号编辑器可读格式转换；转换后必须预览抽样。
 - 原创/转载授权、内容分类和声明写入 `platform_options`，没有用户确认不得猜测。
@@ -51,6 +52,12 @@ execution:
 4. 打开返回的编辑链接，对账账号、标题、正文首尾、中段关键句和图片数。
 
 只有明确没有创建草稿，才能进入 OpenCLI UI 回退。
+
+### 插件参照补充（GEO action）
+
+- 草稿创建走 JSONP：`POST https://baijiahao.baidu.com/pcui/article/save?callback=bjhdraft`（表单 `type=news, title, content(HTML), feed_cat=1, len, activity_list, ...`），头带 `token`；`token` 从 `GET /builder/rc/edit` 的 `window.__BJH__INIT__AUTH__` 解析。响应是 `bjhdraft({...});` JSONP 包装，draft id = `ret.article_id`。
+- 图片上传端点（未来图片能力备忘）：`POST /materialui/picture/uploadProxy` FormData（`media, type=image, app_id=<你的app_id>, save_material=1, article_type=news`）→ `ret.https_url||ret.url`。当前 adapter 仍是 `images:false`。
+- 封面没有独立 API 字段：显式 `cover` 需在草稿建立后打开 `builder/rc/edit?type=news&is_from_cms=1&article_id=<id>`，进入「设置封面→单图→选择封面」用本地图片上传补封面；封面增强失败时任务返回失败 + 半成品草稿链接，不得把「封面需人工补充」视为成功。
 
 ### 回退：OpenCLI 浏览器编辑器
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="ggrad1" x1="640" y1="0" x2="640" y2="720" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#EBF3FF"/><stop offset="0.54" stop-color="#CCE0FF" stop-opacity="0.38"/><stop offset="1" stop-color="#CCE0FF" stop-opacity="0.81"/></linearGradient></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="master-shape-7" data-name="文本框 6">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-2" data-name="文本框 1">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-6" data-name="矩形: 圆角 5">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad1)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="layout-shape-9" data-name="图片 8">
+<image href="brand_lockup.png" x="865" y="48.74" width="375.77" height="50.15" preserveAspectRatio="none"/>
+</g></svg>

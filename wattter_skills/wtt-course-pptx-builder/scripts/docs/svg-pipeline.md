@@ -9,10 +9,21 @@ These tools cover post-processing, SVG validation, speaker notes, recorded narra
 Run these steps in order:
 
 ```bash
+python3 scripts/validate_mirror_fidelity.py <project_path>
+python3 scripts/validate_template_usage.py <project_path>
+python3 scripts/validate_content_fidelity.py <project_path>
 python3 scripts/total_md_split.py <project_path>
 python3 scripts/finalize_svg.py <project_path>
 python3 scripts/svg_to_pptx.py <project_path>
 ```
+
+`validate_template_usage.py` 对 schema v3 `brand_shell` 逐页执行角色级校验：
+
+- 命中 `page_shell_requirements` 的每个必需角色；
+- 锁定 `background` 至少一个以 full-bleed 使用；
+- `forbid_unlocked_full_bleed=true` 时拒绝任何未锁定的通用全幅背景。
+
+schema v1 继续保留“任一 shell asset 命中”的兼容路径。
 
 ## `finalize_svg.py`
 
@@ -47,11 +58,12 @@ python3 scripts/svg_to_pptx.py <project_path> --recorded-narration audio
 Behavior:
 - Default output (default-flow mode, no `-o`):
   - `exports/<project_name>_<timestamp>.pptx` — native editable pptx (canonical output)
+  - `exports/<project_name>_<timestamp>.pptx.editability.json` — automatic OOXML editability report; export fails when picture-only pages exceed 50%
   - `backup/<timestamp>/svg_output/` — copy of Executor SVG source, always written so the pptx can be rebuilt via `finalize_svg → svg_to_pptx` without re-running the LLM
 - `--svg-snapshot` (opt-in) additionally emits:
-  - `exports/<project_name>_<timestamp>_svg.pptx` — SVG snapshot pptx for visual reference, sibling of the native pptx
+  - `exports/<project_name>_<timestamp>_preview_noneditable.pptx` — non-editable SVG snapshot for visual reference
   - Live preview already serves as the SVG visual reference for day-to-day use; the snapshot pptx is for distribution or frozen-state archival
-- Explicit `-o/--output` skips `backup/`; pair with `--svg-snapshot` to also emit the side-by-side `_svg.pptx` next to the chosen path
+- Explicit `-o/--output` skips `backup/`; pair with `--svg-snapshot` to also emit the side-by-side `_preview_noneditable.pptx`
 - Paragraph merging is enabled by default and trades some SVG line-layout fidelity for PowerPoint editability:
   - Default: mergeable paragraph blocks (same x, dy clustered around one base line-height, optional larger gap for paragraph breaks) collapse into one editable text frame with multiple `<a:p>` and precise `<a:lnSpc>` / `<a:spcBef>`. Resizing the box reflows text inside it.
   - With `--no-merge`: every dy-stacked `<tspan>` becomes its own text frame — exact SVG line layout is preserved but a 12-line paragraph is 12 separate textboxes
@@ -84,7 +96,7 @@ Behavior:
 - `--animation-duration` controls per-element entrance length (default `0.4`); `--animation-stagger` adds gap between elements in `after-previous` mode (default `0.5`)
 - Optional object-level overrides live in `<project>/animations.json` or a path passed via `--animation-config`; build and validate them with `animation_config.py scaffold|validate`
 
-Performance (legacy `_svg.pptx` PNG fallback, only when `--svg-snapshot` or `--only legacy`):
+Performance (non-editable preview PNG fallback, only when `--svg-snapshot` or `--only legacy`):
 - SVG→PNG is pre-rendered in a process pool before the main loop. Default workers = `min(cpu, pages, 8)`; override with `--workers N` (set `1` for sequential, `0` is treated as sequential).
 - Results are cached at `<project>/.cache/svg_png/` keyed by SVG content hash + size + active renderer (`cairosvg` vs `svglib`). Switching renderers naturally invalidates the cache; nothing to clean by hand.
 - `--cache-dir <path>` relocates the cache; `--no-cache` forces re-render without writing/reading the cache (handy when debugging rendering).

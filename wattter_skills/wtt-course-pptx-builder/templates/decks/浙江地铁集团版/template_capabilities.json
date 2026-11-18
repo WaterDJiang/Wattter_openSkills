@@ -1,0 +1,1901 @@
+{
+  "schema_version": 3,
+  "template_id": "浙江地铁集团版",
+  "kind": "decks",
+  "replication_mode": "mirror",
+  "page_count": 19,
+  "shared_assets": [
+    "brand_lockup_header.png",
+    "cloud_layer_portrait.png",
+    "metro_corridor_background.png",
+    "wind_coast_background.png"
+  ],
+  "asset_roles": {
+    "identity": [
+      "brand_lockup_header.png"
+    ],
+    "background": [
+      "cloud_layer_portrait.png",
+      "metro_corridor_background.png",
+      "wind_coast_background.png"
+    ],
+    "chrome": [],
+    "illustration": []
+  },
+  "shell_contract": {
+    "required_roles": [
+      "identity",
+      "background"
+    ],
+    "forbid_unlocked_full_bleed": true
+  },
+  "pages": {
+    "001_cover_rail_brand": {
+      "file": "001_cover_rail_brand.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 9,
+      "vector_elements": 22,
+      "text_elements": 1,
+      "text_runs": 1,
+      "source_text_chars": 6,
+      "max_text_chars": 6,
+      "image_refs": [
+        "brand_lockup_cover.png",
+        "cover_cloud_overlay_a.png",
+        "cover_cloud_overlay_b.png",
+        "cover_industrial_blur.png",
+        "elevated_train_cutout.png",
+        "rail_emblem_watermark.png",
+        "white_dove_hero.png",
+        "white_dove_left.png",
+        "white_dove_right.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_cover.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.01372,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cover_cloud_overlay_a.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 0.221133,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cover_cloud_overlay_b.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 0.060369,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cover_industrial_blur.png",
+          "role": "decoration",
+          "instances": 1,
+          "max_coverage_ratio": 0.801457,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "elevated_train_cutout.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.528674,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "rail_emblem_watermark.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.369956,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "white_dove_hero.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.004258,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "white_dove_left.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.004947,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "white_dove_right.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.004325,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.71875,
+        "top_level_groups": 14,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 14,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "002_toc_image_cards": {
+      "file": "002_toc_image_cards.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 9,
+      "vector_elements": 41,
+      "text_elements": 18,
+      "text_runs": 23,
+      "source_text_chars": 60,
+      "max_text_chars": 8,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "toc_depot_night.jpeg",
+        "toc_train_blue_sky.jpeg",
+        "toc_train_city_blossom.jpeg",
+        "toc_train_flower_field.jpeg",
+        "toc_train_greenway.jpeg",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "toc_depot_night.jpeg",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.044246,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "toc_train_blue_sky.jpeg",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.042494,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "toc_train_city_blossom.jpeg",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.043927,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "toc_train_flower_field.jpeg",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.044498,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "toc_train_greenway.jpeg",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.044079,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.867647,
+        "top_level_groups": 19,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 19,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "003_content_dual_circle_compare": {
+      "file": "003_content_dual_circle_compare.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 5,
+      "vector_elements": 19,
+      "text_elements": 7,
+      "text_runs": 8,
+      "source_text_chars": 29,
+      "max_text_chars": 5,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "circle_blue_glow.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "circle_blue_glow.png",
+          "role": "decoration",
+          "instances": 1,
+          "max_coverage_ratio": 0.020342,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.83871,
+        "top_level_groups": 23,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 23,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "004_content_six_items_two_groups": {
+      "file": "004_content_six_items_two_groups.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 5,
+      "vector_elements": 48,
+      "text_elements": 18,
+      "text_runs": 30,
+      "source_text_chars": 113,
+      "max_text_chars": 29,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "elevated_train_cutout.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "elevated_train_cutout.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.378519,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.929577,
+        "top_level_groups": 40,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 40,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "005_content_three_scene_cards": {
+      "file": "005_content_three_scene_cards.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 9,
+      "vector_elements": 29,
+      "text_elements": 16,
+      "text_runs": 16,
+      "source_text_chars": 136,
+      "max_text_chars": 16,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "glass_platform.png",
+        "metro_corridor_background.png",
+        "train_blue_sky_panel.jpeg",
+        "white_wave_splash.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "glass_platform.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.515552,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "train_blue_sky_panel.jpeg",
+          "role": "illustration",
+          "instances": 3,
+          "max_coverage_ratio": 0.09396,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "white_wave_splash.png",
+          "role": "decoration",
+          "instances": 1,
+          "max_coverage_ratio": 0.288891,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.833333,
+        "top_level_groups": 31,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 31,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "006_content_split_overview_panel": {
+      "file": "006_content_split_overview_panel.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 6,
+      "vector_elements": 38,
+      "text_elements": 25,
+      "text_runs": 26,
+      "source_text_chars": 77,
+      "max_text_chars": 8,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "elevated_train_cutout_small.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 2,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "elevated_train_cutout_small.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.167507,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.913043,
+        "top_level_groups": 42,
+        "semantic_content_groups": 1,
+        "chrome_groups": 0,
+        "imported_atom_groups": 41,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "007_content_four_dimension_orbit": {
+      "file": "007_content_four_dimension_orbit.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 6,
+      "vector_elements": 43,
+      "text_elements": 18,
+      "text_runs": 18,
+      "source_text_chars": 72,
+      "max_text_chars": 4,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "elevated_train_cutout_small.png",
+        "metro_corridor_background.png",
+        "train_blue_sky_orbit.jpeg",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "elevated_train_cutout_small.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.1673,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "train_blue_sky_orbit.jpeg",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.097234,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.910448,
+        "top_level_groups": 37,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 37,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "008_chapter_four_module_preview": {
+      "file": "008_chapter_four_module_preview.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 5,
+      "vector_elements": 21,
+      "text_elements": 8,
+      "text_runs": 8,
+      "source_text_chars": 62,
+      "max_text_chars": 16,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "metro_tunnel_mono.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_tunnel_mono.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.471542,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.852941,
+        "top_level_groups": 23,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 23,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "009_content_five_point_radial": {
+      "file": "009_content_five_point_radial.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 5,
+      "vector_elements": 24,
+      "text_elements": 13,
+      "text_runs": 18,
+      "source_text_chars": 131,
+      "max_text_chars": 16,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "train_blue_sky_hub.jpeg",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "train_blue_sky_hub.jpeg",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.018644,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.880952,
+        "top_level_groups": 28,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 28,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "010_content_photo_gallery": {
+      "file": "010_content_photo_gallery.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 14,
+      "vector_elements": 16,
+      "text_elements": 7,
+      "text_runs": 7,
+      "source_text_chars": 45,
+      "max_text_chars": 21,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "red_light_streak_small.png",
+        "red_light_streak_wide.png",
+        "train_blue_sky_gallery_a.jpeg",
+        "train_blue_sky_gallery_b.jpeg",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "red_light_streak_small.png",
+          "role": "decoration",
+          "instances": 4,
+          "max_coverage_ratio": 0.023341,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "red_light_streak_wide.png",
+          "role": "decoration",
+          "instances": 1,
+          "max_coverage_ratio": 0.070558,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "train_blue_sky_gallery_a.jpeg",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.313345,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "train_blue_sky_gallery_b.jpeg",
+          "role": "illustration",
+          "instances": 4,
+          "max_coverage_ratio": 0.059388,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.621622,
+        "top_level_groups": 29,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 29,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "011_content_six_module_grid": {
+      "file": "011_content_six_module_grid.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 4,
+      "vector_elements": 36,
+      "text_elements": 21,
+      "text_runs": 21,
+      "source_text_chars": 159,
+      "max_text_chars": 19,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.934426,
+        "top_level_groups": 31,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 31,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "012_content_seven_factor_orbit": {
+      "file": "012_content_seven_factor_orbit.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 5,
+      "vector_elements": 34,
+      "text_elements": 22,
+      "text_runs": 22,
+      "source_text_chars": 67,
+      "max_text_chars": 4,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "industrial_workers_washout.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "industrial_workers_washout.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "industrial_workers_washout.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.918033,
+        "top_level_groups": 37,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 37,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "013_content_nine_branch_map": {
+      "file": "013_content_nine_branch_map.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 5,
+      "vector_elements": 78,
+      "text_elements": 30,
+      "text_runs": 30,
+      "source_text_chars": 84,
+      "max_text_chars": 4,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "corridor_light_background.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "corridor_light_background.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "corridor_light_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.955752,
+        "top_level_groups": 81,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 81,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "014_content_five_stage_swimlane": {
+      "file": "014_content_five_stage_swimlane.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 4,
+      "vector_elements": 47,
+      "text_elements": 16,
+      "text_runs": 16,
+      "source_text_chars": 64,
+      "max_text_chars": 4,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.940299,
+        "top_level_groups": 45,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 45,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "015_content_yearly_milestone_timeline": {
+      "file": "015_content_yearly_milestone_timeline.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 7,
+      "vector_elements": 32,
+      "text_elements": 16,
+      "text_runs": 36,
+      "source_text_chars": 167,
+      "max_text_chars": 33,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "elevated_train_cutout.png",
+        "metro_corridor_background.png",
+        "signal_light.png",
+        "signal_light_patch.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "elevated_train_cutout.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.528674,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "signal_light.png",
+          "role": "decoration",
+          "instances": 1,
+          "max_coverage_ratio": 0.114789,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "signal_light_patch.png",
+          "role": "decoration",
+          "instances": 1,
+          "max_coverage_ratio": 0.003549,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.872727,
+        "top_level_groups": 26,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 26,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "016_content_half_year_schedule_matrix": {
+      "file": "016_content_half_year_schedule_matrix.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 4,
+      "vector_elements": 62,
+      "text_elements": 35,
+      "text_runs": 35,
+      "source_text_chars": 128,
+      "max_text_chars": 4,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.960396,
+        "top_level_groups": 59,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 59,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "017_content_four_award_wall": {
+      "file": "017_content_four_award_wall.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 4,
+      "vector_elements": 524,
+      "text_elements": 9,
+      "text_runs": 9,
+      "source_text_chars": 48,
+      "max_text_chars": 8,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.992551,
+        "top_level_groups": 427,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 427,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "018_content_honor_list_summary": {
+      "file": "018_content_honor_list_summary.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 5,
+      "vector_elements": 116,
+      "text_elements": 15,
+      "text_runs": 21,
+      "source_text_chars": 84,
+      "max_text_chars": 10,
+      "image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "palm_leaf.png",
+        "palm_shadow.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "palm_leaf.png",
+          "role": "decoration",
+          "instances": 1,
+          "max_coverage_ratio": 0.182642,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "palm_shadow.png",
+          "role": "decoration",
+          "instances": 1,
+          "max_coverage_ratio": 0.176556,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.963235,
+        "top_level_groups": 36,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 36,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    },
+    "019_ending_flower_train_thanks": {
+      "file": "019_ending_flower_train_thanks.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 7,
+      "vector_elements": 11,
+      "text_elements": 1,
+      "text_runs": 1,
+      "source_text_chars": 4,
+      "max_text_chars": 4,
+      "image_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "flower_rail_ending_photo.jpeg",
+        "metro_corridor_background.png",
+        "sky_watercolor_overlay.png",
+        "wind_coast_background.png"
+      ],
+      "full_bleed_image_refs": [
+        "cloud_layer_portrait.png",
+        "flower_rail_ending_photo.jpeg",
+        "metro_corridor_background.png",
+        "sky_watercolor_overlay.png",
+        "wind_coast_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "brand_lockup_header.png",
+          "role": "identity",
+          "instances": 2,
+          "max_coverage_ratio": 0.010264,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "cloud_layer_portrait.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.000008,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "flower_rail_ending_photo.jpeg",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.005211,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "metro_corridor_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "sky_watercolor_overlay.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.005313,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "wind_coast_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.631579,
+        "top_level_groups": 17,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 17,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "brand_lockup_header.png",
+        "cloud_layer_portrait.png",
+        "metro_corridor_background.png",
+        "wind_coast_background.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "brand_lockup_header.png"
+        ],
+        "background": [
+          "cloud_layer_portrait.png",
+          "metro_corridor_background.png",
+          "wind_coast_background.png"
+        ]
+      }
+    }
+  },
+  "generated_by": "scripts/template_capabilities.py"
+}

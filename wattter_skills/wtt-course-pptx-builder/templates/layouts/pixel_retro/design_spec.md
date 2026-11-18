@@ -5,6 +5,7 @@ summary: Tech talks, programming tutorials, game introductions, geek-style showc
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # Pixel Retro Style Template - Design Specification

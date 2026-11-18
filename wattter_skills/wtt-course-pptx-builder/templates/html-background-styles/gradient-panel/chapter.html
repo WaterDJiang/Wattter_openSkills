@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>gradient-panel / chapter</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+  }
+  .panel-left {
+    position: absolute; left: 0; top: 0; width: 60px; height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--accent));
+  }
+  /* 右上角渐变强调块 */
+  .corner-block {
+    position: absolute; right: 0; top: 0; width: 420px; height: 180px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-bottom-left-radius: 180px; opacity: 0.9;
+  }
+  /* chapter_num 上方装饰条 */
+  .num-rule {
+    position: absolute; left: 80px; top: 172px; width: 80px; height: 8px;
+    background: var(--accent); border-radius: 4px;
+  }
+  /* chapter_name 上方细线 */
+  .name-rule {
+    position: absolute; left: 80px; top: 398px; width: 200px; height: 4px;
+    background: var(--border);
+  }
+  .logo { position: absolute; left: 96px; top: 48px; height: 40px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="panel-left"></div>
+  <div class="corner-block"></div>
+  <div class="num-rule"></div>
+  <div class="name-rule"></div>
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: chapter_num 80,200 460,380 -->
+  <!-- text-slot: chapter_name 80,420 1200,490 -->
+</div>
+</body>
+</html>

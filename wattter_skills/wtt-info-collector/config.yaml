@@ -33,5 +33,5 @@ modules:
   twitter:
     enabled: true
     limit: 20
-    list_url: "https://x.com/i/lists/1854093909938634765"
+    list_url: "https://x.com/i/lists/<你的列表ID>"
 

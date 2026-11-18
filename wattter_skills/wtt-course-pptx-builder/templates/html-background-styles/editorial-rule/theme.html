@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>editorial-rule / theme</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: var(--bg);
+  }
+  /* 顶部 primary 色带（细） */
+  .top-band { position: absolute; left: 0; top: 0; right: 0; height: 8px; background: var(--primary); }
+  /* 底部 accent 色带（细） */
+  .bottom-band { position: absolute; left: 0; bottom: 0; right: 0; height: 8px; background: var(--accent); }
+  /* 右侧极淡 border 发丝线（结构感，不抢内容） */
+  .side-rule {
+    position: absolute; right: 40px; top: 8px; bottom: 8px; width: 1px;
+    background: var(--border); opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="top-band"></div>
+  <div class="bottom-band"></div>
+  <div class="side-rule"></div>
+</div>
+</body>
+</html>

@@ -10,7 +10,16 @@ import markdown
 from bs4 import BeautifulSoup
 
 
-POSTER_SCRIPT_DIR = Path("/Users/water/.wattter-skills/skills/wtt-post-multi-platform/platforms/wechat/scripts")
+def _find_poster_scripts():
+    candidates = [os.environ.get("WTT_POSTER_SCRIPT_DIR")]
+    for root in (Path.home() / ".claude" / "skills", Path.home() / ".codex" / "skills"):
+        candidates.append(str(root / "wtt-post-multi-platform" / "platforms" / "wechat" / "scripts"))
+    for candidate in candidates:
+        if candidate and Path(candidate).is_dir():
+            return Path(candidate)
+    raise SystemExit("未找到 wtt-post-multi-platform 海报脚本目录；可用环境变量 WTT_POSTER_SCRIPT_DIR 指定")
+
+POSTER_SCRIPT_DIR = _find_poster_scripts()
 if str(POSTER_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(POSTER_SCRIPT_DIR))
 

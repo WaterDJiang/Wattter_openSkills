@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="brand-header" data-name="中国移动内容页标题">
+    <image href="china_mobile_logo.png" x="959.38" y="-21.00" width="292.82" height="164.71" preserveAspectRatio="none"/>
+    <text x="72" y="104" font-family="Microsoft YaHei,Arial,sans-serif" font-size="36" font-weight="bold" fill="#0070C0">五阶段时间线</text>
+    <rect x="72" y="122" width="84" height="5" rx="2.5" fill="#0FA4FE"/>
+  </g>
+  <g id="timeline-wave" data-name="五节点蓝青波形时间线">
+    <path d="M110 390 C200 360 280 270 365 320 C450 370 535 485 620 430 C705 375 790 275 875 330 C960 385 1045 440 1130 390" fill="none" stroke="#0FA4FE" stroke-opacity="0.18" stroke-width="15" stroke-linecap="round"/>
+    <path d="M110 390 C200 360 280 270 365 320 C450 370 535 485 620 430 C705 375 790 275 875 330 C960 385 1045 440 1130 390" fill="none" stroke="#0070C0" stroke-width="5" stroke-linecap="round"/>
+    <line x1="162" y1="295" x2="110" y2="380" stroke="#0070C0" stroke-opacity="0.30" stroke-width="2"/>
+    <line x1="365" y1="332" x2="365" y2="475" stroke="#0070C0" stroke-opacity="0.30" stroke-width="2"/>
+    <line x1="620" y1="295" x2="620" y2="418" stroke="#0070C0" stroke-opacity="0.30" stroke-width="2"/>
+    <line x1="875" y1="342" x2="875" y2="475" stroke="#0070C0" stroke-opacity="0.30" stroke-width="2"/>
+    <line x1="1118" y1="295" x2="1130" y2="378" stroke="#0070C0" stroke-opacity="0.30" stroke-width="2"/>
+    <circle cx="110" cy="390" r="14" fill="#FFFFFF" stroke="#0070C0" stroke-width="4"/>
+    <circle cx="110" cy="390" r="5" fill="#0FA4FE"/>
+    <circle cx="365" cy="320" r="14" fill="#FFFFFF" stroke="#0070C0" stroke-width="4"/>
+    <circle cx="365" cy="320" r="5" fill="#0FA4FE"/>
+    <circle cx="620" cy="430" r="14" fill="#FFFFFF" stroke="#0070C0" stroke-width="4"/>
+    <circle cx="620" cy="430" r="5" fill="#0FA4FE"/>
+    <circle cx="875" cy="330" r="14" fill="#FFFFFF" stroke="#0070C0" stroke-width="4"/>
+    <circle cx="875" cy="330" r="5" fill="#0FA4FE"/>
+    <circle cx="1130" cy="390" r="14" fill="#FFFFFF" stroke="#0070C0" stroke-width="4"/>
+    <circle cx="1130" cy="390" r="5" fill="#0FA4FE"/>
+  </g>
+  <g id="stage-one" data-name="阶段一">
+    <rect x="72" y="185" width="180" height="110" rx="18" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.25" stroke-width="2"/>
+    <text x="91" y="217" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="bold" fill="#0FA4FE">阶段 01</text>
+    <text x="91" y="253" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" font-weight="bold" fill="#0070C0">启动准备</text>
+    <text x="91" y="277" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">明确目标与范围</text>
+  </g>
+  <g id="stage-two" data-name="阶段二">
+    <rect x="285" y="475" width="180" height="110" rx="18" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.25" stroke-width="2"/>
+    <text x="304" y="507" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="bold" fill="#0FA4FE">阶段 02</text>
+    <text x="304" y="543" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" font-weight="bold" fill="#0070C0">方案设计</text>
+    <text x="304" y="567" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">形成执行路径</text>
+  </g>
+  <g id="stage-three" data-name="阶段三">
+    <rect x="530" y="185" width="180" height="110" rx="18" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.25" stroke-width="2"/>
+    <text x="549" y="217" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="bold" fill="#0FA4FE">阶段 03</text>
+    <text x="549" y="253" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" font-weight="bold" fill="#0070C0">试点验证</text>
+    <text x="549" y="277" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">检查阶段成果</text>
+  </g>
+  <g id="stage-four" data-name="阶段四">
+    <rect x="785" y="475" width="180" height="110" rx="18" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.25" stroke-width="2"/>
+    <text x="804" y="507" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="bold" fill="#0FA4FE">阶段 04</text>
+    <text x="804" y="543" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" font-weight="bold" fill="#0070C0">全面推进</text>
+    <text x="804" y="567" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">按计划开展工作</text>
+  </g>
+  <g id="stage-five" data-name="阶段五">
+    <rect x="1028" y="185" width="180" height="110" rx="18" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.25" stroke-width="2"/>
+    <text x="1047" y="217" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="bold" fill="#0FA4FE">阶段 05</text>
+    <text x="1047" y="253" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" font-weight="bold" fill="#0070C0">交付复盘</text>
+    <text x="1047" y="277" font-family="Microsoft YaHei,Arial,sans-serif" font-size="15" fill="#808080">沉淀经验与改进</text>
+  </g>
+</svg>

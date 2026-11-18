@@ -13,6 +13,7 @@ Defined in the Design Specification & Content Outline; each image carries an `Ac
 ```markdown
 | Filename | Dimensions | Purpose | Type | Acquire Via | Status | Reference |
 |----------|------------|---------|------|-------------|--------|-----------|
+| bg_cover.png | 2560x1440 | Cover HTML background | Background | html | Rendered-HTML | gradient-panel / cover template |
 | cover_bg.png | 1280x720 | Cover background | Background | ai | Pending | Modern tech abstract, deep blue gradient |
 | team.jpg | 800x600 | Team photo | Photography | web | Pending | Diverse engineering team in modern office |
 | product.png | 600x400 | Page 3 product photo | Photography | user | Existing | - |
@@ -28,6 +29,7 @@ Defined in the Design Specification & Content Outline; each image carries an `Ac
 | **Generated** | AI-generated file exists at expected path | Reference from `../images/`; no on-slide credit needed |
 | **Sourced** | Web-sourced file exists at expected path | Reference from `../images/`; check `image_sources.json` for `license_tier` — if `attribution-required`, render an inline credit element on the slide (see [executor-base.md §6](./executor-base.md) and [image-searcher.md §7](./image-searcher.md) for the visual spec) |
 | **Rendered** | Deterministic formula PNG exists at expected path (`Acquire Via: formula`) | Reference from `../images/`; use `preserveAspectRatio="xMidYMid meet"` and do not crop |
+| **Rendered-HTML** | HTML background PNG exists at expected path (`Acquire Via: html`) | Reference from `../images/` as a full-bleed `<image>` first child of `<svg>` (see [shared-standards.md §4 Layered Background Structure](shared-standards.md)); `preserveAspectRatio="xMidYMid slice"`; bakes NO text — all text is SVG overlay |
 | **Needs-Manual** | Acquisition attempted once + one retry, failed | Dashed placeholder unless user has manually supplied the file |
 | **Existing** | User already has image (`Acquire Via: user`) | Place in `images/`, reference with `<image>` |
 | **Placeholder** | Intentionally not prepared yet (`Acquire Via: placeholder`) | Dashed border placeholder; replace later |
@@ -38,7 +40,8 @@ Defined in the Design Specification & Content Outline; each image carries an `Ac
 
 ```
 1. Strategist defines image needs → Add image resource list with Acquire Via + Status per row
-2. Image Acquisition (Step 5):
+2. Background & Image Acquisition:
+   - HTML backgrounds → `html_render.py` renders HTML→PNG      → Rendered-HTML (see [html-background-styles/_index.md](../templates/html-background-styles/_index.md)); must complete before Step 6 Executor
    - Pending + ai  → Image_Generator runs image_gen.py     → Generated
    - Pending + web → Image_Searcher runs image_search.py   → Sourced
    - formula / user / placeholder rows are skipped
@@ -48,8 +51,7 @@ Defined in the Design Specification & Content Outline; each image carries an `Ac
    ├── Sourced + license_tier=attribution-required → <image href=...> + small <text> credit element on the slide
    ├── Rendered formula → <image href="../images/formula_001.png" preserveAspectRatio="xMidYMid meet" .../>
    └── Placeholder / Needs-Manual without file → Dashed border + description text
-4. Preview: python3 -m http.server -d <project_path> 8000 → /svg_output/<filename>.svg
-5. Post-processing & Export → follow shared-standards.md §5
+4. Post-processing & Export → follow shared-standards.md §5
 ```
 
 > Keep external references in `svg_output/` during generation. `finalize_svg.py` auto-embeds images into `svg_final/`; export PPTX from `svg_final/`.
@@ -91,14 +93,9 @@ Defined in the Design Specification & Content Outline; each image carries an `Ac
 | `xMidYMid meet` | Complete display (similar to CSS `contain`) |
 | `none` | Stretch to fill, no aspect ratio preservation |
 
-### Preview Method
+### Browser Preview on Request
 
-Browser security blocks external images on directly opened SVGs. Serve via HTTP from the project root:
-
-```bash
-python3 -m http.server -d <project_path> 8000
-# Visit http://localhost:8000/svg_output/your_file.svg
-```
+If the user explicitly requests browser preview, use the [SVG editor workflow](../workflows/live-preview.md). Its server resolves external images that a browser may block when opening the SVG as a local file.
 
 ---
 

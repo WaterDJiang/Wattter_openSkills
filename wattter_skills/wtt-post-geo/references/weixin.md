@@ -23,12 +23,14 @@
 
 ```text
 official_api
+  -> opencli_login_adapter (weixin/article-draft, Cookie 路径)
   -> opencli_adapter (weixin create-draft)
   -> opencli_ui (富文本编辑器)
   -> manual_confirm
 ```
 
 - `official_api`：配置、白名单和素材上传可用时优先，格式与图片闭环最好。
+- `opencli_login_adapter`：官方 API 缺配置、但浏览器已登录 `mp.weixin.qq.com` 时启用。解析后台首页 HTML 的 `token`，POST `/cgi-bin/operate_appmsg?t=ajax-response&sub=create&type=77` 一次性写入标题+正文 HTML 创建图文草稿，不需要 appid/secret。v1 不上传图片（`images:false`），需要正文图/封面时跳过它。详见下文「主路径 A2」与 [login-state-adapters.md](login-state-adapters.md)。
 - `opencli_adapter`：当前 `weixin create-draft` 是 `COOKIE` 草稿 adapter，可作为低成本回退；如果正文富文本或图片不能保真，不得把返回 ID 当成完整图文成功。
 - `opencli_ui`：按 `weixin-rich-paste.md` 写入现有编辑器；无法确认图片时停在 `已填写待确认`。
 - API/adapter 超时或断连时先运行 `opencli weixin drafts -f json`。只有确认没有同标题草稿，才能进入下一 provider。
@@ -52,13 +54,14 @@ geo:
   source_urls: []
 mode: draft
 execution:
-  fallback_chain: [official_api, opencli_adapter, opencli_ui, manual_confirm]
+  fallback_chain: [official_api, opencli_login_adapter, opencli_adapter, opencli_ui, manual_confirm]
   write_state: not_started
 ```
 
 适配规则：
 
 - 适合完整文章、草稿沉淀、需要后续人工检查的图文内容。
+- 写作语气与链接方式遵循 [content-style.md](content-style.md) 的去营销化清单（禁绝对化卖货词/标题党、链接自然化、移除硬 CTA；通用，不在此重复）。
 - 默认创建草稿，不宣称已发表。
 - 保留完整正文结构，但不要把 Markdown 原文直接写入公众号。正式排版路径必须先转为微信兼容 HTML；只有纯文本兜底才允许降级。
 - 公众号正文必须从源 Markdown 或平台正文独立文件生成，不能从 `payloads.md`、发布计划、日志片段里截取；否则 YAML、说明文字、代码围栏会混入正文。
@@ -136,6 +139,26 @@ python3 scripts/weixin_api_draft.py \
 - `scripts/weixin_api_draft.py` 会把 manifest 中的本地正文图先通过 `uploadimg` 换成公众号正文图片 URL；也会扫描 HTML 里已有的本地 `<img src="/abs/path.png">` 或 `data:image/...` 并替换为微信 URL；再把封面图上传为 `thumb_media_id`，最后调用草稿箱创建草稿。
 - API 返回草稿 media_id 后，仍要通过草稿列表、后台预览或 API 返回值确认标题、正文、封面和关键链接。
 - API 配置缺失、白名单失败、素材上传失败时，回退到 OpenCLI 草稿，不要把 API 失败报告成发布成功。
+
+## 主路径 A2：Cookie 草稿 adapter（官方 API 缺配置时）
+
+`weixin/article-draft` 是本 skill 随附的登录态 adapter（详见 [login-state-adapters.md](login-state-adapters.md)）。当官方 API 没有 appid/appsecret 或 IP 白名单不通、但浏览器已登录 `mp.weixin.qq.com` 时启用：
+
+```bash
+python3 scripts/prepare-weixin-rich-html.py /abs/path/article.md --output-dir /abs/path/output/weixin-article
+opencli weixin article-draft \
+  --title "$(cat /abs/path/output/weixin-article/title.txt)" \
+  --file /abs/path/output/weixin-article/article.wechat.html \
+  --summary '<摘要>' \
+  --execute -f json
+opencli weixin drafts -f json
+```
+
+- adapter 解析后台首页 HTML 的 `token`，POST `/cgi-bin/operate_appmsg?t=ajax-response&sub=create&type=77&token=<token>`，用 `content0` 一次性写入标题+正文 HTML，返回 `appMsgId` 与 `appmsg_edit` 编辑链接。
+- v1 不上传图片（`images:false`）；需要正文图/封面时跳过本 adapter，走官方 API 或浏览器富文本粘贴。
+- 公众号会拒绝含未授权外链的草稿（错误码 `412/62752/64507`），正文 HTML 必须先剥站外链接（保留链接文字）——`prepare-weixin-rich-html.py` 已处理。
+- 标题超 64 字符报 `64702`，摘要超 120 字符报 `64703`，登录失效报 `200003`，需验证码报 `-6/-8`。
+- 返回 `created_unverified`：必须用 `opencli weixin drafts -f json` 或打开编辑链接回读标题、正文首尾与排版，才能升级为 `已创建草稿`。
 
 ## 主路径 B：OpenCLI 浏览器富文本粘贴（API 不通时优先）
 

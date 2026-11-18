@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="ggrad1" x1="640" y1="0" x2="640" y2="720" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#EBF3FF"/><stop offset="0.54" stop-color="#CCE0FF" stop-opacity="0.38"/><stop offset="1" stop-color="#CCE0FF" stop-opacity="0.81"/></linearGradient><linearGradient id="ggrad2" x1="270.0357" y1="250.1071" x2="1009.9643" y2="990.0357" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><filter id="fx1" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="8.49" dy="8.49" stdDeviation="12.67" flood-color="#003280" flood-opacity="0.13"/></filter><linearGradient id="ggrad3" x1="164.9608" y1="80.8765" x2="431.6922" y2="347.6078" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#D9D9D9"/><stop offset="1" stop-color="#808080"/></linearGradient><filter id="fx2" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="8.49" dy="8.49" stdDeviation="12.67" flood-color="#003280" flood-opacity="0.13"/></filter><linearGradient id="ggrad4" x1="683.4429" y1="25.9215" x2="1060.0842" y2="402.5628" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><linearGradient id="ggrad5" x1="109.8834" y1="295.1393" x2="128.029" y2="313.2849" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#D9D9D9"/><stop offset="1" stop-color="#808080"/></linearGradient><filter id="fx3" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/></filter><linearGradient id="ggrad6" x1="109.8834" y1="357.2812" x2="128.029" y2="375.4268" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#D9D9D9"/><stop offset="1" stop-color="#808080"/></linearGradient><filter id="fx4" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/></filter><linearGradient id="ggrad7" x1="109.8834" y1="419.4231" x2="128.029" y2="437.5688" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#D9D9D9"/><stop offset="1" stop-color="#808080"/></linearGradient><filter id="fx5" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/></filter><linearGradient id="ggrad8" x1="109.8834" y1="481.5651" x2="128.029" y2="499.7107" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#D9D9D9"/><stop offset="1" stop-color="#808080"/></linearGradient><filter id="fx6" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/></filter><linearGradient id="ggrad9" x1="109.8834" y1="543.707" x2="128.029" y2="561.8527" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#D9D9D9"/><stop offset="1" stop-color="#808080"/></linearGradient><filter id="fx7" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/></filter><linearGradient id="ggrad10" x1="109.8834" y1="605.8488" x2="128.029" y2="623.9944" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#D9D9D9"/><stop offset="1" stop-color="#808080"/></linearGradient><filter id="fx8" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/></filter><linearGradient id="ggrad11" x1="748.8621" y1="295.1393" x2="767.0077" y2="313.2849" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><filter id="fx9" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#003280" flood-opacity="0.19"/></filter><linearGradient id="ggrad12" x1="748.8621" y1="357.2812" x2="767.0077" y2="375.4268" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><filter id="fx10" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#003280" flood-opacity="0.19"/></filter><linearGradient id="ggrad13" x1="748.8621" y1="419.4231" x2="767.0077" y2="437.5688" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><filter id="fx11" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#003280" flood-opacity="0.19"/></filter><linearGradient id="ggrad14" x1="748.8621" y1="481.5651" x2="767.0077" y2="499.7107" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><filter id="fx12" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#003280" flood-opacity="0.19"/></filter><linearGradient id="ggrad15" x1="748.8621" y1="543.707" x2="767.0077" y2="561.8527" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><filter id="fx13" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#003280" flood-opacity="0.19"/></filter><linearGradient id="ggrad16" x1="748.8621" y1="605.8488" x2="767.0077" y2="623.9944" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#00BEFF"/><stop offset="1" stop-color="#0165FF"/></linearGradient><filter id="fx14" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="2.83" dy="2.83" stdDeviation="6" flood-color="#003280" flood-opacity="0.19"/></filter><linearGradient id="txtgrad17" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="0"><stop offset="0" stop-color="#D9D9D9"/><stop offset="1" stop-color="#999999"/></linearGradient><linearGradient id="txtgrad18" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="0"><stop offset="0" stop-color="#E6F0FF"/><stop offset="1" stop-color="#80B2FF"/></linearGradient><linearGradient id="ggrad19" x1="492.0309" y1="336.8491" x2="667.2999" y2="512.1182" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0.07" stop-color="#00BEFF"/><stop offset="0.94" stop-color="#0165FF"/></linearGradient><filter id="fx15" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="10.37" dy="10.37" stdDeviation="12.67" flood-color="#0165FF" flood-opacity="0.4"/></filter></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="master-shape-7" data-name="文本框 6">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-2" data-name="文本框 1">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-6" data-name="矩形: 圆角 5">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad1)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="layout-shape-9" data-name="图片 8">
+<image href="brand_lockup.png" x="865" y="48.74" width="375.77" height="50.15" preserveAspectRatio="none"/>
+</g>
+<g id="shape-3104" data-name="任意多边形: 形状 3103">
+<path d="M 640 520.14 C 881.39 520.14 1101.35 564.19 1266.94 636.46 L 1280 642.44 L 1280 720 L 0 720 L 0 642.44 L 13.06 636.46 C 178.65 564.19 398.61 520.14 640 520.14 Z" fill="url(#ggrad2)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-17" data-name="梯形 4">
+<path d="M 73 645.49 L 73 195.51 C 73 183 83.16 172.84 95.68 172.84 L 484.84 172.84 C 495.19 172.84 504.24 179.86 506.81 189.89 L 622.08 639.86 C 625.76 654.21 614.93 668.16 600.11 668.16 L 95.68 668.16 C 83.16 668.16 73 658 73 645.49" fill="#FFFFFF" stroke="none" stroke-width="1" filter="url(#fx1)"/>
+</g>
+<g id="shape-33" data-name="任意多边形: 形状 32">
+<path d="M 95.68 172.84 L 484.84 172.84 C 495.19 172.84 504.24 179.86 506.81 189.89 L 523.65 255.65 L 73 255.65 L 73 195.51 C 73 183 83.16 172.84 95.68 172.84 Z" fill="url(#ggrad3)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-19" data-name="梯形 4">
+<path d="M 1207 195.51 L 1207 645.49 C 1207 658 1196.84 668.16 1184.32 668.16 L 683.26 668.16 C 673.05 668.16 664.11 661.35 661.4 651.51 L 537.36 201.54 C 533.38 187.1 544.24 172.84 559.22 172.84 L 1184.32 172.84 C 1196.84 172.84 1207 183 1207 195.51" fill="#FFFFFF" stroke="none" stroke-width="1" filter="url(#fx2)"/>
+</g>
+<g id="shape-34" data-name="任意多边形: 形状 33">
+<path d="M 559.22 172.84 L 1184.32 172.84 C 1196.84 172.84 1207 183 1207 195.51 L 1207 255.65 L 552.27 255.65 L 537.36 201.54 C 533.38 187.1 544.24 172.84 559.22 172.84 Z" fill="url(#ggrad4)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="shape-48" data-name="文本框 47">
+<rect x="106.77" y="190.01" width="258.12" height="48.47" fill="none"/>
+<text x="116.37" y="222.01" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="32" fill="#262626" font-weight="bold"><tspan fill="#262626" font-size="32" font-weight="bold">XXXX</tspan></text>
+</g>
+<g id="shape-49" data-name="文本框 48">
+<rect x="956.57" y="190.01" width="213.55" height="48.47" fill="none"/>
+<text x="1160.52" y="222.01" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="32" fill="#FFFFFF" font-weight="bold"><tspan fill="#FFFFFF" font-size="32" font-weight="bold">XXXX</tspan></text>
+</g>
+<g id="shape-3077" data-name="组合 3076">
+<g id="shape-38" data-name="椭圆 37">
+<ellipse cx="118.96" cy="304.21" rx="9.07" ry="9.07" fill="url(#ggrad5)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx3)"/>
+</g>
+<g id="shape-41" data-name="文本框 40">
+<rect x="144.01" y="284.82" width="387.13" height="38.78" fill="none"/>
+<text x="153.61" y="310.02" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3078" data-name="组合 3077">
+<g id="shape-52" data-name="椭圆 51">
+<ellipse cx="118.96" cy="366.35" rx="9.07" ry="9.07" fill="url(#ggrad6)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx4)"/>
+</g>
+<g id="shape-53" data-name="文本框 52">
+<rect x="144.01" y="346.97" width="387.13" height="38.78" fill="none"/>
+<text x="153.61" y="372.17" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3079" data-name="组合 3078">
+<g id="shape-55" data-name="椭圆 54">
+<ellipse cx="118.96" cy="428.5" rx="9.07" ry="9.07" fill="url(#ggrad7)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx5)"/>
+</g>
+<g id="shape-56" data-name="文本框 55">
+<rect x="144.01" y="409.11" width="387.13" height="38.78" fill="none"/>
+<text x="153.61" y="434.31" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3080" data-name="组合 3079">
+<g id="shape-58" data-name="椭圆 57">
+<ellipse cx="118.96" cy="490.64" rx="9.07" ry="9.07" fill="url(#ggrad8)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx6)"/>
+</g>
+<g id="shape-59" data-name="文本框 58">
+<rect x="144.01" y="471.25" width="387.13" height="38.78" fill="none"/>
+<text x="153.61" y="496.45" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3081" data-name="组合 3080">
+<g id="shape-61" data-name="椭圆 60">
+<ellipse cx="118.96" cy="552.78" rx="9.07" ry="9.07" fill="url(#ggrad9)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx7)"/>
+</g>
+<g id="shape-62" data-name="文本框 61">
+<rect x="144.01" y="533.39" width="387.13" height="38.78" fill="none"/>
+<text x="153.61" y="558.59" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3082" data-name="组合 3081">
+<g id="shape-3073" data-name="椭圆 3072">
+<ellipse cx="118.96" cy="614.92" rx="9.07" ry="9.07" fill="url(#ggrad10)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx8)"/>
+</g>
+<g id="shape-3075" data-name="文本框 3074">
+<rect x="144.01" y="595.53" width="387.13" height="38.78" fill="none"/>
+<text x="153.61" y="620.73" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3083" data-name="组合 3082" transform="translate(959.49 304.21) scale(-1 1) translate(-959.49 -304.21)">
+<g id="shape-3084" data-name="椭圆 3083" transform="translate(757.93 304.21) scale(-1 1) translate(-757.93 -304.21)">
+<ellipse cx="757.93" cy="304.21" rx="9.07" ry="9.07" fill="url(#ggrad11)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx9)"/>
+</g>
+<g id="shape-3085" data-name="文本框 3084">
+<rect x="782.99" y="284.82" width="387.13" height="38.78" fill="none"/>
+<text x="1160.52" y="310.02" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3086" data-name="组合 3085" transform="translate(959.49 366.35) scale(-1 1) translate(-959.49 -366.35)">
+<g id="shape-3087" data-name="椭圆 3086" transform="translate(757.93 366.35) scale(-1 1) translate(-757.93 -366.35)">
+<ellipse cx="757.93" cy="366.35" rx="9.07" ry="9.07" fill="url(#ggrad12)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx10)"/>
+</g>
+<g id="shape-3088" data-name="文本框 3087">
+<rect x="782.99" y="346.97" width="387.13" height="38.78" fill="none"/>
+<text x="1160.52" y="372.17" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3089" data-name="组合 3088" transform="translate(959.49 428.5) scale(-1 1) translate(-959.49 -428.5)">
+<g id="shape-3090" data-name="椭圆 3089">
+<ellipse cx="757.93" cy="428.5" rx="9.07" ry="9.07" fill="url(#ggrad13)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx11)"/>
+</g>
+<g id="shape-3091" data-name="文本框 3090">
+<rect x="782.99" y="409.11" width="387.13" height="38.78" fill="none"/>
+<text x="1160.52" y="434.31" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3092" data-name="组合 3091" transform="translate(959.49 490.64) scale(-1 1) translate(-959.49 -490.64)">
+<g id="shape-3093" data-name="椭圆 3092" transform="translate(757.93 490.64) scale(-1 1) translate(-757.93 -490.64)">
+<ellipse cx="757.93" cy="490.64" rx="9.07" ry="9.07" fill="url(#ggrad14)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx12)"/>
+</g>
+<g id="shape-3094" data-name="文本框 3093">
+<rect x="782.99" y="471.25" width="387.13" height="38.78" fill="none"/>
+<text x="1160.52" y="496.45" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3095" data-name="组合 3094" transform="translate(959.49 552.78) scale(-1 1) translate(-959.49 -552.78)">
+<g id="shape-3096" data-name="椭圆 3095" transform="translate(757.93 552.78) scale(-1 1) translate(-757.93 -552.78)">
+<ellipse cx="757.93" cy="552.78" rx="9.07" ry="9.07" fill="url(#ggrad15)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx13)"/>
+</g>
+<g id="shape-3097" data-name="文本框 3096">
+<rect x="782.99" y="533.39" width="387.13" height="38.78" fill="none"/>
+<text x="1160.52" y="558.59" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3098" data-name="组合 3097" transform="translate(959.49 614.92) scale(-1 1) translate(-959.49 -614.92)">
+<g id="shape-3099" data-name="椭圆 3098" transform="translate(757.93 614.92) scale(-1 1) translate(-757.93 -614.92)">
+<ellipse cx="757.93" cy="614.92" rx="9.07" ry="9.07" fill="url(#ggrad16)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx14)"/>
+</g>
+<g id="shape-3100" data-name="文本框 3099">
+<rect x="782.99" y="595.53" width="387.13" height="38.78" fill="none"/>
+<text x="1160.52" y="620.73" text-anchor="end" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#404040"><tspan fill="#404040" font-size="24">XXXXXX</tspan></text>
+</g>
+</g>
+<g id="shape-3108" data-name="文本框 3107">
+<rect x="310.18" y="197.26" width="166.65" height="38.78" fill="none"/>
+<text x="319.78" y="222.46" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="url(#txtgrad17)"><tspan fill="url(#txtgrad17)" font-size="24">XXXXXX</tspan></text>
+</g>
+<g id="shape-3110" data-name="文本框 3109">
+<rect x="647.16" y="199.13" width="322.67" height="38.78" fill="none"/>
+<text x="656.76" y="224.33" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="url(#txtgrad18)"><tspan fill="url(#txtgrad18)" font-size="24">XXXXXX</tspan></text>
+</g>
+<g id="shape-3112" data-name="组合 3111">
+<g id="shape-3109" data-name="椭圆 3108">
+<ellipse cx="579.67" cy="424.48" rx="87.63" ry="87.63" fill="url(#ggrad19)" stroke-width="1" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" filter="url(#fx15)"/>
+</g>
+<g id="shape-3111" data-name="文本框 3110">
+<rect x="496.34" y="361.47" width="166.65" height="116.33" fill="none"/>
+<text x="579.67" y="441.07" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="88" fill="#FFFFFF" font-weight="bold"><tspan fill="#FFFFFF" font-size="88" font-weight="bold">VS</tspan></text>
+</g>
+</g>
+<g id="shape-2" data-name="标题 1">
+<rect x="71.41" y="48.74" width="533.19" height="58.16" fill="none"/>
+<text x="81.01" y="89.81" text-anchor="start" xml:space="preserve" font-family="&quot;Montserrat Black&quot;, &quot;HarmonyOS Sans SC Black&quot;, +mj-cs, sans-serif" font-size="42.67" fill="#000000"><tspan fill="#000000" font-size="42.67">本页内容标题</tspan></text>
+</g></svg>

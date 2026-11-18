@@ -135,6 +135,13 @@ class ProjectManager:
         project_dir_name = f"{project_name}_{normalized_format}_{date_str}"
         project_path = base_path / project_dir_name
 
+        if is_within_path(project_path, SKILL_DIR):
+            raise ValueError(
+                'Create course projects outside the Skill directory; '
+                'installation updates replace this tree. '
+                'Use --dir with an absolute path under the course workspace.'
+            )
+
         if project_path.exists():
             raise FileExistsError(f"Project directory already exists: {project_path}")
 
@@ -163,7 +170,7 @@ class ProjectManager:
                 "- `notes/`: speaker notes\n"
                 "- `templates/`: project templates\n"
                 "- `sources/`: source materials and normalized markdown\n"
-                "- `exports/`: main native pptx (timestamped); `_svg.pptx` sibling added when exported with `--svg-snapshot`\n"
+                "- `exports/`: main native editable pptx + `.editability.json`; `_preview_noneditable.pptx` is optional visual reference only\n"
                 "- `backup/<timestamp>/`: svg_output/ archive (always written in default-flow mode; safe to delete old timestamps)\n"
             ),
             encoding="utf-8",

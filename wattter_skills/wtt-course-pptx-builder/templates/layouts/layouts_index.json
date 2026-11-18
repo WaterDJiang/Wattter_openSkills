@@ -11,7 +11,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/academic_defense/page_catalog.json",
+    "template_capabilities": "templates/layouts/academic_defense/template_capabilities.json"
   },
   "ai_ops": {
     "path": "templates/layouts/ai_ops/",
@@ -26,7 +28,9 @@
       "content",
       "ending",
       "reference_style"
-    ]
+    ],
+    "page_catalog": "templates/layouts/ai_ops/page_catalog.json",
+    "template_capabilities": "templates/layouts/ai_ops/template_capabilities.json"
   },
   "china_telecom_template": {
     "path": "templates/layouts/china_telecom_template/",
@@ -40,7 +44,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/china_telecom_template/page_catalog.json",
+    "template_capabilities": "templates/layouts/china_telecom_template/template_capabilities.json"
   },
   "exhibit": {
     "path": "templates/layouts/exhibit/",
@@ -54,7 +60,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/exhibit/page_catalog.json",
+    "template_capabilities": "templates/layouts/exhibit/template_capabilities.json"
   },
   "google_style": {
     "path": "templates/layouts/google_style/",
@@ -68,7 +76,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/google_style/page_catalog.json",
+    "template_capabilities": "templates/layouts/google_style/template_capabilities.json"
   },
   "government_blue": {
     "path": "templates/layouts/government_blue/",
@@ -82,7 +92,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/government_blue/page_catalog.json",
+    "template_capabilities": "templates/layouts/government_blue/template_capabilities.json"
   },
   "government_red": {
     "path": "templates/layouts/government_red/",
@@ -96,7 +108,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/government_red/page_catalog.json",
+    "template_capabilities": "templates/layouts/government_red/template_capabilities.json"
   },
   "mckinsey": {
     "path": "templates/layouts/mckinsey/",
@@ -110,7 +124,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/mckinsey/page_catalog.json",
+    "template_capabilities": "templates/layouts/mckinsey/template_capabilities.json"
   },
   "medical_university": {
     "path": "templates/layouts/medical_university/",
@@ -124,7 +140,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/medical_university/page_catalog.json",
+    "template_capabilities": "templates/layouts/medical_university/template_capabilities.json"
   },
   "pixel_retro": {
     "path": "templates/layouts/pixel_retro/",
@@ -138,7 +156,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/pixel_retro/page_catalog.json",
+    "template_capabilities": "templates/layouts/pixel_retro/template_capabilities.json"
   },
   "psychology_attachment": {
     "path": "templates/layouts/psychology_attachment/",
@@ -152,7 +172,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/psychology_attachment/page_catalog.json",
+    "template_capabilities": "templates/layouts/psychology_attachment/template_capabilities.json"
   },
   "smart_red": {
     "path": "templates/layouts/smart_red/",
@@ -166,7 +188,9 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/smart_red/page_catalog.json",
+    "template_capabilities": "templates/layouts/smart_red/template_capabilities.json"
   },
   "科技蓝商务": {
     "path": "templates/layouts/科技蓝商务/",
@@ -180,6 +204,8 @@
       "chapter",
       "content",
       "ending"
-    ]
+    ],
+    "page_catalog": "templates/layouts/科技蓝商务/page_catalog.json",
+    "template_capabilities": "templates/layouts/科技蓝商务/template_capabilities.json"
   }
 }

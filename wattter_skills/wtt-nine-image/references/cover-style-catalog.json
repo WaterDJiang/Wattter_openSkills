@@ -1,0 +1,669 @@
+{
+  "version": 2,
+  "scope": "F封面；本仓库独立编写的常见视觉方向，非上游提示词副本。只按内容选择本次适用项。",
+  "styles": [
+    {
+      "id": "mono-editorial",
+      "name": "黑白大字编辑",
+      "family": "typography",
+      "good_for": [
+        "观点",
+        "认知",
+        "战略",
+        "批判"
+      ],
+      "visual": "以黑白块面和明确留白组织一个与主题相关的物件，大字承担版面重量。",
+      "typography": "主观点分句较大，承接原文共用对齐轴；字形不变形。",
+      "palette": "黑、白，少量中性灰",
+      "avoid": "只有大字却没有内容关系",
+      "text_policy": "title",
+      "supports_text_free": false,
+      "name_en": "Monochrome Editorial",
+      "title_integration": "将原文主分句作为墙、门或容器的一面，物件靠在字的边界。用黑白块面与文字共用的网格表达关系。"
+    },
+    {
+      "id": "etched-engraving",
+      "name": "蚀刻版画",
+      "family": "print",
+      "good_for": [
+        "历史",
+        "科学",
+        "哲思",
+        "机制"
+      ],
+      "visual": "用细密排线和点描塑造一个具象隐喻，主轮廓与细节有层次。",
+      "typography": "清楚的衬线标题落在低纹理区域，不被排线覆盖。",
+      "palette": "黑墨、象牙白",
+      "avoid": "把网纹铺在标题下面",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Engraving",
+      "title_integration": "让标题像与主图同次印刷的铭牌或版画题签，沿主轮廓布置，疏开字周围排线。"
+    },
+    {
+      "id": "word-metaphor",
+      "name": "字义隐喻",
+      "family": "typography",
+      "good_for": [
+        "短判断",
+        "概念解释",
+        "语言与行动"
+      ],
+      "visual": "将关键词的含义转成一个简单物件关系，画面只保留理解所必需的动作。",
+      "typography": "字区与隐喻共用方向或空隙，完整词语仍可顺序读完。",
+      "palette": "黑、白，一种由内容决定的强调色",
+      "avoid": "谜语式变形导致读不出字",
+      "text_policy": "title",
+      "supports_text_free": false,
+      "name_en": "Word as Metaphor",
+      "title_integration": "让代表性物件对原文关键词做一个动作，例如抱住、推向或穿过字间空隙，完整词组保持可读。"
+    },
+    {
+      "id": "torn-paper",
+      "name": "手撕纸拼贴",
+      "family": "collage",
+      "good_for": [
+        "经历",
+        "文化观察",
+        "立场",
+        "日常冲突"
+      ],
+      "visual": "用不规则纸边和两三层纸面承载一个具体主题场景，层次集中。",
+      "typography": "完整标题在主要纸层上，主次不同字高，不用碎字拼写。",
+      "palette": "暖白、墨黑，单一情绪色",
+      "avoid": "堆满胶带、报纸和无关碎片",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Torn-Paper Collage",
+      "title_integration": "将字印在真实主纸片上，字跟随纸片轴向。辅助碎片压住非文字的纸角，和标题纸共用阴影。"
+    },
+    {
+      "id": "voxel-system",
+      "name": "方块场景",
+      "family": "constructed",
+      "good_for": [
+        "系统",
+        "搭建",
+        "流程",
+        "工具教程"
+      ],
+      "visual": "将流程表现为可辨识的方块空间和一次具体动作，尺度关系明确。",
+      "typography": "平直清楚的标题占完整文字窗，不让方块代替文字笔画。",
+      "palette": "柔和底色、少量高对比方块色",
+      "avoid": "只套像素滤镜或堆无意义方块",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Voxel World",
+      "title_integration": "用方块世界的墙面、入口或牌面承载标题，字框与方块透视和网格一致，保留可识别轮廓。"
+    },
+    {
+      "id": "spatial-title",
+      "name": "空间大标题",
+      "family": "typography",
+      "good_for": [
+        "发布",
+        "活动",
+        "短主张",
+        "行动"
+      ],
+      "visual": "大字与一个主要对象形成空间方向，背景简化到能托住字与物。",
+      "typography": "允许轻微空间层次，全部必读笔画完整；长标题不用透视硬塞。",
+      "palette": "由主题决定的一组高对比色",
+      "avoid": "裁掉标题或把中文拉成不可读形状",
+      "text_policy": "title",
+      "supports_text_free": false,
+      "name_en": "Architectural Type",
+      "title_integration": "把焦点分句做成有厚度的空间结构，用物件比例与同一消失方向建立速度或压迫感。完整标题处于可读平面。"
+    },
+    {
+      "id": "layered-title",
+      "name": "图文叠层",
+      "family": "editorial",
+      "good_for": [
+        "人物行动",
+        "物件主题",
+        "鲜明观点"
+      ],
+      "visual": "一个主对象与字区形成前后层次，利用字区间留白安排物件。",
+      "typography": "关键字不被主体遮住；空间层次服务句意，不以挡字为效果。",
+      "palette": "克制底色、清楚字色、一个主体色",
+      "avoid": "物件压住标题或装饰线穿过笔画",
+      "text_policy": "title",
+      "supports_text_free": false,
+      "name_en": "Interleaved Editorial Type",
+      "title_integration": "在同一核心接触区设计前后换层，指定主体的一个部分进入字后、另一部分穿进相邻字的留白。所有必读笔画和识别特征完整。"
+    },
+    {
+      "id": "paper-depth",
+      "name": "纸雕空间",
+      "family": "paper",
+      "good_for": [
+        "转变",
+        "协作",
+        "路径",
+        "关系"
+      ],
+      "visual": "让纸层的开合、折叠和距离表达一次关系变化，光线统一。",
+      "typography": "文字在完整纸面上排布；纸层不切断标题，辅助字从简。",
+      "palette": "纸白或暖底、两种纸色",
+      "avoid": "无因果地堆纸层和重阴影",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Layered Paper Sculpture",
+      "title_integration": "字可从一层纸切出或固定在完整纸面上，切口、纸厚、透视和轻柔侧光与对象连续。"
+    },
+    {
+      "id": "blind-emboss",
+      "name": "纸面压印",
+      "family": "paper",
+      "good_for": [
+        "书籍",
+        "安静思考",
+        "文化",
+        "克制观点"
+      ],
+      "visual": "使用低起伏纸面与一个可辨识压印物件，依赖侧光分清轮廓。",
+      "typography": "标题与底面保持足够对比；小图不能只剩看不清的凹痕。",
+      "palette": "自然纸色、深墨字",
+      "avoid": "为工艺感牺牲标题和物件辨识",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Embossed Paper",
+      "title_integration": "把标题与图形分配到同纸的两种浅浮雕高度，使用同向侧光和连续压印边缘。字过淡时为关键字保留墨色。"
+    },
+    {
+      "id": "pixel-level",
+      "name": "像素关卡",
+      "family": "pixel",
+      "good_for": [
+        "学习",
+        "行动",
+        "障碍",
+        "步骤"
+      ],
+      "visual": "将主题表现为一个有目标与障碍的像素场景，角色行为能解释观点。",
+      "typography": "标题区独立清楚；中文用实际可读字体，不用伪像素缺笔字。",
+      "palette": "少量关卡色、明确前后景对比",
+      "avoid": "把所有事物都画成游戏UI或虚构得分",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Pixel Level",
+      "title_integration": "题字的边缘与关卡共用像素网格。用角色路径、目标或障碍引导视线到完整字区，画面保留游戏空间的透视尺度。"
+    },
+    {
+      "id": "workshop-board",
+      "name": "工业板与标识",
+      "family": "material",
+      "good_for": [
+        "制作",
+        "工程",
+        "工具",
+        "实践方法"
+      ],
+      "visual": "板材颗粒与少量标识形成工作现场，一个动作或物件解释主题。",
+      "typography": "标识式标题放在纹理较安静处，文字与材料互不吞没。",
+      "palette": "木色、深色字、少量冷色线条",
+      "avoid": "纹理压过内容或把主题写成虚假品牌",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Workshop Signage",
+      "title_integration": "把字和线图作为同一块有结构的板面上的涂印，颗粒穿过底色但弱化字区噪点。"
+    },
+    {
+      "id": "toy-bricks",
+      "name": "玩具积木",
+      "family": "constructed",
+      "good_for": [
+        "团队",
+        "教育",
+        "搭建",
+        "计划"
+      ],
+      "visual": "用积木的连接与缺口表达协作或搭建关系，形状有真实支撑。",
+      "typography": "完整标题在干净底面上，以块面比例呼应场景节奏。",
+      "palette": "低饱和玩具色、清楚暗字",
+      "avoid": "仿制具体玩具品牌标识或堆玩具",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Toy-Brick Construction",
+      "title_integration": "让完整字作为底板上的积木铭牌。一件积木活动通过对齐线与铭牌相连，文字用实心平面以保持阅读。"
+    },
+    {
+      "id": "analytical-grid",
+      "name": "策略报告",
+      "family": "analytical",
+      "good_for": [
+        "经营",
+        "方法",
+        "产品判断",
+        "分析"
+      ],
+      "visual": "用一个主结构和一个具体对象表达分析结论，网格只负责组织。",
+      "typography": "标题层级清楚、对齐稳定，不补虚构指标或小字段落。",
+      "palette": "纸白、近黑、少量沉稳强调色",
+      "avoid": "做成密集数据面板或无依据图表",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Analytical Grid",
+      "title_integration": "标题分行与策略图中的路径、阈值或坐标边界共轴。辅助网格减弱，主体选择一个能够说明结论的结构。"
+    },
+    {
+      "id": "science-object",
+      "name": "科学物件",
+      "family": "analytical",
+      "good_for": [
+        "研究",
+        "医学",
+        "机制",
+        "材料"
+      ],
+      "visual": "选择可解释本次机制的一个物件或切面，局部关系有依据。",
+      "typography": "标题避开细节密集区，术语准确，不凭空添论文期刊编号。",
+      "palette": "清淡背景、材料本色、深字",
+      "avoid": "伪造显微证据、数据或研究机构logo",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Scientific Editorial",
+      "title_integration": "将标题嵌入机制图或剖面的边距系统，用同一结构线组织图形与字。题字周围减少数据细节。"
+    },
+    {
+      "id": "soft-gradient",
+      "name": "弥散色场",
+      "family": "atmosphere",
+      "good_for": [
+        "情绪",
+        "艺术",
+        "品牌想法",
+        "感受"
+      ],
+      "visual": "用柔和色场托住一个与文章有关的对象或形状，重心稳定。",
+      "typography": "清晰实色标题与背景分离，不能把文字也做成模糊光晕。",
+      "palette": "少量相近色渐变、高对比字色",
+      "avoid": "只有漂亮背景却看不出主题",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Diffuse Color Field",
+      "title_integration": "让清晰字形在色域边界处和主体形成同一走势，借清楚色差读字，雾化只发生在背景和物件边缘。"
+    },
+    {
+      "id": "retro-modern",
+      "name": "复古编辑插画",
+      "family": "illustration",
+      "good_for": [
+        "个人经历",
+        "社会观察",
+        "当代工具"
+      ],
+      "visual": "使用简化复古形体呈现一幕具体日常，时代细节服务当下观点。",
+      "typography": "完整标题像编辑版面的一部分，字区与人物动作互相承接。",
+      "palette": "米色、低饱和主色、深墨字",
+      "avoid": "套怀旧滤镜或凭空添加历史事实",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Retro Editorial Illustration",
+      "title_integration": "用有年代感的字形和纸上油墨。沿插画实际边缘的不均匀留白组织原文，确保插图淡出与排版节奏协调。"
+    },
+    {
+      "id": "analog-future",
+      "name": "模拟未来",
+      "family": "illustration",
+      "good_for": [
+        "自动化",
+        "信息流",
+        "知识",
+        "系统变化"
+      ],
+      "visual": "把抽象过程转成可见的管道、档案或装置，人物动作解释运行。",
+      "typography": "标题沿系统主方向组织，主次明确，不用装饰性控制台小字。",
+      "palette": "复古暖底、冷暖设备色",
+      "avoid": "全图都是巨大机器而没有人或关系",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Analog Futures",
+      "title_integration": "让字属于装置铭牌、厂房标识或印刷叠层，匹配同一时代的材料与比例，从系统移动方向引导读完标题。"
+    },
+    {
+      "id": "public-space",
+      "name": "公共空间摄影",
+      "family": "photography",
+      "good_for": [
+        "文化",
+        "个体",
+        "城市",
+        "秩序"
+      ],
+      "visual": "以简洁公共空间和有意义的人物位置表达主题，光线与尺度可信。",
+      "typography": "文字位于实际低细节区域，不贴人物脸或建筑关键信息。",
+      "palette": "自然光、现场色、深浅对比字",
+      "avoid": "随便放风景或声称是实际新闻照片",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Public-Space Photography",
+      "title_integration": "将标题作为墙面字、阶梯侧面标识，或对齐稀疏的建筑分缝线。空间透视和光线在接触区可见。"
+    },
+    {
+      "id": "business-frontpage",
+      "name": "商业刊物",
+      "family": "editorial",
+      "good_for": [
+        "趋势",
+        "创业",
+        "行业",
+        "投资",
+        "产品"
+      ],
+      "visual": "一个具体主对象承载文章判断，标题与对象平衡，不堆封面线索。",
+      "typography": "主标题醒目，承接文字可读；不新增刊名、期号或出版背书。",
+      "palette": "高对比底色、一种内容强调色",
+      "avoid": "复制杂志标识或变成课程销售海报",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Business Editorial Cover",
+      "title_integration": "用抽象路径或对象轮廓决定标题轴线，让主标题与文章的商业判断共用一个视觉重心。副题仅用已确认内容。"
+    },
+    {
+      "id": "constructivist",
+      "name": "几何构成",
+      "family": "geometric",
+      "good_for": [
+        "抽象观点",
+        "规则",
+        "冲突",
+        "秩序"
+      ],
+      "visual": "用少量有方向的几何块面表达关系，重心与留白有张力。",
+      "typography": "文字共享几何对齐线，关键字不被切割或旋转到难读。",
+      "palette": "黑白灰或主题限定色组",
+      "avoid": "装饰图形没有明确含义",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Geometric Composition",
+      "title_integration": "用标题的行号节奏与几何块的密度、轴线或斜向走势呼应。高对比文字可与几何形成借位。"
+    },
+    {
+      "id": "duotone-silhouette",
+      "name": "双色剪影",
+      "family": "graphic",
+      "good_for": [
+        "冲突",
+        "速度",
+        "选择",
+        "清楚的行动"
+      ],
+      "visual": "用一组有因果关系的剪影与负空间表现动作，轮廓优先。",
+      "typography": "标题以高对比实色出现，不叠在复杂剪影边缘。",
+      "palette": "深浅两色与必要的第三中性色",
+      "avoid": "煽动性符号或轮廓细节糊成一块",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Duotone Silhouette",
+      "title_integration": "使标题放在剪影动作围出的反形内，关键字和人物/物件在对比色块里共用轮廓走向。"
+    },
+    {
+      "id": "architectural-view",
+      "name": "建筑与城市",
+      "family": "architecture",
+      "good_for": [
+        "城市",
+        "旅行",
+        "空间",
+        "地标",
+        "活动"
+      ],
+      "visual": "用与内容相关的建筑尺度、路径和人的位置建立场景，不做无关建筑拼图。",
+      "typography": "标题沿立面或空间留白组织，不能遮住要辨识的地标结构。",
+      "palette": "自然建筑色、少量印刷感色块",
+      "avoid": "虚构地标事实或将字做成建筑乱码",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Architecture and City",
+      "title_integration": "将字行与能够识别地标的结构线对齐。局部允许随建筑透视嵌入，地标和字形都保持完整。"
+    },
+    {
+      "id": "halftone-network",
+      "name": "网点与信息",
+      "family": "print",
+      "good_for": [
+        "科技",
+        "研究",
+        "传播",
+        "复杂问题"
+      ],
+      "visual": "用点阵密度与轮廓变化表达信息的聚散，主题对象保持清楚。",
+      "typography": "实色标题与网点分区，缩略图仍能读到全文。",
+      "palette": "纸底、深墨、少量单色",
+      "avoid": "网点覆盖文字或把颗粒当观点",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Halftone Information",
+      "title_integration": "题字与物件保留同类印刷颗粒，利用网点疏密的开口承载实色主字。避免点纹混入字的内部空隙。"
+    },
+    {
+      "id": "dark-modern",
+      "name": "深底现代",
+      "family": "editorial",
+      "good_for": [
+        "服务",
+        "产品",
+        "严肃观点",
+        "人物与物件"
+      ],
+      "visual": "深底上的一组明确形体构成主重心，用光面或色块分清层次。",
+      "typography": "使用与深底足够对比的字色，层级克制；遵从用户指定字色。",
+      "palette": "深底、暖白、少量主题色",
+      "avoid": "黑底黑字或无关奢侈品广告气质",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Dark Modern Editorial",
+      "title_integration": "用物件高光、暗部边线和同一明暗分界界定标题，构成一个可见整体。实色字不受噪点干扰。"
+    },
+    {
+      "id": "metal-surface",
+      "name": "金属表面",
+      "family": "material",
+      "good_for": [
+        "方法",
+        "系统",
+        "产品",
+        "路径"
+      ],
+      "visual": "让折面或反射方向表现一个具体关系，主要对象仍有可辨轮廓。",
+      "typography": "标题保持实色清楚，与强反光分区，不依赖闪亮字效。",
+      "palette": "银灰、深字、一种强调色",
+      "avoid": "每种科技主题都画成铬面人头",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Metal Surfaces",
+      "title_integration": "使用同一折面上的刻印、压字或单色涂印，字与对象共用高光方向、接触边界和视角。"
+    },
+    {
+      "id": "bold-color-system",
+      "name": "彩色巨构",
+      "family": "geometric",
+      "good_for": [
+        "事件",
+        "发布",
+        "竞赛",
+        "强动作"
+      ],
+      "visual": "用几组大结构和尺度反差表现一个主要事件，前后关系清晰。",
+      "typography": "完整标题与最大块面形成对重，重点不靠颜色数量。",
+      "palette": "三种以内主题色与中性色",
+      "avoid": "装饰过满或虚构赛事/发布信息",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Monumental Color Geometry",
+      "title_integration": "把标题与主要结构的体块做成同一轴线或对角呼应，原文重心与大物件共同支撑画面张力。"
+    },
+    {
+      "id": "cel-animation",
+      "name": "复古动画场景",
+      "family": "illustration",
+      "good_for": [
+        "代码",
+        "心理",
+        "系统",
+        "人与技术"
+      ],
+      "visual": "用平涂背景和清楚的人物动作呈现一幕主题场景，有可读的叙事瞬间。",
+      "typography": "字区保持平静，标题字形准确；不仿制具体作品角色或署名。",
+      "palette": "有限动画色盘、清楚墨线",
+      "avoid": "全是发光UI、乱码代码和既有IP人物",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Retro Cel Animation",
+      "title_integration": "将标题处理成场景里的清楚牌面或沿动作方向排布的编辑标题。使用动画画面的色块与轮廓语言。"
+    },
+    {
+      "id": "ink-metaphor",
+      "name": "轻墨线稿",
+      "family": "drawing",
+      "good_for": [
+        "关系",
+        "选择",
+        "制度",
+        "生活观点"
+      ],
+      "visual": "用少量有轻重的墨线表达一个有趣但直观的关系，画面有真实停顿。",
+      "typography": "自然手写或清楚衬线字随内容选择，标题与线稿互留净空。",
+      "palette": "纸白、墨黑、可选一处内容色",
+      "avoid": "用“极简”省掉理解所需的关系",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Minimal Ink Drawing",
+      "title_integration": "墨线动作的止点与文字行起点互相接续，字和线的笔墨气质一致。标题与主体轮廓留出呼吸。"
+    },
+    {
+      "id": "connected-tools",
+      "name": "工具协同",
+      "family": "analytical",
+      "good_for": [
+        "集成",
+        "自动化",
+        "教程",
+        "企业工具"
+      ],
+      "visual": "把工具的输入、转换与输出画成一个可理解连接，必要对象少而准。",
+      "typography": "标题落在连接关系之外，工具名使用原文，不凭空添logo。",
+      "palette": "干净底色、工具中性色、一种连接色",
+      "avoid": "杂乱产品图标墙或虚构集成功能",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Connected Tools",
+      "title_integration": "让标题各分句和输入、转换、输出的连线关系相对应。可把文字窗做成路径形成的开口，标识保留真实文件。"
+    },
+    {
+      "id": "research-notebook",
+      "name": "研究札记",
+      "family": "editorial",
+      "good_for": [
+        "知识",
+        "思考",
+        "AI研究",
+        "系统"
+      ],
+      "visual": "以一个具体样本、简洁标记和留白呈现正在理解的对象，信息克制。",
+      "typography": "标题自然分层，正文语义准确；不加研究机构名或假论文图表。",
+      "palette": "暖白、深墨、低饱和强调色",
+      "avoid": "复制品牌视觉身份或伪学术小字",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Research Notebook",
+      "title_integration": "以样本轮廓或纸页边界组织标题，字和少量真实标记共享版面与纸面材质。"
+    },
+    {
+      "id": "archive-table",
+      "name": "档案桌面",
+      "family": "material",
+      "good_for": [
+        "资料整理",
+        "产品材料",
+        "研究",
+        "创作过程"
+      ],
+      "visual": "俯视少量具有内容关系的物件和资料，位置与光线形成整体。",
+      "typography": "标题放在空出的完整纸面或桌面，不把文字散落成标签墙。",
+      "palette": "纸张本色、工作台中性色",
+      "avoid": "杂物没有逻辑、虚构产品UI或私人资料",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Archive Desk",
+      "title_integration": "让完整标题位于俯视桌上的真实主纸面，字随纸面角度和光线，与相关物件构成一个组合。"
+    },
+    {
+      "id": "light-tech",
+      "name": "明亮轻科技",
+      "family": "graphic",
+      "good_for": [
+        "工具",
+        "产品教程",
+        "轻量技术"
+      ],
+      "visual": "明亮背景上一个清楚的功能对象，轻微色彩过渡只帮助区分层次。",
+      "typography": "现代清楚的标题与对象共用秩序，少辅助字，不加厂商背书。",
+      "palette": "白、深字、一种浅色功能锚点",
+      "avoid": "空泛光球或套所有科技主题的渐变图标",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Minimal Light Technology",
+      "title_integration": "一个功能物件的开口、外框或动线与字区共享对齐线。色彩过渡仅用于主体，文字保留清晰的实色轮廓。"
+    },
+    {
+      "id": "oil-cutout",
+      "name": "油画留白隐喻",
+      "family": "painting",
+      "good_for": [
+        "关系",
+        "文化",
+        "抽象转变",
+        "视觉隐喻"
+      ],
+      "visual": "以一组有清楚关系的古典油画式对象剪裁置于大面积空白，用动作表达意思。",
+      "typography": "纯无字方向；主题仅作语义输入，不画标题、字母或数字。",
+      "palette": "白底、对象本色",
+      "avoid": "添加标题、标签、水印或复制既有画作主体",
+      "text_policy": "none",
+      "supports_text_free": true,
+      "name_en": "Oil-Painting Visual Metaphor",
+      "title_integration": "人物或物件的姿态独立传达关系，画面留白随主体构图。此方向为无字封面。",
+      "default_ratio": "5:2"
+    },
+    {
+      "id": "physical-metaphor",
+      "name": "物性隐喻",
+      "family": "object",
+      "good_for": [
+        "组织",
+        "系统变化",
+        "商业观点",
+        "产品"
+      ],
+      "visual": "让一个常见物件的重量、连接或容纳方式准确比喻文章关系，物性可信。",
+      "typography": "完整标题与物件形成对重，字号层级解释本次关系而非喊口号。",
+      "palette": "简单背景、物件本色、清楚字色",
+      "avoid": "抽象雕塑看不出主题或材料违背物理",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Physical Metaphor",
+      "title_integration": "用物件的支撑、并合或断开关系定义文字的位置，字作为装置铭文、秤上的配重或与关键动作相对的留白。"
+    },
+    {
+      "id": "line-figure",
+      "name": "线条人",
+      "family": "drawing",
+      "good_for": [
+        "明确要求线条人",
+        "手绘概念",
+        "克莱因蓝"
+      ],
+      "visual": "复用D的方框眼镜、连续躯干与完整四肢，用一幕有动作的隐喻承接观点。",
+      "typography": "复用D的真实沐瑶、纯黑标题、原文层级与字图净空检查。",
+      "palette": "纯白、黑线、唯一克莱因蓝",
+      "avoid": "身体缺失、遮挡、把正文小字规则带入封面",
+      "text_policy": "title",
+      "supports_text_free": true,
+      "name_en": "Line Figure",
+      "title_integration": "用人物的朝向、动作或道具边线将视线接到标题。采用D净空，沐瑶黑字与线稿共用阅读节奏，身体和字形都完整。"
+    }
+  ]
+}

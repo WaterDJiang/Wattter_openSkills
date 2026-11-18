@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <path d="M 0 676 C 292 650 630 662 940 720 L 0 720 Z" fill="#ECF6FE"/>
+  <rect x="58" y="40" width="6" height="30" fill="#C7A661"/>
+  <text x="80" y="65" fill="#003396" font-family="STKaiti, KaiTi" font-size="24" font-weight="700">{{SECTION_LABEL}}</text>
+  <text x="70" y="142" fill="#262626" font-family="STKaiti, KaiTi" font-size="52" font-weight="800">{{PAGE_TITLE}}</text>
+  <text x="70" y="180" fill="#666666" font-family="STKaiti, KaiTi" font-size="22">{{PAGE_SUBTITLE}}</text>
+  <line x1="70" y1="204" x2="1210" y2="204" stroke="#E7E6E6" stroke-width="1"/>
+
+  <g id="prompt-structure">
+    <rect x="70" y="235" width="742" height="398" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <rect x="70" y="235" width="742" height="52" rx="6" fill="#003396"/>
+    <text x="100" y="269" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="24" font-weight="700">提示词结构</text>
+    <text x="778" y="268" text-anchor="end" fill="#C7A661" font-family="Menlo, Consolas, monospace" font-size="16">PROMPT</text>
+
+    <rect x="88" y="301" width="706" height="58" rx="4" fill="#F1F8FE"/>
+    <text x="106" y="339" fill="#2E75FF" font-family="STKaiti, KaiTi" font-size="20" font-weight="700">01 角色</text>
+    <text x="246" y="339" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{ROLE_TEXT}}</text>
+
+    <rect x="88" y="365" width="706" height="58" rx="4" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <text x="106" y="403" fill="#2E75FF" font-family="STKaiti, KaiTi" font-size="20" font-weight="700">02 任务</text>
+    <text x="246" y="403" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{TASK_TEXT}}</text>
+
+    <rect x="88" y="429" width="706" height="58" rx="4" fill="#F1F8FE"/>
+    <text x="106" y="467" fill="#2E75FF" font-family="STKaiti, KaiTi" font-size="20" font-weight="700">03 上下文</text>
+    <text x="246" y="467" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{CONTEXT_TEXT}}</text>
+
+    <rect x="88" y="493" width="706" height="58" rx="4" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <text x="106" y="531" fill="#2E75FF" font-family="STKaiti, KaiTi" font-size="20" font-weight="700">04 约束</text>
+    <text x="246" y="531" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{CONSTRAINT_TEXT}}</text>
+
+    <rect x="88" y="557" width="706" height="58" rx="4" fill="#F1F8FE"/>
+    <text x="106" y="595" fill="#2E75FF" font-family="STKaiti, KaiTi" font-size="20" font-weight="700">05 输出</text>
+    <text x="246" y="595" fill="#262626" font-family="STKaiti, KaiTi" font-size="21">{{OUTPUT_TEXT}}</text>
+  </g>
+
+  <g id="prompt-quality">
+    <rect x="844" y="235" width="366" height="398" rx="6" fill="#003396"/>
+    <rect x="866" y="263" width="52" height="4" fill="#C7A661"/>
+    <text x="866" y="314" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="30" font-weight="700">质量检查</text>
+    <text x="866" y="371" fill="#ECF6FE" font-family="STKaiti, KaiTi" font-size="22">{{CHECK_01}}</text>
+    <line x1="866" y1="392" x2="1186" y2="392" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="1"/>
+    <text x="866" y="439" fill="#ECF6FE" font-family="STKaiti, KaiTi" font-size="22">{{CHECK_02}}</text>
+    <line x1="866" y1="460" x2="1186" y2="460" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="1"/>
+    <text x="866" y="507" fill="#ECF6FE" font-family="STKaiti, KaiTi" font-size="22">{{CHECK_03}}</text>
+    <rect x="866" y="552" width="320" height="52" rx="4" fill="#FFFFFF" fill-opacity="0.12"/>
+    <text x="884" y="585" fill="#C7A661" font-family="STKaiti, KaiTi" font-size="18">{{REVISION_HINT}}</text>
+  </g>
+</svg>

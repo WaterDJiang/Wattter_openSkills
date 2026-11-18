@@ -2,7 +2,7 @@
 
 > **⚠️ Skeleton for Strategist — do NOT copy verbatim into a project.** When producing `<project_path>/spec_lock.md`, emit only `##` sections with filled-in `-` data lines. Do NOT carry over any `>` blockquote guidance, HARD-rule notes, or override examples — those are author-time guidance, not runtime data. Every output line must be parseable data.
 >
-> Machine-readable execution contract. Executor MUST `read_file` this before every SVG page. Values not listed here must NOT appear in SVGs. For design narrative (rationale, audience, style), see `design_spec.md`.
+> Machine-readable execution contract and sole authority. Executor reads it on the first page and when the compact cache lacks a field; before every SVG page it re-reads `locked_values.json`. Values not listed here must NOT appear in SVGs. For design narrative (rationale, audience, style), see `design_spec.md`.
 >
 > After SVG generation begins, this is the canonical source for color / font / icon / image values. Modifications should go through `scripts/update_spec.py` to keep this file and generated SVGs in sync.
 
@@ -34,6 +34,7 @@
 - border: #......
 - image_rendering: vector-illustration
 - image_palette: cool-corporate
+- theme_palette: navy-trust
 
 > Strategist: fill only colors actually used. Add extra rows as needed; delete unused rows rather than leave as `#......`.
 >
@@ -47,6 +48,8 @@
 > - image_palette: custom
 > - image_palette_behavior: "Primary deep aubergine `#4C1D95` anchors ~35% of canvas; secondary warm cream `#FEF3C7` carries ~55% as breathing field; accent burnished gold `#D4AF37` in 5-10% as ceremonial accents. No fourth color."
 > ```
+>
+> **`theme_palette`** — Free Route 的可选 HEX 种子与 provenance；使用 HTML Background 时必填。Deck Route 直接锁定所选 Deck 的颜色角色，不得用通用 palette 覆盖品牌色；可省略本字段或写该 Deck 自身的 provenance。
 
 ## typography
 - font_family: "Microsoft YaHei", Arial, sans-serif
@@ -119,12 +122,32 @@
 >
 > **Missing or empty section** → Executor falls back to `dense` for every page (legacy pre-rhythm behavior). Remove the section only for legacy decks; new decks MUST fill it.
 
+## route
+- kind: free
+- primary_source: none
+- strategy: layout-led
+- allowed_asset_scopes: layouts, html-background-styles, charts, icons
+- forbidden_asset_scopes: decks
+
+> 新项目必填。`kind=deck` 只在用户明确指定 Deck 时合法；`primary_source=decks/<id>`，允许范围只能是该 Deck、charts、icons，禁止其他 Deck/layouts/html-background-styles。用户未指定模板时写 `kind=free` + `strategy=layout-led|html-led|full-free`，不得引用 `templates/decks/`。具体逐页来源写入 `page_assets`。
+
+## variant_policy
+- mode: controlled_rotation
+- repeat_window: 3
+- max_same_topology_run: 2
+- equivalence_score_delta: 10
+- deterministic_seed: outline_hash
+
+> 新项目默认采用确定性受控轮换。Binder 先满足 `content_form / item_count / composition / density / image_requirements`，再仅在与最高语义分相差不超过 `equivalence_score_delta` 的候选中轮换。明确的 `composition.topology/emphasis` 优先；最近 `repeat_window` 个同域候选避免重复；同一 topology 最多连续 `max_same_topology_run` 次。`deterministic_seed=outline_hash` 保证同一输入重复运行结果一致。`replication_mode=mirror`、结构页和唯一候选页自动稳定，不参与轮换。需要完全固定时写 `mode: stable`。
+>
+> 本节只控制 Strategist/Binder 的候选决策。最终 `page_layouts/page_charts` 一旦写入 `spec_lock.md` 即锁定，Executor 不得在逐页生成时再次随机选择。
+
 ## page_layouts
 - P01: 01_cover
 - P03: 02a_chapter
-- P04: 03a_content_abstract
+- P04: 009_content_vs_comparison
 
-> One entry per page **that uses a template SVG**. Key: `P<NN>` matching §IX. Value: the template's SVG basename without extension (e.g., `01_cover`, `03a_content_image_text`) — Executor resolves it to `templates/<chosen_template>/<value>.svg`. Modern templates ship many content-page variants (`03a_content_abstract`, `03b_content_image_text`, `03c_content_three_items` …); the page-type → single-file mapping in `executor-base.md §1` no longer covers them, so this section is the per-page truth.
+> One entry per page **that uses a template SVG**. Key: `P<NN>` matching §IX. Value: the template's canonical SVG reference without extension (e.g., `01_cover`, `03a_content_image_text`, `009_content_vs_comparison`). When `page_catalog.json` exists, select by its `use_cases` / `structure` / item count / `content_slots` / density / image requirements, reject `avoid_when` matches, and write `reference`. Modern templates ship many content-page variants, so the page-type → single-file mapping in `executor-base.md §1` no longer covers them; this section is the per-page truth.
 >
 > **No entry for a page** → that page is free design (no template inheritance). Mixed decks are supported: e.g., cover/chapter pages inherit a template while content pages are free.
 >
@@ -132,20 +155,76 @@
 >
 > **Whole section omitted** → entire deck is free design. Equivalent to no rows but cleaner; do this when zero pages reference a template.
 >
-> **Strategist source**: copy the per-page SVG choices from `design_spec.md §VI Page Roster` (or §IX outline if Roster is absent). Names must match files in `templates/<chosen_template>/` exactly — typos cause silent fallback to free design.
+> **Strategist source**: `page_binding.json` 的受控轮换结果；需要人工复核时，用 `page_catalog.json` 或 `template_page_catalog.py search --compact --topology ... --emphasis ...` 查看紧凑候选。没有 Binder 时回退 `design_spec.md §VI Page Roster`（或 §IX outline）。New specs write only canonical references; never write a bare `content` type or an alias. Resolve uncertain values with `scripts/template_page_catalog.py`, then run `<project_path> validate-project`; missing files and aliases are hard failures before Executor.
+
+## page_render_modes
+- P01: themed_rebuild
+- P02: brand_shell
+- P03: mirror
+
+> 可选，使用 deck/layout 模板时建议写入。`mirror` 只允许替换文字；`brand_shell` 保留品牌壳并重建正文；`themed_rebuild` 仅继承主题语言。旧项目缺失本段时，mirror 模板继续按整本 mirror 的旧行为执行。
+
+## page_shell_assets
+- P02: brand_header.png, footer_texture.png
+
+> 仅为 `brand_shell` 页面声明可用的锁定模板资产，逗号分隔。优先使用 `page_binding.json` 的 `shell_assets`；未逐页声明时，schema v1 校验器回退到 `template_capabilities.json.shared_assets`。没有可锁定资产时使用 `themed_rebuild`，不得伪装成品牌壳。
+
+## page_shell_requirements
+- P02: identity=brand_header.png | background=footer_texture.png | forbid_unlocked_full_bleed=true
+
+> schema v2 的 `brand_shell` 必填。直接继承 `page_binding.json.shell_requirements`：用 `|` 分隔角色，角色内多个候选文件用逗号分隔。页面必须命中每个必需角色；`background` 至少一个候选必须以 full-bleed 方式使用。`forbid_unlocked_full_bleed=true` 时，页面不得再使用未锁定的通用全幅背景。
+
+## html_backgrounds
+- P01: cover
+- P02: theme
+- P03: theme
+- P04: chapter
+- P10: ending
+
+> One entry per page. Key: `P<NN>` matching §IX. Value: the HTML background template name — one of `cover` / `ending` / `chapter` / `theme`. Executor resolves it to `images/bg_<value>.png` (rendered by [`html_render.py`](../scripts/html_render.py)) and places it as the full-bleed background `<image>` first child of `<svg>` (see [shared-standards.md §4 Layered Background Structure](../references/shared-standards.md)).
+>
+> **Free Route only**: `html-led` 通常为内容页写 `theme`；`layout-led` 可按需使用；`full-free` 可省略。Deck Route 禁止本节，背景必须来自选中 Deck 的 `page_shell_assets/page_assets`。
+>
+> **No entry for a page** → 当前 route 不使用 HTML Background，或该页使用 route 允许的其他背景来源。
+>
+> **Strategist source**: Free Route 的背景策略与 page roster。所选 style/theme_palette 写在 `images/html_background_manifest.json` 顶层。
 
 ## page_charts
 - P05: bar_chart
-- P09: timeline_horizontal
+- P09: timeline
 - P12: quadrant_bubble_scatter
 
-> One entry per page **that adapts a `templates/charts/` chart template**. Key: `P<NN>` matching §IX. Value: chart template basename without `.svg` (must match a key in `templates/charts/charts_index.json`).
+> One entry per page **that adapts a `templates/charts/` data-chart OR structural-pattern template**. This includes comparisons, point diagrams, processes, matrices, agendas, teams, journeys, and strategic frameworks—not only numeric charts. Key: `P<NN>` matching §IX. Value: chart template basename without `.svg` (must match a key in `templates/charts/charts_index.json`).
 >
-> **No entry for a page** → no chart on that page (or a chart that did not match any catalog template — Strategist's `no-template-match` fallback). Both cases mean Executor designs the visualization from scratch per `design_spec.md §VII`.
+> **No entry for a page** → no library visualization on that page, or an explicit `no-template-match` fallback recorded in `chart_selection.json`. Do not silently omit a catalog match.
 >
-> **Whole section omitted** → no data-visualization pages in this deck.
+> **Whole section omitted** → 渐进式查询后没有页面选择全局 chart 结构。
 >
-> **Strategist source**: copy from `design_spec.md §VII Visualization Reference List` — only the rows whose `reference template path` points to a `templates/charts/` file. Pages marked `no-template-match` in §VII MUST NOT appear here.
+> **Strategist source**: copy from `design_spec.md §VII` and `<project_path>/chart_selection.json`—only rows whose path points to a real `templates/charts/` SVG. Pages marked `no-template-match` MUST NOT appear here.
+
+## page_assets
+- P05: shell=04b_content_flow | structure=local | source_scope=local | reuse_mode=brand_shell
+- P09: structure=charts/pyramid_chart | source_scope=global | reuse_mode=structure_only
+
+> 新项目按需填写。`shell` 记录选中的本地页面结构，`structure` 记录全局 chart/icon 结构；没有外部结构时可以写 `local`。声明外部结构的页面，在生成前 SVG 中必须给对应 `<g>` 写 `data-wtt-source="chart:<id>"` 或 `data-wtt-source="icon:<id>"`，由 `validate_asset_usage.py` 验收。旧项目缺失本段时保持兼容。
+
+## chart_skin
+- mode: structure_only
+- color_source: colors
+- typography_source: typography
+- effects_source: visual_style
+
+> Required whenever `page_charts` exists. The chart SVG supplies only structure: visualization type, geometry, relationship logic, label/legend placement, and series encoding. Its original colors, fonts, gradients, shadows, and effects are untrusted placeholders.
+>
+> Executor must re-skin every chart from the already selected deck/template identity:
+> - primary series / dominant node → `colors.primary`
+> - comparison series → `colors.secondary_accent` or another explicitly locked accent
+> - semantic highlight → `colors.accent`
+> - axes / grid / dividers / secondary labels → locked neutral roles such as `colors.grid`, `colors.border`, `colors.text_secondary`
+> - additional series → opacity, dash, or PPT-safe pattern variants of locked colors; never invent a new HEX
+> - all chart text → role-appropriate values from `typography`
+>
+> `visual_style` decides whether gradients/shadows exist. A flat selected template strips them; a gradient/glass template rebuilds them using locked colors. Never retain a chart template's original `<linearGradient>`, `fill`, `stroke`, or font family just because the geometry was reused.
 
 ## forbidden
 - Mixing icon libraries

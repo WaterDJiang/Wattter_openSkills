@@ -5,6 +5,7 @@ summary: Medical academic reports, case discussions, research presentations, hos
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # Hospital / Medical University Template (Medical University Style) - Design Specification

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>bone-archival / cover</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bone: #E2DCC9;
+    --black: #000000;
+    --ink: #0A0A0A;
+    --paper: #F4EFE0;
+    --sienna: #A06A3C;
+    --magenta: #C73B7A;
+    --orange: #EE7A2E;
+    --teal: #2D7E73;
+    --blue: #3F73B7;
+    --mustard: #D8A93B;
+    --olive: #6F7A2E;
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --text: {{text}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bone); color: var(--ink); font-family: "Barlow Condensed", sans-serif; }
+  .canvas { position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; background: var(--bone); }
+  /* 顶部 super（小写 大写 Barlow Condensed 标签） */
+  .super {
+    position: absolute; left: 50px; top: 36px;
+    font-family: "Barlow Condensed", sans-serif; font-weight: 800;
+    font-size: 16px; letter-spacing: .12em; text-transform: uppercase; opacity: .8;
+  }
+  /* 右上 SVG 抽象图形（teal 几何） */
+  .shape {
+    position: absolute; right: 36px; top: 48px;
+    width: 200px; height: 240px;
+    color: var(--teal);
+  }
+  /* 底部 row：左小橙色圆角方块 + 中 who（名字 + 副标）+ 右 date */
+  .row {
+    position: absolute; left: 50px; right: 50px; bottom: 30px;
+    display: flex; align-items: end; justify-content: space-between;
+  }
+  .lockup { display: flex; align-items: center; gap: 14px; }
+  .mark { width: 36px; height: 36px; border-radius: 8px; background: var(--orange); }
+  .who { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: .04em; line-height: 1.1; }
+  .who small { display: block; font-size: 13px; font-weight: 500; letter-spacing: .08em; opacity: .65; margin-top: 2px; }
+  .date { font-family: "Stardos Stencil", serif; font-weight: 700; font-size: 22px; text-transform: uppercase; }
+  .logo { position: absolute; left: 50px; top: 64px; height: 22px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="super">Bone · Archival Edition</div>
+
+  <!-- 右上 teal 抽象图形（旋转半圆 + 实心方块 + 短线） -->
+  <svg class="shape" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="80" r="56" fill="none" stroke="currentColor" stroke-width="6"/>
+    <rect x="20" y="140" width="80" height="80" fill="currentColor" transform="rotate(-12 60 180)"/>
+    <line x1="130" y1="40" x2="190" y2="40" stroke="currentColor" stroke-width="4"/>
+    <line x1="130" y1="60" x2="170" y2="60" stroke="currentColor" stroke-width="4"/>
+  </svg>
+
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: super 50,80 1000,110 -->
+  <!-- text-slot: title 50,160 950,440 -->
+  <!-- text-slot: subtitle 50,460 950,530 -->
+
+  <div class="row">
+    <div class="lockup">
+      <div class="mark"></div>
+      <div class="who">WATTTER<small>stencil edition</small></div>
+    </div>
+    <!-- text-slot: author 530,640 780,680 -->
+    <!-- text-slot: date 900,640 1200,680 -->
+  </div>
+</div>
+</body>
+</html>

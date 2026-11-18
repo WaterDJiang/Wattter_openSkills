@@ -29,6 +29,7 @@ python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩
 | [新闻与资讯摘要](#news-brief) | 资讯与纪实 | 用少量证据解释发生了什么及其影响 | 最新事实 → 必要背景 → 证据或比较 → 影响与不确定性 | 7 |
 | [直播感与事件倒计时](#live-event) | 资讯与纪实 | 让观众跟随同一事件的时间和关键节点 | 事件前状态 → 同步进展 → 零点或关键动作 → 后续 | 6 |
 | [数据故事与业务汇报](#data-report) | 数据与汇报 | 解释指标变化、比较及其业务含义 | 问题与口径 → 变化 → 驱动因素 → 决策与限制 | 8 |
+| [地理推演与空间叙事](#geographic-explainer) | 知识与原理 / 资讯与纪实 / 数据与汇报 / 故事与观点 | 解释事件在哪里发生、沿何路径演变，以及地形与位置如何影响结果 | 空间问题 → 地理总览与尺度 → 路径/事件按时序推进 → 关键节点与空间因果 → 结果和证据边界 | 5 |
 | [城市文旅与地图明信片](#travel-postcard) | 视觉与创意 / 资讯与纪实 | 让地点的空间、季节和生活形成可辨认的记忆 | 地点线索 → 空间游历或生活动作 → 地方细节 → 回扣 | 9 |
 | [儿童故事与启蒙](#children-story) | 故事与观点 / 知识与原理 | 用清晰行动和后果讲一个儿童能理解的故事 | 小目标 → 尝试 → 可见后果 → 温和解决 | 9 |
 | [寓言与观点表达](#allegory) | 故事与观点 / 知识与原理 | 通过选择与后果呈现观点或抽象机制 | 困境 → 选择 → 后果与线索 → 揭示 → 解释边界 | 8 |
@@ -249,6 +250,24 @@ python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩
 | [等距信息图](styles/iso-infographic/STYLE.md) / 主匹配 | 流转路径适合成本或资源去向 | **每一百元走向哪里**：资金单位沿真实流程分配到各节点 | 节点之和与总额一致 |
 | [地铁线路图](styles/transit-map/STYLE.md) / 有条件 | 线路拓扑适合部门依赖和项目路线 | **延期从哪一站开始**：节点状态按依赖链传播并定位阻塞 | 非地理图；不把距离当时长 |
 | [瑞士动态排版](styles/swiss-motion/STYLE.md) / 有条件 | 层级与对齐适合少量关键数字 | **三项指标的一次复盘**：目标、实际、差额在同一网格对齐 | 保留口径、单位和比较基准 |
+
+<a id="geographic-explainer"></a>
+
+## 地理推演与空间叙事
+
+检索：`geographic-explainer`；别名：地理推演、空间叙事、历史战役、战役推演、军事地图、迁徙路线、贸易路线、疆域演变、交通演变、传播路径。
+
+内容/素材条件：地点/坐标/范围、时间与事件表；路线和控制区的事实/推断/虚构标识；底图/高程/影像/史料来源与许可；图例、字幕安全区和标签优先级。
+
+| 风格 / 匹配 | 为什么适合 | 样例构想（未渲染）与关键镜头 | 条件 / 已有工程证据 |
+|---|---|---|---|
+| [档案与地图](style-catalog.md) / 主匹配 | 地形底图上的路线、区域状态和日期能解释行动顺序与地势影响 | **河谷为何成为进军通道**：总览锁定山脉与渡口，沿河谷显露行军箭头，控制区随事件变色 | 真实底图/坐标与事件来源；示意疆域标明；Canvas叠加是逐片实现，不把简化路网当真实地形 |
+| [卫星简报](styles/satellite-briefing/STYLE.md) / 主匹配 | 卫星俯视与多尺度定位适合迁徙、贸易和现代事件的空间证据 | **一条商路连接了什么**：由区域总览推近山口，商品路线逐段点亮并标出补给节点 | 影像许可/日期/经纬范围明确；历史路线不套现代卫星影像当同时代实录 |
+| [铜版画](styles/engraving/STYLE.md) / 有条件 | 纸面古地图与交叉排线适合历史路线和疆域演变 | **三次改变方向的远征**：同一地理底图上以不同线型展开三个阶段，停在渡河决策处 | 先锁真实几何，再做排线/纸纹；不复用受保护古图；线型/图例清楚，历史边界与复原推断分开 |
+| [中国水墨](styles/ink-wash/STYLE.md) / 有条件 | 水墨山河可把山岭、河道和迁徙动作连成有方向的叙事 | **沿着河流迁居的人们**：山脊墨层建立地势，人群沿河迁移，关键渡口留下时间标记 | 真实地理骨架与水墨美术分层；教学示意明确标识，墨色不遮挡路线与地名 |
+| [科幻全息界面](styles/hologram-hud/STYLE.md) / 有条件 | 有几何的三维沙盘可展示坡度、通道遮挡和多路行动 | **山口两侧的选择**：斜俯视抬起地形，两条路径沿坡面推进，切面解释距离和高差 | 真实高程需DEM和来源，示意体量不能冒称真实高程；按需Three.js/地图引擎适配，现有风格配方不是通用3D后端 |
+
+外部研究案例（非本库成片验收）：[五分钟历史战役程序化重建](production-cases.md#austerlitz-code)。
 
 <a id="travel-postcard"></a>
 
@@ -526,7 +545,7 @@ python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩
 | `technical` / 精细技术图解 | [概念解释与机制科普](#concept-explainer)、[操作教程与流程演示](#product-tutorial)（有条件）、[交互实验与科学演示](#interactive-lab)、[代码库与系统架构讲解](#codebase-tour)、[口播播客与课程可视化补画](#audio-broll)、[配方与实物步骤图解](#recipe-process) |
 | `paper-theatre` / 纸偶舞台 | [儿童故事与启蒙](#children-story)、[寓言与观点表达](#allegory) |
 | `product-light` / 留白产品界面 | [品牌与广告](#brand-ad)、[产品发布与能力介绍](#product-launch)、[操作教程与流程演示](#product-tutorial) |
-| `archive-dark` / 档案与地图 | [纪录片与真实事件](#documentary)、[新闻与资讯摘要](#news-brief)、[悬疑与氛围故事](#suspense-short)（有条件）、[口播播客与课程可视化补画](#audio-broll) |
+| `archive-dark` / 档案与地图 | [纪录片与真实事件](#documentary)、[新闻与资讯摘要](#news-brief)、[地理推演与空间叙事](#geographic-explainer)、[悬疑与氛围故事](#suspense-short)（有条件）、[口播播客与课程可视化补画](#audio-broll) |
 | `data-editorial` / 编辑式图表 | [新闻与资讯摘要](#news-brief)、[数据故事与业务汇报](#data-report) |
 | `kinetic-type` / 动态文字 | [个人宣传与作品集](#personal-promo)、[音乐视觉与循环氛围](#music-visual)、[动态设计作品集与品牌片头](#motion-showreel)、[口播播客与课程可视化补画](#audio-broll) |
 | `caption-news` / 字幕新闻 | [新闻与资讯摘要](#news-brief) |
@@ -537,7 +556,7 @@ python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩
 | `kino-montage` / 构成主义蒙太奇 | [新闻与资讯摘要](#news-brief) |
 | `telestrator` / 体育战术板 | [直播感与事件倒计时](#live-event) |
 | `news-package` / 电视新闻包装 | [新闻与资讯摘要](#news-brief)、[直播感与事件倒计时](#live-event) |
-| `satellite-briefing` / 卫星简报 | [纪录片与真实事件](#documentary) |
+| `satellite-briefing` / 卫星简报 | [纪录片与真实事件](#documentary)、[地理推演与空间叙事](#geographic-explainer) |
 | `briefing-board` / 工程简报板 | [纪录片与真实事件](#documentary)、[数据故事与业务汇报](#data-report) |
 | `lidar-survey` / 点云测绘 | [纪录片与真实事件](#documentary) |
 | `white-model` / 白模投影 | [纪录片与真实事件](#documentary)、[数据故事与业务汇报](#data-report) |
@@ -546,7 +565,7 @@ python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩
 | `microscope` / 显微叙事 | [纪录片与真实事件](#documentary)、[交互实验与科学演示](#interactive-lab) |
 | `archive-lighttable` / 档案灯台 | [个人宣传与作品集](#personal-promo)（有条件）、[纪录片与真实事件](#documentary) |
 | `crayon-book` / 蜡笔儿童绘本 | [儿童故事与启蒙](#children-story) |
-| `ink-wash` / 中国水墨 | [浪漫故事与爱情短片](#romance-film)、[传统文化与历史叙事](#cultural-story) |
+| `ink-wash` / 中国水墨 | [浪漫故事与爱情短片](#romance-film)、[地理推演与空间叙事](#geographic-explainer)（有条件）、[传统文化与历史叙事](#cultural-story) |
 | `impasto` / 油画厚涂 | [浪漫故事与爱情短片](#romance-film)、[音乐视觉与循环氛围](#music-visual) |
 | `one-line` / 一笔画 | [个人宣传与作品集](#personal-promo)、[浪漫故事与爱情短片](#romance-film)、[寓言与观点表达](#allegory)、[公益与社会议题](#public-interest)、[口播播客与课程可视化补画](#audio-broll) |
 | `whiteboard` / 白板讲解 | [概念解释与机制科普](#concept-explainer)、[口播播客与课程可视化补画](#audio-broll) |
@@ -557,7 +576,7 @@ python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩
 | `paper-lantern` / 纸雕灯影 | [浪漫故事与爱情短片](#romance-film)、[悬疑与氛围故事](#suspense-short) |
 | `halftone-dossier` / 复古半调案卷 | [悬疑与氛围故事](#suspense-short) |
 | `woodcut` / 木刻版画 | [纪录片与真实事件](#documentary)（有条件）、[传统文化与历史叙事](#cultural-story) |
-| `engraving` / 铜版画 | [概念解释与机制科普](#concept-explainer)、[传统文化与历史叙事](#cultural-story) |
+| `engraving` / 铜版画 | [概念解释与机制科普](#concept-explainer)、[地理推演与空间叙事](#geographic-explainer)（有条件）、[传统文化与历史叙事](#cultural-story) |
 | `silkscreen-poster` / 丝印旅行海报 | [品牌与广告](#brand-ad)、[城市文旅与地图明信片](#travel-postcard) |
 | `printed-long-take` / 印刷长镜头 | [个人宣传与作品集](#personal-promo)、[城市文旅与地图明信片](#travel-postcard) |
 | `swiss-motion` / 瑞士动态排版 | [品牌与广告](#brand-ad)、[产品发布与能力介绍](#product-launch)、[新闻与资讯摘要](#news-brief)（有条件）、[数据故事与业务汇报](#data-report)（有条件）、[动态设计作品集与品牌片头](#motion-showreel) |
@@ -571,7 +590,7 @@ python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩
 | `iso-infographic` / 等距信息图 | [概念解释与机制科普](#concept-explainer)、[操作教程与流程演示](#product-tutorial)、[数据故事与业务汇报](#data-report)、[代码库与系统架构讲解](#codebase-tour)、[配方与实物步骤图解](#recipe-process) |
 | `dark-keynote` / 暗色科技发布 | [产品发布与能力介绍](#product-launch) |
 | `living-screencast` / 活体实机录屏 | [操作教程与流程演示](#product-tutorial)、[代码库与系统架构讲解](#codebase-tour) |
-| `hologram-hud` / 科幻全息界面 | [产品发布与能力介绍](#product-launch)、[交互实验与科学演示](#interactive-lab) |
+| `hologram-hud` / 科幻全息界面 | [产品发布与能力介绍](#product-launch)、[地理推演与空间叙事](#geographic-explainer)（有条件）、[交互实验与科学演示](#interactive-lab) |
 | `transit-map` / 地铁线路图 | [概念解释与机制科普](#concept-explainer)、[数据故事与业务汇报](#data-report)（有条件）、[代码库与系统架构讲解](#codebase-tour) |
 | `isometric-picture-book` / 等距绘本 | [概念解释与机制科普](#concept-explainer)、[寓言与观点表达](#allegory)、[交互实验与科学演示](#interactive-lab) |
 | `circuit-board` / 电路板 | [概念解释与机制科普](#concept-explainer)、[代码库与系统架构讲解](#codebase-tour) |

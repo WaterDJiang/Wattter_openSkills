@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信公众号海报模板</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: #f5f0e6;
+            color: #0a1942;
+            line-height: 1.6;
+        }
+
+        /* 4:3 比例容器 */
+        .poster {
+            width: 1200px;
+            height: 900px;
+            position: relative;
+            padding: 80px;
+            margin: 20px auto;
+        }
+
+        /* 封面样式 */
+        .cover-poster {
+            background: #f5f0e6;
+        }
+
+        .cover-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .cover-title {
+            font-size: 140px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 60px;
+            letter-spacing: -2px;
+        }
+
+        .cover-title .accent {
+            color: #1E40AF;
+        }
+
+        .cover-subtitle {
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .cover-subtitle .highlight {
+            color: #1E40AF;
+            font-weight: 700;
+        }
+
+        .cover-footer {
+            position: absolute;
+            bottom: 80px;
+            left: 80px;
+            right: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        /* 输入输出对比卡片样式 */
+        .compare-poster {
+            background: #f5f0e6;
+        }
+
+        .compare-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 60px;
+        }
+
+        .compare-title .accent {
+            color: #1E40AF;
+        }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            border-radius: 16px;
+            padding: 50px;
+            min-height: 500px;
+        }
+
+        .card-left {
+            background: #f8f3e9;
+        }
+
+        .card-right {
+            background: #0a1942;
+            color: #ffffff;
+        }
+
+        .card-label {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            margin-bottom: 40px;
+        }
+
+        .card-list {
+            list-style: none;
+        }
+
+        .card-item {
+            margin-bottom: 40px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .card-item .number {
+            display: inline-block;
+            width: 40px;
+            opacity: 0.6;
+        }
+
+        .card-item .highlight {
+            color: #1E40AF;
+        }
+
+        .card-right .card-item .number {
+            color: #1E40AF;
+            opacity: 1;
+            font-weight: 900;
+        }
+
+        .card-footer {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .card-right .card-footer {
+            border-top-color: rgba(255,255,255,0.1);
+        }
+
+        .card-footer .accent {
+            color: #1E40AF;
+            font-weight: 700;
+        }
+
+        .compare-footer {
+            font-size: 14px;
+            opacity: 0.6;
+            text-align: center;
+        }
+
+        /* 时间线样式 */
+        .timeline-poster {
+            background: #050f2c;
+            color: #ffffff;
+        }
+
+        .timeline-header {
+            margin-bottom: 80px;
+        }
+
+        .timeline-label {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+
+        .timeline-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .timeline {
+            position: relative;
+            height: 2px;
+            background: rgba(255,255,255,0.2);
+            margin: 100px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: #1E40AF;
+            width: 75%;
+        }
+
+        .timeline-point {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #1E40AF;
+        }
+
+        .timeline-point.future {
+            background: #ffffff;
+        }
+
+        .timeline-point:nth-child(1) { left: 0%; }
+        .timeline-point:nth-child(2) { left: 33.33%; }
+        .timeline-point:nth-child(3) { left: 66.66%; }
+        .timeline-point:nth-child(4) { left: 100%; }
+
+        .timeline-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .timeline-item {
+            padding-right: 20px;
+        }
+
+        .timeline-date {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1E40AF;
+        }
+
+        .timeline-event {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .timeline-desc {
+            font-size: 16px;
+            opacity: 0.6;
+            line-height: 1.5;
+        }
+
+        .timeline-footer {
+            position: absolute;
+            bottom: 80px;
+            right: 80px;
+            font-size: 24px;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+    <!-- 封面海报 -->
+    <div class="poster cover-poster">
+        <div class="cover-header">
+            <div>
+                <div style="color: #1E40AF; font-weight: 700;">OBITUARY · 讣 告</div>
+                <div>CLAUDE DESIGN × FIGMA</div>
+            </div>
+            <div style="text-align: right;">
+                <div>2026 · 04 · 17</div>
+                <div>COVER · HERO</div>
+            </div>
+        </div>
+
+        <div class="cover-title">
+            杀死你<span class="accent">，</span><br>
+            与你何干<span class="accent">。</span>
+        </div>
+
+        <div class="cover-subtitle">
+            Claude Design 杀死 Figma 那天，<br>
+            <span class="highlight">我让它自己写了讣告。</span>
+        </div>
+
+        <div class="cover-footer">
+            <div>花椒 · 独立开发者的观察 · 2026</div>
+            <div>— OPEN —</div>
+        </div>
+    </div>
+
+    <!-- 输入输出对比海报 -->
+    <div class="poster compare-poster">
+        <div class="compare-title">
+            两次对话，我拿回来<br>
+            <span class="accent">这些。</span>
+        </div>
+
+        <div class="compare-grid">
+            <div class="card card-left">
+                <div class="card-label">INPUT · 输入</div>
+                <ul class="card-list">
+                    <li class="card-item">
+                        <span class="number">01</span>
+                        一篇文章的<span class="highlight">初稿</span>
+                    </li>
+                    <li class="card-item">
+                        <span class="number">02</span>
+                        一张《神奈川冲浪里》<br>
+                        作为<span class="highlight">视觉参考</span>
+                    </li>
+                </ul>
+                <div class="card-footer">
+                    我给它的：<span class="accent">两样东西</span>
+                </div>
+            </div>
+
+            <div class="card card-right">
+                <div class="card-label">OUTPUT · 输出</div>
+                <ul class="card-list">
+                    <li class="card-item"><span class="number">22</span> 页 TED 演讲幻灯片</li>
+                    <li class="card-item"><span class="number">11</span> 级色板体系</li>
+                    <li class="card-item"><span class="number">4</span> 类字体规则</li>
+                    <li class="card-item"><span class="number">6</span> 个品牌 SVG 资产</li>
+                    <li class="card-item"><span class="number">1</span> 套 Mobile UI Kit</li>
+                    <li class="card-item"><span class="number">1</span> 套 Website UI Kit</li>
+                    <li class="card-item"><span class="number">1</span> 份品牌文案 Tone 规则</li>
+                    <li class="card-item"><span class="number">248</span> 行 README 手册</li>
+                    <li class="card-item"><span class="number">1</span> 篇公众号文章的排版 ← 就是你正在读的这一篇</li>
+                </ul>
+                <div class="card-footer">
+                    它给我的：<span class="accent">一整套</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="compare-footer">
+            由 Claude Design 在两次对话内生成 · 我没打开 Figma，没写一行 CSS
+        </div>
+    </div>
+
+    <!-- 时间线海报 -->
+    <div class="poster timeline-poster">
+        <div class="timeline-header">
+            <div class="timeline-label">TIMELINE · APRIL 2026</div>
+            <div class="timeline-title">一条被压缩的时间线</div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-point"></div>
+            <div class="timeline-point"></div>
+            <div class="timeline-point"></div>
+            <div class="timeline-point future"></div>
+        </div>
+
+        <div class="timeline-content">
+            <div class="timeline-item">
+                <div class="timeline-date">04 / 14 · 早</div>
+                <div class="timeline-event">Mike Krieger 辞去 Figma 董事</div>
+                <div class="timeline-desc">利益冲突回避。</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">04 / 14 · 晚</div>
+                <div class="timeline-event">The Information 爆料：下一代模型自带设计工具</div>
+                <div class="timeline-desc">同一天。</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">04 / 16</div>
+                <div class="timeline-event">Claude Opus 4.7 发布</div>
+                <div class="timeline-desc">底座就位。</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date" style="color: #ffffff;">04 / 17</div>
+                <div class="timeline-event">Claude Design 上线</div>
+                <div class="timeline-desc">闭环合拢。</div>
+            </div>
+        </div>
+
+        <div class="timeline-footer">04</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <rect x="0" y="675" width="1280" height="45" fill="#ECF6FE"/>
+  <rect x="58" y="40" width="6" height="30" fill="#C7A661"/>
+  <text x="80" y="65" fill="#003396" font-family="STKaiti, KaiTi" font-size="24" font-weight="700">{{SECTION_LABEL}}</text>
+  <text x="70" y="142" fill="#262626" font-family="STKaiti, KaiTi" font-size="52" font-weight="800">{{PAGE_TITLE}}</text>
+  <text x="70" y="180" fill="#666666" font-family="STKaiti, KaiTi" font-size="22">{{PAGE_SUBTITLE}}</text>
+  <line x1="70" y1="204" x2="1210" y2="204" stroke="#E7E6E6" stroke-width="1"/>
+
+  <g id="canvas-source">
+    <rect x="70" y="236" width="550" height="176" rx="6" fill="#F1F8FE"/>
+    <rect x="70" y="236" width="8" height="176" fill="#2E75FF"/>
+    <text x="102" y="279" fill="#2E75FF" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">01  原始材料</text>
+    <line x1="102" y1="299" x2="588" y2="299" stroke="#E7E6E6" stroke-width="1"/>
+    <text x="102" y="341" fill="#262626" font-family="STKaiti, KaiTi" font-size="22">{{SOURCE_LINE_01}}</text>
+    <text x="102" y="379" fill="#666666" font-family="STKaiti, KaiTi" font-size="20">{{SOURCE_LINE_02}}</text>
+  </g>
+  <g id="canvas-instruction">
+    <rect x="650" y="236" width="560" height="176" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <rect x="650" y="236" width="8" height="176" fill="#1F90E0"/>
+    <text x="682" y="279" fill="#1F90E0" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">02  给 AI 的指令</text>
+    <line x1="682" y1="299" x2="1178" y2="299" stroke="#E7E6E6" stroke-width="1"/>
+    <text x="682" y="341" fill="#262626" font-family="STKaiti, KaiTi" font-size="22">{{PROMPT_LINE_01}}</text>
+    <text x="682" y="379" fill="#666666" font-family="STKaiti, KaiTi" font-size="20">{{PROMPT_LINE_02}}</text>
+  </g>
+  <g id="canvas-output">
+    <rect x="70" y="432" width="550" height="176" rx="6" fill="#FFFFFF" stroke="#E7E6E6" stroke-width="1"/>
+    <rect x="70" y="432" width="8" height="176" fill="#003396"/>
+    <text x="102" y="475" fill="#003396" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">03  生成结果</text>
+    <line x1="102" y1="495" x2="588" y2="495" stroke="#E7E6E6" stroke-width="1"/>
+    <text x="102" y="537" fill="#262626" font-family="STKaiti, KaiTi" font-size="22">{{OUTPUT_LINE_01}}</text>
+    <text x="102" y="575" fill="#666666" font-family="STKaiti, KaiTi" font-size="20">{{OUTPUT_LINE_02}}</text>
+  </g>
+  <g id="canvas-human-review">
+    <rect x="650" y="432" width="560" height="176" rx="6" fill="#003396"/>
+    <rect x="650" y="432" width="8" height="176" fill="#C7A661"/>
+    <text x="682" y="475" fill="#C7A661" font-family="STKaiti, KaiTi" font-size="22" font-weight="700">04  人工核验与改写</text>
+    <line x1="682" y1="495" x2="1178" y2="495" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="682" y="537" fill="#FFFFFF" font-family="STKaiti, KaiTi" font-size="22">{{REVIEW_LINE_01}}</text>
+    <text x="682" y="575" fill="#ECF6FE" font-family="STKaiti, KaiTi" font-size="20">{{REVIEW_LINE_02}}</text>
+  </g>
+  <text x="70" y="654" fill="#44546A" font-family="STKaiti, KaiTi" font-size="20">反思：{{REFLECTION}}</text>
+</svg>

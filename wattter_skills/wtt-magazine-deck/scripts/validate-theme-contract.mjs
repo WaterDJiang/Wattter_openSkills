@@ -49,6 +49,12 @@ function checkCoreThemeControls() {
   if (!/window\.__cycleTheme\s*=/.test(navJs)) {
     errors.push('Core: nav.js must expose window.__cycleTheme for keyboard and button theme switching.');
   }
+  if (!/KeyT/.test(navJs) || !/e\.repeat/.test(navJs)) {
+    errors.push('Core: nav.js must support the physical T shortcut and ignore key-repeat cycling.');
+  }
+  if (!/applyThemeByName/.test(navJs)) {
+    errors.push('Core: nav.js must route local, preview, and BroadcastChannel theme changes through one stateful apply function.');
+  }
   if (!/btn-theme/.test(navJs)) {
     errors.push('Core: nav.js must create or bind #btn-theme so old decks get the same visible T control.');
   }
@@ -119,6 +125,9 @@ function checkTemplate(style, template) {
   if (!/id="btn-theme"/.test(template)) {
     errors.push(`${styleId}: template must include visible #btn-theme. nav.js can backfill old decks, but templates must expose it.`);
   }
+  if (!/id="btn-theme"[^>]*aria-keyshortcuts="T"/.test(template)) {
+    errors.push(`${styleId}: #btn-theme must declare aria-keyshortcuts="T".`);
+  }
 }
 
 function checkThemeCss(style, theme, file) {
@@ -141,6 +150,17 @@ function checkThemeCss(style, theme, file) {
   }
 
   const accent = vars['--accent'];
+  for (const [foreground, background] of [
+    ['--ink', '--paper'],
+    ...(style.id === 'linear' ? [['--paper', '--panel'], ['--paper', '--paper-tint']] : []),
+  ]) {
+    if (!isHex(vars[foreground]) || !isHex(vars[background])) {
+      errors.push(`${style.id}/${theme}: ${foreground}/${background} must be literal #RRGGBB.`);
+    } else {
+      const ratio = contrastRatio(hexToRgb(vars[foreground]), hexToRgb(vars[background]));
+      if (ratio < 4.5) errors.push(`${style.id}/${theme}: ${foreground}/${background} contrast ${ratio.toFixed(2)} < 4.5.`);
+    }
+  }
   const accentOn = vars['--accent-on'];
   if (isHex(accent) && isHex(accentOn)) {
     const ratio = contrastRatio(hexToRgb(accent), hexToRgb(accentOn));

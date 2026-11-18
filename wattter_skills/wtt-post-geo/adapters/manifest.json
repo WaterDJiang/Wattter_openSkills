@@ -2,9 +2,10 @@
   "schema_version": 1,
   "provider": "opencli_login_adapter",
   "stability": "experimental",
-  "reference_snapshot": "csdn-sync-extension_1.0.5",
-  "last_static_verified_at": "2026-07-16",
+  "reference_snapshot": "geo-action-plugin + csdn-sync-extension_1.0.5",
+  "last_static_verified_at": "2026-07-21",
   "commands": {
+    "weixin": { "command": "weixin/article-draft", "auth_command": "weixin/draft-account", "mode": "draft", "format": "html", "images": false },
     "weibo": { "command": "weibo/article-draft", "auth_command": "weibo/whoami", "mode": "draft", "variant": "longform", "format": "html", "images": false },
     "zhihu": { "command": "zhihu/article-draft", "auth_command": "zhihu/whoami", "mode": "draft", "format": "html", "images": false },
     "juejin": { "command": "juejin/article-draft", "auth_command": "juejin/draft-account", "mode": "draft", "format": "markdown", "images": false },

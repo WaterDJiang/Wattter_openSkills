@@ -43,7 +43,8 @@ tags:
 - 小红书正文必须是短段落纯文本，不要保留 Markdown H1、`##`、`**`、`---`、HTML 注释或长链接堆叠。标题进入 `title` 字段，正文不要重复同名 H1。
 - 标签只保留少量高相关关键词。正文里可以包含少量高相关标签，但标签必须先在 `tags` 字段维护，避免堆砌无关话题。
 - 图片、封面和海报必须来自稳定可读路径；脚本临时目录或已清理的生成图不能作为发布素材。
-- GEO 露出策略要克制：可以保留项目名、官网或 GitHub 字符串，但不要堆叠多条裸链。若平台发布后隐藏或拦截链接，最终回报应说明。
+- GEO 露出策略要克制：可以保留项目名、官网或 GitHub 字符串，但**正文最多 1 条自然链接、不放微信号/二维码/群入口/电话**（引流是小红书判广告的最强信号）。若平台发布后隐藏或拦截链接，最终回报应说明。
+- 写作语气遵循 [content-style.md](content-style.md) 去营销化清单：**禁绝对化卖货词（最/神器/必备/爆款）、禁标题党、标签 3–5 个高相关不堆砌、emoji 克制**；用口语化经验感（「我实践/我踩坑」）替代自卖自夸。小红书广告检测最严，适配后务必过一遍信号清单。
 - 如果用户只给视频，优先按视频笔记适配；如果当前 OpenCLI 只支持图文发布，先让用户选择提取封面/改图文/跳过，不要假装视频已发布。
 - 图文缺图时自动生成 HTML PNG 卡片；如果用户要求 AI 图、视频、写实图或插画，再调用合适的生成类 skill 或让用户提供素材。上传或发布前仍需按安全护栏确认。
 
@@ -97,3 +98,13 @@ opencli xiaohongshu creator-notes --limit 5 -f json
 5. 草稿标题和图片存在但正文无法回读时，结果记为 `filled/unknown`，用户看到 `已填写待确认`；不得记为 `已创建草稿`，也不得重试。
 
 图片总 payload 触发浏览器桥/CDP 版本警告时，先保留失败 trace 和 tab，再按上面流程对账。升级浏览器桥属于工具变更，需要用户确认，不在发布中途自动升级。
+
+## 插件参照补充（GEO action）
+
+浏览器回退路径可参照插件的现网契约提升稳定性（本 skill 未做真实联调前仍按实验性探测）：
+
+- 登录检查用 `creator.xiaohongshu.com` 会话 Cookie（`web_session`）+ `GET /api/galaxy/creator/home/personal_info`（`data.user_id/id` + `name`）；缺 `web_session` 即未登录。
+- 图文编辑器位于 `creator.xiaohongshu.com/publish/publish?from=menu_left&target=image`；标题字段 `input[maxlength="20"]`、`[contenteditable="true"][placeholder*="标题"]` 等，正文 `.tiptap.ProseMirror[contenteditable="true"]`。**标题上限 20 个 Unicode 字符**。
+- 保存动作优先调用 `xhs-publish-btn` 宿主组件的原生方法（`_onSave/_onSaveDraft/_onDraft/onSave/_handleSave`），无法触发时再点「暂存离开/存草稿」按钮或等待自动保存。
+- 草稿真实落库以本地 IndexedDB `draft-database-v1` 的 `image-draft` 仓库为准：保存前后读取该仓库，只有出现标题、正文前 24 字符与图片数都匹配的新记录才算 `已创建草稿`；仅匹配标题和正文不得判定成功。
+- 缺图时插件用 `OffscreenCanvas` 生成 1080×1440 文字卡（标题 + 要点 + 水印），与本 skill 的 HTML PNG 图文卡思路一致。

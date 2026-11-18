@@ -1,0 +1,220 @@
+{
+  "schema_version": 3,
+  "template_id": "招商银行",
+  "kind": "decks",
+  "replication_mode": null,
+  "page_count": 5,
+  "shared_assets": [],
+  "asset_roles": {
+    "identity": [],
+    "background": [],
+    "chrome": [],
+    "illustration": []
+  },
+  "shell_contract": {
+    "required_roles": [],
+    "forbid_unlocked_full_bleed": false
+  },
+  "pages": {
+    "01_cover": {
+      "file": "01_cover.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 6,
+      "text_elements": 6,
+      "text_runs": 6,
+      "source_text_chars": 64,
+      "max_text_chars": 14,
+      "image_refs": [
+        "cover_bg.png"
+      ],
+      "full_bleed_image_refs": [
+        "cover_bg.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "cover_bg.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.923077,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "02_chapter": {
+      "file": "02_chapter.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 12,
+      "text_elements": 3,
+      "text_runs": 3,
+      "source_text_chars": 48,
+      "max_text_chars": 17,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.016276,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.9375,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "02_toc": {
+      "file": "02_toc.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 5,
+      "text_elements": 3,
+      "text_runs": 3,
+      "source_text_chars": 56,
+      "max_text_chars": 27,
+      "image_refs": [
+        "logo_dark.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_dark.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.014583,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.888889,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "03_content": {
+      "file": "03_content.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 14,
+      "text_elements": 7,
+      "text_runs": 7,
+      "source_text_chars": 115,
+      "max_text_chars": 27,
+      "image_refs": [
+        "logo_dark.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_dark.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.014583,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.954545,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    },
+    "04_ending": {
+      "file": "04_ending.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 6,
+      "text_elements": 8,
+      "text_runs": 8,
+      "source_text_chars": 129,
+      "max_text_chars": 19,
+      "image_refs": [
+        "cover_bg.png"
+      ],
+      "full_bleed_image_refs": [
+        "cover_bg.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "cover_bg.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.933333,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [],
+      "shared_asset_roles": {}
+    }
+  },
+  "generated_by": "scripts/template_capabilities.py"
+}

@@ -202,7 +202,7 @@ Swiss 风格的正文页必须继续使用登记的 `Sxx` 版式编号；实验�
 提交新增模板前至少运行：
 
 ```bash
-python3 /Users/water/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
+python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
 node --check scripts/validate-deck.mjs
 node --check scripts/validate-swiss-deck.mjs
 node scripts/validate-deck.mjs <deck>/index.html <style-id>

@@ -1,0 +1,844 @@
+{
+  "schema_version": 1,
+  "selection_contract_version": 2,
+  "template_id": "AI课程_蓝金实战",
+  "deck_id": "AI课程_蓝金实战",
+  "reference_format": "basename",
+  "selection_policy": {
+    "match_order": [
+      "page_type",
+      "content_forms",
+      "item_count",
+      "content_density",
+      "image_requirements"
+    ],
+    "fallback": "no-template-match"
+  },
+  "pages": [
+    {
+      "reference": "01_cover",
+      "file": "01_cover.svg",
+      "source_slide": 1,
+      "page_type": "cover",
+      "layout_id": "cover_ai_course",
+      "label": "AI 课程封面",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "cover anchor",
+        "content_slots": [
+          "title",
+          "subtitle",
+          "course_goal"
+        ],
+        "use_cases": [
+          "AI 课程首页、培训班标题"
+        ],
+        "avoid_when": [
+          "正文信息密集或需要逐项论证"
+        ],
+        "keywords": [
+          "封面",
+          "AI课程",
+          "cover"
+        ],
+        "visuals": [
+          "左侧浅色文字区，右侧蓝金光学玻璃"
+        ],
+        "image_requirements": [
+          "默认铺满画布使用包内 cover_background.png"
+        ],
+        "content_density": "low",
+        "content_forms": []
+      },
+      "render_mode": "brand_shell"
+    },
+    {
+      "reference": "02_toc",
+      "file": "02_toc.svg",
+      "source_slide": 2,
+      "page_type": "toc",
+      "layout_id": "toc_four_chapters",
+      "label": "四章课程目录",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "toc 2x2",
+        "content_slots": [
+          "title",
+          "four_chapters"
+        ],
+        "use_cases": [
+          "四个模块的学习路径总览"
+        ],
+        "avoid_when": [
+          "章节数不足或超过四个且无法合理合并"
+        ],
+        "keywords": [
+          "目录",
+          "课程安排",
+          "toc"
+        ],
+        "visuals": [
+          "白底四块浅蓝目录卡"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": []
+      }
+    },
+    {
+      "reference": "03_chapter",
+      "file": "03_chapter.svg",
+      "source_slide": 3,
+      "page_type": "chapter",
+      "layout_id": "chapter_blue_curve",
+      "label": "蓝金章节过渡",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "chapter anchor",
+        "content_slots": [
+          "chapter_number",
+          "title",
+          "subtitle"
+        ],
+        "use_cases": [
+          "课程章节开始、从原理转入实操"
+        ],
+        "avoid_when": [
+          "需要承载多段知识正文"
+        ],
+        "keywords": [
+          "章节",
+          "过渡",
+          "chapter"
+        ],
+        "visuals": [
+          "左侧蓝金玻璃门，右侧深蓝留白与白字"
+        ],
+        "image_requirements": [
+          "默认铺满画布使用包内 chapter_background.png"
+        ],
+        "content_density": "low",
+        "content_forms": []
+      },
+      "render_mode": "brand_shell"
+    },
+    {
+      "reference": "04_content_principle_layers",
+      "file": "04_content_principle_layers.svg",
+      "source_slide": 4,
+      "page_type": "content",
+      "layout_id": "principle_three_layers",
+      "label": "原理三层拆解",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "hierarchical principle layers",
+        "content_slots": [
+          "title",
+          "three_layer_titles",
+          "three_layer_explanations",
+          "key_insight"
+        ],
+        "use_cases": [
+          "解释 AI 概念的三个层级、机制分层"
+        ],
+        "avoid_when": [
+          "三个要素是时间先后步骤而非层级"
+        ],
+        "keywords": [
+          "原理",
+          "概念",
+          "分层",
+          "architecture"
+        ],
+        "visuals": [
+          "三层横带与右侧核心判断"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "architecture"
+        ],
+        "item_count": 3,
+        "strict_item_count": true,
+        "semantic_require_any": ["AI 原理", "模型原理", "AI 工作原理", "原理分层", "AI 概念", "概念分层", "AI 三层"]
+      }
+    },
+    {
+      "reference": "05_content_ai_mechanism",
+      "file": "05_content_ai_mechanism.svg",
+      "source_slide": 5,
+      "page_type": "content",
+      "layout_id": "ai_mechanism_loop",
+      "label": "输入到输出的 AI 工作机制",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "input model output feedback",
+        "content_slots": [
+          "title",
+          "input",
+          "model",
+          "output",
+          "human_check"
+        ],
+        "use_cases": [
+          "解释输入、模型、输出与人工核验之间的关系"
+        ],
+        "avoid_when": [
+          "只需要表达线性任务步骤而无机制或反馈"
+        ],
+        "keywords": [
+          "机制",
+          "原理",
+          "输入",
+          "模型",
+          "输出",
+          "architecture"
+        ],
+        "visuals": [
+          "三段模块与底部人工核验回路"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "architecture"
+        ],
+        "item_count": 3,
+        "strict_item_count": true,
+        "semantic_require_any": ["AI 工作机制", "模型推理", "生成机制", "输入到输出", "输入→模型→输出", "人工核验"]
+      }
+    },
+    {
+      "reference": "06_content_ai_workflow",
+      "file": "06_content_ai_workflow.svg",
+      "source_slide": 6,
+      "page_type": "content",
+      "layout_id": "ai_workflow_four_steps",
+      "label": "四步 AI 工作流程",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "flow_linear four steps",
+        "content_slots": [
+          "title",
+          "four_steps",
+          "step_outcomes"
+        ],
+        "use_cases": [
+          "讲解提出任务、生成、核验、迭代等四步流程"
+        ],
+        "avoid_when": [
+          "步骤数不是四步且无法重组"
+        ],
+        "keywords": [
+          "流程",
+          "四步",
+          "workflow",
+          "flow_linear"
+        ],
+        "visuals": [
+          "浅蓝流程带与四张依次连接的步骤卡"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "flow_linear"
+        ],
+        "item_count": 4,
+        "strict_item_count": true,
+        "semantic_require_any": ["AI 工作流", "AI 工作流程", "提示词工作流", "生成流程", "AI 四步", "人机协同流程"]
+      }
+    },
+    {
+      "reference": "07_content_prompt_anatomy",
+      "file": "07_content_prompt_anatomy.svg",
+      "source_slide": 7,
+      "page_type": "content",
+      "layout_id": "prompt_five_fields",
+      "label": "Prompt 五要素结构",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "five parallel prompt fields",
+        "content_slots": [
+          "title",
+          "role",
+          "task",
+          "context",
+          "constraint",
+          "output",
+          "checks"
+        ],
+        "use_cases": [
+          "拆解提示词的角色、任务、上下文、约束、输出"
+        ],
+        "avoid_when": [
+          "需要展示完整长提示词或大量代码"
+        ],
+        "keywords": [
+          "提示词",
+          "Prompt",
+          "结构",
+          "五要素"
+        ],
+        "visuals": [
+          "左侧五行字段与右侧质量检查"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "high",
+        "content_forms": [
+          "points_5"
+        ],
+        "item_count": 5,
+        "strict_item_count": true,
+        "semantic_require_any": ["Prompt", "提示词", "指令结构", "提示语", "五要素"]
+      }
+    },
+    {
+      "reference": "08_content_demo_walkthrough",
+      "file": "08_content_demo_walkthrough.svg",
+      "source_slide": 8,
+      "page_type": "content",
+      "layout_id": "demo_screen_three_steps",
+      "label": "操作界面三步演示",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "screen walkthrough three steps",
+        "content_slots": [
+          "title",
+          "tool_name",
+          "screenshot_area",
+          "three_actions"
+        ],
+        "use_cases": [
+          "展示 AI 工具界面并逐步讲解三个关键操作"
+        ],
+        "avoid_when": [
+          "没有可用界面素材或操作不依赖界面"
+        ],
+        "keywords": [
+          "实操",
+          "演示",
+          "界面",
+          "截图",
+          "demo"
+        ],
+        "visuals": [
+          "左侧界面占位、右侧三步旁栏与定位点"
+        ],
+        "image_requirements": [
+          "正式授课需替换为可用的界面截图或可编辑 UI 图形"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "flow_linear"
+        ],
+        "item_count": 3,
+        "strict_item_count": true,
+        "semantic_require_any": ["操作演示", "工具界面", "界面演示", "操作界面", "截图", "手把手", "屏幕演示"]
+      }
+    },
+    {
+      "reference": "09_content_practice_brief",
+      "file": "09_content_practice_brief.svg",
+      "source_slide": 9,
+      "page_type": "content",
+      "layout_id": "practice_task_card",
+      "label": "课堂练习任务卡",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "practice brief three steps",
+        "content_slots": [
+          "title",
+          "practice_goal",
+          "input_material",
+          "three_actions",
+          "deliverable",
+          "time"
+        ],
+        "use_cases": [
+          "布置课堂实操任务并明确交付和验收",
+          "展示源材料已给定的练习时长与验收要求"
+        ],
+        "avoid_when": [
+          "只讲解概念而不要求学员操作"
+        ],
+        "keywords": [
+          "练习",
+          "实操",
+          "任务",
+          "作业",
+          "practice"
+        ],
+        "visuals": [
+          "左侧目标、材料与三步操作，独立交付区，右侧深蓝计时栏"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "flow_linear"
+        ],
+        "item_count": 3,
+        "strict_item_count": true,
+        "semantic_require_any": ["课堂练习", "实操任务", "练习任务", "学员任务", "练习要求", "练习说明", "动手练习", "实操练习", "practice"]
+      }
+    },
+    {
+      "reference": "10_content_practice_canvas",
+      "file": "10_content_practice_canvas.svg",
+      "source_slide": 10,
+      "page_type": "content",
+      "layout_id": "practice_four_zone_canvas",
+      "label": "四区练习画布",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "practice canvas four zones",
+        "content_slots": [
+          "title",
+          "source_material",
+          "prompt",
+          "generated_output",
+          "human_review",
+          "reflection"
+        ],
+        "use_cases": [
+          "记录输入、指令、输出、人工核验的练习过程"
+        ],
+        "avoid_when": [
+          "仅公布练习题目而无过程记录"
+        ],
+        "keywords": [
+          "练习",
+          "画布",
+          "工作纸",
+          "过程",
+          "practice"
+        ],
+        "visuals": [
+          "四区工作画布与反思行"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "high",
+        "content_forms": [
+          "flow_linear"
+        ],
+        "item_count": 4,
+        "strict_item_count": true,
+        "semantic_require_any": ["练习画布", "工作纸", "记录过程", "过程记录", "填写画布", "填写工作纸", "练习记录", "practice canvas"]
+      }
+    },
+    {
+      "reference": "11_content_before_after",
+      "file": "11_content_before_after.svg",
+      "source_slide": 11,
+      "page_type": "content",
+      "layout_id": "before_after_three_dims",
+      "label": "人工与 AI 辅助对比",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "compare_2col three dimensions",
+        "content_slots": [
+          "title",
+          "before_title",
+          "after_title",
+          "three_dimensions"
+        ],
+        "use_cases": [
+          "按三个维度比较传统方法与 AI 辅助方法"
+        ],
+        "avoid_when": [
+          "只有一个指标或两个对象不能按同维度比较"
+        ],
+        "keywords": [
+          "对比",
+          "前后",
+          "人工",
+          "AI",
+          "compare_2col"
+        ],
+        "visuals": [
+          "左右两栏三行和金色 VS 中轴"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "compare_2col"
+        ],
+        "item_count": 2,
+        "strict_item_count": true,
+        "semantic_require_any": ["前后", "之前", "之后", "传统方法", "人工与 AI", "传统与 AI", "使用 AI 前后", "AI 辅助前后"]
+      }
+    },
+    {
+      "reference": "12_content_evaluation_rubric",
+      "file": "12_content_evaluation_rubric.svg",
+      "source_slide": 12,
+      "page_type": "content",
+      "layout_id": "evaluation_four_rows",
+      "label": "AI 输出评价量规",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "rubric table four criteria",
+        "content_slots": [
+          "title",
+          "four_criteria",
+          "pass_signals",
+          "revision_actions"
+        ],
+        "use_cases": [
+          "以四个维度评估生成结果并给出改进动作"
+        ],
+        "avoid_when": [
+          "只是展示分数而没有可观察的达标标准"
+        ],
+        "keywords": [
+          "评价",
+          "验收",
+          "量规",
+          "rubric",
+          "table"
+        ],
+        "visuals": [
+          "四行三列评价表"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "high",
+        "content_forms": [
+          "table"
+        ],
+        "item_count": 4,
+        "strict_item_count": true,
+        "semantic_require_any": ["评价量规", "评分量规", "评价标准", "验收标准", "达标标准", "结果评价", "评分标准", "rubric"]
+      }
+    },
+    {
+      "reference": "13_content_debug_loop",
+      "file": "13_content_debug_loop.svg",
+      "source_slide": 13,
+      "page_type": "content",
+      "layout_id": "debug_three_steps",
+      "label": "失败输出纠错迭代",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "failure diagnosis revision recheck",
+        "content_slots": [
+          "title",
+          "failure_example",
+          "root_cause",
+          "prompt_revision",
+          "recheck_result"
+        ],
+        "use_cases": [
+          "用真实失败样例讲解定位、改写、复核"
+        ],
+        "avoid_when": [
+          "没有失败样例或无需展示改写过程"
+        ],
+        "keywords": [
+          "纠错",
+          "迭代",
+          "返工",
+          "debug",
+          "反馈"
+        ],
+        "visuals": [
+          "左侧失败输出，右侧三段修复路径"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "flow_linear"
+        ],
+        "item_count": 3,
+        "strict_item_count": true,
+        "semantic_require_any": ["纠错", "排错", "改写指令", "失败输出", "定位原因", "异常输出", "问题复盘", "调试", "debug"]
+      }
+    },
+    {
+      "reference": "14_content_transfer_plan",
+      "file": "14_content_transfer_plan.svg",
+      "source_slide": 14,
+      "page_type": "content",
+      "layout_id": "transfer_three_stage",
+      "label": "课后迁移三阶段计划",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "timeline three stages",
+        "content_slots": [
+          "title",
+          "three_milestones",
+          "work_actions",
+          "evidence",
+          "review_decision"
+        ],
+        "use_cases": [
+          "把课堂技能迁移到工作场景并安排复盘"
+        ],
+        "avoid_when": [
+          "只展示单次练习过程而没有时间进展"
+        ],
+        "keywords": [
+          "迁移",
+          "计划",
+          "工作应用",
+          "timeline"
+        ],
+        "visuals": [
+          "三阶段时间轴、行动与证据栏"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "timeline"
+        ],
+        "item_count": 3,
+        "strict_item_count": true,
+        "semantic_require_any": ["迁移", "课后应用", "岗位应用", "工作应用", "AI 行动计划", "AI 应用计划", "技能迁移", "岗位实践"]
+      }
+    },
+    {
+      "reference": "15_ending",
+      "file": "15_ending.svg",
+      "source_slide": 15,
+      "page_type": "ending",
+      "layout_id": "ending_blue_curve",
+      "label": "课程结束页",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "ending anchor",
+        "content_slots": [
+          "closing_title",
+          "closing_note",
+          "tagline"
+        ],
+        "use_cases": [
+          "课程收束与复盘提醒"
+        ],
+        "avoid_when": [
+          "仍需展开详细知识内容"
+        ],
+        "keywords": [
+          "结尾",
+          "收束",
+          "ending"
+        ],
+        "visuals": [
+          "左侧浅色文字区，右侧蓝金玻璃与金球"
+        ],
+        "image_requirements": [
+          "默认铺满画布使用包内 ending_background.png"
+        ],
+        "content_density": "low",
+        "content_forms": []
+      },
+      "render_mode": "brand_shell"
+    },
+    {
+      "reference": "16_content_decision_fork",
+      "file": "16_content_decision_fork.svg",
+      "source_slide": 16,
+      "page_type": "content",
+      "layout_id": "decision_two_routes",
+      "label": "双路选择",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "decision tree with two conditional outcomes",
+        "content_slots": [
+          "title",
+          "decision",
+          "two_conditions",
+          "two_routes"
+        ],
+        "use_cases": [
+          "从同一个决策点按两种条件导向两条处理路径"
+        ],
+        "avoid_when": [
+          "三条及以上分支、组织层级、并列清单或连续步骤"
+        ],
+        "keywords": [
+          "双路选择",
+          "两路决策",
+          "两种问法",
+          "双分支",
+          "条件分支",
+          "正反推"
+        ],
+        "visuals": [
+          "左侧深蓝决策点，分叉线接右侧两条条件与路径"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "tree"
+        ],
+        "item_count": 2,
+        "strict_item_count": true,
+        "semantic_require_any": [
+          "双路选择",
+          "两路决策",
+          "两种问法",
+          "双分支",
+          "条件分支",
+          "正反推"
+        ],
+        "variant_profile": {
+          "topology": "layered",
+          "emphasis": "directional"
+        }
+      }
+    },
+    {
+      "reference": "17_content_prompt_four_fields",
+      "file": "17_content_prompt_four_fields.svg",
+      "source_slide": 17,
+      "page_type": "content",
+      "layout_id": "prompt_four_fields_focus",
+      "label": "四字段提示词示范",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "four prompt fields and linked focus excerpt",
+        "content_slots": [
+          "title",
+          "context",
+          "role",
+          "task",
+          "format",
+          "focus_excerpt"
+        ],
+        "use_cases": [
+          "用完整短示例展示背景、角色、任务与格式，并放大已有条件"
+        ],
+        "avoid_when": [
+          "通用四要点、五要素提示词、长指令或需要真实界面截图的演示"
+        ],
+        "keywords": [
+          "四字段提示词",
+          "四要素提示词",
+          "提示词四字段",
+          "提示词四要素",
+          "正向结构化"
+        ],
+        "visuals": [
+          "左侧可编辑提示词工作台四行，右侧深蓝放大区及源字段引线"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "points_4"
+        ],
+        "item_count": 4,
+        "strict_item_count": true,
+        "semantic_require_any": [
+          "四字段提示词",
+          "四要素提示词",
+          "提示词四字段",
+          "提示词四要素",
+          "正向结构化"
+        ],
+        "variant_profile": {
+          "topology": "split",
+          "emphasis": "directional"
+        }
+      }
+    },
+    {
+      "reference": "18_content_clarifying_dialogue",
+      "file": "18_content_clarifying_dialogue.svg",
+      "source_slide": 18,
+      "page_type": "content",
+      "layout_id": "clarifying_dialogue_three_questions",
+      "label": "反向追问对话",
+      "usage": "output",
+      "aliases": [],
+      "selection": {
+        "structure": "one user turn and three parallel clarification questions",
+        "content_slots": [
+          "title",
+          "user_prompt",
+          "three_clarifying_questions",
+          "next_action"
+        ],
+        "use_cases": [
+          "展示用户先请 AI 澄清条件，以及同一轮 AI 对三个缺口的追问"
+        ],
+        "avoid_when": [
+          "一般三要点、连续三步、错误诊断、无追问的角色对话或完整长聊天记录"
+        ],
+        "keywords": [
+          "AI 先问",
+          "AI 反问",
+          "AI 追问",
+          "让 AI 问",
+          "反向追问",
+          "澄清对话",
+          "逆向提问"
+        ],
+        "visuals": [
+          "深蓝底，左侧用户请求，右侧白底三个追问，底部下一动作"
+        ],
+        "image_requirements": [
+          "无需新增图片"
+        ],
+        "content_density": "medium",
+        "content_forms": [
+          "points_3"
+        ],
+        "item_count": 3,
+        "strict_item_count": true,
+        "semantic_require_any": [
+          "AI 先问",
+          "AI 反问",
+          "AI 追问",
+          "让 AI 问",
+          "反向追问",
+          "澄清对话",
+          "逆向提问"
+        ],
+        "variant_profile": {
+          "topology": "split",
+          "emphasis": "directional"
+        }
+      }
+    }
+  ]
+}

@@ -61,6 +61,7 @@ execution:
 适配规则：
 
 - 适合完整文章、解释型长文、观点论证。
+- 写作语气与链接方式遵循 [content-style.md](content-style.md) 的去营销化清单：知乎反「自卖自夸」与软文感最强，禁绝对化卖货词、用专业客观有据的表达、链接收在「参考与延伸」不堆裸链。
 - 保留完整结构和论证层次。
 - 标题写入 title 字段，正文不要重复同一个 H1。若正文第一行是 `# <title>` 或与 `title` 高度相似，发布前必须剥掉该 H1，从下一段开始填正文。
 - 不要把原始 Markdown 直接填进 Draft.js 编辑器。优先路径是转成知乎编辑器能保留的富文本/HTML 后粘贴；如果当前 OpenCLI 只支持纯文本填入，则把 Markdown 降级成可读纯文本：去掉 H1/H2 标记、`**`、`---` 等控制符，保留段落、列表语义和链接文本。
@@ -80,6 +81,12 @@ opencli zhihu article-draft \
 ```
 
 命令返回的 `draft_id/draft_url` 先记为 `created_unverified`，再打开 `/p/<id>/edit` 完成目标平台回读。
+
+### 插件参照补充（GEO action）
+
+- 草稿创建为两步：`POST https://zhuanlan.zhihu.com/api/articles/drafts`（JSON `{title, content:'', delta_time:0}`）拿 `id`，再 `PATCH /api/articles/<id>/draft`（JSON `{title, content}`）写正文；只需 `x-requested-with: fetch` 头，无 CSRF token。
+- **服务端回读端点**：`GET https://zhuanlan.zhihu.com/api/articles/<id>/draft` 可精确核对标题与正文托管图片数，比浏览器 `extract` 更稳；adapter 升级时可优先用它做 `created_verified` 证据。
+- 图片上传端点（未来图片能力备忘）：URL 图走 `POST /api/uploaded_images` form `{url, source:'article'}` → `result.src`；二进制图走 `POST https://api.zhihu.com/images`（SparkMD5 哈希）拿 `upload_token` 后 OSS PUT 到 `zhihu-pics-upload.zhimg.com`，再 `PUT /images/<id>/uploading_status` 上报并轮询 `GET /images/<id>` 到 `status===success`。当前 adapter 仍是 `images:false`。
 
 ## 回退：专栏文章浏览器自动化
 

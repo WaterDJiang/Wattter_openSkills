@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+<title>macaron-soft / chapter</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --xp-bg: #fef8f1;
+    --xp-ink: #2a2340;
+    --xp-ink2: #5b5470;
+    --xp-muted: #9089a8;
+    --xp-peach: #ffd8c2;
+    --xp-peach-d: #f48b5c;
+    --xp-mint: #c8ecd8;
+    --xp-mint-d: #2e9d70;
+    --xp-sky: #c9dcfb;
+    --xp-sky-d: #4e7ed6;
+    --xp-lilac: #ddd0f5;
+    --xp-lilac-d: #7b5dc4;
+    --xp-lemon: #fdf0b2;
+    --xp-rose: #fcd0dd;
+    --xp-rose-d: #c94673;
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --text: {{text}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--xp-bg); color: var(--xp-ink); }
+  .canvas { position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; background: var(--xp-bg); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .85; z-index: 0; }
+  .blob-b2 { width: 240px; height: 240px; background: radial-gradient(circle, var(--xp-lilac), transparent 72%); bottom: -10%; left: -8%; }
+  .blob-b3 { width: 180px; height: 180px; background: radial-gradient(circle, var(--xp-mint), transparent 72%); top: 40%; right: 20%; }
+  .topbar {
+    position: absolute; left: 60px; right: 60px; top: 48px;
+    display: flex; justify-content: space-between; align-items: center; z-index: 4;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 16px; border-radius: 999px;
+    background: #fff; border: 1.5px solid rgba(42,35,64,.1);
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: .08em;
+    color: var(--xp-ink2); text-transform: uppercase;
+  }
+  .chip::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--xp-mint-d); }
+  .page { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--xp-muted); letter-spacing: .12em; font-weight: 600; }
+  .footer {
+    position: absolute; left: 60px; right: 60px; bottom: 28px;
+    display: flex; justify-content: space-between;
+    font-family: 'Inter', sans-serif; font-size: 10px;
+    color: var(--xp-muted); letter-spacing: .1em; z-index: 4;
+  }
+  .logo { position: absolute; left: 60px; top: 78px; height: 22px; width: auto; z-index: 4; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="blob blob-b2"></div>
+  <div class="blob blob-b3"></div>
+
+  <div class="topbar">
+    <span class="chip">Chapter</span>
+    <span class="page">02 / 10</span>
+  </div>
+
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: chapter_num 60,160 1200,440 -->
+  <!-- text-slot: chapter_name 60,460 1200,540 -->
+
+  <div class="footer"><span>by Brand · pastel edition</span><span>section</span></div>
+</div>
+</body>
+</html>

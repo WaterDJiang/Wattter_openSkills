@@ -18,13 +18,69 @@ As a top-tier AI presentation strategist, receive source documents, perform cont
 
 ---
 
+## 0. Asset Route Selection
+
+Decide the route before reading any template index:
+
+- **Deck Route**: only when the user explicitly names/selects a Deck or gives `templates/decks/<id>/`. Resolve exactly one Deck and never auto-recommend another Deck from content similarity. Do not read Layout or HTML Background indexes.
+- **Free Route**: the default when no template is specified. Never read `decks_index.json`. Choose `layout-led`, `html-led`, or `full-free`; query Layout/HTML Background/Brand only when that strategy needs them.
+- **User PPTX**: use the imported user template as its own isolated source; do not silently blend library Decks into it.
+
+Write the resulting `route` to `spec_lock.md`. Route constraints are execution rules, not suggestions.
+
+**Layout match table** (generic-structure signal → recommended layout). All 13 layouts are `ppt169`, 5–6 pages:
+
+| Signal in source content | Recommended layouts |
+|---|---|
+| Thesis defense / academic / research progress / grant | `academic_defense` |
+| Government / policy / Five-Year Plan / work summary | `government_blue` (cooler) / `government_red` (warmer) |
+| Strategy consulting / investment analysis / board / executive | `mckinsey` / `exhibit` |
+| Medical / clinical case / hospital report / medical education | `medical_university` |
+| Telecom / 政企数字化 / 转型规划 / 内部汇报 | `china_telecom_template` |
+| AI ops / IT system / digital transformation / smart infrastructure | `ai_ops` |
+| Annual report / technical sharing / project showcase / data-driven | `google_style` |
+| Company intro / product launch / solution / education courseware | `smart_red` |
+| Psychotherapy / counseling case / academic lecture / professional sharing | `psychology_attachment` |
+| Tech talk / programming tutorial / game / geek-style | `pixel_retro` |
+| Corporate report / product launch / proposal / training (general business) | `科技蓝商务` |
+| No clear match | `科技蓝商务` (general-business fallback) |
+
+**Free-route matching discipline**: when `layout-led` is appropriate, read only `layouts_index.json`, pick the single best fit, and present it as a recommendation with the reason. `html-led` reads only the HTML Background index; `full-free` reads neither package index. Never infer a Deck.
+
+### 0.1 Semantic page selection
+
+When the selected Deck/Layout contains `page_catalog.json`, query it through the deterministic CLI; do not load the whole catalog into model context:
+
+```bash
+python3 ${SKILL_DIR}/scripts/template_page_catalog.py <template_dir> \
+  search "<page intent>" --page-type <type> \
+  --content-form <content_form_hint> --item-count <N> \
+  --topology <composition.topology> --emphasis <composition.emphasis> \
+  --compact --limit 3
+```
+
+Match each project page in this order:
+
+1. Filter by canonical `page_type`.
+2. Match `selection.use_cases` and `keywords` to the page's narrative goal.
+3. Prefer an exact item count and compatible `content_slots`; then compare `structure`, `content_density`, `visuals`, and `image_requirements`. Reject candidates whose `avoid_when` matches the page intent.
+4. Write the winning canonical `reference` (the semantic SVG basename) to `page_layouts`. Never write a bare type such as `content`, and never choose by source-slide number alone.
+5. If an existing project contains an old basename, use `python3 scripts/template_page_catalog.py <template_dir> resolve <old_ref> --compact` to obtain its replacement, then write the returned `reference`. Aliases are migration hints and fail project validation.
+6. 同形态存在多个候选时，接受 Binder 的 `variant_policy` 受控轮换结果；明确 topology/emphasis 的精确候选优先。只有低置信或语义冲突页需要人工改写绑定，不得为了“变化”选择等价池之外的 SVG。
+
+For ambiguous content, compare at most three compact candidates. Read only the winning SVG after selection. Do not invent an unregistered basename.
+
+**Free Route** — `layout-led` may fill `page_layouts` from the one selected Layout package; `html-led` may leave `page_layouts` empty and use background/text-slot contracts; `full-free` omits `page_layouts`. Every Free Route forbids `decks/*`.
+
+---
+
 ## 1. Eight Confirmations Process
 
 🚧 **GATE — Mandatory read first**: `read_file templates/design_spec_reference.md` before any analysis or writing. The design_spec.md output MUST follow that template's 11-section structure exactly. After writing, self-check each section is present: I Project Info → II Canvas → III Visual Theme → IV Typography → V Layout → VI Icon → VII Visualization → VIII Image → IX Outline → X Speaker Notes → XI Tech Constraints.
 
-⛔ **BLOCKING**: After the read, present professional recommendations for the eight items below as a bundled package and wait for explicit user confirmation.
+Resolve the eight design items internally. Carry forward user-approved choices, the selected template settings, and the confirmed handoff. When the user delegates a choice, record the adopted value. Ask once only for material conflicts or missing decisions outside that authority.
 
-> **Execution discipline**: This is the last BLOCKING checkpoint in the pipeline. After confirmation, complete the Design Spec and proceed to image generation / SVG / post-processing without further pauses.
+> **Execution discipline**: Once material choices are resolved, complete the Design Spec and continue to production.
 >
 > **One opt-in exception**: present the spec-refinement line alongside the split-mode note (SKILL.md Step 4). It is OFF by default — the above discipline holds unchanged. Only when the user *explicitly* asks to refine the spec do you hand off to the [refine-spec](../workflows/refine-spec.md) workflow, which produces the full spec first and stops for user review/revision of any part before generation. Never enter it unprompted.
 
@@ -81,6 +137,8 @@ Write the locked value to `spec_lock.md` `- visual_style:` and the rationale to 
 
 **Hard rule**: User / template colors are truth. If the user has specified colors (HEX, brand colors, or natural-language directives like "use blue as primary"), or a template was acquired at Step 3 (flow 1 library copy or flow 2 user-PPTX analysis → `<project_path>/templates/design_spec.md`), lock those directly and skip the recommendation table. Do not adjust them to fit any palette or industry default. Only when no color signal exists from user or template do you proactively propose a scheme below.
 
+**Chart palette precedence**: chart-library SVGs never participate in color selection. Their built-in fills, strokes, gradients, shadows, and font families are placeholders. When a template/brand/deck has already been selected, its identity colors flow into `spec_lock.colors`; every later chart must be re-skinned from that lock. Use the chart only for geometry, information hierarchy, label/legend placement, and series encoding.
+
 > Step 3 acquires templates via three flows (library / user PPTX / free); regardless of flow, brand and layout inputs collapse into a single `<project_path>/templates/design_spec.md`. This layer reads from that single source and does not need to re-resolve brand vs layout precedence.
 
 Proactively provide a color scheme (HEX values) based on content characteristics and industry.
@@ -103,6 +161,8 @@ Proactively provide a color scheme (HEX values) based on content characteristics
 | Layers panels / charts (e.g. `data-journalism`, `swiss-minimal`) | `surface` (panel lift), `grid` (hairline, lighter than dividers) |
 | Text over imagery / dark field (e.g. `photo-editorial`, `glassmorphism`, `dark-tech`) | `scrim` / `overlay` for legibility |
 | Print / hand-drawn fills (e.g. `chalkboard`, `zine`) | `block-shade`, one step off the field |
+
+**Theme palette seed**: Free Route reads `references/theme-palettes/_index.md` and chooses a preset/custom seed for SVG + optional HTML backgrounds. Deck Route does not use a palette preset to replace the template identity; derive and lock the Deck's own HEX roles, with provenance pointing to the selected Deck.
 
 ### f. Icon Usage Confirmation
 
@@ -274,7 +334,7 @@ Write the manifest first at `<project_path>/images/formula_manifest.json`. Use t
 }
 ```
 
-The script renders PNGs into `images/`, trying `codecogs`, `quicklatex`, `mathpad`, then `wikimedia` unless the manifest overrides `providers`. `codecogs`, `quicklatex`, and `mathpad` preserve requested formula color; `wikimedia` is an availability fallback and may require visual checking on dark themes. Formula PNGs are transparent by default: use `background` as the temporary render matte and local background-removal reference. Set `transparent: false` only when the final formula must keep an opaque background. It writes `pixel_width`, `pixel_height`, `ratio`, `file`, `provider`, and `status` back into the manifest. Run `analyze_images.py <project_path>/images` after formula rendering so the formula PNGs are included in the same inventory pass as user images.
+The script renders PNGs into `images/`, trying `codecogs`, `quicklatex`, `mathpad`, then `wikimedia` unless the manifest overrides `providers`. `codecogs`, `quicklatex`, and `mathpad` preserve requested formula color; `wikimedia` is an availability fallback and may require visual checking on dark themes. Formula PNGs are transparent by default: use `background` as the temporary render matte and local background-removal reference. Set `transparent: false` only when the final formula must keep an opaque background. It writes `pixel_width`, `pixel_height`, `ratio`, `file`, `provider`, and `status` back into the manifest. Formula PNGs are picked up by the single `analyze_images.py` pass that runs after both formula rendering and user-image import — do not run a separate pass here.
 
 ### h. Image Usage Confirmation
 
@@ -297,6 +357,8 @@ The script renders PNGs into `images/`, trying `codecogs`, `quicklatex`, `mathpa
 Selection is automatic in Step 5 (A → B → Manual). Detailed contract: [`image-generator.md`](./image-generator.md) §3.2.
 
 Selections may be mixed at the row level — e.g. a deck can use C for hero illustrations while sourcing D for supporting team photos.
+
+**HTML background style (Free Route only)**: `html-led` and `layout-led` may read `templates/html-background-styles/_index.md` and choose a compatible style. `full-free` may omit it. Deck Route must not read or use HTML Background styles; use selected Deck shell/background assets instead.
 
 #### h.5 AI Image Strategy — lock rendering + palette (only when C is selected)
 
@@ -333,7 +395,7 @@ After the candidates, append one line:
 | `Mood` line MUST include a real-world analogy | Company / publication / event the user can picture. Adjective stacks alone are forbidden. |
 | Adapt labels to chat language | Schema is English by default. Chinese chat → render as 「方案 A / 视觉 / 色彩 / 情绪」. Structure stays the same; only the labels translate. |
 | Skip presentation when user has specified | User-named rendering or palette (chat / brand / template) bypasses the candidate flow — lock directly per the truth-precedence rule. |
-| `custom` is a tail-case, not a default | When no preset fits, a candidate may set `rendering: custom` and / or `palette: custom` (rules: [`image-renderings/_index.md`](../image-renderings/_index.md) §1.5, [`image-palettes/_index.md`](../image-palettes/_index.md) §2). At most one candidate per dimension may carry `custom`; one candidate may carry both dimensions as `custom`. `Visual` / `Color` lines describe the behavior in prose, never by naming a competing preset. |
+| `custom` is a tail-case, not a default | When no preset fits, a candidate may set `rendering: custom` and / or `palette: custom` (rules: [`image-renderings/_index.md`](image-renderings/_index.md) §1.5, [`image-palettes/_index.md`](image-palettes/_index.md) §2). At most one candidate per dimension may carry `custom`; one candidate may carry both dimensions as `custom`. `Visual` / `Color` lines describe the behavior in prose, never by naming a competing preset. |
 
 **Forbidden — padding with conflicts**: if e.'s HEX cannot find ≥3 compatible palettes, present the smaller set (2 candidates) and state "your color is unusual — only N palettes can carry it without conflict." A `custom` candidate is allowed only when its prose genuinely describes a tail-case the presets cannot — not as a slot-filler. Never fill remaining slots with known-conflicting options.
 
@@ -452,7 +514,7 @@ After auto-selecting, cross-check `image-palettes/_index.md` compatibility matri
   - image_palette: cool-corporate
   ```
 
-**Hard rule — `custom` recording**: when the picked candidate has `rendering: custom` or `palette: custom`, also write the sibling `*_behavior` row. Source: the candidate's `Visual` line (for rendering) / `Color` line (for palette), expanded to cover the prose requirements in [`image-renderings/_index.md`](../image-renderings/_index.md) §1.5 / [`image-palettes/_index.md`](../image-palettes/_index.md) §2 (chat candidates are compressed; spec_lock prose covers all axes). Both `design_spec.md` and `spec_lock.md` must carry the behavior line. Example for the `custom × custom` candidate above:
+**Hard rule — `custom` recording**: when the picked candidate has `rendering: custom` or `palette: custom`, also write the sibling `*_behavior` row. Source: the candidate's `Visual` line (for rendering) / `Color` line (for palette), expanded to cover the prose requirements in [`image-renderings/_index.md`](image-renderings/_index.md) §1.5 / [`image-palettes/_index.md`](image-palettes/_index.md) §2 (chat candidates are compressed; spec_lock prose covers all axes). Both `design_spec.md` and `spec_lock.md` must carry the behavior line. Example for the `custom × custom` candidate above:
 
 ```
 - image_rendering: custom
@@ -469,7 +531,7 @@ After the user picks a candidate, scan the outline and surface any pages where t
 
 **Per hero_page title**: lock where it lives — `embedded` (fused into the image: neon, carved, smoke, 3D-lit lettering) or `none` (editable SVG title over an atmospheric backdrop, Primitive D). Default `none`; flip to `embedded` only when the words must be *part of the visual*, not merely a display font. Per page — may bake only the keyword while subtitle / date / chrome stay SVG. Surface it with the hero_page list for the same confirm / edit / skip.
 
-**When selection includes B**, you must run `python3 scripts/analyze_images.py <project_path>/images` before outputting the spec, and integrate scan results into the image resource list.
+**When selection includes B**, integrate the user-image scan results into the image resource list. The scan itself is run once, after user images are imported AND any formula rendering is done — see the single `analyze_images.py` pass in the Step 4 "output spec" block; do not re-run it here.
 
 **When B / C / D / E is selected**, add an image resource list to the spec:
 
@@ -525,6 +587,43 @@ After the user picks a candidate, scan the outline and surface any pages where t
 | `ai` | "Atmospheric backdrop suggesting digital innovation; calm central area reserved for slide title overlay; light geometric anchor at one edge" |
 | `ai` | "Four-stage value chain from raw input to R&D output; icons should suggest tax-form → cost-reduction → equipment-upgrade → innovation; no text labels (SVG overlays them)" |
 
+#### Page-type image defaults / 页面类型配图默认
+
+**Background architecture**: Free Route may use HTML, AI or native backgrounds according to the lock. Deck Route preserves the selected Deck's required shell/background assets, or uses native shapes for a locked `themed_rebuild`; it must not introduce HTML Background assets or substitute generic images for a required brand shell.
+
+仅对 Free Route 已明确选择 HTML 背景的页面，按页型预填 `cover / ending / chapter / theme` 及 §VIII 的 `html` 行；不因内容页或无图方案强制新增 `theme`。锁定 AI 照片背景的 Free 页使用 `ai` 行，文字按 `hero_page` 放置，不生成 HTML text-slot。Deck Route 及原生背景页不套用下面的 HTML/AI 行默认。
+
+**Recognize the page type** from `spec_lock.md` (derive it — do NOT introduce a new field):
+
+| Page type | Recognition signal |
+|---|---|
+| Cover / 封面 | `page_layouts` basename prefix `01_cover`, OR P01 with `page_rhythm: anchor` |
+| Ending / 封底 | `page_layouts` basename prefix `04_ending` / `04_close`, OR the last page with `page_rhythm: anchor` |
+| Chapter divider / 章节序号页 | `page_layouts` basename prefix `02_chapter` / `02a_chapter` / `02b_chapter`, OR a non-cover non-ending `anchor` page that opens a new section |
+| Background / 背景(内容页全幅氛围) | Any page where the image is the canvas — `Type: Background` + `page_role: hero_page` |
+
+**Default row config** only for Free Route pages explicitly using HTML/AI backgrounds (one §VIII row per selected page):
+
+- `Acquire Via: html` (default) OR `ai` — `html` flows through `html_render.py` (HTML background template, with text-slot contract); `ai` flows through `image_gen.py` (photographic full-bleed cover, text placed per `hero_page`, no text-slot). Switch a structural page to `ai` when a photographic cover is wanted; then omit it from `html_backgrounds`.
+- `Type: Background` (cover / ending / chapter / background) or the content-driven type otherwise.
+- `page_role: hero_page`.
+- `text_policy: none` — keep the title editable in SVG. Flip to `embedded` only when a keyword must be fused into the artwork.
+- `Layout pattern`: pick `#1` (full-bleed background with floating title) or a `#38–#46` image-as-canvas pattern from `image-layout-patterns.md` (satisfies the GATE below).
+- `Reference`: fill from the intent template below — subject + intent + composition, NO style words / HEX (deck-wide style is locked by h.5 / §III).
+
+**Reference templates** (replace `<...>` placeholders with deck-specific content):
+
+| Page type | Reference template |
+|---|---|
+| Cover | `HTML cover template (<style>); visual frame only — title/subtitle/author/date placed by SVG text-slots; <情绪> tone; bakes NO text` |
+| Ending | `HTML ending template (<style>); visual frame only — thanks/contact placed by SVG text-slots; <情绪> tone; bakes NO text` |
+| Chapter divider | `HTML chapter template (<style>); visual frame only — chapter_num/chapter_name placed by SVG text-slots; <情绪> tone; bakes NO text` |
+| Background (content) | `HTML theme template (<style>); pure frame / color blocks, no text-slots — content layer is free SVG design; low-contrast so SVG text / charts stay legible` |
+
+**`ai` path for structural pages** (photographic cover): when a structural page uses `ai` instead of `html`, its Reference follows the standard ai grammar (subject + intent + composition, no style/HEX) — e.g. `Atmospheric backdrop for <主题> cover; calm central area reserved for title overlay; <情绪> tone; no text`. It does NOT appear in `html_backgrounds`; its background flows through §VIII `ai` row + `image_gen.py`, and text is placed per `hero_page` (no text-slot contract).
+
+Record these rows in §VIII. Follow the authorized image policy and ask only when a proposed asset exceeds it.
+
 🚧 **GATE — before writing §VIII Image Resource List**: when image approach is B/C/D/E (anything other than A "no images"), this is a three-layer hard requirement, not a suggestion:
 
 1. **Read** — `read_file references/image-layout-patterns.md`. The file enumerates 72 numbered techniques split into **Part 1 — Primary Structures** (#1–#19 container layouts, #38–#46 image-as-canvas + native overlay, #47–#56 multi-image) and **Part 2 — Modifier Layers** (#20–#26 non-rectangular crops, #27–#37 overlays & masks, #57–#61 texture, #62–#72 special). The four `Image narrative intent` values below cover only broad categories.
@@ -573,37 +672,41 @@ The catalog covers **both data charts and structural information designs**. A "m
 
 The most common Strategist failure mode is missing the structural half — treating "chart" as "numeric chart only" and leaving team / agenda / principles / journey pages as text-only when a template would fit. Read the catalog with both lenses.
 
-> **Reading is mandatory; the catalog is a starting point, not a copy target.**
-> - Fully read `templates/charts/charts_index.json` **before drafting the Eight Confirmations** — the read happens up front, not when you sit down to write Section VII. The file contains `meta` + `charts.<key>.summary` only; each `summary` is a selection rule (`"Pick for … Skip if …"`), not a description. There is **no category, quickLookup, or keyword index** — selection is done by semantically matching each page's content shape against all 71 summaries in one pass.
-> - Not every page needs a chart. When a page's information structure matches a catalog entry, **use that template as a structural starting point** — keep the visualization type and core layout logic, then adapt composition, density, color, decoration, and accompanying elements to fit this deck's content and visual tone. Free adjustment is encouraged; what is forbidden is (a) generating without reading the catalog, and (b) blind verbatim mimicry that ignores the page's actual content weight.
+> **逐页检索是必需的；目录只是选型起点，不是复制目标。**
+> - 在八项确认前先从内容确定每页的 `content_form_hint / relationship / item_count / has_data / composition`，分清并列、递进、循环等关系。随后按页运行 `python3 scripts/match_content_forms.py resolve <form> [--count <N>] [--package <选定包名>]`。脚本可读取完整索引，模型只接收该页的紧凑候选；仅查阅拟选 chart 与真实备选项在 `charts_index.json` 中的 `summary`，核对其中的 Pick/Skip 条件。不要一次性把全部 chart 摘要载入上下文。
+> - Read `templates/chart_selection_reference.json` in the same gate; the resulting `<project_path>/chart_selection.json` is the machine-readable proof of each page's selection and handoff. `catalog_read.count` records the catalog inventory, not the number of summaries loaded into model context.
+> - **内容形态查表优先（降错配）**：`templates/charts/content_forms.json` 提供封闭形态词表、全局 `chart_tags` 与各包 `page_variant_tags`。先判定形态（如 `compare_2col` / `flow_linear` / `points_5` / `matrix_2x2` / `trend_line`），再查候选；仅有相同形态标签不能证明页面精确适配。
+> - **双目录 + 作用域区别**：`page_charts` 使用全局 charts；`page_layouts` 只从 Step 3 选定的 Deck/Layout 包内部选页。Deck Route 用该包 `template_page_catalog.py search --precise-only --image-need <image_need>` 核对精确适配；`resolve <form> --package <选定包名>` 列出的包内变体仅是形态候选。精确查询返回空或结构不适配时查询全局 chart，沿用当前 Deck 的视觉身份。Deck Route 不从其他 Deck、Layout 或 HTML Background 借页；Free Route 按其已选来源与资产范围处理。
+> - Not every page needs a chart. When a page's information structure matches a catalog entry, **use that template as a structural starting point** — keep the visualization type and core layout logic, then adapt composition and density to the page.
+> - **Structure-only skin rule**: never copy a chart template's colors, font families, gradients, shadows, or decorative effects. `spec_lock.colors` + `spec_lock.typography` + `spec_lock.visual_style` are the only skin source. If an upstream template was selected, these values already represent that template's visual identity. The chart contributes structure only.
 >
 > **Workflow**:
-> 1. Read all 71 summaries; for each page, identify the Pick clause that matches the page's content shape AND does not match any Skip clause.
-> 2. Prefer specificity (`vertical_list` over generic `numbered_steps`).
-> 3. One primary visualization per page; a supporting layout may accompany it.
-> 4. List selections in Design Spec section VII; section IX only notes the visualization type name per page.
+> 1. 对每页先核对包内候选是否真正匹配形态、用途、固定槽位、图片需求和明确构图；`auto` 下仅同形态、用途不明或槽位不合的页面不能拦截 chart。显式 `binding_preference=template/chart` 遵循用户意图。
+> 2. 需要全局结构时按形态和数量查询 chart；只读取候选摘要，核对 Pick/Skip 与真实数据要求。优先选更具体的合格结构（例如合适时用 `vertical_list` 而非通用 `numbered_steps`），不设图表页数配额。
+> 3. 一页以一个主要可视化结构为主；仅当包内页面是兼容的壳时，才与 chart 同页使用。
+> 4. 将选择写入 Design Spec §VII，§IX 只注明该页的可视化类型；同步写入 `chart_selection.json`，记录目录总数、实际检索的形态、选中项、无匹配回退、真实备选项与固定的 `structure_only` 换肤策略。
 >
-> **Source vocabulary mismatch** — the catalog is in English. When source content uses Chinese / industry jargon ("中台", "架构图", "述职", "管道", "前后端"), translate the intent first, then match against summaries. The catalog deliberately keeps no keyword index — full-read forces semantic matching rather than lexical grep.
+> **Source vocabulary mismatch** — chart summaries are in English. When source content uses Chinese / industry jargon ("中台", "架构图", "述职", "管道", "前后端"), first resolve the content relationship and form, then compare only eligible candidates' summaries semantically rather than relying on lexical grep.
 >
 > **Read-audit (mandatory, section VII format)** — single combined table; `summary-quote` column is the anti-fabrication audit, `path` + `usage` serve Executor lookup. Format defined in [`templates/design_spec_reference.md`](../templates/design_spec_reference.md) §VII:
 > ```
 > Catalog read: 71 templates
 >
-> | Page | Template      | Path                              | Summary-quote (verbatim) | Usage |
-> | ---- | ------------- | --------------------------------- | ------------------------ | ----- |
-> | P03  | bar_chart     | templates/charts/bar_chart.svg    | "<verbatim first sentence>" | <intent> |
-> | P07  | line_chart    | templates/charts/line_chart.svg   | "<verbatim first sentence>" | <intent> |
-> | P11  | pie_chart     | templates/charts/pie_chart.svg    | "<verbatim first sentence>" | <intent> |
+> | Page | Template      | Path                              | Summary-quote (verbatim) | Usage | Skin source |
+> | ---- | ------------- | --------------------------------- | ------------------------ | ----- | ----------- |
+> | P03  | bar_chart     | templates/charts/bar_chart.svg    | "<verbatim Pick for ... excerpt>" | <intent> | `spec_lock.colors + typography + visual_style` |
+> | P07  | line_chart    | templates/charts/line_chart.svg   | "<verbatim Pick for ... excerpt>" | <intent> | `spec_lock.colors + typography + visual_style` |
+> | P11  | pie_chart     | templates/charts/pie_chart.svg    | "<verbatim Pick for ... excerpt>" | <intent> | `spec_lock.colors + typography + visual_style` |
 >
 > Runners-up considered (3 entries minimum, drawn from real second-best matches):
 > - <key_A> | rejected for P03: <reason citing this deck's specifics>
 > - <key_B> | rejected for P07: <reason>
 > - <key_C> | rejected for P11: <reason>
 > ```
-> The `summary-quote` must be copy-pasted from `charts_index.json` — paraphrasing or summarizing breaks the audit. Every template name listed (selected or rejected) must `grep` cleanly inside `charts_index.json` (so misspelled or invented keys fail). If fewer than 3 visualization pages exist, list what exists and note "fewer than 3 viz pages"; runners-up still required for each page that does exist.
+> `Catalog read` records the index metadata count, not a full model-context read; each page's `form` and candidate summaries record the actual lookup. The `summary-quote` must be copy-pasted from `charts_index.json` — paraphrasing or summarizing breaks the audit. Every template name listed (selected or rejected) must `grep` cleanly inside `charts_index.json` (so misspelled or invented keys fail). If fewer than 3 visualization pages exist, list what exists and note "fewer than 3 viz pages"; runners-up still required for each page that does exist.
 >
 > **Fallback when no template fits**:
-> 1. Re-read the full summary list with the page's intent re-stated in plain language — "non-obvious" matches often surface on the second pass (e.g. "causal chain" → `process_flow` or `sankey_chart`).
+> 1. Re-query the relevant form or a justified alternative with the page's intent re-stated in plain language; a non-obvious eligible structure may surface (e.g. "causal chain" → `process_flow` or `sankey_chart`).
 > 2. If still no fit: data-driven content → table layout; conceptual/illustrative → "AI-generated image" (Image_Generator handles); structural → "custom layout".
 > 3. Mark the page `no-template-match` in section VII with the fallback chosen and why. Do NOT silently substitute a close-but-wrong chart.
 
@@ -612,6 +715,7 @@ The most common Strategist failure mode is missing the structural half — treat
 - File naming: Recommended to match SVG names (`01_cover.svg` → `notes/01_cover.md`), also compatible with `notes/slide01.md`
 - Fill in the Design Spec: total presentation duration, notes style (formal / conversational / interactive), presentation purpose (inform / persuade / inspire / instruct / report)
 - Split note files must NOT contain `#` heading lines (`notes/total.md` master document MUST use `#` heading lines)
+- **Operational / CTA copy lives here, not on slides**: when the deck needs marketing conversion (扫码进营销群 / 关注公众号 / 报名咨询 / 转发有礼 etc.), write it into the speaker notes at the right timestamp for the instructor to say aloud — never into `§IX` page content (which becomes slide `<text>`). Necessary learning actions and working material links stay on the appropriate page; imperative wording alone is not marketing. See SKILL.md Rule 10 + executor-base §3.4. When drafting `§IX` page outlines, if a page's purpose is operational (引流/转化), mark it explicitly in `spec_lock.md` (e.g. `P40: conversion`) so the Executor and checker treat it as the declared exception.
 
 ---
 
@@ -720,12 +824,26 @@ Content-outline and speaker-notes strategy follow the deck's locked **mode** —
 1. Read reference template: `templates/design_spec_reference.md`
 2. Generate complete spec from scratch based on analysis
 3. Save to: `projects/<project_name>.../design_spec.md`
-4. **Generate execution lock**: read `templates/spec_lock_reference.md` and produce `projects/<project_name>.../spec_lock.md` — a distilled, machine-readable short form of the color / typography / icon / image / **page_rhythm** / **page_layouts** / **page_charts** decisions above. This file is what the Executor re-reads before every page (see [executor-base.md](executor-base.md) §2.1). The values in `spec_lock.md` MUST exactly match the decisions recorded in `design_spec.md`; if they ever diverge, `spec_lock.md` wins and `design_spec.md` should be treated as historical narrative.
+4. **Generate execution lock + chart handoff**: read `templates/spec_lock_reference.md` and produce `projects/<project_name>.../spec_lock.md` — a distilled, machine-readable short form of the color / typography / icon / image / **page_rhythm** / **page_layouts** / **page_render_modes** / **page_shell_assets** / **page_shell_requirements** / **page_charts** decisions above. Also read `templates/chart_selection_reference.json` and produce `<project_path>/chart_selection.json`. Then **run `python3 ${SKILL_DIR}/scripts/extract_locked_values.py <project_path>`** to emit `<project_path>/locked_values.json` — the compact cache the Executor re-reads per page instead of the full spec_lock.md (see [executor-base.md](executor-base.md) §2.1 + SKILL.md Rule 8). These files are what the Executor re-reads before generation. Values MUST exactly match `design_spec.md`; if they diverge, `spec_lock.md` wins and `design_spec.md` is historical narrative. Re-run the extractor after any later `spec_lock.md` edit.
    - **page_rhythm is mandatory**: Based on the page list in §IX Content Outline, assign each page one of `anchor` / `dense` / `breathing` (see `spec_lock_reference.md` for the full vocabulary). This is what breaks the uniform "every page is a card grid" feel — without it the Executor defaults all pages to `dense`.
    - **Rhythm follows narrative, not quota**: `breathing` pages mark natural pauses — chapter transitions, standalone emphasis (hero quote / big number), SCQA bridges. Dense decks may legitimately be all `dense`. **Do NOT invent filler pages** ("Thank you", empty dividers) to pad rhythm — every `breathing` page must say something independent.
-   - **page_layouts (write only when a template is in use)**: For each page that inherits a template SVG, add `P<NN>: <svg_basename>` (e.g., `P04: 03a_content_image_text`). Pages designed freely get **no entry** — Executor reads the absence as "free design, no inheritance". If zero pages use a template, omit the section entirely.
-   - **page_charts (write only for chart pages that match a catalog template)**: For each page in `design_spec.md §VII` whose `reference template path` points to `templates/charts/<name>.svg`, add `P<NN>: <chart_name>`. Pages with `no-template-match` in §VII MUST NOT appear here (Executor would look for a non-existent reference). If the deck has no data-visualization pages, omit the section.
+   - **page_layouts (write only when a template is in use)**: For each page that inherits a template SVG, add `P<NN>: <canonical_reference>` (the semantic SVG basename, e.g. `P04: 009_content_vs_comparison` or `P04: 03a_content_image_text`). When `page_catalog.json` exists, choose and validate that value through §0.1; do not write an alias in new specs. Pages without an exact content-layout binding get **no entry**; they still follow the selected route, per-page mode and required assets. Deck Route retains its Deck identity and never becomes Free Route because an entry is missing. If no page has an exact layout binding, omit the section while preserving the route and other page contracts.
+   - **page_render_modes (write with page_layouts for new projects)**: Copy the Binder v2 result per page. `mirror` requires exact slot/capacity fit; `brand_shell` preserves the brand shell while rebuilding content; `themed_rebuild` inherits visual language only. Never promote a Binder fallback back to mirror merely to preserve more template geometry.
+     - **同页降级（SAME-PAGE DEGRADATION）**: 已选定精确适配的本地页若因 mirror 条件不足而降级，优先在同一 canonical reference 切到 `brand_shell`，保留可验证的背景和品牌壳，再重建正文区。降级不能把用途、槽位或构图不合的本地页变成精确适配，也不能因此截断全局 chart 检索。
+     - **全局 Chart 借结构（CHART STRUCTURE FALLBACK）**: Deck Route 的 `auto` 页先检查选中 Deck 是否有用途、固定槽位、图片需求及明确构图都适配的本地结构；仅同形态不够。无精确适配时，从全局 `charts/` 查询合格结构，保留选中 Deck 的颜色、字体和效果；兼容的包内品牌壳可与 chart 同页使用，否则不写该页的 `page_layouts`。`page_render_modes` 按 Binder 与能力契约记录，不固定为 `themed_rebuild`。禁止从其他 Deck、Layout 或 HTML Background 借页；无合格 chart 时记录安全回退，不强塞近似图。
+   - **page_shell_assets (brand_shell only)**: Copy the Binder `shell_assets` filenames for each `brand_shell` page. If the list is empty, change that page to `themed_rebuild`; do not invent an asset.
+   - **page_shell_requirements (brand_shell only)**: Copy the Binder `shell_requirements` role mapping and `forbid_unlocked_full_bleed` flag. Every listed role is mandatory. A `background` role must be used full-bleed; never substitute an unlocked generic background and satisfy the check with identity chrome alone.
+   - **page_charts (write for every data-chart OR structural-pattern page matching the catalog)**: For each page in `design_spec.md §VII` whose reference path points to `templates/charts/<name>.svg`, add `P<NN>: <chart_name>`. This includes comparisons, 分点图、流程、矩阵、议程、团队、框架和旅程等非数字结构图。Pages with `no-template-match` MUST NOT appear here. If no page matches any catalog visualization or structural pattern, omit the section.
+   - **chart_skin (required whenever page_charts exists)**: write `mode: structure_only`, `color_source: colors`, `typography_source: typography`, `effects_source: visual_style`. This makes the upstream template/deck identity authoritative and prevents chart SVG defaults leaking into the output.
    - **Hard rule**: Use both `page_layouts` and `page_charts` for the same page only when the layout template is a compatible shell for the chart. Do not pair chart pages with conflicting page layouts (e.g., `waterfall_chart` + timeline layout, KPI cards + circle-diagram layout). If no compatible layout exists, omit the page from `page_layouts`.
+   - **Validate before Executor**: run `python3 ${SKILL_DIR}/scripts/template_page_catalog.py <project_path> validate-project`, then `python3 ${SKILL_DIR}/scripts/validate_chart_mappings.py <project_path>`. Do not continue on any error. The first command makes missing files, uncataloged references, and legacy aliases hard failures instead of Executor-time fallbacks.
+5. **Render explicitly locked HTML backgrounds (Free Route only)**: skip for Deck Route and when no Free Route page uses HTML. After `spec_lock.md` with the applicable `html_backgrounds` entries is written, write `images/html_background_manifest.json` — one item per **distinct** background template (deduplicate by template: a deck usually has 1 `cover` + 1 `ending` + 1 `chapter` + 1 `theme`, not one per page). Each item carries `id` / `template` / `style` (from §h) / `filename` (`bg_<template>.png`) / `variables` (HEX from `theme_palette` §e or brand) / `logo` (brand §IV mark, if any) / `status: Pending`. Top-level `style` / `theme_palette` / `variables` / `logo` may be set once and inherited by all items. Then run:
+   ```bash
+   python3 ${SKILL_DIR}/scripts/html_render.py <project_path>
+   ```
+   The script renders HTML→PNG via Playwright/Chromium, writes `images/bg_<template>.png`, and writes back `status: Rendered-HTML` + `text_slots` (extracted from the HTML templates' `<!-- text-slot -->` comments, validated against `slots.json`). If Playwright is unavailable, re-run with `--fallback-solid` for solid-color backgrounds (status `Fallback-Solid`); the Executor then uses `<rect>` backgrounds. **This step MUST complete before Step 6 Executor** — the SVG text overlay depends on the background PNGs being in place. Add the rendered PNGs to `spec_lock.md images` (e.g., `bg_cover: images/bg_cover.png`) and to `design_spec.md §VIII` as `Acquire Via: html` / `Status: Rendered-HTML` rows. This is the HTML-background analogue of the formula render step (§g Manifest step) — both render declared assets to PNG before the Executor runs.
+
+6. **Generate design system (conditional — page count ≥ 60)**: when the confirmed page count meets or exceeds the parallel-mode threshold (default 60), read `templates/design_system_reference.md` and produce `projects/<project_name>.../design_system.md` — the "how to combine" contract: frozen SVG skeleton fragments (header / footer / card / KPI / divider), decorative motifs, spacing tokens, per-page-type layout shells, and anchor page references. `spec_lock.md` locks *values*; `design_system.md` locks *composition*. This file is what segment agents in the parallel-execute workflow ([`workflows/parallel-execute.md`](../workflows/parallel-execute.md)) Read at segment start to stay visually coherent without each session re-inventing the chrome. For decks under the threshold, `design_system.md` is optional (the single-agent flow does not consume it). If divergent, `spec_lock.md` still wins on values; `design_system.md` wins on composition.
 
 ---
 

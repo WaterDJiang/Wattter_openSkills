@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;800&display=swap" rel="stylesheet">
+<title>cobalt-studio / chapter</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --near-black: #0a0a0a;
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --text: {{text}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body {
+    background: var(--bg);
+    font-family: "Manrope", "Inter", system-ui, sans-serif;
+    color: var(--text);
+  }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: var(--bg);
+  }
+  /* 顶部 11% 白色窄条（section divider 头部） */
+  .panel-top {
+    position: absolute; left: 0; top: 0; width: 100%; height: 11%;
+    background: var(--bg);
+  }
+  /* 黑色 edge bar 在 11% 处 */
+  .edge-bar {
+    position: absolute; left: 0; top: 11%; transform: translateY(-50%);
+    width: 100%; height: 9px; background: var(--near-black);
+  }
+  /* 钴蓝大 panel 占据下 89% */
+  .panel-bottom {
+    position: absolute; left: 0; top: 11%; width: 100%; height: 89%;
+    background: var(--primary);
+    color: #fff;
+  }
+  .mark {
+    position: absolute; z-index: 6;
+    font-size: 13px; font-weight: 800; letter-spacing: 0.22em;
+    text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+  }
+  .mark .chip {
+    width: 10px; height: 10px; background: var(--primary); display: inline-block;
+  }
+  .mark .soft { color: rgba(10,10,10,0.58); font-weight: 500; }
+  .mark-tl { top: 28px; left: 40px; color: var(--text); }
+  .mark-tr { top: 28px; right: 40px; color: var(--text); }
+  .mark-bl { bottom: 24px; left: 40px; color: #fff; }
+  .mark-bl .soft { color: rgba(255,255,255,0.72); font-weight: 500; }
+  .mark-br { bottom: 24px; right: 40px; color: #fff; }
+  .logo { position: absolute; left: 40px; top: 60px; height: 24px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="panel-top"></div>
+  <div class="edge-bar"></div>
+  <div class="panel-bottom"></div>
+
+  <div class="mark mark-tl"><span class="chip"></span>Brand</div>
+  <div class="mark mark-tr"><span class="soft">Section</span></div>
+  <div class="mark mark-bl"><span class="soft">Cobalt Studio</span></div>
+  <div class="mark mark-br">01 / 10</div>
+
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: chapter_num 240,140 1040,500 -->
+  <!-- text-slot: chapter_name 80,540 1200,620 -->
+</div>
+</body>
+</html>

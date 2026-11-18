@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>bone-archival / ending</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bone: #E2DCC9;
+    --ink: #0A0A0A;
+    --paper: #F4EFE0;
+    --sienna: #A06A3C;
+    --magenta: #C73B7A;
+    --orange: #EE7A2E;
+    --teal: #2D7E73;
+    --blue: #3F73B7;
+    --mustard: #D8A93B;
+    --olive: #6F7A2E;
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --text: {{text}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bone); color: var(--ink); }
+  .canvas { position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; background: var(--bone); }
+  /* 左侧 teal 大色块（CTA 收束 device 之一） */
+  .pane-left {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 50%;
+    background: var(--teal); color: var(--bone);
+    padding: 60px 50px;
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  /* 右侧橙色 pane（与左侧形成撞色对） */
+  .pane-right {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+    background: var(--orange); color: var(--ink);
+    padding: 60px 50px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .super {
+    font-family: "Barlow Condensed", sans-serif; font-weight: 800;
+    font-size: 14px; letter-spacing: .14em; text-transform: uppercase; opacity: .8;
+  }
+  .pane-left .super { color: var(--bone); }
+  .pane-right .super { color: var(--ink); }
+  .step { display: grid; grid-template-columns: 38px 1fr; gap: 10px; align-items: start; }
+  .step .n { font-family: "Stardos Stencil", serif; font-weight: 700; font-size: 32px; line-height: .9; }
+  .step h4 { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
+  .step p { font-size: 13px; line-height: 1.4; }
+  .slide-meta {
+    position: absolute; left: 50px; right: 50px; bottom: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "Barlow Condensed", sans-serif; font-size: 12px;
+    letter-spacing: .14em; text-transform: uppercase; opacity: .6;
+    z-index: 4;
+  }
+  .slide-meta .dot { width: 6px; height: 6px; background: var(--ink); border-radius: 50%; display: inline-block; margin: 0 8px; transform: translateY(-1px); }
+  .logo { position: absolute; left: 50px; top: 36px; height: 22px; width: auto; z-index: 5; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="pane-left">
+    <div class="super">END · OF · DECK</div>
+    <!-- text-slot: thanks 50,120 590,460 -->
+    <!-- text-slot: contact 50,490 590,580 -->
+  </div>
+  <div class="pane-right">
+    <div class="super">NEXT</div>
+    <div class="step"><div class="n">01</div><div><h4>SAY HELLO</h4><p>Reach the team for project kickoff.</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>SHARE NOTES</h4><p>Forward the deck to your team inbox.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>BOOK CALL</h4><p>Pick a 30-min slot next week.</p></div></div>
+  </div>
+
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <div class="slide-meta">
+    <span>CLOSING CARD</span>
+    <span>10 <span class="dot"></span> 10</span>
+  </div>
+</div>
+</body>
+</html>

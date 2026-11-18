@@ -15,7 +15,7 @@
 - 用户 `~/.config/wtt-code-video-studio/voice.local.json`。
 - 旧用户目录 `~/.config/wtt-code-animation-studio/voice.local.json` 或 `~/.config/wtt-concept-explainer/voice.local.json`。同时存在不同文件时报冲突；不会根据内容猜用户更喜欢哪个音色。
 
-存在冲突时用显式路径或新环境变量选定；兼容只读旧配置，不移动录音、权重或写回旧文件。两个路径解析为同一文件可继续。
+存在冲突时用显式路径或新环境变量选定；兼容发现只读旧配置，不自动移动录音、权重或写回旧文件。用户授权的路径修复按下方恢复流程另行备份执行。两个路径解析为同一文件可继续。
 
 项目配置只管该项目；在用户级路径保存一份有效配置，新项目即可默认沿用。也可将现有配置的绝对路径设为环境变量，避免移动录音。迁移配置文件位置时重新核对相对路径；不要将实际个人配置写回 Skill。
 
@@ -33,6 +33,15 @@ python3 tools/pipeline.py tts . --voice Tingting --rate 205
 ```
 
 第一条覆盖默认音色，显式cast绑定仍按各角色执行；第二条明确使用系统音色，仅适用于旧单旁白。两者不能同时指定。已有同名音轨仍按保护规则处理，切换声音使用新版本目录。旧工程的tools不会自动升级，可从完整新版Skill调用pipeline.py，或按兼容说明同步依赖。
+
+## 配置存在但路径失效
+
+- 先运行`python3 tools/voice.py doctor --project .`；缺路径只说明原路径不可用，不断言文件已删除。doctor检查相邻.venv及失效软链，但不加载模型或认证当前Python依赖。`Path.exists()`不识别失效软链，查环境时同时用`is_symlink()`或`ls -ld`，不直接在原软链上执行venv创建。
+- 用户要求查找或本次恢复需要时，先查配置的原目录、用户配置/数据目录、相关旧项目和已知模型缓存，再按用户提供的范围扩展Downloads/Documents/外接卷；逐次指定目录，不每次做片全盘扫描。模型用`voice.py scan --root /path/to/models`找候选，录音/文字先按旧配置、原文件名和旧TTS旁车追溯，不打印私人逐字稿。
+- 用旧成功TTS旁车中的referenceAudioSha256、referenceTextSha256核对找到的录音和逐字稿，匹配后再认定同一参考。仅文件名/声音标签相同不足以认定；无旧哈希则核对录音对应文字和本人身份，仍有多个候选不能确定时只询问未决项。保持referenceTextVerified的真实依据。
+- 找到模型先check固定repo/revision、完整文件和哈希，不拿ASR/CustomVoice替代Base。确认搜索范围内没找到可复用权重后，再按已授权的本地声音恢复任务显式执行原模型固定revision下载；普通init/doctor不下载、不上传录音。下载失败保留日志/缓存，不手写清单冒充通过。
+- 长期用户资源可放`~/.local/share/wtt-code-video-studio/`下的models、voices和.venv；不依赖易清理的outputs或安装副本。参考录音若另存稳定位置须保持SHA一致，原文件保留。先备份原配置及软链本身，再只更新已确定的模型/参考路径或环境指向；保留defaultVoice、生成参数和已核对标记，不另建冲突的高优先级配置。
+- 修复后doctor→完整check→真实短句合成，分别报告路径完整、模型哈希通过、实际生成成功、听感待判断。重用既有获批画面时按[纯音轨修订](audio-revision.md)，不用恢复音色的授权扩大成画面改动或发布。
 
 ## 选择配音路线
 

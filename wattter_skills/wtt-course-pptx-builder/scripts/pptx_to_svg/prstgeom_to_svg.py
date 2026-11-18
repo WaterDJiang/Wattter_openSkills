@@ -40,6 +40,9 @@ class GeomResult:
     path_d: str | None = None
     # When tag == 'polygon' / 'polyline' use points for the points attribute.
     points: str | None = None
+    # Open DrawingML geometries such as `arc` must never receive a theme fill;
+    # SVG otherwise closes the open subpath and paints a large circular wedge.
+    force_no_fill: bool = False
 
 
 # ---------------------------------------------------------------------------
@@ -555,28 +558,113 @@ def _plaque(xfrm: Xfrm, sp_pr) -> GeomResult:
     return GeomResult(tag="path", path_d=d)
 
 
+def _snip_2_diag_rect(xfrm: Xfrm, sp_pr) -> GeomResult:
+    """Rectangle with top-left and bottom-right diagonal snipped corners."""
+    ss = min(xfrm.w, xfrm.h)
+    snip1 = min(max(_adj_value(sp_pr, "adj1", 0.0) * ss, 0.0), ss / 2.0)
+    snip2 = min(max(_adj_value(sp_pr, "adj2", 0.0) * ss, 0.0), ss / 2.0)
+    x, y, w, h = xfrm.x, xfrm.y, xfrm.w, xfrm.h
+    d = " ".join((
+        f"M {fmt_num(x + snip1)} {fmt_num(y)}",
+        f"L {fmt_num(x + w)} {fmt_num(y)}",
+        f"L {fmt_num(x + w)} {fmt_num(y + h - snip2)}",
+        f"L {fmt_num(x + w - snip2)} {fmt_num(y + h)}",
+        f"L {fmt_num(x)} {fmt_num(y + h)}",
+        f"L {fmt_num(x)} {fmt_num(y + snip1)}",
+        "Z",
+    ))
+    return GeomResult(
+        tag="path",
+        attrs={"data-pptx-prst": "snip2DiagRect"},
+        path_d=d,
+    )
+
+
+def _donut(xfrm: Xfrm, sp_pr) -> GeomResult:
+    """DrawingML donut using an even-odd pair of ellipse subpaths."""
+    x, y, w, h = xfrm.x, xfrm.y, xfrm.w, xfrm.h
+    cx, cy = x + w / 2.0, y + h / 2.0
+    rx, ry = w / 2.0, h / 2.0
+    thickness = min(
+        max(_adj_value(sp_pr, "adj", 0.25) * min(w, h), 0.0),
+        min(rx, ry),
+    )
+    irx = max(rx - thickness, 0.001)
+    iry = max(ry - thickness, 0.001)
+    d = " ".join((
+        f"M {fmt_num(cx + rx)} {fmt_num(cy)}",
+        f"A {fmt_num(rx)} {fmt_num(ry)} 0 1 1 {fmt_num(cx - rx)} {fmt_num(cy)}",
+        f"A {fmt_num(rx)} {fmt_num(ry)} 0 1 1 {fmt_num(cx + rx)} {fmt_num(cy)}",
+        "Z",
+        f"M {fmt_num(cx + irx)} {fmt_num(cy)}",
+        f"A {fmt_num(irx)} {fmt_num(iry)} 0 1 0 {fmt_num(cx - irx)} {fmt_num(cy)}",
+        f"A {fmt_num(irx)} {fmt_num(iry)} 0 1 0 {fmt_num(cx + irx)} {fmt_num(cy)}",
+        "Z",
+    ))
+    return GeomResult(
+        tag="path",
+        attrs={"fill-rule": "evenodd", "data-pptx-prst": "donut"},
+        path_d=d,
+    )
+
+
+def _block_arc(xfrm: Xfrm, sp_pr) -> GeomResult:
+    """Filled annular sector used by DrawingML's blockArc preset."""
+    start_deg = _adj_int_value(sp_pr, "adj1", 10800000) / 60000.0
+    end_deg = _adj_int_value(sp_pr, "adj2", 0) / 60000.0
+    thickness_ratio = min(max(_adj_value(sp_pr, "adj3", 0.25), 0.0), 0.5)
+
+    cx = xfrm.x + xfrm.w / 2.0
+    cy = xfrm.y + xfrm.h / 2.0
+    rx = xfrm.w / 2.0
+    ry = xfrm.h / 2.0
+    thickness = thickness_ratio * min(xfrm.w, xfrm.h)
+    irx = max(rx - thickness, 0.001)
+    iry = max(ry - thickness, 0.001)
+
+    sa = math.radians(start_deg)
+    ea = math.radians(end_deg)
+    osx, osy = cx + rx * math.cos(sa), cy + ry * math.sin(sa)
+    oex, oey = cx + rx * math.cos(ea), cy + ry * math.sin(ea)
+    isx, isy = cx + irx * math.cos(sa), cy + iry * math.sin(sa)
+    iex, iey = cx + irx * math.cos(ea), cy + iry * math.sin(ea)
+    delta = (end_deg - start_deg) % 360.0
+    large_arc = 1 if delta > 180.0 else 0
+    d = " ".join((
+        f"M {fmt_num(osx)} {fmt_num(osy)}",
+        f"A {fmt_num(rx)} {fmt_num(ry)} 0 {large_arc} 1 {fmt_num(oex)} {fmt_num(oey)}",
+        f"L {fmt_num(iex)} {fmt_num(iey)}",
+        f"A {fmt_num(irx)} {fmt_num(iry)} 0 {large_arc} 0 {fmt_num(isx)} {fmt_num(isy)}",
+        "Z",
+    ))
+    return GeomResult(
+        tag="path",
+        attrs={"data-pptx-prst": "blockArc"},
+        path_d=d,
+    )
+
+
 # ---------- Pie / chord / arc (path-based) ----------
 
 def _pie(xfrm: Xfrm, sp_pr) -> GeomResult:
     """Pie slice. adj1 = start angle, adj2 = end angle (1/60000 deg)."""
-    adj1 = _adj_value(sp_pr, "adj1", default_pct=0.0)  # default 0°
-    adj2 = _adj_value(sp_pr, "adj2", default_pct=270.0 / 360.0)  # default 270°
-    # adj is in 100000ths of percent → degrees by * 360
-    start_deg = adj1 * 360.0
-    end_deg = adj2 * 360.0
+    start_deg = _adj_int_value(sp_pr, "adj1", 0) / 60000.0
+    end_deg = _adj_int_value(sp_pr, "adj2", 16200000) / 60000.0
     return _arc_path(xfrm, start_deg, end_deg, mode="pie")
 
 
 def _chord(xfrm: Xfrm, sp_pr) -> GeomResult:
-    adj1 = _adj_value(sp_pr, "adj1", default_pct=0.0)
-    adj2 = _adj_value(sp_pr, "adj2", default_pct=270.0 / 360.0)
-    return _arc_path(xfrm, adj1 * 360.0, adj2 * 360.0, mode="chord")
+    start_deg = _adj_int_value(sp_pr, "adj1", 0) / 60000.0
+    end_deg = _adj_int_value(sp_pr, "adj2", 16200000) / 60000.0
+    return _arc_path(xfrm, start_deg, end_deg, mode="chord")
 
 
 def _arc(xfrm: Xfrm, sp_pr) -> GeomResult:
-    adj1 = _adj_value(sp_pr, "adj1", default_pct=270.0 / 360.0)
-    adj2 = _adj_value(sp_pr, "adj2", default_pct=0.0)
-    return _arc_path(xfrm, adj1 * 360.0, adj2 * 360.0, mode="arc")
+    start_deg = _adj_int_value(sp_pr, "adj1", 16200000) / 60000.0
+    end_deg = _adj_int_value(sp_pr, "adj2", 0) / 60000.0
+    geom = _arc_path(xfrm, start_deg, end_deg, mode="arc")
+    geom.force_no_fill = True
+    return geom
 
 
 def _arc_path(xfrm: Xfrm, start_deg: float, end_deg: float, *, mode: str) -> GeomResult:
@@ -614,6 +702,7 @@ _PRESET_HANDLERS = {
     "roundRect": _round_rect,
     "round2DiagRect": _round_2_diag_rect,
     "round2SameRect": _round_2_same_rect,
+    "snip2DiagRect": _snip_2_diag_rect,
     "ellipse": _ellipse,
     "line": _line,
     # Straight connector: same geometry as a `line` preset; head/tail markers
@@ -657,11 +746,13 @@ _PRESET_HANDLERS = {
 
     # Decorative
     "plaque": _plaque,
+    "donut": _donut,
 
     # Pie / chord / arc
     "pie": _pie,
     "chord": _chord,
     "arc": _arc,
+    "blockArc": _block_arc,
 }
 
 

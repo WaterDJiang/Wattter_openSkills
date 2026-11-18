@@ -18,7 +18,7 @@
    node <SKILL_ROOT>/scripts/make-custom-theme.mjs swiss "#RRGGBB" "$DIR/css/theme.css" --name="brand-name"
    ```
    这会保持 Swiss 灰阶统一，只替换 `--accent` / `--accent-rgb` / `--accent-on` / `--accent-bright` / `--accent-2`。
-4. 自定义主题使用 `css/theme.css` 时，初始主题可以正常显示，但 T 键会保持锁定，避免覆盖一次性自定义主题。
+4. 自定义主题使用 `css/theme.css` 时，初始主题可以正常显示，但 T 按钮会禁用并提示主题已固定，避免覆盖一次性自定义主题。
 5. 主题 css 只覆写 accent 相关变量（`--accent`/`--accent-rgb`/`--accent-on`/`--accent-bright`/`--accent-2`）和少量 tint/语义变量，灰阶跨主题统一
 6. WebGL grid shader 自动读取 `--paper-rgb`/`--ink-rgb`/`--accent`，换主题 → 网格底色 + 晕染色一起变
 
@@ -28,6 +28,7 @@
 
 **适合**：通用场合、商业发布、AI / 科技产品、设计领域分享。
 **调性**：纯白底 + IKB 克莱因蓝，极致冷静、理性、有学术感，像 Helvetica Forever 或 Massimo Vignelli 的作品集。
+**视觉锚点**：Massimo Vignelli / Josef Müller-Brockmann / Helvetica Forever 的视觉语言。
 **文件**：`themes/ikb-blue.css`
 
 ```css
@@ -46,6 +47,7 @@
 
 **适合**：年轻、运动、零售、消费品、活力主题、Y2K 复古设计。
 **调性**：浅米白底 + 柠檬黄，鲜亮、有活力、警示感强，像 IKEA 或 Beck Design 的视觉语言。
+**视觉锚点**：IKEA / Beck Design 的视觉语言。
 **文件**：`themes/lemon-yellow.css`
 
 ```css
@@ -64,6 +66,7 @@
 
 **适合**：环保、可持续、生态、农业、绿色能源。
 **调性**：荧光浅绿 + 米白底，自然、年轻、有生命感，像环保 NGO 或可持续品牌。
+**视觉锚点**：Acne Studios / Off-White 的视觉语言。
 **文件**：`themes/lemon-green.css`
 
 ```css
@@ -81,6 +84,7 @@
 
 **适合**：警示、行动、风险、增长黑客、紧迫感主题。
 **调性**：浅米白底 + 工业警示橙，温暖但有力，像工业 4.0 或增长黑客。
+**视觉锚点**：Saul Bass 海报 / Highway Gothic 标识系统的工业感。
 **文件**：`themes/safety-orange.css`
 
 ```css

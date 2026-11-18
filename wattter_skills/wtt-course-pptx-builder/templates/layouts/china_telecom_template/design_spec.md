@@ -5,6 +5,7 @@ summary: China Telecom related briefings, 政企数字化方案, 转型规划, �
 canvas_format: ppt169
 page_count: 5
 page_types: [cover, toc, chapter, content, ending]
+background_mode: legacy-pure-svg
 ---
 
 # China Telecom Template - Design Specification

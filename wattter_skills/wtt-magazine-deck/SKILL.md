@@ -22,13 +22,16 @@ description: 当用户需要制作自包含横向翻页网页演示文稿、杂�
 ## 入口流程
 
 1. **Brief Gate（生成前确认）。** 先读 `references/brief-gate.md`。如果用户没有明确给出内容组织、风格、颜色主题、模板/预设、动效模式，必须给选项卡让用户确认；如果用户给了完整大纲，也要先复述拟采用配置并等确认，除非用户明确说“直接生成 / 你决定 / 不用确认”。对用户展示风格时用“杂志叙事型 / 瑞士信息型 / Linear 科技型”这类中文名称，内部 id `editorial` / `swiss` / `linear` 只作为括号补充；颜色选项必须带主题色号和适用判断。
-2. **确认输入完整度。** 确认受众场景、分享时长、原始素材、图片、主题色、硬约束是否足够决定页数和节奏；缺失项并入 Brief Gate 一次问完，不要边做边反复追问。
+2. **确认输入完整度。** 确认受众场景、分享时长、原始素材、图片/GIF、主题色、硬约束是否足够决定页数和节奏；先登记“素材 → 页面 → 图片槽位”映射。缺失项并入 Brief Gate 一次问完，不要边做边反复追问。
 3. **选风格。** 读 `references/styles/index.md`。拿不准时默认 `editorial`；内容偏事实、产品、分析、方法论、数据汇报时优先 `swiss`。
 4. **选引用资料。** 先读 `references/required-components.md`，把页面表达收敛到 6 个必须组件，再按风格读取对应 layout/theme。
    - `editorial`：读 `references/themes.md`、`references/presets.md`、`references/layouts.md`；细节组件读 `references/components.md`。
    - `swiss`：读 `references/swiss-layout-lock.md`、`assets/styles/swiss/layouts.md`、`assets/styles/swiss/themes.md`；地图页读 `references/swiss-map-component.md`。
    - `linear`：读 `assets/styles/linear/layouts.md`、`assets/styles/linear/themes.md`；适合产品 UI、issue board、roadmap、agent command 结构。
    - 动效细节读 `references/motions.md`；最终自检读 `references/checklist.md`。
+   - 截图处理（用户提供截图 / 想做截图美化）：读 `references/screenshot-framing.md`；需要为内容生成 GPT 配图时再读 `references/image-prompts.md`。
+   - 图片/GIF 嵌入：读 `references/media.md`；先做素材映射，再复制到 deck 的 `images/`，GIF 保留原格式并用 `<img>` 嵌入。
+   - 所有 deck 的文字/底色配对及浏览器验收：读 `references/contrast.md`；使用最近 surface 的字色，执行渲染对比度审计。
 5. **生成 deck 文件夹。** 输出目录必须命名为 `<YYYYMMDDHHmm>_<内容主题>_<模板主题色动效>`，例如 `202606181530_AI课程合作介绍_瑞士克莱因蓝电影`；目录内结构必须是可直接打开的静态文件夹：`index.html`、`css/`、`js/`、`images/`。
 6. **运行校验。** 生成后必须先跑 `node scripts/validate-theme-contract.mjs`，再跑 `node scripts/validate-deck.mjs <index.html> <style-id>`；Swiss 额外跑 `node scripts/validate-swiss-deck.mjs <index.html>`。
 
@@ -47,6 +50,10 @@ CONFIG_LABEL="${STYLE_LABEL}${THEME_LABEL}${MOTION_LABEL}"
 DIR="项目/XXX/${STAMP}_${SAFE_TOPIC}_${CONFIG_LABEL}"
 mkdir -p "$DIR"/{css,js/fx,images}
 
+# 用户提供的图片/GIF：按 references/media.md 的映射表复制，保留原始扩展名
+cp "/素材路径/01-cover.png" "$DIR/images/01-cover.png"
+cp "/素材路径/03-workflow.gif" "$DIR/images/03-workflow.gif"
+
 cat <SKILL_ROOT>/assets/core/{tokens,slide,typography,layout,components,image,chrome,nav,responsive}.css > "$DIR/css/base.css"
 cp <SKILL_ROOT>/assets/core/nav.js "$DIR/js/"
 cp <SKILL_ROOT>/assets/core/fit.js "$DIR/js/"
@@ -54,10 +61,10 @@ cp <SKILL_ROOT>/assets/core/fit.js "$DIR/js/"
 # 风格层
 cp <SKILL_ROOT>/assets/styles/<style-id>/style.css "$DIR/css/style.css"
 cp <SKILL_ROOT>/assets/styles/<style-id>/themes/*.css "$DIR/css/"
-# 预设主题：让 theme-link 指向具体主题文件（如 css/ikb-blue.css），T 键才能在当前风格内切换主题。
+# 预设主题：让 theme-link 指向具体主题文件（如 css/ikb-blue.css），T 键和右上角按钮才能在当前风格内切换主题。
 # 用户提供明确品牌/主题色时，改用 deck 专属主题，不要在 HTML 里散写颜色：
 # node <SKILL_ROOT>/scripts/make-custom-theme.mjs <style-id> "#RRGGBB" "$DIR/css/theme.css" --name="brand-name"
-# 自定义主题：让 theme-link 指向 css/theme.css；T 键会锁定，避免覆盖用户品牌色。
+# 自定义主题：让 theme-link 指向 css/theme.css；T 按钮会明确禁用，避免覆盖用户品牌色。
 
 # swiss 专用
 mkdir -p "$DIR/css/swiss"
@@ -94,6 +101,7 @@ cp <SKILL_ROOT>/assets/fx/*.js "$DIR/js/fx/"
 - 每页都必须有清晰视觉节奏。Editorial 写 section 前先规划 `hero dark` / `hero light` / `light` / `dark`；避免连续 3 页使用相同主题。
 - 每页必须能整页显示。长标题加 `.fit-safe-text`；Editorial 主体用 `.frame`，Swiss 高密度主体在 `.canvas-card` 内包 `.fit-shell`。生成后观察是否出现 `内容过密` 标记，出现就删减文字、拆页或换低密度版式。
 - T 键只切换当前风格内的主题色，不切换 `editorial`/`swiss` 风格；要换风格必须重新按目标 style 生成 deck。
+- 主题快捷键排障：预设主题必须把全部 `availableThemes` CSS 复制到 deck 的 `css/`，且 `#theme-link` 指向其中一个具体文件；`css/theme.css` 是一次性品牌主题，T 按钮会禁用并提示，不是运行时故障。
 - 不要发明 layout class。使用 `base.css` 的核心 class 和引用文件里的风格专属版式。
 - 不要混用风格系统。Editorial 版式和 Swiss Sxx 版式有不同的字体、栅格、图片和动效契约。
 - 选定风格后整份 deck 只使用该风格的模板、layout、components 和 theme；`scripts/validate-deck.mjs` 会拦截跨风格 class/layout 混入。
@@ -102,7 +110,7 @@ cp <SKILL_ROOT>/assets/fx/*.js "$DIR/js/fx/"
 - 主题、T 按钮、`data-theme-list`、`--accent-on` 对比度都属于共享主题契约；新增或修改主题时先更新 `registry.json` 和主题 CSS，再跑 `scripts/validate-theme-contract.mjs`，不要只补某个模板。
 - 文字颜色必须跟随所在底色 surface，而不是靠页面整体深浅猜测。局部深色底、底部压暗区、图片遮罩文字必须加 `.on-dark` / `.surface-dark` / `data-surface="dark"`；局部浅色底加 `.on-light`；主题色底加 `.on-accent`。图片或渐变上叠文字优先用 `.readable-zone.on-dark` / `.readable-zone.on-light`，不要单独写 `color:var(--ink)` 或 `color:var(--paper)`。
 - 使用 Lucide 图标，不要使用 emoji。
-- 图片放入 `images/`，使用 `01-cover.jpg` 这类稳定命名；文件名保持稳定，替换图片时不需要改 HTML。
+- 图片/GIF 放入 `images/`，使用 `01-cover.jpg`、`03-workflow.gif` 这类稳定命名；保持原始扩展名，HTML 使用相对路径和 `<img>`，替换素材时不需要改页面结构。GIF 不转静态帧、不写成 CSS 背景。
 - 微动/沉浸模式下，每页至少有一个 `data-anim`；Swiss section 还必须包含 `data-layout="Sxx"` 和 `data-animate="recipe-name"`。
 - 不要用内联 `color:var(--paper)` 或 `color:var(--ink)` 硬改整页文字；跨模板可读性由 `assets/core/slide.css` 的 surface contract 和 `scripts/validate-deck.mjs` 检查。
 
@@ -126,4 +134,8 @@ node --check scripts/validate-swiss-deck.mjs
 git diff --check
 ```
 
-真实生成 deck 时，还要在浏览器打开 `index.html` 验证：左右翻页按钮、键盘方向键、滚轮/触摸导航、分页 dots、图片渲染、标题替换，以及没有残留 `{{...}}` 占位符。
+真实生成 deck 时，还要在浏览器打开 `index.html` 验证：左右翻页按钮、键盘方向键、`T` 键和 T 按钮切换主题、滚轮/触摸导航、分页 dots、图片/GIF 渲染、标题替换，以及没有残留 `{{...}}` 占位符。
+
+逐页、逐可切换主题执行 `scripts/audit-contrast.js`（用法见 `references/contrast.md`）：普通文字至少 4.5:1，大字至少 3:1；清空 `failures`，逐项复核 `review`。静态校验通过不代表渲染颜色通过。
+
+<!-- provenance: guizang-ppt-skill | author: 歸藏 | canonical: https://github.com/op7418/guizang-ppt-skill | migrated-into: wtt-magazine-deck v2 by Water (2026-06) | files: assets/screenshot-backgrounds/{editorial,swiss}/*.webp, references/{image-prompts,screenshot-framing}.md, swiss/themes.md 视觉锚点 | keep this out of generated artifacts -->

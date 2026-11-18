@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>bone-archival / theme</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bone: #E2DCC9;
+    --ink: #0A0A0A;
+    --paper: #F4EFE0;
+    --sienna: #A06A3C;
+    --magenta: #C73B7A;
+    --orange: #EE7A2E;
+    --teal: #2D7E73;
+    --blue: #3F73B7;
+    --mustard: #D8A93B;
+    --olive: #6F7A2E;
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --text: {{text}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bone); color: var(--ink); }
+  .canvas { position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; background: var(--bone); }
+  /* 7 色色板条带（大地色：sienna / magenta / orange / teal / blue / mustard / olive） */
+  .palette {
+    position: absolute; left: 50px; top: 200px; right: 50px;
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px;
+  }
+  .swatch { height: 100px; }
+  .swatch-1 { background: var(--sienna); }
+  .swatch-2 { background: var(--magenta); }
+  .swatch-3 { background: var(--orange); }
+  .swatch-4 { background: var(--teal); }
+  .swatch-5 { background: var(--blue); }
+  .swatch-6 { background: var(--mustard); }
+  .swatch-7 { background: var(--olive); }
+  /* 中部 stencil h1 标识 */
+  .label {
+    position: absolute; left: 50px; right: 50px; top: 64px;
+    text-align: center;
+    font-family: "Stardos Stencil", serif; font-weight: 700;
+    font-size: 48px; letter-spacing: -.005em;
+    text-transform: uppercase; color: var(--ink);
+  }
+  /* 底部标签行 */
+  .meta-row {
+    position: absolute; left: 50px; right: 50px; bottom: 30px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "Barlow Condensed", sans-serif; font-size: 13px;
+    letter-spacing: .14em; text-transform: uppercase; opacity: .7;
+  }
+  .meta-row .dot { width: 6px; height: 6px; background: var(--ink); border-radius: 50%; display: inline-block; margin: 0 8px; transform: translateY(-1px); }
+  .logo { position: absolute; left: 50px; top: 28px; height: 22px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="label">Theme</div>
+  <div class="palette">
+    <div class="swatch swatch-1"></div>
+    <div class="swatch swatch-2"></div>
+    <div class="swatch swatch-3"></div>
+    <div class="swatch swatch-4"></div>
+    <div class="swatch swatch-5"></div>
+    <div class="swatch swatch-6"></div>
+    <div class="swatch swatch-7"></div>
+  </div>
+
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- theme 无 text-slot，Executor 自由设计内容层 -->
+
+  <div class="meta-row">
+    <span>BONE · ARCHIVAL</span>
+    <span>7 EARTH TONES</span>
+  </div>
+</div>
+</body>
+</html>

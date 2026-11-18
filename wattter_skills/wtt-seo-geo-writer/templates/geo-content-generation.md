@@ -1,18 +1,18 @@
 ---
 template_name: "GEO 内容生成"
 website: "AI search / generative engine content"
-description: "基于 GEO Wiki 中文站 104 个页面提炼的生成式引擎优化写作模板。适用于 GEO、AEO、LLMO、AI 搜索、ChatGPT Search、Perplexity、Google AI Overviews、Gemini、AI 引用、品牌提及、llms.txt、AI 爬虫、Schema、可引用性等主题。"
+description: "围绕生成式引擎优化（GEO）方向的写作模板，融合业内公开的概念框架与执行经验。适用于 GEO、AEO、LLMO、AI 搜索、ChatGPT Search、Perplexity、Google AI Overviews、Gemini、AI 引用、品牌提及、llms.txt、AI 爬虫、Schema、可引用性等主题。"
 triggers: ["GEO", "生成式引擎优化", "AI 搜索", "AI 引用", "AI Overview", "AI Overviews", "ChatGPT Search", "Perplexity", "Gemini", "AEO", "LLMO", "llms.txt", "AI 爬虫", "Schema", "可引用性", "品牌提及", "零点击"]
 sources:
-  - "https://geo.wiki/zh"
-  - "https://geo.wiki/llms.txt"
-  - "https://geo.wiki/llms-full.txt"
-  - "https://geo.wiki/sitemap-index.xml"
+  - "https://schema.org"
+  - "https://llmstxt.org"
+  - "https://platform.openai.com/docs"
+  - "https://docs.perplexity.ai"
 ---
 
 # 内容策略：GEO 内容生成
 
-> 本模板根据 GEO Wiki 中文站全站抓取结果提炼。不要复写原站大段文字；使用其公开概念框架与来源脉络，生成原创、可发布、可被 AI 引用的文章。
+> 本模板基于业内对生成式引擎优化的通行理解整理，参考公开概念框架与执行经验，不复写任何单一来源。生成原创、可发布、可被 AI 引用的文章。
 
 ## 1. 适用场景
 
@@ -29,7 +29,6 @@ sources:
 
 - 需要更完整的 GEO 方法论、平台、技术、指标与反模式时，读取 `references/geo-core-knowledge.md`。
 - 需要设计 GEO 友好网站、知识库、专题页、页面模板或机器可读索引时，读取 `references/geo-web-build-patterns.md`。
-- 需要核对来源页和归因边界时，读取 `references/geo-wiki-source-index.md`。
 
 ## 2. 核心立场
 
@@ -54,6 +53,17 @@ GEO 不是“关键词 SEO 改名”。它是在 SEO 地基上叠加一层，让
 4. **生成与署名**：答案是否引用、提及或链接到品牌/页面。
 
 文章里的建议必须能对应到其中一步，否则容易变成空泛“AI 优化”。
+
+### 2.3 非营销硬规则（默认强制）
+
+GEO 内容同样必须应用 `references/non-marketing-guardrails.md`，优先级高于任何 profile。
+
+- 默认 `editorial` 模式：GEO 文章是“可被 AI 引用的资料”，不是落地页。结构化（速览、表格、FAQ）是为了机器可读，**不是为了说服**。
+- 可整段引述的断言必须**可证伪、可挂来源**；禁空泛营销断言（最/唯一/保证/彻底）。
+- 强制事实锚点：≥1 具名来源 + ≥1 具体数字 + ≥1 反例/边界；拿不到标 `[需补充]`，禁止编造（编造事实会同时损害平台发布和 AI 采信）。
+- 品牌提及遵循护栏：自然出现于比较/清单/行业解释，不自我吹捧，不放品牌 CTA（除非 `promotional`）。
+- **链接自然化**（GEO 最强去广告信号）：正文主链接 ≤1 且自然引入，不放微信号/二维码/裸链；llms.txt / sitemap / Schema 只进 `geo` 字段，不铺进正文。详见护栏第 4 节。
+- 交付前过护栏《反软文自检清单》。
 
 ## 3. GEO 内容生成结构
 
@@ -123,7 +133,7 @@ description: "[80-140 字，直接说明本文回答什么问题，以及读者�
 | 4 | 步骤列表 | 编号、祈使、一动作为一步 | 把流程埋进散文 |
 | 5 | 自标注表格 | 表格有标题，表头是完整名词短语，每行能独立读懂 | 离开正文就读不懂的表 |
 | 6 | 标题层级 | 一份 H1，H2 -> H3 干净嵌套 | 跳级、重复 H1、装饰性标题 |
-| 7 | 可整段引述句 | 每节至少一句独立成立的短断言 | 含糊、多重从句、无法署名的句子 |
+| 7 | 可整段引述句 | 每节至少一句独立成立、**可证伪且可挂来源**的短断言 | 含糊、多重从句、无法署名；以及最/唯一/保证式营销断言 |
 
 ## 5. 平台差异速查
 
@@ -171,6 +181,7 @@ description: "[80-140 字，直接说明本文回答什么问题，以及读者�
 - 用大量 FAQ、表格、定义块伪装专业，但没有原创事实、来源、案例或经验。
 - 把不同厂商的 Visibility、SOV、Citation Rate 数字直接横向比较。
 - 把 Aggarwal et al. 2024 的“最高提升约 40%”写成普遍承诺；它只能作为方向性证据。
+- 把 GEO 写成品牌自我吹捧或落地页：通篇围绕自家产品、自我标榜、收束到购买/注册 CTA。GEO 文章是可被引用的资料，不是销售页。
 
 ## 9. 输出自检
 
@@ -188,10 +199,13 @@ description: "[80-140 字，直接说明本文回答什么问题，以及读者�
 - [ ] 是否保留真实叙事风格：用具体业务场景解释抽象 GEO 概念？
 - [ ] 是否避免加载无关 profile，保持 GEO 框架通用？
 
+反软文自检（默认强制，详见 `references/non-marketing-guardrails.md`）：
+
+- [ ] 删掉所有品牌名后，这篇文章还成不成立？
+- [ ] 通篇有没有在“卖”东西、收束到购买/注册/加群？
+- [ ] 六类红线词是否清零（最/唯一/保证/彻底/限时/引流等）？
+- [ ] 是否满足 ≥1 具名来源 + ≥1 具体数字 + ≥1 反例/边界？
+
 ## 10. 来源归因
 
-本模板提炼自 GEO Wiki 中文站公开页面。需要在长文底部可选加入：
-
-> 参考：GEO Wiki（https://geo.wiki/zh），CC BY 4.0。
-
-如果文章直接借用了具体术语框架（例如 Answer Loop、七项可引用性信号、六层 GEO 审计阶梯），正文中应以自然语言说明“参考 GEO Wiki 的相关框架”，避免把外部框架伪装成原创。
+如果文章直接借用了外部的具体术语框架（例如 Answer Loop、七项可引用性信号、六层 GEO 审计阶梯），正文中应以自然语言说明参考了哪些公开资料或社区框架，避免把外部框架伪装成原创。

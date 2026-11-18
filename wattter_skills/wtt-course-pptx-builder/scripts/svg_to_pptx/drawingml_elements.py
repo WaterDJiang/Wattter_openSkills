@@ -1136,21 +1136,42 @@ def convert_text(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
             + font_size * 1.5
         )
     else:
-        text_width = estimate_text_width(full_text, font_size, font_weight) * 1.05
+        text_width = sum(
+            estimate_text_width(run['text'], run['font_size'], run['font_weight'])
+            for run in runs
+        ) * 1.05
+        font_size = max(run['font_size'] for run in runs)
         text_height = font_size * 1.5
-    padding = font_size * 0.1
+    # A single-line SVG text anchor is the exact horizontal alignment point.
+    # DrawingML bodyPr below already has zero insets, so offsetting the frame
+    # by a synthetic inset moves start/end-aligned text away from that point.
+    horizontal_padding = font_size * 0.1 if paragraph_runs is not None else 0.0
+    vertical_padding = font_size * 0.1
+
+    # A measured/allocated width is explicit evidence from the page plan, not
+    # a font substitution or a global CJK multiplier. Some Office viewers wrap
+    # even wrap="none" when our estimated single-line frame is too narrow.
+    declared_width = elem.get('data-text-width')
+    if declared_width is not None:
+        width = float(declared_width) * ctx.scale_x
+        if width <= 0:
+            raise ValueError('data-text-width must be positive')
+        text_width = width
 
     # Adjust position based on text-anchor
     if text_anchor == 'middle':
-        box_x = x - text_width / 2 - padding
+        box_x = x - text_width / 2 - horizontal_padding
     elif text_anchor == 'end':
-        box_x = x - text_width - padding
+        box_x = x - text_width - horizontal_padding
     else:
-        box_x = x - padding
+        box_x = x - horizontal_padding
 
-    box_y = y - font_size * 0.85
-    box_w = text_width + padding * 2
-    box_h = text_height + padding
+    # SVG y is the glyph baseline. With a top-anchored, zero-inset DrawingML
+    # frame, placing the frame one em above it reproduces that baseline; 0.85
+    # em consistently put native text about 0.15 em below the source SVG.
+    box_y = y - font_size
+    box_w = text_width + horizontal_padding * 2
+    box_h = text_height + vertical_padding
 
     text_transform = elem.get('transform', '')
     if text_transform and 'rotate' not in text_transform and not ctx.use_transform_matrix:
@@ -1265,6 +1286,11 @@ def convert_text(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
         body_pr_xml = (
             '<a:bodyPr wrap="square" lIns="0" tIns="0" rIns="0" bIns="0" '
             'anchor="t" anchorCtr="0"/>'
+        )
+    elif declared_width is not None:
+        body_pr_xml = (
+            '<a:bodyPr wrap="none" lIns="0" tIns="0" rIns="0" bIns="0" '
+            'anchor="t" anchorCtr="0"><a:noAutofit/></a:bodyPr>'
         )
     else:
         body_pr_xml = (

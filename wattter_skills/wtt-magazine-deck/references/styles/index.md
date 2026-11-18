@@ -60,6 +60,8 @@
 - 只有"静态"和"微动"两种动效模式（无 cinematic / FX）
 - 每页必须有 `data-layout="Sxx"` + `data-animate="recipe-name"`
 
+**配图与截图美化**：处理用户提供的产品/网页截图时先读 [`references/screenshot-framing.md`](../../references/screenshot-framing.md)（内置 webp 背景位于 `assets/screenshot-backgrounds/`）；需要 GPT 生成新配图时再读 [`references/image-prompts.md`](../../references/image-prompts.md)。
+
 ---
 
 ## Linear 科技型 · Linear

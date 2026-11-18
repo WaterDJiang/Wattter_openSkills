@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="brand-header" data-name="中国移动内容页标题">
+    <image href="china_mobile_logo.png" x="959.38" y="-21.00" width="292.82" height="164.71" preserveAspectRatio="none"/>
+    <text x="72" y="104" font-family="Microsoft YaHei,Arial,sans-serif" font-size="36" font-weight="bold" fill="#0070C0">关键指标</text>
+    <rect x="72" y="122" width="84" height="5" rx="2.5" fill="#0FA4FE"/>
+  </g>
+  <g id="primary-kpi-one" data-name="主指标一">
+    <rect x="72" y="160" width="364" height="216" rx="22" fill="#0070C0"/>
+    <rect x="72" y="160" width="364" height="12" rx="6" fill="#0FA4FE"/>
+    <text x="102" y="216" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" fill="#FFFFFF">核心指标 01</text>
+    <text x="102" y="301" font-family="Microsoft YaHei,Arial,sans-serif" font-size="62" font-weight="bold" fill="#FFFFFF">00.0%</text>
+    <text x="102" y="344" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#FFFFFF">填写指标口径与单位</text>
+  </g>
+  <g id="primary-kpi-two" data-name="主指标二">
+    <rect x="458" y="160" width="364" height="216" rx="22" fill="#0070C0" fill-opacity="0.90"/>
+    <rect x="458" y="160" width="364" height="12" rx="6" fill="#0FA4FE"/>
+    <text x="488" y="216" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" fill="#FFFFFF">核心指标 02</text>
+    <text x="488" y="301" font-family="Microsoft YaHei,Arial,sans-serif" font-size="62" font-weight="bold" fill="#FFFFFF">000</text>
+    <text x="488" y="344" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#FFFFFF">填写指标口径与单位</text>
+  </g>
+  <g id="primary-kpi-three" data-name="主指标三">
+    <rect x="844" y="160" width="364" height="216" rx="22" fill="#0070C0" fill-opacity="0.80"/>
+    <rect x="844" y="160" width="364" height="12" rx="6" fill="#0FA4FE"/>
+    <text x="874" y="216" font-family="Microsoft YaHei,Arial,sans-serif" font-size="21" fill="#FFFFFF">核心指标 03</text>
+    <text x="874" y="301" font-family="Microsoft YaHei,Arial,sans-serif" font-size="62" font-weight="bold" fill="#FFFFFF">00.0万</text>
+    <text x="874" y="344" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#FFFFFF">填写指标口径与单位</text>
+  </g>
+  <g id="secondary-kpi-one" data-name="辅助指标一">
+    <rect x="72" y="416" width="204" height="216" rx="20" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.28" stroke-width="2"/>
+    <circle cx="102" cy="452" r="8" fill="#0FA4FE"/>
+    <text x="94" y="499" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#808080">辅助指标 01</text>
+    <text x="94" y="562" font-family="Microsoft YaHei,Arial,sans-serif" font-size="40" font-weight="bold" fill="#0070C0">000</text>
+    <text x="94" y="598" font-family="Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#203864">单位或说明</text>
+  </g>
+  <g id="secondary-kpi-two" data-name="辅助指标二">
+    <rect x="305" y="416" width="204" height="216" rx="20" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.28" stroke-width="2"/>
+    <circle cx="335" cy="452" r="8" fill="#0FA4FE"/>
+    <text x="327" y="499" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#808080">辅助指标 02</text>
+    <text x="327" y="562" font-family="Microsoft YaHei,Arial,sans-serif" font-size="40" font-weight="bold" fill="#0070C0">000</text>
+    <text x="327" y="598" font-family="Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#203864">单位或说明</text>
+  </g>
+  <g id="secondary-kpi-three" data-name="辅助指标三">
+    <rect x="538" y="416" width="204" height="216" rx="20" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.28" stroke-width="2"/>
+    <circle cx="568" cy="452" r="8" fill="#0FA4FE"/>
+    <text x="560" y="499" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#808080">辅助指标 03</text>
+    <text x="560" y="562" font-family="Microsoft YaHei,Arial,sans-serif" font-size="40" font-weight="bold" fill="#0070C0">000</text>
+    <text x="560" y="598" font-family="Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#203864">单位或说明</text>
+  </g>
+  <g id="secondary-kpi-four" data-name="辅助指标四">
+    <rect x="771" y="416" width="204" height="216" rx="20" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.28" stroke-width="2"/>
+    <circle cx="801" cy="452" r="8" fill="#0FA4FE"/>
+    <text x="793" y="499" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#808080">辅助指标 04</text>
+    <text x="793" y="562" font-family="Microsoft YaHei,Arial,sans-serif" font-size="40" font-weight="bold" fill="#0070C0">000</text>
+    <text x="793" y="598" font-family="Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#203864">单位或说明</text>
+  </g>
+  <g id="secondary-kpi-five" data-name="辅助指标五">
+    <rect x="1004" y="416" width="204" height="216" rx="20" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.28" stroke-width="2"/>
+    <circle cx="1034" cy="452" r="8" fill="#0FA4FE"/>
+    <text x="1026" y="499" font-family="Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#808080">辅助指标 05</text>
+    <text x="1026" y="562" font-family="Microsoft YaHei,Arial,sans-serif" font-size="40" font-weight="bold" fill="#0070C0">000</text>
+    <text x="1026" y="598" font-family="Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#203864">单位或说明</text>
+  </g>
+</svg>

@@ -35,10 +35,12 @@ svglib>=1.5.0
 reportlab>=4.0.0
 
 # ─────────────────────────────────────────────────────────────
-# PDF to Markdown tool / PDF 转 Markdown 工具 (${SKILL_DIR}/scripts/source_to_md/pdf_to_md.py)
+# PDF input and actual PPT rendering / PDF 输入与课程成品渲染
 # ─────────────────────────────────────────────────────────────
 # Converts PDF to Markdown with text, image, and table extraction.
 # 用于将 PDF 文件转换为 Markdown 格式，支持文本、图片、表格提取
+# render_course_pptx.py 也必需：课程实际 PPT 渲染验收，无论输入是否为 PDF。
+# 安装必须使用运行脚本的同一解释器：<python绝对路径> -m pip install -r <本文件绝对路径>
 PyMuPDF>=1.23.0
 
 # ─────────────────────────────────────────────────────────────
@@ -109,3 +111,16 @@ google-genai>=1.0.0
 # Localhost web editor for annotating SVG elements with edit instructions.
 # 本地 Web 编辑器，用于在 SVG 元素上添加编辑标注指令
 flask>=3.0.0
+
+# ─────────────────────────────────────────────────────────────
+# HTML Background Renderer + Visual Review / HTML 背景渲染 + 视觉自检
+# (${SKILL_DIR}/scripts/html_render.py, ${SKILL_DIR}/scripts/visual_review.py)
+# ─────────────────────────────────────────────────────────────
+# Headless Chromium drives HTML→PNG background rendering (layered architecture:
+# HTML-PNG background layer + SVG text overlay) and SVG→PNG visual review.
+# Install the browser binary once after pip install:
+#   python3 -m playwright install chromium
+# 无头 Chromium 用于 HTML→PNG 背景渲染（图层化架构：HTML-PNG 背景层 + SVG 文字层）
+# 与 SVG→PNG 视觉自检。pip 安装后需一次性安装浏览器二进制：
+#   python3 -m playwright install chromium
+playwright>=1.40.0

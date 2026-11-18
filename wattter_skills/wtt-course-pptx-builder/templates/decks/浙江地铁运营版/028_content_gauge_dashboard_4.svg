@@ -1,0 +1,825 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="ggrad1" x1="640" y1="0" x2="640" y2="720" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#EBF3FF"/><stop offset="0.54" stop-color="#CCE0FF" stop-opacity="0.38"/><stop offset="1" stop-color="#CCE0FF" stop-opacity="0.81"/></linearGradient><radialGradient id="ggrad2" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(146.4337 0 0 23.8159 123.0792 433.2601)" data-pptx-path="shape" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#0165FF" stop-opacity="0.48"/><stop offset="1" stop-color="#99C1FF" stop-opacity="0"/></radialGradient><radialGradient id="ggrad3" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(146.4337 0 0 23.8159 418.8819 562.2049)" data-pptx-path="shape" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#0165FF" stop-opacity="0.48"/><stop offset="1" stop-color="#99C1FF" stop-opacity="0"/></radialGradient><radialGradient id="ggrad4" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(146.4337 0 0 23.8159 714.6845 433.2601)" data-pptx-path="shape" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#0165FF" stop-opacity="0.48"/><stop offset="1" stop-color="#99C1FF" stop-opacity="0"/></radialGradient><radialGradient id="ggrad5" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(146.4337 0 0 23.8159 1010.4871 562.2049)" data-pptx-path="shape" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#0165FF" stop-opacity="0.48"/><stop offset="1" stop-color="#99C1FF" stop-opacity="0"/></radialGradient><linearGradient id="ggrad6" x1="196.296" y1="191.5552" x2="196.296" y2="438.1469" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.8"/><stop offset="0.39" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.55"/></linearGradient><linearGradient id="mgrad1" x1="0.5" y1="0" x2="0.5" y2="1" data-pptx-scaled="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.88"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient><radialGradient id="ggrad7" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(200.382 0 0 200.3818 96.7508 216.2361)" data-pptx-path="shape" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.87" stop-color="#80B2FF" stop-opacity="0"/><stop offset="1" stop-color="#3484FF" stop-opacity="0.15"/></radialGradient><filter id="fx1" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="13.33" stdDeviation="10" flood-color="#003280" flood-opacity="0.2"/></filter><radialGradient id="ggrad8" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(115.9155 0 0 115.9153 137.5368 256.8933)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.0531" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6F0FF"/></radialGradient><filter id="fx2" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="13.33" stdDeviation="10" flood-color="#003280" flood-opacity="0.2"/></filter><radialGradient id="txtgrad9" cx="0" cy="0" fx="0" fy="0" r="1.4142" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><radialGradient id="txtgrad10" cx="0" cy="0" fx="0" fy="0" r="1.4142" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><radialGradient id="ggrad11" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(20.1977 0 0 17.1941 208.5655 284.7183)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><linearGradient id="ggrad12" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad13" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad14" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad15" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad16" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad17" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad18" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad19" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad20" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad21" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad22" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad23" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad24" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad25" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad26" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad27" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad28" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad29" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad30" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad31" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad32" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad33" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad34" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad35" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad36" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad37" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad38" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad39" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad40" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad41" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad42" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad43" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad44" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad45" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad46" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad47" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad48" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad49" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad50" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad51" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad52" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad53" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad54" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad55" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad56" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad57" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad58" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad59" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad60" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad61" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad62" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad63" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad64" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad65" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad66" x1="492.0987" y1="320.4999" x2="492.0987" y2="567.0917" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.8"/><stop offset="0.39" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.55"/></linearGradient><linearGradient id="mgrad2" x1="0.5" y1="0" x2="0.5" y2="1" data-pptx-scaled="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.88"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient><radialGradient id="ggrad67" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(200.382 0 0 200.3818 392.5536 345.1809)" data-pptx-path="shape" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.87" stop-color="#80B2FF" stop-opacity="0"/><stop offset="1" stop-color="#3484FF" stop-opacity="0.15"/></radialGradient><filter id="fx3" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="13.33" stdDeviation="10" flood-color="#003280" flood-opacity="0.2"/></filter><radialGradient id="ggrad68" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(115.9155 0 0 115.9153 433.3395 385.8381)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.0531" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6F0FF"/></radialGradient><filter id="fx4" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="13.33" stdDeviation="10" flood-color="#003280" flood-opacity="0.2"/></filter><radialGradient id="txtgrad69" cx="0" cy="0" fx="0" fy="0" r="1.4142" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><radialGradient id="txtgrad70" cx="0" cy="0" fx="0" fy="0" r="1.4142" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><radialGradient id="ggrad71" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(20.1977 0 0 17.1941 498.5411 414.4439)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><linearGradient id="ggrad72" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad73" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad74" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad75" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad76" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad77" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad78" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad79" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad80" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad81" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad82" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad83" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad84" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad85" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad86" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad87" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad88" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad89" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad90" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad91" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad92" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad93" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad94" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad95" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad96" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad97" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad98" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad99" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad100" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad101" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad102" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad103" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad104" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad105" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad106" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad107" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad108" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad109" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad110" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad111" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad112" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad113" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad114" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad115" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad116" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad117" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad118" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad119" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad120" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad121" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad122" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad123" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad124" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad125" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad126" x1="787.9014" y1="191.5551" x2="787.9014" y2="438.1468" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.8"/><stop offset="0.39" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.55"/></linearGradient><linearGradient id="mgrad3" x1="0.5" y1="0" x2="0.5" y2="1" data-pptx-scaled="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.88"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient><radialGradient id="ggrad127" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(200.382 0 0 200.3818 688.3563 216.236)" data-pptx-path="shape" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.87" stop-color="#80B2FF" stop-opacity="0"/><stop offset="1" stop-color="#3484FF" stop-opacity="0.15"/></radialGradient><filter id="fx5" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="13.33" stdDeviation="10" flood-color="#003280" flood-opacity="0.2"/></filter><radialGradient id="ggrad128" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(115.9155 0 0 115.9153 729.1423 256.8933)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.0531" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6F0FF"/></radialGradient><filter id="fx6" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="13.33" stdDeviation="10" flood-color="#003280" flood-opacity="0.2"/></filter><radialGradient id="txtgrad129" cx="0" cy="0" fx="0" fy="0" r="1.4142" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><radialGradient id="txtgrad130" cx="0" cy="0" fx="0" fy="0" r="1.4142" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><radialGradient id="ggrad131" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(20.1977 0 0 17.1941 802.4786 288.9112)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><linearGradient id="ggrad132" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad133" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad134" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad135" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad136" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad137" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad138" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad139" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad140" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad141" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad142" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad143" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad144" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad145" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad146" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad147" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad148" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad149" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad150" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad151" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad152" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad153" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad154" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad155" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad156" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad157" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad158" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad159" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad160" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad161" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad162" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad163" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad164" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad165" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad166" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad167" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad168" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad169" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad170" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad171" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad172" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad173" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad174" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad175" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad176" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad177" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad178" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad179" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad180" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad181" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad182" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad183" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad184" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad185" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad186" x1="1083.704" y1="320.4999" x2="1083.704" y2="567.0917" gradientUnits="userSpaceOnUse" data-pptx-scaled="0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.8"/><stop offset="0.39" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.55"/></linearGradient><linearGradient id="mgrad4" x1="0.5" y1="0" x2="0.5" y2="1" data-pptx-scaled="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.88"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient><radialGradient id="ggrad187" cx="0.5" cy="0.5" fx="0.5" fy="0.5" r="0.7071" gradientUnits="userSpaceOnUse" gradientTransform="matrix(200.382 0 0 200.3818 984.1589 345.1809)" data-pptx-path="shape" data-pptx-fill-to-rect="0.5 0.5 0.5 0.5" data-pptx-tile-rect="0 0 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.87" stop-color="#80B2FF" stop-opacity="0"/><stop offset="1" stop-color="#3484FF" stop-opacity="0.15"/></radialGradient><filter id="fx7" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="13.33" stdDeviation="10" flood-color="#003280" flood-opacity="0.2"/></filter><radialGradient id="ggrad188" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(115.9155 0 0 115.9153 1024.9449 385.8381)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.0531" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6F0FF"/></radialGradient><filter id="fx8" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="13.33" stdDeviation="10" flood-color="#003280" flood-opacity="0.2"/></filter><radialGradient id="txtgrad189" cx="0" cy="0" fx="0" fy="0" r="1.4142" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><radialGradient id="txtgrad190" cx="0" cy="0" fx="0" fy="0" r="1.4142" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="0 0 0 0"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><radialGradient id="ggrad191" cx="-1" cy="-1" fx="-1" fy="-1" r="2.8284" gradientUnits="userSpaceOnUse" gradientTransform="matrix(20.1977 0 0 17.1941 1095.6717 415.9172)" data-pptx-path="circle" data-pptx-fill-to-rect="0 0 1 1" data-pptx-tile-rect="-1 -1 0 0" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0.13" stop-color="#00BEFF"/><stop offset="0.62" stop-color="#0165FF"/><stop offset="1" stop-color="#004CC0"/></radialGradient><linearGradient id="ggrad192" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad193" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad194" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad195" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad196" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad197" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad198" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad199" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad200" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad201" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad202" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad203" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad204" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad205" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad206" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad207" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad208" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad209" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad210" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad211" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad212" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad213" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad214" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad215" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad216" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad217" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad218" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad219" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad220" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad221" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad222" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad223" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad224" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad225" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad226" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad227" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad228" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad229" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad230" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad231" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad232" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad233" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad234" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad235" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad236" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad237" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad238" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad239" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad240" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad241" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad242" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad243" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad244" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad245" x1="0" y1="0" x2="1" y2="1" data-pptx-scaled="1" data-pptx-rot-with-shape="1" data-pptx-flip="none"><stop offset="0" stop-color="#CCE0FF"/><stop offset="1" stop-color="#E6F0FF" stop-opacity="0"/></linearGradient><linearGradient id="mgrad5" x1="310.646" y1="392.2192" x2="370.9545" y2="392.2192" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#0165FF"/><stop offset="1" stop-color="#00BEFF"/></linearGradient><linearGradient id="mgrad6" x1="613.6217" y1="374.4262" x2="673.9303" y2="374.4262" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#0165FF"/><stop offset="1" stop-color="#00BEFF"/></linearGradient><linearGradient id="mgrad7" x1="907.2375" y1="392.2192" x2="967.546" y2="392.2192" gradientUnits="userSpaceOnUse" data-pptx-scaled="0"><stop offset="0" stop-color="#0165FF"/><stop offset="1" stop-color="#00BEFF"/></linearGradient></defs><rect x="0" y="0" width="1280" height="720" fill="#F2F2F2"/>
+<g id="master-shape-7" data-name="文本框 6">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-2" data-name="文本框 1">
+<rect x="1115.76" y="660.69" width="153.8" height="38.78" fill="none"/>
+<text x="1125.36" y="685.89" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="24" fill="#FFFFFF"><tspan fill="#FFFFFF" font-size="24">From ling</tspan></text>
+</g>
+<g id="layout-shape-6" data-name="矩形: 圆角 5">
+<rect x="0" y="0" width="1280" height="720" rx="0" ry="0" fill="url(#ggrad1)" stroke-width="1.333" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+</g>
+<g id="layout-shape-9" data-name="图片 8">
+<image href="brand_lockup.png" x="865" y="48.74" width="375.77" height="50.15" preserveAspectRatio="none"/>
+</g>
+<g id="shape-11" data-name="文本框 10">
+<rect x="100.9" y="459.94" width="190.78" height="116.33" fill="none"/>
+<text x="196.3" y="489.67" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, sans-serif" font-size="29.33" fill="#404040"><tspan fill="#404040" font-size="29.33">XXX</tspan></text>
+<text x="196.3" y="519.01" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, sans-serif" font-size="29.33" fill="#404040"><tspan fill="#404040" font-size="29.33">（图表右键编辑数据）</tspan></text>
+</g>
+<g id="shape-285" data-name="椭圆 284">
+<ellipse cx="196.3" cy="445.17" rx="73.22" ry="11.91" fill="url(#ggrad2)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-287" data-name="文本框 286">
+<rect x="418.32" y="605.26" width="147.56" height="42.01" fill="none"/>
+<text x="492.1" y="632.72" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, sans-serif" font-size="26.67" fill="#262626"><tspan fill="#262626" font-size="26.67">XX</tspan></text>
+</g>
+<g id="shape-288" data-name="椭圆 287">
+<ellipse cx="492.1" cy="574.11" rx="73.22" ry="11.91" fill="url(#ggrad3)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-353" data-name="文本框 352">
+<rect x="701.76" y="476.31" width="172.29" height="45.24" fill="none"/>
+<text x="787.9" y="506.04" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, sans-serif" font-size="29.33" fill="#404040"><tspan fill="#404040" font-size="29.33">XXX</tspan></text>
+</g>
+<g id="shape-354" data-name="椭圆 353">
+<ellipse cx="787.9" cy="445.17" rx="73.22" ry="11.91" fill="url(#ggrad4)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-419" data-name="文本框 418">
+<rect x="1009.92" y="605.26" width="147.56" height="45.24" fill="none"/>
+<text x="1083.7" y="634.99" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC Black&quot;, sans-serif" font-size="29.33" fill="#404040"><tspan fill="#404040" font-size="29.33">XXX</tspan></text>
+</g>
+<g id="shape-420" data-name="椭圆 419">
+<ellipse cx="1083.7" cy="574.11" rx="73.22" ry="11.91" fill="url(#ggrad5)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-286" data-name="组合 285">
+<g id="shape-42" data-name="椭圆 41">
+<ellipse cx="196.3" cy="314.85" rx="123.3" ry="123.3" fill="url(#ggrad6)" stroke-width="2" stroke="url(#mgrad1)"/>
+</g>
+<g id="shape-44" data-name="椭圆 43">
+<ellipse cx="196.94" cy="316.43" rx="100.19" ry="100.19" fill="url(#ggrad7)" stroke="none" stroke-width="1" filter="url(#fx1)"/>
+</g>
+<g id="shape-37" data-name="图表 36">
+<rect x="90.96" y="205.1" width="210.67" height="219.5" fill="none" stroke="#999999" stroke-dasharray="4 4"/><text x="196.3" y="314.85" text-anchor="middle" font-size="14" fill="#999999">[chart]</text>
+</g>
+<g id="shape-45" data-name="椭圆 44">
+<ellipse cx="195.49" cy="314.85" rx="57.96" ry="57.96" fill="url(#ggrad8)" stroke="none" stroke-width="1" filter="url(#fx2)"/>
+</g>
+<g id="shape-30" data-name="文本框 29">
+<rect x="155.51" y="278.6" width="69.55" height="32.31" fill="none"/>
+<text x="165.11" y="299.27" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#262626"><tspan fill="#262626" font-size="18.67">提速</tspan></text>
+</g>
+<g id="shape-31" data-name="文本框 30">
+<rect x="146.09" y="301.3" width="98.81" height="54.93" fill="none"/>
+<text x="195.49" y="337.83" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="37.33" fill="url(#txtgrad9)" font-weight="bold"><tspan fill="url(#txtgrad9)" font-size="37.33" font-weight="bold">80</tspan><tspan fill="url(#txtgrad10)" font-size="37.33" font-weight="bold">%</tspan></text>
+</g>
+<g id="shape-48" data-name="箭头: 上 47">
+<polygon points="213.61,301.91 213.61,296.21 208.57,296.21 218.66,284.72 228.76,296.21 223.71,296.21 223.71,301.91" fill="url(#ggrad11)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-280" data-name="组合 279">
+<g id="shape-226" data-name="任意多边形: 形状 225" transform="rotate(-52.42 107.14 246.85)">
+<path d="M 107.95 241.31 L 107.95 252.39 L 106.33 252.39 L 106.33 241.31 L 107.95 241.31" fill="url(#ggrad12)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-227" data-name="任意多边形: 形状 226" transform="rotate(-45.75 115.63 237.06)">
+<path d="M 116.45 231.52 L 116.45 242.6 L 114.82 242.6 L 114.82 231.52 L 116.45 231.52" fill="url(#ggrad13)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-228" data-name="任意多边形: 形状 227" transform="rotate(-39.08 125.21 228.31)">
+<path d="M 126.02 222.77 L 126.02 233.85 L 124.39 233.85 L 124.39 222.77 L 126.02 222.77" fill="url(#ggrad14)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-229" data-name="任意多边形: 形状 228" transform="rotate(-32.42 135.73 220.74)">
+<path d="M 136.54 215.2 L 136.54 226.28 L 134.92 226.28 L 134.92 215.2 L 136.54 215.2" fill="url(#ggrad15)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-230" data-name="任意多边形: 形状 229" transform="rotate(-25.75 147.06 214.43)">
+<path d="M 147.87 208.89 L 147.87 219.97 L 146.25 219.97 L 146.25 208.89 L 147.87 208.89" fill="url(#ggrad16)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-231" data-name="任意多边形: 形状 230" transform="rotate(-19.08 159.04 209.49)">
+<path d="M 159.85 203.95 L 159.85 215.03 L 158.23 215.03 L 158.23 203.95 L 159.85 203.95" fill="url(#ggrad17)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-232" data-name="任意多边形: 形状 231" transform="rotate(-12.42 171.52 205.97)">
+<path d="M 172.33 200.43 L 172.33 211.51 L 170.71 211.51 L 170.71 200.43 L 172.33 200.43" fill="url(#ggrad18)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-233" data-name="任意多边形: 形状 232" transform="rotate(354.25 184.32 203.92)">
+<path d="M 185.14 198.38 L 185.14 209.46 L 183.51 209.46 L 183.51 198.38 L 185.14 198.38" fill="url(#ggrad19)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-234" data-name="任意多边形: 形状 233" transform="rotate(0.92 197.28 203.38)">
+<path d="M 198.09 197.84 L 198.09 208.92 L 196.46 208.92 L 196.46 197.84 L 198.09 197.84" fill="url(#ggrad20)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-235" data-name="任意多边形: 形状 234" transform="rotate(7.58 210.21 204.34)">
+<path d="M 211.02 198.8 L 211.02 209.88 L 209.39 209.88 L 209.39 198.8 L 211.02 198.8" fill="url(#ggrad21)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-236" data-name="任意多边形: 形状 235" transform="rotate(14.25 222.94 206.79)">
+<path d="M 223.75 201.25 L 223.75 212.33 L 222.12 212.33 L 222.12 201.25 L 223.75 201.25" fill="url(#ggrad22)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-237" data-name="任意多边形: 形状 236" transform="rotate(20.92 235.3 210.71)">
+<path d="M 236.11 205.17 L 236.11 216.25 L 234.48 216.25 L 234.48 205.17 L 236.11 205.17" fill="url(#ggrad23)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-238" data-name="任意多边形: 形状 237" transform="rotate(27.58 247.12 216.03)">
+<path d="M 247.93 210.49 L 247.93 221.57 L 246.3 221.57 L 246.3 210.49 L 247.93 210.49" fill="url(#ggrad24)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-239" data-name="任意多边形: 形状 238" transform="rotate(34.25 258.24 222.69)">
+<path d="M 259.05 217.15 L 259.05 228.24 L 257.43 228.24 L 257.43 217.15 L 259.05 217.15" fill="url(#ggrad25)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-240" data-name="任意多边形: 形状 239" transform="rotate(40.92 268.51 230.6)">
+<path d="M 269.33 225.06 L 269.33 236.14 L 267.7 236.14 L 267.7 225.06 L 269.33 225.06" fill="url(#ggrad26)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-241" data-name="任意多边形: 形状 240" transform="rotate(47.58 277.8 239.65)">
+<path d="M 278.61 234.11 L 278.61 245.19 L 276.99 245.19 L 276.99 234.11 L 278.61 234.11" fill="url(#ggrad27)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-242" data-name="任意多边形: 形状 241" transform="rotate(54.25 285.97 249.71)">
+<path d="M 286.79 244.17 L 286.79 255.25 L 285.16 255.25 L 285.16 244.17 L 286.79 244.17" fill="url(#ggrad28)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-243" data-name="任意多边形: 形状 242" transform="rotate(60.92 292.92 260.66)">
+<path d="M 293.74 255.12 L 293.74 266.2 L 292.11 266.2 L 292.11 255.12 L 293.74 255.12" fill="url(#ggrad29)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-244" data-name="任意多边形: 形状 243" transform="rotate(67.58 298.56 272.33)">
+<path d="M 299.37 266.79 L 299.37 277.87 L 297.75 277.87 L 297.75 266.79 L 299.37 266.79" fill="url(#ggrad30)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-245" data-name="任意多边形: 形状 244" transform="rotate(74.25 302.8 284.59)">
+<path d="M 303.61 279.05 L 303.61 290.13 L 301.98 290.13 L 301.98 279.05 L 303.61 279.05" fill="url(#ggrad31)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-246" data-name="任意多边形: 形状 245" transform="rotate(80.92 305.58 297.25)">
+<path d="M 306.4 291.71 L 306.4 302.79 L 304.77 302.79 L 304.77 291.71 L 306.4 291.71" fill="url(#ggrad32)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-247" data-name="任意多边形: 形状 246" transform="rotate(87.58 306.88 310.15)">
+<path d="M 307.7 304.61 L 307.7 315.69 L 306.07 315.69 L 306.07 304.61 L 307.7 304.61" fill="url(#ggrad33)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-248" data-name="任意多边形: 形状 247" transform="rotate(94.25 306.68 323.11)">
+<path d="M 307.49 317.57 L 307.49 328.65 L 305.86 328.65 L 305.86 317.57 L 307.49 317.57" fill="url(#ggrad34)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-249" data-name="任意多边形: 形状 248" transform="rotate(100.92 304.97 335.96)">
+<path d="M 305.78 330.42 L 305.78 341.5 L 304.15 341.5 L 304.15 330.42 L 305.78 330.42" fill="url(#ggrad35)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-250" data-name="任意多边形: 形状 249" transform="rotate(107.58 301.77 348.53)">
+<path d="M 302.59 342.99 L 302.59 354.07 L 300.96 354.07 L 300.96 342.99 L 302.59 342.99" fill="url(#ggrad36)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-251" data-name="任意多边形: 形状 250" transform="rotate(114.25 297.15 360.64)">
+<path d="M 297.96 355.1 L 297.96 366.18 L 296.33 366.18 L 296.33 355.1 L 297.96 355.1" fill="url(#ggrad37)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-252" data-name="任意多边形: 形状 251" transform="rotate(120.92 291.14 372.13)">
+<path d="M 291.96 366.59 L 291.96 377.67 L 290.33 377.67 L 290.33 366.59 L 291.96 366.59" fill="url(#ggrad38)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-253" data-name="任意多边形: 形状 252" transform="rotate(127.58 283.85 382.85)">
+<path d="M 284.66 377.31 L 284.66 388.39 L 283.03 388.39 L 283.03 377.31 L 284.66 377.31" fill="url(#ggrad39)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-254" data-name="任意多边形: 形状 253" transform="rotate(134.25 275.35 392.65)">
+<path d="M 276.17 387.1 L 276.17 398.19 L 274.54 398.19 L 274.54 387.1 L 276.17 387.1" fill="url(#ggrad40)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-255" data-name="任意多边形: 形状 254" transform="rotate(140.92 265.78 401.39)">
+<path d="M 266.6 395.85 L 266.6 406.93 L 264.97 406.93 L 264.97 395.85 L 266.6 395.85" fill="url(#ggrad41)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-256" data-name="任意多边形: 形状 255" transform="rotate(147.58 255.26 408.97)">
+<path d="M 256.07 403.42 L 256.07 414.51 L 254.45 414.51 L 254.45 403.42 L 256.07 403.42" fill="url(#ggrad42)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-257" data-name="任意多边形: 形状 256" transform="rotate(154.25 243.93 415.27)">
+<path d="M 244.74 409.73 L 244.74 420.81 L 243.12 420.81 L 243.12 409.73 L 244.74 409.73" fill="url(#ggrad43)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-258" data-name="任意多边形: 形状 257" transform="rotate(160.92 231.95 420.21)">
+<path d="M 232.76 414.67 L 232.76 425.75 L 231.13 425.75 L 231.13 414.67 L 232.76 414.67" fill="url(#ggrad44)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-259" data-name="任意多边形: 形状 258" transform="rotate(167.58 219.47 423.73)">
+<path d="M 220.28 418.19 L 220.28 429.27 L 218.66 429.27 L 218.66 418.19 L 220.28 418.19" fill="url(#ggrad45)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-260" data-name="任意多边形: 形状 259" transform="rotate(174.25 206.67 425.78)">
+<path d="M 207.48 420.24 L 207.48 431.32 L 205.85 431.32 L 205.85 420.24 L 207.48 420.24" fill="url(#ggrad46)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-261" data-name="任意多边形: 形状 260" transform="rotate(180.92 193.71 426.32)">
+<path d="M 194.52 420.78 L 194.52 431.87 L 192.9 431.87 L 192.9 420.78 L 194.52 420.78" fill="url(#ggrad47)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-262" data-name="任意多边形: 形状 261" transform="rotate(187.58 180.78 425.36)">
+<path d="M 181.6 419.82 L 181.6 430.9 L 179.97 430.9 L 179.97 419.82 L 181.6 419.82" fill="url(#ggrad48)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-263" data-name="任意多边形: 形状 262" transform="rotate(194.25 168.05 422.91)">
+<path d="M 168.87 417.37 L 168.87 428.45 L 167.24 428.45 L 167.24 417.37 L 168.87 417.37" fill="url(#ggrad49)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-264" data-name="任意多边形: 形状 263" transform="rotate(200.92 155.69 418.99)">
+<path d="M 156.51 413.45 L 156.51 424.53 L 154.88 424.53 L 154.88 413.45 L 156.51 413.45" fill="url(#ggrad50)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-265" data-name="任意多边形: 形状 264" transform="rotate(207.58 143.87 413.67)">
+<path d="M 144.69 408.13 L 144.69 419.21 L 143.06 419.21 L 143.06 408.13 L 144.69 408.13" fill="url(#ggrad51)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-266" data-name="任意多边形: 形状 265" transform="rotate(214.25 132.75 407.01)">
+<path d="M 133.56 401.47 L 133.56 412.55 L 131.94 412.55 L 131.94 401.47 L 133.56 401.47" fill="url(#ggrad52)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-267" data-name="任意多边形: 形状 266" transform="rotate(220.92 122.48 399.1)">
+<path d="M 123.29 393.56 L 123.29 404.64 L 121.66 404.64 L 121.66 393.56 L 123.29 393.56" fill="url(#ggrad53)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-268" data-name="任意多边形: 形状 267" transform="rotate(227.58 113.19 390.05)">
+<path d="M 114 384.51 L 114 395.59 L 112.38 395.59 L 112.38 384.51 L 114 384.51" fill="url(#ggrad54)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-269" data-name="任意多边形: 形状 268" transform="rotate(234.25 105.01 379.99)">
+<path d="M 105.83 374.45 L 105.83 385.53 L 104.2 385.53 L 104.2 374.45 L 105.83 374.45" fill="url(#ggrad55)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-270" data-name="任意多边形: 形状 269" transform="rotate(240.92 98.06 369.04)">
+<path d="M 98.88 363.5 L 98.88 374.59 L 97.25 374.59 L 97.25 363.5 L 98.88 363.5" fill="url(#ggrad56)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-271" data-name="任意多边形: 形状 270" transform="rotate(247.58 92.43 357.37)">
+<path d="M 93.24 351.83 L 93.24 362.91 L 91.62 362.91 L 91.62 351.83 L 93.24 351.83" fill="url(#ggrad57)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-272" data-name="任意多边形: 形状 271" transform="rotate(254.25 88.19 345.12)">
+<path d="M 89 339.57 L 89 350.66 L 87.38 350.66 L 87.38 339.57 L 89 339.57" fill="url(#ggrad58)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-273" data-name="任意多边形: 形状 272" transform="rotate(260.92 85.4 332.45)">
+<path d="M 86.22 326.91 L 86.22 337.99 L 84.59 337.99 L 84.59 326.91 L 86.22 326.91" fill="url(#ggrad59)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-274" data-name="任意多边形: 形状 273" transform="rotate(267.58 84.11 319.55)">
+<path d="M 84.92 314.01 L 84.92 325.09 L 83.29 325.09 L 83.29 314.01 L 84.92 314.01" fill="url(#ggrad60)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-275" data-name="任意多边形: 形状 274" transform="rotate(274.25 84.31 306.59)">
+<path d="M 85.12 301.05 L 85.12 312.13 L 83.5 312.13 L 83.5 301.05 L 85.12 301.05" fill="url(#ggrad61)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-276" data-name="任意多边形: 形状 275" transform="rotate(280.92 86.02 293.74)">
+<path d="M 86.84 288.2 L 86.84 299.28 L 85.21 299.28 L 85.21 288.2 L 86.84 288.2" fill="url(#ggrad62)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-277" data-name="任意多边形: 形状 276" transform="rotate(287.58 89.21 281.17)">
+<path d="M 90.03 275.63 L 90.03 286.71 L 88.4 286.71 L 88.4 275.63 L 90.03 275.63" fill="url(#ggrad63)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-278" data-name="任意多边形: 形状 277" transform="rotate(294.25 93.84 269.06)">
+<path d="M 94.66 263.52 L 94.66 274.6 L 93.03 274.6 L 93.03 263.52 L 94.66 263.52" fill="url(#ggrad64)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-279" data-name="任意多边形: 形状 278" transform="rotate(300.92 99.85 257.57)">
+<path d="M 100.66 252.03 L 100.66 263.11 L 99.03 263.11 L 99.03 252.03 L 100.66 252.03" fill="url(#ggrad65)" stroke-width="0.013" stroke="none"/>
+</g>
+</g>
+<g id="shape-284" data-name="弧形 283">
+<path d="M 310.32 312.47 A 114.05 114.05 0 0 1 175.01 426.89" stroke-width="2.667" stroke-linecap="round" stroke="#0165FF" stroke-opacity="0.14" stroke-dasharray="1 3" stroke-linejoin="round" fill="none"/>
+</g>
+</g>
+<g id="shape-289" data-name="组合 288">
+<g id="shape-290" data-name="椭圆 289">
+<ellipse cx="492.1" cy="443.8" rx="123.3" ry="123.3" fill="url(#ggrad66)" stroke-width="2" stroke="url(#mgrad2)"/>
+</g>
+<g id="shape-291" data-name="椭圆 290">
+<ellipse cx="492.74" cy="445.37" rx="100.19" ry="100.19" fill="url(#ggrad67)" stroke="none" stroke-width="1" filter="url(#fx3)"/>
+</g>
+<g id="shape-292" data-name="图表 291">
+<rect x="386.76" y="334.05" width="210.67" height="219.5" fill="none" stroke="#999999" stroke-dasharray="4 4"/><text x="492.1" y="443.8" text-anchor="middle" font-size="14" fill="#999999">[chart]</text>
+</g>
+<g id="shape-293" data-name="椭圆 292">
+<ellipse cx="491.3" cy="443.8" rx="57.96" ry="57.96" fill="url(#ggrad68)" stroke="none" stroke-width="1" filter="url(#fx4)"/>
+</g>
+<g id="shape-294" data-name="文本框 293">
+<rect x="448.38" y="407.55" width="69.55" height="32.31" fill="none"/>
+<text x="457.98" y="428.21" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#262626"><tspan fill="#262626" font-size="18.67">提升</tspan></text>
+</g>
+<g id="shape-295" data-name="文本框 294">
+<rect x="441.89" y="430.24" width="98.81" height="54.93" fill="none"/>
+<text x="491.3" y="466.78" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="37.33" fill="url(#txtgrad69)" font-weight="bold"><tspan fill="url(#txtgrad69)" font-size="37.33" font-weight="bold">75</tspan><tspan fill="url(#txtgrad70)" font-size="37.33" font-weight="bold">%</tspan></text>
+</g>
+<g id="shape-296" data-name="箭头: 上 295">
+<polygon points="503.59,431.64 503.59,425.93 498.54,425.93 508.64,414.44 518.74,425.93 513.69,425.93 513.69,431.64" fill="url(#ggrad71)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-297" data-name="组合 296">
+<g id="shape-299" data-name="任意多边形: 形状 298" transform="rotate(-52.42 402.95 375.8)">
+<path d="M 403.76 370.26 L 403.76 381.34 L 402.13 381.34 L 402.13 370.26 L 403.76 370.26" fill="url(#ggrad72)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-300" data-name="任意多边形: 形状 299" transform="rotate(-45.75 411.44 366)">
+<path d="M 412.25 360.46 L 412.25 371.54 L 410.62 371.54 L 410.62 360.46 L 412.25 360.46" fill="url(#ggrad73)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-301" data-name="任意多边形: 形状 300" transform="rotate(-39.08 421.01 357.26)">
+<path d="M 421.82 351.72 L 421.82 362.8 L 420.2 362.8 L 420.2 351.72 L 421.82 351.72" fill="url(#ggrad74)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-302" data-name="任意多边形: 形状 301" transform="rotate(-32.42 431.53 349.68)">
+<path d="M 432.34 344.14 L 432.34 355.22 L 430.72 355.22 L 430.72 344.14 L 432.34 344.14" fill="url(#ggrad75)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-303" data-name="任意多边形: 形状 302" transform="rotate(-25.75 442.86 343.38)">
+<path d="M 443.67 337.84 L 443.67 348.92 L 442.05 348.92 L 442.05 337.84 L 443.67 337.84" fill="url(#ggrad76)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-304" data-name="任意多边形: 形状 303" transform="rotate(-19.08 454.85 338.44)">
+<path d="M 455.66 332.89 L 455.66 343.98 L 454.03 343.98 L 454.03 332.89 L 455.66 332.89" fill="url(#ggrad77)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-305" data-name="任意多边形: 形状 304" transform="rotate(-12.42 467.32 334.92)">
+<path d="M 468.14 329.38 L 468.14 340.46 L 466.51 340.46 L 466.51 329.38 L 468.14 329.38" fill="url(#ggrad78)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-306" data-name="任意多边形: 形状 305" transform="rotate(-5.75 480.13 332.87)">
+<path d="M 480.94 327.33 L 480.94 338.41 L 479.31 338.41 L 479.31 327.33 L 480.94 327.33" fill="url(#ggrad79)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-307" data-name="任意多边形: 形状 306" transform="rotate(0.92 493.08 332.32)">
+<path d="M 493.89 326.78 L 493.89 337.86 L 492.27 337.86 L 492.27 326.78 L 493.89 326.78" fill="url(#ggrad80)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-308" data-name="任意多边形: 形状 307" transform="rotate(7.58 506.01 333.28)">
+<path d="M 506.82 327.74 L 506.82 338.82 L 505.2 338.82 L 505.2 327.74 L 506.82 327.74" fill="url(#ggrad81)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-309" data-name="任意多边形: 形状 308" transform="rotate(14.25 518.74 335.74)">
+<path d="M 519.55 330.2 L 519.55 341.28 L 517.93 341.28 L 517.93 330.2 L 519.55 330.2" fill="url(#ggrad82)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-310" data-name="任意多边形: 形状 309" transform="rotate(20.92 531.1 339.65)">
+<path d="M 531.91 334.11 L 531.91 345.19 L 530.29 345.19 L 530.29 334.11 L 531.91 334.11" fill="url(#ggrad83)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-311" data-name="任意多边形: 形状 310" transform="rotate(27.58 542.92 344.98)">
+<path d="M 543.73 339.44 L 543.73 350.52 L 542.11 350.52 L 542.11 339.44 L 543.73 339.44" fill="url(#ggrad84)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-312" data-name="任意多边形: 形状 311" transform="rotate(34.25 554.04 351.64)">
+<path d="M 554.85 346.1 L 554.85 357.18 L 553.23 357.18 L 553.23 346.1 L 554.85 346.1" fill="url(#ggrad85)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-313" data-name="任意多边形: 形状 312" transform="rotate(40.92 564.32 359.55)">
+<path d="M 565.13 354.01 L 565.13 365.09 L 563.5 365.09 L 563.5 354.01 L 565.13 354.01" fill="url(#ggrad86)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-314" data-name="任意多边形: 形状 313" transform="rotate(47.58 573.6 368.59)">
+<path d="M 574.42 363.05 L 574.42 374.13 L 572.79 374.13 L 572.79 363.05 L 574.42 363.05" fill="url(#ggrad87)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-315" data-name="任意多边形: 形状 314" transform="rotate(54.25 581.78 378.66)">
+<path d="M 582.59 373.12 L 582.59 384.2 L 580.96 384.2 L 580.96 373.12 L 582.59 373.12" fill="url(#ggrad88)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-316" data-name="任意多边形: 形状 315" transform="rotate(60.92 588.73 389.6)">
+<path d="M 589.54 384.06 L 589.54 395.14 L 587.92 395.14 L 587.92 384.06 L 589.54 384.06" fill="url(#ggrad89)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-317" data-name="任意多边形: 形状 316" transform="rotate(67.58 594.36 401.28)">
+<path d="M 595.17 395.74 L 595.17 406.82 L 593.55 406.82 L 593.55 395.74 L 595.17 395.74" fill="url(#ggrad90)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-318" data-name="任意多边形: 形状 317" transform="rotate(74.25 598.6 413.53)">
+<path d="M 599.41 407.99 L 599.41 419.07 L 597.79 419.07 L 597.79 407.99 L 599.41 407.99" fill="url(#ggrad91)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-319" data-name="任意多边形: 形状 318" transform="rotate(80.92 601.39 426.19)">
+<path d="M 602.2 420.65 L 602.2 431.73 L 600.57 431.73 L 600.57 420.65 L 602.2 420.65" fill="url(#ggrad92)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-320" data-name="任意多边形: 形状 319" transform="rotate(87.58 602.69 439.09)">
+<path d="M 603.5 433.55 L 603.5 444.63 L 601.87 444.63 L 601.87 433.55 L 603.5 433.55" fill="url(#ggrad93)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-321" data-name="任意多边形: 形状 320" transform="rotate(94.25 602.48 452.06)">
+<path d="M 603.29 446.52 L 603.29 457.6 L 601.67 457.6 L 601.67 446.52 L 603.29 446.52" fill="url(#ggrad94)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-322" data-name="任意多边形: 形状 321" transform="rotate(100.92 600.77 464.91)">
+<path d="M 601.58 459.37 L 601.58 470.45 L 599.96 470.45 L 599.96 459.37 L 601.58 459.37" fill="url(#ggrad95)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-323" data-name="任意多边形: 形状 322" transform="rotate(107.58 597.58 477.47)">
+<path d="M 598.39 471.93 L 598.39 483.01 L 596.77 483.01 L 596.77 471.93 L 598.39 471.93" fill="url(#ggrad96)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-324" data-name="任意多边形: 形状 323" transform="rotate(114.25 592.95 489.58)">
+<path d="M 593.76 484.04 L 593.76 495.12 L 592.14 495.12 L 592.14 484.04 L 593.76 484.04" fill="url(#ggrad97)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-325" data-name="任意多边形: 形状 324" transform="rotate(120.92 586.95 501.08)">
+<path d="M 587.76 495.54 L 587.76 506.62 L 586.13 506.62 L 586.13 495.54 L 587.76 495.54" fill="url(#ggrad98)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-326" data-name="任意多边形: 形状 325" transform="rotate(127.58 579.65 511.79)">
+<path d="M 580.46 506.25 L 580.46 517.33 L 578.84 517.33 L 578.84 506.25 L 580.46 506.25" fill="url(#ggrad99)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-327" data-name="任意多边形: 形状 326" transform="rotate(134.25 571.16 521.59)">
+<path d="M 571.97 516.05 L 571.97 527.13 L 570.35 527.13 L 570.35 516.05 L 571.97 516.05" fill="url(#ggrad100)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-328" data-name="任意多边形: 形状 327" transform="rotate(140.92 561.59 530.34)">
+<path d="M 562.4 524.79 L 562.4 535.88 L 560.77 535.88 L 560.77 524.79 L 562.4 524.79" fill="url(#ggrad101)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-329" data-name="任意多边形: 形状 328" transform="rotate(147.58 551.06 537.91)">
+<path d="M 551.88 532.37 L 551.88 543.45 L 550.25 543.45 L 550.25 532.37 L 551.88 532.37" fill="url(#ggrad102)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-330" data-name="任意多边形: 形状 329" transform="rotate(154.25 539.73 544.21)">
+<path d="M 540.55 538.67 L 540.55 549.75 L 538.92 549.75 L 538.92 538.67 L 540.55 538.67" fill="url(#ggrad103)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-331" data-name="任意多边形: 形状 330" transform="rotate(160.92 527.75 549.16)">
+<path d="M 528.56 543.62 L 528.56 554.7 L 526.94 554.7 L 526.94 543.62 L 528.56 543.62" fill="url(#ggrad104)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-332" data-name="任意多边形: 形状 331" transform="rotate(167.58 515.27 552.68)">
+<path d="M 516.08 547.14 L 516.08 558.22 L 514.46 558.22 L 514.46 547.14 L 516.08 547.14" fill="url(#ggrad105)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-333" data-name="任意多边形: 形状 332" transform="rotate(174.25 502.47 554.72)">
+<path d="M 503.28 549.18 L 503.28 560.26 L 501.66 560.26 L 501.66 549.18 L 503.28 549.18" fill="url(#ggrad106)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-334" data-name="任意多边形: 形状 333" transform="rotate(180.92 489.52 555.27)">
+<path d="M 490.33 549.73 L 490.33 560.81 L 488.7 560.81 L 488.7 549.73 L 490.33 549.73" fill="url(#ggrad107)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-335" data-name="任意多边形: 形状 334" transform="rotate(187.58 476.59 554.31)">
+<path d="M 477.4 548.77 L 477.4 559.85 L 475.77 559.85 L 475.77 548.77 L 477.4 548.77" fill="url(#ggrad108)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-336" data-name="任意多边形: 形状 335" transform="rotate(194.25 463.86 551.85)">
+<path d="M 464.67 546.31 L 464.67 557.39 L 463.04 557.39 L 463.04 546.31 L 464.67 546.31" fill="url(#ggrad109)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-337" data-name="任意多边形: 形状 336" transform="rotate(200.92 451.5 547.94)">
+<path d="M 452.31 542.4 L 452.31 553.48 L 450.68 553.48 L 450.68 542.4 L 452.31 542.4" fill="url(#ggrad110)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-338" data-name="任意多边形: 形状 337" transform="rotate(207.58 439.68 542.61)">
+<path d="M 440.49 537.07 L 440.49 548.15 L 438.86 548.15 L 438.86 537.07 L 440.49 537.07" fill="url(#ggrad111)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-339" data-name="任意多边形: 形状 338" transform="rotate(214.25 428.55 535.95)">
+<path d="M 429.36 530.41 L 429.36 541.49 L 427.74 541.49 L 427.74 530.41 L 429.36 530.41" fill="url(#ggrad112)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-340" data-name="任意多边形: 形状 339" transform="rotate(220.92 418.28 528.04)">
+<path d="M 419.09 522.5 L 419.09 533.58 L 417.47 533.58 L 417.47 522.5 L 419.09 522.5" fill="url(#ggrad113)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-341" data-name="任意多边形: 形状 340" transform="rotate(227.58 408.99 519)">
+<path d="M 409.8 513.46 L 409.8 524.54 L 408.18 524.54 L 408.18 513.46 L 409.8 513.46" fill="url(#ggrad114)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-342" data-name="任意多边形: 形状 341" transform="rotate(234.25 400.82 508.93)">
+<path d="M 401.63 503.39 L 401.63 514.47 L 400.01 514.47 L 400.01 503.39 L 401.63 503.39" fill="url(#ggrad115)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-343" data-name="任意多边形: 形状 342" transform="rotate(240.92 393.87 497.99)">
+<path d="M 394.68 492.45 L 394.68 503.53 L 393.05 503.53 L 393.05 492.45 L 394.68 492.45" fill="url(#ggrad116)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-344" data-name="任意多边形: 形状 343" transform="rotate(247.58 388.23 486.31)">
+<path d="M 389.05 480.77 L 389.05 491.85 L 387.42 491.85 L 387.42 480.77 L 389.05 480.77" fill="url(#ggrad117)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-345" data-name="任意多边形: 形状 344" transform="rotate(254.25 384 474.06)">
+<path d="M 384.81 468.52 L 384.81 479.6 L 383.18 479.6 L 383.18 468.52 L 384.81 468.52" fill="url(#ggrad118)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-346" data-name="任意多边形: 形状 345" transform="rotate(260.92 381.21 461.4)">
+<path d="M 382.02 455.86 L 382.02 466.94 L 380.4 466.94 L 380.4 455.86 L 382.02 455.86" fill="url(#ggrad119)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-347" data-name="任意多边形: 形状 346" transform="rotate(267.58 379.91 448.5)">
+<path d="M 380.72 442.96 L 380.72 454.04 L 379.1 454.04 L 379.1 442.96 L 380.72 442.96" fill="url(#ggrad120)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-348" data-name="任意多边形: 形状 347" transform="rotate(274.25 380.12 435.54)">
+<path d="M 380.93 430 L 380.93 441.08 L 379.3 441.08 L 379.3 430 L 380.93 430" fill="url(#ggrad121)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-349" data-name="任意多边形: 形状 348" transform="rotate(280.92 381.83 422.68)">
+<path d="M 382.64 417.14 L 382.64 428.22 L 381.01 428.22 L 381.01 417.14 L 382.64 417.14" fill="url(#ggrad122)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-350" data-name="任意多边形: 形状 349" transform="rotate(287.58 385.02 410.12)">
+<path d="M 385.83 404.58 L 385.83 415.66 L 384.21 415.66 L 384.21 404.58 L 385.83 404.58" fill="url(#ggrad123)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-351" data-name="任意多边形: 形状 350" transform="rotate(294.25 389.65 398.01)">
+<path d="M 390.46 392.47 L 390.46 403.55 L 388.83 403.55 L 388.83 392.47 L 390.46 392.47" fill="url(#ggrad124)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-352" data-name="任意多边形: 形状 351" transform="rotate(300.92 395.65 386.52)">
+<path d="M 396.46 380.98 L 396.46 392.06 L 394.84 392.06 L 394.84 380.98 L 396.46 380.98" fill="url(#ggrad125)" stroke-width="0.013" stroke="none"/>
+</g>
+</g>
+<g id="shape-298" data-name="弧形 297">
+<path d="M 606.12 441.42 A 114.05 114.05 0 0 1 470.82 555.84" stroke-width="2.667" stroke-linecap="round" stroke="#0165FF" stroke-opacity="0.14" stroke-dasharray="1 3" stroke-linejoin="round" fill="none"/>
+</g>
+</g>
+<g id="shape-355" data-name="组合 354">
+<g id="shape-356" data-name="椭圆 355">
+<ellipse cx="787.9" cy="314.85" rx="123.3" ry="123.3" fill="url(#ggrad126)" stroke-width="2" stroke="url(#mgrad3)"/>
+</g>
+<g id="shape-357" data-name="椭圆 356">
+<ellipse cx="788.55" cy="316.43" rx="100.19" ry="100.19" fill="url(#ggrad127)" stroke="none" stroke-width="1" filter="url(#fx5)"/>
+</g>
+<g id="shape-358" data-name="图表 357">
+<rect x="682.57" y="205.1" width="210.67" height="219.5" fill="none" stroke="#999999" stroke-dasharray="4 4"/><text x="787.9" y="314.85" text-anchor="middle" font-size="14" fill="#999999">[chart]</text>
+</g>
+<g id="shape-359" data-name="椭圆 358">
+<ellipse cx="787.1" cy="314.85" rx="57.96" ry="57.96" fill="url(#ggrad128)" stroke="none" stroke-width="1" filter="url(#fx6)"/>
+</g>
+<g id="shape-360" data-name="文本框 359">
+<rect x="744.81" y="278.6" width="69.55" height="35.54" fill="none"/>
+<text x="754.41" y="301.54" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="21.33" fill="#262626"><tspan fill="#262626" font-size="21.33">降低</tspan></text>
+</g>
+<g id="shape-361" data-name="文本框 360">
+<rect x="737.69" y="301.3" width="98.81" height="54.93" fill="none"/>
+<text x="787.1" y="337.83" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="37.33" fill="url(#txtgrad129)" font-weight="bold"><tspan fill="url(#txtgrad129)" font-size="37.33" font-weight="bold">60</tspan><tspan fill="url(#txtgrad130)" font-size="37.33" font-weight="bold">%</tspan></text>
+</g>
+<g id="shape-362" data-name="箭头: 上 361" transform="translate(812.58 297.51) scale(1 -1) translate(-812.58 -297.51)">
+<polygon points="807.53,306.11 807.53,300.4 802.48,300.4 812.58,288.91 822.68,300.4 817.63,300.4 817.63,306.11" fill="url(#ggrad131)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-363" data-name="组合 362">
+<g id="shape-365" data-name="任意多边形: 形状 364" transform="rotate(-52.42 698.75 246.85)">
+<path d="M 699.56 241.31 L 699.56 252.39 L 697.94 252.39 L 697.94 241.31 L 699.56 241.31" fill="url(#ggrad132)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-366" data-name="任意多边形: 形状 365" transform="rotate(-45.75 707.24 237.06)">
+<path d="M 708.05 231.52 L 708.05 242.6 L 706.43 242.6 L 706.43 231.52 L 708.05 231.52" fill="url(#ggrad133)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-367" data-name="任意多边形: 形状 366" transform="rotate(-39.08 716.81 228.31)">
+<path d="M 717.62 222.77 L 717.62 233.85 L 716 233.85 L 716 222.77 L 717.62 222.77" fill="url(#ggrad134)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-368" data-name="任意多边形: 形状 367" transform="rotate(-32.42 727.33 220.74)">
+<path d="M 728.14 215.2 L 728.14 226.28 L 726.52 226.28 L 726.52 215.2 L 728.14 215.2" fill="url(#ggrad135)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-369" data-name="任意多边形: 形状 368" transform="rotate(-25.75 738.66 214.43)">
+<path d="M 739.48 208.89 L 739.48 219.97 L 737.85 219.97 L 737.85 208.89 L 739.48 208.89" fill="url(#ggrad136)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-370" data-name="任意多边形: 形状 369" transform="rotate(-19.08 750.65 209.49)">
+<path d="M 751.46 203.95 L 751.46 215.03 L 749.84 215.03 L 749.84 203.95 L 751.46 203.95" fill="url(#ggrad137)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-371" data-name="任意多边形: 形状 370" transform="rotate(-12.42 763.13 205.97)">
+<path d="M 763.94 200.43 L 763.94 211.51 L 762.31 211.51 L 762.31 200.43 L 763.94 200.43" fill="url(#ggrad138)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-372" data-name="任意多边形: 形状 371" transform="rotate(-5.75 775.93 203.92)">
+<path d="M 776.74 198.38 L 776.74 209.46 L 775.12 209.46 L 775.12 198.38 L 776.74 198.38" fill="url(#ggrad139)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-373" data-name="任意多边形: 形状 372" transform="rotate(0.92 788.88 203.38)">
+<path d="M 789.69 197.84 L 789.69 208.92 L 788.07 208.92 L 788.07 197.84 L 789.69 197.84" fill="url(#ggrad140)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-374" data-name="任意多边形: 形状 373" transform="rotate(7.58 801.81 204.34)">
+<path d="M 802.62 198.8 L 802.62 209.88 L 801 209.88 L 801 198.8 L 802.62 198.8" fill="url(#ggrad141)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-375" data-name="任意多边形: 形状 374" transform="rotate(14.25 814.54 206.79)">
+<path d="M 815.35 201.25 L 815.35 212.33 L 813.73 212.33 L 813.73 201.25 L 815.35 201.25" fill="url(#ggrad142)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-376" data-name="任意多边形: 形状 375" transform="rotate(20.92 826.9 210.71)">
+<path d="M 827.71 205.17 L 827.71 216.25 L 826.09 216.25 L 826.09 205.17 L 827.71 205.17" fill="url(#ggrad143)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-377" data-name="任意多边形: 形状 376" transform="rotate(27.58 838.72 216.03)">
+<path d="M 839.53 210.49 L 839.53 221.57 L 837.91 221.57 L 837.91 210.49 L 839.53 210.49" fill="url(#ggrad144)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-378" data-name="任意多边形: 形状 377" transform="rotate(34.25 849.84 222.69)">
+<path d="M 850.66 217.15 L 850.66 228.24 L 849.03 228.24 L 849.03 217.15 L 850.66 217.15" fill="url(#ggrad145)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-379" data-name="任意多边形: 形状 378" transform="rotate(40.92 860.12 230.6)">
+<path d="M 860.93 225.06 L 860.93 236.14 L 859.31 236.14 L 859.31 225.06 L 860.93 225.06" fill="url(#ggrad146)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-380" data-name="任意多边形: 形状 379" transform="rotate(47.58 869.41 239.65)">
+<path d="M 870.22 234.11 L 870.22 245.19 L 868.59 245.19 L 868.59 234.11 L 870.22 234.11" fill="url(#ggrad147)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-381" data-name="任意多边形: 形状 380" transform="rotate(54.25 877.58 249.71)">
+<path d="M 878.39 244.17 L 878.39 255.25 L 876.77 255.25 L 876.77 244.17 L 878.39 244.17" fill="url(#ggrad148)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-382" data-name="任意多边形: 形状 381" transform="rotate(60.92 884.53 260.66)">
+<path d="M 885.34 255.12 L 885.34 266.2 L 883.72 266.2 L 883.72 255.12 L 885.34 255.12" fill="url(#ggrad149)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-383" data-name="任意多边形: 形状 382" transform="rotate(67.58 890.16 272.33)">
+<path d="M 890.98 266.79 L 890.98 277.87 L 889.35 277.87 L 889.35 266.79 L 890.98 266.79" fill="url(#ggrad150)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-384" data-name="任意多边形: 形状 383" transform="rotate(74.25 894.4 284.59)">
+<path d="M 895.21 279.05 L 895.21 290.13 L 893.59 290.13 L 893.59 279.05 L 895.21 279.05" fill="url(#ggrad151)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-385" data-name="任意多边形: 形状 384" transform="rotate(80.92 897.19 297.25)">
+<path d="M 898 291.71 L 898 302.79 L 896.38 302.79 L 896.38 291.71 L 898 291.71" fill="url(#ggrad152)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-386" data-name="任意多边形: 形状 385" transform="rotate(87.58 898.49 310.15)">
+<path d="M 899.3 304.61 L 899.3 315.69 L 897.68 315.69 L 897.68 304.61 L 899.3 304.61" fill="url(#ggrad153)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-387" data-name="任意多边形: 形状 386" transform="rotate(94.25 898.28 323.11)">
+<path d="M 899.09 317.57 L 899.09 328.65 L 897.47 328.65 L 897.47 317.57 L 899.09 317.57" fill="url(#ggrad154)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-388" data-name="任意多边形: 形状 387" transform="rotate(100.92 896.57 335.96)">
+<path d="M 897.38 330.42 L 897.38 341.5 L 895.76 341.5 L 895.76 330.42 L 897.38 330.42" fill="url(#ggrad155)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-389" data-name="任意多边形: 形状 388" transform="rotate(107.58 893.38 348.53)">
+<path d="M 894.19 342.99 L 894.19 354.07 L 892.57 354.07 L 892.57 342.99 L 894.19 342.99" fill="url(#ggrad156)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-390" data-name="任意多边形: 形状 389" transform="rotate(114.25 888.75 360.64)">
+<path d="M 889.56 355.1 L 889.56 366.18 L 887.94 366.18 L 887.94 355.1 L 889.56 355.1" fill="url(#ggrad157)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-391" data-name="任意多边形: 形状 390" transform="rotate(120.92 882.75 372.13)">
+<path d="M 883.56 366.59 L 883.56 377.67 L 881.94 377.67 L 881.94 366.59 L 883.56 366.59" fill="url(#ggrad158)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-392" data-name="任意多边形: 形状 391" transform="rotate(127.58 875.45 382.85)">
+<path d="M 876.26 377.31 L 876.26 388.39 L 874.64 388.39 L 874.64 377.31 L 876.26 377.31" fill="url(#ggrad159)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-393" data-name="任意多边形: 形状 392" transform="rotate(134.25 866.96 392.65)">
+<path d="M 867.77 387.1 L 867.77 398.19 L 866.15 398.19 L 866.15 387.1 L 867.77 387.1" fill="url(#ggrad160)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-394" data-name="任意多边形: 形状 393" transform="rotate(140.92 857.39 401.39)">
+<path d="M 858.2 395.85 L 858.2 406.93 L 856.58 406.93 L 856.58 395.85 L 858.2 395.85" fill="url(#ggrad161)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-395" data-name="任意多边形: 形状 394" transform="rotate(147.58 846.87 408.97)">
+<path d="M 847.68 403.42 L 847.68 414.51 L 846.06 414.51 L 846.06 403.42 L 847.68 403.42" fill="url(#ggrad162)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-396" data-name="任意多边形: 形状 395" transform="rotate(154.25 835.54 415.27)">
+<path d="M 836.35 409.73 L 836.35 420.81 L 834.73 420.81 L 834.73 409.73 L 836.35 409.73" fill="url(#ggrad163)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-397" data-name="任意多边形: 形状 396" transform="rotate(160.92 823.55 420.21)">
+<path d="M 824.36 414.67 L 824.36 425.75 L 822.74 425.75 L 822.74 414.67 L 824.36 414.67" fill="url(#ggrad164)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-398" data-name="任意多边形: 形状 397" transform="rotate(167.58 811.07 423.73)">
+<path d="M 811.89 418.19 L 811.89 429.27 L 810.26 429.27 L 810.26 418.19 L 811.89 418.19" fill="url(#ggrad165)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-399" data-name="任意多边形: 形状 398" transform="rotate(174.25 798.27 425.78)">
+<path d="M 799.08 420.24 L 799.08 431.32 L 797.46 431.32 L 797.46 420.24 L 799.08 420.24" fill="url(#ggrad166)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-400" data-name="任意多边形: 形状 399" transform="rotate(180.92 785.32 426.32)">
+<path d="M 786.13 420.78 L 786.13 431.87 L 784.51 431.87 L 784.51 420.78 L 786.13 420.78" fill="url(#ggrad167)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-401" data-name="任意多边形: 形状 400" transform="rotate(187.58 772.39 425.36)">
+<path d="M 773.2 419.82 L 773.2 430.9 L 771.58 430.9 L 771.58 419.82 L 773.2 419.82" fill="url(#ggrad168)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-402" data-name="任意多边形: 形状 401" transform="rotate(194.25 759.66 422.91)">
+<path d="M 760.47 417.37 L 760.47 428.45 L 758.85 428.45 L 758.85 417.37 L 760.47 417.37" fill="url(#ggrad169)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-403" data-name="任意多边形: 形状 402" transform="rotate(200.92 747.3 418.99)">
+<path d="M 748.11 413.45 L 748.11 424.53 L 746.49 424.53 L 746.49 413.45 L 748.11 413.45" fill="url(#ggrad170)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-404" data-name="任意多边形: 形状 403" transform="rotate(207.58 735.48 413.67)">
+<path d="M 736.29 408.13 L 736.29 419.21 L 734.67 419.21 L 734.67 408.13 L 736.29 408.13" fill="url(#ggrad171)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-405" data-name="任意多边形: 形状 404" transform="rotate(214.25 724.36 407.01)">
+<path d="M 725.17 401.47 L 725.17 412.55 L 723.54 412.55 L 723.54 401.47 L 725.17 401.47" fill="url(#ggrad172)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-406" data-name="任意多边形: 形状 405" transform="rotate(220.92 714.08 399.1)">
+<path d="M 714.89 393.56 L 714.89 404.64 L 713.27 404.64 L 713.27 393.56 L 714.89 393.56" fill="url(#ggrad173)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-407" data-name="任意多边形: 形状 406" transform="rotate(227.58 704.79 390.05)">
+<path d="M 705.61 384.51 L 705.61 395.59 L 703.98 395.59 L 703.98 384.51 L 705.61 384.51" fill="url(#ggrad174)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-408" data-name="任意多边形: 形状 407" transform="rotate(234.25 696.62 379.99)">
+<path d="M 697.43 374.45 L 697.43 385.53 L 695.81 385.53 L 695.81 374.45 L 697.43 374.45" fill="url(#ggrad175)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-409" data-name="任意多边形: 形状 408" transform="rotate(240.92 689.67 369.04)">
+<path d="M 690.48 363.5 L 690.48 374.59 L 688.86 374.59 L 688.86 363.5 L 690.48 363.5" fill="url(#ggrad176)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-410" data-name="任意多边形: 形状 409" transform="rotate(247.58 684.04 357.37)">
+<path d="M 684.85 351.83 L 684.85 362.91 L 683.22 362.91 L 683.22 351.83 L 684.85 351.83" fill="url(#ggrad177)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-411" data-name="任意多边形: 形状 410" transform="rotate(254.25 679.8 345.12)">
+<path d="M 680.61 339.57 L 680.61 350.66 L 678.99 350.66 L 678.99 339.57 L 680.61 339.57" fill="url(#ggrad178)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-412" data-name="任意多边形: 形状 411" transform="rotate(260.92 677.01 332.45)">
+<path d="M 677.82 326.91 L 677.82 337.99 L 676.2 337.99 L 676.2 326.91 L 677.82 326.91" fill="url(#ggrad179)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-413" data-name="任意多边形: 形状 412" transform="rotate(267.58 675.71 319.55)">
+<path d="M 676.52 314.01 L 676.52 325.09 L 674.9 325.09 L 674.9 314.01 L 676.52 314.01" fill="url(#ggrad180)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-414" data-name="任意多边形: 形状 413" transform="rotate(274.25 675.92 306.59)">
+<path d="M 676.73 301.05 L 676.73 312.13 L 675.11 312.13 L 675.11 301.05 L 676.73 301.05" fill="url(#ggrad181)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-415" data-name="任意多边形: 形状 414" transform="rotate(280.92 677.63 293.74)">
+<path d="M 678.44 288.2 L 678.44 299.28 L 676.82 299.28 L 676.82 288.2 L 678.44 288.2" fill="url(#ggrad182)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-416" data-name="任意多边形: 形状 415" transform="rotate(287.58 680.82 281.17)">
+<path d="M 681.63 275.63 L 681.63 286.71 L 680.01 286.71 L 680.01 275.63 L 681.63 275.63" fill="url(#ggrad183)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-417" data-name="任意多边形: 形状 416" transform="rotate(294.25 685.45 269.06)">
+<path d="M 686.26 263.52 L 686.26 274.6 L 684.64 274.6 L 684.64 263.52 L 686.26 263.52" fill="url(#ggrad184)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-418" data-name="任意多边形: 形状 417" transform="rotate(300.92 691.45 257.57)">
+<path d="M 692.26 252.03 L 692.26 263.11 L 690.64 263.11 L 690.64 252.03 L 692.26 252.03" fill="url(#ggrad185)" stroke-width="0.013" stroke="none"/>
+</g>
+</g>
+<g id="shape-364" data-name="弧形 363">
+<path d="M 901.92 312.47 A 114.05 114.05 0 0 1 766.62 426.89" stroke-width="2.667" stroke-linecap="round" stroke="#0165FF" stroke-opacity="0.14" stroke-dasharray="1 3" stroke-linejoin="round" fill="none"/>
+</g>
+</g>
+<g id="shape-421" data-name="组合 420">
+<g id="shape-422" data-name="椭圆 421">
+<ellipse cx="1083.7" cy="443.8" rx="123.3" ry="123.3" fill="url(#ggrad186)" stroke-width="2" stroke="url(#mgrad4)"/>
+</g>
+<g id="shape-423" data-name="椭圆 422">
+<ellipse cx="1084.35" cy="445.37" rx="100.19" ry="100.19" fill="url(#ggrad187)" stroke="none" stroke-width="1" filter="url(#fx7)"/>
+</g>
+<g id="shape-424" data-name="图表 423">
+<rect x="978.37" y="334.05" width="210.67" height="219.5" fill="none" stroke="#999999" stroke-dasharray="4 4"/><text x="1083.7" y="443.8" text-anchor="middle" font-size="14" fill="#999999">[chart]</text>
+</g>
+<g id="shape-425" data-name="椭圆 424">
+<ellipse cx="1082.9" cy="443.8" rx="57.96" ry="57.96" fill="url(#ggrad188)" stroke="none" stroke-width="1" filter="url(#fx8)"/>
+</g>
+<g id="shape-426" data-name="文本框 425">
+<rect x="1043.59" y="410.17" width="69.55" height="32.31" fill="none"/>
+<text x="1053.19" y="430.84" text-anchor="start" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="18.67" fill="#262626"><tspan fill="#262626" font-size="18.67">提升</tspan></text>
+</g>
+<g id="shape-427" data-name="文本框 426">
+<rect x="1033.5" y="430.24" width="98.81" height="54.93" fill="none"/>
+<text x="1082.9" y="466.78" text-anchor="middle" xml:space="preserve" font-family="&quot;HarmonyOS Sans SC&quot;, sans-serif" font-size="37.33" fill="url(#txtgrad189)" font-weight="bold"><tspan fill="url(#txtgrad189)" font-size="37.33" font-weight="bold">45</tspan><tspan fill="url(#txtgrad190)" font-size="37.33" font-weight="bold">%</tspan></text>
+</g>
+<g id="shape-428" data-name="箭头: 上 427">
+<polygon points="1100.72,433.11 1100.72,427.41 1095.67,427.41 1105.77,415.92 1115.87,427.41 1110.82,427.41 1110.82,433.11" fill="url(#ggrad191)" stroke="none" stroke-width="1"/>
+</g>
+<g id="shape-429" data-name="组合 428">
+<g id="shape-431" data-name="任意多边形: 形状 430" transform="rotate(-52.42 994.55 375.8)">
+<path d="M 995.36 370.26 L 995.36 381.34 L 993.74 381.34 L 993.74 370.26 L 995.36 370.26" fill="url(#ggrad192)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-432" data-name="任意多边形: 形状 431" transform="rotate(-45.75 1003.04 366)">
+<path d="M 1003.85 360.46 L 1003.85 371.54 L 1002.23 371.54 L 1002.23 360.46 L 1003.85 360.46" fill="url(#ggrad193)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-433" data-name="任意多边形: 形状 432" transform="rotate(-39.08 1012.61 357.26)">
+<path d="M 1013.43 351.72 L 1013.43 362.8 L 1011.8 362.8 L 1011.8 351.72 L 1013.43 351.72" fill="url(#ggrad194)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-434" data-name="任意多边形: 形状 433" transform="rotate(-32.42 1023.14 349.68)">
+<path d="M 1023.95 344.14 L 1023.95 355.22 L 1022.32 355.22 L 1022.32 344.14 L 1023.95 344.14" fill="url(#ggrad195)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-435" data-name="任意多边形: 形状 434" transform="rotate(-25.75 1034.47 343.38)">
+<path d="M 1035.28 337.84 L 1035.28 348.92 L 1033.65 348.92 L 1033.65 337.84 L 1035.28 337.84" fill="url(#ggrad196)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-436" data-name="任意多边形: 形状 435" transform="rotate(-19.08 1046.45 338.44)">
+<path d="M 1047.26 332.89 L 1047.26 343.98 L 1045.64 343.98 L 1045.64 332.89 L 1047.26 332.89" fill="url(#ggrad197)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-437" data-name="任意多边形: 形状 436" transform="rotate(-12.42 1058.93 334.92)">
+<path d="M 1059.74 329.38 L 1059.74 340.46 L 1058.12 340.46 L 1058.12 329.38 L 1059.74 329.38" fill="url(#ggrad198)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-438" data-name="任意多边形: 形状 437" transform="rotate(-5.75 1071.73 332.87)">
+<path d="M 1072.54 327.33 L 1072.54 338.41 L 1070.92 338.41 L 1070.92 327.33 L 1072.54 327.33" fill="url(#ggrad199)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-439" data-name="任意多边形: 形状 438" transform="rotate(0.92 1084.68 332.32)">
+<path d="M 1085.5 326.78 L 1085.5 337.86 L 1083.87 337.86 L 1083.87 326.78 L 1085.5 326.78" fill="url(#ggrad200)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-440" data-name="任意多边形: 形状 439" transform="rotate(7.58 1097.61 333.28)">
+<path d="M 1098.43 327.74 L 1098.43 338.82 L 1096.8 338.82 L 1096.8 327.74 L 1098.43 327.74" fill="url(#ggrad201)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-441" data-name="任意多边形: 形状 440" transform="rotate(14.25 1110.34 335.74)">
+<path d="M 1111.16 330.2 L 1111.16 341.28 L 1109.53 341.28 L 1109.53 330.2 L 1111.16 330.2" fill="url(#ggrad202)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-442" data-name="任意多边形: 形状 441" transform="rotate(20.92 1122.7 339.65)">
+<path d="M 1123.52 334.11 L 1123.52 345.19 L 1121.89 345.19 L 1121.89 334.11 L 1123.52 334.11" fill="url(#ggrad203)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-443" data-name="任意多边形: 形状 442" transform="rotate(27.58 1134.52 344.98)">
+<path d="M 1135.34 339.44 L 1135.34 350.52 L 1133.71 350.52 L 1133.71 339.44 L 1135.34 339.44" fill="url(#ggrad204)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-444" data-name="任意多边形: 形状 443" transform="rotate(34.25 1145.65 351.64)">
+<path d="M 1146.46 346.1 L 1146.46 357.18 L 1144.84 357.18 L 1144.84 346.1 L 1146.46 346.1" fill="url(#ggrad205)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-445" data-name="任意多边形: 形状 444" transform="rotate(40.92 1155.92 359.55)">
+<path d="M 1156.73 354.01 L 1156.73 365.09 L 1155.11 365.09 L 1155.11 354.01 L 1156.73 354.01" fill="url(#ggrad206)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-446" data-name="任意多边形: 形状 445" transform="rotate(47.58 1165.21 368.59)">
+<path d="M 1166.02 363.05 L 1166.02 374.13 L 1164.4 374.13 L 1164.4 363.05 L 1166.02 363.05" fill="url(#ggrad207)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-447" data-name="任意多边形: 形状 446" transform="rotate(54.25 1173.38 378.66)">
+<path d="M 1174.19 373.12 L 1174.19 384.2 L 1172.57 384.2 L 1172.57 373.12 L 1174.19 373.12" fill="url(#ggrad208)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-448" data-name="任意多边形: 形状 447" transform="rotate(60.92 1180.33 389.6)">
+<path d="M 1181.14 384.06 L 1181.14 395.14 L 1179.52 395.14 L 1179.52 384.06 L 1181.14 384.06" fill="url(#ggrad209)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-449" data-name="任意多边形: 形状 448" transform="rotate(67.58 1185.97 401.28)">
+<path d="M 1186.78 395.74 L 1186.78 406.82 L 1185.15 406.82 L 1185.15 395.74 L 1186.78 395.74" fill="url(#ggrad210)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-450" data-name="任意多边形: 形状 449" transform="rotate(74.25 1190.2 413.53)">
+<path d="M 1191.02 407.99 L 1191.02 419.07 L 1189.39 419.07 L 1189.39 407.99 L 1191.02 407.99" fill="url(#ggrad211)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-451" data-name="任意多边形: 形状 450" transform="rotate(80.92 1192.99 426.19)">
+<path d="M 1193.8 420.65 L 1193.8 431.73 L 1192.18 431.73 L 1192.18 420.65 L 1193.8 420.65" fill="url(#ggrad212)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-452" data-name="任意多边形: 形状 451" transform="rotate(87.58 1194.29 439.09)">
+<path d="M 1195.1 433.55 L 1195.1 444.63 L 1193.48 444.63 L 1193.48 433.55 L 1195.1 433.55" fill="url(#ggrad213)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-453" data-name="任意多边形: 形状 452" transform="rotate(94.25 1194.08 452.06)">
+<path d="M 1194.9 446.52 L 1194.9 457.6 L 1193.27 457.6 L 1193.27 446.52 L 1194.9 446.52" fill="url(#ggrad214)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-454" data-name="任意多边形: 形状 453" transform="rotate(100.92 1192.37 464.91)">
+<path d="M 1193.19 459.37 L 1193.19 470.45 L 1191.56 470.45 L 1191.56 459.37 L 1193.19 459.37" fill="url(#ggrad215)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-455" data-name="任意多边形: 形状 454" transform="rotate(107.58 1189.18 477.47)">
+<path d="M 1189.99 471.93 L 1189.99 483.01 L 1188.37 483.01 L 1188.37 471.93 L 1189.99 471.93" fill="url(#ggrad216)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-456" data-name="任意多边形: 形状 455" transform="rotate(114.25 1184.55 489.58)">
+<path d="M 1185.37 484.04 L 1185.37 495.12 L 1183.74 495.12 L 1183.74 484.04 L 1185.37 484.04" fill="url(#ggrad217)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-457" data-name="任意多边形: 形状 456" transform="rotate(120.92 1178.55 501.08)">
+<path d="M 1179.36 495.54 L 1179.36 506.62 L 1177.74 506.62 L 1177.74 495.54 L 1179.36 495.54" fill="url(#ggrad218)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-458" data-name="任意多边形: 形状 457" transform="rotate(127.58 1171.25 511.79)">
+<path d="M 1172.07 506.25 L 1172.07 517.33 L 1170.44 517.33 L 1170.44 506.25 L 1172.07 506.25" fill="url(#ggrad219)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-459" data-name="任意多边形: 形状 458" transform="rotate(134.25 1162.76 521.59)">
+<path d="M 1163.58 516.05 L 1163.58 527.13 L 1161.95 527.13 L 1161.95 516.05 L 1163.58 516.05" fill="url(#ggrad220)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-460" data-name="任意多边形: 形状 459" transform="rotate(140.92 1153.19 530.34)">
+<path d="M 1154 524.79 L 1154 535.88 L 1152.38 535.88 L 1152.38 524.79 L 1154 524.79" fill="url(#ggrad221)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-461" data-name="任意多边形: 形状 460" transform="rotate(147.58 1142.67 537.91)">
+<path d="M 1143.48 532.37 L 1143.48 543.45 L 1141.86 543.45 L 1141.86 532.37 L 1143.48 532.37" fill="url(#ggrad222)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-462" data-name="任意多边形: 形状 461" transform="rotate(154.25 1131.34 544.21)">
+<path d="M 1132.15 538.67 L 1132.15 549.75 L 1130.53 549.75 L 1130.53 538.67 L 1132.15 538.67" fill="url(#ggrad223)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-463" data-name="任意多边形: 形状 462" transform="rotate(160.92 1119.35 549.16)">
+<path d="M 1120.17 543.62 L 1120.17 554.7 L 1118.54 554.7 L 1118.54 543.62 L 1120.17 543.62" fill="url(#ggrad224)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-464" data-name="任意多边形: 形状 463" transform="rotate(167.58 1106.88 552.68)">
+<path d="M 1107.69 547.14 L 1107.69 558.22 L 1106.06 558.22 L 1106.06 547.14 L 1107.69 547.14" fill="url(#ggrad225)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-465" data-name="任意多边形: 形状 464" transform="rotate(174.25 1094.07 554.72)">
+<path d="M 1094.89 549.18 L 1094.89 560.26 L 1093.26 560.26 L 1093.26 549.18 L 1094.89 549.18" fill="url(#ggrad226)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-466" data-name="任意多边形: 形状 465" transform="rotate(180.92 1081.12 555.27)">
+<path d="M 1081.93 549.73 L 1081.93 560.81 L 1080.31 560.81 L 1080.31 549.73 L 1081.93 549.73" fill="url(#ggrad227)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-467" data-name="任意多边形: 形状 466" transform="rotate(187.58 1068.19 554.31)">
+<path d="M 1069 548.77 L 1069 559.85 L 1067.38 559.85 L 1067.38 548.77 L 1069 548.77" fill="url(#ggrad228)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-468" data-name="任意多边形: 形状 467" transform="rotate(194.25 1055.46 551.85)">
+<path d="M 1056.27 546.31 L 1056.27 557.39 L 1054.65 557.39 L 1054.65 546.31 L 1056.27 546.31" fill="url(#ggrad229)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-469" data-name="任意多边形: 形状 468" transform="rotate(200.92 1043.1 547.94)">
+<path d="M 1043.91 542.4 L 1043.91 553.48 L 1042.29 553.48 L 1042.29 542.4 L 1043.91 542.4" fill="url(#ggrad230)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-470" data-name="任意多边形: 形状 469" transform="rotate(207.58 1031.28 542.61)">
+<path d="M 1032.09 537.07 L 1032.09 548.15 L 1030.47 548.15 L 1030.47 537.07 L 1032.09 537.07" fill="url(#ggrad231)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-471" data-name="任意多边形: 形状 470" transform="rotate(214.25 1020.16 535.95)">
+<path d="M 1020.97 530.41 L 1020.97 541.49 L 1019.35 541.49 L 1019.35 530.41 L 1020.97 530.41" fill="url(#ggrad232)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-472" data-name="任意多边形: 形状 471" transform="rotate(220.92 1009.88 528.04)">
+<path d="M 1010.7 522.5 L 1010.7 533.58 L 1009.07 533.58 L 1009.07 522.5 L 1010.7 522.5" fill="url(#ggrad233)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-473" data-name="任意多边形: 形状 472" transform="rotate(227.58 1000.6 519)">
+<path d="M 1001.41 513.46 L 1001.41 524.54 L 999.78 524.54 L 999.78 513.46 L 1001.41 513.46" fill="url(#ggrad234)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-474" data-name="任意多边形: 形状 473" transform="rotate(234.25 992.42 508.93)">
+<path d="M 993.23 503.39 L 993.23 514.47 L 991.61 514.47 L 991.61 503.39 L 993.23 503.39" fill="url(#ggrad235)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-475" data-name="任意多边形: 形状 474" transform="rotate(240.92 985.47 497.99)">
+<path d="M 986.28 492.45 L 986.28 503.53 L 984.66 503.53 L 984.66 492.45 L 986.28 492.45" fill="url(#ggrad236)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-476" data-name="任意多边形: 形状 475" transform="rotate(247.58 979.84 486.31)">
+<path d="M 980.65 480.77 L 980.65 491.85 L 979.03 491.85 L 979.03 480.77 L 980.65 480.77" fill="url(#ggrad237)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-477" data-name="任意多边形: 形状 476" transform="rotate(254.25 975.6 474.06)">
+<path d="M 976.41 468.52 L 976.41 479.6 L 974.79 479.6 L 974.79 468.52 L 976.41 468.52" fill="url(#ggrad238)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-478" data-name="任意多边形: 形状 477" transform="rotate(260.92 972.81 461.4)">
+<path d="M 973.62 455.86 L 973.62 466.94 L 972 466.94 L 972 455.86 L 973.62 455.86" fill="url(#ggrad239)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-479" data-name="任意多边形: 形状 478" transform="rotate(267.58 971.51 448.5)">
+<path d="M 972.33 442.96 L 972.33 454.04 L 970.7 454.04 L 970.7 442.96 L 972.33 442.96" fill="url(#ggrad240)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-480" data-name="任意多边形: 形状 479" transform="rotate(274.25 971.72 435.54)">
+<path d="M 972.53 430 L 972.53 441.08 L 970.91 441.08 L 970.91 430 L 972.53 430" fill="url(#ggrad241)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-481" data-name="任意多边形: 形状 480" transform="rotate(280.92 973.43 422.68)">
+<path d="M 974.24 417.14 L 974.24 428.22 L 972.62 428.22 L 972.62 417.14 L 974.24 417.14" fill="url(#ggrad242)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-482" data-name="任意多边形: 形状 481" transform="rotate(287.58 976.62 410.12)">
+<path d="M 977.44 404.58 L 977.44 415.66 L 975.81 415.66 L 975.81 404.58 L 977.44 404.58" fill="url(#ggrad243)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-483" data-name="任意多边形: 形状 482" transform="rotate(294.25 981.25 398.01)">
+<path d="M 982.06 392.47 L 982.06 403.55 L 980.44 403.55 L 980.44 392.47 L 982.06 392.47" fill="url(#ggrad244)" stroke-width="0.013" stroke="none"/>
+</g>
+<g id="shape-484" data-name="任意多边形: 形状 483" transform="rotate(300.92 987.25 386.52)">
+<path d="M 988.07 380.98 L 988.07 392.06 L 986.44 392.06 L 986.44 380.98 L 988.07 380.98" fill="url(#ggrad245)" stroke-width="0.013" stroke="none"/>
+</g>
+</g>
+<g id="shape-430" data-name="弧形 429">
+<path d="M 1197.72 441.42 A 114.05 114.05 0 0 1 1062.42 555.84" stroke-width="2.667" stroke-linecap="round" stroke="#0165FF" stroke-opacity="0.14" stroke-dasharray="1 3" stroke-linejoin="round" fill="none"/>
+</g>
+</g>
+<g id="shape-224" data-name="直接连接符 223">
+<line x1="310.65" y1="377.34" x2="370.95" y2="407.1" stroke-width="5" stroke-linecap="round" stroke="url(#mgrad5)" stroke-dasharray="1 3" stroke-linejoin="round" fill="#0165FF"/>
+</g>
+<g id="shape-491" data-name="直接连接符 490" transform="translate(643.78 374.43) scale(1 -1) translate(-643.78 -374.43)">
+<line x1="613.62" y1="359.55" x2="673.93" y2="389.31" stroke-width="5" stroke-linecap="round" stroke="url(#mgrad6)" stroke-dasharray="1 3" stroke-linejoin="round" fill="#0165FF"/>
+</g>
+<g id="shape-492" data-name="直接连接符 491">
+<line x1="907.24" y1="377.34" x2="967.55" y2="407.1" stroke-width="5" stroke-linecap="round" stroke="url(#mgrad7)" stroke-dasharray="1 3" stroke-linejoin="round" fill="#0165FF"/>
+</g>
+<g id="shape-2" data-name="标题 1">
+<rect x="71.41" y="48.74" width="533.19" height="58.16" fill="none"/>
+<text x="81.01" y="89.81" text-anchor="start" xml:space="preserve" font-family="&quot;Montserrat Black&quot;, &quot;HarmonyOS Sans SC Black&quot;, +mj-cs, sans-serif" font-size="42.67" fill="#000000"><tspan fill="#000000" font-size="42.67">本页内容标题</tspan></text>
+</g></svg>

@@ -5,8 +5,8 @@
     "formats": ["ppt169"],
     "filePattern": "{key}.svg",
     "libraryPositioning": "Visualization template library covering charts, infographics, diagrams, and strategic frameworks. The `charts/` path is retained for backward compatibility. Templates are named by visual structure, not by business-model name — model-specific frameworks (SWOT, BCG, PEST, OKR, Porter's Five Forces, Value Chain, etc.) are matched via keywords in `summary`.",
-    "summaryGrammar": "Each chart's `summary` is a selection rule, not a description. Format: 'Pick for <content shape + scale>. Skip if <reason → alternative>'. Strategist matches every page's content shape against all 71 summaries; no category/keyword index — full-read is intentional.",
-    "updated": "2026-05-13"
+    "summaryGrammar": "Each chart's `summary` is a selection rule, not a description. Format: 'Pick for <content shape + scale>. Skip if <reason → alternative>'. Resolve compact candidates by content form and item count first; Strategist reads and compares summaries only for that page's shortlist.",
+    "updated": "2026-09-25"
   },
   "charts": {
     "area_chart": {

@@ -18,7 +18,7 @@
    node <SKILL_ROOT>/scripts/make-custom-theme.mjs editorial "#RRGGBB" "$DIR/css/theme.css" --name="brand-name"
    ```
 4. `index.html` 中的 `<link id="theme-link">` 会自动加载。要启用 T 键切换预设主题，复制全部预设主题到 `css/`，并让 `theme-link` 指向具体主题文件，例如 `css/ink-classic.css`。
-5. 微动/沉浸/静态模式下 T 键可实时切换 5 套预设主题（切完后流体背景平滑变色）。如果 `theme-link` 指向一次性 `css/theme.css`，T 键会保持锁定，避免覆盖用户自定义主题。
+5. 微动/沉浸/静态模式下 T 键可实时切换 5 套预设主题（切完后流体背景平滑变色）。如果 `theme-link` 指向一次性 `css/theme.css`，T 按钮会禁用并提示主题已固定，避免覆盖用户自定义主题。
 
 ### 主题文件对应
 

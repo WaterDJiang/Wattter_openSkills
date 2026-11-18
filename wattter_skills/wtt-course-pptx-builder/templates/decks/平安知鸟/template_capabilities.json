@@ -1,0 +1,900 @@
+{
+  "schema_version": 3,
+  "template_id": "平安知鸟",
+  "kind": "decks",
+  "replication_mode": "standard",
+  "page_count": 19,
+  "shared_assets": [
+    "logo_white.png"
+  ],
+  "asset_roles": {
+    "identity": [
+      "logo_white.png"
+    ],
+    "background": [],
+    "chrome": [],
+    "illustration": []
+  },
+  "shell_contract": {
+    "required_roles": [
+      "identity"
+    ],
+    "forbid_unlocked_full_bleed": false
+  },
+  "pages": {
+    "01_cover": {
+      "file": "01_cover.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 2,
+      "vector_elements": 8,
+      "text_elements": 4,
+      "text_runs": 4,
+      "source_text_chars": 62,
+      "max_text_chars": 31,
+      "image_refs": [
+        "cover_illustration.png",
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "cover_illustration.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.143001,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.857143,
+        "top_level_groups": 4,
+        "semantic_content_groups": 2,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "02_toc": {
+      "file": "02_toc.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 14,
+      "text_elements": 15,
+      "text_runs": 15,
+      "source_text_chars": 226,
+      "max_text_chars": 17,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.966667,
+        "top_level_groups": 7,
+        "semantic_content_groups": 4,
+        "chrome_groups": 3,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "03_chapter": {
+      "file": "03_chapter.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 7,
+      "text_elements": 6,
+      "text_runs": 6,
+      "source_text_chars": 115,
+      "max_text_chars": 36,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.928571,
+        "top_level_groups": 5,
+        "semantic_content_groups": 2,
+        "chrome_groups": 3,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "03b_chapter_modern": {
+      "file": "03b_chapter_modern.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 8,
+      "text_elements": 5,
+      "text_runs": 5,
+      "source_text_chars": 93,
+      "max_text_chars": 25,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.928571,
+        "top_level_groups": 5,
+        "semantic_content_groups": 2,
+        "chrome_groups": 3,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04_content": {
+      "file": "04_content.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 22,
+      "text_elements": 19,
+      "text_runs": 19,
+      "source_text_chars": 324,
+      "max_text_chars": 21,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.97619,
+        "top_level_groups": 7,
+        "semantic_content_groups": 4,
+        "chrome_groups": 3,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04b_content_flow": {
+      "file": "04b_content_flow.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 18,
+      "text_elements": 15,
+      "text_runs": 15,
+      "source_text_chars": 240,
+      "max_text_chars": 17,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.970588,
+        "top_level_groups": 7,
+        "semantic_content_groups": 5,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04c_content_bullets": {
+      "file": "04c_content_bullets.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 11,
+      "text_elements": 20,
+      "text_runs": 20,
+      "source_text_chars": 315,
+      "max_text_chars": 19,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.96875,
+        "top_level_groups": 8,
+        "semantic_content_groups": 6,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04d_content_compare": {
+      "file": "04d_content_compare.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 17,
+      "text_elements": 17,
+      "text_runs": 17,
+      "source_text_chars": 243,
+      "max_text_chars": 18,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.971429,
+        "top_level_groups": 5,
+        "semantic_content_groups": 3,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04e_content_stats": {
+      "file": "04e_content_stats.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 14,
+      "text_elements": 12,
+      "text_runs": 12,
+      "source_text_chars": 192,
+      "max_text_chars": 17,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.962963,
+        "top_level_groups": 5,
+        "semantic_content_groups": 3,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04f_content_compare_orbit": {
+      "file": "04f_content_compare_orbit.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 13,
+      "text_elements": 22,
+      "text_runs": 22,
+      "source_text_chars": 273,
+      "max_text_chars": 18,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.972222,
+        "top_level_groups": 6,
+        "semantic_content_groups": 4,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04g_content_points_radial": {
+      "file": "04g_content_points_radial.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 20,
+      "text_elements": 19,
+      "text_runs": 19,
+      "source_text_chars": 319,
+      "max_text_chars": 19,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.975,
+        "top_level_groups": 8,
+        "semantic_content_groups": 6,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04h_content_points_cards": {
+      "file": "04h_content_points_cards.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 26,
+      "text_elements": 18,
+      "text_runs": 18,
+      "source_text_chars": 318,
+      "max_text_chars": 19,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.977778,
+        "top_level_groups": 8,
+        "semantic_content_groups": 6,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04i_content_project_roadmap": {
+      "file": "04i_content_project_roadmap.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 29,
+      "text_elements": 30,
+      "text_runs": 30,
+      "source_text_chars": 504,
+      "max_text_chars": 21,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.983333,
+        "top_level_groups": 9,
+        "semantic_content_groups": 6,
+        "chrome_groups": 3,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04j_content_service_swimlanes": {
+      "file": "04j_content_service_swimlanes.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 33,
+      "text_elements": 41,
+      "text_runs": 41,
+      "source_text_chars": 676,
+      "max_text_chars": 21,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.986667,
+        "top_level_groups": 9,
+        "semantic_content_groups": 7,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04k_content_agenda_matrix": {
+      "file": "04k_content_agenda_matrix.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 16,
+      "text_elements": 31,
+      "text_runs": 31,
+      "source_text_chars": 525,
+      "max_text_chars": 21,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.979167,
+        "top_level_groups": 8,
+        "semantic_content_groups": 5,
+        "chrome_groups": 3,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04l_content_mentor_three_cards": {
+      "file": "04l_content_mentor_three_cards.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 24,
+      "text_elements": 16,
+      "text_runs": 16,
+      "source_text_chars": 264,
+      "max_text_chars": 19,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.97561,
+        "top_level_groups": 7,
+        "semantic_content_groups": 5,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04m_content_operation_loop": {
+      "file": "04m_content_operation_loop.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 23,
+      "text_elements": 25,
+      "text_runs": 25,
+      "source_text_chars": 423,
+      "max_text_chars": 19,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.979592,
+        "top_level_groups": 8,
+        "semantic_content_groups": 6,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "04n_content_feature_orbit_icons": {
+      "file": "04n_content_feature_orbit_icons.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 31,
+      "text_elements": 16,
+      "text_runs": 16,
+      "source_text_chars": 283,
+      "max_text_chars": 19,
+      "image_refs": [
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.979167,
+        "top_level_groups": 10,
+        "semantic_content_groups": 8,
+        "chrome_groups": 2,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    },
+    "05_ending": {
+      "file": "05_ending.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 2,
+      "vector_elements": 8,
+      "text_elements": 4,
+      "text_runs": 4,
+      "source_text_chars": 81,
+      "max_text_chars": 36,
+      "image_refs": [
+        "ending_illustration.png",
+        "logo_white.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "ending_illustration.png",
+          "role": "illustration",
+          "instances": 1,
+          "max_coverage_ratio": 0.130697,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "logo_white.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010348,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_with_illustration",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.857143,
+        "top_level_groups": 5,
+        "semantic_content_groups": 2,
+        "chrome_groups": 3,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo_white.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo_white.png"
+        ]
+      }
+    }
+  },
+  "generated_by": "scripts/template_capabilities.py"
+}

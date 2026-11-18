@@ -75,7 +75,10 @@ def find_notes_files(
             svg_stems_mapping[svg_path.stem] = i
             svg_index_mapping[i] = svg_path.stem
 
-    for notes_file in notes_dir.glob('*.md'):
+    # Index aliases first, exact filenames last: precedence must not depend
+    # on filesystem iteration order.
+    ordered = sorted(notes_dir.glob('*.md'), key=lambda p: (p.stem in svg_stems_mapping, p.name))
+    for notes_file in ordered:
         try:
             with open(notes_file, 'r', encoding='utf-8') as f:
                 content = f.read().strip()

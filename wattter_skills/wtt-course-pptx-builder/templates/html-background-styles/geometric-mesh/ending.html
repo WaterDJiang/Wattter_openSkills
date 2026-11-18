@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>geometric-mesh / ending</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+  }
+  /* 顶部 primary 色块，左下斜切 */
+  .top-block {
+    position: absolute; left: 0; top: 0; right: 0; height: 150px;
+    background: var(--primary);
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+  }
+  .top-grid {
+    position: absolute; left: 0; top: 0; right: 0; height: 150px;
+    background-image: radial-gradient(circle, var(--accent) 2px, transparent 3px);
+    background-size: 30px 30px; opacity: 0.5;
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+  }
+  /* 底部 primary→accent 色块，右上斜切（contact 下方安全区） */
+  .bottom-block {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 60px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
+  }
+  .logo { position: absolute; left: 48px; top: 175px; height: 40px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="top-block"></div>
+  <div class="top-grid"></div>
+  <div class="bottom-block"></div>
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: thanks 80,290 1200,400 -->
+  <!-- text-slot: contact 80,560 1200,650 -->
+</div>
+</body>
+</html>

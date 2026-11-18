@@ -1,0 +1,487 @@
+{
+  "schema": "code-video-frontend-libraries/v1",
+  "checkedOn": "2026-11-16",
+  "scope": "官方功能研究和按片选型；非新增预装后端",
+  "adoption": "采用时固定精确版本/lockfile、核对LICENSE、资产许可与网络；本表null版本表示未为本片安装锁定",
+  "libraries": [
+    {
+      "id": "d3-geo",
+      "name": "D3-geo",
+      "role": "地理投影与矢量路径",
+      "capabilities": [
+        "GeoJSON投影",
+        "球面路径与裁切",
+        "向SVG/Canvas输出路径"
+      ],
+      "needs": "带坐标的GeoJSON、明确投影和地图范围",
+      "limits": "不提供地形数据、古代边界或战役逻辑",
+      "frameAdapter": "投影参数由绝对帧求值；地名坐标使用相同projection，屏幕标签单独排布",
+      "sourceUrls": [
+        "https://d3js.org/d3-geo"
+      ],
+      "aliases": [
+        "二维",
+        "地图",
+        "边界",
+        "河流",
+        "坐标",
+        "战役"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "topojson-client",
+      "name": "TopoJSON Client",
+      "role": "边界拓扑",
+      "capabilities": [
+        "TopoJSON转GeoJSON",
+        "提取共享边线mesh",
+        "合并具名区域"
+      ],
+      "needs": "已制备TopoJSON和对象ID",
+      "limits": "不识别历史疆域；不负责渲染或动画",
+      "frameAdapter": "预处理feature/mesh；占领状态选择固定区域ID，不每帧重建拓扑",
+      "sourceUrls": [
+        "https://github.com/topojson/topojson-client"
+      ],
+      "aliases": [
+        "疆域",
+        "共享边界",
+        "区域",
+        "占领"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "turf",
+      "name": "Turf.js",
+      "role": "地理计算",
+      "capabilities": [
+        "沿路线按距离取点along",
+        "长度/方位角",
+        "缓冲与多边形运算"
+      ],
+      "needs": "经纬度GeoJSON、单位、已核实路线",
+      "limits": "不是寻路服务；两点连线不代表古代行军路线",
+      "frameAdapter": "预计算长度；按帧求距离再along；预计算区域交并，避免每帧昂贵运算",
+      "sourceUrls": [
+        "https://turfjs.org/docs/api/along"
+      ],
+      "aliases": [
+        "行军",
+        "路线",
+        "箭头",
+        "距离",
+        "地理"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "proj4js",
+      "name": "Proj4js",
+      "role": "坐标转换",
+      "capabilities": [
+        "坐标参考系转换",
+        "定义投影与基准",
+        "点坐标转换"
+      ],
+      "needs": "源/目标CRS、轴顺序、必要基准参数",
+      "limits": "不自动识别错标坐标；GCJ-02/BD-09并非可直接当EPSG转换处理",
+      "frameAdapter": "加载时统一坐标；明示经纬度顺序，不在每帧来回转换",
+      "sourceUrls": [
+        "https://proj4js.org/"
+      ],
+      "aliases": [
+        "投影",
+        "坐标",
+        "CRS",
+        "对齐"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "geotiffjs",
+      "name": "GeoTIFF.js",
+      "role": "高程与栅格读取",
+      "capabilities": [
+        "浏览器/Node解析GeoTIFF",
+        "读取波段和地理元信息",
+        "读取窗口/像素"
+      ],
+      "needs": "可用GeoTIFF/DEM、波段、NoData、CRS",
+      "limits": "读数据不等于已配准或自动生成晕渲/三维模型",
+      "frameAdapter": "预读必要窗口、处理NoData并缓存；高程网格与颜色贴图共用范围",
+      "sourceUrls": [
+        "https://geotiffjs.github.io/"
+      ],
+      "aliases": [
+        "高程",
+        "地形",
+        "DEM",
+        "栅格"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "maplibre-gl",
+      "name": "MapLibre GL JS",
+      "role": "WebGL地图引擎",
+      "capabilities": [
+        "矢量/栅格地图与GeoJSON图层",
+        "raster-dem三维地形",
+        "bearing/pitch镜头"
+      ],
+      "needs": "样式、瓦片/DEM、字体glyph、sprite和可用来源",
+      "limits": "引擎不附免费无限瓦片；地形不自动包含历史边界",
+      "frameAdapter": "逐帧直接设置相机/图层状态，禁用实时flyTo；等待样式/瓦片/字体和绘制完成再截图",
+      "sourceUrls": [
+        "https://maplibre.org/maplibre-gl-js/docs/examples/3d-terrain/"
+      ],
+      "aliases": [
+        "地形",
+        "地图",
+        "倾斜",
+        "镜头",
+        "瓦片"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "openlayers",
+      "name": "OpenLayers",
+      "role": "多数据源地图",
+      "capabilities": [
+        "矢量与栅格地图",
+        "多投影及GeoTIFF接入路线",
+        "WebGL高程晕渲"
+      ],
+      "needs": "CRS明确的数据源、地形编码及加载策略",
+      "limits": "晕渲是二维地形表现，不能据此称真实三维相机",
+      "frameAdapter": "显式设置view与样式变量；等待rendercomplete和所有源数据就绪，不用墙钟动画",
+      "sourceUrls": [
+        "https://openlayers.org/en/latest/examples/webgl-shaded-relief.html"
+      ],
+      "aliases": [
+        "GIS",
+        "地形",
+        "晕渲",
+        "地图",
+        "栅格"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "leaflet",
+      "name": "Leaflet",
+      "role": "轻量二维地图",
+      "capabilities": [
+        "瓦片/图片叠图",
+        "GeoJSON线面与标记",
+        "SVG/Canvas覆盖层"
+      ],
+      "needs": "地图影像或瓦片、经纬度数据",
+      "limits": "核心不提供三维地形或倾斜相机；主站可能指向预发布文档",
+      "frameAdapter": "关闭平移缩放动画；按帧设置视图，等待tile和覆盖层；采用版本对应API",
+      "sourceUrls": [
+        "https://leafletjs.com/reference-1.9.4.html"
+      ],
+      "aliases": [
+        "二维",
+        "标记",
+        "地图",
+        "交互"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "threejs",
+      "name": "Three.js",
+      "role": "自定义三维场景",
+      "capabilities": [
+        "几何/灯光/PBR材质与相机",
+        "位移贴图改变顶点形成地形",
+        "glTF模型与动画加载"
+      ],
+      "needs": "网格/高程、贴图、模型、坐标与单位",
+      "limits": "不是GIS数据源；低细分网格不能表达精细位移；单张图没有背面几何",
+      "frameAdapter": "停止默认循环；从帧号设置相机/物体/动画绝对时间；await纹理/模型后显式render",
+      "sourceUrls": [
+        "https://threejs.org/docs/pages/MeshStandardMaterial.html",
+        "https://threejs.org/docs/pages/GLTFLoader.html"
+      ],
+      "aliases": [
+        "3D",
+        "三维",
+        "地形",
+        "构图",
+        "城池",
+        "机械"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "deckgl",
+      "name": "deck.gl",
+      "role": "GPU地理数据可视化",
+      "capabilities": [
+        "TripsLayer时间轨迹",
+        "TerrainLayer从编码高程图建表面",
+        "路径/区域/文字/弧线图层"
+      ],
+      "needs": "轨迹坐标与相对时间戳、高程编码、viewState",
+      "limits": "TripsLayer不生成军事箭头或战争规则；避免大整数时间戳精度损失",
+      "frameAdapter": "关闭自动过渡，currentTime由帧求值；重设全部图层props并等待资源；可叠MapLibre但不是必须",
+      "sourceUrls": [
+        "https://deck.gl/docs/api-reference/geo-layers/trips-layer",
+        "https://deck.gl/docs/api-reference/geo-layers/terrain-layer"
+      ],
+      "aliases": [
+        "轨迹",
+        "行军",
+        "流量",
+        "多路线",
+        "地形"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "cesiumjs",
+      "name": "CesiumJS",
+      "role": "地球尺度三维地理",
+      "capabilities": [
+        "地球/地形/影像与3D Tiles",
+        "时变实体与相机",
+        "可控模拟时钟"
+      ],
+      "needs": "地形/影像/3D Tiles来源、坐标、服务配置",
+      "limits": "部分托管服务需要token；库不附无限免费数据；全球LOD加载增加导出复杂度",
+      "frameAdapter": "关闭默认循环/时钟推进；固定currentTime和相机，显式渲染并等瓦片LOD稳定；记录GPU环境",
+      "sourceUrls": [
+        "https://cesium.com/learn/cesiumjs/ref-doc/Viewer.html",
+        "https://cesium.com/learn/cesiumjs/ref-doc/Clock.html"
+      ],
+      "aliases": [
+        "地球",
+        "全球",
+        "三维",
+        "俯冲",
+        "卫星"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "pixijs",
+      "name": "PixiJS",
+      "role": "高性能二维合成",
+      "capabilities": [
+        "Sprite/Container/Graphics场景图",
+        "图片遮罩与滤镜",
+        "分层视差与精灵批处理"
+      ],
+      "needs": "分层图片/透明资产、遮罩与固定坐标",
+      "limits": "不是三维重建；平面视差无法展示正确建筑背面",
+      "frameAdapter": "停止ticker；从帧重设变换与滤镜，等待Assets后显式render；固定随机与反馈缓存",
+      "sourceUrls": [
+        "https://pixijs.com/8.x/guides/components/scene-objects"
+      ],
+      "aliases": [
+        "图片",
+        "2.5D",
+        "视差",
+        "插画",
+        "合成"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "p5js",
+      "name": "p5.js",
+      "role": "创意绘图",
+      "capabilities": [
+        "程序图形",
+        "噪声/粒子和手绘式画法",
+        "受控逐帧重画"
+      ],
+      "needs": "主体几何、固定seed、样式实现",
+      "limits": "不自动具备GIS/DEM/历史疆域；笔刷插件另核版本与许可",
+      "frameAdapter": "noLoop后按frame求绝对状态并redraw；随机点预生成，不依赖前帧残留",
+      "sourceUrls": [
+        "https://p5js.org/reference/p5/noLoop/"
+      ],
+      "aliases": [
+        "手绘",
+        "图片",
+        "生成艺术",
+        "粒子",
+        "沙画"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "gsap",
+      "name": "GSAP",
+      "role": "补间编排",
+      "capabilities": [
+        "Timeline seek",
+        "相机/面板/路径参数补间",
+        "标签与入场节奏"
+      ],
+      "needs": "可插值对象、时间区间及初始状态",
+      "limits": "不是渲染器或地图数据；seek跳过回调副作用会丢状态",
+      "frameAdapter": "建立暂停时间轴，seek(frame/fps)；状态不能仅靠onComplete累积；不启动第二帧时钟",
+      "sourceUrls": [
+        "https://gsap.com/docs/v3/GSAP/Timeline/"
+      ],
+      "aliases": [
+        "镜头",
+        "字幕",
+        "标注",
+        "转场",
+        "时间轴"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    },
+    {
+      "id": "remotion",
+      "name": "Remotion",
+      "role": "React视频宿主",
+      "capabilities": [
+        "useCurrentFrame帧时钟",
+        "按帧合成组件",
+        "视频与声音编排及导出"
+      ],
+      "needs": "React工程、素材与独立渲染配置",
+      "limits": "不是地图画法；许可按实际用途核对；当前自带render.cjs验收不自动适用于该宿主",
+      "frameAdapter": "使用宿主当前帧，适配异步就绪/素材锁/四帧确认/编码验收，禁止嵌套自主时钟",
+      "sourceUrls": [
+        "https://www.remotion.dev/docs/use-current-frame"
+      ],
+      "aliases": [
+        "宿主",
+        "视频",
+        "编排",
+        "React",
+        "长片"
+      ],
+      "verification": "research-only",
+      "pinnedVersion": null
+    }
+  ],
+  "routes": [
+    {
+      "id": "terrain-2d",
+      "name": "二维地形战役与地理叙事",
+      "primaryIds": [
+        "d3-geo"
+      ],
+      "optionalIds": [
+        "topojson-client",
+        "turf",
+        "proj4js",
+        "geotiffjs",
+        "gsap"
+      ],
+      "alternativeIds": [],
+      "when": "主要俯视地图、路线推演、疆域变色；参考片首选",
+      "inputs": "已配准晕渲底图＋地点/区域/路线＋剧情事件",
+      "notFor": "真实绕山俯冲或建筑背面"
+    },
+    {
+      "id": "map-engine",
+      "name": "真实地图与倾斜地形",
+      "primaryIds": [
+        "maplibre-gl"
+      ],
+      "optionalIds": [
+        "deckgl",
+        "turf",
+        "proj4js"
+      ],
+      "alternativeIds": [
+        "openlayers",
+        "leaflet"
+      ],
+      "when": "需要地图瓦片与多级缩放；OpenLayers适合GIS/晕渲，Leaflet仅轻量二维替代",
+      "inputs": "可取得并获准使用的样式/瓦片/DEM/glyph/sprite",
+      "notFor": "把所有替代库一起安装或假设它们都有三维地形"
+    },
+    {
+      "id": "terrain-3d",
+      "name": "自定义三维地形与城池",
+      "primaryIds": [
+        "threejs"
+      ],
+      "optionalIds": [
+        "geotiffjs",
+        "proj4js",
+        "gsap"
+      ],
+      "alternativeIds": [],
+      "when": "真实高度遮挡、绕行山谷、城池/机械/桌面构图",
+      "inputs": "高程或建模网格＋贴图＋模型与单位",
+      "notFor": "只有一张地图图片却声称能准确绕背面"
+    },
+    {
+      "id": "globe-3d",
+      "name": "地球到区域的三维镜头",
+      "primaryIds": [
+        "cesiumjs"
+      ],
+      "optionalIds": [
+        "proj4js"
+      ],
+      "alternativeIds": [],
+      "when": "全球飞行、卫星到地区、地球尺度迁徙",
+      "inputs": "地形/影像/3D Tiles与绝对时间基准",
+      "notFor": "无数据/服务准备的轻量短地图"
+    },
+    {
+      "id": "illustrated-2p5d",
+      "name": "图片生成与分层插画地图",
+      "primaryIds": [
+        "pixijs"
+      ],
+      "optionalIds": [
+        "gsap"
+      ],
+      "alternativeIds": [
+        "p5js"
+      ],
+      "when": "虚构世界、风格插画、纸纹背景和分层视差",
+      "inputs": "固定构图的分层资产/透明遮罩；地理标注另存矢量",
+      "notFor": "真实高程、疆界和坐标精确性要求"
+    },
+    {
+      "id": "trajectory-data",
+      "name": "多路线与流量叙事",
+      "primaryIds": [
+        "deckgl"
+      ],
+      "optionalIds": [
+        "maplibre-gl",
+        "turf",
+        "proj4js"
+      ],
+      "alternativeIds": [
+        "d3-geo"
+      ],
+      "when": "大量同时运动轨迹、迁徙、贸易与交通",
+      "inputs": "路线坐标＋相对时间戳＋事件/颜色映射",
+      "notFor": "把轨迹图层当自动战争推演器"
+    }
+  ]
+}

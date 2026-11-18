@@ -141,19 +141,24 @@ def create_notes_slide_xml(slide_num: int, notes_text: str) -> str:
 </p:notes>'''
 
 
-def create_notes_slide_rels_xml(slide_num: int) -> str:
+def create_notes_slide_rels_xml(slide_num: int, master_target: str | None = None) -> str:
     """Create notes slide relationship file XML.
 
     Args:
         slide_num: Slide number.
+        master_target: Relative target of a notes master already in the package.
 
     Returns:
         Relationship file XML string.
     """
-    # No notesMaster relationship: the base PPTX produced by python-pptx does
-    # not ship a notesMaster part, so referencing one here would create a
-    # dangling rels Target and PowerPoint reports the file as corrupt.
+    master_relationship = ''
+    if master_target:
+        master_relationship = (
+            '  <Relationship Id="rId2" '
+            'Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesMaster" '
+            f'Target="{master_target}"/>\n'
+        )
     return f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="../slides/slide{slide_num}.xml"/>
-</Relationships>'''
+{master_relationship}</Relationships>'''

@@ -20,9 +20,9 @@ longform:   opencli_login_adapter (weibo/article-draft) -> opencli_ui_longform -
 
 默认生成结构：
 
-1. 一句有判断力的钩子，直接给出核心观点。
+1. 一句价值判断或核心洞察，直接给出观点（**不要标题党、不要绝对化卖货词**——按 [content-style.md](content-style.md) 去营销化）。
 2. 2 到 4 个紧凑信息点，保留关键证据、数字或方法。
-3. 一个主要 GEO 链接；没有必须露出的链接时，用一句收束或提问结尾。
+3. 一条**自然语句引入**的主链接（不堆裸链，无强必要时可不带链）；结尾用提问或开放句收束，**不放「关注/转发/购买/点击」等硬 CTA**。
 
 生成约束：
 
@@ -144,6 +144,11 @@ opencli weibo article-draft \
 - 长文编辑器可能沿用旧封面，也可能默认开启「仅粉丝阅读全文」。发布前必须确认旧封面未被带入，并关闭非预期的「仅粉丝阅读全文」。
 - 长文封面上传返回 `Not allowed` 时，不重试同一个 file input；保存完整草稿，按 `已创建草稿：待补封面` 回报。
 - `WRITE_UNKNOWN` 或调用状态不明时，先查同标题草稿；确认不存在才能进入长文 UI 回退。
+
+### 插件参照补充（GEO action）
+
+- 长文草稿两步创建：`POST https://card.weibo.com/article/v5/aj/editor/draft/create?uid=<uid>&_rid=<rid>`（空表单）拿 `data.id`，再 `POST .../draft/save?uid=<uid>&id=<id>&_rid=<rid>` 提交表单（`title/content(HTML)/cover/summary/status=0/save=1` 等）；无传统 CSRF，鉴权用 `SN-REQID` 头（base64(`uid&timestamp`)）。`uid` 从 `GET card.weibo.com/article/v5/editor` 的 `config:JSON.parse(...)` 解析。
+- 图片上传端点（未来图片能力备忘）：URL 转存走 `POST .../aj/editor/plugins/asyncuploadimg` form `{'urls[0]': source}` 再轮询 `asyncimginfo`（最多 30 次）拿 `pid` → `https://wx3.sinaimg.cn/large/<pid>.jpg`；二进制图走 `POST picupload.weibo.com/interface/pic_upload.php?app=miniblog&s=json&p=1&data=1`。当前 adapter 仍是 `images:false`。
 
 ## 防重复与回报
 

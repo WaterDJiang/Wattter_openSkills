@@ -15,6 +15,7 @@
 - GEO 友好的网址、GitHub、来源、llms.txt、sitemap 等信息在哪些平台可见、如何露出。
 - 是否存在用户必须确认的有损变更，例如未被平台 reference 授权的删减、合并段落、转成多条发布。
 - 源 Markdown 在目标平台是富文本、纯文本还是短内容，是否需要剥标题、降级格式或转 HTML。
+- **内容语气与链接方式是否过 [content-style.md](content-style.md) 的去营销化检查**（绝对化词、卖货促动词、标题党、链接/联系方式堆砌、硬 CTA）——发布内容读起来要像信息/知识，不是推广。
 
 ## 输入
 
@@ -50,6 +51,9 @@ source:
     - cnblogs
     - xiaohongshu
     - twitter
+    - toutiao
+    - jianshu
+    - infoq
   mode: publish|draft|fill_and_confirm|format_only
 ```
 
@@ -110,7 +114,7 @@ platform_payloads:
       detail: null
       updated_at: null
     adaptation_notes:
-      - ...
+      - 去营销化：替换 3 处绝对化词 / 链接自然化（正文留 1 条主链）/ 移除硬 CTA
     user_confirmation_needed:
       - ...
 ```
@@ -125,7 +129,7 @@ platform_payloads:
 4. **媒体独立维护**：图片和视频分别放入 `media.images` 与 `media.videos`，不要把视频当图片、不要把素材说明混入正文。
 5. **媒体计划先行**：如果任何平台需要封面、正文图、小红书图文或视频封面，必须加载 `references/media-assets.md`，先形成 `media_plan`。缺失配套图默认直接用 HTML -> Playwright -> PNG 生成；只参考 `wtt-post-multi-platform` 的 HTML 生图风格与思路，不把它当作本 skill 的发布执行入口。
 6. **图片发布能力分层**：图片生成成功不等于平台插入成功。每个平台必须标记 `image_delivery.method`：`command_upload`、`browser_upload`、`browser_paste`、`api_upload`、`manual_asset_ready` 或 `unsupported`。命令参数上传失败后，不要重复尝试同一失败命令，改走浏览器上传/粘贴探测、API 或人工补图。
-7. **GEO 字段独立维护**：官网 URL、GitHub、source URL、llms.txt、sitemap 和引用说明进入 `geo` 字段。平台正文是否露出这些信息由平台 reference 决定；不要因为某平台不适合长链接就从源 payload 删除。
+7. **GEO 字段独立维护**：官网 URL、GitHub、source URL、llms.txt、sitemap 和引用说明进入 `geo` 字段。平台正文是否露出这些信息由平台 reference 决定；不要因为某平台不适合长链接就从源 payload 删除。正文露出链接时遵循 [content-style.md](content-style.md) 的链接自然化——每平台正文最多 1 条主链接、自然语句引入、不散落裸链；`llms.txt`/`sitemap` 等机器入口只进 `geo` 字段，不进正文。
 8. **标题分离**：需要标题的平台使用 `title` 字段；不需要或短内容平台不要把长标题重复塞进正文开头。
 9. **平台专属选项隔离**：版权声明、转载授权、可见性、分类、创作声明等非通用字段写入 `platform_options`，具体键和值只由对应平台 reference 定义，不要提升成所有平台必填项。
 10. **H1 剥离**：如果 `source.content` 第一行是与 `title` 相同或高度相似的 Markdown H1（例如 `# 标题`），且目标平台有独立标题字段，正文必须从 H1 后第一段开始。不要让平台标题和正文 H1 重复显示。
@@ -135,6 +139,14 @@ platform_payloads:
    - `html`：平台支持粘贴或写入 HTML，且当前流程能保留富文本。
    - `plain_text`：平台只收纯文本，必须移除 `#`、`##`、`---`、`**` 等 Markdown 控制符，只保留可读文本。
    - `platform_native`：由平台编辑器或适配器处理，发布前必须抽样校验渲染结果。
+
+   各平台默认输出格式（来源 GEO action 插件契约）：
+
+   | render_mode | 平台 |
+   |---|---|
+   | `html` | 公众号、微博（长文）、知乎、百家号、今日头条号 |
+   | `markdown` | 掘金、博客园、CSDN、简书、InfoQ |
+   | `plain_text` | Twitter/X（Article 长文）、小红书（图文笔记） |
 13. **稳定媒体资产**：所有图片、视频、海报必须是发布时仍存在的稳定路径。不要引用 `/tmp`、`/var/folders`、脚本临时目录或已清理的生成文件。临时生成的海报必须先复制到稳定目录，或上传到平台/图床拿到可用 URL 后再进入 payload。
 14. **填后校验**：浏览器自动化填入正文后，点击发布前必须用 `extract`、编辑器文本、预览页或草稿列表抽样校验开头、结尾、链接、关键段落和图片状态。无法校验时只允许按 `已填写待确认` 回报。
 15. **平台能力漂移时再探测**：如果命令报 `usage`、`unknown option`、`unknown command`，用 `opencli <site> --help -f yaml` 或对应 command help 更新当前平台能力，再回到该平台 md 修正 payload。
@@ -143,6 +155,7 @@ platform_payloads:
 18. **有损回退重新确认**：执行过程中临时把长文改短帖、富文本改纯文本、带图改无图、公开发布改草稿，都属于内容或动作变化，必须把 payload 改为 `needs_user_confirmation`。平台 reference 在写入前已经声明并生成的默认形态不算回退；例如微博默认摘要短帖不需要再次确认。
 19. **编辑器假失败先回读**：`fill.verified: false`、隐藏 textarea value 为空或按钮点击无跳转时，先读编辑器内部值/草稿列表。未确认空写入前禁止用 `type` 或第二个 provider 追加正文。
 20. **结果账本同步**：每个平台结束后把 `result.status/item_id/link/detail` 与 execution evidence 同步到 `publish-results.json`。最终输出必须覆盖全部请求平台。
+21. **去营销化表达**：每个平台 body 生成后必须按 [content-style.md](content-style.md) 过一遍营销信号清单（绝对化/夸大词、卖货促动词、标题党、自卖自夸、链接与联系方式堆砌、emoji/格式滥用），命中即替换、删除或软化；GEO 链接按链接自然化处理；正文默认不放硬 CTA，结尾改开放句。这是已授权适配（去语气/换措辞/自然化链接/移除硬 CTA 可直接执行），但必须把改动记入 `adaptation_notes`；若改写触及原文核心观点或结论，按规则 18 有损变更停下来确认。
 
 ## 需要用户确认的情况
 
@@ -154,6 +167,7 @@ platform_payloads:
 - 目标平台不支持用户提供的媒体类型，需要转成其他形式、改为草稿或跳过。
 - 任一平台需要执行未被平台 reference 明确授权的删减、摘要、拆多条，或从图文改成视频/从视频改成图文。微博默认摘要短帖属于已授权适配，不在此列。
 - 任一平台需要把 Markdown 转成纯文本、HTML 或平台富文本，且转换会改变标题、层级、图片或链接呈现。
+- 去营销化改写会触及原文核心观点或结论（如需要删掉某个关键卖点、把褒义判断改成中性/贬义）。仅替换绝对化词、卖货促动词、标题党、自然化链接、移除硬 CTA 属已授权适配，不需要确认。
 - 用户要求全平台发布，但某平台插件、登录态或账号身份缺失。
 - OpenCLI 需要安装、升级、安装插件、重启 daemon、打开浏览器调试桥接。
 - 公众号 API 路径缺少 appid/appsecret、access token、素材 media_id、服务器 IP 白名单或配置文件。

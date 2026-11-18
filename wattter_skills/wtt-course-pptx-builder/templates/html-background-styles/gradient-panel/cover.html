@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>gradient-panel / cover</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: {{primary}};
+    --accent: {{accent}};
+    --bg: {{bg}};
+    --surface: {{surface}};
+    --border: {{border}};
+  }
+  html, body { width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden; }
+  body { background: var(--bg); }
+  .canvas {
+    position: relative; width: {{canvas_w}}px; height: {{canvas_h}}px; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+  }
+  /* 左侧 primary→accent 渐变竖面板（本风格得名） */
+  .panel-left {
+    position: absolute; left: 0; top: 0; width: 60px; height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--accent));
+  }
+  /* 顶部 accent 细色带 */
+  .top-bar {
+    position: absolute; left: 60px; top: 0; right: 0; height: 8px;
+    background: var(--accent);
+  }
+  /* 右上角渐变强调块 */
+  .corner-block {
+    position: absolute; right: 0; top: 0; width: 360px; height: 240px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-bottom-left-radius: 240px; opacity: 0.92;
+  }
+  /* 右上角装饰圆环（叠在强调块上） */
+  .ring {
+    position: absolute; right: 70px; top: 70px; width: 110px; height: 110px;
+    border: 6px solid rgba(255, 255, 255, 0.38); border-radius: 50%;
+  }
+  /* 左下 accent 小色条 */
+  .corner-accent {
+    position: absolute; left: 60px; bottom: 0; width: 200px; height: 10px;
+    background: var(--accent);
+  }
+  .logo { position: absolute; left: 96px; top: 48px; height: 40px; width: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="panel-left"></div>
+  <div class="top-bar"></div>
+  <div class="corner-block"></div>
+  <div class="ring"></div>
+  <div class="corner-accent"></div>
+  <img class="logo" src="{{logo_href}}" alt="" />
+  <!-- text-slot: title 80,280 1200,380 -->
+  <!-- text-slot: subtitle 80,400 1200,455 -->
+  <!-- text-slot: author 80,625 640,665 -->
+  <!-- text-slot: date 660,625 1200,665 -->
+</div>
+</body>
+</html>

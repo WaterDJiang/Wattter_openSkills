@@ -44,6 +44,7 @@ def resolve_fill(
     id_prefix: str = "g",
     id_seq: list[int] | None = None,
     placeholder_hex: str | None = None,
+    bounds: tuple[float, float, float, float] | None = None,
 ) -> FillResult:
     """Inspect <p:spPr>'s fill children and emit an SVG fill descriptor.
 
@@ -74,12 +75,16 @@ def resolve_fill(
     local_name = sp_pr.tag.split("}", 1)[-1] if isinstance(sp_pr.tag, str) else ""
     for tag, handler in handlers:
         if local_name == tag:
-            return handler(sp_pr, palette, id_prefix, id_seq, placeholder_hex)
+            return handler(
+                sp_pr, palette, id_prefix, id_seq, placeholder_hex, bounds=bounds,
+            )
 
     for tag, handler in handlers:
         elem = sp_pr.find(f"a:{tag}", NS)
         if elem is not None:
-            return handler(elem, palette, id_prefix, id_seq, placeholder_hex)
+            return handler(
+                elem, palette, id_prefix, id_seq, placeholder_hex, bounds=bounds,
+            )
 
     return FillResult.inherit()
 
@@ -88,12 +93,15 @@ def resolve_fill(
 # Per-fill handlers
 # ---------------------------------------------------------------------------
 
-def _resolve_no_fill(_elem, _palette, _prefix, _seq, _placeholder_hex) -> FillResult:
+def _resolve_no_fill(
+    _elem, _palette, _prefix, _seq, _placeholder_hex, *, bounds=None,
+) -> FillResult:
     return FillResult.none_fill()
 
 
 def _resolve_solid_fill(elem: ET.Element, palette: ColorPalette | None,
-                        _prefix: str, _seq, placeholder_hex: str | None) -> FillResult:
+                        _prefix: str, _seq, placeholder_hex: str | None,
+                        *, bounds=None) -> FillResult:
     color_elem = find_color_elem(elem)
     hex_, alpha = resolve_color(color_elem, palette, placeholder_hex=placeholder_hex)
     if hex_ is None:
@@ -105,7 +113,8 @@ def _resolve_solid_fill(elem: ET.Element, palette: ColorPalette | None,
 
 
 def _resolve_grad_fill(elem: ET.Element, palette: ColorPalette | None,
-                       prefix: str, seq, placeholder_hex: str | None) -> FillResult:
+                       prefix: str, seq, placeholder_hex: str | None,
+                       *, bounds=None) -> FillResult:
     """Convert <a:gradFill> to an SVG linearGradient or radialGradient."""
     if seq is None:
         seq = [0]
@@ -116,7 +125,7 @@ def _resolve_grad_fill(elem: ET.Element, palette: ColorPalette | None,
     gs_lst = elem.find("a:gsLst", NS)
     if gs_lst is None:
         return FillResult.inherit()
-    stops_xml = []
+    stops: list[tuple[float, str]] = []
     for gs in gs_lst.findall("a:gs", NS):
         pos_pct = percent_to_ratio(gs.attrib.get("pos"), default=0.0)
         color_elem = find_color_elem(gs)
@@ -124,11 +133,17 @@ def _resolve_grad_fill(elem: ET.Element, palette: ColorPalette | None,
         if hex_ is None:
             continue
         opacity_attr = f' stop-opacity="{fmt_num(alpha, 4)}"' if alpha < 1.0 else ""
-        stops_xml.append(
-            f'<stop offset="{fmt_num(pos_pct, 4)}" stop-color="{hex_}"{opacity_attr}/>'
-        )
-    if not stops_xml:
+        stops.append((
+            pos_pct,
+            f'<stop offset="{fmt_num(pos_pct, 4)}" stop-color="{hex_}"{opacity_attr}/>',
+        ))
+    if not stops:
         return FillResult.inherit()
+    # OOXML producers are allowed to serialize gs entries out of position
+    # order. PowerPoint sorts them by `pos`; SVG instead clamps a decreasing
+    # offset to the previous stop, which visibly collapses multi-stop fills.
+    stops.sort(key=lambda item: item[0])
+    stops_xml = [item[1] for item in stops]
 
     # Linear vs radial vs path
     lin = elem.find("a:lin", NS)
@@ -140,19 +155,52 @@ def _resolve_grad_fill(elem: ET.Element, palette: ColorPalette | None,
             angle_deg = float(lin.attrib.get("ang", "0")) / 60000.0
         except ValueError:
             angle_deg = 0.0
-        x1, y1, x2, y2 = _angle_to_unit_endpoints(angle_deg)
+        scaled = lin.attrib.get("scaled", "1")
+        metadata = _gradient_metadata(elem, scaled=scaled)
+        units = ""
+        if scaled in ("0", "false", "False") and bounds is not None:
+            x1, y1, x2, y2 = _angle_to_bounds_endpoints(angle_deg, bounds)
+            units = ' gradientUnits="userSpaceOnUse"'
+        else:
+            x1, y1, x2, y2 = _angle_to_unit_endpoints(angle_deg)
         defs_xml = (
             f'<linearGradient id="{grad_id}" '
             f'x1="{fmt_num(x1, 4)}" y1="{fmt_num(y1, 4)}" '
-            f'x2="{fmt_num(x2, 4)}" y2="{fmt_num(y2, 4)}">'
+            f'x2="{fmt_num(x2, 4)}" y2="{fmt_num(y2, 4)}"{units}{metadata}>'
             + "".join(stops_xml)
             + "</linearGradient>"
         )
     elif rad is not None:
-        # Treat as radial regardless of path="circle" / "rect" / "shape" — SVG
-        # only has circle/ellipse, and path="circle" maps to fillToRect=center.
+        # SVG cannot reproduce DrawingML's shape-following shade exactly, but
+        # it can preserve the focus rectangle and tile extents. Mapping those
+        # values prevents the common top-left/bottom-right path gradients from
+        # collapsing into an incorrect bright spot at the shape center.
+        cx, cy, radius, focus_rect, tile_rect = _path_gradient_geometry(elem, rad)
+        path_kind = rad.attrib.get("path", "shape")
+        metadata = _gradient_metadata(
+            elem,
+            path=path_kind,
+            fill_to_rect=focus_rect,
+            tile_rect=tile_rect,
+        )
+        # Browsers inconsistently render objectBoundingBox radial gradients
+        # whose DrawingML focus/tile lies outside 0..1 (a common diagonal
+        # shade recipe uses cx=cy=-1). Express the same normalized geometry
+        # in user space through a bbox matrix so negative foci remain valid
+        # and the radial field keeps the shape's aspect ratio.
+        units_and_transform = ""
+        if bounds is not None:
+            bx, by, bw, bh = bounds
+            units_and_transform = (
+                ' gradientUnits="userSpaceOnUse"'
+                f' gradientTransform="matrix({fmt_num(bw, 4)} 0 0 '
+                f'{fmt_num(bh, 4)} {fmt_num(bx, 4)} {fmt_num(by, 4)})"'
+            )
         defs_xml = (
-            f'<radialGradient id="{grad_id}" cx="0.5" cy="0.5" r="0.5">'
+            f'<radialGradient id="{grad_id}" '
+            f'cx="{fmt_num(cx, 4)}" cy="{fmt_num(cy, 4)}" '
+            f'fx="{fmt_num(cx, 4)}" fy="{fmt_num(cy, 4)}" '
+            f'r="{fmt_num(radius, 4)}"{units_and_transform}{metadata}>'
             + "".join(stops_xml)
             + "</radialGradient>"
         )
@@ -170,7 +218,99 @@ def _resolve_grad_fill(elem: ET.Element, palette: ColorPalette | None,
     )
 
 
-def _resolve_blip_fill(_elem, _palette, _prefix, _seq, _placeholder_hex) -> FillResult:
+def _relative_rect(elem: ET.Element | None) -> tuple[float, float, float, float]:
+    """Read DrawingML relative-rectangle offsets as l/t/r/b ratios."""
+    if elem is None:
+        return 0.0, 0.0, 0.0, 0.0
+    return tuple(
+        percent_to_ratio(elem.attrib.get(key), default=0.0)
+        for key in ("l", "t", "r", "b")
+    )
+
+
+def _rect_metadata(values: tuple[float, float, float, float]) -> str:
+    return " ".join(fmt_num(value, 4) for value in values)
+
+
+def _path_gradient_geometry(
+    grad_fill: ET.Element,
+    path_fill: ET.Element,
+) -> tuple[
+    float,
+    float,
+    float,
+    tuple[float, float, float, float],
+    tuple[float, float, float, float],
+]:
+    """Approximate DrawingML path-gradient geometry in SVG object-box space.
+
+    `tileRect` defines the gradient tile relative to the shape bounding box.
+    `fillToRect` then defines the center-shade focus rectangle relative to that
+    tile. SVG only offers a focal point, so use the focus-rectangle center and
+    choose a radius that reaches every tile corner.
+    """
+    tile_values = _relative_rect(grad_fill.find("a:tileRect", NS))
+    tl, tt, tr, tb = tile_values
+    tile_left = tl
+    tile_top = tt
+    tile_right = 1.0 - tr
+    tile_bottom = 1.0 - tb
+    tile_width = tile_right - tile_left
+    tile_height = tile_bottom - tile_top
+
+    focus_values = _relative_rect(path_fill.find("a:fillToRect", NS))
+    fl, ft, fr, fb = focus_values
+    focus_left = tile_left + fl * tile_width
+    focus_top = tile_top + ft * tile_height
+    focus_right = tile_right - fr * tile_width
+    focus_bottom = tile_bottom - fb * tile_height
+    cx = (focus_left + focus_right) / 2.0
+    cy = (focus_top + focus_bottom) / 2.0
+
+    corners = (
+        (tile_left, tile_top),
+        (tile_right, tile_top),
+        (tile_right, tile_bottom),
+        (tile_left, tile_bottom),
+    )
+    radius = max(math.hypot(x - cx, y - cy) for x, y in corners)
+    if radius <= 0:
+        radius = 0.5
+    return cx, cy, radius, focus_values, tile_values
+
+
+def _gradient_metadata(
+    elem: ET.Element,
+    *,
+    scaled: str | None = None,
+    path: str | None = None,
+    fill_to_rect: tuple[float, float, float, float] | None = None,
+    tile_rect: tuple[float, float, float, float] | None = None,
+) -> str:
+    """Keep DrawingML-only semantics available for reverse export/diagnosis."""
+    attrs: list[str] = []
+    if scaled is not None:
+        attrs.append(f'data-pptx-scaled="{scaled}"')
+    if path is not None:
+        attrs.append(f'data-pptx-path="{path}"')
+    if fill_to_rect is not None:
+        attrs.append(
+            f'data-pptx-fill-to-rect="{_rect_metadata(fill_to_rect)}"'
+        )
+    if tile_rect is not None:
+        attrs.append(f'data-pptx-tile-rect="{_rect_metadata(tile_rect)}"')
+    if "rotWithShape" in elem.attrib:
+        attrs.append(
+            f'data-pptx-rot-with-shape="{elem.attrib["rotWithShape"]}"'
+        )
+    if "flip" in elem.attrib:
+        attrs.append(f'data-pptx-flip="{elem.attrib["flip"]}"')
+    return (" " + " ".join(attrs)) if attrs else ""
+
+
+def _resolve_blip_fill(
+    _elem, _palette, _prefix, _seq, _placeholder_hex, *, bounds=None,
+) -> FillResult:
     """blipFill on <p:spPr> means a shape filled with an image — handled at
     pic_to_svg level. For now mark as transparent so the shape's outline
     still draws and pic_to_svg can layer the image on top.
@@ -179,7 +319,8 @@ def _resolve_blip_fill(_elem, _palette, _prefix, _seq, _placeholder_hex) -> Fill
 
 
 def _resolve_patt_fill(elem: ET.Element, palette: ColorPalette | None,
-                       prefix, seq, placeholder_hex: str | None) -> FillResult:
+                       prefix, seq, placeholder_hex: str | None,
+                       *, bounds=None) -> FillResult:
     """Pattern fills (<a:pattFill prst="..."/> with fg/bg colors)."""
     fg = elem.find("a:fgClr", NS)
     bg = elem.find("a:bgClr", NS)
@@ -391,3 +532,25 @@ def _angle_to_unit_endpoints(angle_deg: float) -> tuple[float, float, float, flo
     x2 = cx + cos_a * half
     y2 = cy + sin_a * half
     return x1, y1, x2, y2
+
+
+def _angle_to_bounds_endpoints(
+    angle_deg: float,
+    bounds: tuple[float, float, float, float],
+) -> tuple[float, float, float, float]:
+    """User-space gradient vector for DrawingML ``scaled=0`` semantics."""
+    x, y, w, h = bounds
+    rad = math.radians(angle_deg % 360)
+    cos_a = math.cos(rad)
+    sin_a = math.sin(rad)
+    cx = x + w / 2.0
+    cy = y + h / 2.0
+    half = abs(cos_a) * abs(w) / 2.0 + abs(sin_a) * abs(h) / 2.0
+    if half <= 0:
+        half = 0.5
+    return (
+        cx - cos_a * half,
+        cy - sin_a * half,
+        cx + cos_a * half,
+        cy + sin_a * half,
+    )

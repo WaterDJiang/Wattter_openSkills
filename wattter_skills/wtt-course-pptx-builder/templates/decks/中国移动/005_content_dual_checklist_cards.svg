@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="brand-header" data-name="中国移动内容页标题">
+    <image href="china_mobile_logo.png" x="959.38" y="-21.00" width="292.82" height="164.71" preserveAspectRatio="none"/>
+    <text x="72" y="104" font-family="Microsoft YaHei,Arial,sans-serif" font-size="36" font-weight="bold" fill="#0070C0">双栏清单</text>
+    <rect x="72" y="122" width="84" height="5" rx="2.5" fill="#0FA4FE"/>
+  </g>
+  <g id="checklist-left" data-name="第一栏清单">
+    <rect x="72" y="163" width="545" height="474" rx="24" fill="#FFFFFF" stroke="#0070C0" stroke-opacity="0.24" stroke-width="2"/>
+    <rect x="96" y="187" width="176" height="48" rx="24" fill="#0070C0"/>
+    <text x="184" y="219" text-anchor="middle" font-family="Microsoft YaHei,Arial,sans-serif" font-size="23" font-weight="bold" fill="#FFFFFF">方案 A</text>
+    <text x="100" y="279" font-family="Microsoft YaHei,Arial,sans-serif" font-size="23" font-weight="bold" fill="#203864">方案重点</text>
+    <line x1="100" y1="298" x2="589" y2="298" stroke="#0070C0" stroke-opacity="0.18" stroke-width="2"/>
+    <circle cx="112" cy="340" r="7" fill="#0FA4FE"/>
+    <text x="136" y="347" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" fill="#203864">要点一</text>
+    <text x="136" y="373" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#808080">在此填写第一项说明</text>
+    <line x1="100" y1="399" x2="589" y2="399" stroke="#0070C0" stroke-opacity="0.12"/>
+    <circle cx="112" cy="439" r="7" fill="#0FA4FE"/>
+    <text x="136" y="446" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" fill="#203864">要点二</text>
+    <text x="136" y="472" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#808080">在此填写第二项说明</text>
+    <line x1="100" y1="498" x2="589" y2="498" stroke="#0070C0" stroke-opacity="0.12"/>
+    <circle cx="112" cy="538" r="7" fill="#0FA4FE"/>
+    <text x="136" y="545" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" fill="#203864">要点三</text>
+    <text x="136" y="571" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#808080">在此填写第三项说明</text>
+  </g>
+  <g id="checklist-right" data-name="第二栏清单">
+    <rect x="663" y="163" width="545" height="474" rx="24" fill="#FFFFFF" stroke="#0FA4FE" stroke-opacity="0.32" stroke-width="2"/>
+    <rect x="687" y="187" width="176" height="48" rx="24" fill="#0FA4FE"/>
+    <text x="775" y="219" text-anchor="middle" font-family="Microsoft YaHei,Arial,sans-serif" font-size="23" font-weight="bold" fill="#FFFFFF">方案 B</text>
+    <text x="691" y="279" font-family="Microsoft YaHei,Arial,sans-serif" font-size="23" font-weight="bold" fill="#203864">方案重点</text>
+    <line x1="691" y1="298" x2="1180" y2="298" stroke="#0070C0" stroke-opacity="0.18" stroke-width="2"/>
+    <circle cx="703" cy="340" r="7" fill="#0070C0"/>
+    <text x="727" y="347" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" fill="#203864">要点一</text>
+    <text x="727" y="373" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#808080">在此填写第一项说明</text>
+    <line x1="691" y1="399" x2="1180" y2="399" stroke="#0070C0" stroke-opacity="0.12"/>
+    <circle cx="703" cy="439" r="7" fill="#0070C0"/>
+    <text x="727" y="446" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" fill="#203864">要点二</text>
+    <text x="727" y="472" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#808080">在此填写第二项说明</text>
+    <line x1="691" y1="498" x2="1180" y2="498" stroke="#0070C0" stroke-opacity="0.12"/>
+    <circle cx="703" cy="538" r="7" fill="#0070C0"/>
+    <text x="727" y="545" font-family="Microsoft YaHei,Arial,sans-serif" font-size="22" fill="#203864">要点三</text>
+    <text x="727" y="571" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#808080">在此填写第三项说明</text>
+  </g>
+</svg>

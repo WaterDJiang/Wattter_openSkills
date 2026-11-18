@@ -86,6 +86,7 @@ platform_options:
 ## CSDN 内容适配
 
 - 默认使用完整技术长文，不做短内容摘要。
+- 写作语气与链接方式遵循 [content-style.md](content-style.md) 的去营销化清单（技术客观为主、禁绝对化卖货词、链接自然化、移除硬 CTA；通用，不在此重复）。
 - 多段 Markdown 应保留标题层级、列表、引用、代码块、表格和普通链接。先按 [browser-editor-fallback.md](browser-editor-fallback.md) 做一次覆盖式 contenteditable 注入探测；失败才由用户手动导入，导入后再回读校验。
 - 单段纯文本可以走已验证的直接写入路径；不要把含标题、列表、代码块或多个段落的正文降级拼成一段后发布。
 - 独立标题写入标题输入框。若正文第一行是同名 H1，删除该 H1 后再生成 `article.csdn.md`。
@@ -195,6 +196,8 @@ opencli browser csdn extract --selector ".layout__panel--editor" --chunk-size 50
 - 上传动作必须发生在预期插入位置；上传后检查 Markdown/预览中出现 CSDN 托管 URL 或真实图片节点。
 - 如果隐藏 input 返回 `Not allowed`、图片位置错误或无法验证预览，停止自动图片处理，保持 `manual_asset_ready`。不要重复上传同一图片，也不要在正文留下本地路径。
 - 真实文章含多张本地图片时，不要直接循环 `upload`。在定位/替换流程完成端到端验证前，让用户在编辑器中补图，或跳过 CSDN 的草稿/发布动作。
+
+插件参照补充（GEO action）：图片插入的另一条受控路径是点击编辑器顶部独立的「图片」工具栏按钮（标题形如 `图片 – Command+Shift+G`，选择器 `[title*="图片"],[aria-label*="图片"]`，**不要误点右侧「插入」下拉**），等待其弹出的 `input[type=file]` 后用 `DataTransfer` 赋值，再轮询编辑器文本出现 `![...](https://img-blog.csdnimg.cn/...)` 托管地址并按别名替换。封面只通过该独立「图片」按钮写入并作为正文首图，未选封面时不得把正文首图自动提升为封面。保存草稿后从 URL 的 `articleId` 或 `/edit/<id>` 取 id，重载编辑地址回读标题、正文首尾与封面首图。上述路径在本 skill 未做真实账号联调前仍按实验性探测处理。
 
 ## 草稿路径
 

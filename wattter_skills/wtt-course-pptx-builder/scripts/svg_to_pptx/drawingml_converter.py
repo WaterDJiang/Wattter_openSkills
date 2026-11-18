@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 import re
+from html import escape
 from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree as ET
@@ -44,6 +45,11 @@ _CHROME_ID_TOKENS = frozenset({
     'nav', 'logo', 'rule',
 })
 
+_IMPORTED_ATOM_GROUP_RE = re.compile(
+    r"^(?:(?:layout|master)-)?shape-\d+$",
+    re.IGNORECASE,
+)
+
 
 def _is_chrome_id(elem_id: str | None) -> bool:
     if not elem_id:
@@ -53,6 +59,11 @@ def _is_chrome_id(elem_id: str | None) -> bool:
         return True
     tokens = re.split(r'[-_]', lower)
     return any(t in _CHROME_ID_TOKENS for t in tokens if t)
+
+
+def _is_imported_atom_group_id(elem_id: str | None) -> bool:
+    """Return whether an id came from one imported PowerPoint shape atom."""
+    return bool(elem_id and _IMPORTED_ATOM_GROUP_RE.fullmatch(elem_id))
 
 
 # ---------------------------------------------------------------------------
@@ -148,7 +159,14 @@ def convert_g(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     style_overrides = _extract_inheritable_styles(elem)
 
     elem_id = elem.get('id')
-    should_animate_group = ctx.depth == 0 and elem_id and not _is_chrome_id(elem_id)
+    preserve_top_level_group = bool(
+        ctx.depth == 0
+        and elem_id
+        and not _is_imported_atom_group_id(elem_id)
+    )
+    should_animate_group = bool(
+        preserve_top_level_group and not _is_chrome_id(elem_id)
+    )
     visual_children = [
         child for child in elem
         if child.tag.replace(f'{{{SVG_NS}}}', '') not in _NON_VISUAL_TAGS
@@ -192,10 +210,10 @@ def convert_g(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     if not child_results:
         return None
 
-    # Single-child non-semantic groups are flattened to reduce nesting. Top-level
-    # semantic groups are preserved so animations target the group, not its
-    # individual child shapes.
-    if len(child_results) == 1 and not should_animate_group:
+    # Imported atom wrappers are not semantic components. Flatten their
+    # one-child groups so the PowerPoint text/shape is directly selectable.
+    # Authored semantic and chrome groups remain intact even with one child.
+    if len(child_results) == 1 and not preserve_top_level_group:
         return child_results[0]
 
     # Multiple children, or a top-level semantic one-child group: wrap in
@@ -247,6 +265,12 @@ def convert_g(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
 
     shapes_xml = '\n'.join(result.xml for result in child_results)
     group_id = ctx.next_id()
+    raw_group_name = (
+        elem_id
+        if preserve_top_level_group
+        else elem.get('data-name') or elem_id or f'Group {group_id}'
+    )
+    group_name = escape(str(raw_group_name), quote=True)
 
     # Record top-level semantic groups (e.g. <g id="p02-title">) so the
     # PPTX builder can emit per-element entrance timing. Only the outermost
@@ -265,7 +289,7 @@ def convert_g(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
 
     return ShapeResult(xml=f'''<p:grpSp>
 <p:nvGrpSpPr>
-<p:cNvPr id="{group_id}" name="Group {group_id}"/>
+<p:cNvPr id="{group_id}" name="{group_name}"/>
 <p:cNvGrpSpPr/>
 <p:nvPr/>
 </p:nvGrpSpPr>
@@ -514,7 +538,15 @@ def convert_svg_to_slide_shapes(
             shapes.append(result.xml)
             converted += 1
             m = re.search(r'<p:cNvPr id="(\d+)"', result.xml)
-            if m:
+            excluded_group_fallback = bool(
+                tag == 'g'
+                and child.get('id')
+                and (
+                    _is_chrome_id(child.get('id'))
+                    or _is_imported_atom_group_id(child.get('id'))
+                )
+            )
+            if m and not excluded_group_fallback:
                 fallback_targets.append((int(m.group(1)), tag))
         else:
             if tag not in _NON_VISUAL_TAGS:

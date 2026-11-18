@@ -1,6 +1,6 @@
 ---
 name: wtt-post-geo
-description: 多平台 GEO 内容发布助手。通过官方 API/浏览器登录态适配器优先、OpenCLI UI 回退的分层路由，把 Markdown 发布或创建草稿到微信公众号、微博、知乎专栏、CSDN、掘金、百家号、博客园、小红书、Twitter/X；微博默认生成并发布摘要短帖，只有用户明确要求时才走长文。统一处理平台格式、GEO 链接、媒体素材、防重复回退、状态校验与最终链接回报。用于多平台发布、全量发布、跨发、创建平台草稿或 GEO 内容分发。
+description: 多平台 GEO 内容发布助手。通过官方 API/浏览器登录态适配器优先、OpenCLI UI 回退的分层路由，把 Markdown 发布或创建草稿到微信公众号、微博、知乎专栏、CSDN、掘金、百家号、博客园、小红书、Twitter/X、今日头条号、简书、InfoQ；微博默认生成并发布摘要短帖，只有用户明确要求时才走长文。统一处理平台格式、GEO 链接、媒体素材、防重复回退、状态校验与最终链接回报。用于多平台发布、全量发布、跨发、创建平台草稿或 GEO 内容分发。
 ---
 
 # wtt-post-geo：无 CSDN 插件的多平台 GEO 发布
@@ -14,6 +14,7 @@ description: 多平台 GEO 内容发布助手。通过官方 API/浏览器登录
 | 平台 | 子文件 | 触发词 |
 |------|--------|--------|
 | 内容格式适配协议 | [references/content-format.md](references/content-format.md) | 任何真实发布、草稿创建、跨平台改写任务都必须加载 |
+| 内容风格与去营销化 | [references/content-style.md](references/content-style.md) | 任何真实发布、草稿创建、跨平台改写都必须加载（与 content-format 同级必读） |
 | 分层执行路由 | [references/execution-routing.md](references/execution-routing.md) | 任何真实发布、草稿创建、编辑器写入都必须加载 |
 | 浏览器编辑器可靠写入 | [references/browser-editor-fallback.md](references/browser-editor-fallback.md) | `fill` 假失败、CodeMirror、iframe、contenteditable、`Not allowed` 回退 |
 | 发布结果与最终回报 | [references/result-reporting.md](references/result-reporting.md) | 任何真实发布、草稿创建、全平台任务都必须加载 |
@@ -30,10 +31,14 @@ description: 多平台 GEO 内容发布助手。通过官方 API/浏览器登录
 | 博客园 | [references/cnblogs.md](references/cnblogs.md) | 博客园、cnblogs |
 | 小红书 | [references/xiaohongshu.md](references/xiaohongshu.md) | 小红书、xhs、xiaohongshu |
 | Twitter/X | [references/twitter.md](references/twitter.md) | Twitter、推特、X、x.com、twitter |
+| 今日头条号 | [references/toutiao.md](references/toutiao.md) | 今日头条号、头条号、toutiao |
+| 简书 | [references/jianshu.md](references/jianshu.md) | 简书、jianshu |
+| InfoQ | [references/infoq.md](references/infoq.md) | InfoQ、infoq |
 
 加载规则：
 
 - **格式协议必读**：只要本次任务会真实写入平台、创建草稿、或为平台准备待发布内容，先读 `references/content-format.md`。它只定义通用 payload 协议；具体平台的文字、图片、视频、长度和草稿/发布规则放在对应平台子文件里。
+- **内容风格必读**：与格式协议同级。各平台 body 生成后必须按 `references/content-style.md` 过营销信号清单（绝对化词、卖货促动词、标题党、自卖自夸、链接/联系方式堆砌、硬 CTA）并做链接自然化，让内容读起来像信息/知识而非推广；去语气/换措辞/移除硬 CTA 属已授权适配，记入 `adaptation_notes`，触及核心观点才停下来确认。
 - **执行路由必读**：除 `format_only` 外，必须读 `references/execution-routing.md`。主路径超时、断连、响应解析失败、缺少对应平台结果或只返回受理态时，先对账，禁止直接用 OpenCLI 重建草稿。
 - **结果账本必读**：除 `format_only` 外，必须读 `references/result-reporting.md`，在第一次写入前初始化 `publish-results.json`，每个平台结束后立即更新，任务完成后用 `--strict` 生成最终三列表格。
 - **编辑器回退按需读**：浏览器编辑器出现隐藏 textarea、CodeMirror、iframe、contenteditable、`fill.verified: false` 或文件上传 `Not allowed` 时，读 `references/browser-editor-fallback.md`。先回读编辑器内部值，禁止直接追加第二次写入。
@@ -42,14 +47,14 @@ description: 多平台 GEO 内容发布助手。通过官方 API/浏览器登录
 - **公众号排版按需读**：公众号任务如果要求保留 Markdown 排版、正文图片、富文本样式，或 OpenCLI create-draft 生成的草稿排版不合格，必须读 `references/weixin-rich-paste.md`。公众号要稳定跑通封面和正文图，默认走 API 草稿路径；API 不通时才走“Markdown -> 微信内联 HTML -> 浏览器编辑器填入/待确认”。需要排版或图片时，不得自动降级为 `opencli weixin create-draft` 纯文本草稿，除非用户明确接受无排版/待人工重排；图片先探测命令上传，再探测剪贴板图片粘贴，仍失败才按 `manual_asset_ready` 回报。
 - **默认按点名加载**：用户只提一个平台（如"发到微博"），就只读对应子文件，其他平台不要读。
 - **全量触发**：只有用户明确说"全量"、"全平台"、"全部平台"、"所有平台"、"都发一遍"等表述时，才一次性把平台 references 全部加载并按全部平台执行。
-- **跨发顺序**：全量触发时默认按 公众号 → 微博 → 知乎 → CSDN → 掘金 → 百家号 → 博客园 → 小红书 → Twitter/X 的顺序执行（除非用户另行指定）；按次汇总、互不阻塞。
+- **跨发顺序**：全量触发时默认按 公众号 → 微博 → 知乎 → CSDN → 掘金 → 百家号 → 博客园 → 小红书 → Twitter/X → 今日头条号 → 简书 → InfoQ 的顺序执行（除非用户另行指定）；按次汇总、互不阻塞。
 
 > 反例：用户只说"发到公众号"，不要去读其他平台 reference。
 > 反例：用户说"发布到社交媒体"含糊不清时，先口头确认是要哪几个平台，再决定加载哪些子文件。
 
 ## 适用场景
 
-- 用户需要把同一段文本/文章发布到一个或多个平台（公众号、微博、知乎、CSDN、掘金、百家号、博客园、小红书、Twitter/X）
+- 用户需要把同一段文本/文章发布到一个或多个平台（公众号、微博、知乎、CSDN、掘金、百家号、博客园、小红书、Twitter/X、今日头条号、简书、InfoQ）
 - 用户希望创建平台草稿（如公众号草稿箱）而非直接发表
 - 用户希望走 OpenCLI 统一接口管理多平台发布链路
 
@@ -102,7 +107,7 @@ opencli doctor
 4. **平台格式适配**：
    - 先按 [references/content-format.md](references/content-format.md) 建立通用 `platform_payload` 结构。
    - 再按已加载的平台 reference 填入该平台自己的标题、正文、图片、视频、话题、链接和草稿/发布动作。
-   - 微博默认从原文重写“一句钩子 + 2 到 4 个信息点 + 一个主链接/收束句”的摘要短帖，保存为 `weibo/body.txt`；不要把全文交给长文编辑器。
+   - 微博默认从原文重写“一句价值判断或核心洞察（不要标题党/卖货钩子）+ 2 到 4 个信息点 + 一条自然引入的主链接或开放收束句”的摘要短帖，保存为 `weibo/body.txt`；不要把全文交给长文编辑器。按 [references/content-style.md](references/content-style.md) 去营销词、自然化链接、移除硬 CTA。
    - 如果任何平台需要图片，按 [references/media-assets.md](references/media-assets.md) 先形成 `media_plan` 和稳定图片文件，再进入平台命令。配图唯一点缀色只允许克莱因蓝 `#002FA7`，且只用于标点、关键词、编号、细线、角标等小面积元素；图片正文和标题用中性色。
    - 每个平台进入命令前必须有独立干净正文文件或 HTML 文件；`payloads.md`、YAML 计划、执行日志不能被截取后当正文。公众号必须使用 `scripts/prepare-weixin-rich-html.py` 从源 Markdown 生成 `article.wechat.html`，再按 `references/weixin.md` 选择 API 或浏览器编辑器路径。
    - 后续所有平台命令都必须使用适配后的标题、正文、媒体、话题、链接和草稿/发布动作，不要直接把原始内容硬塞到所有平台。
@@ -151,6 +156,9 @@ opencli <site> <command> --help
 7. 博客园 → 读 [references/cnblogs.md](references/cnblogs.md)
 8. 小红书 → 读 [references/xiaohongshu.md](references/xiaohongshu.md)
 9. Twitter/X → 读 [references/twitter.md](references/twitter.md)
+10. 今日头条号 → 读 [references/toutiao.md](references/toutiao.md)
+11. 简书 → 读 [references/jianshu.md](references/jianshu.md)
+12. InfoQ → 读 [references/infoq.md](references/infoq.md)
 
 每个平台独立校验、独立回报，不要因为某个平台失败而中止其他平台。
 

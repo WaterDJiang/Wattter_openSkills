@@ -21,7 +21,7 @@ description: 基于已有项目文件或参考模板生成新的版式或完整 
 | **deck**（默认） | 源是某机构的品牌化 PPT（如公司年报、答辩模板）；视觉识别是复刻的一部分 | `templates/decks/<id>/` | 全部段：识别 + 结构 + 中段 |
 | **layout** | 源是通用风格模板（无具体品牌）；只应复用其结构骨架；颜色 / 字体由下游按 deck 决定 | `templates/layouts/<id>/` | 仅结构段（画布 / 页面结构 / 页面类型 / SVG 清单）；不含识别段 |
 
-默认走 **deck**，除非用户明确说"只要结构" / "只要版式" / "不要品牌识别"。拿不准时偏向 deck——后面丢掉识别很容易；从 layout 模式里反推识别则不行。完整 kind / schema / 融合模型见 [`docs/zh/templates-architecture.md`](../../../docs/zh/templates-architecture.md)。
+默认走 **deck**，除非用户明确说"只要结构" / "只要版式" / "不要品牌识别"。拿不准时偏向 deck——后面丢掉识别很容易；从 layout 模式里反推识别则不行。完整 kind / schema / 融合模型见 [`references/strategist.md`](../references/strategist.md) Step 3（三 kind 派发 + 多选融合规则）。
 
 ## 流程概览
 
@@ -48,7 +48,7 @@ description: 基于已有项目文件或参考模板生成新的版式或完整 
 
 类型 C / D 不能用 `fidelity` 和 `mirror`——视觉参考与纯口头简报不足以驱动逐页复刻。类型 A 是规范路径：`manifest.json` 的页面类型候选与分层 `svg/` 工作区，能以事实数据锚定聚类检测（fidelity）与逐字复制（mirror）。类型 B 也支持，但有几点注意事项：
 
-- **类型 B 上的 mirror**——直接 1:1 复制。B 的 SVG 已经是自包含的（每页一个文件，等同 `svg-flat/slide_*.svg`）。`<NNN>_<page_type>.svg` 文件名里的 `page_type` 遵循 PPT Master 命名约定时（`01_cover.svg` → `cover`，`03a_content_two_col.svg` → `content`）从源文件名读；否则回退到 `content`。源是 `templates/layouts/<existing>`、用户希望 fork 一份现有模板时，这套约定尤其自然。
+- **类型 B 上的 mirror**——直接 1:1 复制。B 的 SVG 已经是自包含的（每页一个文件，等同 `svg-flat/slide_*.svg`）。输出使用 `<NNN>_<page_type>_<layout_id>.svg`：`page_type` 遵循 PPT Master 命名约定时（`01_cover.svg` → `cover`，`03a_content_two_col.svg` → `content`）从源文件名读，否则回退到 `content`；`layout_id` 必须从页面结构与用途提炼，不能回退成泛化的 `content`。
 - **类型 B 上的 fidelity**——聚类依赖 AI 对 SVG 的视觉判断；没有 `manifest.json.pageTypeCandidates` 来锚定。变体数量与分组更主观，可能需要迭代。如果输入本身就是 PPT Master 模板（`templates/layouts/<existing>`），把既有变体文件名（`03a_content_two_col` 等）当作权威聚类提示来解析，而不是再走一遍视觉聚类。
 
 ### 1A. `.pptx` 参考
@@ -244,13 +244,13 @@ mkdir -p "${SKILL_DIR}/templates/layouts/<template_id>"
 1. **原样复制**源页到模板目录——不做任何修改——不插占位、不简化装饰、不重排 chrome / 内容。模板里发行的 SVG 与源页逐字节相同（文件名变化与资产路径改写除外）。
    - 类型 A：源是 `<import_workspace>/svg-flat/slide_NN.svg`
    - 类型 B：源是输入目录里的每个 `*.svg`（已是自包含）
-2. **重命名**每个文件，使用"源序优先"的约定 `<NNN>_<page_type>.svg`，其中 `<NNN>` 是按源序补 0 到 3 位的索引，`<page_type>` 通常为 `cover` / `toc` / `chapter` / `content` / `ending`（类型无法可靠判定时回退到 `content`）。示例：`001_cover.svg`、`002_toc.svg`、`003_content.svg`、……、`050_ending.svg`。
+2. **语义重命名**每个文件，使用 `<NNN>_<page_type>_<layout_id>.svg`：`<NNN>` 是按源序补 0 到 3 位的索引；`<page_type>` 为 `cover` / `toc` / `chapter` / `content` / `ending`（类型无法可靠判定时仅此字段回退到 `content`）；`<layout_id>` 是从结构、槽位和元素数量提炼的英文 snake_case 名。示例：`001_cover_rail_hero.svg`、`009_content_vs_comparison.svg`、`022_content_gantt_timeline_6.svg`、`050_ending_train_thanks.svg`。
    - 类型 A：从 `manifest.json.pageTypeCandidates` 派生 `<page_type>`
    - 类型 B：当源文件名遵循 PPT Master 约定时（`01_cover.svg` → `cover`，`03a_content_two_col.svg` → `content`）从源文件名派生 `<page_type>`；否则按页内容推断或回退到 `content`
 3. **复制打包的资产**到模板目录，并把每份复制 SVG 里 `<image href="...">` 的路径改为指向本地副本。资产文件可改用语义名（`brand_emblem.png` 而非 `image3.png`），但改写在每张页面之间必须保持一致。
    - 类型 A：资产来自 `<import_workspace>/assets/`
    - 类型 B：把源 `<image href="...">` 中的相对路径按源 SVG 所在位置解析，复制每个唯一资产；若源已遵循 PPT Master 约定（资产与 SVG 位于同一目录），整组资产一起复制后再改写路径
-4. 按 [template-designer.md](../references/template-designer.md) §1 写 `design_spec.md`——**§V Page Roster 中的逐页描述是承重的产物**，因为 mirror 没有可宣示每页契约的占位；下游 Strategist 只能从这些描述挑选页面。
+4. 写 `page_catalog.json`（新目录使用 `selection_contract_version: 2`），逐页声明 canonical `reference`、旧 basename `aliases`、`layout_id`，以及包含 `avoid_when` / `image_requirements` 的完整 `selection` 元数据；再按 [template-designer.md](../references/template-designer.md) §1 写 `design_spec.md`。目录负责机器检索，§V Page Roster 负责人类浏览；两者都必须与磁盘文件全量一致。
 
 Mirror 模式**不**走"重建为干净 SVG"路径。雪碧图保留规则仍然适用（扁平 SVG 已包含原始雪碧图包装——复制时不要压扁）。
 
@@ -273,14 +273,18 @@ ls -la "${SKILL_DIR}/templates/<kind_dir>/<template_id>"
 在模板目录上跑 SVG 校验：
 
 ```bash
+python3 ${SKILL_DIR}/scripts/template_page_catalog.py "${SKILL_DIR}/templates/<kind_dir>/<template_id>" validate
 python3 ${SKILL_DIR}/scripts/svg_quality_checker.py "${SKILL_DIR}/templates/<kind_dir>/<template_id>" --template-mode --format <canvas_format>
 ```
+
+两条命令必须分别通过；mirror/fidelity 新模板缺少目录或目录与 SVG 不一致时不得注册。
 
 `--template-mode` 让检查器：
 
 - 直接在模板目录里 glob `*.svg`（模板不在 `svg_output/` 之下）
 - 跳过 `spec_lock.md` 漂移检查（模板不附带 spec_lock）
 - 把清单 ↔ `design_spec.md` 一致性当作 **error**（孤立文件 / 缺失文件会让 `layouts_index.json` 失败）
+- 当 `page_catalog.json` 存在时，把目录 schema、语义命名、别名冲突与目录 ↔ SVG 一致性当作 **error**
 - 当页面缺少规范占位时发出**告警**级提示——这是提示而非失败。在 `design_spec.md` frontmatter 声明 `placeholders:` 块，当模板故意使用不同词表时，可以消除这些告警
 
 **检查清单**：
@@ -293,7 +297,7 @@ python3 ${SKILL_DIR}/scripts/svg_quality_checker.py "${SKILL_DIR}/templates/<kin
 - [ ] 占位名在适用处遵循规范约定；模板故意使用不同词表（如 `{{KEY_MESSAGE}}` 而非 `{{PAGE_TITLE}}`）应在 frontmatter 声明 `placeholders:` 块以消除告警
 - [ ] SVG 引用的资产文件确实存在于模板包中
 - [ ] `fidelity` 模式：每个雪碧图资产保留其嵌套 `<svg viewBox=...>` 裁切包装；任何文件宽高比与页面上显示宽高比不一致的图像都不能被压扁成裸 `<image>`
-- [ ] `mirror` 模式：文件数等于源页数（类型 A：`ls templates/layouts/<id>/*_*.svg | wc -l` 与 `<import_workspace>/svg-flat/slide_*.svg | wc -l` 一致；类型 B：与源 SVG 数一致）；文件名遵循 `<NNN>_<page_type>.svg` 约定；**复制后的 SVG 中不出现任何 `{{...}}` 占位字符串**（`grep -l "{{" templates/layouts/<id>/*.svg` 应无输出——若类型 B 源本身就含占位，用户应改用 `standard` 模式而非 mirror）；`design_spec.md` 的 §V Page Roster 列出每个已生成文件，附一句话描述页面内容与适配的内容槽位
+- [ ] `mirror` 模式：文件数等于源页数（类型 A：`ls templates/layouts/<id>/*_*.svg | wc -l` 与 `<import_workspace>/svg-flat/slide_*.svg | wc -l` 一致；类型 B：与源 SVG 数一致）；文件名遵循 `<NNN>_<page_type>_<layout_id>.svg`，且 `layout_id` 能区分结构与元素数量；`page_catalog.json` 覆盖全部且仅有磁盘 SVG，旧名只写入 `aliases`；**复制后的 SVG 中不出现任何 `{{...}}` 占位字符串**（`grep -l "{{" templates/layouts/<id>/*.svg` 应无输出——若类型 B 源本身就含占位，用户应改用 `standard` 模式而非 mirror）；`design_spec.md` 的 §V Page Roster 列出每个已生成文件，附一句话描述页面内容与适配的内容槽位
 
 本步是**硬闸口**。在校验通过之前不要把模板注册到库索引。
 

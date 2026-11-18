@@ -28,6 +28,7 @@ mode: publish|draft|fill_and_confirm|format_only
 适配规则：
 
 - `variant` 默认是 `short_post`。短文适合观点、发布通知、摘要、链接导流和轻量 thread 开头。
+- 写作语气与链接方式遵循 [content-style.md](content-style.md) 的去营销化清单（禁绝对化卖货词/标题党、链接克制、移除硬 CTA；通用，不在此重复）。
 - 短文默认使用保守长度预算。正文明显过长时，推荐生成「一句钩子 + 2 到 4 个要点 + 链接/出处」的摘要版，并把 `overflow_strategy` 设为 `summary`。
 - 用户明确要求保留完整内容但没点名长文时，优先建议拆成 thread；执行前确认条数、顺序和每条内容。
 - 用户明确选择长文时，才把 `variant` 设为 `longform` 或 `article`。如果当前 OpenCLI 或账号不支持可校验的长文发布，只能按 `已填写待确认` 或 `未完成` 回报，不能宣称已发布。
@@ -93,6 +94,17 @@ opencli browser twitter fill <editor-ref> "<body>"
 ```
 
 长文分支成功标准必须高于「编辑器里有文字」：需要写入命令返回 `id/url`，并且平台读取结果能匹配。否则只能报 `已填写待确认` 或 `未完成`。
+
+### 插件参照补充（GEO action）：X Article 长文草稿
+
+用户明确要求 X Article 长文时，可参照插件的现网契约（本 skill 未做真实联调前仍按实验性探测）：
+
+- 固定走 `https://x.com/compose/articles` 创建 **Article 长文草稿**，**不进入 `/compose/post` 短帖入口**，也**不点击 Publish**；依赖平台自动保存。
+- 登录检查用浏览器 `auth_token` Cookie；遇到登录页、验证码、账号风险、频控或编辑器结构漂移即停。
+- 新建后取得 `/compose/articles/edit/<draftId>` 编辑地址；标题写入 `textarea[name="Article Title"]`（上限 100 Unicode 字符），正文写入 Draft.js `[data-testid="composer"]`，逐行原生文本输入 + `insertParagraph` 建真实段落块，禁止 `textContent` 替换。
+- 正文用 X Article 纯文本方言（保留标题/列表/引用/代码/表格语义，移除 Markdown/HTML 控制符），不再截断成 280 字摘要。
+- 封面与正文图以 Data URL 本地解码为 `File` 后经原生 `input[type=file][data-testid=fileInput]` 上传；封面需完成「Edit media → Apply」裁剪流程，最终托管以 `pbs.twimg.com/media` 地址为准。
+- 写入后至少等 5 秒，并在**独立临时页**打开同一 `/edit/<draftId>` 回读标题与正文首尾；`Last saved just now` 不能单独证明已保存。失败时保留原编辑页正文。
 
 ## 校验
 

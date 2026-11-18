@@ -35,8 +35,10 @@
 
 原两个源码树在合并前完整冻结，清单记录逐文件SHA256；本机维护归档位于仓库 `archives/2026-11-03-code-video-unify-baseline/`，退役实际目录另存同次归档，SKILL入口改为 `.disabled`，不参与安装。公开版本历史由Git保留，归档不随安装包分发。
 
-旧测试记录保留为历史，不能把原有成功记录说成本次生成结果。独立模型前后创作对照未运行，用户最终采用待确认。
+旧测试记录保留为历史，不能把原有成功记录说成本次生成结果；验证留档属内部工作区内容，公开包不附。独立模型前后创作对照未运行，用户最终采用待确认。
 
 ## 四帧门迁移
+
+新增纯音轨修订入口是`audio_revision.py`，依赖同版pipeline、voice、speech、asset_review、preview_review和footage；可直接从完整新版Skill调用，不必覆盖旧工程tools。新init自带工具和AUDIO-REVISION.md；其读原工程回执，不改旧工具/作品。规则见[纯音轨修订](audio-revision.md)。需要画面变化仍按下面四帧迁移，不能把后期入口当成通用免审开关。
 
 旧项目tools是历史副本，不随Skill升级重写。继续使用旧工具不代表已通过新版流程；以新Skill维护旧片时，显式同步当前pipeline/render/preview_review及其素材工具，先保留旧回执与作品，再生成新四帧、展示确认，不能补写虚假旧批准。新init的QUALITY/PREVIEW是可独立阅读的短清单，不再复制含缺失相对链接的长方法。

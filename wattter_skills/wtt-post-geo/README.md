@@ -1,8 +1,8 @@
 # wtt-post-geo
 
-多平台 GEO 内容发布 skill。把一份 Markdown 按平台规则适配后，发布或创建草稿到微信公众号、微博、知乎专栏、CSDN、掘金、百家号、博客园、小红书、Twitter/X，并保留官网、来源引用、llms.txt、sitemap 等 GEO 信息的分平台露出策略。
+多平台 GEO 内容发布 skill。把一份 Markdown 按平台规则适配后，发布或创建草稿到微信公众号、微博、知乎专栏、CSDN、掘金、百家号、博客园、小红书、Twitter/X、今日头条号、简书、InfoQ，并保留官网、来源引用、llms.txt、sitemap 等 GEO 信息的分平台露出策略。
 
-名称不再绑定 OpenCLI：执行时采用“官方 API -> 浏览器登录态 adapter -> OpenCLI 内置 adapter/UI -> 人工确认”的分层路由。OpenCLI 是执行工具之一，不是 skill 的能力边界。
+名称不再绑定 OpenCLI：执行时采用“官方 API -> 浏览器登录态 adapter -> OpenCLI 内置 adapter/UI -> 人工确认”的分层路由。OpenCLI 是执行工具之一，不是 skill 的能力边界。能力参照 GEO action 插件的 12 平台契约；有 HTTP API 的平台优先走 API/adapter，没有 API 的平台（今日头条号、简书、InfoQ 正文写入）正确落到 CLI/编辑器层。
 
 微博默认发布摘要短帖：先从原文生成独立 `weibo/body.txt`，再走 `weibo/publish`。只有用户明确要求微博长文、头条文章或全文发布时，才启用 `weibo/article-draft` 和长文编辑器。
 
@@ -37,11 +37,13 @@ OpenCLI 自身的 Chrome 桥接是 COOKIE/HEADER/UI adapter 的运行前置。�
 
 本 skill 随附：
 
+- `weixin/article-draft`（公众号 Cookie 路径，官方 API 缺配置时启用）
 - `weibo/article-draft`（仅显式微博长文）
 - `zhihu/article-draft`
 - `juejin/article-draft`
 - `baijiahao/article-draft`
 - `cnblogs/article-draft`
+- `weixin/draft-account`
 - `juejin/draft-account`
 - `baijiahao/draft-account`
 - `cnblogs/draft-account`
@@ -150,5 +152,5 @@ python3 scripts/publish-result.py summary \
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 /Users/water/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
+python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
 ```

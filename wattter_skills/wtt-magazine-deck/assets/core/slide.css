@@ -24,7 +24,7 @@ canvas.bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:bloc
   background:var(--paper);color:var(--ink);
 }
 .slide.light{color:var(--ink)}
-.slide.dark{color:var(--paper)}
+.slide.dark{background:var(--ink);color:var(--paper)}
 .slide.grey{background:var(--grey-1)}
 .slide.accent{background:var(--accent);color:var(--accent-on)}
 
@@ -64,6 +64,10 @@ canvas.bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:bloc
 .text-muted,.surface-muted{color:var(--surface-muted)!important}
 .text-accent,.surface-accent-text{color:var(--surface-accent)!important}
 .surface-line{border-color:var(--surface-line)!important}
+/* surface-* 同时绑定底色和字色；on-* 仅声明已有底色的语义。 */
+.surface-light{background:var(--paper)}
+.surface-dark{background:var(--ink)}
+.surface-accent{background:var(--accent)}
 .readable-zone{position:relative;isolation:isolate}
 .readable-zone::before{
   content:"";
@@ -77,19 +81,19 @@ canvas.bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:bloc
 .readable-zone.on-dark::before,
 .readable-zone.surface-dark::before,
 .readable-zone[data-surface="dark"]::before{
-  background:linear-gradient(180deg,rgba(var(--ink-rgb),.78),rgba(var(--ink-rgb),.5));
+  background:var(--ink);
   box-shadow:0 18px 60px rgba(var(--ink-rgb),.28);
 }
 .readable-zone.on-light::before,
 .readable-zone.surface-light::before,
 .readable-zone[data-surface="light"]::before{
-  background:linear-gradient(180deg,rgba(var(--paper-rgb),.82),rgba(var(--paper-rgb),.58));
+  background:var(--paper);
   box-shadow:0 18px 60px rgba(var(--ink-rgb),.08);
 }
 .readable-zone.on-accent::before,
 .readable-zone.surface-accent::before,
 .readable-zone[data-surface="accent"]::before{
-  background:linear-gradient(180deg,rgba(var(--accent-rgb),.86),rgba(var(--accent-rgb),.58));
+  background:var(--accent);
   box-shadow:0 18px 60px rgba(var(--accent-rgb),.16);
 }
 

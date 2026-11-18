@@ -1,0 +1,511 @@
+{
+  "schema_version": 3,
+  "template_id": "中国移动",
+  "kind": "decks",
+  "replication_mode": "mirror",
+  "page_count": 10,
+  "shared_assets": [
+    "blue_cyan_wave_background.png",
+    "china_mobile_logo.png"
+  ],
+  "asset_roles": {
+    "identity": [
+      "china_mobile_logo.png"
+    ],
+    "background": [
+      "blue_cyan_wave_background.png"
+    ],
+    "chrome": [],
+    "illustration": []
+  },
+  "shell_contract": {
+    "required_roles": [
+      "identity",
+      "background"
+    ],
+    "forbid_unlocked_full_bleed": true
+  },
+  "pages": {
+    "001_cover_wave_title": {
+      "file": "001_cover_wave_title.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 2,
+      "vector_elements": 3,
+      "text_elements": 3,
+      "text_runs": 10,
+      "source_text_chars": 25,
+      "max_text_chars": 13,
+      "image_refs": [
+        "blue_cyan_wave_background.png",
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [
+        "blue_cyan_wave_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "blue_cyan_wave_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.75,
+        "top_level_groups": 4,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 4,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "blue_cyan_wave_background.png",
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ],
+        "background": [
+          "blue_cyan_wave_background.png"
+        ]
+      }
+    },
+    "002_toc_four_capsules": {
+      "file": "002_toc_four_capsules.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 33,
+      "text_elements": 9,
+      "text_runs": 9,
+      "source_text_chars": 22,
+      "max_text_chars": 3,
+      "image_refs": [
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.976744,
+        "top_level_groups": 3,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 3,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ]
+      }
+    },
+    "003_content_blank_logo": {
+      "file": "003_content_blank_logo.svg",
+      "composition_mode": "raster_dominant",
+      "image_elements": 1,
+      "vector_elements": 1,
+      "text_elements": 0,
+      "text_runs": 0,
+      "source_text_chars": 0,
+      "max_text_chars": 0,
+      "image_refs": [
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.5,
+        "top_level_groups": 1,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 1,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": false,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ]
+      }
+    },
+    "004_ending_closing_wave_title": {
+      "file": "004_ending_closing_wave_title.svg",
+      "composition_mode": "raster_dominant",
+      "image_elements": 2,
+      "vector_elements": 2,
+      "text_elements": 1,
+      "text_runs": 1,
+      "source_text_chars": 3,
+      "max_text_chars": 3,
+      "image_refs": [
+        "blue_cyan_wave_background.png",
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [
+        "blue_cyan_wave_background.png"
+      ],
+      "image_assets": [
+        {
+          "reference": "blue_cyan_wave_background.png",
+          "role": "background",
+          "instances": 1,
+          "max_coverage_ratio": 1.0,
+          "full_bleed": true,
+          "editable": false
+        },
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.6,
+        "top_level_groups": 3,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 3,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "blue_cyan_wave_background.png",
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ],
+        "background": [
+          "blue_cyan_wave_background.png"
+        ]
+      }
+    },
+    "005_content_dual_checklist_cards": {
+      "file": "005_content_dual_checklist_cards.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 18,
+      "text_elements": 17,
+      "text_runs": 17,
+      "source_text_chars": 92,
+      "max_text_chars": 9,
+      "image_refs": [
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.972222,
+        "top_level_groups": 3,
+        "semantic_content_groups": 2,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ]
+      }
+    },
+    "006_content_three_step_chain": {
+      "file": "006_content_three_step_chain.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 27,
+      "text_elements": 16,
+      "text_runs": 16,
+      "source_text_chars": 78,
+      "max_text_chars": 7,
+      "image_refs": [
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.977273,
+        "top_level_groups": 5,
+        "semantic_content_groups": 4,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ]
+      }
+    },
+    "007_content_wave_timeline_5": {
+      "file": "007_content_wave_timeline_5.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 24,
+      "text_elements": 16,
+      "text_runs": 16,
+      "source_text_chars": 84,
+      "max_text_chars": 7,
+      "image_refs": [
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.97561,
+        "top_level_groups": 7,
+        "semantic_content_groups": 6,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ]
+      }
+    },
+    "008_content_data_table_4_col": {
+      "file": "008_content_data_table_4_col.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 20,
+      "text_elements": 33,
+      "text_runs": 33,
+      "source_text_chars": 123,
+      "max_text_chars": 6,
+      "image_refs": [
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.981481,
+        "top_level_groups": 2,
+        "semantic_content_groups": 1,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ]
+      }
+    },
+    "009_content_kpi_cards_3_plus_5": {
+      "file": "009_content_kpi_cards_3_plus_5.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 18,
+      "text_elements": 25,
+      "text_runs": 25,
+      "source_text_chars": 140,
+      "max_text_chars": 9,
+      "image_refs": [
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.977273,
+        "top_level_groups": 9,
+        "semantic_content_groups": 8,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ]
+      }
+    },
+    "010_content_gantt_schedule_6": {
+      "file": "010_content_gantt_schedule_6.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 25,
+      "text_elements": 26,
+      "text_runs": 26,
+      "source_text_chars": 78,
+      "max_text_chars": 4,
+      "image_refs": [
+        "china_mobile_logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "china_mobile_logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.052333,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.980769,
+        "top_level_groups": 8,
+        "semantic_content_groups": 7,
+        "chrome_groups": 1,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "china_mobile_logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "china_mobile_logo.png"
+        ]
+      }
+    }
+  },
+  "generated_by": "scripts/template_capabilities.py"
+}

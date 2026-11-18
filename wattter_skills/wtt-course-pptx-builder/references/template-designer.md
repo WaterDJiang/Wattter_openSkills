@@ -56,7 +56,7 @@ The output page set is determined by **replication mode**, declared in the final
 |------|-------------|--------|
 | `standard` (default) | Most templates — clean, reusable, balanced coverage | `01_cover`, `02_chapter`, `03_content`, `04_ending`, optional `02_toc` |
 | `fidelity` | User explicitly wants strict replication of a source PPTX, but still wants the AI to clean / cluster / cap variants | Standard roster + one variant per distinct layout cluster found in `manifest.json` |
-| `mirror` | User wants every source slide preserved 1:1 as a reference page (someone else's polished deck used as a library template). Verbatim copy, no abstraction, no placeholders | One SVG per source slide, named `<NNN>_<page_type>.svg` by source order |
+| `mirror` | User wants every source slide preserved 1:1 as a reference page (someone else's polished deck used as a library template). Verbatim copy, no abstraction, no placeholders | One SVG per source slide, named `<NNN>_<page_type>_<layout_id>.svg` by source order + `page_catalog.json` |
 
 ### Standard mode
 
@@ -100,10 +100,18 @@ Extension page types beyond the canonical four (transition / appendix / disclaim
 When the brief sets `Replication mode: mirror`, the role does **not** abstract or reconstruct. Each source slide becomes one template page **byte-for-byte**:
 
 - Source: `<import_workspace>/svg-flat/slide_NN.svg` (the self-contained "what PowerPoint shows" view). Do **not** read or use `svg/master_*.svg`, `svg/layout_*.svg`, or `svg/inheritance.json` — chrome / content separation is irrelevant because mirror does not insert placeholders.
-- Output: `templates/<kind_dir>/<template_id>/<NNN>_<page_type>.svg`, where `<NNN>` is the zero-padded source slide index (3 digits) and `<page_type>` is derived from `manifest.json` `pageTypeCandidates` — `cover` / `toc` / `chapter` / `content` / `ending`. When the page-type heuristic is ambiguous, fall back to `content`. Preserve source slide order via the numeric prefix.
+- Output: `templates/<kind_dir>/<template_id>/<NNN>_<page_type>_<layout_id>.svg`. `<NNN>` is the zero-padded source slide index (3 digits); `<page_type>` is the canonical `cover` / `toc` / `chapter` / `content` / `ending`; `<layout_id>` is a concise English snake_case structural name such as `vs_comparison`, `gantt_timeline_6`, or `dashboard_dual_chart`. When the page-type heuristic is ambiguous, fall back to `content`, but never fall back to a generic layout id such as `content`, `layout`, `page`, or `default`.
 - Modifications allowed: **only** rewriting `<image href="...">` paths to point at the local `assets/` copy, and renaming asset files to semantic names. Everything else — geometry, decoration, sprite-sheet wrappers, original example text, chart placeholders, embedded fonts — is copied as-is.
 - Modifications forbidden: inserting `{{TITLE}}` / `{{CONTENT_AREA}}` / any other placeholder; "cleaning up" decorative complexity; merging similar slides; dropping master/layout chrome (it's already baked into the flat SVG, leave it).
-- `design_spec.md` §V Page Roster lists every emitted file with **a one-line description** of what the page contains and what content slot it suits — Strategist selects mirror pages purely from these descriptions, since the SVG itself carries no placeholder contract.
+- Emit `page_catalog.json` beside the SVGs. It is the machine-readable selection contract: new catalogs declare `schema_version: 1`, `selection_contract_version: 2`, `template_id`, `reference_format: <NNN>_<page_type>_<layout_id>`, and `selection_policy` (`match_order` + `fallback: no-template-match`). Every page records `file`, canonical `reference` (basename), old `aliases`, `source_slide`, `page_type`, unique `layout_id`, human `label`, and `selection` metadata (`structure`, optional `item_count`, `content_density`, `content_slots`, `use_cases`, `avoid_when`, `keywords`, `visuals`, `image_requirements`). Legacy v1 catalogs may omit the last two fields; new v2 catalogs may not. A poor match must return `no-template-match`; never force a generic content page merely because it exists.
+- `design_spec.md` §V Page Roster still lists every emitted file with **a one-line description** of what the page contains and what content slot it suits. It is the human browsing layer; `page_catalog.json` is the machine selection layer. Both rosters must match disk exactly.
+
+**Reference protocol**:
+
+1. Search `page_catalog.json` by `page_type` + use case, then narrow by `structure`, item count / `content_slots`, density, visuals, and image requirements; reject candidates whose `avoid_when` matches.
+2. Write the returned canonical `reference` into `spec_lock.md page_layouts`; do not write a bare `content` type or guess from the source slide number.
+3. `aliases` are migration hints only. New `spec_lock.md` files must use the canonical `reference`; project validation rejects aliases and prints the replacement.
+4. Resolve or test selection with `python3 scripts/template_page_catalog.py <template_dir> search "<intent>"` and `... resolve <reference-or-alias>`.
 
 **Why mirror has no placeholders**: it is consumed as a **visual reference** rather than a templated form. Executor's mirror path (see [executor-base.md](executor-base.md) §1.1) copies the chosen mirror page into the project and edits text elements in place against the project content — no `{{}}` substitution happens. This keeps the library asset 100% verbatim and lets the user re-discover the source deck by browsing `templates/<kind_dir>/<template_id>/` directly.
 
@@ -329,19 +337,20 @@ Mirror mode emits one SVG per source slide, named by source order:
 ```
 templates/<kind_dir>/<template_name>/
 ├── design_spec.md
-├── 001_cover.svg
-├── 002_toc.svg
-├── 003_content.svg
-├── 004_content.svg
-├── 005_chapter.svg
-├── 006_content.svg
+├── page_catalog.json
+├── 001_cover_rail_hero.svg
+├── 002_toc_six_chapters.svg
+├── 003_content_text_canvas.svg
+├── 004_content_vs_comparison.svg
+├── 005_chapter_train_fullbleed.svg
+├── 006_content_three_step_chain.svg
 ├── ...
-├── 049_content.svg
-├── 050_ending.svg
+├── 049_content_dashboard_dual_chart.svg
+├── 050_ending_train_thanks.svg
 └── *.png / *.jpg
 ```
 
-Filenames preserve the source slide order via the 3-digit prefix; `<page_type>` is derived from `manifest.json` `pageTypeCandidates`. No `{{}}` placeholders appear in any mirror SVG.
+Filenames preserve source order via the 3-digit prefix and expose both canonical page type and semantic structure. No `{{}}` placeholders appear in any mirror SVG.
 
 ### Template Preview
 
@@ -389,7 +398,8 @@ templates/
 - [x] Read `references/template-designer.md`
 - [x] Replication mode confirmed: `standard` | `fidelity` | `mirror`
 - [x] Every page listed in `design_spec.md §V Page Roster` saved to `templates/<layouts|decks>/<template_name>/` (decks for full-PPT replicas, layouts for structure-only)
-- [x] Naming convention applied (standard / fidelity: letter-suffix variants; mirror: `<NNN>_<page_type>.svg`)
+- [x] Naming convention applied (standard / fidelity: semantic variants; mirror: `<NNN>_<page_type>_<layout_id>.svg`)
+- [x] Mirror/fidelity semantic roster has a valid `page_catalog.json`; every canonical reference resolves and every legacy basename is recorded only as an alias
 - [x] Templates follow design spec (colors, fonts, layout)
 - [x] Placeholder markers are clear and standardized (standard / fidelity); mirror SVGs contain **no** `{{}}` markers
 - [ ] **Next step**: Validate assets and register the template via `register_template.py <id> --kind <deck|layout>`

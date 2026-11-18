@@ -3,12 +3,14 @@
 scan_wiki.py — Wiki 健康度扫描器
 
 用法：
-    python3 scan_wiki.py {target_dir} --light            # 轻量 7 项
-    python3 scan_wiki.py {target_dir} --deep             # 深度 16 项
+    python3 scan_wiki.py {target_dir} --light            # 轻量 8 项
+    python3 scan_wiki.py {target_dir} --deep             # 深度 18 项
     python3 scan_wiki.py {target_dir} --check L8         # 单项
 
 输出：JSON 到 stdout，LLM 读取后翻译成自然语言报告。
 对应 references/lint-spec.md 中定义的检查项。
+L17/L18 为知识时效检查（references/knowledge-freshness.md）：
+存量库首次出现大面积 L17 时，先跑 backfill_knowledge_date.py 回填。
 """
 from __future__ import annotations
 
@@ -92,14 +94,23 @@ def collect_kp_files(wiki_dir: Path) -> list[Path]:
 REQUIRED_FIELDS_KP = {"kp_name", "module", "knowledge_domain", "knowledge_type", "tags", "source_marking"}
 ALLOWED_SOURCE_MARKING = {"已提取", "AI补全"}
 ALLOWED_KNOWLEDGE_TYPES = {"框架", "模型", "原则", "方法", "流程", "工具", "概念"}
+ALLOWED_DATE_BASIS = {"exact", "approximate"}
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+# L18 同体系候选扫描时剔除的通用词——共享子串命中这些词不算同体系证据
+FRESHNESS_STOP_TOKENS = {
+    "模型", "方法", "原则", "理论", "策略", "框架", "法则", "定律", "范式",
+    "课程", "培训", "讲师", "知识", "体系", "思维", "管理", "分析", "工具", "流程",
+}
 
 
 def check_L1_frontmatter_required(target: Path, kp_files: list[Path]) -> list[dict]:
-    """L1: frontmatter 必需字段缺失"""
+    """L1: frontmatter 必需字段缺失（kp 六字段；knowledge_date 归 L17 按卡片类型检查）"""
     findings = []
     for f in kp_files:
         text = f.read_text(encoding="utf-8")
         fm = parse_frontmatter(text)
+        if is_note_card(f, fm):
+            continue  # note 卡字段集不同，由 L17 查 date
         if fm is None:
             findings.append(make_finding(
                 "error", "L1", str(f.relative_to(target)),
@@ -539,10 +550,202 @@ def check_L16_mapping(target: Path, wiki_dir: Path, kp_files: list[Path]) -> lis
     return findings
 
 
+# ---------- 知识时效检查（references/knowledge-freshness.md） ----------
+
+def is_note_card(f: Path, fm: dict | None) -> bool:
+    """note 卡片的知识时间字段是 date，不是 knowledge_date。"""
+    if fm and (fm.get("note_type") or fm.get("type") == "note"):
+        return True
+    return "notes" in f.parts
+
+
+def check_valid_date(value: str, findings: list[dict], cid: str, rel: str, field: str) -> None:
+    """日期字段格式与合法性校验（供 L17 复用）。"""
+    if not DATE_RE.match(value):
+        findings.append(make_finding(
+            "error", cid, rel,
+            f"{field}={value} 格式非法（应为 YYYY-MM-DD）",
+            "改为 YYYY-MM-DD"
+        ))
+        return
+    try:
+        d = datetime.strptime(value, "%Y-%m-%d").date()
+    except ValueError:
+        findings.append(make_finding("error", cid, rel, f"{field}={value} 不是有效日期", "修正日期"))
+        return
+    if d > datetime.now(timezone.utc).date():
+        findings.append(make_finding(
+            "warning", cid, rel,
+            f"{field}={value} 是未来日期",
+            "核对是笔误还是时区差；knowledge_date 是知识发生时间，不应晚于今天"
+        ))
+
+
+def check_L17_knowledge_date(target: Path, kp_files: list[Path]) -> list[dict]:
+    """L17: 知识时效字段缺失或非法。大面积报错时先跑 backfill_knowledge_date.py。"""
+    findings = []
+    for f in kp_files:
+        fm = parse_frontmatter(f.read_text(encoding="utf-8"))
+        rel = str(f.relative_to(target))
+        if is_note_card(f, fm):
+            if fm is None or not fm.get("date"):
+                findings.append(make_finding(
+                    "error", "L17", rel, "note 卡缺 date 字段", "补 YYYY-MM-DD 的笔记发生日期"
+                ))
+            elif fm.get("date"):
+                check_valid_date(fm["date"], findings, "L17", rel, "date")
+            continue
+        if fm is None:
+            continue  # 无 frontmatter 已由 L1 报告
+        kd = fm.get("knowledge_date")
+        if not kd:
+            findings.append(make_finding(
+                "error", "L17", rel,
+                "缺 knowledge_date（知识发生时间）",
+                "跑 scripts/backfill_knowledge_date.py --dry-run 批量回填"
+            ))
+            continue
+        check_valid_date(kd, findings, "L17", rel, "knowledge_date")
+        basis = fm.get("knowledge_date_basis")
+        if basis and basis not in ALLOWED_DATE_BASIS:
+            findings.append(make_finding(
+                "warning", "L17", rel,
+                f"knowledge_date_basis={basis} 非法",
+                "改为 exact 或 approximate"
+            ))
+    return findings
+
+
+def normalize_link_value(value) -> str:
+    """superseded_by 取值 → 目标标识（容错：list 误判、单双层括号、引号、.md 后缀）。"""
+    if isinstance(value, list):
+        value = value[0] if value else ""
+    v = str(value).strip().strip("'\"")
+    m = re.match(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", v)
+    if m:
+        v = m.group(1)
+    else:
+        v = v.strip("[]")  # 极简解析器可能把 "[[X]]" 剥掉一层引号后误判为 list，残留单层括号
+        m = re.match(r"\[\[([^\]|]+)\]\]", v)
+        if m:
+            v = m.group(1)
+    return v.strip().removesuffix(".md").strip()
+
+
+def longest_common_substring(a: str, b: str) -> str:
+    """两字符串的最长公共子串（O(len_a*len_b)，卡片名很短，够用）。"""
+    if not a or not b:
+        return ""
+    prev = [""] * (len(b) + 1)
+    best = ""
+    for i in range(1, len(a) + 1):
+        cur = [""] * (len(b) + 1)
+        for j in range(1, len(b) + 1):
+            if a[i - 1] == b[j - 1]:
+                cur[j] = prev[j - 1] + a[i - 1]
+                if len(cur[j]) > len(best):
+                    best = cur[j]
+        prev = cur
+    return best
+
+
+def check_L18_freshness_chains(target: Path, wiki_dir: Path, kp_files: list[Path]) -> list[dict]:
+    """L18: 新旧体系健康——superseded_by 链（死链+回链）+ 同体系候选扫描。
+
+    候选只列 info 不标取代：字面相似 ≠ 知识演进，判定必须 LLM 语义 + 用户确认
+    （references/knowledge-freshness.md 第 6 节已知局限）。
+    """
+    findings = []
+    stem_to_file = {}
+    cards = []  # (file, fm, name, date)
+    for f in kp_files:
+        fm = parse_frontmatter(f.read_text(encoding="utf-8"))
+        stem_to_file.setdefault(f.stem, f)
+        if fm is None:
+            continue
+        name = (fm.get("kp_name") or fm.get("model_name") or fm.get("case_name")
+                or fm.get("concept_name") or fm.get("note_name") or f.stem)
+        date = fm.get("knowledge_date") or (fm.get("date") if is_note_card(f, fm) else None)
+        cards.append((f, fm, name, date))
+
+    # ① superseded_by 链健康
+    linked_pairs = set()
+    for f, fm, name, _ in cards:
+        sup = fm.get("superseded_by")
+        if not sup:
+            continue
+        key = normalize_link_value(sup)
+        tf = None
+        direct = (f.parent / f"{key}.md").resolve()
+        if direct.exists():
+            tf = direct
+        else:
+            tf = stem_to_file.get(key)
+            if tf is None:  # 按 name 字段兜底
+                tf = next((c[0] for c in cards if c[2] == key), None)
+        if tf is None:
+            findings.append(make_finding(
+                "warning", "L18", str(f.relative_to(target)),
+                f"superseded_by 死链: {key}",
+                "修正为现存卡片的文件名/路径，或删除该字段"
+            ))
+            continue
+        tf_resolved = tf.resolve()
+        linked_pairs.add(frozenset({f.resolve(), tf_resolved}))
+        tf_text = tf.read_text(encoding="utf-8")
+        if f.stem not in tf_text and name not in tf_text:
+            findings.append(make_finding(
+                "info", "L18", str(tf_resolved.relative_to(target)),
+                f"被取代关系缺回链: {key} 未提及 {f.stem}",
+                f"在 {key} 的演进史/关联段写回 {f.stem} 及差异说明"
+            ))
+
+    # ② 同体系候选扫描（同领域 + 剔通用词后共享 ≥3 字中文子串 + 时间有先后 + 未标取代）
+    by_domain = defaultdict(list)
+    for f, fm, name, date in cards:
+        domain = fm.get("knowledge_domain")
+        if domain:
+            by_domain[domain].append((f, name, date))
+
+    def strip_stop_tokens(name: str) -> str:
+        """先剔通用词再比对——「XX模型/XX方法」的后缀重叠不算同体系证据。"""
+        out = name
+        for stop in sorted(FRESHNESS_STOP_TOKENS, key=len, reverse=True):
+            out = out.replace(stop, "")
+        return out
+
+    def is_cjk_shared(s: str) -> bool:
+        """共享子串必须含中文且 ≥3 字——纯 ASCII 碎片（Agent/AI 前缀）是主题泛词切片。"""
+        return len(s) >= 3 and any("一" <= ch <= "鿿" for ch in s)
+
+    for domain, items in by_domain.items():
+        dated = [(f, n, d) for f, n, d in items if d and DATE_RE.match(d)]
+        for i in range(len(dated)):
+            for j in range(i + 1, len(dated)):
+                fa, na, da = dated[i]
+                fb, nb, db = dated[j]
+                if frozenset({fa.resolve(), fb.resolve()}) in linked_pairs:
+                    continue
+                shared = longest_common_substring(strip_stop_tokens(na), strip_stop_tokens(nb))
+                if not is_cjk_shared(shared):
+                    continue
+                if da == db:
+                    continue
+                a_t, b_t = (fa, na, da), (fb, nb, db)
+                old, new = (a_t, b_t) if da < db else (b_t, a_t)
+                findings.append(make_finding(
+                    "info", "L18",
+                    f"{old[0].relative_to(target)}, {new[0].relative_to(target)}",
+                    f"同体系候选（共享「{shared}」）: 旧 {old[1]}（{old[2]}） vs 新 {new[1]}（{new[2]}）",
+                    "人工判定：取代（标 superseded_by+演进史回链）/ 互补（合并）/ 并存（边界对比关联）；拿不准保持现状"
+                ))
+    return findings
+
+
 # ---------- 调度 ----------
 
-LIGHT_CHECKS = ["L1", "L2", "L3", "L4", "L5", "L6", "L7"]
-DEEP_CHECKS = LIGHT_CHECKS + ["L8", "L9", "L10", "L11", "L12", "L13", "L14", "L15", "L16"]
+LIGHT_CHECKS = ["L1", "L2", "L3", "L4", "L5", "L6", "L7", "L17"]
+DEEP_CHECKS = LIGHT_CHECKS + ["L8", "L9", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L18"]
 
 CHECK_REGISTRY = {
     "L1": ("frontmatter 必需字段缺失", lambda t, w, k: check_L1_frontmatter_required(t, k)),
@@ -561,6 +764,8 @@ CHECK_REGISTRY = {
     "L14": ("关联单边", lambda t, w, k: check_L14_one_way_relation(t, k)),
     "L15": ("raw 未编译", lambda t, w, k: check_L15_uncompiled_raw(t, w)),
     "L16": ("mapping.json 与现实不一致", lambda t, w, k: check_L16_mapping(t, w, k)),
+    "L17": ("知识时效字段缺失或非法", lambda t, w, k: check_L17_knowledge_date(t, k)),
+    "L18": ("新旧体系健康（superseded 链 + 同体系候选）", lambda t, w, k: check_L18_freshness_chains(t, w, k)),
 }
 
 

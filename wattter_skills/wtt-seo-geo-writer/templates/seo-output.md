@@ -22,6 +22,7 @@ triggers: ["seo-output", "SEO 输出", "SEO 文章模板", "搜索优化文章�
 title: "[SEO 标题]"
 date: YYYY-MM-DD
 output_mode: site_article
+content_purpose: editorial
 search_intent: informational
 primary_keyword: "[主关键词]"
 secondary_keywords:
@@ -49,7 +50,8 @@ canonical: ""
 title: "[平台标题，建议 18-36 字]"
 date: YYYY-MM-DD
 output_mode: platform_article
-target_platform: zhihu
+content_purpose: editorial
+target_platform: "[juejin / csdn / xiaohongshu / baijiahao]"
 search_intent: informational
 primary_keyword: "[主关键词]"
 secondary_keywords:
@@ -69,7 +71,7 @@ title: "[SEO 批量选题计划]"
 date: YYYY-MM-DD
 output_mode: batch_plan
 batch_size: N
-target_platform: "[site/zhihu/wechat]"
+target_platform: "[site / juejin / csdn / xiaohongshu / baijiahao]"
 ---
 ```
 
@@ -96,6 +98,8 @@ YYYY-MM-DD-seo-content-plan.md
 
 - 不使用 GEO 输出字段，除非走 GEO 路径。
 - 不叠加任何 profile，除非用户明确提到对应品牌、行业或平台。
+- 默认 `content_purpose: editorial`；用户显式要求转化型内容才写 `promotional`。
+- 红线词命中即改写，默认无品牌 CTA；平台专规见 `references/non-marketing-guardrails.md`。
 - `title` 用双引号包裹。
 - `category`、`tag`、`keywords` 使用 YAML 数组。
 - 外部平台正文不重复 H1；站内文章正文保留 H1。

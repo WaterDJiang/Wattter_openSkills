@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <g id="background">
+    <image href="ending_background.png" x="0" y="0" width="1280" height="720" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <g id="ending-message">
+    <rect x="72" y="170" width="46" height="4" fill="#C7A661"/>
+    <text x="72" y="310" fill="#003396" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="74" font-weight="800">{{CLOSING}}</text>
+    <text x="76" y="405" fill="#262626" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="32" font-weight="700">{{THANK_YOU_LINE}}</text>
+    <line x1="76" y1="450" x2="542" y2="450" stroke="#C7A661" stroke-width="1"/>
+    <text x="76" y="501" fill="#44546A" font-family="&quot;STKaiti&quot;, &quot;KaiTi&quot;" font-size="22">{{TAGLINE}}</text>
+  </g>
+</svg>

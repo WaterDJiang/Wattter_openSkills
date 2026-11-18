@@ -1,0 +1,340 @@
+{
+  "schema_version": 3,
+  "template_id": "china_telecom_template",
+  "kind": "layouts",
+  "replication_mode": null,
+  "page_count": 5,
+  "shared_assets": [
+    "footer_ribbon.png",
+    "logo.png"
+  ],
+  "asset_roles": {
+    "identity": [
+      "logo.png"
+    ],
+    "background": [],
+    "chrome": [
+      "footer_ribbon.png"
+    ],
+    "illustration": []
+  },
+  "shell_contract": {
+    "required_roles": [
+      "identity"
+    ],
+    "forbid_unlocked_full_bleed": false
+  },
+  "pages": {
+    "01_cover": {
+      "file": "01_cover.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 4,
+      "vector_elements": 7,
+      "text_elements": 6,
+      "text_runs": 6,
+      "source_text_chars": 97,
+      "max_text_chars": 45,
+      "image_refs": [
+        "footer_ribbon.png",
+        "logo.png",
+        "skyline_bg.png",
+        "slogan_red.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "footer_ribbon.png",
+          "role": "content_raster",
+          "instances": 1,
+          "max_coverage_ratio": 0.238889,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.013468,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "skyline_bg.png",
+          "role": "content_raster",
+          "instances": 1,
+          "max_coverage_ratio": 0.032344,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "slogan_red.png",
+          "role": "content_raster",
+          "instances": 1,
+          "max_coverage_ratio": 0.032318,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [
+        "footer_ribbon.png",
+        "skyline_bg.png",
+        "slogan_red.png"
+      ],
+      "native_editability": {
+        "level": "mixed_content_raster",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.764706,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": false,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "footer_ribbon.png",
+        "logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo.png"
+        ],
+        "chrome": [
+          "footer_ribbon.png"
+        ]
+      }
+    },
+    "02_chapter": {
+      "file": "02_chapter.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 2,
+      "vector_elements": 16,
+      "text_elements": 4,
+      "text_runs": 4,
+      "source_text_chars": 75,
+      "max_text_chars": 38,
+      "image_refs": [
+        "footer_ribbon.png",
+        "logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "footer_ribbon.png",
+          "role": "content_raster",
+          "instances": 1,
+          "max_coverage_ratio": 0.180556,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.010833,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [
+        "footer_ribbon.png"
+      ],
+      "native_editability": {
+        "level": "mixed_content_raster",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.909091,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": false,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "footer_ribbon.png",
+        "logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo.png"
+        ],
+        "chrome": [
+          "footer_ribbon.png"
+        ]
+      }
+    },
+    "02_toc": {
+      "file": "02_toc.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 21,
+      "text_elements": 17,
+      "text_runs": 17,
+      "source_text_chars": 232,
+      "max_text_chars": 24,
+      "image_refs": [
+        "logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.009167,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.974359,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo.png"
+        ]
+      }
+    },
+    "03_content": {
+      "file": "03_content.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 1,
+      "vector_elements": 9,
+      "text_elements": 5,
+      "text_runs": 5,
+      "source_text_chars": 68,
+      "max_text_chars": 16,
+      "image_refs": [
+        "logo.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.009167,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [],
+      "native_editability": {
+        "level": "editable_over_raster_shell",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.933333,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": true,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo.png"
+        ]
+      }
+    },
+    "04_ending": {
+      "file": "04_ending.svg",
+      "composition_mode": "hybrid",
+      "image_elements": 4,
+      "vector_elements": 4,
+      "text_elements": 4,
+      "text_runs": 4,
+      "source_text_chars": 60,
+      "max_text_chars": 19,
+      "image_refs": [
+        "footer_ribbon.png",
+        "logo.png",
+        "skyline_bg.png",
+        "slogan_red.png"
+      ],
+      "full_bleed_image_refs": [],
+      "image_assets": [
+        {
+          "reference": "footer_ribbon.png",
+          "role": "content_raster",
+          "instances": 1,
+          "max_coverage_ratio": 0.230556,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "logo.png",
+          "role": "identity",
+          "instances": 1,
+          "max_coverage_ratio": 0.013468,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "skyline_bg.png",
+          "role": "content_raster",
+          "instances": 1,
+          "max_coverage_ratio": 0.027708,
+          "full_bleed": false,
+          "editable": false
+        },
+        {
+          "reference": "slogan_red.png",
+          "role": "content_raster",
+          "instances": 1,
+          "max_coverage_ratio": 0.026753,
+          "full_bleed": false,
+          "editable": false
+        }
+      ],
+      "content_raster_refs": [
+        "footer_ribbon.png",
+        "skyline_bg.png",
+        "slogan_red.png"
+      ],
+      "native_editability": {
+        "level": "mixed_content_raster",
+        "native_shape_ready": true,
+        "editable_object_ratio": 0.666667,
+        "top_level_groups": 0,
+        "semantic_content_groups": 0,
+        "chrome_groups": 0,
+        "imported_atom_groups": 0,
+        "direct_edit_strategy": "flatten_imported_single_child_groups"
+      },
+      "safe_for_mirror": false,
+      "recommended_fallback": "brand_shell",
+      "shared_asset_refs": [
+        "footer_ribbon.png",
+        "logo.png"
+      ],
+      "shared_asset_roles": {
+        "identity": [
+          "logo.png"
+        ],
+        "chrome": [
+          "footer_ribbon.png"
+        ]
+      }
+    }
+  },
+  "generated_by": "scripts/template_capabilities.py"
+}

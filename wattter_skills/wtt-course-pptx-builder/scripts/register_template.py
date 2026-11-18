@@ -17,8 +17,8 @@ discovery happens exclusively against the index file). Every entry carries
 the remaining fields vary by kind:
 
 - brand:  ``{ kind, path, summary, primary_color }``
-- layout: ``{ kind, path, summary, canvas_format, page_count, page_types[] }``
-- deck:   ``{ kind, path, summary, canvas_format, page_count, primary_color }``
+- layout: ``{ kind, path, summary, canvas_format, page_count, page_types[], page_catalog? }``
+- deck:   ``{ kind, path, summary, canvas_format, page_count, primary_color, page_catalog? }``
 
 Usage::
 
@@ -40,6 +40,14 @@ import re
 import sys
 from collections import OrderedDict
 from pathlib import Path
+
+from template_capabilities import (
+    analyze_template,
+    validate_capabilities,
+    write_capabilities,
+)
+from ensure_template_catalogs import build_catalog
+from template_page_catalog import validate_catalog
 
 try:
     import yaml  # type: ignore
@@ -168,11 +176,13 @@ def _list_pages(template_dir: Path) -> list[str]:
 
 
 def _derive_page_types(pages: list[str]) -> list[str]:
-    """Derive canonical page-type list from SVG filenames (strips leading 'NN_')."""
+    """Derive canonical page types from legacy or semantic SVG filenames."""
     types: list[str] = []
     seen: set[str] = set()
     for p in pages:
-        m = re.match(r"^\d+[a-z]?_(.+)$", p)
+        m = re.match(
+            r"^\d+[a-z]?_(cover|toc|chapter|content|ending)(?:_|$)", p
+        )
         role = m.group(1) if m else p
         if role not in seen:
             seen.add(role)
@@ -211,6 +221,12 @@ def _extract_entry(kind: str, template_id: str, template_dir: Path) -> dict:
 
     pages = _list_pages(template_dir)
     primary_color = fm.get("primary_color") or _extract_primary_color(body) or ""
+    catalog_path = template_dir / "page_catalog.json"
+    if catalog_path.exists():
+        catalog_errors = validate_catalog(template_dir)
+        if catalog_errors:
+            joined = "; ".join(catalog_errors)
+            raise SpecParseError(f"invalid page_catalog.json: {joined}")
 
     if kind == "brand":
         entry = OrderedDict(
@@ -238,6 +254,12 @@ def _extract_entry(kind: str, template_id: str, template_dir: Path) -> dict:
         raise SpecParseError(f"unknown kind {kind!r}")
 
     kind_dir = {"brand": "brands", "layout": "layouts", "deck": "decks"}[kind]
+    if kind != "brand" and catalog_path.exists():
+        entry["page_catalog"] = f"templates/{kind_dir}/{template_id}/page_catalog.json"
+    if kind != "brand":
+        entry["template_capabilities"] = (
+            f"templates/{kind_dir}/{template_id}/template_capabilities.json"
+        )
     entry["kind"] = kind
     entry["path"] = f"templates/{kind_dir}/{template_id}/"
     entry.move_to_end("kind", last=False)
@@ -356,9 +378,38 @@ def main() -> int:
 
     extracted: dict[str, dict] = {}
     for tid in ids:
+        template_dir = base / tid
         try:
-            extracted[tid] = _extract_entry(args.kind, tid, base / tid)
-        except SpecParseError as exc:
+            if args.kind != "brand":
+                catalog_path = template_dir / "page_catalog.json"
+                if not catalog_path.exists():
+                    catalog = build_catalog(
+                        template_dir,
+                        "decks" if args.kind == "deck" else "layouts",
+                    )
+                    if args.dry_run:
+                        print(
+                            f"[DRY-RUN] would generate baseline page catalog: "
+                            f"{catalog_path} ({len(catalog['pages'])} pages)"
+                        )
+                    else:
+                        catalog_path.write_text(
+                            json.dumps(catalog, ensure_ascii=False, indent=2) + "\n",
+                            encoding="utf-8",
+                        )
+                capabilities = analyze_template(template_dir)
+                capability_errors = validate_capabilities(
+                    template_dir, capabilities
+                )
+                if capability_errors:
+                    raise SpecParseError(
+                        "invalid generated template capabilities: "
+                        + "; ".join(capability_errors)
+                    )
+                if not args.dry_run:
+                    write_capabilities(template_dir, capabilities)
+            extracted[tid] = _extract_entry(args.kind, tid, template_dir)
+        except (SpecParseError, OSError, ValueError) as exc:
             print(f"Error: {tid}: {exc}", file=sys.stderr)
             return 1
 
