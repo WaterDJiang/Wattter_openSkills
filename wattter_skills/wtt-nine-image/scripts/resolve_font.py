@@ -19,7 +19,7 @@ FONT_INFO = {
 
 
 def persistent_dir():
-    return Path.home() / ".local/share/wattter-skills/fonts"
+    return Path.home() / ".local/share/nine-image/fonts"
 
 
 def verify(path, usage):

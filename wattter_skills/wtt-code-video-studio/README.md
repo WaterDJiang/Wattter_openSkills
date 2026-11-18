@@ -18,6 +18,22 @@
 
 既有剧本/锁定台词优先；普通文章会改编为可见动作，不逐段贴字幕。新主题在内部比较至多三种结构后择优，向用户提供五种完整方向（1首选+4备选），不是每次相同五个风格。选择后继续制作真实小样与四帧拼图，不增加脚本、配音等重复审批。
 
+## 只做一个阶段，或让每镜用不同风格
+
+你可以分几次发指令，中间拿走任何一份稿件：
+
+> 把“一声回响”写成三段剧本，只给正文和对白。
+
+> 沿用第二段原文，只出分镜。每镜给一个 ID，写出起止画面和为什么这样拍，画风稍后定。
+
+> wall 镜用剪纸，trace 镜用示波器。先只给 trace 的视频提示词，我拿去生成。
+
+> 先把 trace 做成独立小样。等两镜都定了，再按 wall → trace 组装，保留同一套字幕和声音。
+
+文字阶段交到所要的稿件为止。请求整片时默认一条龙；单镜与整片分别确认各自的四帧。可复跑的[双镜示例](assets/examples/echo-shots/sequence.json)与[分段用法、提示词及组装命令](references/staged-creation.md)。
+
+逐镜换风格时可以共享同一套姿态、轨迹和相机，让笔触在运动中改变。可直接说“第一镜用彩铅，第二镜用绘图仪线描，让同一摆锤继续摆，不要重新起摆”。示例含可运行的[共享状态与接镜命令](references/style-continuity.md)。
+
 ## 四张样帧怎样确认
 
 每张来自当前工程的真实绘制代码，2×2排布，标帧号与时码，覆盖建立/变化/细节/收尾；不拿四张AI方向图或全白首尾充数。高风险运动另做短动作自查，静帧不证明动画已经通过。
@@ -30,11 +46,11 @@ agent会展示实际拼图，等你对该版本明确确认，再记录原话、
 
 ## 从内容找形式与画风
 
-六类用途：知识与原理、故事与观点、产品与教程、资讯与纪实、数据与汇报、视觉与创意。进一步有24种具体用法，覆盖广告、个人宣传、纪实、浪漫电影、概念解释、地理推演等，与81项风格形成192条多对多关系。一般调用直接识别，不新增开场分类问卷。
+六类用途：知识与原理、故事与观点、产品与教程、资讯与纪实、数据与汇报、视觉与创意。进一步有24种具体用法，覆盖广告、个人宣传、纪实、浪漫电影、概念解释、地理推演等，与114项风格形成239条多对多关系。一般调用直接识别，不新增开场分类问卷。
 
 战役进攻、人口迁徙、贸易路线、疆域/交通演变和传播路径，会在五方向推荐前识别为“地理推演与空间叙事”，按空间因果推荐合适表现，不默认套地方明信片。可比较真实地形、卫星纪实、古地图版画、水墨山河或三维沙盘，具体五项随内容和数据条件变化。展示城市季节与生活氛围仍用地图明信片；三维路线须另备真实几何/高程并适配，不因进入推荐就视为已安装后端。
 
-[完整风格库](assets/gallery/styles.html)可按用法、用途、组别和关键词筛选；[分类导航](references/classification.md)与[映射表](references/use-case-mapping.md)供完整浏览。参考来源完整覆盖11组66条方法，加本库15项；数量与样片数量分开，收录不代表全部已渲染。
+[完整风格库](assets/gallery/styles.html)可按用法、用途、组别和关键词筛选；[分类导航](references/classification.md)与[映射表](references/use-case-mapping.md)供完整浏览。附件15组99项全部可查，旧版66项沿用固定参考，其余33项按本库流程独立编写配方，加本库15项；数量与样片数量分开，收录不代表全部已渲染。
 
 agent日常先看摘要，选定再深入：
 
@@ -46,9 +62,55 @@ python3 scripts/catalog.py show desktop-flythrough --use-case 个人宣传
 python3 scripts/catalog.py cases --use-case 概念解释
 ```
 
-旧list完整JSON默认兼容；显式分页才截取，并标总数与源目录顺序，不能拿前五项当推荐排名。映射中的标题/关键镜头是未渲染构想，不等于已有成片。选中风格读取完整SOURCE和[保真方法](references/style-fidelity.md)，不把全部来源一次加载。
+旧list完整JSON默认兼容；显式分页才截取，并标总数与源目录顺序，不能拿前五项当推荐排名。映射中的标题/关键镜头是未渲染构想，不等于已有成片。选中风格读取本地原创配方或该条已有的完整SOURCE和[保真方法](references/style-fidelity.md)，不把全部来源一次加载。
 
 角色可以用沙、粒子、墨线呈现；叙事类型与材质、技术分别选择。Canvas/SVG、p5.js/p5.brush、Three.js/WebGL、GSAP、D3、Remotion是可选技术，未安装/未适配不冒称可直接运行。已有Three.js单片成功通过通用帧接口接入，仍不代表内置通用3D脚手架；[案例技术指南](references/case-driven-techniques.md)区分披露事实、复现建议与未知。
+
+### 114 种风格参考卡
+
+按画面选风格时，可以直接告诉 Skill「第一镜用木刻版画」，也可以使用卡片下方的英文 ID。点击图片可看原尺寸。
+
+<details open>
+<summary>001–020 · 纸上画法与传统工艺</summary>
+
+[![001–020 · 纸上画法与传统工艺](assets/gallery/style-atlas/01.webp)](assets/gallery/style-atlas/01.webp)
+
+</details>
+
+<details>
+<summary>021–040 · 纪录、仪器与数据</summary>
+
+[![021–040 · 纪录、仪器与数据](assets/gallery/style-atlas/02.webp)](assets/gallery/style-atlas/02.webp)
+
+</details>
+
+<details>
+<summary>041–060 · 构图、排版与技术图解</summary>
+
+[![041–060 · 构图、排版与技术图解](assets/gallery/style-atlas/03.webp)](assets/gallery/style-atlas/03.webp)
+
+</details>
+
+<details>
+<summary>061–080 · 角色、游戏与电影语言</summary>
+
+[![061–080 · 角色、游戏与电影语言](assets/gallery/style-atlas/04.webp)](assets/gallery/style-atlas/04.webp)
+
+</details>
+
+<details>
+<summary>081–100 · 微缩空间、界面与动态图形</summary>
+
+[![081–100 · 微缩空间、界面与动态图形](assets/gallery/style-atlas/05.webp)](assets/gallery/style-atlas/05.webp)
+
+</details>
+
+<details>
+<summary>101–114 · 笔迹、光线与颗粒</summary>
+
+[![101–114 · 笔迹、光线与颗粒](assets/gallery/style-atlas/06.webp)](assets/gallery/style-atlas/06.webp)
+
+</details>
 
 ## 地图与孟菲斯微缩世界
 

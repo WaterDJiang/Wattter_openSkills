@@ -9,10 +9,6 @@
       "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6"
     },
     {
-      "path": "README.md",
-      "sha256": "b10327a8fc40a28161b72e68563a120e1e2955900648763a4c71d9e762da3c97"
-    },
-    {
       "path": "SKILL.md",
       "sha256": "03a281795574207cabd36b6f1406696b7e26a599a104cd5606bb8d9d49d5a9d2"
     },
@@ -119,10 +115,6 @@
     {
       "path": "references/wtt-ui.md",
       "sha256": "e6544582fa0caccd04413866b12578c6a47babf9a33cc3c68a84c78ab85ff448"
-    },
-    {
-      "path": "requirements.txt",
-      "sha256": "960acd4438cd374625b2f420df489395105058c828bebbb3d0e560a33d8a6a42"
     },
     {
       "path": "scripts/wtt_bootstrap.py",

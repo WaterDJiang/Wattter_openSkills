@@ -11,7 +11,7 @@ python3 "$SKILL_DIR/scripts/resolve_font.py" --usage cover --text '本次完整�
 python3 "$SKILL_DIR/scripts/resolve_font.py" --usage body --text '正文说明文字'
 ```
 
-- 沐瑶查找顺序：独立用户目录 `~/.local/share/wattter-skills/fonts/MuyaoPleased.ttf` → 当前技能内旧路径 `assets/fonts/local/MuyaoPleased.ttf`。喜脉只需随附的 [FontQuSmile-Regular.ttf](../assets/fonts/FontQuSmile-Regular.ttf)。脚本只访问本地，核验SHA-256；可选 `--text` 用fontTools检查全部非空白字符，退出2表示缺失、损坏或缺字，不得忽略错误继续渲染。
+- 沐瑶查找顺序：独立用户目录 `~/.local/share/nine-image/fonts/MuyaoPleased.ttf` → 当前技能内旧路径 `assets/fonts/local/MuyaoPleased.ttf`。喜脉只需随附的 [FontQuSmile-Regular.ttf](../assets/fonts/FontQuSmile-Regular.ttf)。脚本只访问本地，核验SHA-256；可选 `--text` 用fontTools检查全部非空白字符，退出2表示缺失、损坏或缺字，不得忽略错误继续渲染。
 - 沐瑶命中旧路径或用户已有原文件时，用下面的登记命令保存一次。独立目录不随运行树更新而消失；不安装系统字体、不纳入Git或公开分发包。
 
 ```sh

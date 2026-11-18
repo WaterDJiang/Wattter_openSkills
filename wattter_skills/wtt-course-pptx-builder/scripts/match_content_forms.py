@@ -217,7 +217,7 @@ def main() -> int:
     pr = sub.add_parser("resolve", help="列出服务某形态的 chart 模板（全局）+ 页面变体（需 --package 限定）")
     pr.add_argument("form")
     pr.add_argument("--count", type=int, default=None, help="声明要点数（精确匹配 slots）")
-    pr.add_argument("--package", default=None, help="选定模板包名（如 平安知鸟）；给则同时查该包内的页面变体候选")
+    pr.add_argument("--package", default=None, help="选定模板包名（deck/layout/brand id）；给则同时查该包内的页面变体候选")
 
     pp = sub.add_parser("project", help="审计项目的 chart 形态选型")
     pp.add_argument("project")

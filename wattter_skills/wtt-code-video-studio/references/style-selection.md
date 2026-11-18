@@ -2,6 +2,8 @@
 
 视频先有内容，再选方向；五方向决定表现形式，四帧确认决定是否开始完整渲染。用户已指定/已选风格或明确“你来定”，记录依据后免五选；纯文字、只写剧本及旧片局部修正不机械重新选择。
 
+要先交剧本、分镜或提示词时，按[分段创作](staged-creation.md)完成本次交付。逐镜混搭的决定写入同一份 style-choice.md，按镜头 ID 区分全片默认与局部覆盖。比较候选时写明观众在关键镜头要辨认什么、这个画法如何实现，以及已有样帧或待验证动作。
+
 ## 五方向之前
 
 保存script.md：目标受众、核心内容、旁白/可见动作、估时与依据。新主题按[编剧](story-and-timing.md#内容结构候选与取舍)比较至多三种结构并择优；已有锁定剧本直接沿用。init只准备工程，不代表选用了默认画法，不提前导出模板。
@@ -13,7 +15,7 @@ python3 scripts/catalog.py list --use-case 个人宣传 --view summary
 python3 scripts/catalog.py show desktop-flythrough --use-case 个人宣传
 ```
 
-可组合purpose/query，用法交叉可合并去重；空结果放宽，不能说题材无法做。完整[映射表](use-case-mapping.md)供人总览，不是普通任务必读。primary/conditional是适配条件，不是评分；构想不是成片证据。先看候选STYLE，选定后才读完整SOURCE及[保真方法](style-fidelity.md)。
+可组合purpose/query，用法交叉可合并去重；空结果放宽，不能说题材无法做。完整[映射表](use-case-mapping.md)供人总览，不是普通任务必读。primary/conditional是适配条件，不是评分；构想不是成片证据。先看候选STYLE，选定后才读对应原创配方或已有的完整SOURCE及[保真方法](style-fidelity.md)。
 
 ### 先识别空间因果，再推荐画风
 

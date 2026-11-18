@@ -137,7 +137,10 @@
       "action": "缓存各色版，随对象运动保持同一版纹",
       "risk": "压缩后检查摩尔纹，错版不能每帧乱跳",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
-      "sourceId": "risograph"
+      "sourceId": "risograph",
+      "aliases": [
+        "孔版印刷"
+      ]
     },
     {
       "id": "pixel",
@@ -197,7 +200,7 @@
       "status": "recipe",
       "reference": "references/styles/chalkboard/STYLE.md",
       "en": "Chalkboard",
-      "group": "group-03",
+      "group": "group-13",
       "purposes": [
         "story",
         "knowledge",
@@ -426,7 +429,11 @@
       "risk": "可压缩观测时间，但不要将音乐节拍当事件真实时间",
       "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
       "reference": "references/styles/city-symphony/STYLE.md",
-      "sourceId": "city-symphony"
+      "sourceId": "city-symphony",
+      "aliases": [
+        "城市交响曲",
+        "City Symphony"
+      ]
     },
     {
       "id": "visual-investigation",
@@ -582,7 +589,7 @@
       "status": "recipe",
       "name": "白模投影",
       "en": "Projection on White Model",
-      "group": "group-02",
+      "group": "group-07",
       "purposes": [
         "documentary",
         "knowledge",
@@ -597,14 +604,17 @@
       "risk": "模型尺度、建筑高度和数据年份需登记",
       "inputs": "可追溯地理/点云/显微原始数据与尺度元信息",
       "reference": "references/styles/white-model/STYLE.md",
-      "sourceId": "white-model"
+      "sourceId": "white-model",
+      "aliases": [
+        "Projection-Mapped Model"
+      ]
     },
     {
       "id": "data-physical",
       "status": "recipe",
       "name": "数据实物化",
       "en": "Data Physicalization",
-      "group": "group-02",
+      "group": "group-07",
       "purposes": [
         "documentary",
         "knowledge",
@@ -626,7 +636,7 @@
       "status": "recipe",
       "name": "产品拆解",
       "en": "Exploded Teardown",
-      "group": "group-02",
+      "group": "group-12",
       "purposes": [
         "documentary",
         "knowledge",
@@ -664,7 +674,11 @@
       "risk": "不可用生成纹理充当真实样本，单位按像素标定",
       "inputs": "可追溯地理/点云/显微原始数据与尺度元信息",
       "reference": "references/styles/microscope/STYLE.md",
-      "sourceId": "microscope"
+      "sourceId": "microscope",
+      "aliases": [
+        "显微镜下",
+        "Under the Microscope"
+      ]
     },
     {
       "id": "archive-lighttable",
@@ -687,7 +701,10 @@
       "risk": "修补、配色与想象重建不得混为原始档案",
       "inputs": "用户提供或许可明确的原始影像/扫描/文件，登记日期、来源及剪辑解释依据",
       "reference": "references/styles/archive-lighttable/STYLE.md",
-      "sourceId": "archive-lighttable"
+      "sourceId": "archive-lighttable",
+      "aliases": [
+        "档案看片台"
+      ]
     },
     {
       "id": "crayon-book",
@@ -716,7 +733,7 @@
       "status": "recipe",
       "name": "中国水墨",
       "en": "Chinese Ink Wash",
-      "group": "group-03",
+      "group": "group-04",
       "purposes": [
         "story",
         "knowledge",
@@ -760,7 +777,7 @@
       "status": "recipe",
       "name": "一笔画",
       "en": "One-line Drawing",
-      "group": "group-03",
+      "group": "group-13",
       "purposes": [
         "story",
         "knowledge",
@@ -782,7 +799,7 @@
       "status": "recipe",
       "name": "白板讲解",
       "en": "Whiteboard Explainer",
-      "group": "group-03",
+      "group": "group-13",
       "purposes": [
         "story",
         "knowledge",
@@ -929,7 +946,10 @@
       "risk": "不让装饰性案卷编号伪装真实来源",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/halftone-dossier/STYLE.md",
-      "sourceId": "halftone-dossier"
+      "sourceId": "halftone-dossier",
+      "aliases": [
+        "网点档案"
+      ]
     },
     {
       "id": "woodcut",
@@ -1016,7 +1036,11 @@
       "risk": "镜头连续不代表线纹可游动，灰阶仍由刻线形成",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/printed-long-take/STYLE.md",
-      "sourceId": "printed-long-take"
+      "sourceId": "printed-long-take",
+      "aliases": [
+        "刮版画长镜头",
+        "Scratchboard Long Take"
+      ]
     },
     {
       "id": "swiss-motion",
@@ -1089,7 +1113,7 @@
       "status": "recipe",
       "name": "蓝图 / 工程制图",
       "en": "Blueprint",
-      "group": "group-06",
+      "group": "group-12",
       "purposes": [
         "product",
         "creative",
@@ -1104,14 +1128,17 @@
       "risk": "保持正投影或明确斜投影，示意尺寸不冒充实测",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/blueprint/STYLE.md",
-      "sourceId": "blueprint"
+      "sourceId": "blueprint",
+      "aliases": [
+        "工程蓝图"
+      ]
     },
     {
       "id": "stained-glass",
       "status": "recipe",
       "name": "彩色玻璃窗",
       "en": "Stained Glass",
-      "group": "group-06",
+      "group": "group-04",
       "purposes": [
         "product",
         "creative",
@@ -1155,7 +1182,7 @@
       "status": "recipe",
       "name": "ASCII / CRT 终端",
       "en": "ASCII / CRT Terminal",
-      "group": "group-06",
+      "group": "group-10",
       "purposes": [
         "product",
         "creative",
@@ -1170,7 +1197,11 @@
       "risk": "不能用像素图片盖扫描线代替实际字符画",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/ascii-crt/STYLE.md",
-      "sourceId": "ascii-crt"
+      "sourceId": "ascii-crt",
+      "aliases": [
+        "CRT 字符终端",
+        "CRT ASCII Terminal"
+      ]
     },
     {
       "id": "dataviz",
@@ -1199,7 +1230,7 @@
       "status": "recipe",
       "name": "等距信息图",
       "en": "Isometric Infographic",
-      "group": "group-07",
+      "group": "group-12",
       "purposes": [
         "knowledge",
         "data",
@@ -1221,7 +1252,7 @@
       "status": "recipe",
       "name": "暗色科技发布",
       "en": "Dark Tech Keynote",
-      "group": "group-07",
+      "group": "group-15",
       "purposes": [
         "knowledge",
         "data",
@@ -1243,7 +1274,7 @@
       "status": "recipe",
       "name": "活体实机录屏",
       "en": "Living Screencast",
-      "group": "group-07",
+      "group": "group-15",
       "purposes": [
         "knowledge",
         "data",
@@ -1258,14 +1289,18 @@
       "risk": "明确演示重绘，不能伪造产品已完成的功能",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/living-screencast/STYLE.md",
-      "sourceId": "living-screencast"
+      "sourceId": "living-screencast",
+      "aliases": [
+        "像素小人录屏",
+        "Mascot Screencast"
+      ]
     },
     {
       "id": "hologram-hud",
       "status": "recipe",
       "name": "科幻全息界面",
       "en": "Sci-fi Hologram HUD",
-      "group": "group-07",
+      "group": "group-15",
       "purposes": [
         "knowledge",
         "data",
@@ -1309,7 +1344,7 @@
       "status": "recipe",
       "name": "等距绘本",
       "en": "Isometric Picture Book",
-      "group": "group-07",
+      "group": "group-11",
       "purposes": [
         "knowledge",
         "data",
@@ -1324,14 +1359,18 @@
       "risk": "人物动作与规则同源，保持同一地点和比例",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/isometric-picture-book/STYLE.md",
-      "sourceId": "isometric-picture-book"
+      "sourceId": "isometric-picture-book",
+      "aliases": [
+        "等距小人场景",
+        "Isometric People Scene"
+      ]
     },
     {
       "id": "circuit-board",
       "status": "recipe",
       "name": "电路板",
       "en": "Circuit Board",
-      "group": "group-07",
+      "group": "group-14",
       "purposes": [
         "knowledge",
         "data",
@@ -1473,7 +1512,11 @@
       "risk": "保持角色像素尺寸，景深不能吞掉脸与关键字",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/hd-2d/STYLE.md",
-      "sourceId": "hd-2d"
+      "sourceId": "hd-2d",
+      "aliases": [
+        "2.5D 像素",
+        "2.5D Pixel Art"
+      ]
     },
     {
       "id": "microgame",
@@ -1517,7 +1560,11 @@
       "risk": "无实测拍点不编造BPM，旁白不能被节拍裁断",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/game-show/STYLE.md",
-      "sourceId": "game-show"
+      "sourceId": "game-show",
+      "aliases": [
+        "节奏综艺",
+        "Rhythm Game Show"
+      ]
     },
     {
       "id": "silent-film",
@@ -1558,7 +1605,10 @@
       "risk": "原创空间规则，闪烁与暗部不能妨碍观看",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/backrooms/STYLE.md",
-      "sourceId": "backrooms"
+      "sourceId": "backrooms",
+      "aliases": [
+        "后室录像带"
+      ]
     },
     {
       "id": "brick-toy",
@@ -1691,7 +1741,7 @@
       "status": "recipe",
       "name": "桌面穿梭",
       "en": "Desktop Flythrough",
-      "group": "group-11",
+      "group": "group-15",
       "purposes": [
         "product",
         "creative",
@@ -1705,7 +1755,11 @@
       "risk": "界面内容需可读，镜头速度不能替代真实操作步骤",
       "inputs": "按本片重写主体/场景/数据；有真实参数时登记依据，教学示意明确标识",
       "reference": "references/styles/desktop-flythrough/STYLE.md",
-      "sourceId": "desktop-flythrough"
+      "sourceId": "desktop-flythrough",
+      "aliases": [
+        "桌面卡片穿梭",
+        "Tabletop App Flythrough"
+      ]
     },
     {
       "id": "seasonal-map-postcard",
@@ -1757,6 +1811,743 @@
         "风格动画",
         "手绘电影",
         "绘画角色动画"
+      ]
+    },
+    {
+      "id": "colored-pencil",
+      "name": "彩铅科普插画",
+      "en": "Colored-Pencil Science Illustration",
+      "group": "group-03",
+      "sourceId": "colored-pencil",
+      "status": "recipe",
+      "reference": "references/styles/colored-pencil/STYLE.md",
+      "material": "纸色作高光，排线跟随物体表面曲率",
+      "action": "笔触先交代外形，再推入局部剖面补出层次",
+      "inputs": "可核对的对象结构和切面",
+      "risk": "纹理过密会淹没解剖边界",
+      "continuityAnchor": "沿剖切线保留轮廓，用纹理替换平涂",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "knowledge"
+      ]
+    },
+    {
+      "id": "sketchnote",
+      "name": "视觉笔记",
+      "en": "Sketchnote",
+      "group": "group-13",
+      "sourceId": "sketchnote",
+      "status": "recipe",
+      "reference": "references/styles/sketchnote/STYLE.md",
+      "material": "点格纸、图标、标题与连接笔画",
+      "action": "依讲述次序落图，再用连线明确因果",
+      "inputs": "要点和明确的关系顺序",
+      "risk": "箭头若无语义会混淆因果与并列",
+      "continuityAnchor": "沿画布中既有图标的锚点展开下一镜",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "story",
+        "product",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "stick-explainer",
+      "name": "火柴人讲解",
+      "en": "Stick-figure Explainer",
+      "group": "group-13",
+      "sourceId": "stick-explainer",
+      "status": "recipe",
+      "reference": "references/styles/stick-explainer/STYLE.md",
+      "material": "等粗线肢体、圆头和可读姿态",
+      "action": "用共用骨架连续变换重心与关节，保留角色身份",
+      "inputs": "人物关系、站位和关键姿势",
+      "risk": "没有五官时尤其依赖姿态和朝向",
+      "continuityAnchor": "传递骨架坐标以及手部接触点",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "knowledge",
+        "story"
+      ]
+    },
+    {
+      "id": "ipad-sketch",
+      "name": "平板速写讲解",
+      "en": "Tablet Sketch Explainer",
+      "group": "group-13",
+      "sourceId": "ipad-sketch",
+      "status": "recipe",
+      "reference": "references/styles/ipad-sketch/STYLE.md",
+      "material": "单页铅笔底稿、少量标色与局部放大",
+      "action": "沿纸上路径移动视窗，已有步骤留在原位置",
+      "inputs": "步骤、草图和纸页布局",
+      "risk": "重新排页会丢失步骤方位",
+      "continuityAnchor": "维持纸页坐标，在同一个对象上切换笔刷",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "knowledge",
+        "product"
+      ]
+    },
+    {
+      "id": "marker-paper",
+      "name": "马克笔白纸速写",
+      "en": "Marker on Paper",
+      "group": "group-13",
+      "sourceId": "marker-paper",
+      "status": "recipe",
+      "reference": "references/styles/marker-paper/STYLE.md",
+      "material": "白纸、宽笔尖落墨与收笔形状",
+      "action": "先落笔标定位点，按弧长显线，标注在结构完成后出现",
+      "inputs": "步骤草图与笔画次序",
+      "risk": "笔画动画若遮住关键连接会妨碍阅读",
+      "continuityAnchor": "沿同一路径切换笔头宽度和墨水密度",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "product",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "gilded-illumination",
+      "name": "金箔彩绘",
+      "en": "Gilded Illumination",
+      "group": "group-04",
+      "sourceId": "gilded-illumination",
+      "status": "recipe",
+      "reference": "references/styles/gilded-illumination/STYLE.md",
+      "material": "哑光颜料、细密装饰和独立金箔遮罩",
+      "action": "光源移过时仅金箔纹样反亮，其他色层保持平面",
+      "inputs": "纹样出处或原创线稿、金箔区域",
+      "risk": "全屏泛光会抹去金箔与颜料的差别",
+      "continuityAnchor": "固定纹样边缘与入射角，反光沿原方向离场",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "story",
+        "documentary",
+        "creative",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "pop-art",
+      "name": "波普艺术",
+      "en": "Pop Art",
+      "group": "group-05",
+      "sourceId": "pop-art",
+      "status": "recipe",
+      "reference": "references/styles/pop-art/STYLE.md",
+      "material": "专色印版、黑边与固定在纸面的半调点",
+      "action": "印版逐层合拢，在同构图中让一个差异跳出",
+      "inputs": "原创商品轮廓、功能色和印版掩模",
+      "risk": "多版错位不能损害商标或文字可读性",
+      "continuityAnchor": "共用产品边缘，让印版在原位对准",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "product",
+        "creative"
+      ]
+    },
+    {
+      "id": "vintage-collage",
+      "name": "复古版画拼贴",
+      "en": "Vintage Engraving Collage",
+      "group": "group-05",
+      "sourceId": "vintage-collage",
+      "status": "recipe",
+      "reference": "references/styles/vintage-collage/STYLE.md",
+      "material": "有来历的印刷件、裁切白边与纸面投影",
+      "action": "沿真实纸边推开一层旧图，露出有日期的下一件材料",
+      "inputs": "授权或公版原页及作者、日期和裁切依据",
+      "risk": "不可用不同年代的拼贴假装同一现场",
+      "continuityAnchor": "两张图按共同地标配准，借纸边作遮挡",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "documentary",
+        "story",
+        "creative"
+      ]
+    },
+    {
+      "id": "bauhaus-shapes",
+      "name": "包豪斯几何",
+      "en": "Bauhaus Shapes",
+      "group": "group-06",
+      "sourceId": "bauhaus-shapes",
+      "status": "recipe",
+      "reference": "references/styles/bauhaus-shapes/STYLE.md",
+      "material": "有限原色与圆、方、弧的比例关系",
+      "action": "用等面积分割与组合解释数量，保持计量尺度",
+      "inputs": "同单位的量和基数",
+      "risk": "用直径代替面积会夸大数量差",
+      "continuityAnchor": "以同面积外轮廓及重心为锚，连续改动色面",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "data",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "flat-space-explainer",
+      "name": "扁平尺度漫游",
+      "en": "Scale Zoom Explainer",
+      "group": "group-06",
+      "sourceId": "flat-space-explainer",
+      "status": "recipe",
+      "reference": "references/styles/flat-space-explainer/STYLE.md",
+      "material": "平涂层级、比例尺与固定定位符",
+      "action": "每次推近先圈定下一层对象，再以该点为中心变焦",
+      "inputs": "各层尺寸、单位与定位关系",
+      "risk": "不同单位若无说明会被误当连续实测",
+      "continuityAnchor": "共享缩放中心与相机速度，比例尺随层级过渡",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "knowledge"
+      ]
+    },
+    {
+      "id": "text-flash-cuts",
+      "name": "文字闪切",
+      "en": "Text Flash Cuts",
+      "group": "group-06",
+      "sourceId": "text-flash-cuts",
+      "status": "recipe",
+      "reference": "references/styles/text-flash-cuts/STYLE.md",
+      "material": "大字形、主体剪影与象征性空间",
+      "action": "字卡落点对齐有含义的动作，关键词保留足够读时",
+      "inputs": "排版文案、可分层原创图或生图、返回图一致性",
+      "risk": "高频闪烁和过短读时会掩盖关键信息",
+      "continuityAnchor": "用字孔或主体负形接镜，保留焦点",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "product",
+        "creative"
+      ],
+      "referenceNeeds": [
+        "image-generation"
+      ]
+    },
+    {
+      "id": "silhouette-rhythm",
+      "name": "剪影律动",
+      "en": "Silhouette Rhythm",
+      "group": "group-06",
+      "sourceId": "silhouette-rhythm",
+      "status": "recipe",
+      "reference": "references/styles/silhouette-rhythm/STYLE.md",
+      "material": "单色剪影、亮背景与清楚的肢体负形",
+      "action": "先蓄势再把动作极值落在节拍，保持动作弧线",
+      "inputs": "动作关键姿态和节拍",
+      "risk": "手臂和躯干重合会让动作难辨",
+      "continuityAnchor": "保留关节姿势与重心，只让内部颜色消退",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "creative"
+      ]
+    },
+    {
+      "id": "hardcore-info",
+      "name": "线稿剖面图解",
+      "en": "Line-Art Cutaway",
+      "group": "group-12",
+      "sourceId": "hardcore-info",
+      "status": "recipe",
+      "reference": "references/styles/hardcore-info/STYLE.md",
+      "material": "主外轮廓、次级切线、剖面填线与引线层级",
+      "action": "沿连续切面打开外壳，保留安装位置作参照",
+      "inputs": "可信结构图与零件名",
+      "risk": "猜测内部结构会让示意误导",
+      "continuityAnchor": "以切面和轴心配准外观与内部图",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "product",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "precise-mechanism",
+      "name": "分色机械图解",
+      "en": "Color-Coded Mechanism",
+      "group": "group-12",
+      "sourceId": "precise-mechanism",
+      "status": "recipe",
+      "reference": "references/styles/precise-mechanism/STYLE.md",
+      "material": "结构分色、可见转轴和简化机械阴影",
+      "action": "以一个输入角解算各部件，让色组指明力的传递",
+      "inputs": "核对的传动关系、轴心与部件编号",
+      "risk": "独立播放的齿轮动画容易脱齿",
+      "continuityAnchor": "保留轴心、角度和转速，只换线宽与材质",
+      "engines": [
+        "threejs",
+        "svg-html"
+      ],
+      "purposes": [
+        "product",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "instruction-manual",
+      "name": "说明书插画",
+      "en": "Instruction Manual Art",
+      "group": "group-12",
+      "sourceId": "instruction-manual",
+      "status": "recipe",
+      "reference": "references/styles/instruction-manual/STYLE.md",
+      "material": "正交轴测、简练轮廓和单一活动件强调色",
+      "action": "先给装配方向，移动到位后退回中性色",
+      "inputs": "零件、连接点与正确步骤",
+      "risk": "相机换侧会造成装配方向反转",
+      "continuityAnchor": "前镜的连接孔就是下一镜的定位原点",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "product",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "pen-plotter",
+      "name": "笔式绘图仪",
+      "en": "Pen Plotter",
+      "group": "group-12",
+      "sourceId": "pen-plotter",
+      "status": "recipe",
+      "reference": "references/styles/pen-plotter/STYLE.md",
+      "material": "有限笔色、单线笔路与平行排线",
+      "action": "按笔路长度落笔；空行程抬笔移动后再画",
+      "inputs": "可绘制的矢量路径与笔序",
+      "risk": "把空行程画进纸面会产生错误连线",
+      "continuityAnchor": "复用路径弧长，切换后笔尖仍在同一点",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "creative",
+        "product"
+      ]
+    },
+    {
+      "id": "assembly-line-diagram",
+      "name": "流水线图解",
+      "en": "Assembly-Line Diagram",
+      "group": "group-12",
+      "sourceId": "assembly-line-diagram",
+      "status": "recipe",
+      "reference": "references/styles/assembly-line-diagram/STYLE.md",
+      "material": "单向工位、传送轨和有编号的载物盘",
+      "action": "载物盘每过一站便留下该站操作的可见结果",
+      "inputs": "真实工序和中间态",
+      "risk": "工站隐喻可能暗示错误的串行依赖",
+      "continuityAnchor": "锁住载物盘的前缘与带速，让新画法接着送",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "knowledge",
+        "product"
+      ]
+    },
+    {
+      "id": "comic-history",
+      "name": "搞笑历史卡通",
+      "en": "Comic History Cartoon",
+      "group": "group-08",
+      "sourceId": "comic-history",
+      "status": "recipe",
+      "reference": "references/styles/comic-history/STYLE.md",
+      "material": "刻印地图、可揭开的纸层与表情反应格",
+      "action": "让纸页的折叠和盖章标出时间变化，人物留在同一位置",
+      "inputs": "核实年代与地点，准备一致的原创人物与纸层，可用生图",
+      "risk": "喜剧反应不能替代史实依据",
+      "continuityAnchor": "人物站位及地标不动，以翻页边作遮挡",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "story",
+        "documentary",
+        "creative"
+      ],
+      "referenceNeeds": [
+        "image-generation"
+      ]
+    },
+    {
+      "id": "manga-panels",
+      "name": "黑白漫画分格",
+      "en": "Manga Panels",
+      "group": "group-08",
+      "sourceId": "manga-panels",
+      "status": "recipe",
+      "reference": "references/styles/manga-panels/STYLE.md",
+      "material": "墨线、网点、格框与留白",
+      "action": "从全页到局部，以格框开合切分动作节奏",
+      "inputs": "同一角色与道具的参考图，可用生图生成分层素材",
+      "risk": "换格后手型或道具朝向不一致会跳戏",
+      "continuityAnchor": "相邻格共用视线和道具握点，格框作遮幅",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "story",
+        "product"
+      ],
+      "referenceNeeds": [
+        "image-generation"
+      ]
+    },
+    {
+      "id": "scratch-film",
+      "name": "胶片直刻",
+      "en": "Scratch Film",
+      "group": "group-10",
+      "sourceId": "scratch-film",
+      "status": "recipe",
+      "reference": "references/styles/scratch-film/STYLE.md",
+      "material": "暗乳剂、细刻线和局部染色",
+      "action": "刻线密度随动作聚合，用固定种子保留有控制的线颤",
+      "inputs": "原创轮廓、节拍和刻痕蒙版",
+      "risk": "随机全屏闪白会遮住动作且使观看不适",
+      "continuityAnchor": "把上一镜的动作轨迹延续成刻线",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "creative"
+      ]
+    },
+    {
+      "id": "double-exposure",
+      "name": "双重曝光",
+      "en": "Double Exposure",
+      "group": "group-10",
+      "sourceId": "double-exposure",
+      "status": "recipe",
+      "reference": "references/styles/double-exposure/STYLE.md",
+      "material": "外轮廓遮罩与可辨认的内景曝光",
+      "action": "轮廓保持稳定，内景缓移，沿真实地平线进入下一镜",
+      "inputs": "已授权肖像与地点素材或原创绘制",
+      "risk": "双层亮度会吞掉主体轮廓",
+      "continuityAnchor": "锁住眼位或地平线，让内部景物接管全幅",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "story",
+        "product"
+      ]
+    },
+    {
+      "id": "spreadsheet",
+      "name": "表格动画",
+      "en": "Spreadsheet Film",
+      "group": "group-15",
+      "sourceId": "spreadsheet",
+      "status": "recipe",
+      "reference": "references/styles/spreadsheet/STYLE.md",
+      "material": "行列坐标、单元值和条件色",
+      "action": "改变输入后逐格更新真实公式结果，再框出变化区",
+      "inputs": "原始表、公式和单位",
+      "risk": "涂格图案不能冒充计算结果",
+      "continuityAnchor": "保留活动单元格坐标，由数字轮廓过渡到色块",
+      "engines": [
+        "svg-html",
+        "canvas2d"
+      ],
+      "purposes": [
+        "data"
+      ]
+    },
+    {
+      "id": "one-bit-dither",
+      "name": "1-bit 点阵",
+      "en": "1-bit Dither",
+      "group": "group-15",
+      "sourceId": "one-bit-dither",
+      "status": "recipe",
+      "reference": "references/styles/one-bit-dither/STYLE.md",
+      "material": "两种墨色、固定像素格与表面抖动网纹",
+      "action": "转动物体时网纹跟随表面，密度提示明暗",
+      "inputs": "形体蒙版、表面坐标与二值阈值",
+      "risk": "亚像素缩放会让纹理爬动",
+      "continuityAnchor": "共享轮廓，按阈值逐级换墨，最终只保留两色",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "creative",
+        "product"
+      ]
+    },
+    {
+      "id": "firefly-pointillism",
+      "name": "萤火光点",
+      "en": "Firefly Pointillism",
+      "group": "group-14",
+      "sourceId": "firefly-pointillism",
+      "status": "recipe",
+      "reference": "references/styles/firefly-pointillism/STYLE.md",
+      "material": "暗底、稳定编号的点与局部亮度包络",
+      "action": "点按距离次序点亮，中心留出负形再聚成轮廓",
+      "inputs": "主体轮廓、点采样与固定种子",
+      "risk": "逐帧重新撒点会产生闪烁",
+      "continuityAnchor": "保持各点身份和目标坐标，只改变发光半径",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "story",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "flow-field",
+      "name": "流场风线",
+      "en": "Flow-field Wind Lines",
+      "group": "group-14",
+      "sourceId": "flow-field",
+      "status": "recipe",
+      "reference": "references/styles/flow-field/STYLE.md",
+      "material": "可追溯的向量场、连续流线与短迹",
+      "action": "同组种子在场中积分，按帧查询轨迹，显出分流或汇聚",
+      "inputs": "向量数据、坐标系及时间单位；模拟单列",
+      "risk": "装饰流动不得冒充气象或水文测量",
+      "continuityAnchor": "传递同一流线参数和速度，不在切点重新播种",
+      "engines": [
+        "canvas2d",
+        "webgl"
+      ],
+      "purposes": [
+        "knowledge",
+        "documentary",
+        "data",
+        "story"
+      ]
+    },
+    {
+      "id": "oscilloscope-math",
+      "name": "示波器数学",
+      "en": "Oscilloscope Math",
+      "group": "group-14",
+      "sourceId": "oscilloscope-math",
+      "status": "recipe",
+      "reference": "references/styles/oscilloscope-math/STYLE.md",
+      "material": "刻度网格、余辉轨迹与采样游标",
+      "action": "参数驱动曲线和读数，停帧可验算同一点",
+      "inputs": "函数或有单位的采样数据",
+      "risk": "装饰波形不可标成实测值",
+      "continuityAnchor": "游标、相位与采样时钟在换画法时继续前进",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "knowledge",
+        "product"
+      ]
+    },
+    {
+      "id": "neon-tubes",
+      "name": "霓虹灯管",
+      "en": "Neon Tubes",
+      "group": "group-14",
+      "sourceId": "neon-tubes",
+      "status": "recipe",
+      "reference": "references/styles/neon-tubes/STYLE.md",
+      "material": "玻璃壁、高光、气柱和局部光晕分层",
+      "action": "沿管线依次点亮，熄灯时仍留玻璃外形",
+      "inputs": "可弯折的原创管线路径及点亮节奏",
+      "risk": "过曝会吞掉字腔和拐角",
+      "continuityAnchor": "复用中心线，让墨线逐渐显出管壁与光晕",
+      "engines": [
+        "webgl",
+        "canvas2d"
+      ],
+      "purposes": [
+        "product",
+        "creative"
+      ]
+    },
+    {
+      "id": "crayon-world",
+      "name": "蜡笔立体世界",
+      "en": "Crayon World 3D",
+      "group": "group-11",
+      "sourceId": "crayon-world",
+      "status": "recipe",
+      "reference": "references/styles/crayon-world/STYLE.md",
+      "material": "透视几何上叠附着于表面的蜡笔擦纹",
+      "action": "相机从物体侧方经过，体块遮挡先后显形",
+      "inputs": "原创场景简模与统一相机",
+      "risk": "屏幕噪声随帧漂移会破坏体积",
+      "continuityAnchor": "共享投影顶点与机位，将描边逐渐换成蜡笔",
+      "engines": [
+        "threejs",
+        "canvas2d"
+      ],
+      "purposes": [
+        "story",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "security-xray",
+      "name": "安检 X 光",
+      "en": "Security X-ray",
+      "group": "group-02",
+      "sourceId": "security-xray",
+      "status": "recipe",
+      "reference": "references/styles/security-xray/STYLE.md",
+      "material": "材料分层、厚度对应的透射色与移动扫描带",
+      "action": "同一标本进入扫描区，外观渐转为层厚示意",
+      "inputs": "材料截面、厚度；标清模拟和色标",
+      "risk": "伪彩不能解释为实物颜色或检测结论",
+      "continuityAnchor": "扫描线两侧共用物体轮廓和输送速度",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "knowledge"
+      ]
+    },
+    {
+      "id": "dark-documentary",
+      "name": "雷达扫描纪录片",
+      "en": "Radar Sweep Documentary",
+      "group": "group-02",
+      "sourceId": "dark-documentary",
+      "status": "recipe",
+      "reference": "references/styles/dark-documentary/STYLE.md",
+      "material": "暗场、扫描前缘、按采样时间衰减的回迹",
+      "action": "波束经过才显示有依据的目标，留出阅读回迹的时间",
+      "inputs": "观测出处、时标；重建要标示意",
+      "risk": "装饰波形易被当成实测数据",
+      "continuityAnchor": "令上一镜指针成为扫描起始角",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "documentary"
+      ]
+    },
+    {
+      "id": "thermal-camera",
+      "name": "热成像",
+      "en": "Thermal Camera",
+      "group": "group-02",
+      "sourceId": "thermal-camera",
+      "status": "recipe",
+      "reference": "references/styles/thermal-camera/STYLE.md",
+      "material": "低分辨率温度场、固定伪彩与测点标尺",
+      "action": "热源移开后按同一数据场更新温度和色值",
+      "inputs": "实测温度或标明示意的模型、标定范围",
+      "risk": "自动重标色阶会制造虚假温差",
+      "continuityAnchor": "测点始终落在原位置，温度范围保持一致",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "knowledge",
+        "data"
+      ]
+    },
+    {
+      "id": "map-explainer",
+      "name": "立体地图解说",
+      "en": "3D Map Explainer",
+      "group": "group-07",
+      "sourceId": "map-explainer",
+      "status": "recipe",
+      "reference": "references/styles/map-explainer/STYLE.md",
+      "material": "配准的高程网格、底图、路线带和随尺度分级的地名",
+      "action": "总览中锁定转弯点，沿路线推近，用局部地形解释原因",
+      "inputs": "许可清楚的高程与路线、坐标投影和简化依据",
+      "risk": "示意路径与实测数据须分开，竖向夸张需标明",
+      "continuityAnchor": "同一地理锚点投影到各镜；线宽按屏幕尺度过渡",
+      "engines": [
+        "threejs",
+        "canvas2d"
+      ],
+      "purposes": [
+        "knowledge",
+        "documentary",
+        "data",
+        "story"
+      ]
+    },
+    {
+      "id": "pip-simulation",
+      "name": "小人模拟实验",
+      "en": "Blob Simulation",
+      "group": "group-07",
+      "sourceId": "pip-simulation",
+      "status": "recipe",
+      "reference": "references/styles/pip-simulation/STYLE.md",
+      "material": "用可区分的小个体和环境格显示模拟状态",
+      "action": "从固定种子重建个体轨迹，同时画出由同一状态计算的统计",
+      "inputs": "明确更新规则、初态和步长",
+      "risk": "随意编造个体运动会使图表失真",
+      "continuityAnchor": "按稳定个体 ID 对齐前后两种画法",
+      "engines": [
+        "canvas2d",
+        "svg-html"
+      ],
+      "purposes": [
+        "knowledge",
+        "product"
       ]
     }
   ],
@@ -1879,58 +2670,78 @@
   "styleGroups": [
     {
       "id": "group-01",
-      "name": "剪辑与纪实",
+      "name": "剪辑纪实",
       "en": "Edit & Documentary"
     },
     {
       "id": "group-02",
-      "name": "实证影像",
-      "en": "Evidence Films"
+      "name": "仪器实证",
+      "en": "Instruments & Evidence"
     },
     {
       "id": "group-03",
-      "name": "手绘与绘画",
-      "en": "Hand-drawn & Painting"
+      "name": "绘画插画",
+      "en": "Painting & Illustration"
     },
     {
       "id": "group-04",
-      "name": "东方传统",
-      "en": "East Asian Traditions"
+      "name": "传统工艺",
+      "en": "Traditional Crafts"
     },
     {
       "id": "group-05",
-      "name": "印刷与版画",
+      "name": "印刷版画",
       "en": "Print & Printmaking"
     },
     {
       "id": "group-06",
-      "name": "图形与排版",
+      "name": "平面排版",
       "en": "Graphic & Type"
     },
     {
       "id": "group-07",
-      "name": "信息与发布",
-      "en": "Information & Keynote"
+      "name": "数据地图",
+      "en": "Data & Maps"
     },
     {
       "id": "group-08",
-      "name": "卡通与动画",
-      "en": "Cartoon & Anime"
+      "name": "卡通动画",
+      "en": "Cartoons"
     },
     {
       "id": "group-09",
-      "name": "游戏",
+      "name": "电子游戏",
       "en": "Games"
     },
     {
       "id": "group-10",
-      "name": "电影与时代",
-      "en": "Cinema & Eras"
+      "name": "胶片录像",
+      "en": "Film & Tape"
     },
     {
       "id": "group-11",
-      "name": "材质与 3D",
-      "en": "Materials & 3D"
+      "name": "立体微缩",
+      "en": "3D & Miniature"
+    },
+    {
+      "id": "group-12",
+      "name": "线稿图解",
+      "en": "Line Diagrams"
+    },
+    {
+      "id": "group-13",
+      "name": "速写板书",
+      "en": "Sketch & Board"
+    },
+    {
+      "id": "group-14",
+      "name": "发光线条",
+      "en": "Light & Lines"
+    },
+    {
+      "id": "group-15",
+      "name": "屏幕界面",
+      "en": "Screens & Interfaces"
     },
     {
       "id": "local",
@@ -2831,6 +3642,34 @@
             "keyShot": "人物收起湿伞并进入有遮雨设施的店门"
           },
           "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pop-art",
+          "fit": "primary",
+          "why": "网点套色和重复构图便于比较卖点",
+          "conditions": [
+            "原创商品轮廓、功能色和印版掩模"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一只杯子的四种用途",
+            "keyShot": "四个同尺寸杯形依次套色，只有把手方向改变"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "neon-tubes",
+          "fit": "primary",
+          "why": "灯管点亮路径能突出识别图形",
+          "conditions": [
+            "可弯折的原创管线路径及点亮节奏"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "夜间修鞋铺",
+            "keyShot": "鞋底轮廓的最后一段接上，沿同一路径亮起招牌"
+          },
+          "evidenceSampleIds": []
         }
       ],
       "referenceCaseIds": [
@@ -2982,6 +3821,34 @@
             "status": "concept",
             "title": "第一张设计稿",
             "keyShot": "放大镜从日期移向修改痕迹与最终成品"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "sketchnote",
+          "fit": "primary",
+          "why": "一页图可串起作品与方法",
+          "conditions": [
+            "要点和明确的关系顺序"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "我的三次改稿",
+            "keyShot": "把同一个项目的草图、反馈与完成稿画在一页，最后沿箭头回到作者的方法"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "double-exposure",
+          "fit": "conditional",
+          "why": "人物轮廓可以承载其工作地点",
+          "conditions": [
+            "已授权肖像与地点素材或原创绘制"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "修琴师的一天",
+            "keyShot": "修琴师侧影内出现工作台，在同一指尖位置转进调音特写"
           },
           "evidenceSampleIds": []
         }
@@ -3161,6 +4028,34 @@
             "keyShot": "手工工序逐刀显露，事实字幕标明出处"
           },
           "evidenceSampleIds": []
+        },
+        {
+          "styleId": "vintage-collage",
+          "fit": "conditional",
+          "why": "有出处的印刷材料可并置展示",
+          "conditions": [
+            "授权或公版原页及作者、日期和裁切依据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一座车站的两张票",
+            "keyShot": "车站名对齐后翻开旧票边缘，让两张日期同时可读"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "dark-documentary",
+          "fit": "conditional",
+          "why": "扫描出现的次序适合逐条揭示证据",
+          "conditions": [
+            "观测出处、时标；重建要标示意"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "旧天线的第一圈",
+            "keyShot": "扫过刻度时，让记录上的同一时刻进入画面"
+          },
+          "evidenceSampleIds": []
         }
       ],
       "referenceCaseIds": [
@@ -3310,6 +4205,20 @@
             "status": "concept",
             "title": "隔岸的回声",
             "keyShot": "两岸淡墨逐渐连成一座小桥"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "double-exposure",
+          "fit": "conditional",
+          "why": "同一轮廓内的地点变化表达回忆",
+          "conditions": [
+            "已授权肖像与地点素材或原创绘制"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "最后一班轮渡",
+            "keyShot": "轮渡剪影中的岸线缓缓放大，变为下一镜的岸边"
           },
           "evidenceSampleIds": []
         }
@@ -3490,6 +4399,146 @@
             "keyShot": "调整邻域规则，点群由散乱转为协同行进"
           },
           "evidenceSampleIds": []
+        },
+        {
+          "styleId": "colored-pencil",
+          "fit": "primary",
+          "why": "叠笔和剖视适合逐层辨认结构",
+          "conditions": [
+            "可核对的对象结构和切面"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一粒稻谷的外衣",
+            "keyShot": "剖面切开后，排线改变方向区分外壳和内部"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "sketchnote",
+          "fit": "primary",
+          "why": "关系图能跟随讲述形成",
+          "conditions": [
+            "要点和明确的关系顺序"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一次展览怎样开门",
+            "keyShot": "布展、灯光和开门时间由三条不同含义的线连接"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "stick-explainer",
+          "fit": "primary",
+          "why": "用人物关系演示抽象协作",
+          "conditions": [
+            "人物关系、站位和关键姿势"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "传话为什么变慢",
+            "keyShot": "队列中每个人转身后再说，方向变化形成延迟"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "bauhaus-shapes",
+          "fit": "primary",
+          "why": "几何拆合能展示守恒关系",
+          "conditions": [
+            "同单位的量和基数"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一块操场怎么分",
+            "keyShot": "矩形场地沿网格分开，三种用途重新拼回同一边界"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "flat-space-explainer",
+          "fit": "primary",
+          "why": "尺度变化能交代局部在整体的位置",
+          "conditions": [
+            "各层尺寸、单位与定位关系"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "从邮票到纸纤维",
+            "keyShot": "邮票角点留在原位，边缘逐步放大为纸纤维示意"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "precise-mechanism",
+          "fit": "primary",
+          "why": "轴与关节约束能展示联动",
+          "conditions": [
+            "核对的传动关系、轴心与部件编号"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "手摇卷线器",
+            "keyShot": "转动手柄，卷轴从同一输入角得到转动"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "assembly-line-diagram",
+          "fit": "primary",
+          "why": "跟随同一件在制品理解工序",
+          "conditions": [
+            "真实工序和中间态"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一封信如何分拣",
+            "keyShot": "同一信封依次出现邮编框、分拣标记和出口编号"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "oscilloscope-math",
+          "fit": "primary",
+          "why": "同一函数可同时驱动轨迹与读数",
+          "conditions": [
+            "函数或有单位的采样数据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "摆锤的影子",
+            "keyShot": "摆锤的水平投影成为曲线上的同一采样点"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "security-xray",
+          "fit": "primary",
+          "why": "透射示意能解释材料叠层",
+          "conditions": [
+            "材料截面、厚度；标清模拟和色标"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "木盒里的陶片",
+            "keyShot": "扫描带通过木盒，陶片重叠区依厚度改变色值"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "thermal-camera",
+          "fit": "conditional",
+          "why": "同一色阶能比较传热",
+          "conditions": [
+            "实测温度或标明示意的模型、标定范围"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一杯热茶留下的杯印",
+            "keyShot": "移开茶杯，桌面温区按同一标尺逐渐缩小"
+          },
+          "evidenceSampleIds": []
         }
       ],
       "referenceCaseIds": [
@@ -3639,6 +4688,34 @@
             "status": "concept",
             "title": "一条命令跑完检查",
             "keyShot": "真实命令与结果在字符网格中逐步出现"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "text-flash-cuts",
+          "fit": "conditional",
+          "why": "关键词与视觉反应能组织发布节奏",
+          "conditions": [
+            "排版文案、可分层原创图或生图、返回图一致性"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "让房间安静一点",
+            "keyShot": "巨大的静字留出门形负空间，人物沿原动线走入"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "manga-panels",
+          "fit": "conditional",
+          "why": "跨格特写适合呈现操作瞬间",
+          "conditions": [
+            "同一角色与道具的参考图，可用生图生成分层素材"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "旋钮的一格",
+            "keyShot": "手指在相邻两格保持同一握点，第三格用产品读数给出调节结果"
           },
           "evidenceSampleIds": []
         }
@@ -3793,6 +4870,62 @@
             "status": "concept",
             "title": "拧紧之前看这一处",
             "keyShot": "放大卡扣断面后回到整体装配"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "marker-paper",
+          "fit": "primary",
+          "why": "单线速写便于逐步指定操作位置",
+          "conditions": [
+            "步骤草图与笔画次序"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "把书签折进页角",
+            "keyShot": "一道宽线划出折痕，折角沿它翻转"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "hardcore-info",
+          "fit": "primary",
+          "why": "剖面能指出外壳遮住的关键部件",
+          "conditions": [
+            "可信结构图与零件名"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "保温瓶的夹层",
+            "keyShot": "瓶口不动，剖切向下揭出内外两壁"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "precise-mechanism",
+          "fit": "primary",
+          "why": "分系统着色可追踪传动",
+          "conditions": [
+            "核对的传动关系、轴心与部件编号"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "给抽屉装缓冲器",
+            "keyShot": "推轨沿固定轴线闭合，控制组颜色标出阻尼器首次接触的位置"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "instruction-manual",
+          "fit": "primary",
+          "why": "每步新增零件可以单独高亮",
+          "conditions": [
+            "零件、连接点与正确步骤"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "给台灯装底座",
+            "keyShot": "螺柱对准孔后进入，强调色在接触后移向下个部件"
           },
           "evidenceSampleIds": []
         }
@@ -4155,6 +5288,62 @@
             "keyShot": "目标、实际、差额在同一网格对齐"
           },
           "evidenceSampleIds": []
+        },
+        {
+          "styleId": "bauhaus-shapes",
+          "fit": "primary",
+          "why": "面积编码能直接比较份额",
+          "conditions": [
+            "同单位的量和基数"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一天里的三段用水高峰",
+            "keyShot": "把经核对的各时段用水量变成同尺度面积，最后复合成全天总量"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "spreadsheet",
+          "fit": "primary",
+          "why": "逐格有值可追溯结论",
+          "conditions": [
+            "原始表、公式和单位"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "雨天的借伞台",
+            "keyShot": "每日借还数更新后，库存列随公式计算改变"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "flow-field",
+          "fit": "conditional",
+          "why": "速度与方向能映射到轨迹",
+          "conditions": [
+            "向量数据、坐标系及时间单位；模拟单列"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "两个时刻的风向",
+            "keyShot": "同一观测网格并排显示两时刻向量，维持同尺度与种子位置以便比较"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "thermal-camera",
+          "fit": "conditional",
+          "why": "带单位的标尺能支持读数",
+          "conditions": [
+            "实测温度或标明示意的模型、标定范围"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "两块试样的降温曲线",
+            "keyShot": "锁住色标和测点，在相同时间比较两个有来源的温度读数"
+          },
+          "evidenceSampleIds": []
         }
       ],
       "referenceCaseIds": []
@@ -4259,6 +5448,34 @@
             "status": "concept",
             "title": "山口两侧的选择",
             "keyShot": "斜俯视抬起地形，两条路径沿坡面推进，切面解释距离和高差"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "flow-field",
+          "fit": "conditional",
+          "why": "方向场能解释空间流动",
+          "conditions": [
+            "向量数据、坐标系及时间单位；模拟单列"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "弯道水流示意",
+            "keyShot": "几条标记线从同一截面出发，在弯道产生方向差"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "map-explainer",
+          "fit": "conditional",
+          "why": "真实地形能解释路线为什么转向",
+          "conditions": [
+            "许可清楚的高程与路线、坐标投影和简化依据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "山谷里的铁路为什么绕弯",
+            "keyShot": "从全线跟到弯道，剖面与同一点的高程同步出现"
           },
           "evidenceSampleIds": []
         }
@@ -4562,6 +5779,20 @@
             "keyShot": "人物从踌躇到迈步，信始终握在手里"
           },
           "evidenceSampleIds": []
+        },
+        {
+          "styleId": "crayon-world",
+          "fit": "primary",
+          "why": "可随人物穿行的涂画空间适合探索故事",
+          "conditions": [
+            "原创场景简模与统一相机"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "小邮车进山",
+            "keyShot": "邮车绕过山脚，蜡笔着色的屋顶从山后露出"
+          },
+          "evidenceSampleIds": []
         }
       ],
       "referenceCaseIds": [
@@ -4700,6 +5931,34 @@
             "keyShot": "同单位块按两种规则分给不同需求角色"
           },
           "evidenceSampleIds": []
+        },
+        {
+          "styleId": "gilded-illumination",
+          "fit": "primary",
+          "why": "高光可突出关键物件",
+          "conditions": [
+            "纹样出处或原创线稿、金箔区域"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "夜航的罗盘",
+            "keyShot": "罗盘刻度逐一接到灯光，针尖持续指向同一方位"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "firefly-pointillism",
+          "fit": "primary",
+          "why": "光点聚散能把个体与群体的关系显形",
+          "conditions": [
+            "主体轮廓、点采样与固定种子"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一盏灯的回信",
+            "keyShot": "窗格上的光点一列列回应，汇成一扇亮窗"
+          },
+          "evidenceSampleIds": []
         }
       ],
       "referenceCaseIds": []
@@ -4817,6 +6076,34 @@
             "status": "concept",
             "title": "如何照顾一盆倔强的花",
             "keyShot": "主持每示范一步，花以相反动作回应"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "stick-explainer",
+          "fit": "primary",
+          "why": "姿态时差足以传递反应",
+          "conditions": [
+            "人物关系、站位和关键姿势"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "两个人的让路舞",
+            "keyShot": "两人在走廊同时向左再同时向右，第三拍一个人停住才错开"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "manga-panels",
+          "fit": "conditional",
+          "why": "格与格之间的停顿可以承接反应",
+          "conditions": [
+            "同一角色与道具的参考图，可用生图生成分层素材"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "慢半拍的合照",
+            "keyShot": "第一格按快门，第二格沿同一手指推近，末格才露出眨眼"
           },
           "evidenceSampleIds": []
         }
@@ -5088,6 +6375,48 @@
             "status": "concept",
             "title": "一本小刊的诞生",
             "keyShot": "不同色版叠合出原创社区小刊"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "gilded-illumination",
+          "fit": "primary",
+          "why": "局部金箔能引导阅读纹样",
+          "conditions": [
+            "纹样出处或原创线稿、金箔区域"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一处修复过的花纹",
+            "keyShot": "相机固定在原件一角，按记录区分原金箔与后补区域"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "vintage-collage",
+          "fit": "conditional",
+          "why": "拼贴适合串联异时材料",
+          "conditions": [
+            "授权或公版原页及作者、日期和裁切依据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一座书坊的字样",
+            "keyShot": "把已核年代的三张书名页沿同一个字上下配准，比较版式如何改变"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "comic-history",
+          "fit": "conditional",
+          "why": "纸张动作能表现制度的前后变化",
+          "conditions": [
+            "核实年代与地点，准备一致的原创人物与纸层，可用生图"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一座桥的三个名字",
+            "keyShot": "档案员翻过三层名牌，固定桥墩贯穿三个年代"
           },
           "evidenceSampleIds": []
         }
@@ -5420,6 +6749,62 @@
             "keyShot": "地块和日光按整周期变化并回到起点"
           },
           "evidenceSampleIds": []
+        },
+        {
+          "styleId": "text-flash-cuts",
+          "fit": "conditional",
+          "why": "字卡可承接乐句的停顿",
+          "conditions": [
+            "排版文案、可分层原创图或生图、返回图一致性"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "休止符里的楼梯",
+            "keyShot": "重拍时楼梯变为竖排字，乐句停顿处只保留最后一级轮廓"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "silhouette-rhythm",
+          "fit": "primary",
+          "why": "姿态极值能对应节拍",
+          "conditions": [
+            "动作关键姿态和节拍"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "跳绳的空拍",
+            "keyShot": "绳圈经过脚底时角色正好腾空，轮廓间留出空隙"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "scratch-film",
+          "fit": "primary",
+          "why": "刻痕和节拍能形成有形的重音",
+          "conditions": [
+            "原创轮廓、节拍和刻痕蒙版"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "鼓刷划过纸面",
+            "keyShot": "同一笔扫过，划痕向外增密再收束"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "neon-tubes",
+          "fit": "primary",
+          "why": "电流点亮可跟随乐句",
+          "conditions": [
+            "可弯折的原创管线路径及点亮节奏"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "低音接过旋律",
+            "keyShot": "乐句交给低音时沿同一管弯传光，前一段管壁仍可辨认"
+          },
+          "evidenceSampleIds": []
         }
       ],
       "referenceCaseIds": [
@@ -5530,6 +6915,34 @@
             "status": "concept",
             "title": "碎片重新找到位置",
             "keyShot": "原创拼片升起、翻转、合回同一图案"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pen-plotter",
+          "fit": "primary",
+          "why": "笔尖真实走线能让图形的构成次序可见",
+          "conditions": [
+            "可绘制的矢量路径与笔序"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "等高线签名",
+            "keyShot": "笔尖离纸越过空白，再接下一圈等高线"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "one-bit-dither",
+          "fit": "primary",
+          "why": "明暗化成可读的二值纹理",
+          "conditions": [
+            "形体蒙版、表面坐标与二值阈值"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "铅笔盒旋转台",
+            "keyShot": "盒盖转向光源，网点随盒盖改变疏密"
           },
           "evidenceSampleIds": []
         }
@@ -5643,6 +7056,34 @@
             "keyShot": "用户缩放与影片轨迹进入相同图像层级"
           },
           "evidenceSampleIds": []
+        },
+        {
+          "styleId": "oscilloscope-math",
+          "fit": "primary",
+          "why": "参数变化能立即反馈到游标",
+          "conditions": [
+            "函数或有单位的采样数据"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "拨动频率旋钮",
+            "keyShot": "拖动参数时游标、读数与相位轨迹从同一公式同步重绘"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "pip-simulation",
+          "fit": "primary",
+          "why": "微观规则能展示群体结果",
+          "conditions": [
+            "明确更新规则、初态和步长"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "两个出口的队列",
+            "keyShot": "旅客依据相同规则选队，总人数与计数始终相符"
+          },
+          "evidenceSampleIds": []
         }
       ],
       "referenceCaseIds": [
@@ -5751,6 +7192,20 @@
             "status": "concept",
             "title": "一个节点怎样被索引",
             "keyShot": "展示真实结构的一次插入与查找"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "assembly-line-diagram",
+          "fit": "primary",
+          "why": "一次请求经过的模块可画成各站",
+          "conditions": [
+            "真实工序和中间态"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "一次保存去了哪里",
+            "keyShot": "跟随同一请求 ID 依次经过校验、写入和回执，失败分支留在真实模块"
           },
           "evidenceSampleIds": []
         }
@@ -5958,6 +7413,20 @@
             "status": "concept",
             "title": "茶色慢慢展开",
             "keyShot": "按预定笔带显出茶汤，旁边保留真实用量"
+          },
+          "evidenceSampleIds": []
+        },
+        {
+          "styleId": "ipad-sketch",
+          "fit": "primary",
+          "why": "同一张画布能保留原料到成品的关联",
+          "conditions": [
+            "步骤、草图和纸页布局"
+          ],
+          "example": {
+            "status": "concept",
+            "title": "揉面的一张笔记",
+            "keyShot": "从粉堆线稿沿箭头走到面团，用局部颜色显示变化"
           },
           "evidenceSampleIds": []
         }

@@ -1,0 +1,4 @@
+{
+  "id":"trace","title":"同一位置的两次到达","visualSeconds":2,"leadSeconds":0,"tailSeconds":0,
+  "narration":"","visual":{"style":"示波器线描","subject":{"id":"pulse"}}
+}
