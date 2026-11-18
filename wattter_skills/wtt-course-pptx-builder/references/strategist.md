@@ -36,7 +36,6 @@ Write the resulting `route` to `spec_lock.md`. Route constraints are execution r
 | Government / policy / Five-Year Plan / work summary | `government_blue` (cooler) / `government_red` (warmer) |
 | Strategy consulting / investment analysis / board / executive | `mckinsey` / `exhibit` |
 | Medical / clinical case / hospital report / medical education | `medical_university` |
-| Telecom / 政企数字化 / 转型规划 / 内部汇报 | `china_telecom_template` |
 | AI ops / IT system / digital transformation / smart infrastructure | `ai_ops` |
 | Annual report / technical sharing / project showcase / data-driven | `google_style` |
 | Company intro / product launch / solution / education courseware | `smart_red` |

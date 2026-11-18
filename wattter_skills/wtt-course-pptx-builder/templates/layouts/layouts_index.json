@@ -32,22 +32,6 @@
     "page_catalog": "templates/layouts/ai_ops/page_catalog.json",
     "template_capabilities": "templates/layouts/ai_ops/template_capabilities.json"
   },
-  "china_telecom_template": {
-    "path": "templates/layouts/china_telecom_template/",
-    "kind": "layout",
-    "summary": "China Telecom related briefings, 政企数字化方案, 转型规划, 内部汇报.",
-    "canvas_format": "ppt169",
-    "page_count": 5,
-    "page_types": [
-      "cover",
-      "toc",
-      "chapter",
-      "content",
-      "ending"
-    ],
-    "page_catalog": "templates/layouts/china_telecom_template/page_catalog.json",
-    "template_capabilities": "templates/layouts/china_telecom_template/template_capabilities.json"
-  },
   "exhibit": {
     "path": "templates/layouts/exhibit/",
     "kind": "layout",

@@ -109,7 +109,7 @@ Course Handoff:
 python3 scripts/validate_course_handoff.py <course-handoff> --require-design
 # 显式 Deck：隔离使用该包
 python3 scripts/bind_course_handoff.py <course-handoff> \
-  --template-package 浙江地铁集团版 --template-kind decks
+  --template-package <deck_id> --template-kind decks
 # Free Route：不读取 Deck
 python3 scripts/bind_course_handoff.py <course-handoff> --free-route full-free
 # Free Route：单一 Layout 主导

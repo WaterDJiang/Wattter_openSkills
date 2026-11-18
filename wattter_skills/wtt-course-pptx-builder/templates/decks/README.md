@@ -10,7 +10,7 @@ Full data model: the `kind` frontmatter field and per-kind schema are described 
 
 ## Selection rule
 
-Deck selection happens via the **three-flow gate at SKILL.md Step 1** (flow 1 = library template). The main workflow defaults to flow 3 (free build). A deck is used when the user picks it from the `decks_index.json` menu at Step 3 flow 1, or gives an explicit directory path (e.g. `${SKILL_DIR}/templates/decks/招商银行/`) as a flow 1 shortcut. Bare names do not auto-select. See [`SKILL.md`](../../SKILL.md) Step 1 / Step 3.
+Deck selection happens via the **three-flow gate at SKILL.md Step 1** (flow 1 = library template). The main workflow defaults to flow 3 (free build). A deck is used when the user picks it from the `decks_index.json` menu at Step 3 flow 1, or gives an explicit directory path (e.g. `${SKILL_DIR}/templates/decks/<deck_id>/`) as a flow 1 shortcut. Bare names do not auto-select. See [`SKILL.md`](../../SKILL.md) Step 1 / Step 3.
 
 `decks_index.json` is a **discovery aid** — it populates the flow 1 menu and lets the AI answer "what decks exist?" by listing ids and paths. Listing alone never advances the pipeline.
 
