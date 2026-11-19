@@ -229,7 +229,7 @@ def search_text(data, style):
     cases = {m['useCaseId'] for m in matches}
     extra = [x for c in data.get('useCases', []) if c['id'] in cases for x in [c['name'], *c['aliases']]]
     extra += [x for m in matches for x in [m['why'], m['example']['title'], m['example']['keyShot']]]
-    return ' '.join([style['id'], style['name'], style.get('en', ''), style.get('material', ''), *style.get('aliases', []), *extra]).casefold()
+    return ' '.join([style['id'], style.get('sourceId',''), style['name'], style.get('en', ''), style.get('material', ''), *style.get('aliases', []), *extra]).casefold()
 
 
 def select_styles(data, purpose=None, query='', use_case=None):
@@ -261,9 +261,10 @@ def style_summary(style):
 def style_detail(data, style_id, use_case=None):
     """One chosen candidate, with only the requested topic's matches when given."""
     cid = resolve_use_case(data, use_case) if use_case else None
-    style = next((s for s in data['styles'] if s['id'] == style_id), None)
+    style = next((s for s in data['styles'] if s['id'] == style_id or s.get('sourceId') == style_id), None)
     if style is None:
         raise ValueError('未知风格ID：'+style_id)
+    style_id = style['id']
     matches = use_case_matches(data, style_id, cid)
     if cid and not matches:
         raise ValueError('该风格没有此用法映射：'+style_id+'/'+cid)
@@ -309,7 +310,7 @@ def mapping_document(data):
              '由 `config/capabilities.json` 的 useCases 生成。用法与风格多对多；六个主用途和现有风格ID不变。', '',
              '## 怎么使用', '',
              '先识别内容目标、受众、事实/虚构和素材条件，再检索用法；交叉题材可取多个入口。候选是检索起点，模型结合本片脚本重新推荐五个完整方向，由用户决定。主匹配不是自动选中，有条件匹配不代表已具备依赖。风格决定后先展示四张真实样帧拼图，用户确认后才完整渲染；已指定画风不重复五选，仍需四帧审片。', '',
-             '每条示例均为**原创样例构想，未渲染**；另列的同风格工程样片只证明其已有实现范围，不证明该构想、题材效果或全部81项均已验证。', '',
+             '每条示例均为**原创样例构想，未渲染**；另列的同风格工程样片只证明其已有实现范围，不证明该构想、题材效果或全目录均已验证。', '',
              '```sh', 'python3 scripts/catalog.py use-cases --view summary', 'python3 scripts/catalog.py list --use-case 广告 --view summary',
              'python3 scripts/catalog.py show desktop-flythrough --use-case 个人宣传',
              'python3 scripts/catalog.py list --use-case 浪漫电影 --query 水彩', '```', '',
@@ -331,7 +332,7 @@ def mapping_document(data):
         if refs:
             research = {c['id']: c for c in data['referenceCases']}
             lines += ['', '外部研究案例（非本库成片验收）：'+'、'.join(f"[{research[cid]['title']}](production-cases.md#{cid})" for cid in refs)+'。']
-    lines += ['', '## 反向查询：81种风格适合哪些用法', '', '| ID / 风格 | 可匹配用法 |', '|---|---|']
+    lines += ['', f'## 反向查询：{len(styles)}种风格适合哪些用法', '', '| ID / 风格 | 可匹配用法 |', '|---|---|']
     for style in data['styles']:
         links = '、'.join(f"[{m['useCaseName']}](#{m['useCaseId']})"+('（有条件）' if m['fit']=='conditional' else '') for m in use_case_matches(data, style['id']))
         lines.append(f"| `{style['id']}` / {style['name']} | {links} |")
@@ -409,12 +410,28 @@ def documents(root):
     lines += ['','路径：**想法/材料 → 主用途 → 内容与脚本 → 五种完整方向（形式+策略+画风） → 风格决定 → 代码样帧 → 四帧拼图确认 → 完整渲染及验收**。','', '分类用于浏览和自动路由，不是新加的开场选择。已指定画风跳过五选，仍须四帧审片；文字/静态SVG/交互HTML可从知识解释分支直接交付。','', '## 视觉风格（与用途自由组合）','','| ID | 风格 | 基础状态 |','|---|---|---|']
     for style in data['styles']: lines.append(f"| `{style['id']}` | [{style['name']}]({Path(style['reference']).relative_to('references').as_posix()}) | {'起步模板；按内容重画' if style['status']=='template' else '方法已收录；本片须实现验证'} |")
     if library:
-        lines += ['', '## 完整参考目录覆盖', '', f"固定版本：`{library['commit']}`；参考11组66条全部映射，本库去重后共{len(styles)}项（含{sum(s.get('group')=='local' for s in data['styles'])}项本库补充），上面的6类是用途。", '', '| 参考组 | 数量 | 本地方法入口 |', '|---|---|---|']
-        for group in index['groups']:
-            members=[e for e in library['coverage'] if e['group']==group['id']]
-            links='、'.join(f"[{e['name']}]({Path(e['reference']).relative_to('references').as_posix()})" for e in members)
-            lines.append(f"| {group['name']} | {len(members)} | {links} |")
-        lines += ['', '查看[可筛选风格库](../assets/gallery/styles.html)。SOURCE.md存放方法参考，STYLE.md记录本项目的制作指引。方法收录不等于每条都完成本库原创视频验证；当前实测样片仍为6个。', '']
+        groups = index.get('archive', {}).get('groups', [])
+        sourced = [s for s in styles.values() if s.get('sourceId')]
+        by_source = {s['sourceId']: s for s in sourced}
+        if len(sourced) != len(by_source) or (any('continuityAnchor' in s for s in sourced) and not groups):
+            raise ValueError('附件风格覆盖缺少索引或来源重复')
+        if groups:
+            group_map = {g['id']: g for g in data['styleGroups']}
+            slugs = [sid for group in groups for sid in group['styleIds']]
+            if len(slugs) != len(by_source) or len(set(slugs)) != len(slugs) or set(slugs) != set(by_source):
+                raise ValueError('附件风格覆盖不完整或重复')
+            if any(by_source[sid]['group'] != group['id'] or group_map.get(group['id'], {}).get('name') != group['name']
+                   for group in groups for sid in group['styleIds']):
+                raise ValueError('附件风格分组不一致')
+            lines += ['', '## 完整参考目录覆盖', '',
+                      f"附件 {len(groups)} 组 {len(slugs)} 项，另有本库 {len(styles)-len(slugs)} 项。旧版 {len(ids)} 份固定来源保留，本次新增条目使用本地原创配方。", '',
+                      '| 参考组 | 数量 | 本地方法入口 |', '|---|---|---|']
+            for group in groups:
+                members = [by_source[sid] for sid in group['styleIds']]
+                links = '、'.join(f"[{row['name']}]({Path(row['reference']).relative_to('references').as_posix()})" for row in members)
+                lines.append(f"| {group['name']} | {len(members)} | {links} |")
+        else:
+            lines += ['', '## 固定参考目录', '', f"固定来源版本 {library['commit']}，共 {len(ids)} 条。", '']
     lines += ['','长篇画法见[风格配方](style-catalog.md)。具体样例状态独立列于下面，不能从一个样例推广到整类能力。','','## 技术选项','','| 技术 | 状态 | 用途与边界 |','|---|---|---|']
     for e in data['engines']: lines.append(f"| {e['id']} | {e['status']} | {e['use']} |")
     lines += ['','**有 Three.js 路线**，但当前内置逐帧底座和本轮六例均为 Canvas；Three.js/p5.js/Remotion 等需要为具体镜头接入、检查确定性和渲染，不能当作已安装即用的全部后端。','','## 新制样片','','| 用途 | 作品 | 风格 | 秒数 | 状态 |','|---|---|---|---|---|']
@@ -428,7 +445,7 @@ def documents(root):
     page='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>代码视频工作室 · 原创样片</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f0e9;color:#152b36;font-family:system-ui,"PingFang SC",sans-serif}header,main,footer{max-width:1320px;margin:auto;padding:42px 5vw}header{padding-top:70px;padding-bottom:20px}.eyebrow{letter-spacing:3px;font-size:13px;color:#426964}h1{font-size:clamp(34px,5vw,64px);letter-spacing:-2px;margin:16px 0}header p{max-width:800px;line-height:1.8;color:#53656b}nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}button{border:1px solid #becac6;border-radius:30px;background:transparent;padding:10px 18px;color:inherit;cursor:pointer}button[aria-pressed=true]{background:#153b37;color:white}main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;padding-top:12px}article{background:#fffdf8;border:1px solid #dce0d7;padding:16px;border-radius:18px}article[hidden]{display:none}.media{overflow:hidden;border-radius:10px;background:#14282e}video{display:block;width:100%;aspect-ratio:16/9}h2{font-size:24px;margin:8px 0}.tag{font-size:13px;color:#577465;letter-spacing:1px}article p{line-height:1.6}a{color:#176e67}footer{font-size:14px;line-height:1.9}@media(max-width:760px){main{grid-template-columns:1fr}}</style><header><div class="eyebrow">WTT / CODE VIDEO STUDIO</div><h1>从一个想法，到一段会动的表达。</h1><p>六条制作路径，同一套代码管线。这里的图形、故事、数据和事件音均为本轮新作；没有搬运参考项目的演示媒体。短片展示方法，不代表整类视频都能套模板完成。</p><nav><button data-filter="all" aria-pressed="true">全部</button>'''
     page+=''.join(f'<button data-filter="{c["id"]}" aria-pressed="false">{c["name"]}</button>' for c in data['categories'])
     page+='</nav></header><main>'+''.join(cards)+'</main><footer>真实渲染 ≠ 全部视觉验收 ≠ 用户采用。声音为代码生成事件音，无人声。纪实样例使用虚构事件；数据与产品均为示例。<br><a href="../../references/classification.md">完整分类与技术状态</a> · <a href="../../README.md">使用说明</a></footer><script>document.querySelectorAll("button[data-filter]").forEach(b=>b.onclick=()=>{document.querySelectorAll("button[data-filter]").forEach(x=>x.setAttribute("aria-pressed",x===b));document.querySelectorAll("article").forEach(a=>a.hidden=b.dataset.filter!=="all"&&a.dataset.category!==b.dataset.filter)});</script></html>'
-    page=page.replace('<nav>','<p><a href="styles.html">浏览完整风格库：11参考组66条＋本库补充</a></p><nav>')
+    page=page.replace('<nav>','<p><a href="styles.html">浏览完整风格库：附件风格和本库补充</a></p><nav>')
     options=lambda items: ''.join('<option value="'+html.escape(i['id'])+'">'+html.escape(i['name'])+'</option>' for i in items)
     cards=[]
     for style in data['styles']:
@@ -438,7 +455,7 @@ def documents(root):
             evidence=''.join('<p><a href="../../'+next(s['project'] for s in data['samples'] if s['id']==sid)+'/DEMO.md">同风格工程样片（非此构想）</a></p>' for sid in m['evidenceSampleIds'])
             details.append('<details><summary>'+html.escape(m['useCaseName'])+(' · 有条件' if m['fit']=='conditional' else '')+'</summary><p>'+html.escape(m['why'])+'</p><p>构想，未渲染：'+html.escape(m['example']['title'])+'。'+html.escape(m['example']['keyShot'])+'</p><p>条件：'+html.escape('；'.join(m['conditions']))+'</p>'+evidence+'</details>')
         cards.append('<article data-group="'+style.get('group','local')+'" data-purposes="'+','.join(style.get('purposes',[]))+'" data-cases="'+','.join(m['useCaseId'] for m in matches)+'" data-search="'+html.escape(search_text(data,style),quote=True)+'"><h2>'+html.escape(style['name'])+'</h2><p>'+html.escape(style.get('material','本库原有组合画法，按片实现。'))+'</p><p>'+html.escape(style.get('action','按内容设计动作。'))+'</p>'+''.join(details)+'<a href="../../'+style['reference']+'">方法与验收</a><small>方法配方 · 按本片验证</small></article>')
-    stylepage='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>完整风格库 · 代码视频</title><style>body{max-width:1280px;margin:40px auto;padding:0 22px;background:#f3f0e9;color:#163a3c;font:17px system-ui}input,select{font:inherit;padding:10px;max-width:100%;margin:8px 4px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:16px}article{padding:20px;background:#fffdf8;border:1px solid #d6ded4;border-radius:12px}article[hidden]{display:none}p{line-height:1.7}a{color:#176e67}small{display:block;margin-top:12px;color:#61726b}h2{font-size:22px}</style><h1>完整风格库</h1><p>11参考组66条方法已完整收录，加本库补充共STYLE_COUNT项。按用途、组别或关键词查找；新吸收方法尚未逐条在本库制作成片。</p><label>搜索<input id="query" placeholder="例如 水墨 / 纪录片 / 3D"></label><label>用途<select id="purpose"><option value="">全部用途</option>'''+options(data['categories'])+'</select></label><label>风格组<select id="group"><option value="">全部组别</option>'+options(data.get('styleGroups',[]))+'</select></label><p id="count"></p><main>'+''.join(cards)+'''</main><p><a href="index.html">原创样片</a> · <a href="../../references/classification.md">分类与技术状态</a></p><script>function update(){const q=document.querySelector('#query').value.toLowerCase(),p=document.querySelector('#purpose').value,g=document.querySelector('#group').value;let n=0;document.querySelectorAll('article').forEach(a=>{a.hidden=!!(q&&!a.dataset.search.includes(q)||p&&!a.dataset.purposes.split(',').includes(p)||g&&a.dataset.group!==g);if(!a.hidden)n++});document.querySelector('#count').textContent=n+' 项可浏览方法';}document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',update));update();</script></html>'''
+    stylepage='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>完整风格库 · 代码视频</title><style>body{max-width:1280px;margin:40px auto;padding:0 22px;background:#f3f0e9;color:#163a3c;font:17px system-ui}input,select{font:inherit;padding:10px;max-width:100%;margin:8px 4px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:16px}article{padding:20px;background:#fffdf8;border:1px solid #d6ded4;border-radius:12px}article[hidden]{display:none}p{line-height:1.7}a{color:#176e67}small{display:block;margin-top:12px;color:#61726b}h2{font-size:22px}</style><h1>完整风格库</h1><p>附件风格与本库补充共STYLE_COUNT项。按用途、组别或关键词查找；新吸收方法尚未逐条在本库制作成片。</p><label>搜索<input id="query" placeholder="例如 水墨 / 纪录片 / 3D"></label><label>用途<select id="purpose"><option value="">全部用途</option>'''+options(data['categories'])+'</select></label><label>风格组<select id="group"><option value="">全部组别</option>'+options(data.get('styleGroups',[]))+'</select></label><p id="count"></p><main>'+''.join(cards)+'''</main><p><a href="index.html">原创样片</a> · <a href="../../references/classification.md">分类与技术状态</a></p><script>function update(){const q=document.querySelector('#query').value.toLowerCase(),p=document.querySelector('#purpose').value,g=document.querySelector('#group').value;let n=0;document.querySelectorAll('article').forEach(a=>{a.hidden=!!(q&&!a.dataset.search.includes(q)||p&&!a.dataset.purposes.split(',').includes(p)||g&&a.dataset.group!==g);if(!a.hidden)n++});document.querySelector('#count').textContent=n+' 项可浏览方法';}document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',update));update();</script></html>'''
     stylepage=stylepage.replace('STYLE_COUNT',str(len(styles)))
     result={'references/classification.md':'\n'.join(lines),'assets/gallery/index.html':page,'assets/gallery/styles.html':stylepage}
     if data.get('useCases'):
@@ -454,6 +471,21 @@ def documents(root):
         result['assets/gallery/styles.html']=stylepage
     if data.get('referenceCases'):
         result['references/production-cases.md']=reference_case_document(data)
+    for style in styles.values():
+        if 'continuityAnchor' not in style:
+            continue
+        matches = use_case_matches(data, style['id'])
+        method = [f"# {style['name']}", '', f"目录 ID：`{style['id']}`。状态：制作配方，按镜验证。", '',
+                  '## 本镜怎么画', '', style['material'] + '。' + style['action'] + '。', '',
+                  '素材与数据：' + style['inputs'] + '。', '可选技术：' + ' / '.join(style['engines']) + '。']
+        if style.get('referenceNeeds'):
+            method += ['参考制作路线用到图像生成；本片可使用已有授权分层素材，核对角色和道具锚点。']
+        method += ['', '## 怎样接镜和验收', '', style['continuityAnchor'] + '。' + style['risk'] + '。',
+                   '在动作开始、变化中点和落定处查看主体与关键读数。实现见[连续动作与画法交接](../../style-continuity.md)。',
+                   '', '## 用法与原创镜头构想', '']
+        for m in matches:
+            method.append(f"- {m['useCaseId']}：{m['why']}。{m['example']['title']}——{m['example']['keyShot']}。")
+        result[style['reference']] = '\n'.join(method) + '\n'
     library_path = root/'config/frontend-libraries.json'
     if library_path.is_file():
         result['references/frontend-libraries.md'] = frontend_library_document(frontend_libraries(root))

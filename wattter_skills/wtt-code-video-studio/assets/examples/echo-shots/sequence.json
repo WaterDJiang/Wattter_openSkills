@@ -1,0 +1,4 @@
+{
+  "film": {"schema":"code-animation/v1","title":"一声回响 · 无声分镜验证","width":640,"height":360,"fps":24,"seed":27},
+  "order": ["wall", "trace"]
+}

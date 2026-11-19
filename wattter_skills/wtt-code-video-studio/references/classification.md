@@ -19,7 +19,7 @@
 
 ## 按具体主题用法检索
 
-[24种主题用法与81种风格的正反向映射](use-case-mapping.md)：广告、个人宣传、纪录片、浪漫故事、概念解释等。每条含理由、关键镜头构想和条件；不增加开场分类选择。
+[24种主题用法与114种风格的正反向映射](use-case-mapping.md)：广告、个人宣传、纪录片、浪漫故事、概念解释等。每条含理由、关键镜头构想和条件；不增加开场分类选择。
 
 ## 视觉风格（与用途自由组合）
 
@@ -106,27 +106,61 @@
 | `desktop-flythrough` | [桌面穿梭](styles/desktop-flythrough/STYLE.md) | 方法已收录；本片须实现验证 |
 | `seasonal-map-postcard` | [季节地图明信片](seasonal-map.md) | 起步模板；按内容重画 |
 | `handpainted-cinema` | [手绘电影式角色动画](handpainted-cinema.md) | 起步模板；按内容重画 |
+| `colored-pencil` | [彩铅科普插画](styles/colored-pencil/STYLE.md) | 方法已收录；本片须实现验证 |
+| `sketchnote` | [视觉笔记](styles/sketchnote/STYLE.md) | 方法已收录；本片须实现验证 |
+| `stick-explainer` | [火柴人讲解](styles/stick-explainer/STYLE.md) | 方法已收录；本片须实现验证 |
+| `ipad-sketch` | [平板速写讲解](styles/ipad-sketch/STYLE.md) | 方法已收录；本片须实现验证 |
+| `marker-paper` | [马克笔白纸速写](styles/marker-paper/STYLE.md) | 方法已收录；本片须实现验证 |
+| `gilded-illumination` | [金箔彩绘](styles/gilded-illumination/STYLE.md) | 方法已收录；本片须实现验证 |
+| `pop-art` | [波普艺术](styles/pop-art/STYLE.md) | 方法已收录；本片须实现验证 |
+| `vintage-collage` | [复古版画拼贴](styles/vintage-collage/STYLE.md) | 方法已收录；本片须实现验证 |
+| `bauhaus-shapes` | [包豪斯几何](styles/bauhaus-shapes/STYLE.md) | 方法已收录；本片须实现验证 |
+| `flat-space-explainer` | [扁平尺度漫游](styles/flat-space-explainer/STYLE.md) | 方法已收录；本片须实现验证 |
+| `text-flash-cuts` | [文字闪切](styles/text-flash-cuts/STYLE.md) | 方法已收录；本片须实现验证 |
+| `silhouette-rhythm` | [剪影律动](styles/silhouette-rhythm/STYLE.md) | 方法已收录；本片须实现验证 |
+| `hardcore-info` | [线稿剖面图解](styles/hardcore-info/STYLE.md) | 方法已收录；本片须实现验证 |
+| `precise-mechanism` | [分色机械图解](styles/precise-mechanism/STYLE.md) | 方法已收录；本片须实现验证 |
+| `instruction-manual` | [说明书插画](styles/instruction-manual/STYLE.md) | 方法已收录；本片须实现验证 |
+| `pen-plotter` | [笔式绘图仪](styles/pen-plotter/STYLE.md) | 方法已收录；本片须实现验证 |
+| `assembly-line-diagram` | [流水线图解](styles/assembly-line-diagram/STYLE.md) | 方法已收录；本片须实现验证 |
+| `comic-history` | [搞笑历史卡通](styles/comic-history/STYLE.md) | 方法已收录；本片须实现验证 |
+| `manga-panels` | [黑白漫画分格](styles/manga-panels/STYLE.md) | 方法已收录；本片须实现验证 |
+| `scratch-film` | [胶片直刻](styles/scratch-film/STYLE.md) | 方法已收录；本片须实现验证 |
+| `double-exposure` | [双重曝光](styles/double-exposure/STYLE.md) | 方法已收录；本片须实现验证 |
+| `spreadsheet` | [表格动画](styles/spreadsheet/STYLE.md) | 方法已收录；本片须实现验证 |
+| `one-bit-dither` | [1-bit 点阵](styles/one-bit-dither/STYLE.md) | 方法已收录；本片须实现验证 |
+| `firefly-pointillism` | [萤火光点](styles/firefly-pointillism/STYLE.md) | 方法已收录；本片须实现验证 |
+| `flow-field` | [流场风线](styles/flow-field/STYLE.md) | 方法已收录；本片须实现验证 |
+| `oscilloscope-math` | [示波器数学](styles/oscilloscope-math/STYLE.md) | 方法已收录；本片须实现验证 |
+| `neon-tubes` | [霓虹灯管](styles/neon-tubes/STYLE.md) | 方法已收录；本片须实现验证 |
+| `crayon-world` | [蜡笔立体世界](styles/crayon-world/STYLE.md) | 方法已收录；本片须实现验证 |
+| `security-xray` | [安检 X 光](styles/security-xray/STYLE.md) | 方法已收录；本片须实现验证 |
+| `dark-documentary` | [雷达扫描纪录片](styles/dark-documentary/STYLE.md) | 方法已收录；本片须实现验证 |
+| `thermal-camera` | [热成像](styles/thermal-camera/STYLE.md) | 方法已收录；本片须实现验证 |
+| `map-explainer` | [立体地图解说](styles/map-explainer/STYLE.md) | 方法已收录；本片须实现验证 |
+| `pip-simulation` | [小人模拟实验](styles/pip-simulation/STYLE.md) | 方法已收录；本片须实现验证 |
 
 ## 完整参考目录覆盖
 
-固定版本：`bebbbe1aa92a3cb4bb6f83500e61b23a17d1aa00`；参考11组66条全部映射，本库去重后共81项（含15项本库补充），上面的6类是用途。
+附件 15 组 99 项，另有本库 15 项。旧版 66 份固定来源保留，本次新增条目使用本地原创配方。
 
 | 参考组 | 数量 | 本地方法入口 |
 |---|---|---|
-| 剪辑与纪实 | 8 | [字幕新闻](styles/caption-news/STYLE.md)、[1920s 新闻影片](styles/newsreel/STYLE.md)、[实时倒计时分屏](styles/countdown/STYLE.md)、[延时交响](styles/city-symphony/STYLE.md)、[视觉调查](styles/visual-investigation/STYLE.md)、[构成主义蒙太奇](styles/kino-montage/STYLE.md)、[体育战术板](styles/telestrator/STYLE.md)、[电视新闻包装](styles/news-package/STYLE.md) |
-| 实证影像 | 8 | [卫星简报](styles/satellite-briefing/STYLE.md)、[工程简报板](styles/briefing-board/STYLE.md)、[点云测绘](styles/lidar-survey/STYLE.md)、[白模投影](styles/white-model/STYLE.md)、[数据实物化](styles/data-physical/STYLE.md)、[产品拆解](styles/teardown/STYLE.md)、[显微叙事](styles/microscope/STYLE.md)、[档案灯台](styles/archive-lighttable/STYLE.md) |
-| 手绘与绘画 | 8 | [蜡笔儿童绘本](styles/crayon-book/STYLE.md)、[水彩笔刷](styles/watercolor/STYLE.md)、[中国水墨](styles/ink-wash/STYLE.md)、[油画厚涂](styles/impasto/STYLE.md)、[一笔画](styles/one-line/STYLE.md)、[白板讲解](styles/whiteboard/STYLE.md)、[钢笔淡彩](styles/urban-sketch/STYLE.md)、[黑板粉笔](styles/chalkboard/STYLE.md) |
-| 东方传统 | 4 | [皮影戏](styles/shadow-puppet/STYLE.md)、[浮世绘](styles/ukiyoe/STYLE.md)、[红色窗花剪纸](styles/papercut-red/STYLE.md)、[纸雕灯影](styles/paper-lantern/STYLE.md) |
-| 印刷与版画 | 6 | [Risograph 孔版印刷](styles/risograph/STYLE.md)、[复古半调案卷](styles/halftone-dossier/STYLE.md)、[木刻版画](styles/woodcut/STYLE.md)、[铜版画](styles/engraving/STYLE.md)、[丝印旅行海报](styles/silkscreen-poster/STYLE.md)、[印刷长镜头](styles/printed-long-take/STYLE.md) |
-| 图形与排版 | 7 | [瑞士动态排版](styles/swiss-motion/STYLE.md)、[60s 间谍片头](styles/spy-titles/STYLE.md)、[装饰艺术](styles/art-deco/STYLE.md)、[蓝图 / 工程制图](styles/blueprint/STYLE.md)、[彩色玻璃窗](styles/stained-glass/STYLE.md)、[象形运动图形](styles/pictogram-motion/STYLE.md)、[ASCII / CRT 终端](styles/ascii-crt/STYLE.md) |
-| 信息与发布 | 8 | [数据叙事](styles/dataviz/STYLE.md)、[等距信息图](styles/iso-infographic/STYLE.md)、[暗色科技发布](styles/dark-keynote/STYLE.md)、[活体实机录屏](styles/living-screencast/STYLE.md)、[科幻全息界面](styles/hologram-hud/STYLE.md)、[地铁线路图](styles/transit-map/STYLE.md)、[等距绘本](styles/isometric-picture-book/STYLE.md)、[电路板](styles/circuit-board/STYLE.md) |
-| 卡通与动画 | 4 | [1930s 橡皮管卡通](styles/rubber-hose/STYLE.md)、[80 年代赛璐璐动画](styles/cel-anime-80s/STYLE.md)、[科幻情景喜剧卡通](styles/scifi-toon/STYLE.md)、[50s 扁平卡通](styles/midcentury-toon/STYLE.md) |
-| 游戏 | 4 | [16-bit 像素 RPG](styles/pixel-rpg/STYLE.md)、[HD-2D](styles/hd-2d/STYLE.md)、[微游戏快闪](styles/microgame/STYLE.md)、[综艺节奏扁平](styles/game-show/STYLE.md) |
-| 电影与时代 | 2 | [1920s 默片](styles/silent-film/STYLE.md)、[后室 / 新怪谈](styles/backrooms/STYLE.md) |
-| 材质与 3D | 7 | [积木玩具](styles/brick-toy/STYLE.md)、[纸片立体书](styles/paper-popup/STYLE.md)、[移轴微缩](styles/tilt-shift/STYLE.md)、[低多边形等距](styles/lowpoly-island/STYLE.md)、[玻璃质感产品](styles/glass-product/STYLE.md)、[孟菲斯微缩景观](styles/memphis-diorama/STYLE.md)、[桌面穿梭](styles/desktop-flythrough/STYLE.md) |
-
-查看[可筛选风格库](../assets/gallery/styles.html)。SOURCE.md存放方法参考，STYLE.md记录本项目的制作指引。方法收录不等于每条都完成本库原创视频验证；当前实测样片仍为6个。
-
+| 剪辑纪实 | 8 | [字幕新闻](styles/caption-news/STYLE.md)、[1920s 新闻影片](styles/newsreel/STYLE.md)、[实时倒计时分屏](styles/countdown/STYLE.md)、[延时交响](styles/city-symphony/STYLE.md)、[视觉调查](styles/visual-investigation/STYLE.md)、[构成主义蒙太奇](styles/kino-montage/STYLE.md)、[体育战术板](styles/telestrator/STYLE.md)、[电视新闻包装](styles/news-package/STYLE.md) |
+| 仪器实证 | 8 | [卫星简报](styles/satellite-briefing/STYLE.md)、[工程简报板](styles/briefing-board/STYLE.md)、[点云测绘](styles/lidar-survey/STYLE.md)、[显微叙事](styles/microscope/STYLE.md)、[档案灯台](styles/archive-lighttable/STYLE.md)、[安检 X 光](styles/security-xray/STYLE.md)、[雷达扫描纪录片](styles/dark-documentary/STYLE.md)、[热成像](styles/thermal-camera/STYLE.md) |
+| 绘画插画 | 5 | [蜡笔儿童绘本](styles/crayon-book/STYLE.md)、[水彩笔刷](styles/watercolor/STYLE.md)、[油画厚涂](styles/impasto/STYLE.md)、[钢笔淡彩](styles/urban-sketch/STYLE.md)、[彩铅科普插画](styles/colored-pencil/STYLE.md) |
+| 传统工艺 | 7 | [中国水墨](styles/ink-wash/STYLE.md)、[皮影戏](styles/shadow-puppet/STYLE.md)、[浮世绘](styles/ukiyoe/STYLE.md)、[红色窗花剪纸](styles/papercut-red/STYLE.md)、[纸雕灯影](styles/paper-lantern/STYLE.md)、[彩色玻璃窗](styles/stained-glass/STYLE.md)、[金箔彩绘](styles/gilded-illumination/STYLE.md) |
+| 印刷版画 | 8 | [Risograph 孔版印刷](styles/risograph/STYLE.md)、[复古半调案卷](styles/halftone-dossier/STYLE.md)、[木刻版画](styles/woodcut/STYLE.md)、[铜版画](styles/engraving/STYLE.md)、[丝印旅行海报](styles/silkscreen-poster/STYLE.md)、[印刷长镜头](styles/printed-long-take/STYLE.md)、[波普艺术](styles/pop-art/STYLE.md)、[复古版画拼贴](styles/vintage-collage/STYLE.md) |
+| 平面排版 | 8 | [瑞士动态排版](styles/swiss-motion/STYLE.md)、[60s 间谍片头](styles/spy-titles/STYLE.md)、[装饰艺术](styles/art-deco/STYLE.md)、[象形运动图形](styles/pictogram-motion/STYLE.md)、[包豪斯几何](styles/bauhaus-shapes/STYLE.md)、[扁平尺度漫游](styles/flat-space-explainer/STYLE.md)、[文字闪切](styles/text-flash-cuts/STYLE.md)、[剪影律动](styles/silhouette-rhythm/STYLE.md) |
+| 数据地图 | 6 | [数据叙事](styles/dataviz/STYLE.md)、[白模投影](styles/white-model/STYLE.md)、[数据实物化](styles/data-physical/STYLE.md)、[地铁线路图](styles/transit-map/STYLE.md)、[立体地图解说](styles/map-explainer/STYLE.md)、[小人模拟实验](styles/pip-simulation/STYLE.md) |
+| 卡通动画 | 6 | [1930s 橡皮管卡通](styles/rubber-hose/STYLE.md)、[80 年代赛璐璐动画](styles/cel-anime-80s/STYLE.md)、[科幻情景喜剧卡通](styles/scifi-toon/STYLE.md)、[50s 扁平卡通](styles/midcentury-toon/STYLE.md)、[搞笑历史卡通](styles/comic-history/STYLE.md)、[黑白漫画分格](styles/manga-panels/STYLE.md) |
+| 电子游戏 | 4 | [16-bit 像素 RPG](styles/pixel-rpg/STYLE.md)、[HD-2D](styles/hd-2d/STYLE.md)、[微游戏快闪](styles/microgame/STYLE.md)、[综艺节奏扁平](styles/game-show/STYLE.md) |
+| 胶片录像 | 5 | [ASCII / CRT 终端](styles/ascii-crt/STYLE.md)、[1920s 默片](styles/silent-film/STYLE.md)、[后室 / 新怪谈](styles/backrooms/STYLE.md)、[胶片直刻](styles/scratch-film/STYLE.md)、[双重曝光](styles/double-exposure/STYLE.md) |
+| 立体微缩 | 8 | [积木玩具](styles/brick-toy/STYLE.md)、[纸片立体书](styles/paper-popup/STYLE.md)、[移轴微缩](styles/tilt-shift/STYLE.md)、[低多边形等距](styles/lowpoly-island/STYLE.md)、[玻璃质感产品](styles/glass-product/STYLE.md)、[孟菲斯微缩景观](styles/memphis-diorama/STYLE.md)、[等距绘本](styles/isometric-picture-book/STYLE.md)、[蜡笔立体世界](styles/crayon-world/STYLE.md) |
+| 线稿图解 | 8 | [蓝图 / 工程制图](styles/blueprint/STYLE.md)、[等距信息图](styles/iso-infographic/STYLE.md)、[产品拆解](styles/teardown/STYLE.md)、[线稿剖面图解](styles/hardcore-info/STYLE.md)、[分色机械图解](styles/precise-mechanism/STYLE.md)、[说明书插画](styles/instruction-manual/STYLE.md)、[笔式绘图仪](styles/pen-plotter/STYLE.md)、[流水线图解](styles/assembly-line-diagram/STYLE.md) |
+| 速写板书 | 7 | [一笔画](styles/one-line/STYLE.md)、[白板讲解](styles/whiteboard/STYLE.md)、[黑板粉笔](styles/chalkboard/STYLE.md)、[视觉笔记](styles/sketchnote/STYLE.md)、[火柴人讲解](styles/stick-explainer/STYLE.md)、[平板速写讲解](styles/ipad-sketch/STYLE.md)、[马克笔白纸速写](styles/marker-paper/STYLE.md) |
+| 发光线条 | 5 | [电路板](styles/circuit-board/STYLE.md)、[萤火光点](styles/firefly-pointillism/STYLE.md)、[流场风线](styles/flow-field/STYLE.md)、[示波器数学](styles/oscilloscope-math/STYLE.md)、[霓虹灯管](styles/neon-tubes/STYLE.md) |
+| 屏幕界面 | 6 | [暗色科技发布](styles/dark-keynote/STYLE.md)、[活体实机录屏](styles/living-screencast/STYLE.md)、[科幻全息界面](styles/hologram-hud/STYLE.md)、[桌面穿梭](styles/desktop-flythrough/STYLE.md)、[表格动画](styles/spreadsheet/STYLE.md)、[1-bit 点阵](styles/one-bit-dither/STYLE.md) |
 
 长篇画法见[风格配方](style-catalog.md)。具体样例状态独立列于下面，不能从一个样例推广到整类能力。
 

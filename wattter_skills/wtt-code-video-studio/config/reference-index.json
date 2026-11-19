@@ -125,5 +125,214 @@
       "name": "材质与 3D",
       "en": "Materials & 3D"
     }
-  ]
+  ],
+  "archive": {
+    "sha256": "5a3c88e6ed2bafd2b9a897f54d1e52404c2358ba7f81cd16a3cc478b98618c83",
+    "groups": [
+      {
+        "id": "group-01",
+        "en": "Edit & Documentary",
+        "styleIds": [
+          "caption-news",
+          "newsreel",
+          "countdown",
+          "city-symphony",
+          "visual-investigation",
+          "kino-montage",
+          "telestrator",
+          "news-package"
+        ],
+        "name": "剪辑纪实"
+      },
+      {
+        "id": "group-02",
+        "en": "Instruments & Evidence",
+        "styleIds": [
+          "satellite-briefing",
+          "briefing-board",
+          "lidar-survey",
+          "microscope",
+          "archive-lighttable",
+          "security-xray",
+          "dark-documentary",
+          "thermal-camera"
+        ],
+        "name": "仪器实证"
+      },
+      {
+        "id": "group-03",
+        "en": "Painting & Illustration",
+        "styleIds": [
+          "crayon-book",
+          "watercolor",
+          "impasto",
+          "urban-sketch",
+          "colored-pencil"
+        ],
+        "name": "绘画插画"
+      },
+      {
+        "id": "group-04",
+        "en": "Traditional Crafts",
+        "styleIds": [
+          "ink-wash",
+          "shadow-puppet",
+          "ukiyoe",
+          "papercut-red",
+          "paper-lantern",
+          "stained-glass",
+          "gilded-illumination"
+        ],
+        "name": "传统工艺"
+      },
+      {
+        "id": "group-05",
+        "en": "Print & Printmaking",
+        "styleIds": [
+          "risograph",
+          "halftone-dossier",
+          "woodcut",
+          "engraving",
+          "silkscreen-poster",
+          "printed-long-take",
+          "pop-art",
+          "vintage-collage"
+        ],
+        "name": "印刷版画"
+      },
+      {
+        "id": "group-06",
+        "en": "Graphic & Type",
+        "styleIds": [
+          "swiss-motion",
+          "spy-titles",
+          "art-deco",
+          "pictogram-motion",
+          "bauhaus-shapes",
+          "flat-space-explainer",
+          "text-flash-cuts",
+          "silhouette-rhythm"
+        ],
+        "name": "平面排版"
+      },
+      {
+        "id": "group-07",
+        "en": "Data & Maps",
+        "styleIds": [
+          "dataviz",
+          "white-model",
+          "data-physical",
+          "transit-map",
+          "map-explainer",
+          "pip-simulation"
+        ],
+        "name": "数据地图"
+      },
+      {
+        "id": "group-08",
+        "en": "Cartoons",
+        "styleIds": [
+          "rubber-hose",
+          "cel-anime-80s",
+          "scifi-toon",
+          "midcentury-toon",
+          "comic-history",
+          "manga-panels"
+        ],
+        "name": "卡通动画"
+      },
+      {
+        "id": "group-09",
+        "en": "Games",
+        "styleIds": [
+          "pixel-rpg",
+          "hd-2d",
+          "microgame",
+          "game-show"
+        ],
+        "name": "电子游戏"
+      },
+      {
+        "id": "group-10",
+        "en": "Film & Tape",
+        "styleIds": [
+          "ascii-crt",
+          "silent-film",
+          "backrooms",
+          "scratch-film",
+          "double-exposure"
+        ],
+        "name": "胶片录像"
+      },
+      {
+        "id": "group-11",
+        "en": "3D & Miniature",
+        "styleIds": [
+          "brick-toy",
+          "paper-popup",
+          "tilt-shift",
+          "lowpoly-island",
+          "glass-product",
+          "memphis-diorama",
+          "isometric-picture-book",
+          "crayon-world"
+        ],
+        "name": "立体微缩"
+      },
+      {
+        "id": "group-12",
+        "en": "Line Diagrams",
+        "styleIds": [
+          "blueprint",
+          "iso-infographic",
+          "teardown",
+          "hardcore-info",
+          "precise-mechanism",
+          "instruction-manual",
+          "pen-plotter",
+          "assembly-line-diagram"
+        ],
+        "name": "线稿图解"
+      },
+      {
+        "id": "group-13",
+        "en": "Sketch & Board",
+        "styleIds": [
+          "one-line",
+          "whiteboard",
+          "chalkboard",
+          "sketchnote",
+          "stick-explainer",
+          "ipad-sketch",
+          "marker-paper"
+        ],
+        "name": "速写板书"
+      },
+      {
+        "id": "group-14",
+        "en": "Light & Lines",
+        "styleIds": [
+          "circuit-board",
+          "firefly-pointillism",
+          "flow-field",
+          "oscilloscope-math",
+          "neon-tubes"
+        ],
+        "name": "发光线条"
+      },
+      {
+        "id": "group-15",
+        "en": "Screens & Interfaces",
+        "styleIds": [
+          "dark-keynote",
+          "living-screencast",
+          "hologram-hud",
+          "desktop-flythrough",
+          "spreadsheet",
+          "one-bit-dither"
+        ],
+        "name": "屏幕界面"
+      }
+    ]
+  }
 }

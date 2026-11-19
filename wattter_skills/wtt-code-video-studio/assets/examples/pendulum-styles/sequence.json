@@ -1,0 +1,5 @@
+{
+  "film": {"schema":"code-animation/v1","title":"同一只摆 · 两种笔法","width":640,"height":360,"fps":30,"seed":7},
+  "worldShots": ["pencil","plotter"],
+  "order": ["pencil","plotter"]
+}
