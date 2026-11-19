@@ -180,13 +180,13 @@
     },
     {
       "name": "wtt-code-video-studio-skills",
-      "description": "Code video studio for scripts, storyboards, or MP4s. Recommend styles from a 114-style catalog, refine styles shot by shot, audition public role voices and sound cues, and render after four-frame review. Supports local personal narration, multi-speaker dialogue, and versioned asset review.",
+      "description": "Code video studio for scripts, storyboards, or MP4s. Recommend styles from a 114-style catalog, refine styles shot by shot, audition public role voices and sound cues, preview a selected interval with sound, and render after four-frame review. Supports local personal narration, multi-speaker dialogue, and versioned asset review.",
       "source": "../wattter_skills",
       "strict": false,
       "skills": [
         "wtt-code-video-studio"
       ],
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "Water",
         "email": "wattterjiang@gmail.com"

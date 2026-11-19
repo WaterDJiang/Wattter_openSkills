@@ -15,6 +15,8 @@ description: 代码视频工作室。把想法、文章或剧本制作成前端�
 | 新想法/主题/文章做片 | [编剧与时长](references/story-and-timing.md)；从原文提取转折、人物与观众各自的状态及可见依据，再识别具体用法（含下行地理推演），用目录筛选，按[方向选择](references/style-selection.md)给五种完整方向，每个选项旁直接展示对应小图 |
 | 战役/迁徙/贸易路线/疆域或传播的空间演变 | 前置识别为`geographic-explainer`，运行`catalog.py list --use-case 地理推演 --view summary`；读[地理叙事](references/geographic-storytelling.md)的路线判断，按空间因果推荐五方向。以地方氛围/景观展示为主则走地图明信片；已选风格、纯文字或局部修订仍按对应范围执行 |
 | 已指定/已选风格、明确委托代选 | 沿现有决定，读取该风格STYLE及已有的固定SOURCE或原创专项方法和[风格保真](references/style-fidelity.md)；免重复五选，制作镜头或整片视频时须四帧审片 |
+| 用已有视频做解说，或结尾缺少发现 | 先从原片两个能对照的动作或段落写出[要回答的问题与最后一句解说](references/story-and-timing.md#解说的结论与收尾)，再按[原镜和代码画面怎么接](references/footage.md#原镜和代码画面怎么接)排分镜；[有声试剪](references/preview-review.md#局部有声试剪)包含铺垫、结论与最后一拍 |
+| 已有成片只要标题、封面或首帧 | 按[封面与首帧交付](references/production.md#封面与首帧交付)从成片已兑现的观点定文案，依明确范围交付。只改文字或封面图时直接交付相应产物 |
 | 故事看不懂，或拟音听成杂声 | 从观众指出的镜头入手。按[故事能否独立看懂](references/story-and-timing.md#让观众只看片也能复述故事)补构图和动作，按[杂声定位](references/rhythm.md#动作拟音听成杂声时)修对应轨，在同版试剪里复核 |
 | 已有工程改字号/遮挡等 | 读当前选择/代码/素材锁及[制作契约](references/production.md)受影响阶段；不重init/编剧/选五种/生成未变配音。画面变更出新版拼图，原样重跑沿有效确认 |
 | 已有获批成片只换声音 | 读[纯音轨修订](references/audio-revision.md)；独立修订目录完成素材diff与锁定，流复制画面并验证全部帧一致；不改字幕/时序或伪造新四帧批准 |
