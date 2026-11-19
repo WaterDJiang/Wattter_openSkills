@@ -233,20 +233,47 @@ def compile_timeline(root, lock=False):
     tracks = [dict(track) for track in c.get('audioTracks', [])]
     if rhythm and rhythm['audioFile'] is not None and rhythm['audioFile'] not in [t['file'] for t in tracks]:
         raise ValueError('rhythm.audioFile 必须引用本片 audioTracks 中的音频，沿素材锁校验')
+    cue_times = {event['id']: event['seconds'] for event in rhythm['events']} if rhythm else {}
     for track in tracks:
+        if sum(key in track for key in ('startEvent', 'startBeat', 'startSeconds')) > 1:
+            raise ValueError('startEvent、startBeat、startSeconds 不能同时指定')
+        if 'startEvent' in track:
+            cue = track.pop('startEvent')
+            if not isinstance(cue, str) or cue not in cue_times:
+                raise ValueError(f'startEvent 未定义：{cue}')
+            track['startSeconds'] = cue_times[cue]
         if 'startBeat' in track:
             beat = track.pop('startBeat')
-            if 'startSeconds' in track: raise ValueError('startBeat 与 startSeconds 不能同时指定')
             if not rhythm or type(beat) is not int or not 0 <= beat < len(rhythm['beats']):
                 raise ValueError('startBeat 需要有效节拍网格及片内整数拍号')
             track['startSeconds'] = rhythm['beats'][beat]['frame'] / fps
         path = local(root, track['file'])
         start = number(track.get('startSeconds', 0), 'audioTracks.startSeconds')
         number(track.get('gain', .2), 'audioTracks.gain')
+        if 'gainEnvelope' in track:
+            points = track['gainEnvelope']
+            if not isinstance(points, list) or not points:
+                raise ValueError('gainEnvelope 需要至少一个音量节点')
+            resolved = []
+            for point in points:
+                if not isinstance(point, dict) or set(point) != {'event', 'db'}:
+                    raise ValueError('gainEnvelope 节点必须包含 event 和 db')
+                cue = point['event']
+                if not isinstance(cue, str) or cue not in cue_times:
+                    raise ValueError(f'gainEnvelope 未定义事件：{cue}')
+                db = number(point['db'], 'gainEnvelope.db', -math.inf)
+                offset = cue_times[cue] - start
+                if db > 0 or offset < 0 or (resolved and offset <= resolved[-1]['offsetSeconds']):
+                    raise ValueError('gainEnvelope 须在轨内按时序递增，衰减 db 不大于 0')
+                resolved.append({'event': cue, 'offsetSeconds': offset, 'db': db})
+            track['gainEnvelope'] = resolved
         if lock:
             if not path.is_file():
                 raise ValueError(f'缺少音频素材：{path}')
-            if start + media_seconds(path) > duration + 1 / fps:
+            length = media_seconds(path)
+            if track.get('gainEnvelope') and track['gainEnvelope'][-1]['offsetSeconds'] > length:
+                raise ValueError('gainEnvelope 越过素材末尾')
+            if start + length > duration + 1 / fps:
                 raise ValueError(f'音频素材越过片尾：{path.name}；先在源素材中编辑长度')
             assets[track['file']] = digest(path)
     timeline = {'schema': SCHEMA, 'locked': lock, 'filmSha256': digest(root / 'film.json'),
@@ -345,6 +372,23 @@ def default_tts(root, system_voice=None, rate=None, voice_config=None, voice_id=
          '--config', chosen, '--voice', selected['voiceId'], '--project', root])
 
 
+def envelope_filter(points):
+    if not points:
+        return ''
+    # Piecewise linear in dB. Work on local sample time before applying track delay.
+    start, level = 0, 0
+    terms = []
+    for point in points:
+        end, target = point['offsetSeconds'], point['db']
+        if end == 0:
+            terms.append(str(target))
+        elif target != level:
+            terms.append(f'({target-level})*clip((t-{start})/{end-start},0,1)')
+        start, level = end, target
+    db = '+'.join(terms) or '0'
+    return f",aeval=exprs='val(ch)*pow(10,({db})/20)':c=same"
+
+
 def mix(root):
     t = locked(root)
     duration = t['durationSeconds']
@@ -352,16 +396,14 @@ def mix(root):
     out = root / 'audio'
     out.mkdir(exist_ok=True)
     args = ['ffmpeg', '-y', '-v', 'error', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo']
-    if 'speech' in t:
-        tracks = [(s['voice'], s['voiceStartFrame'] / t['fps'], 1.0) for s in t['speech']]
-    else:
-        tracks = [(s['voice'], s['voiceStartFrame'] / t['fps'], 1.0) for s in t['scenes'] if s['voice']]
-    tracks += [(s['file'], s.get('startSeconds', 0), s.get('gain', .2)) for s in t['audioTracks']]
-    asset_review.registered(root, [str(file) for file, _, _ in tracks])
+    voices = t['speech'] if 'speech' in t else [s for s in t['scenes'] if s['voice']]
+    tracks = [(s['voice'], s['voiceStartFrame'] / t['fps'], 1.0, []) for s in voices]
+    tracks += [(s['file'], s.get('startSeconds', 0), s.get('gain', .2), s.get('gainEnvelope', [])) for s in t['audioTracks']]
+    asset_review.registered(root, [str(track[0]) for track in tracks])
     filters, labels = [], ['[0:a]']
-    for i, (file, start, gain) in enumerate(tracks, 1):
+    for i, (file, start, gain, envelope) in enumerate(tracks, 1):
         args += ['-i', local(root, file)]
-        filters.append(f'[{i}:a]aresample=48000,aformat=channel_layouts=stereo,volume={gain},adelay={round(start * 48000)}S:all=1[a{i}]')
+        filters.append(f'[{i}:a]aresample=48000,aformat=channel_layouts=stereo,volume={gain}{envelope_filter(envelope)},adelay={round(start * 48000)}S:all=1[a{i}]')
         labels.append(f'[a{i}]')
     # Sources are validated before trim. loudnorm/resampling may shorten fractional-frame tails;
     # restore exact timeline length after processing without relaxing delivery validation.

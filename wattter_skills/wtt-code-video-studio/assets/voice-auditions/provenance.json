@@ -1,0 +1,68 @@
+{
+  "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-bf16",
+  "source": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "modelLicense": "Apache-2.0",
+  "origin": "本项目通过公开模型预设离线合成，表演指令由项目编写。",
+  "clips": [
+    {
+      "id": "daughter",
+      "speaker": "vivian",
+      "role": "年轻女声",
+      "text": "刚才那颗星，你看见了吗？",
+      "instruct": "凑近妈妈轻轻发问，好奇，问句自然上扬，音量收住。",
+      "revision": "52f4770fd9726457eae3d3b6aa92047a25a10776",
+      "sha256": "df6389ccaccd6f3b381b1dc5877fc55798d1658929249405449885ed837931e1",
+      "seconds": 3.2
+    },
+    {
+      "id": "young-man",
+      "speaker": "dylan",
+      "role": "青年男声",
+      "text": "刚才那颗星，你看见了吗？",
+      "instruct": "像跟朋友并肩看夜空，语气放松，有点惊喜。",
+      "revision": "52f4770fd9726457eae3d3b6aa92047a25a10776",
+      "sha256": "2d1061978028634d8ad8e661291cba0425101d3643dc0c5a75f0d9e83d4d1611",
+      "seconds": 2.08
+    },
+    {
+      "id": "mother",
+      "speaker": "serena",
+      "role": "母亲 · 成熟女声试配",
+      "text": "刚才那颗星，你看见了吗？",
+      "instruct": "用安稳、亲近的语气，慢半拍开口，像在照顾身边人的情绪。",
+      "revision": "52f4770fd9726457eae3d3b6aa92047a25a10776",
+      "sha256": "f2740534511558f165104ab45027de0aa9777e11f658183e189596688b23adce",
+      "seconds": 1.92
+    },
+    {
+      "id": "neighbor",
+      "speaker": "eric",
+      "role": "成年男声",
+      "text": "刚才那颗星，你看见了吗？",
+      "instruct": "像在阳台招呼熟人，带一点笑意，自然利落。",
+      "revision": "52f4770fd9726457eae3d3b6aa92047a25a10776",
+      "sha256": "25ea590807090fc4b109c380ffe38f195ce777efc474b84dd8b59e44324778b8",
+      "seconds": 2.0
+    },
+    {
+      "id": "grandmother",
+      "speaker": "serena",
+      "role": "祖母 · 年长女声试配",
+      "text": "刚才那颗星，你看见了吗？",
+      "instruct": "试演一位精神很好的祖母，语速舒缓，停连清楚，尾音柔和，不刻意颤抖。",
+      "revision": "52f4770fd9726457eae3d3b6aa92047a25a10776",
+      "sha256": "680139224cf1600e3fb09700600977ed05ae1a90d3889349a81a28965d82b9f4",
+      "seconds": 3.2
+    },
+    {
+      "id": "grandfather",
+      "speaker": "uncle_fu",
+      "role": "长辈 · 成熟男声",
+      "text": "刚才那颗星，你看见了吗？",
+      "instruct": "用低而稳的声音，句中稍停，像在陪孙辈一起回想。",
+      "revision": "52f4770fd9726457eae3d3b6aa92047a25a10776",
+      "sha256": "dad3fe1a94c828cc145e9699665cb350e3c76e09f4d67f4eae24e1320cc88e56",
+      "seconds": 2.96
+    }
+  ]
+}

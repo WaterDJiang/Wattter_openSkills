@@ -225,3 +225,31 @@ Windows/Linux或其他TTS：将实际WAV放入项目，填写旧镜头voice或�
 - `configured-unverified`：选中默认音色所需的模型与声线条件已找到；轻量检查核对模型清单、文件集合与大小，不读取大权重计算哈希、不解码参考录音。完整校验仍执行voice.py check；同大小篡改由正式校验拒绝。
 
 检测只看实际选中的默认音色及其模型，不要求配置里的其他备用音色全部可用。doctor 是提示命令，缺项也返回退出码 0，自动化程序读取 status/ issues；不能将退出码 0 当作可合成验收。已存在但无效的声音配置不会被跳过或降级。init 不写首次使用标记，避免陈旧缓存掩盖配置变化；同一会话未变化不重复提醒，修改配置后可再次运行。
+
+## 中文角色试音
+
+先从剧本里标出谁真的开口。单旁白沿用 defaultVoice；多人对白为每个开口角色选声，优先考虑人物关系、语言地域和说话姿态。安静陪伴也可以只靠动作和环境声表达。
+
+以下命令在 Skill 根目录执行。在初始化后的工程使用 tools/voice.py。
+
+```sh
+python3 scripts/voice.py presets
+python3 scripts/voice.py presets --query 祖母
+```
+
+返回值中 `voiceId` 放入 `cast.<角色>.voiceId`；`instruct` 是可编辑的表演参考，按该场情绪写入 `utterances[].performance.instruct`。同一人跨镜保留 voiceId，同场两位需要听辨的角色优先选不同的基础 speaker。两套 Serena 演法用于备选，年龄感由试听判断。官方未标注儿童或老年女性专用声线。
+
+预设使用固定版本 Qwen3-TTS 1.7B CustomVoice。已经有私人配置时，角色可以直接绑定 `public-vivian` 等公开 ID，旁白继续使用原默认声线。同名本地定义优先。首次使用只有公开声线时，在工程 `.voice-local/voice.local.json` 写入：
+
+```json
+{"schema":"code-animation-voice/v1","defaultVoice":"public-vivian","voices":{},"models":{}}
+```
+
+在装好本页 MLX 依赖的 Apple Silicon 环境中，按需下载一次并校验：
+
+```sh
+python scripts/voice.py download --model qwen3-tts-1.7b-customvoice-mlx --root ~/.local/share/wtt-code-video-studio/models
+python scripts/voice.py check --config .voice-local/voice.local.json --voice public-vivian
+```
+
+公开角色默认在上述缓存路径解析，移动模型可通过私有配置中的 models 指定路径和 manifest。后续合成在本机完成，无需录音或 API 订阅。权重与预设来自标注 Apache-2.0 的模型；这里的角色和演法是项目自行设计的试配方向。[官方声线表](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice) · [MLX 权重](https://huggingface.co/mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-bf16)

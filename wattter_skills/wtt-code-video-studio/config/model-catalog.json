@@ -55,7 +55,57 @@
         "instruct": true
       },
       "testedHardware": "本机MLX-Audio 0.5.6/Metal；三条短句峰值约5.84GB，非最低配置承诺",
-      "notes": "四句10秒pilot中三句CustomVoice真实生成；Vivian两次绑定同一声线且表演指令不同。不是任意用户克隆音色的instruct路线；主观试听待用户。"
+      "notes": "四句10秒pilot中三句CustomVoice真实生成；Vivian两次绑定同一声线且表演指令不同。不是任意用户克隆音色的instruct路线；主观试听待用户。",
+      "castingProfiles": [
+        {
+          "id": "daughter",
+          "voiceId": "public-vivian",
+          "speaker": "vivian",
+          "role": "年轻女声",
+          "nativeTraits": "明亮的普通话年轻女声",
+          "instruct": "凑近妈妈轻轻发问，好奇，问句自然上扬，音量收住。"
+        },
+        {
+          "id": "young-man",
+          "voiceId": "public-dylan",
+          "speaker": "dylan",
+          "role": "青年男声",
+          "nativeTraits": "年轻男声，带北京口音",
+          "instruct": "像跟朋友并肩看夜空，语气放松，有点惊喜。"
+        },
+        {
+          "id": "mother",
+          "voiceId": "public-serena",
+          "speaker": "serena",
+          "role": "母亲 · 成熟女声试配",
+          "nativeTraits": "温柔的普通话年轻女声",
+          "instruct": "用安稳、亲近的语气，慢半拍开口，像在照顾身边人的情绪。"
+        },
+        {
+          "id": "neighbor",
+          "voiceId": "public-eric",
+          "speaker": "eric",
+          "role": "成年男声",
+          "nativeTraits": "活泼略沙哑的男声，带成都口音",
+          "instruct": "像在阳台招呼熟人，带一点笑意，自然利落。"
+        },
+        {
+          "id": "grandmother",
+          "voiceId": "public-serena",
+          "speaker": "serena",
+          "role": "祖母 · 年长女声试配",
+          "nativeTraits": "温柔的普通话年轻女声",
+          "instruct": "试演一位精神很好的祖母，语速舒缓，停连清楚，尾音柔和，不刻意颤抖。"
+        },
+        {
+          "id": "grandfather",
+          "voiceId": "public-uncle-fu",
+          "speaker": "uncle_fu",
+          "role": "长辈 · 成熟男声",
+          "nativeTraits": "低沉圆润的成熟普通话男声",
+          "instruct": "用低而稳的声音，句中稍停，像在陪孙辈一起回想。"
+        }
+      ]
     },
     {
       "id": "whisper-small-mlx",

@@ -1,0 +1,1830 @@
+{
+  "revision": "00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4",
+  "styles": [
+    {
+      "style": "archive-lighttable",
+      "localStyle": "archive-lighttable",
+      "name": "档案灯台",
+      "group": "仪器实证",
+      "sound": "玻璃放大镜轻碰",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/archive-lighttable/demo/CREDITS",
+      "sourceRecord": "sources/archive-lighttable.json",
+      "codeFiles": [
+        "styles/archive-lighttable/demo/mix.py"
+      ],
+      "file": "clips/sfx-archive-lighttable.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/archive-lighttable/demo/mix.py#L92",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.5,
+      "sha256": "0fa870edebb0e06851bbfcbf9244bf3be8eb550a71accce8ff976779dccf7eaf"
+    },
+    {
+      "style": "art-deco",
+      "localStyle": "art-deco",
+      "name": "装饰艺术",
+      "group": "平面排版",
+      "sound": "大理石触响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/art-deco/demo/CREDITS",
+      "sourceRecord": "sources/art-deco.json",
+      "codeFiles": [
+        "styles/art-deco/demo/mix.py",
+        "styles/art-deco/demo/music/score.py"
+      ],
+      "file": "clips/sfx-art-deco.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/art-deco/demo/mix.py#L90",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.09,
+      "sha256": "2961d628f6055c0b925a3832008231a9d19d7c3f18df2ea3808f66a7934f7c80"
+    },
+    {
+      "style": "ascii-crt",
+      "localStyle": "ascii-crt",
+      "name": "ASCII / CRT 终端",
+      "group": "平面排版",
+      "sound": "继电器吸合",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/ascii-crt/demo/CREDITS",
+      "sourceRecord": "sources/ascii-crt.json",
+      "codeFiles": [
+        "styles/ascii-crt/demo/mix.py",
+        "styles/ascii-crt/demo/music/score.py"
+      ],
+      "file": "clips/sfx-ascii-crt.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/ascii-crt/demo/mix.py#L39",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.12,
+      "sha256": "e5750d9d4f7713c9e8382b310187dc26331c691913b6c2671cc07e1de1b0aa83"
+    },
+    {
+      "style": "assembly-line-diagram",
+      "localStyle": "assembly-line-diagram",
+      "name": "流水线图解",
+      "group": "线稿图解",
+      "sound": "生产线铃声",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/assembly-line-diagram/demo/CREDITS",
+      "sourceRecord": "sources/assembly-line-diagram.json",
+      "codeFiles": [
+        "styles/assembly-line-diagram/demo/tools/mix.py"
+      ],
+      "file": "clips/sfx-assembly-line-diagram.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/assembly-line-diagram/demo/tools/mix.py#L198",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.4,
+      "sha256": "ce3f4c34993be116e48dab0d609137dbc067e2905c74aea196df29ab77ffe03b"
+    },
+    {
+      "style": "backrooms",
+      "localStyle": "backrooms",
+      "name": "后室 / 新怪谈",
+      "group": "胶片录像",
+      "sound": "暗室机械轻响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/backrooms/demo/CREDITS",
+      "sourceRecord": "sources/backrooms.json",
+      "codeFiles": [
+        "styles/backrooms/demo/mix.py",
+        "styles/backrooms/demo/music/muzak.py"
+      ],
+      "file": "clips/sfx-backrooms.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/backrooms/demo/mix.py#L139",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.08,
+      "sha256": "17c67f6504141273cad9b27ceaf9852564f0a76961447aefb32b2e9a9bfd677c"
+    },
+    {
+      "style": "bauhaus-shapes",
+      "localStyle": "bauhaus-shapes",
+      "name": "包豪斯几何",
+      "group": "平面排版",
+      "sound": "几何扣点",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/bauhaus-shapes/demo/CREDITS",
+      "sourceRecord": "sources/bauhaus-shapes.json",
+      "codeFiles": [
+        "styles/bauhaus-shapes/demo/mix.py"
+      ],
+      "file": "clips/sfx-bauhaus-shapes.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/bauhaus-shapes/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.06,
+      "sha256": "22ba1882b5c82608e428902de5fb14424c8ac9756c05ac0a1a94c454c52be715"
+    },
+    {
+      "style": "blueprint",
+      "localStyle": "blueprint",
+      "name": "蓝图 / 工程制图",
+      "group": "平面排版",
+      "sound": "图纸盖章",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/blueprint/demo/CREDITS",
+      "sourceRecord": "sources/blueprint.json",
+      "codeFiles": [
+        "styles/blueprint/demo/mix.py",
+        "styles/blueprint/demo/music/score.py"
+      ],
+      "file": "clips/sfx-blueprint.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/blueprint/demo/mix.py#L76",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.5,
+      "sha256": "64e57d783c002790b8ad3e08033017f20fa7dc06bfe004bad5f5d8a6c1489879"
+    },
+    {
+      "style": "brick-toy",
+      "localStyle": "brick-toy",
+      "name": "积木玩具",
+      "group": "立体微缩",
+      "sound": "卡扣咔嗒",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/brick-toy/demo/CREDITS",
+      "sourceRecord": "sources/brick-toy.json",
+      "codeFiles": [
+        "styles/brick-toy/demo/mix.py",
+        "styles/brick-toy/demo/music/edit.py"
+      ],
+      "file": "../clips/sfx-snap.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/core/audio/sfx.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.06,
+      "sha256": "7ac3ad8a634c1771f0292a01cea546ac0151f2d6e9afe07d44c1573ae0bca1b3"
+    },
+    {
+      "style": "briefing-board",
+      "localStyle": "briefing-board",
+      "name": "工程简报板",
+      "group": "仪器实证",
+      "sound": "磁贴吸附",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/briefing-board/demo/CREDITS",
+      "sourceRecord": "sources/briefing-board.json",
+      "codeFiles": [
+        "styles/briefing-board/demo/audio/mix.py"
+      ],
+      "file": "clips/sfx-briefing-board.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/briefing-board/demo/audio/mix.py#L159",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.14,
+      "sha256": "68183726780b550c9407666103f8f8d8f585b6668fe0d9c276b96b1604f576c3"
+    },
+    {
+      "style": "caption-news",
+      "localStyle": "caption-news",
+      "name": "字幕新闻",
+      "group": "剪辑纪实",
+      "sound": "快门",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/caption-news/demo/CREDITS",
+      "sourceRecord": "sources/caption-news.json",
+      "codeFiles": [
+        "styles/caption-news/demo/audio/mix.py"
+      ],
+      "file": "clips/sfx-caption-news.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/caption-news/demo/audio/mix.py#L201",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.165,
+      "sha256": "3b3c6202363c2a4f5dc2f35bab76ca0ecc9fd885ebdecc82225faecd157d3457"
+    },
+    {
+      "style": "cel-anime-80s",
+      "localStyle": "cel-anime-80s",
+      "name": "80 年代赛璐璐动画",
+      "group": "卡通动画",
+      "sound": "金属摩擦",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/cel-anime-80s/demo/CREDITS",
+      "sourceRecord": "sources/cel-anime-80s.json",
+      "codeFiles": [
+        "styles/cel-anime-80s/demo/mix.py",
+        "styles/cel-anime-80s/demo/music/score.py"
+      ],
+      "file": "clips/sfx-cel-anime-80s.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/cel-anime-80s/demo/mix.py#L71",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.45,
+      "sha256": "5fe8c19fc27c84c51eed2457de3a8a6327471a2607b67a4fe8e957c6573211e2"
+    },
+    {
+      "style": "chalkboard",
+      "localStyle": "chalk",
+      "name": "黑板粉笔",
+      "group": "绘画插画",
+      "sound": "粉笔板书实录",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/chalkboard/demo/CREDITS",
+      "sourceRecord": "sources/chalkboard.json",
+      "codeFiles": [
+        "styles/chalkboard/demo/audio.py",
+        "styles/chalkboard/demo/tools/foley_lib.py"
+      ],
+      "file": "../clips/chalkboard-writing.ogg",
+      "source": "https://commons.wikimedia.org/wiki/File:Chalkboard-writing.ogg",
+      "kind": "实录",
+      "license": "CC0-1.0",
+      "seconds": 41.685333,
+      "sha256": "35f65c08e27fbccaa894a134c2f0cd83f3c6159e9186649ffb3a4539d93962d3"
+    },
+    {
+      "style": "circuit-board",
+      "localStyle": "circuit-board",
+      "name": "电路板",
+      "group": "数据地图",
+      "sound": "电路继电器",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/circuit-board/demo/CREDITS",
+      "sourceRecord": "sources/circuit-board.json",
+      "codeFiles": [
+        "styles/circuit-board/demo/audio.py"
+      ],
+      "file": "clips/sfx-circuit-board.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/circuit-board/demo/audio.py#L50",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.06,
+      "sha256": "a9078c1cc642753c1b2d0e23a5ff9ae06f455ab5823b2b4f651df671fc45f9fd"
+    },
+    {
+      "style": "city-symphony",
+      "localStyle": "city-symphony",
+      "name": "延时交响",
+      "group": "剪辑纪实",
+      "sound": "钟琴 G6 原采样",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/city-symphony/demo/CREDITS",
+      "sourceRecord": "sources/city-symphony.json",
+      "codeFiles": [
+        "styles/city-symphony/demo/tools/music.py"
+      ],
+      "file": "clips/sfx-city-symphony.wav",
+      "source": "https://github.com/sgossner/VCSL/blob/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Glockenspiel/glock_medium_G6_01.wav",
+      "kind": "配乐单音采样",
+      "license": "CC0-1.0",
+      "seconds": 4.779342,
+      "sha256": "a2ba94e59119cd5272c1161fc8b8fbfb94c7b44de45a9a6cc5973b1c332103af"
+    },
+    {
+      "style": "colored-pencil",
+      "localStyle": "colored-pencil",
+      "name": "彩铅科普插画",
+      "group": "绘画插画",
+      "sound": "铅笔擦纹",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/colored-pencil/demo/CREDITS",
+      "sourceRecord": "sources/colored-pencil.json",
+      "codeFiles": [
+        "styles/colored-pencil/demo/mix.py"
+      ],
+      "file": "clips/sfx-colored-pencil.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/colored-pencil/demo/mix.py#L48",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.4,
+      "sha256": "778f4bc12f7bd3c58af96baaa43c5a11c4ec280c3da1e9a7c7bf1b78151d9d9d"
+    },
+    {
+      "style": "comic-history",
+      "localStyle": "comic-history",
+      "name": "搞笑历史卡通",
+      "group": "卡通动画",
+      "sound": "剪纸咔嚓",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/comic-history/demo/CREDITS",
+      "sourceRecord": "sources/comic-history.json",
+      "codeFiles": [
+        "styles/comic-history/demo/mix.py"
+      ],
+      "file": "clips/sfx-comic-history.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/comic-history/demo/mix.py#L39",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.09,
+      "sha256": "9a12f5817855078ec9e32bae0c45de474bd85f438eabd26180a2b331e8f0c485"
+    },
+    {
+      "style": "countdown",
+      "localStyle": "countdown",
+      "name": "实时倒计时分屏",
+      "group": "剪辑纪实",
+      "sound": "倒数钟摆",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/countdown/demo/CREDITS",
+      "sourceRecord": "sources/countdown.json",
+      "codeFiles": [
+        "styles/countdown/demo/audio/mix.py"
+      ],
+      "file": "clips/sfx-countdown.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/countdown/demo/audio/mix.py#L56",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.25,
+      "sha256": "db22246a7d579eae19004867ae956a5216c2134669d768bf377060c8610f0c3b"
+    },
+    {
+      "style": "crayon-book",
+      "localStyle": "crayon-book",
+      "name": "蜡笔儿童绘本",
+      "group": "绘画插画",
+      "sound": "蜡笔擦纸",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/crayon-book/demo/CREDITS",
+      "sourceRecord": "sources/crayon-book.json",
+      "codeFiles": [
+        "styles/crayon-book/demo/mix.py",
+        "styles/crayon-book/demo/music/score.py"
+      ],
+      "file": "clips/sfx-crayon-book.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/crayon-book/demo/mix.py#L23",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.65,
+      "sha256": "2f05725e26a15fc2efd525339dffa09a28ab762b09c36522e87a25d698c994b8"
+    },
+    {
+      "style": "crayon-world",
+      "localStyle": "crayon-world",
+      "name": "蜡笔立体世界",
+      "group": "立体微缩",
+      "sound": "鸟啼",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/crayon-world/demo/CREDITS",
+      "sourceRecord": "sources/crayon-world.json",
+      "codeFiles": [
+        "styles/crayon-world/demo/tools/score.py"
+      ],
+      "file": "clips/sfx-crayon-world.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/crayon-world/demo/tools/score.py#L93",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.36,
+      "sha256": "5ce11f2f78cae984dfe7afd421004464c143c885eeb05b40d13a2620f4aea876"
+    },
+    {
+      "style": "dark-documentary",
+      "localStyle": "dark-documentary",
+      "name": "雷达扫描纪录片",
+      "group": "仪器实证",
+      "sound": "声呐脉冲",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/dark-documentary/demo/CREDITS",
+      "sourceRecord": "sources/dark-documentary.json",
+      "codeFiles": [
+        "styles/dark-documentary/demo/mix.py"
+      ],
+      "file": "clips/sfx-dark-documentary.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/dark-documentary/demo/mix.py#L83",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.6,
+      "sha256": "fcf950fb3378bc57cbe89c0af76397fc24027caba3c90397be9d6847dbc5a05c"
+    },
+    {
+      "style": "dark-keynote",
+      "localStyle": "dark-keynote",
+      "name": "暗色科技发布",
+      "group": "数据地图",
+      "sound": "玻璃触响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/dark-keynote/demo/CREDITS",
+      "sourceRecord": "sources/dark-keynote.json",
+      "codeFiles": [
+        "styles/dark-keynote/demo/mix.py",
+        "styles/dark-keynote/demo/music/score.py"
+      ],
+      "file": "clips/sfx-dark-keynote.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/dark-keynote/demo/mix.py#L34",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.5,
+      "sha256": "8112791a9315230838a735733fd3ce2cab0f71d3ec81fd25f0867a121bb36baf"
+    },
+    {
+      "style": "data-physical",
+      "localStyle": "data-physical",
+      "name": "数据实物化",
+      "group": "仪器实证",
+      "sound": "亚克力轻敲",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/data-physical/demo/CREDITS",
+      "sourceRecord": "sources/data-physical.json",
+      "codeFiles": [
+        "styles/data-physical/demo/mix.py"
+      ],
+      "file": "clips/sfx-data-physical.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/data-physical/demo/mix.py#L79",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.06,
+      "sha256": "1ca4187fb44e4a8dd2fc7c342dfec92648c959179ea06d5826c011aed0ac018f"
+    },
+    {
+      "style": "dataviz",
+      "localStyle": "dataviz",
+      "name": "数据叙事",
+      "group": "数据地图",
+      "sound": "尺子轻响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/dataviz/demo/CREDITS",
+      "sourceRecord": "sources/dataviz.json",
+      "codeFiles": [
+        "styles/dataviz/demo/mix.py",
+        "styles/dataviz/demo/music/score.py"
+      ],
+      "file": "clips/sfx-dataviz.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/dataviz/demo/mix.py#L42",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.55,
+      "sha256": "e4201fee24068491b6ec5f6cdbd787f580cd5f3bf30427f7d586048e27b1abe4"
+    },
+    {
+      "style": "desktop-flythrough",
+      "localStyle": "desktop-flythrough",
+      "name": "桌面穿梭",
+      "group": "立体微缩",
+      "sound": "界面回弹",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/desktop-flythrough/demo/CREDITS",
+      "sourceRecord": "sources/desktop-flythrough.json",
+      "codeFiles": [
+        "styles/desktop-flythrough/demo/audio/foley.py",
+        "styles/desktop-flythrough/demo/audio/mix.py",
+        "styles/desktop-flythrough/demo/audio/compose.py"
+      ],
+      "file": "clips/sfx-desktop-flythrough.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/desktop-flythrough/demo/audio/foley.py#L27",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.6,
+      "sha256": "c7bde76e3116a041adb65ac43b111d1b3466d5898229be0c2dcba80941502063"
+    },
+    {
+      "style": "double-exposure",
+      "localStyle": "double-exposure",
+      "name": "双重曝光",
+      "group": "胶片录像",
+      "sound": "鲸鸣",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/double-exposure/demo/CREDITS",
+      "sourceRecord": "sources/double-exposure.json",
+      "codeFiles": [
+        "styles/double-exposure/demo/audio.py"
+      ],
+      "file": "clips/sfx-double-exposure.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/double-exposure/demo/audio.py#L208",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 2.6,
+      "sha256": "eb3ef393305961881acac4c882fa8e4d591258f7ff44edb2af52e7a6cc7e7696"
+    },
+    {
+      "style": "engraving",
+      "localStyle": "engraving",
+      "name": "铜版画",
+      "group": "印刷版画",
+      "sound": "铜版刻痕",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/engraving/demo/CREDITS",
+      "sourceRecord": "sources/engraving.json",
+      "codeFiles": [
+        "styles/engraving/demo/mix.py",
+        "styles/engraving/demo/music/score.py"
+      ],
+      "file": "clips/sfx-engraving.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/engraving/demo/mix.py#L70",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.6583333333333333,
+      "sha256": "9d1561e037a2b5a275d06fe555ae8cb6a337460fc1f357dee106c619056550a2"
+    },
+    {
+      "style": "firefly-pointillism",
+      "localStyle": "firefly-pointillism",
+      "name": "萤火光点",
+      "group": "发光线条",
+      "sound": "夜虫鸣",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/firefly-pointillism/demo/CREDITS",
+      "sourceRecord": "sources/firefly-pointillism.json",
+      "codeFiles": [
+        "styles/firefly-pointillism/demo/mix.py"
+      ],
+      "file": "clips/sfx-firefly-pointillism.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/firefly-pointillism/demo/mix.py#L205",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.4,
+      "sha256": "29215a1d76de5cb3ed2682dc384053c486237ff2513c1c52dfc0584f46038e72"
+    },
+    {
+      "style": "flat-space-explainer",
+      "localStyle": "flat-space-explainer",
+      "name": "扁平尺度漫游",
+      "group": "平面排版",
+      "sound": "伺服机",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/flat-space-explainer/demo/CREDITS",
+      "sourceRecord": "sources/flat-space-explainer.json",
+      "codeFiles": [
+        "styles/flat-space-explainer/demo/mix.py"
+      ],
+      "file": "clips/sfx-flat-space-explainer.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/flat-space-explainer/demo/mix.py#L163",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.45,
+      "sha256": "6e46736d5c6305cd8c7216cff6a474fb13c16f89473b6710fcd7bc1323c18e5b"
+    },
+    {
+      "style": "flow-field",
+      "localStyle": "flow-field",
+      "name": "流场风线",
+      "group": "发光线条",
+      "sound": "低频脉冲",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/flow-field/demo/CREDITS",
+      "sourceRecord": "sources/flow-field.json",
+      "codeFiles": [
+        "styles/flow-field/demo/mix.py"
+      ],
+      "file": "clips/sfx-flow-field.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/flow-field/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.35,
+      "sha256": "4dfd004727912e3efe674fb43f459c100ba6dfa26d37c92196a8c0255ca8524a"
+    },
+    {
+      "style": "game-show",
+      "localStyle": "game-show",
+      "name": "综艺节奏扁平",
+      "group": "电子游戏",
+      "sound": "游戏牛铃",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/game-show/demo/CREDITS",
+      "sourceRecord": "sources/game-show.json",
+      "codeFiles": [
+        "styles/game-show/demo/music.py",
+        "styles/game-show/demo/synth_lib.py"
+      ],
+      "file": "clips/sfx-game-show.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/game-show/demo/music.py#L68",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.25,
+      "sha256": "3283a615db6b80a7dd1e4b8c05f4c554dd3eeea4d19733212d37f7d9bd059cd0"
+    },
+    {
+      "style": "gilded-illumination",
+      "localStyle": "gilded-illumination",
+      "name": "金箔彩绘",
+      "group": "传统工艺",
+      "sound": "石面脚步",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/gilded-illumination/demo/CREDITS",
+      "sourceRecord": "sources/gilded-illumination.json",
+      "codeFiles": [
+        "styles/gilded-illumination/demo/audio.py"
+      ],
+      "file": "clips/sfx-gilded-illumination.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/gilded-illumination/demo/audio.py#L45",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.09,
+      "sha256": "af3c0cc1d545fc10663f907c34f9292599b5016d205a6dca05c6d4578ff2c35e"
+    },
+    {
+      "style": "glass-product",
+      "localStyle": "glass-product",
+      "name": "玻璃质感产品",
+      "group": "立体微缩",
+      "sound": "玻璃清鸣",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/glass-product/demo/CREDITS",
+      "sourceRecord": "sources/glass-product.json",
+      "codeFiles": [
+        "styles/glass-product/demo/mix.py",
+        "styles/glass-product/demo/music/score.py"
+      ],
+      "file": "clips/sfx-glass-product.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/glass-product/demo/mix.py#L42",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 2.4,
+      "sha256": "729ce496495441c0eac401c3854ba626e6f00e3d4c48f05e47b8478da3f44607"
+    },
+    {
+      "style": "halftone-dossier",
+      "localStyle": "halftone-dossier",
+      "name": "复古半调案卷",
+      "group": "印刷版画",
+      "sound": "相机快门",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/halftone-dossier/demo/CREDITS",
+      "sourceRecord": "sources/halftone-dossier.json",
+      "codeFiles": [
+        "styles/halftone-dossier/demo/music.py"
+      ],
+      "file": "clips/sfx-halftone-dossier.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/halftone-dossier/demo/music.py#L122",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.16,
+      "sha256": "a60fdd5f25adcd9c875257f7dda659f4e55253fd0ec8d9e371c7e8f200a4c85e"
+    },
+    {
+      "style": "hardcore-info",
+      "localStyle": "hardcore-info",
+      "name": "线稿剖面图解",
+      "group": "线稿图解",
+      "sound": "手指收合",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/hardcore-info/demo/CREDITS",
+      "sourceRecord": "sources/hardcore-info.json",
+      "codeFiles": [
+        "styles/hardcore-info/demo/mix.py"
+      ],
+      "file": "clips/sfx-hardcore-info.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/hardcore-info/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.06,
+      "sha256": "efee2a1e6102dba2079cbfe8102229d6f0f6fd891174124ba3ea4e6ea460f4cb"
+    },
+    {
+      "style": "hd-2d",
+      "localStyle": "hd-2d",
+      "name": "HD-2D",
+      "group": "电子游戏",
+      "sound": "轻脚步",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/hd-2d/demo/CREDITS",
+      "sourceRecord": "sources/hd-2d.json",
+      "codeFiles": [
+        "styles/hd-2d/demo/mix.py",
+        "styles/hd-2d/demo/music/edit.py"
+      ],
+      "file": "clips/sfx-hd-2d.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/hd-2d/demo/mix.py#L58",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.09,
+      "sha256": "f71c4efa8d52492a20f44fcc4fc437f434c23bf93e42db83e5939203b6955435"
+    },
+    {
+      "style": "hologram-hud",
+      "localStyle": "hologram-hud",
+      "name": "科幻全息界面",
+      "group": "数据地图",
+      "sound": "操作确认",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/hologram-hud/demo/CREDITS",
+      "sourceRecord": "sources/hologram-hud.json",
+      "codeFiles": [
+        "styles/hologram-hud/demo/mix.py",
+        "styles/hologram-hud/demo/music/score.py"
+      ],
+      "file": "clips/sfx-hologram-hud.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/hologram-hud/demo/mix.py#L50",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.1,
+      "sha256": "80c78f69d348d5a86328448a0c6beba850144e7e50f82df286fdceb9a2707c68"
+    },
+    {
+      "style": "impasto",
+      "localStyle": "impasto",
+      "name": "油画厚涂",
+      "group": "绘画插画",
+      "sound": "颜料飞溅",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/impasto/demo/CREDITS",
+      "sourceRecord": "sources/impasto.json",
+      "codeFiles": [
+        "styles/impasto/demo/mix.py",
+        "styles/impasto/demo/music/score.py"
+      ],
+      "file": "clips/sfx-impasto.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/impasto/demo/mix.py#L21",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.16,
+      "sha256": "704824d75cb7db17029ae0676beaf70b7512f47147dab3c7912d3d183f63d0d8"
+    },
+    {
+      "style": "ink-wash",
+      "localStyle": "ink-wash",
+      "name": "中国水墨",
+      "group": "绘画插画",
+      "sound": "墨滴",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/ink-wash/demo/CREDITS",
+      "sourceRecord": "sources/ink-wash.json",
+      "codeFiles": [
+        "styles/ink-wash/demo/mix.py",
+        "styles/ink-wash/demo/music/score.py"
+      ],
+      "file": "clips/sfx-ink-wash.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/ink-wash/demo/mix.py#L19",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.35,
+      "sha256": "d99a81252ceb7a867df4d0f8df5c86d74be373e008974ecc290bdc0d2290bba8"
+    },
+    {
+      "style": "instruction-manual",
+      "localStyle": "instruction-manual",
+      "name": "说明书插画",
+      "group": "线稿图解",
+      "sound": "短促噪声",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/instruction-manual/demo/CREDITS",
+      "sourceRecord": "sources/instruction-manual.json",
+      "codeFiles": [
+        "styles/instruction-manual/demo/mix.py"
+      ],
+      "file": "clips/sfx-instruction-manual.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/instruction-manual/demo/mix.py#L26",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.35,
+      "sha256": "b6b4a1695782600a5218f376799de268a8638692751d941823f7483ae4f88f3a"
+    },
+    {
+      "style": "ipad-sketch",
+      "localStyle": "ipad-sketch",
+      "name": "平板速写讲解",
+      "group": "速写板书",
+      "sound": "画布划动",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/ipad-sketch/demo/CREDITS",
+      "sourceRecord": "sources/ipad-sketch.json",
+      "codeFiles": [
+        "styles/ipad-sketch/demo/mix.py"
+      ],
+      "file": "clips/sfx-ipad-sketch.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/ipad-sketch/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.22,
+      "sha256": "c9d64a1d7652b0275c20697ef66348a922ce32b38b1f8e39374d5339b60bc0af"
+    },
+    {
+      "style": "iso-infographic",
+      "localStyle": "iso-infographic",
+      "name": "等距信息图",
+      "group": "数据地图",
+      "sound": "柳条摩擦",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/iso-infographic/demo/CREDITS",
+      "sourceRecord": "sources/iso-infographic.json",
+      "codeFiles": [
+        "styles/iso-infographic/demo/mix.py",
+        "styles/iso-infographic/demo/music/score.py"
+      ],
+      "file": "clips/sfx-iso-infographic.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/iso-infographic/demo/mix.py#L43",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.3,
+      "sha256": "dcd1e13959cc0a69b0166a8244d0aa953b1a4072081faa624171859322700b2a"
+    },
+    {
+      "style": "isometric-picture-book",
+      "localStyle": "isometric-picture-book",
+      "name": "等距绘本",
+      "group": "数据地图",
+      "sound": "提示短鸣",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/isometric-picture-book/demo/CREDITS",
+      "sourceRecord": "sources/isometric-picture-book.json",
+      "codeFiles": [
+        "styles/isometric-picture-book/demo/audio.py"
+      ],
+      "file": "clips/sfx-isometric-picture-book.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/isometric-picture-book/demo/audio.py#L133",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.18,
+      "sha256": "780def14cb31cfcb14084bf6b5948fbbc907fec2d7807d637748fc378f2bdbd2"
+    },
+    {
+      "style": "kino-montage",
+      "localStyle": "kino-montage",
+      "name": "构成主义蒙太奇",
+      "group": "剪辑纪实",
+      "sound": "金属敲击",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/kino-montage/demo/CREDITS",
+      "sourceRecord": "sources/kino-montage.json",
+      "codeFiles": [
+        "styles/kino-montage/demo/audio/mix.py"
+      ],
+      "file": "clips/sfx-kino-montage.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/kino-montage/demo/audio/mix.py#L158",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.5,
+      "sha256": "75bea04f3d99505c78a62d15c5fe21052eb160c0a5366735cf7c9df6b9887ccb"
+    },
+    {
+      "style": "lidar-survey",
+      "localStyle": "lidar-survey",
+      "name": "点云测绘",
+      "group": "仪器实证",
+      "sound": "测距回波",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/lidar-survey/demo/CREDITS",
+      "sourceRecord": "sources/lidar-survey.json",
+      "codeFiles": [
+        "styles/lidar-survey/demo/mix.py"
+      ],
+      "file": "clips/sfx-lidar-survey.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/lidar-survey/demo/mix.py#L68",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.4,
+      "sha256": "b4a956066b9c0449bb8d1731be1a284c7f441a9ee4aef3c864797f8735554825"
+    },
+    {
+      "style": "living-screencast",
+      "localStyle": "living-screencast",
+      "name": "活体实机录屏",
+      "group": "数据地图",
+      "sound": "键盘敲击",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/living-screencast/demo/CREDITS",
+      "sourceRecord": "sources/living-screencast.json",
+      "codeFiles": [
+        "styles/living-screencast/demo/sound.py"
+      ],
+      "file": "clips/sfx-living-screencast.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/living-screencast/demo/sound.py#L144",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.09,
+      "sha256": "8af0c20ee99ceffa80be9d2d90f20012148e35df13678ac68c8eac1ac84d1ef9"
+    },
+    {
+      "style": "lowpoly-island",
+      "localStyle": "lowpoly-island",
+      "name": "低多边形等距",
+      "group": "立体微缩",
+      "sound": "海鸥",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/lowpoly-island/demo/CREDITS",
+      "sourceRecord": "sources/lowpoly-island.json",
+      "codeFiles": [
+        "styles/lowpoly-island/demo/mix.py",
+        "styles/lowpoly-island/demo/music/score.py"
+      ],
+      "file": "clips/sfx-lowpoly-island.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/lowpoly-island/demo/mix.py#L61",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.394625,
+      "sha256": "2c5131e74aa8448cdac9b33c2bc32e7c4d8cba2a5229f3e634107bc7c7b0f4f1"
+    },
+    {
+      "style": "manga-panels",
+      "localStyle": "manga-panels",
+      "name": "黑白漫画分格",
+      "group": "卡通动画",
+      "sound": "漫画翻页",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/manga-panels/demo/CREDITS",
+      "sourceRecord": "sources/manga-panels.json",
+      "codeFiles": [
+        "styles/manga-panels/demo/mix.py"
+      ],
+      "file": "clips/sfx-manga-panels.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/manga-panels/demo/mix.py#L176",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.32,
+      "sha256": "ccc09cd709ed3a2e9253ac99a6bf82314ab20ddb4d7215f25ae6978bb98fc814"
+    },
+    {
+      "style": "map-explainer",
+      "localStyle": "map-explainer",
+      "name": "立体地图解说",
+      "group": "数据地图",
+      "sound": "镜头俯冲",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/map-explainer/demo/CREDITS",
+      "sourceRecord": "sources/map-explainer.json",
+      "codeFiles": [
+        "styles/map-explainer/demo/mix.py"
+      ],
+      "file": "clips/sfx-map-explainer.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/map-explainer/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.4,
+      "sha256": "252fbcbda58caab234a990387d7f6e5e8a287b83683a3ee41ab53b4b3b7ade90"
+    },
+    {
+      "style": "marker-paper",
+      "localStyle": "marker-paper",
+      "name": "马克笔白纸速写",
+      "group": "速写板书",
+      "sound": "毛毡笔触",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/marker-paper/demo/CREDITS",
+      "sourceRecord": "sources/marker-paper.json",
+      "codeFiles": [
+        "styles/marker-paper/demo/mix.py"
+      ],
+      "file": "clips/sfx-marker-paper.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/marker-paper/demo/mix.py#L48",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.65,
+      "sha256": "9d940de7b2553f88e051743628e9321c283fcab8b56aa3b0ccf72c2b6773f413"
+    },
+    {
+      "style": "memphis-diorama",
+      "localStyle": "memphis-diorama",
+      "name": "孟菲斯微缩景观",
+      "group": "立体微缩",
+      "sound": "池塘鸭叫",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/memphis-diorama/demo/CREDITS",
+      "sourceRecord": "sources/memphis-diorama.json",
+      "codeFiles": [
+        "styles/memphis-diorama/demo/music.py"
+      ],
+      "file": "clips/sfx-memphis-diorama.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/memphis-diorama/demo/music.py#L125",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.16,
+      "sha256": "a156e7beee7896e09345b98f2f8e6bfd4a2a0d8cb89d8ac6eb41dac11fb4ccc5"
+    },
+    {
+      "style": "microgame",
+      "localStyle": "microgame",
+      "name": "微游戏快闪",
+      "group": "电子游戏",
+      "sound": "橡胶吱响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/microgame/demo/CREDITS",
+      "sourceRecord": "sources/microgame.json",
+      "codeFiles": [
+        "styles/microgame/demo/mix.py",
+        "styles/microgame/demo/music/score.py"
+      ],
+      "file": "clips/sfx-microgame.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/microgame/demo/mix.py#L44",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.18,
+      "sha256": "2fef4c3489e851a592658ac530e306b1c2c28516c07c65ad2908617f918ec5bd"
+    },
+    {
+      "style": "microscope",
+      "localStyle": "microscope",
+      "name": "显微叙事",
+      "group": "仪器实证",
+      "sound": "物镜换挡",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/microscope/demo/CREDITS",
+      "sourceRecord": "sources/microscope.json",
+      "codeFiles": [
+        "styles/microscope/demo/mix.py"
+      ],
+      "file": "clips/sfx-microscope.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/microscope/demo/mix.py#L150",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.5,
+      "sha256": "2477951023e66420b675e0d2aea29b65706f3102bc798ac9895731bacb6b8b54"
+    },
+    {
+      "style": "midcentury-toon",
+      "localStyle": "midcentury-toon",
+      "name": "50s 扁平卡通",
+      "group": "卡通动画",
+      "sound": "纸板吱响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/midcentury-toon/demo/CREDITS",
+      "sourceRecord": "sources/midcentury-toon.json",
+      "codeFiles": [
+        "styles/midcentury-toon/demo/mix.py",
+        "styles/midcentury-toon/demo/music/score.py"
+      ],
+      "file": "clips/sfx-midcentury-toon.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/midcentury-toon/demo/mix.py#L29",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.22,
+      "sha256": "14370ab9e599bd1d325ec66fbe862c853e1fa920458a64823ae94eb39888386a"
+    },
+    {
+      "style": "neon-tubes",
+      "localStyle": "neon-tubes",
+      "name": "霓虹灯管",
+      "group": "发光线条",
+      "sound": "霓虹通电",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/neon-tubes/demo/CREDITS",
+      "sourceRecord": "sources/neon-tubes.json",
+      "codeFiles": [
+        "styles/neon-tubes/demo/audio.py"
+      ],
+      "file": "clips/sfx-neon-tubes.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/neon-tubes/demo/audio.py#L211",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.2,
+      "sha256": "e87a50b91b967d8b71230f152cec3d6008337f15be9124d7db039fc44cf7684a"
+    },
+    {
+      "style": "news-package",
+      "localStyle": "news-package",
+      "name": "电视新闻包装",
+      "group": "剪辑纪实",
+      "sound": "新闻包装扫过",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/news-package/demo/CREDITS",
+      "sourceRecord": "sources/news-package.json",
+      "codeFiles": [
+        "styles/news-package/demo/mix.py"
+      ],
+      "file": "clips/sfx-news-package.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/news-package/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.32,
+      "sha256": "4f38e26774b351bfd12415419711d9dc5effc0d3253e1d334ac33385aede8166"
+    },
+    {
+      "style": "newsreel",
+      "localStyle": "newsreel",
+      "name": "1920s 新闻影片",
+      "group": "剪辑纪实",
+      "sound": "唱针落下",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/newsreel/demo/CREDITS",
+      "sourceRecord": "sources/newsreel.json",
+      "codeFiles": [
+        "styles/newsreel/demo/audio/mix.py"
+      ],
+      "file": "clips/sfx-newsreel.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/newsreel/demo/audio/mix.py#L262",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.25,
+      "sha256": "a51d53608283c0ad0296c38dcbc6174255f0c3fa1a806c17b909843ae8058cd5"
+    },
+    {
+      "style": "one-bit-dither",
+      "localStyle": "one-bit-dither",
+      "name": "1-bit 点阵",
+      "group": "屏幕界面",
+      "sound": "犬吠",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/one-bit-dither/demo/CREDITS",
+      "sourceRecord": "sources/one-bit-dither.json",
+      "codeFiles": [
+        "styles/one-bit-dither/demo/audio.py"
+      ],
+      "file": "clips/sfx-one-bit-dither.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/one-bit-dither/demo/audio.py#L30",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.16,
+      "sha256": "85077d16908cbe5254ceb82c858e8c4a08c398ac07de0b831aa826c2143ade44"
+    },
+    {
+      "style": "one-line",
+      "localStyle": "one-line",
+      "name": "一笔画",
+      "group": "绘画插画",
+      "sound": "笔尖触纸",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/one-line/demo/CREDITS",
+      "sourceRecord": "sources/one-line.json",
+      "codeFiles": [
+        "styles/one-line/demo/mix.py",
+        "styles/one-line/demo/music/score.py"
+      ],
+      "file": "clips/sfx-one-line.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/one-line/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.25,
+      "sha256": "d71e463ea0142c77268e39941dbe21129da02d56b897a157b9278e1f21717a4d"
+    },
+    {
+      "style": "oscilloscope-math",
+      "localStyle": "oscilloscope-math",
+      "name": "示波器数学",
+      "group": "发光线条",
+      "sound": "扫频短鸣",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/oscilloscope-math/demo/CREDITS",
+      "sourceRecord": "sources/oscilloscope-math.json",
+      "codeFiles": [
+        "styles/oscilloscope-math/demo/mix.py"
+      ],
+      "file": "clips/sfx-oscilloscope-math.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/oscilloscope-math/demo/mix.py#L49",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.26,
+      "sha256": "87e797679a02086e6ac4bbe150f5a69e6dc514dec86025c218af26fd0a192bca"
+    },
+    {
+      "style": "paper-lantern",
+      "localStyle": "paper-lantern",
+      "name": "纸雕灯影",
+      "group": "传统工艺",
+      "sound": "远处汽笛",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/paper-lantern/demo/CREDITS",
+      "sourceRecord": "sources/paper-lantern.json",
+      "codeFiles": [
+        "styles/paper-lantern/demo/mix.py"
+      ],
+      "file": "clips/sfx-paper-lantern.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/paper-lantern/demo/mix.py#L91",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.3,
+      "sha256": "dc85d50c111199be6100d582a0a537c6c5b2f7b1aab12d6ae44220451899bdb4"
+    },
+    {
+      "style": "paper-popup",
+      "localStyle": "paper-popup",
+      "name": "纸片立体书",
+      "group": "立体微缩",
+      "sound": "纸页窸窣",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/paper-popup/demo/CREDITS",
+      "sourceRecord": "sources/paper-popup.json",
+      "codeFiles": [
+        "styles/paper-popup/demo/mix.py",
+        "styles/paper-popup/demo/music/edit.py"
+      ],
+      "file": "clips/sfx-paper-popup.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/paper-popup/demo/mix.py#L53",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.5,
+      "sha256": "c4b2c54a2e97186fcbca5b413d24596900687cac61ea9d5a67f3abec2478868c"
+    },
+    {
+      "style": "papercut-red",
+      "localStyle": "papercut-red",
+      "name": "红色窗花剪纸",
+      "group": "传统工艺",
+      "sound": "剪纸",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/papercut-red/demo/CREDITS",
+      "sourceRecord": "sources/papercut-red.json",
+      "codeFiles": [
+        "styles/papercut-red/demo/mix.py",
+        "styles/papercut-red/demo/music/score.py"
+      ],
+      "file": "clips/sfx-papercut-red.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/papercut-red/demo/mix.py#L21",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.22,
+      "sha256": "6dcd6122723c034aa0ab94cfae3d084f35cc0afd9ad460fb98f1256049532e19"
+    },
+    {
+      "style": "pen-plotter",
+      "localStyle": "pen-plotter",
+      "name": "笔式绘图仪",
+      "group": "线稿图解",
+      "sound": "绘图机归位",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pen-plotter/demo/CREDITS",
+      "sourceRecord": "sources/pen-plotter.json",
+      "codeFiles": [
+        "styles/pen-plotter/demo/audio.py"
+      ],
+      "file": "clips/sfx-pen-plotter.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pen-plotter/demo/audio.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.09,
+      "sha256": "62853eb24e24b13880a29650563faa59dee75c671b757e951e7ad8c2d23e0a2e"
+    },
+    {
+      "style": "pictogram-motion",
+      "localStyle": "pictogram-motion",
+      "name": "象形运动图形",
+      "group": "平面排版",
+      "sound": "到站铃",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pictogram-motion/demo/CREDITS",
+      "sourceRecord": "sources/pictogram-motion.json",
+      "codeFiles": [
+        "styles/pictogram-motion/demo/mix.py"
+      ],
+      "file": "clips/sfx-pictogram-motion.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pictogram-motion/demo/mix.py#L184",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.2,
+      "sha256": "5e8f2415d1f2b07a66efe1001e3c0a13c42557f0af3485947dc58302a584c6fc"
+    },
+    {
+      "style": "pip-simulation",
+      "localStyle": "pip-simulation",
+      "name": "小人模拟实验",
+      "group": "数据地图",
+      "sound": "毛毡脚步",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pip-simulation/demo/CREDITS",
+      "sourceRecord": "sources/pip-simulation.json",
+      "codeFiles": [
+        "styles/pip-simulation/demo/mix.py"
+      ],
+      "file": "clips/sfx-pip-simulation.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pip-simulation/demo/mix.py#L26",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.07,
+      "sha256": "ebf269ad48ab6c6bd79b4fbecd76a315d019bc62a5caf5543f26d78ad1560918"
+    },
+    {
+      "style": "pixel-rpg",
+      "localStyle": "pixel-rpg",
+      "name": "16-bit 像素 RPG",
+      "group": "电子游戏",
+      "sound": "像素动作掠风",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pixel-rpg/demo/CREDITS",
+      "sourceRecord": "sources/pixel-rpg.json",
+      "codeFiles": [
+        "styles/pixel-rpg/demo/mix.py",
+        "styles/pixel-rpg/demo/music/score.py"
+      ],
+      "file": "clips/sfx-pixel-rpg.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pixel-rpg/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.22,
+      "sha256": "b44e04471c5a6812da6ae8fe5880fa582ec6f03ffca37bc5f3a1f847a1319f99"
+    },
+    {
+      "style": "pop-art",
+      "localStyle": "pop-art",
+      "name": "波普艺术",
+      "group": "印刷版画",
+      "sound": "丝网刮板",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pop-art/demo/CREDITS",
+      "sourceRecord": "sources/pop-art.json",
+      "codeFiles": [
+        "styles/pop-art/demo/mix.py"
+      ],
+      "file": "clips/sfx-pop-art.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/pop-art/demo/mix.py#L40",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.32,
+      "sha256": "92d86cb8e1a746746a53859ecbe9472ba472bce9267b80ea9e9622e0c07d0e81"
+    },
+    {
+      "style": "precise-mechanism",
+      "localStyle": "precise-mechanism",
+      "name": "分色机械图解",
+      "group": "线稿图解",
+      "sound": "机械擒纵",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/precise-mechanism/demo/CREDITS",
+      "sourceRecord": "sources/precise-mechanism.json",
+      "codeFiles": [
+        "styles/precise-mechanism/demo/mix.py"
+      ],
+      "file": "clips/sfx-precise-mechanism.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/precise-mechanism/demo/mix.py#L31",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.14,
+      "sha256": "16d7b8b3ed438fddbe7cd591a7acdcd14f6a5c42df2b25e6e96ee8d373a4b0f0"
+    },
+    {
+      "style": "printed-long-take",
+      "localStyle": "printed-long-take",
+      "name": "印刷长镜头",
+      "group": "印刷版画",
+      "sound": "鹤鸣",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/printed-long-take/demo/CREDITS",
+      "sourceRecord": "sources/printed-long-take.json",
+      "codeFiles": [
+        "styles/printed-long-take/demo/audio.py"
+      ],
+      "file": "clips/sfx-printed-long-take.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/printed-long-take/demo/audio.py#L79",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.65,
+      "sha256": "7124db72c71790581a30b2eab6be5336d2692903ce0442f84d10d7b4c75b22b0"
+    },
+    {
+      "style": "risograph",
+      "localStyle": "riso-halftone",
+      "name": "Risograph 孔版印刷",
+      "group": "印刷版画",
+      "sound": "印刷滚筒",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/risograph/demo/CREDITS",
+      "sourceRecord": "sources/risograph.json",
+      "codeFiles": [
+        "styles/risograph/demo/mix.py",
+        "styles/risograph/demo/music/score.py"
+      ],
+      "file": "clips/sfx-risograph.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/risograph/demo/mix.py#L23",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.7,
+      "sha256": "c254432a85b2863733950a958b97ee84daa0ad57c5a9903bc68379b42ae69e63"
+    },
+    {
+      "style": "rubber-hose",
+      "localStyle": "rubber-hose",
+      "name": "1930s 橡皮管卡通",
+      "group": "卡通动画",
+      "sound": "滑音哨",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/rubber-hose/demo/CREDITS",
+      "sourceRecord": "sources/rubber-hose.json",
+      "codeFiles": [
+        "styles/rubber-hose/demo/mix.py",
+        "styles/rubber-hose/demo/music/score.py"
+      ],
+      "file": "clips/sfx-rubber-hose.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/rubber-hose/demo/mix.py#L32",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.48,
+      "sha256": "661372e4a663a22df2e09ad5bbe0aa5965138ec355cf4a6b985fa94cf1582611"
+    },
+    {
+      "style": "satellite-briefing",
+      "localStyle": "satellite-briefing",
+      "name": "卫星简报",
+      "group": "仪器实证",
+      "sound": "金属遥测提示音",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/satellite-briefing/demo/CREDITS",
+      "sourceRecord": "sources/satellite-briefing.json",
+      "codeFiles": [
+        "styles/satellite-briefing/demo/mix.py"
+      ],
+      "file": "clips/sfx-satellite-briefing.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/satellite-briefing/demo/mix.py#L106",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 2.2,
+      "sha256": "1708b9d63f52cbe7c0d1edf9a10d2adac3fd37c5f0ecaa11d990d7410d42e117"
+    },
+    {
+      "style": "scifi-toon",
+      "localStyle": "scifi-toon",
+      "name": "科幻情景喜剧卡通",
+      "group": "卡通动画",
+      "sound": "传送门开启",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/scifi-toon/demo/CREDITS",
+      "sourceRecord": "sources/scifi-toon.json",
+      "codeFiles": [
+        "styles/scifi-toon/demo/mix.py",
+        "styles/scifi-toon/demo/music/score.py"
+      ],
+      "file": "clips/sfx-scifi-toon.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/scifi-toon/demo/mix.py#L34",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.5,
+      "sha256": "6b1630f350322f0420eebc0915bf3ecdd3c14938c187aa1b0e9dc0c3fc4589b5"
+    },
+    {
+      "style": "scratch-film",
+      "localStyle": "scratch-film",
+      "name": "胶片直刻",
+      "group": "胶片录像",
+      "sound": "唱针划痕",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/scratch-film/demo/CREDITS",
+      "sourceRecord": "sources/scratch-film.json",
+      "codeFiles": [
+        "styles/scratch-film/demo/mix.py"
+      ],
+      "file": "clips/sfx-scratch-film.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/scratch-film/demo/mix.py#L50",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.48,
+      "sha256": "4a2f8918a4855ff2c55653f274ce60a732e92b071c37c8ee174828bf8917e8e9"
+    },
+    {
+      "style": "security-xray",
+      "localStyle": "security-xray",
+      "name": "安检 X 光",
+      "group": "仪器实证",
+      "sound": "安检传动",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/security-xray/demo/CREDITS",
+      "sourceRecord": "sources/security-xray.json",
+      "codeFiles": [
+        "styles/security-xray/demo/audio.py"
+      ],
+      "file": "clips/sfx-security-xray.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/security-xray/demo/audio.py#L122",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.45,
+      "sha256": "6228588f1e5eb51ee7c082e3eb245ec13baac34d02741f89f47351f2e6430f92"
+    },
+    {
+      "style": "shadow-puppet",
+      "localStyle": "shadow-puppet",
+      "name": "皮影戏",
+      "group": "传统工艺",
+      "sound": "皮影杆轻敲",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/shadow-puppet/demo/CREDITS",
+      "sourceRecord": "sources/shadow-puppet.json",
+      "codeFiles": [
+        "styles/shadow-puppet/demo/mix.py",
+        "styles/shadow-puppet/demo/music/score.py"
+      ],
+      "file": "clips/sfx-shadow-puppet.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/shadow-puppet/demo/mix.py#L34",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.12,
+      "sha256": "4075cba8dc642eafb99a5de48662bf99fad26757ef0c424b4094a0e2463cd771"
+    },
+    {
+      "style": "silent-film",
+      "localStyle": "silent-film",
+      "name": "1920s 默片",
+      "group": "胶片录像",
+      "sound": "放映机爪",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/silent-film/demo/CREDITS",
+      "sourceRecord": "sources/silent-film.json",
+      "codeFiles": [
+        "styles/silent-film/demo/mix.py",
+        "styles/silent-film/demo/music/score.py"
+      ],
+      "file": "clips/sfx-silent-film.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/silent-film/demo/mix.py#L15",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.05,
+      "sha256": "85e5ba26508f2fdfc7c9b382211306983785b4786e0d1b4544f3bc37b5a42543"
+    },
+    {
+      "style": "silhouette-rhythm",
+      "localStyle": "silhouette-rhythm",
+      "name": "剪影律动",
+      "group": "平面排版",
+      "sound": "振翅",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/silhouette-rhythm/demo/CREDITS",
+      "sourceRecord": "sources/silhouette-rhythm.json",
+      "codeFiles": [
+        "styles/silhouette-rhythm/demo/audio.py"
+      ],
+      "file": "clips/sfx-silhouette-rhythm.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/silhouette-rhythm/demo/audio.py#L213",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.22,
+      "sha256": "4614e9896ad4000de2fdfa9d51c106c1c1a0943c1bd5d13284246af092b9994f"
+    },
+    {
+      "style": "silkscreen-poster",
+      "localStyle": "silkscreen-poster",
+      "name": "丝印旅行海报",
+      "group": "印刷版画",
+      "sound": "网版刮擦",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/silkscreen-poster/demo/CREDITS",
+      "sourceRecord": "sources/silkscreen-poster.json",
+      "codeFiles": [
+        "styles/silkscreen-poster/demo/mix.py",
+        "styles/silkscreen-poster/demo/music/compose.py"
+      ],
+      "file": "clips/sfx-silkscreen-poster.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/silkscreen-poster/demo/mix.py#L29",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.65,
+      "sha256": "1846f932b7a1f77772fef80ea25539f7a9c90b268454e15b229ebc7a04932a02"
+    },
+    {
+      "style": "sketchnote",
+      "localStyle": "sketchnote",
+      "name": "视觉笔记",
+      "group": "速写板书",
+      "sound": "速写摇镜",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/sketchnote/demo/CREDITS",
+      "sourceRecord": "sources/sketchnote.json",
+      "codeFiles": [
+        "styles/sketchnote/demo/mix.py"
+      ],
+      "file": "clips/sfx-sketchnote.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/sketchnote/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.8,
+      "sha256": "115ec510491300a2101b9db9a71be36c5e109ab7de8c19244a52cffa180d7579"
+    },
+    {
+      "style": "spreadsheet",
+      "localStyle": "spreadsheet",
+      "name": "表格动画",
+      "group": "屏幕界面",
+      "sound": "单元格提示",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/spreadsheet/demo/CREDITS",
+      "sourceRecord": "sources/spreadsheet.json",
+      "codeFiles": [
+        "styles/spreadsheet/demo/mix.py"
+      ],
+      "file": "clips/sfx-spreadsheet.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/spreadsheet/demo/mix.py#L130",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.016,
+      "sha256": "3665389078a4d27b0b55d96d8fcdf5a7e5381b33fe0ea901a0cb477c28bf9694"
+    },
+    {
+      "style": "spy-titles",
+      "localStyle": "spy-titles",
+      "name": "60s 间谍片头",
+      "group": "平面排版",
+      "sound": "钥匙轻响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/spy-titles/demo/CREDITS",
+      "sourceRecord": "sources/spy-titles.json",
+      "codeFiles": [
+        "styles/spy-titles/demo/mix.py",
+        "styles/spy-titles/demo/music/score.py"
+      ],
+      "file": "clips/sfx-spy-titles.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/spy-titles/demo/mix.py#L52",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.5,
+      "sha256": "5b21de61beea1ade0dffdb306ed913563765e86d86f1c6c3a04b379495a95330"
+    },
+    {
+      "style": "stained-glass",
+      "localStyle": "stained-glass",
+      "name": "彩色玻璃窗",
+      "group": "平面排版",
+      "sound": "彩窗玻璃碰响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/stained-glass/demo/CREDITS",
+      "sourceRecord": "sources/stained-glass.json",
+      "codeFiles": [
+        "styles/stained-glass/demo/mix.py",
+        "styles/stained-glass/demo/music/score.py"
+      ],
+      "file": "clips/sfx-stained-glass.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/stained-glass/demo/mix.py#L22",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.2,
+      "sha256": "e415b29138e7460f452ec6b2b66433a61cdb8ff6bf94ad1558985e5377c04cfc"
+    },
+    {
+      "style": "stick-explainer",
+      "localStyle": "stick-explainer",
+      "name": "火柴人讲解",
+      "group": "速写板书",
+      "sound": "图形弹出",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/stick-explainer/demo/CREDITS",
+      "sourceRecord": "sources/stick-explainer.json",
+      "codeFiles": [
+        "styles/stick-explainer/demo/mix.py"
+      ],
+      "file": "clips/sfx-stick-explainer.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/stick-explainer/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.18,
+      "sha256": "96a2e6c1b61b6fa6a2c238f8719cec3ab452122a626a0a73fc0a32867ed676c1"
+    },
+    {
+      "style": "swiss-motion",
+      "localStyle": "swiss-motion",
+      "name": "瑞士动态排版",
+      "group": "平面排版",
+      "sound": "排字机",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/swiss-motion/demo/CREDITS",
+      "sourceRecord": "sources/swiss-motion.json",
+      "codeFiles": [
+        "styles/swiss-motion/demo/mix.py",
+        "styles/swiss-motion/demo/music/score.py"
+      ],
+      "file": "clips/sfx-swiss-motion.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/swiss-motion/demo/mix.py#L17",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.07,
+      "sha256": "8e1b1961c3d577c5ceeb156fc48f58ee7ab080e8c385b12d382dd9ef5dea7c35"
+    },
+    {
+      "style": "teardown",
+      "localStyle": "teardown",
+      "name": "产品拆解",
+      "group": "仪器实证",
+      "sound": "开关触点",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/teardown/demo/CREDITS",
+      "sourceRecord": "sources/teardown.json",
+      "codeFiles": [
+        "styles/teardown/demo/mix.py"
+      ],
+      "file": "clips/sfx-teardown.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/teardown/demo/mix.py#L111",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.12,
+      "sha256": "f43dd65efe4fce46ac187e28f2086aa571660a3976965d7b9c7815db303d1ede"
+    },
+    {
+      "style": "telestrator",
+      "localStyle": "telestrator",
+      "name": "体育战术板",
+      "group": "剪辑纪实",
+      "sound": "战术板笔尖",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/telestrator/demo/CREDITS",
+      "sourceRecord": "sources/telestrator.json",
+      "codeFiles": [
+        "styles/telestrator/demo/tools/mix.py"
+      ],
+      "file": "clips/sfx-telestrator.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/telestrator/demo/tools/mix.py#L157",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.45,
+      "sha256": "ecfe904d7f746ffe0183122d5ac18521dc3a9dd69a293c54b45bde57c22f42ff"
+    },
+    {
+      "style": "text-flash-cuts",
+      "localStyle": "text-flash-cuts",
+      "name": "文字闪切",
+      "group": "平面排版",
+      "sound": "柜门碰响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/text-flash-cuts/demo/CREDITS",
+      "sourceRecord": "sources/text-flash-cuts.json",
+      "codeFiles": [
+        "styles/text-flash-cuts/demo/mix.py"
+      ],
+      "file": "clips/sfx-text-flash-cuts.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/text-flash-cuts/demo/mix.py#L119",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.45,
+      "sha256": "36534c4a282c071ab0968ce8cefd43bafad5086b57896eb2952c75682e08bd9e"
+    },
+    {
+      "style": "thermal-camera",
+      "localStyle": "thermal-camera",
+      "name": "热成像",
+      "group": "仪器实证",
+      "sound": "热成像扫描",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/thermal-camera/demo/CREDITS",
+      "sourceRecord": "sources/thermal-camera.json",
+      "codeFiles": [
+        "styles/thermal-camera/demo/audio.py"
+      ],
+      "file": "clips/sfx-thermal-camera.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/thermal-camera/demo/audio.py#L85",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.8,
+      "sha256": "afa674d852eedfae52a7c726de21bda9d21dbead552b316bf830ca2c5e4ef246"
+    },
+    {
+      "style": "tilt-shift",
+      "localStyle": "tilt-shift",
+      "name": "移轴微缩",
+      "group": "立体微缩",
+      "sound": "微缩车辆驶过",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/tilt-shift/demo/CREDITS",
+      "sourceRecord": "sources/tilt-shift.json",
+      "codeFiles": [
+        "styles/tilt-shift/demo/mix.py",
+        "styles/tilt-shift/demo/music/score.py"
+      ],
+      "file": "clips/sfx-tilt-shift.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/tilt-shift/demo/mix.py#L48",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 1.6,
+      "sha256": "67c18859a742697d5d3bc3ec0b53f90e532dfbe17db68945567392abb7d5abfc"
+    },
+    {
+      "style": "transit-map",
+      "localStyle": "transit-map",
+      "name": "地铁线路图",
+      "group": "数据地图",
+      "sound": "路线笔尖",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/transit-map/demo/CREDITS",
+      "sourceRecord": "sources/transit-map.json",
+      "codeFiles": [
+        "styles/transit-map/demo/audio.py"
+      ],
+      "file": "clips/sfx-transit-map.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/transit-map/demo/audio.py#L181",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.4,
+      "sha256": "62b834f417eef1dd2bd8412a6e6d1a944714a9f406eefbaee8fee423a4e8085f"
+    },
+    {
+      "style": "ukiyoe",
+      "localStyle": "ukiyoe",
+      "name": "浮世绘",
+      "group": "传统工艺",
+      "sound": "拓印摩擦",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/ukiyoe/demo/CREDITS",
+      "sourceRecord": "sources/ukiyoe.json",
+      "codeFiles": [
+        "styles/ukiyoe/demo/mix.py",
+        "styles/ukiyoe/demo/music/score.py"
+      ],
+      "file": "clips/sfx-ukiyoe.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/ukiyoe/demo/mix.py#L27",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.36,
+      "sha256": "a4981ad594bf5408c85780f325b0b633e1e6febc4716dcb5a76e285f7a1a1f24"
+    },
+    {
+      "style": "urban-sketch",
+      "localStyle": "urban-sketch",
+      "name": "钢笔淡彩",
+      "group": "绘画插画",
+      "sound": "草地脚步",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/urban-sketch/demo/CREDITS",
+      "sourceRecord": "sources/urban-sketch.json",
+      "codeFiles": [
+        "styles/urban-sketch/demo/audio/foley.py",
+        "styles/urban-sketch/demo/audio/mix.py",
+        "styles/urban-sketch/demo/audio/score.py"
+      ],
+      "file": "clips/sfx-urban-sketch.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/urban-sketch/demo/audio/foley.py#L107",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.16,
+      "sha256": "4f498904e78ab7bb8147c0786c0678aae565ca17b95f004a5fe093429636757a"
+    },
+    {
+      "style": "vintage-collage",
+      "localStyle": "vintage-collage",
+      "name": "复古版画拼贴",
+      "group": "印刷版画",
+      "sound": "剪贴纸振动",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/vintage-collage/demo/CREDITS",
+      "sourceRecord": "sources/vintage-collage.json",
+      "codeFiles": [
+        "styles/vintage-collage/demo/mix.py"
+      ],
+      "file": "clips/sfx-vintage-collage.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/vintage-collage/demo/mix.py#L51",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.7,
+      "sha256": "317a65a18690da93a50efd3655c272e3faf531d9ced8fdf5ae718cf08feb9bd8"
+    },
+    {
+      "style": "visual-investigation",
+      "localStyle": "visual-investigation",
+      "name": "视觉调查",
+      "group": "剪辑纪实",
+      "sound": "打字键",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/visual-investigation/demo/CREDITS",
+      "sourceRecord": "sources/visual-investigation.json",
+      "codeFiles": [
+        "styles/visual-investigation/demo/audio/mix.py"
+      ],
+      "file": "clips/sfx-visual-investigation.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/visual-investigation/demo/audio/mix.py#L74",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.035,
+      "sha256": "a9bfe39d47e29ef91127c4a35c05cd9043293bc4d70ab19f13ef0f7075b72df5"
+    },
+    {
+      "style": "watercolor",
+      "localStyle": "watercolor-brush",
+      "name": "水彩笔刷",
+      "group": "绘画插画",
+      "sound": "虎皮鹦鹉短啼",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/watercolor/demo/CREDITS",
+      "sourceRecord": "sources/watercolor.json",
+      "codeFiles": [
+        "styles/watercolor/demo/mix.py",
+        "styles/watercolor/demo/music/edit.py"
+      ],
+      "file": "clips/sfx-watercolor.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/watercolor/demo/mix.py#L67",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.09,
+      "sha256": "9e74a71c9c26163749e737e190dbfc0e402eb4002d69b7787591e898e6c6fdb0"
+    },
+    {
+      "style": "white-model",
+      "localStyle": "white-model",
+      "name": "白模投影",
+      "group": "仪器实证",
+      "sound": "投影机继电器",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/white-model/demo/CREDITS",
+      "sourceRecord": "sources/white-model.json",
+      "codeFiles": [
+        "styles/white-model/demo/mix.py"
+      ],
+      "file": "clips/sfx-white-model.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/white-model/demo/mix.py#L47",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.35,
+      "sha256": "57a6ba9c267ecee29849cebd124dd71b06772b5c6087bbe46d28b7b6f01151a8"
+    },
+    {
+      "style": "whiteboard",
+      "localStyle": "whiteboard",
+      "name": "白板讲解",
+      "group": "绘画插画",
+      "sound": "白板笔拔盖",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/whiteboard/demo/CREDITS",
+      "sourceRecord": "sources/whiteboard.json",
+      "codeFiles": [
+        "styles/whiteboard/demo/mix.py",
+        "styles/whiteboard/demo/music.py"
+      ],
+      "file": "clips/sfx-whiteboard.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/whiteboard/demo/mix.py#L64",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.25,
+      "sha256": "8b90a423bd9c0a3deea59fe76aeeee73e98f44478a90847cd73df5a4d98ff60c"
+    },
+    {
+      "style": "woodcut",
+      "localStyle": "woodcut",
+      "name": "木刻版画",
+      "group": "印刷版画",
+      "sound": "金属落地连响",
+      "credits": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/woodcut/demo/CREDITS",
+      "sourceRecord": "sources/woodcut.json",
+      "codeFiles": [
+        "styles/woodcut/demo/mix.py",
+        "styles/woodcut/demo/music/score.py"
+      ],
+      "file": "../clips/sfx-metal-drop.wav",
+      "source": "https://github.com/lemomo-ai/lemo-opuscar/blob/00a7f9ec99c8686265a8ca4ed9a3fdaaf27ea6f4/styles/woodcut/demo/mix.py",
+      "kind": "程序拟音",
+      "license": "MIT (generator)",
+      "seconds": 0.6002083333333333,
+      "sha256": "1f5a1c4144ca03c5874682da9063d46642c9932abfee9bf8bb097915f4dd89f5"
+    }
+  ]
+}
