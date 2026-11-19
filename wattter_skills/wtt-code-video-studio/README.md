@@ -4,6 +4,34 @@
 
 **新视频先选方向，再看四帧，确认后才完整渲染。** 已指定画风免五选；仍须看本片真实代码生成的四张样帧拼图。文字、图、交互、剧本和纯音频可单独交付；纯音频不执行视频四帧门。已有获批成片只换声音可走下文专用后期入口，任何画面/时序变化仍重新审片。
 
+## 114 种风格参考卡
+
+点击缩略图放大，用卡片上的中文名或英文 ID 指定分镜画风。
+
+**001–020 · 纸上画法与传统工艺**
+
+[![001–020 · 纸上画法与传统工艺](assets/gallery/style-atlas/01-preview.jpg)](assets/gallery/style-atlas/01.webp)
+
+**021–040 · 纪录、仪器与数据**
+
+[![021–040 · 纪录、仪器与数据](assets/gallery/style-atlas/02-preview.jpg)](assets/gallery/style-atlas/02.webp)
+
+**041–060 · 构图、排版与技术图解**
+
+[![041–060 · 构图、排版与技术图解](assets/gallery/style-atlas/03-preview.jpg)](assets/gallery/style-atlas/03.webp)
+
+**061–080 · 角色、游戏与电影语言**
+
+[![061–080 · 角色、游戏与电影语言](assets/gallery/style-atlas/04-preview.jpg)](assets/gallery/style-atlas/04.webp)
+
+**081–100 · 微缩空间、界面与动态图形**
+
+[![081–100 · 微缩空间、界面与动态图形](assets/gallery/style-atlas/05-preview.jpg)](assets/gallery/style-atlas/05.webp)
+
+**101–114 · 笔迹、光线与颗粒**
+
+[![101–114 · 笔迹、光线与颗粒](assets/gallery/style-atlas/06-preview.jpg)](assets/gallery/style-atlas/06.webp)
+
 ## 怎么用
 
 把本目录按[仓库安装说明](../../README.md)安装，保留scripts/assets/config/references。无需安装本仓库全部Skill。对话示例：
@@ -65,52 +93,6 @@ python3 scripts/catalog.py cases --use-case 概念解释
 旧list完整JSON默认兼容；显式分页才截取，并标总数与源目录顺序，不能拿前五项当推荐排名。映射中的标题/关键镜头是未渲染构想，不等于已有成片。选中风格读取本地原创配方或该条已有的完整SOURCE和[保真方法](references/style-fidelity.md)，不把全部来源一次加载。
 
 角色可以用沙、粒子、墨线呈现；叙事类型与材质、技术分别选择。Canvas/SVG、p5.js/p5.brush、Three.js/WebGL、GSAP、D3、Remotion是可选技术，未安装/未适配不冒称可直接运行。已有Three.js单片成功通过通用帧接口接入，仍不代表内置通用3D脚手架；[案例技术指南](references/case-driven-techniques.md)区分披露事实、复现建议与未知。
-
-### 114 种风格参考卡
-
-按画面选风格时，可以直接告诉 Skill「第一镜用木刻版画」，也可以使用卡片下方的英文 ID。点击图片可看原尺寸。
-
-<details open>
-<summary>001–020 · 纸上画法与传统工艺</summary>
-
-[![001–020 · 纸上画法与传统工艺](assets/gallery/style-atlas/01.webp)](assets/gallery/style-atlas/01.webp)
-
-</details>
-
-<details>
-<summary>021–040 · 纪录、仪器与数据</summary>
-
-[![021–040 · 纪录、仪器与数据](assets/gallery/style-atlas/02.webp)](assets/gallery/style-atlas/02.webp)
-
-</details>
-
-<details>
-<summary>041–060 · 构图、排版与技术图解</summary>
-
-[![041–060 · 构图、排版与技术图解](assets/gallery/style-atlas/03.webp)](assets/gallery/style-atlas/03.webp)
-
-</details>
-
-<details>
-<summary>061–080 · 角色、游戏与电影语言</summary>
-
-[![061–080 · 角色、游戏与电影语言](assets/gallery/style-atlas/04.webp)](assets/gallery/style-atlas/04.webp)
-
-</details>
-
-<details>
-<summary>081–100 · 微缩空间、界面与动态图形</summary>
-
-[![081–100 · 微缩空间、界面与动态图形](assets/gallery/style-atlas/05.webp)](assets/gallery/style-atlas/05.webp)
-
-</details>
-
-<details>
-<summary>101–114 · 笔迹、光线与颗粒</summary>
-
-[![101–114 · 笔迹、光线与颗粒](assets/gallery/style-atlas/06.webp)](assets/gallery/style-atlas/06.webp)
-
-</details>
 
 ## 地图与孟菲斯微缩世界
 
