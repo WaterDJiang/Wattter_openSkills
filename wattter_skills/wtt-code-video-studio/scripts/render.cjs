@@ -8,7 +8,8 @@ const {createRequire} = require('node:module');
 const {spawn, execFileSync} = require('node:child_process');
 const {once} = require('node:events');
 const root = path.resolve(process.argv[2] || '.');
-const mode = process.argv.includes('--render') ? 'render' : 'preview';
+const sampleFlag = process.argv.indexOf('--sample-frames');
+const mode = process.argv.includes('--render') ? 'render' : sampleFlag >= 0 ? 'sample' : 'preview';
 const formatFlag = process.argv.indexOf('--frame-format');
 const frameFormat = formatFlag < 0 ? 'png' : process.argv[formatFlag + 1];
 const reviewFlag = process.argv.indexOf('--review-frames');
@@ -25,8 +26,99 @@ function materialCheck() {
   return JSON.parse(execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname, 'asset_review.py'), 'check', root], {encoding:'utf8'}));
 }
 
+function sampleRange(timeline) {
+  const match = /^(\d+):(\d+)$/.exec(process.argv[sampleFlag + 1] || '');
+  if (!match) throw Error('--sample-frames 需要起帧:止帧，例如 240:432，止帧不含');
+  const [start, end] = match.slice(1).map(Number);
+  if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start >= end || end > timeline.totalFrames) {
+    throw Error('试剪帧区间为空或超出锁定时间轴');
+  }
+  if (start === 0 && end === timeline.totalFrames) throw Error('全片须走 --render 和四帧审批');
+  return {start, end};
+}
+
+function checkedMix(assetReview, timelineSha256) {
+  const mixFile = path.join(root, 'audio/mix-master.wav');
+  const receipt = JSON.parse(fs.readFileSync(path.join(root, 'audio/mix-report.json')));
+  if (receipt.assetReview?.manifestSha256 !== assetReview.manifestSha256
+      || receipt.assetReview?.version !== assetReview.version
+      || receipt.timelineSha256 !== timelineSha256 || receipt.mixSha256 !== fileHash(mixFile)) {
+    throw Error('试剪混音已过期，请先运行 pipeline.py mix');
+  }
+  return receipt.mixSha256;
+}
+
+async function encodeFrames(grab, timeline, start, end, target, logFile, audioArgs = []) {
+  const log = fs.openSync(logFile, 'w');
+  try {
+    encoder = spawn('ffmpeg', [
+      '-y','-hide_banner','-loglevel','warning','-f','image2pipe','-vcodec',
+      frameFormat==='jpeg'?'mjpeg':'png','-framerate',String(timeline.fps),'-i','pipe:0',
+      ...(audioArgs.length ? audioArgs : ['-an']),
+      '-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',target
+    ], {stdio:['pipe','ignore',log]});
+    let encoderError;
+    const done = new Promise((resolve,reject)=>{
+      encoder.on('error',reject);
+      encoder.on('close',code=>code===0?resolve():reject(Error(`FFmpeg exit ${code}，见 ${logFile}`)));
+      encoder.stdin.on('error',reject);
+    });
+    done.catch(e=>{encoderError=e;});
+    const begun = Date.now();
+    for (let f=start; f<end; f++) {
+      if (encoderError) throw encoderError;
+      const data=await grab(f,frameFormat);
+      if (!encoder.stdin.write(data)) await Promise.race([once(encoder.stdin,'drain'),done.then(()=>{throw Error('编码器提前退出');})]);
+      if ((f-start) % (timeline.fps*2) === 0) console.log(`${mode} ${f-start}/${end-start} · ${((Date.now()-begun)/1000).toFixed(1)}s`);
+      if (errors.length) throw Error(errors.join('\n'));
+    }
+    encoder.stdin.end(); await done;
+    return (Date.now()-begun)/1000;
+  } finally { fs.closeSync(log); }
+}
+
+async function exportSample(grab, t, range, assetReview, timelineSha256, mixSha256) {
+  const {start, end} = range;
+  const samples = path.join(root, 'preview', 'samples');
+  fs.mkdirSync(samples, {recursive:true});
+  const folder = fs.mkdtempSync(path.join(samples, `frames-${start}-${end}-`));
+  const partial = path.join(folder, 'sample.partial.mp4');
+  const mixFile = path.join(root, 'audio/mix-master.wav');
+  // The mixer writes one fixed 48 kHz PCM timeline. Slice it at the same frame boundaries.
+  const firstSample = Math.round(start * 48000 / t.fps);
+  const endSample = Math.round(end * 48000 / t.fps);
+  const audioArgs = ['-i',mixFile,'-map','0:v:0','-map','1:a:0',
+    '-af',`atrim=start_sample=${firstSample}:end_sample=${endSample},asetpts=PTS-STARTPTS`,
+    '-c:a','aac','-b:a','160k'];
+  await encodeFrames(grab, t, start, end, partial, path.join(folder,'ffmpeg.log'), audioArgs);
+  const info=JSON.parse(execFileSync('ffprobe',['-v','error','-show_streams','-of','json',partial],{encoding:'utf8'}));
+  const video=info.streams.find(s=>s.codec_type==='video');
+  const audio=info.streams.find(s=>s.codec_type==='audio');
+  const duration=(end-start)/t.fps;
+  if (Number(video?.nb_frames)!==end-start || video.width!==t.width || video.height!==t.height
+      || audio?.codec_name!=='aac' || !(Math.abs(Number(audio.duration)-duration)<=1/t.fps)) {
+    throw Error('试剪音画时长或帧数不符');
+  }
+  if (materialCheck().manifestSha256 !== assetReview.manifestSha256
+      || fileHash(path.join(root,'timeline.json')) !== timelineSha256
+      || fileHash(path.join(root,'film.json')) !== t.filmSha256
+      || checkedMix(assetReview, timelineSha256) !== mixSha256
+      || Object.entries(sourceSha256).some(([file, sha]) => fileHash(path.join(root,file)) !== sha)) {
+    throw Error('试剪期间输入发生变化，请重新试剪');
+  }
+  const report = {mode:'sample', startFrame:start, endFrameExclusive:end, fps:t.fps, totalFrames:end-start,
+    durationSeconds:duration, assetReview, timelineSha256, mixSha256, sourceSha256, videoSha256:fileHash(partial)};
+  fs.writeFileSync(path.join(folder,'sample-report.json'),JSON.stringify(report,null,2)+'\n');
+  const output=path.join(folder,'sample.mp4');
+  fs.renameSync(partial,output);
+  console.log(`有声试剪：${output}`);
+}
+
 async function main() {
   if(!['png','jpeg'].includes(frameFormat)) throw Error('--frame-format 必须为 png 或 jpeg');
+  if (sampleFlag >= 0 && (mode !== 'sample' || reviewFlag >= 0 || process.argv.includes('--preview'))) {
+    throw Error('--sample-frames 单独运行；四帧预览和完整渲染请另用对应命令');
+  }
   const assetReview = materialCheck();
   const film = JSON.parse(fs.readFileSync(path.join(root,'film.json')));
   if (film.footageManifest) execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname,'footage.py'),'check',root], {stdio:'inherit'});
@@ -35,6 +127,10 @@ async function main() {
   const approved = new Map(view.selection.assets.map(a=>[a.path,a.sha256]));
   const approvedLinks = new Set([...assetSelection.links.map(a=>a.url), ...assetSelection.assets.map(a=>a.landingUrl).filter(Boolean)].map(u=>new URL(u).href));
   const t = JSON.parse(fs.readFileSync(path.join(root, 'timeline.json')));
+  const range = mode === 'sample' ? sampleRange(t) : null;
+  const timelineSha256 = range ? fileHash(path.join(root, 'timeline.json')) : null;
+  const mixSha256 = range ? checkedMix(assetReview, timelineSha256) : null;
+  if (range) execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname, 'pipeline.py'),'check',root], {stdio:'inherit'});
   if (mode === 'render') {
     execFileSync(process.env.PYTHON || 'python3', [path.join(__dirname, 'pipeline.py'), 'check', root], {stdio: 'inherit'});
     previewApproval=reviewTool('check',['--kind','pipeline']);
@@ -65,7 +161,11 @@ async function main() {
         const mix=JSON.parse(fs.readFileSync(path.join(root,'audio/mix-report.json')));
         if(mix.assetReview?.manifestSha256!==assetReview.manifestSha256 || mix.mixSha256!==hash(data)) {errors.push('混音版本/哈希不符');res.writeHead(409).end();return;}
       }
-      sourceSha256[path.relative(root, file)] = hash(data);
+      const digest = hash(data);
+      if (range && sourceSha256[relative] && sourceSha256[relative] !== digest) {
+        errors.push(`试剪期间源文件变化：${relative}`);res.writeHead(409).end();return;
+      }
+      sourceSha256[relative] = digest;
       res.setHeader('Content-Type', mime[path.extname(file)] || 'application/octet-stream');
       res.end(data);
     } catch { res.writeHead(400).end(); }
@@ -109,6 +209,7 @@ async function main() {
     await checkLinks();
     return stage.screenshot({type:format, ...(format==='jpeg'?{quality:95}:{}), animations:'allow'});
   };
+  if (range) return exportSample(grab, t, range, assetReview, timelineSha256, mixSha256);
   let preview = path.join(root, 'preview');
   if(mode==='render'){
     const candidates=path.join(root,'.preview-review','candidates');fs.mkdirSync(candidates,{recursive:true});
@@ -153,27 +254,8 @@ async function main() {
     fs.writeFileSync(requestFile,JSON.stringify({frames:quadFrames.map(frame=>({frame,file:path.relative(root,path.join(preview,`frame-${String(frame).padStart(6,'0')}.png`))}))},null,2)+'\n');
     const resampled=reviewTool('check',['--kind','pipeline','--request',requestFile]);
     if(JSON.stringify(resampled)!==JSON.stringify(previewApproval))throw Error('整片导出前四帧批准变化；停止渲染');
-    const log = fs.openSync(path.join(root, 'render-ffmpeg.log'), 'w');
-    try {
-      encoder = spawn('ffmpeg', ['-y','-hide_banner','-loglevel','warning','-f','image2pipe','-vcodec',frameFormat==='jpeg'?'mjpeg':'png','-framerate',String(t.fps),'-i','pipe:0','-an','-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',path.join(root,'silent.mp4')], {stdio:['pipe','ignore',log]});
-      let encoderError;
-      const done = new Promise((resolve,reject)=>{
-        encoder.on('error',reject); encoder.on('close',code=>code===0?resolve():reject(Error(`FFmpeg exit ${code}，见 render-ffmpeg.log`)));
-        encoder.stdin.on('error',reject);
-      });
-      done.catch(e=>{encoderError=e;});
-      const begun = Date.now();
-      for (let f=0; f<t.totalFrames; f++) {
-        if (encoderError) throw encoderError;
-        const data=await grab(f,frameFormat);
-        if (!encoder.stdin.write(data)) await Promise.race([once(encoder.stdin,'drain'),done.then(()=>{throw Error('编码器提前退出');})]);
-        if (f % Math.max(1,t.fps*2) === 0) console.log(`render ${f}/${t.totalFrames} · ${((Date.now()-begun)/1000).toFixed(1)}s`);
-        if (errors.length) throw Error(errors.join('\n'));
-      }
-      encoder.stdin.end(); await done;
-      report.renderWallSeconds=(Date.now()-begun)/1000;
-      report.videoSha256=fileHash(path.join(root,'silent.mp4'));
-    } finally { fs.closeSync(log); }
+    report.renderWallSeconds=await encodeFrames(grab,t,0,t.totalFrames,path.join(root,'silent.mp4'),path.join(root,'render-ffmpeg.log'));
+    report.videoSha256=fileHash(path.join(root,'silent.mp4'));
   }
   if(mode==='render'){
     const finalApproval=reviewTool('check',['--kind','pipeline']);
@@ -200,7 +282,7 @@ async function main() {
 }
 main().catch(e=>{
   console.error(e);
-  if(fs.existsSync(root)) fs.writeFileSync(path.join(root,'render-failure.json'),JSON.stringify({error:String(e),browserErrors:errors},null,2));
+  if(sampleFlag<0 && fs.existsSync(root)) fs.writeFileSync(path.join(root,'render-failure.json'),JSON.stringify({error:String(e),browserErrors:errors},null,2));
   process.exitCode=1;
 }).finally(async()=>{
   if (encoder && encoder.exitCode === null) encoder.kill();

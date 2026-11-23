@@ -7,6 +7,8 @@ voices/
 .venv*/
 *.wav
 *.mp3
+*.ogg
+!assets/voice-auditions/*.ogg
 *.m4a
 *.flac
 *.safetensors
@@ -15,3 +17,10 @@ __pycache__/
 
 # 六个自制短片是可分发的Skill示例；私人声音仍排除。
 !assets/examples/*/final.mp4
+
+# 仅放行内置程序拟音，个人音轨继续忽略。
+!assets/sfx/clips/sfx-*.wav
+!assets/sfx/atlas/clips/sfx-*.wav
+
+# Public CC0 chalk recording referenced in the sound catalog.
+!assets/sfx/clips/chalkboard-writing.ogg

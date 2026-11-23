@@ -61,20 +61,39 @@ def within(root, value):
     return path
 
 
+PUBLIC_MODEL = 'qwen3-tts-1.7b-customvoice-mlx'
+
+
+def casting_profiles(query=''):
+    return [p for p in catalog(PUBLIC_MODEL)['castingProfiles']
+            if query.casefold() in json.dumps(p, ensure_ascii=False).casefold()]
+
+
+def resolve_voice(data, voice_id):
+    voices = data.get('voices', {})
+    if voice_id in voices:
+        voice = voices[voice_id]
+        return voice, data.get('models', {}).get(voice['model'])
+    profile = next((p for p in casting_profiles() if p['voiceId'] == voice_id), None)
+    if profile is None:
+        raise ValueError(f'未配置音色：{voice_id}')
+    model_dir = Path.home() / '.local/share/wtt-code-video-studio/models' / PUBLIC_MODEL
+    location = data.get('models', {}).get(PUBLIC_MODEL, {
+        'path': str(model_dir), 'manifest': str(model_dir / 'model-manifest.json')})
+    return {'model': PUBLIC_MODEL, 'speaker': profile['speaker'], 'language': 'chinese'}, location
+
+
 def load_config(path, voice_id=None):
     path = Path(path).resolve()
     c = read(path)
     if c.get('schema') != 'code-animation-voice/v1':
         raise ValueError('声音配置 schema 应为 code-animation-voice/v1')
     voice_id = voice_id or c.get('defaultVoice')
-    if voice_id not in c.get('voices', {}):
-        raise ValueError(f'未配置音色：{voice_id}')
-    voice = c['voices'][voice_id]
+    voice, location = resolve_voice(c, voice_id)
     model = catalog(voice['model'])
     variant = model.get('modelType', 'base')
     if model['engine'] != 'qwen3-tts-mlx' or model.get('role') != 'tts' or variant not in ('base', 'custom_voice'):
         raise ValueError('该模型不是已接入的 Qwen3-TTS MLX 配音模型')
-    location = c.get('models', {}).get(model['id'])
     if not location:
         raise ValueError(f'没有配置模型路径：{model["id"]}')
     allowed_voice = {'label', 'model', 'language'}
@@ -217,13 +236,12 @@ def doctor(project=None, explicit=None):
         if not isinstance(voices, dict) or not isinstance(models, dict):
             raise ValueError('voices 和 models 必须是配置对象')
         vid = data.get('defaultVoice'); result['defaultVoice'] = vid
-        voice = voices.get(vid) if isinstance(vid, str) else None
+        voice, location = resolve_voice(data, vid)
         if not isinstance(voice, dict):
             raise ValueError('没有有效的 defaultVoice 个人音色；填写 voices 并指定默认音色')
         try:
             entry = catalog(voice.get('model'))
             if not isinstance(entry, dict): raise ValueError('个人音色未指定模型 ID')
-            location = models.get(entry['id'])
             if not isinstance(location, dict): raise ValueError('个人音色对应的模型路径未配置')
             directory = resolve(path.parent, location.get('path'))
             manifest = resolve(path.parent, location.get('manifest'))
@@ -519,6 +537,8 @@ def main():
     sub = parser.add_subparsers(dest='command', required=True)
     p = sub.add_parser('catalog', help='检索维护者核对的模型目录（不联网）')
     p.add_argument('--query', default='')
+    p = sub.add_parser('presets', help='按角色、年龄感或声线检索中文公开试配方案')
+    p.add_argument('--query', default='')
     p = sub.add_parser('scan', help='只读检索指定本地目录中的 Qwen3-TTS 模型候选')
     p.add_argument('--root', type=Path, required=True)
     p = sub.add_parser('voices', help='列出配置中的音色，不显示录音文字')
@@ -543,6 +563,8 @@ def main():
     args = parser.parse_args()
     if args.command == 'catalog':
         result = [m for m in catalog() if args.query.casefold() in json.dumps(m, ensure_ascii=False).casefold()]
+    elif args.command == 'presets':
+        result = casting_profiles(args.query)
     elif args.command == 'scan':
         if not args.root.is_dir():
             raise ValueError('扫描目录不存在')

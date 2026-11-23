@@ -232,25 +232,66 @@ def search_text(data, style):
     return ' '.join([style['id'], style.get('sourceId',''), style['name'], style.get('en', ''), style.get('material', ''), *style.get('aliases', []), *extra]).casefold()
 
 
-def select_styles(data, purpose=None, query='', use_case=None):
+def validate_expressions(data):
+    styles = {s['id'] for s in data['styles']}
+    cards = data.get('expressions', {})
+    if set(cards) != styles:
+        raise ValueError('表达卡与风格 ID 集合不一致')
+    vocabulary = set()
+    for sid, card in cards.items():
+        terms = card.get('terms') if isinstance(card, dict) else None
+        if not isinstance(terms, list) or not terms or not all(isinstance(t, str) and t.strip() for t in terms):
+            raise ValueError(f'{sid} 缺少表达检索词')
+        vocabulary.update(terms)
+        for field in ('shot', 'variation', 'condition'):
+            if not isinstance(card.get(field), str) or not card[field].strip():
+                raise ValueError(f'{sid} 表达卡缺少 {field}')
+
+    for alias, target in data.get('expressionAliases', {}).items():
+        if not alias.strip() or target not in vocabulary or alias in vocabulary:
+            raise ValueError(f'表达别名无效：{alias}')
+
+
+def select_styles(data, purpose=None, query='', use_case=None, expression=None):
     validate_use_cases(data)
     validate_reference_cases(data)
     cid = resolve_use_case(data, use_case) if use_case else None
     if purpose and purpose not in {c['id'] for c in data['categories']}:
         raise ValueError('未知用途：'+purpose)
     result = []
+    aliases = data.get('expressionAliases', {})
+    terms = [aliases.get(word, word) for word in (expression or '').split()]
+    if expression is not None and not terms:
+        raise ValueError('表达检索至少提供一个词')
+    cards = data.get('expressions', {})
     for style in data['styles']:
-        matches = use_case_matches(data, style['id'], cid)
-        if (purpose and purpose not in style.get('purposes', [])) or (cid and not matches) or query.casefold() not in search_text(data, style):
+        card = cards.get(style['id'], {})
+        tags = card.get('terms', [])
+        if any(term not in tags for term in terms):
             continue
-        result.append(dict(style, useCaseMatches=matches) if cid else style)
+        matches = use_case_matches(data, style['id'], cid)
+        if (purpose and purpose not in style.get('purposes', [])) or (cid and not matches):
+            continue
+        if aliases.get(query, query) not in tags and query.casefold() not in search_text(data, style):
+            continue
+        row = dict(style, useCaseMatches=matches) if cid else style
+        if terms:
+            row = dict(row, expression=card)
+        result.append(row)
     return result
+
+
+def style_preview_path(style):
+    return f"assets/gallery/style-previews/{style['id']}.jpg"
 
 
 def style_summary(style):
     """Discovery view: keep source facts; do not invent missing legacy fields."""
     result = {key: style[key] for key in ('id', 'name', 'status', 'material', 'action', 'reference')
               if key in style}
+    result['previewImage'] = style_preview_path(style)
+    if 'expression' in style:
+        result['expression'] = style['expression']
     if 'useCaseMatches' in style:
         result['useCaseMatches'] = [
             {key: match[key] for key in ('useCaseId', 'fit', 'why', 'conditions')}
@@ -497,11 +538,14 @@ def main():
     p.add_argument('style_id',nargs='?',help='show命令的风格ID')
     p.add_argument('--root',type=Path,default=ROOT)
     p.add_argument('--purpose');p.add_argument('--query',default='');p.add_argument('--use-case')
+    p.add_argument('--expression', help='list 专用；从读稿结果取一个表达词，空格分隔的多词取交集')
     p.add_argument('--route',help='libraries的技术路线ID；名称与输入要求见references/frontend-libraries.md')
     p.add_argument('--view',choices=['full','summary'],default='full',help='summary仅返回发现所需字段；默认完整JSON保持兼容')
     p.add_argument('--limit',type=int,help='显式分页，不是推荐前N项')
     p.add_argument('--offset',type=int,help='显式分页起点，源目录顺序不是推荐排名')
     a=p.parse_args()
+    if a.expression is not None and a.command != 'list':
+        p.error('--expression 仅用于 list')
     if a.route and a.command != 'libraries':
         p.error('--route仅用于libraries')
     if a.command == 'libraries':
@@ -528,12 +572,21 @@ def main():
             validate_reference_cases(data)
             if a.command == 'show':
                 row = style_detail(data, a.style_id, a.use_case)
+                if a.view == 'summary' and row['id'] in data.get('expressions', {}):
+                    row['expression'] = data['expressions'][row['id']]
                 rows = style_summary(row) if a.view == 'summary' else row
             else:
-                rows=select_styles(data,a.purpose,a.query,a.use_case) if a.command=='list' else select_reference_cases(data,a.purpose,a.query,a.use_case) if a.command=='cases' else [{k:c[k] for k in ('id','name','aliases','purposes','goal','structure','needs')} for c in data.get('useCases',[])]
+                rows=select_styles(data,a.purpose,a.query,a.use_case,a.expression) if a.command=='list' else select_reference_cases(data,a.purpose,a.query,a.use_case) if a.command=='cases' else [{k:c[k] for k in ('id','name','aliases','purposes','goal','structure','needs')} for c in data.get('useCases',[])]
                 rows=discovery_rows(rows,a.command,a.view,a.limit,a.offset)
         except ValueError as error: p.error(str(error))
         print(json.dumps(rows,ensure_ascii=False,indent=2));return
+    if a.command == 'check':
+        data = json.loads((a.root/'config/capabilities.json').read_text())
+        validate_expressions(data)
+        for style in data['styles']:
+            preview = a.root / style_preview_path(style)
+            if not preview.is_file() or preview.stat().st_size == 0:
+                raise SystemExit(f'缺少风格小图：{preview}')
     for name,content in documents(a.root).items():
         file=a.root/name
         if a.command=='build': file.parent.mkdir(parents=True,exist_ok=True);file.write_text(content,encoding='utf-8')

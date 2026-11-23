@@ -12,9 +12,12 @@ description: 代码视频工作室。把想法、文章或剧本制作成前端�
 | 当前请求 | 必要读取与动作 |
 |---|---|
 | 只交某阶段、指定段落/镜头，或分镜后分别选风格再组装 | 先识别本次交付物与镜头范围，按[分段创作](references/staged-creation.md)直接从已有稿接手。分镜可先于风格；文字到稿即停，进入镜头或全片制作才走对应审片门 |
-| 新想法/主题/文章做片 | [编剧与时长](references/story-and-timing.md)；先构思内容，再识别具体用法（含下行地理推演），用目录筛选，按[方向选择](references/style-selection.md)给五种完整方向 |
+| 新想法/主题/文章做片 | [编剧与时长](references/story-and-timing.md)；从原文提取转折、人物与观众各自的状态及可见依据，再识别具体用法（含下行地理推演），用目录筛选，按[方向选择](references/style-selection.md)给五种完整方向，每个选项旁直接展示对应小图 |
 | 战役/迁徙/贸易路线/疆域或传播的空间演变 | 前置识别为`geographic-explainer`，运行`catalog.py list --use-case 地理推演 --view summary`；读[地理叙事](references/geographic-storytelling.md)的路线判断，按空间因果推荐五方向。以地方氛围/景观展示为主则走地图明信片；已选风格、纯文字或局部修订仍按对应范围执行 |
 | 已指定/已选风格、明确委托代选 | 沿现有决定，读取该风格STYLE及已有的固定SOURCE或原创专项方法和[风格保真](references/style-fidelity.md)；免重复五选，制作镜头或整片视频时须四帧审片 |
+| 用已有视频做解说，或结尾缺少发现 | 先从原片两个能对照的动作或段落写出[要回答的问题与最后一句解说](references/story-and-timing.md#解说的结论与收尾)，再按[原镜和代码画面怎么接](references/footage.md#原镜和代码画面怎么接)排分镜；[有声试剪](references/preview-review.md#局部有声试剪)包含铺垫、结论与最后一拍 |
+| 已有成片只要标题、封面或首帧 | 按[封面与首帧交付](references/production.md#封面与首帧交付)从成片已兑现的观点定文案，依明确范围交付。只改文字或封面图时直接交付相应产物 |
+| 故事看不懂，或拟音听成杂声 | 从观众指出的镜头入手。按[故事能否独立看懂](references/story-and-timing.md#让观众只看片也能复述故事)补构图和动作，按[杂声定位](references/rhythm.md#动作拟音听成杂声时)修对应轨，在同版试剪里复核 |
 | 已有工程改字号/遮挡等 | 读当前选择/代码/素材锁及[制作契约](references/production.md)受影响阶段；不重init/编剧/选五种/生成未变配音。画面变更出新版拼图，原样重跑沿有效确认 |
 | 已有获批成片只换声音 | 读[纯音轨修订](references/audio-revision.md)；独立修订目录完成素材diff与锁定，流复制画面并验证全部帧一致；不改字幕/时序或伪造新四帧批准 |
 | 只要文字/剧本/静态图/交互页/纯音频 | 在用户范围交付；概念任务读[解释模型](references/explanation.md)，纯音频读[配音](references/voice.md)。纯文字不init/doctor/五选；静态图和纯音频不套视频四帧门 |
@@ -24,6 +27,7 @@ description: 代码视频工作室。把想法、文章或剧本制作成前端�
 
 - 六类用途为知识、故事、产品、纪实、数据、创意；24种具体用法与114项风格多对多映射。先根据内容目的识别用法，地理推演可跨知识/纪实/数据/故事，不新增开场分类问卷。用户要全目录时展示[分类](references/classification.md)/[风格库](assets/gallery/styles.html)，普通任务不全量读取JSON、映射表或SOURCE。
 - 按内容运行 `python3 scripts/catalog.py list --use-case 个人宣传 --view summary`（也可`--purpose knowledge`/`--query 水墨`），候选细查 `python3 scripts/catalog.py show desktop-flythrough --use-case 个人宣传`，再读相关STYLE。分页不是推荐排名，不拿源目录前五项直接当五方向。
+- 用法与表达可分别召回候选。按[读稿与表达匹配](references/story-and-timing.md#从转折读到表达)取词，例如 `catalog.py list --expression 欲言又止 --view summary`。五方向先选主风格或有动机的混搭；用户想看粗分镜再细选时，按[逐镜决定](references/staged-creation.md#分镜后选风格)集中处理未定镜头。
 - 新主题比较至多三种有意义的内容结构并择优，保存script.md；已锁剧本不重编。五方向比较同一关键镜头，说明内容动作→媒介机制→可见结果、素材/声音、依赖与实测边界，不能固定五名字换字。
 - 用途、叙事策略、画风、主体/效果、技术、输出分别判断。角色可由沙画或粒子构成；Three.js/Remotion是技术。方法收录、单片实测、可复用脚手架、通用后端分开标识。
 - 参考热门作品时才读[案例选型](references/case-driven-techniques.md)，用 `catalog.py cases --use-case 概念解释`检索依据；区分原作披露、复现建议与未知，不凭画风猜代码。
@@ -51,9 +55,9 @@ description: 代码视频工作室。把想法、文章或剧本制作成前端�
 
 读[制作契约](references/production.md)，在独立空目录init；按剧本重写场景，不把起步模板当成片。逐镜混搭先按[连续动作与画法交接](references/style-continuity.md)确定跨镜锚点，能共用动作与相机时只改变画法，预览时密采切点。只在需要时读取声音/素材详细操作：
 
-- init轻量检测声音配置，缺项直接读[音色配置](references/voice.md)，不自动下载模型。有效defaultVoice默认沿用；路径失效按该指南先搜索/核验原资源，不能断言已删除或换系统声。多人对白先绑定角色与逐句表演，按实际后端能力执行，不把角色全套成旁白。坏配置报错；私人录音、模型与凭据不入开源包。
+- init轻量检测声音配置，缺项直接读[音色配置](references/voice.md)，不自动下载模型。有效defaultVoice默认沿用；路径失效按该指南先搜索/核验原资源，不能断言已删除或换系统声。从剧本列出实际开口的人；旁白沿用默认音色，多人对白按年龄感、口音、关系与情绪检索公开试配（voice.py presets）或用户声线，先绑定角色与逐句表演，按实际后端能力执行，不把角色全套成旁白。坏配置报错；私人录音、模型与凭据不入开源包。
 - [素材审阅](references/material-review.md)：首次可搜索下载选材并记录来源/许可/使用依据；seal锁定ID、路径、URL、许可、SHA256与导流。重跑check一致直接执行；变化先可读diff，未确认只存候选，不覆盖当前素材/清单或验收。明确替换对象与目标视为授权，仍保留diff；禁止重下载同名文件或重建锁绕过。
-- 以film.json为内容源，timeline由真实配音编译为整数帧；超时回到内容取舍，不裁音/加速。字幕字符权重是近似定位，不称ASR逐字对齐；音乐/动作按内容编排。
+- 以film.json为内容源，timeline由真实配音编译为整数帧；超时回到内容取舍，不裁音/加速。字幕字符权重是近似定位，不称ASR逐字对齐。粗分镜后按[选配乐](references/rhythm.md#怎样选中一段配乐)用同画面试听乐句与原声，再锁时。有声分镜先定主听对象、选材和声音节点，再让画面动作、音效入点与背景收放共用事件帧，按[声音设计与节拍](references/rhythm.md)执行。
 - 每帧从帧号/seed/资产重建，await素材就绪，暂停/拖动/导出共用状态；真实小样保留材质/造型/空间/原生动作。新增库固定版本、本地化并保留许可，未运行不称支持。
 - 素材锁→时间轴/混音→preview及四帧拼图→用户确认→render→finish。地图等专项导出也不能绕过四帧；旧工程tools不自动升级，迁移见[兼容说明](references/migration.md)。
 - 最终MP4后按[视频质量](references/video-quality.md)执行review-init、实看缩小图/连续片段、填写visual-review.json、review。技术检查、图像审阅、主观试听、用户采用分别报告，不能把确认样帧当作成片验收。
