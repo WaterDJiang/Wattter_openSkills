@@ -5,8 +5,8 @@
     "email": "wattterjiang@gmail.com"
   },
   "metadata": {
-    "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, course PPTX building, wiki building, project harness generation, resume screening, multi-platform OpenCLI publishing, SEO/GEO content writing, multi-style comic/infographic prompt generation, and a four-skill video creation pipeline (screenwriting, directing, production prompt cards, and FFmpeg editing).",
-    "version": "2.8.1",
+    "description": "Water's personal collection of AI skills, featuring content publishing, information collection, trend analysis, app review insights, magazine-style deck generation, course PPTX building, wiki building, project harness generation, resume screening, multi-platform OpenCLI publishing, SEO/GEO content writing, multi-style comic/infographic prompt generation, WeChat Official Account comment mining, and a four-skill video creation pipeline (screenwriting, directing, production prompt cards, and FFmpeg editing).",
+    "version": "2.8.2",
     "license": "CC BY-NC-SA 4.0"
   },
   "plugins": [
@@ -269,6 +269,20 @@
       "strict": false,
       "skills": [
         "wtt-video-editor"
+      ],
+      "version": "0.1.0",
+      "author": {
+        "name": "Water",
+        "email": "wattterjiang@gmail.com"
+      }
+    },
+    {
+      "name": "wtt-wechat-comment-miner-skills",
+      "description": "WeChat Official Account comment miner: captures a post's comment panel inside the WeChat client via window screenshots and on-device Vision OCR, cleans and deduplicates the text, clusters topics, and delivers an HTML+MD report with top comments, core insights, and content or business opportunities. Read-only — never sends WeChat messages.",
+      "source": "../wattter_skills",
+      "strict": false,
+      "skills": [
+        "wtt-wechat-comment-miner"
       ],
       "version": "0.1.0",
       "author": {
